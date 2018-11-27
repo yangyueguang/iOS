@@ -35,8 +35,8 @@ static TLEmojiKeyboard *emojiKB;
     [view addSubview:self];
     [self mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(view);
-        make.height.mas_equalTo(HEIGHT_CHAT_KEYBOARD);
-        make.bottom.mas_equalTo(view).mas_offset(HEIGHT_CHAT_KEYBOARD);
+        make.height.mas_equalTo(215.0f);
+        make.bottom.mas_equalTo(view).mas_offset(215.0f);
     }];
     [view layoutIfNeeded];
     if (animation) {
@@ -74,7 +74,7 @@ static TLEmojiKeyboard *emojiKB;
     if (animation) {
         [UIView animateWithDuration:0.3 animations:^{
             [self mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.bottom.mas_equalTo(self.superview).mas_offset(HEIGHT_CHAT_KEYBOARD);
+                make.bottom.mas_equalTo(self.superview).mas_offset(215.0f);
             }];
             [self.superview layoutIfNeeded];
             if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
@@ -94,13 +94,13 @@ static TLEmojiKeyboard *emojiKB;
     }
 }
 - (void)reset{
-    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.frameWidth, self.collectionView.frameHeight) animated:NO];
+    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.frame.size.width, self.collectionView.frameHeight) animated:NO];
     // 更新发送按钮状态
     [self updateSendButtonStatus];
 }
 #pragma mark - Event Response -
 - (void) pageControlChanged:(UIPageControl *)pageControl{
-    [self.collectionView scrollRectToVisible:CGRectMake(WIDTH_SCREEN * pageControl.currentPage, 0, WIDTH_SCREEN, HEIGHT_PAGECONTROL) animated:YES];
+    [self.collectionView scrollRectToVisible:CGRectMake(APPW * pageControl.currentPage, 0, APPW, HEIGHT_PAGECONTROL) animated:YES];
 }
 #pragma mark - Private Methods -
 - (void)p_addMasonry{
@@ -127,7 +127,7 @@ static TLEmojiKeyboard *emojiKB;
     CGContextSetStrokeColorWithColor(context, colorGrayLine.CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0, 0);
-    CGContextAddLineToPoint(context, WIDTH_SCREEN, 0);
+    CGContextAddLineToPoint(context, APPW, 0);
     CGContextStrokePath(context);
 }
 #pragma mark - Getter -
@@ -225,28 +225,28 @@ static TLEmojiKeyboard *emojiKB;
         cellWidth = cellHeight = (HEIGHT_EMOJIVIEW / self.curGroup.rowNumber) * 0.55;
         topSpace = 11;
         btmSpace = 19;
-        hfSpace = (WIDTH_SCREEN - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber + 1) * 1.4;
+        hfSpace = (APPW - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber + 1) * 1.4;
     }else if (self.curGroup.type == TLEmojiTypeImageWithTitle){
         cellHeight = (HEIGHT_EMOJIVIEW / self.curGroup.rowNumber) * 0.96;
         cellWidth = cellHeight * 0.8;
-        hfSpace = (WIDTH_SCREEN - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber + 1) * 1.2;
+        hfSpace = (APPW - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber + 1) * 1.2;
     }else{
         cellWidth = cellHeight = (HEIGHT_EMOJIVIEW / self.curGroup.rowNumber) * 0.72;
         topSpace = 8;
         btmSpace = 16;
-        hfSpace = (WIDTH_SCREEN - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber + 1) * 1.2;
+        hfSpace = (APPW - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber + 1) * 1.2;
     }
     
     cellSize = CGSizeMake(cellWidth, cellHeight);
     headerReferenceSize = CGSizeMake(hfSpace, HEIGHT_EMOJIVIEW);
     footerReferenceSize = CGSizeMake(hfSpace, HEIGHT_EMOJIVIEW);
-    minimumLineSpacing = (WIDTH_SCREEN - hfSpace * 2 - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber - 1);
+    minimumLineSpacing = (APPW - hfSpace * 2 - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber - 1);
     minimumInteritemSpacing = (HEIGHT_EMOJIVIEW - topSpace - btmSpace - cellHeight * self.curGroup.rowNumber) / (self.curGroup.rowNumber - 1);
     sectionInsets = UIEdgeInsetsMake(topSpace, 0, btmSpace, 0);
 }
 #pragma mark - Delegate -
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    [self.pageControl setCurrentPage:(int)(scrollView.contentOffset.x / WIDTH_SCREEN)];
+    [self.pageControl setCurrentPage:(int)(scrollView.contentOffset.x / APPW)];
 }
 //MARK: UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -301,7 +301,7 @@ static TLEmojiKeyboard *emojiKB;
     [self.pageControl setNumberOfPages:group.pageNumber];
     [self.pageControl setCurrentPage:0];
     [self.collectionView reloadData];
-    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.frameWidth, self.collectionView.frameHeight) animated:NO];
+    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.frame.size.width, self.collectionView.frameHeight) animated:NO];
     // 更新发送按钮状态
     [self updateSendButtonStatus];
     // 更新chatBar的textView状态
@@ -343,7 +343,7 @@ static UICollectionViewCell *lastCell;
         CGPoint point = [sender locationInView:self.collectionView];
         
         for (UICollectionViewCell *cell in self.collectionView.visibleCells) {
-            if (cell.frameX - minimumLineSpacing / 2.0 <= point.x && cell.frameY - minimumInteritemSpacing / 2.0 <= point.y && cell.frameX + cell.frameWidth + minimumLineSpacing / 2.0 >= point.x && cell.frameY + cell.frameHeight + minimumInteritemSpacing / 2.0 >= point.y) {
+            if (cell.frameX - minimumLineSpacing / 2.0 <= point.x && cell.frameY - minimumInteritemSpacing / 2.0 <= point.y && cell.frameX + cell.frame.size.width + minimumLineSpacing / 2.0 >= point.x && cell.frameY + cell.frameHeight + minimumInteritemSpacing / 2.0 >= point.y) {
                 if (lastCell == cell) {
                     return;
                 }
@@ -361,7 +361,7 @@ static UICollectionViewCell *lastCell;
                 if (self.delegate && [self.delegate respondsToSelector:@selector(emojiKeyboard:didTouchEmojiItem:atRect:)]) {
                     emoji.type = self.curGroup.type;
                     CGRect rect = [cell frame];
-                    rect.origin.x = rect.origin.x - self.frameWidth * (int)(rect.origin.x / self.frameWidth);
+                    rect.origin.x = rect.origin.x - self.frame.size.width * (int)(rect.origin.x / self.frame.size.width);
                     [self.delegate emojiKeyboard:self didTouchEmojiItem:emoji atRect:rect];
                 }
                 return;

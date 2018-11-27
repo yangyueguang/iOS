@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Personal Apply View Controller-->
         <scene sceneID="h2t-lS-t4d">
             <objects>
-                <viewController storyboardIdentifier="PersonalApplyViewController" id="4JY-r8-Lmx" customClass="PersonalApplyViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonalApplyViewController" id="4JY-r8-Lmx" customClass="PersonalApplyViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k35-aA-6Ta"/>
                         <viewControllerLayoutGuide type="bottom" id="4Cz-Lf-yqZ"/>
@@ -31,7 +31,7 @@
         <!--Personal Apply Tab Bar Controller-->
         <scene sceneID="OgN-Ku-3py">
             <objects>
-                <tabBarController storyboardIdentifier="PersonalApplyTabBarController" id="3rz-7X-v5u" customClass="PersonalApplyTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="PersonalApplyTabBarController" id="3rz-7X-v5u" customClass="PersonalApplyTabBarController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="fhG-e0-Cpb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -48,11 +48,11 @@
         <!--个人应用-->
         <scene sceneID="QfX-sT-D47">
             <objects>
-                <navigationController storyboardIdentifier="PersonalApplyNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="8FQ-KU-XLg" customClass="PersonalApplyNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PersonalApplyNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="8FQ-KU-XLg" customClass="PersonalApplyNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="个人应用" id="NUH-N7-0Hm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rif-Nu-YUf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

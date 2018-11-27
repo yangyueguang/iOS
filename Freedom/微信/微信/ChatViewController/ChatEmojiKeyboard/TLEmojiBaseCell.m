@@ -2,6 +2,7 @@
 //  Freedom
 // Created by Super
 #import "TLEmojiBaseCell.h"
+#import <XCategory/NSFileManager+expanded.h>
 @implementation TLEmoji
 + (NSDictionary *)replacedKeyFromPropertyName{
     return @{
@@ -20,7 +21,6 @@
     return _emojiPath;
 }
 @end
-
 @implementation TLEmojiGroup
 + (NSDictionary *)replacedKeyFromPropertyName{
     return @{
@@ -87,8 +87,6 @@
     return self.bannerURL;
 }
 @end
-
-
 @interface TLEmojiFaceItemCell ()
 @property (nonatomic, strong) UIImageView *imageView;
 @end
@@ -227,8 +225,6 @@
     return _label;
 }
 @end
-
-
 @implementation TLEmojiBaseCell
 - (id)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
@@ -289,8 +285,8 @@
     CGContextSetLineWidth(context, 0.5);
     CGContextSetStrokeColorWithColor(context, colorGrayLine.CGColor);
     CGContextBeginPath(context);
-    CGContextMoveToPoint(context, self.frameWidth - 0.5, 5);
-    CGContextAddLineToPoint(context, self.frameWidth - 0.5, self.frameHeight - 5);
+    CGContextMoveToPoint(context, self.frame.size.width - 0.5, 5);
+    CGContextAddLineToPoint(context, self.frame.size.width - 0.5, self.frameHeight - 5);
     CGContextStrokePath(context);
 }
 #pragma mark - Getter -
@@ -379,7 +375,7 @@
     return self.emojiGroupData.count;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return [self.emojiGroupData[section] count];
+    return [(NSArray*)self.emojiGroupData[section] count];
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     TLEmojiGroupCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TLEmojiGroupCell" forIndexPath:indexPath];

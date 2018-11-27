@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Books Main View Controller-->
+        <!--Books View Controller-->
         <scene sceneID="JAa-Gf-WcZ">
             <objects>
-                <viewController storyboardIdentifier="BooksMainViewController" id="6Ms-8J-J0e" customClass="BooksMainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BooksMainViewController" id="6Ms-8J-J0e" customClass="BooksViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BgO-07-N8b"/>
                         <viewControllerLayoutGuide type="bottom" id="Cis-CI-TQ6"/>
@@ -31,7 +31,7 @@
         <!--Books Tab Bar Controller-->
         <scene sceneID="N0j-tq-h8U">
             <objects>
-                <tabBarController storyboardIdentifier="BooksTabBarController" id="7r2-Bq-1Sq" customClass="BooksTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="BooksTabBarController" id="7r2-Bq-1Sq" customClass="BooksTabBarController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="nUv-0W-peu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -48,11 +48,11 @@
         <!--书籍收藏-->
         <scene sceneID="5eD-gC-u70">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="s71-Wy-gdu" customClass="BooksNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="s71-Wy-gdu" customClass="BooksNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="书籍收藏" id="AdN-lr-cpA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kc9-7h-6oK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -1,24 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="akV-W8-RTv">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="akV-W8-RTv">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Classify View Controller-->
+        <!--Iqiyi Classify View Controller-->
         <scene sceneID="K6g-Ce-agn">
             <objects>
-                <viewController storyboardIdentifier="JFClassifyViewController" id="J8b-zG-2bJ" customClass="JFClassifyViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JFClassifyViewController" id="J8b-zG-2bJ" customClass="IqiyiClassifyViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9nv-TJ-ADz"/>
                         <viewControllerLayoutGuide type="bottom" id="gSY-Ri-YCv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Js7-MV-mnq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -28,16 +24,16 @@
             </objects>
             <point key="canvasLocation" x="1403" y="1367"/>
         </scene>
-        <!--Subscribe View Controller-->
+        <!--Iqiyi Subscribe View Controller-->
         <scene sceneID="7Ib-5B-h1r">
             <objects>
-                <viewController storyboardIdentifier="JFSubscribeViewController" id="yyk-yh-sOT" customClass="JFSubscribeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JFSubscribeViewController" id="yyk-yh-sOT" customClass="IqiyiSubscribeViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Phf-Cb-GJv"/>
                         <viewControllerLayoutGuide type="bottom" id="ZPp-1q-f5V"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="azb-9T-B9C">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -47,16 +43,16 @@
             </objects>
             <point key="canvasLocation" x="1392" y="121"/>
         </scene>
-        <!--Mine View Controller-->
+        <!--Iqiyi Mine View Controller-->
         <scene sceneID="HHW-4z-rnn">
             <objects>
-                <viewController storyboardIdentifier="JFMineViewController" id="PuH-yX-gjm" customClass="JFMineViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JFMineViewController" id="PuH-yX-gjm" customClass="IqiyiMineViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vPS-sQ-iWw"/>
                         <viewControllerLayoutGuide type="bottom" id="9uf-UI-waQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="RNu-OB-WrX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -66,16 +62,16 @@
             </objects>
             <point key="canvasLocation" x="1403" y="722"/>
         </scene>
-        <!--Discover View Controller-->
+        <!--Iqiyi Discover View Controller-->
         <scene sceneID="2ZD-cZ-FbW">
             <objects>
-                <viewController storyboardIdentifier="JFDiscoverViewController" id="HRT-Ob-Ia7" customClass="JFDiscoverViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JFDiscoverViewController" id="HRT-Ob-Ia7" customClass="IqiyiDiscoverViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jIi-Er-bwN"/>
                         <viewControllerLayoutGuide type="bottom" id="h7G-Dz-fTI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OZs-a3-ZRf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -88,13 +84,13 @@
         <!--Iqiyi View Controller-->
         <scene sceneID="v5X-qL-yXE">
             <objects>
-                <viewController storyboardIdentifier="IqiyiViewController" id="hoo-RD-3Mo" customClass="IqiyiViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IqiyiViewController" id="hoo-RD-3Mo" customClass="IqiyiViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iwd-Mu-MRE"/>
                         <viewControllerLayoutGuide type="bottom" id="7th-X9-01g"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bVL-v4-m7D">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -107,7 +103,7 @@
         <!--Iqiyi Tab Bar Controller-->
         <scene sceneID="de8-1I-mZ6">
             <objects>
-                <tabBarController storyboardIdentifier="IqiyiTabBarController" id="akV-W8-RTv" customClass="IqiyiTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="IqiyiTabBarController" id="akV-W8-RTv" customClass="IqiyiTabBarController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="xTB-Iz-88F">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -128,11 +124,11 @@
         <!--泡泡-->
         <scene sceneID="dRP-97-neh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uEc-NK-5dC" customClass="IqiyiNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uEc-NK-5dC" customClass="IqiyiNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="泡泡" image="iqi_tab5" selectedImage="iqi_selected_tab5" id="uya-Kn-A1i"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uJp-30-vIf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -147,11 +143,11 @@
         <!--VIP会员-->
         <scene sceneID="Loi-sL-xxr">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KXa-LT-TGd" customClass="IqiyiNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KXa-LT-TGd" customClass="IqiyiNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="VIP会员" image="iqi_tab3" selectedImage="iqi_selected_tab3" id="Fgc-f9-UUP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="54r-gx-hH9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -166,11 +162,11 @@
         <!--视频-->
         <scene sceneID="FAu-mu-5jr">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1dQ-IA-5Ib" customClass="IqiyiNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1dQ-IA-5Ib" customClass="IqiyiNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="视频" image="iqi_tab1" selectedImage="iqi_selected_tab1" id="D0I-1g-YA7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5vU-A0-mLb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -185,11 +181,11 @@
         <!--服务-->
         <scene sceneID="uce-hv-8il">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="adX-UJ-26f" customClass="IqiyiNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="adX-UJ-26f" customClass="IqiyiNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="服务" image="iqi_tab2" selectedImage="iqi_selected_tab2" id="WnH-Nm-QQ0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Eeo-6l-IPb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -204,11 +200,11 @@
         <!--我的-->
         <scene sceneID="3NI-Fb-IDu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8WB-It-sBt" customClass="IqiyiNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8WB-It-sBt" customClass="IqiyiNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" image="iqi_tab4" selectedImage="iqi_selected_tab4" id="39C-gj-IfP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="h5d-2n-Mkp">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -223,14 +219,14 @@
     </scenes>
     <resources>
         <image name="iqi_selected_tab1" width="64" height="31"/>
-        <image name="iqi_selected_tab2" width="557" height="991"/>
-        <image name="iqi_selected_tab3" width="557" height="991"/>
-        <image name="iqi_selected_tab4" width="557" height="991"/>
-        <image name="iqi_selected_tab5" width="557" height="991"/>
-        <image name="iqi_tab1" width="557" height="991"/>
-        <image name="iqi_tab2" width="557" height="991"/>
-        <image name="iqi_tab3" width="557" height="991"/>
+        <image name="iqi_selected_tab2" width="64" height="31"/>
+        <image name="iqi_selected_tab3" width="64" height="31"/>
+        <image name="iqi_selected_tab4" width="64" height="31"/>
+        <image name="iqi_selected_tab5" width="64" height="31"/>
+        <image name="iqi_tab1" width="64" height="31"/>
+        <image name="iqi_tab2" width="64" height="31"/>
+        <image name="iqi_tab3" width="64" height="31"/>
         <image name="iqi_tab4" width="32" height="32"/>
-        <image name="iqi_tab5" width="557" height="991"/>
+        <image name="iqi_tab5" width="30" height="30"/>
     </resources>
 </document>

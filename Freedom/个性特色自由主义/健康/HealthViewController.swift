@@ -4,7 +4,7 @@
 //  Copyright © 2017年 Super. All rights reserved.
 //
 import UIKit
-class HealthViewController: UIViewController {
+class HealthViewController: FreedomBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

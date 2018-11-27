@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Juhe Question View Controller-->
         <scene sceneID="iKG-ho-nPb">
             <objects>
-                <viewController storyboardIdentifier="JuheQuestionViewController" id="6G4-sp-gMO" customClass="JuheQuestionViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JuheQuestionViewController" id="6G4-sp-gMO" customClass="JuheQuestionViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zKC-ZL-IqW"/>
                         <viewControllerLayoutGuide type="bottom" id="xyq-40-26a"/>
@@ -31,7 +31,7 @@
         <!--JuheAPI View Controller-->
         <scene sceneID="wBl-Fj-rMV">
             <objects>
-                <viewController storyboardIdentifier="JuheAPIViewController" id="odV-ws-6lw" customClass="JuheAPIViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JuheAPIViewController" id="odV-ws-6lw" customClass="JuheAPIViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zoj-h6-y8Q"/>
                         <viewControllerLayoutGuide type="bottom" id="qhr-XT-Hml"/>
@@ -50,7 +50,7 @@
         <!--Juhe ContectUS View Controller-->
         <scene sceneID="kuU-Im-l3x">
             <objects>
-                <viewController storyboardIdentifier="JuheContectUSViewController" id="qco-yi-b8m" customClass="JuheContectUSViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JuheContectUSViewController" id="qco-yi-b8m" customClass="JuheContectUSViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c6R-24-Gv9"/>
                         <viewControllerLayoutGuide type="bottom" id="1E9-nu-jjk"/>
@@ -69,7 +69,7 @@
         <!--Juhe Data Tab Bar Controller-->
         <scene sceneID="Rt5-G7-HqR">
             <objects>
-                <tabBarController storyboardIdentifier="JuheDataTabBarController" id="UHl-wl-gC1" customClass="JuheDataTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="JuheDataTabBarController" id="UHl-wl-gC1" customClass="JuheDataTabBarController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="sN9-ya-6Ul">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -90,7 +90,7 @@
         <!--Juhe Dynamic View Controller-->
         <scene sceneID="aIJ-Bw-xQj">
             <objects>
-                <viewController storyboardIdentifier="JuheDynamicViewController" id="p2j-oU-xfK" customClass="JuheDynamicViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JuheDynamicViewController" id="p2j-oU-xfK" customClass="JuheDynamicViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Od-d4-Jrj"/>
                         <viewControllerLayoutGuide type="bottom" id="iPG-py-zBP"/>
@@ -109,7 +109,7 @@
         <!--Juhe User View Controller-->
         <scene sceneID="U5a-Cv-mtF">
             <objects>
-                <viewController storyboardIdentifier="JuheUserViewController" id="e19-fS-WeA" customClass="JuheUserViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JuheUserViewController" id="e19-fS-WeA" customClass="JuheUserViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B2G-MZ-5x5"/>
                         <viewControllerLayoutGuide type="bottom" id="tXD-la-zke"/>
@@ -128,11 +128,11 @@
         <!--常见问题-->
         <scene sceneID="G4v-84-wf4">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="91B-U6-0tf" customClass="JuheNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="91B-U6-0tf" customClass="JuheNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="常见问题" image="juhetab2" id="gd8-cJ-m46"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dlm-rI-v0o">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -147,11 +147,11 @@
         <!--联系我们-->
         <scene sceneID="Sh3-SM-9wf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FgU-vP-dsN" customClass="JuheNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FgU-vP-dsN" customClass="JuheNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="联系我们" image="juhetab1" id="w0c-Qt-b4l"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hw9-hY-cEq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -166,11 +166,11 @@
         <!--数据接口-->
         <scene sceneID="OB2-J9-kxa">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sdL-zU-h8k" customClass="JuheNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sdL-zU-h8k" customClass="JuheNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="数据接口" image="juhetab3" id="bIt-4l-QrX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Abm-cc-v3d">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -185,11 +185,11 @@
         <!--聚合动态-->
         <scene sceneID="5tl-mi-fay">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zul-F6-iGP" customClass="JuheNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zul-F6-iGP" customClass="JuheNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="聚合动态" image="juhetab4" id="ttQ-LK-dOj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qph-XK-MnB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -204,11 +204,11 @@
         <!--用户中心-->
         <scene sceneID="s1j-Bb-kn6">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="anM-sa-rHb" customClass="JuheNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="anM-sa-rHb" customClass="JuheNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="用户中心" image="juhetab5" id="Jvw-th-ZZr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vim-op-yBT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -223,7 +223,7 @@
     </scenes>
     <resources>
         <image name="juhetab1" width="25" height="25"/>
-        <image name="juhetab2" width="25" height="25"/>
+        <image name="juhetab2" width="30" height="30"/>
         <image name="juhetab3" width="25" height="25"/>
         <image name="juhetab4" width="25" height="25"/>
         <image name="juhetab5" width="25" height="25"/>

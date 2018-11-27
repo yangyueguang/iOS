@@ -3,7 +3,7 @@
 // Created by Super
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "TLPictureCarouselView.h"
+#import "WXPictureCarouselView.h"
 @interface TLEmoji : NSObject
 @property (nonatomic, assign) TLEmojiType type;
 @property (nonatomic, strong) NSString *groupID;
@@ -13,13 +13,12 @@
 @property (nonatomic, strong) NSString *emojiURL;
 @property (nonatomic, assign) CGFloat size;
 @end
-
 typedef NS_ENUM(NSInteger, TLEmojiGroupStatus) {
     TLEmojiGroupStatusUnDownload,
     TLEmojiGroupStatusDownloaded,
     TLEmojiGroupStatusDownloading,
 };
-@interface TLEmojiGroup : NSObject<TLPictureCarouselProtocol>
+@interface TLEmojiGroup : NSObject<WXPictureCarouselProtocol>
 @property (nonatomic, assign) TLEmojiType type;
 /// 基本信息
 @property (nonatomic, strong) NSString *groupID;
@@ -53,7 +52,6 @@ typedef NS_ENUM(NSInteger, TLEmojiGroupStatus) {
 @property (nonatomic, assign) NSUInteger colNumber;
 - (id)objectAtIndex:(NSUInteger)index;
 @end
-
 ///FIXME: CELL
 @interface TLEmojiBaseCell : UICollectionViewCell
 @property (nonatomic, strong) TLEmoji *emojiItem;
@@ -90,4 +88,3 @@ typedef NS_ENUM(NSInteger, TLGroupControlSendButtonStatus) {
 @property (nonatomic, strong) NSMutableArray *emojiGroupData;
 @property (nonatomic, assign) id<TLEmojiGroupControlDelegate>delegate;
 @end
-

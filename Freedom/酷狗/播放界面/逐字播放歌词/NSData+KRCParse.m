@@ -15,13 +15,13 @@ lineNumber:__LINE__                                  \
 description:__VA_ARGS__];                             \
 }                                                                       \
 } while(0)
-@interface NSData (KRCParse)
+@interface NSData (KRCParse1)
 + (NSData *)gtm_dataByCompressingBytes:(const void *)bytes
                                 length:(NSUInteger)length
                       compressionLevel:(int)level
                                useGzip:(BOOL)useGzip;
 @end
-@implementation NSData (KRCParse)
+@implementation NSData (KRCParse1)
 + (NSData *)gtm_dataByCompressingBytes:(const void *)bytes
                                 length:(NSUInteger)length
                       compressionLevel:(int)level

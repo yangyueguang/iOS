@@ -2,9 +2,8 @@
 //  Freedom
 // Created by Super
 #import "E_SearchViewController.h"
-#import "E_CommonManager.h"
-#import "E_ReaderDataSource.h"
-#import "E_SearchTableViewCell.h"
+#import "BookReadMode.h"
+#import "BookSubViews.h"
 @interface E_SearchViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>{
     UITextField    *_searchTextField;
     UITableView    *_searchResultView;
@@ -26,16 +25,14 @@
         _themeImage = nil;
         self.view.backgroundColor = [UIColor whiteColor];
     }else{
-        _themeImage = [UIImage imageNamed:[NSString stringWithFormat:@"reader_bg%ld.png",(long)themeID]];
+        _themeImage = [UIImage imageNamed:[NSString stringWithFormat:@"reader_bg%ld",(long)themeID]];
         self.view.backgroundColor = [UIColor colorWithPatternImage:_themeImage];
     }
     
     
     _dataSource = [[NSMutableArray alloc] initWithCapacity:0];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
+//    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     UIView *navView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 72)];
     navView.backgroundColor = [UIColor colorWithRed:59/255.0 green:59/255.0 blue:59/255.0 alpha:1.0];
     [self.view addSubview:navView];
@@ -61,7 +58,7 @@
     [self.view addSubview:textFieldBg];
     CGColorSpaceRelease(colorSpace);
     UIImageView *fangdajingBg = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 13, 13)];
-    fangdajingBg.image = [UIImage imageNamed:@"magnifiter.png"];
+    fangdajingBg.image = [UIImage imageNamed:@"magnifiter"];
     [textFieldBg addSubview:fangdajingBg];
     
     
@@ -119,7 +116,7 @@
     if (_isSearch == NO) {
         return 0;
     }else{
-        return [[_dataSource objectAtIndex:0] count];
+        return [(NSArray*)[_dataSource objectAtIndex:0] count];
     }
     
 }
@@ -166,28 +163,14 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
-    
+//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     [_delegate turnToClickSearchResult:[[_dataSource objectAtIndex:1] objectAtIndex:indexPath.row] withRange:NSRangeFromString([[_dataSource objectAtIndex:2] objectAtIndex:indexPath.row]) andKeyWord:_keyWord];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 - (void)backToFront{
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     [_searchTextField resignFirstResponder];
     [self dismissViewControllerAnimated:YES completion:NULL];
     
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-/*
-#pragma mark - Navigation
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 @end

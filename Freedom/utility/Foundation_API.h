@@ -32,7 +32,7 @@
 #define WeChatApplet1 @"http://u1610639.jisuapp.cn/app?_app_id=FPNRLS1lOl"//我的微信小程序1
 #define WeChatApplet2 @"http://u1610639.jisuapp.cn/app?_app_id=BAAAFJfnF3"//我的微信小程序2
 #define MicroPage1 @"http://d.eqxiu.com/s/2laMmsfr?userKey=148636102478720979"//我的微页1与命运有约
-#define MicroPage2 @"http://www.rabbitpre.com/m/v6eyraMYd?lc=2&sui=VgLIRGWS#from=share"//我的微页2芳园生日快乐
+#define MicroPage2 @"http://www.rabbitpre.com/m/v6eyraMYd?lc=2&sui=VgLIRGWS#from=share"//我的微页2生日快乐
 #define MicroPage3 @"http://www.rabbitpre.com/m/qUviFRIRP?lc=1&sui=Z9lylffK#from=share"//我的微页3超级说服力
 //FIXME:           个         人         应         用           *******************/
 //FIXME:           自         由         主         义           *******************/

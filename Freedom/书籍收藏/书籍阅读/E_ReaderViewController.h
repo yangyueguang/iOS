@@ -1,4 +1,3 @@
-//   FreedomViewController.h
 //   Freedom
 //  Created by Super on 14-8-8.
 #import <UIKit/UIKit.h>

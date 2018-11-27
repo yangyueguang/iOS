@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>descrip</key>
+		<string>app_music</string>
+		<key>name</key>
+		<string>Music</string>
+		<key>scheme</key>
+		<string>music://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_videos</string>
+		<key>name</key>
+		<string>Videos</string>
+		<key>scheme</key>
+		<string>videos://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_calendar</string>
+		<key>name</key>
+		<string>Calendar</string>
+		<key>scheme</key>
+		<string>calshow://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_itunes</string>
+		<key>name</key>
+		<string>iTunes</string>
+		<key>scheme</key>
+		<string>itms://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_ibooks</string>
+		<key>name</key>
+		<string>iBooks</string>
+		<key>scheme</key>
+		<string>ibooks://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_reminders</string>
+		<key>name</key>
+		<string>Reminders</string>
+		<key>scheme</key>
+		<string>x-apple-reminder://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_photos</string>
+		<key>name</key>
+		<string>Photos</string>
+		<key>scheme</key>
+		<string>photos-redirect://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_appstore</string>
+		<key>name</key>
+		<string>App Store</string>
+		<key>scheme</key>
+		<string>itms-apps://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_gamecenter</string>
+		<key>name</key>
+		<string>Game Center</string>
+		<key>scheme</key>
+		<string>gamecenter://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_phone</string>
+		<key>name</key>
+		<string>Phone</string>
+		<key>scheme</key>
+		<string>app-phone://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_phone</string>
+		<key>name</key>
+		<string>Open App</string>
+		<key>scheme</key>
+		<string>mobilephone://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_phone</string>
+		<key>name</key>
+		<string>Call</string>
+		<key>scheme</key>
+		<string>tel://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_phone</string>
+		<key>name</key>
+		<string>Call Confirmation</string>
+		<key>scheme</key>
+		<string>telprompt://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_messages</string>
+		<key>name</key>
+		<string>Messages</string>
+		<key>scheme</key>
+		<string>app-messages://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_messages</string>
+		<key>name</key>
+		<string>Compose New Message</string>
+		<key>scheme</key>
+		<string>sms://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_messages</string>
+		<key>name</key>
+		<string>Message Someone</string>
+		<key>scheme</key>
+		<string>sms://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_mail</string>
+		<key>name</key>
+		<string>Mail</string>
+		<key>scheme</key>
+		<string>app-mail://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_mail</string>
+		<key>name</key>
+		<string>Open App</string>
+		<key>scheme</key>
+		<string>message://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_mail</string>
+		<key>name</key>
+		<string>Compose an email</string>
+		<key>scheme</key>
+		<string>mailto:://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_facetime</string>
+		<key>name</key>
+		<string>Facetime</string>
+		<key>scheme</key>
+		<string>app-facetime://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_facetime</string>
+		<key>name</key>
+		<string>Facetime Video</string>
+		<key>scheme</key>
+		<string>facetime://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_facetime</string>
+		<key>name</key>
+		<string>Facetime Video Confirmation</string>
+		<key>scheme</key>
+		<string>facetime-prompt://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_facetime</string>
+		<key>name</key>
+		<string>Facetime Audio</string>
+		<key>scheme</key>
+		<string>facetime-audio:://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_facetime</string>
+		<key>name</key>
+		<string>Facetime Audio Confirmation</string>
+		<key>scheme</key>
+		<string>facetime-audio-prompt:://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_maps</string>
+		<key>name</key>
+		<string>Maps</string>
+		<key>scheme</key>
+		<string>http://maps.apple.com/?q=://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_passbook</string>
+		<key>name</key>
+		<string>Passbook</string>
+		<key>scheme</key>
+		<string>shoebox://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Settings</string>
+		<key>scheme</key>
+		<string>app-settings://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Open App</string>
+		<key>scheme</key>
+		<string>prefs:root://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; About</string>
+		<key>scheme</key>
+		<string>prefs:root=General&amp;path=About://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Accessibility</string>
+		<key>scheme</key>
+		<string>prefs:root=General&amp;path=ACCESSIBILITY://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Autolock</string>
+		<key>scheme</key>
+		<string>prefs:root=General&amp;path=AUTOLOCK://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Bluetooth</string>
+		<key>scheme</key>
+		<string>prefs:root=Bluetooth://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Cellular/Mobile</string>
+		<key>scheme</key>
+		<string>prefs:root=MOBILE_DATA_SETTINGS_ID://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Compass</string>
+		<key>scheme</key>
+		<string>prefs:root=COMPASS://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Control Center</string>
+		<key>scheme</key>
+		<string>prefs:root=ControlCenter://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Date/Time</string>
+		<key>scheme</key>
+		<string>prefs:root=General&amp;path=DATE_AND_TIME://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Display/Brightness</string>
+		<key>scheme</key>
+		<string>prefs:root=DISPLAY://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Do Not Disturb</string>
+		<key>scheme</key>
+		<string>prefs:root=DO_NOT_DISTURB://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Facebook</string>
+		<key>scheme</key>
+		<string>prefs:root=FACEBOOK://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Facetime</string>
+		<key>scheme</key>
+		<string>prefs:root=FACETIME://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Game Center</string>
+		<key>scheme</key>
+		<string>prefs:root=GAMECENTER://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; General</string>
+		<key>scheme</key>
+		<string>prefs:root=General://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; iCloud</string>
+		<key>scheme</key>
+		<string>prefs:root=CASTLE://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; iCloud Storage</string>
+		<key>scheme</key>
+		<string>prefs:root=CASTLE&amp;path=STORAGE_AND_BACKUP://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; International</string>
+		<key>scheme</key>
+		<string>prefs:root=General&amp;path=INTERNATIONAL://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; iTunes &amp; App Store</string>
+		<key>scheme</key>
+		<string>prefs:root=STORE://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Keyboard</string>
+		<key>scheme</key>
+		<string>prefs:root=General&amp;path=Keyboard://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Location Services</string>
+		<key>scheme</key>
+		<string>prefs:root=LOCATION_SERVICES://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Mail, Contacts, Calendars</string>
+		<key>scheme</key>
+		<string>prefs:root=ACCOUNT_SETTINGS://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Maps</string>
+		<key>scheme</key>
+		<string>prefs:root=MAPS://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Music</string>
+		<key>scheme</key>
+		<string>prefs:root=MUSIC://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Music EQ</string>
+		<key>scheme</key>
+		<string>prefs:root=MUSIC&amp;path=EQ://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Notes</string>
+		<key>scheme</key>
+		<string>prefs:root=NOTES://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Notifications</string>
+		<key>scheme</key>
+		<string>prefs:root=NOTIFICATIONS_ID://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Passcode</string>
+		<key>scheme</key>
+		<string>prefs:root=PASSCODE://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Personal Hotspot</string>
+		<key>scheme</key>
+		<string>prefs:root=INTERNET_TETHERING://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Phone</string>
+		<key>scheme</key>
+		<string>prefs:root=Phone://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Photos</string>
+		<key>scheme</key>
+		<string>prefs:root=Photos://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Privacy</string>
+		<key>scheme</key>
+		<string>prefs:root=Privacy://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Profiles</string>
+		<key>scheme</key>
+		<string>prefs:root=General&amp;path=ManagedConfigurationList://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Reminders</string>
+		<key>scheme</key>
+		<string>prefs:root=REMINDERS://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Reset</string>
+		<key>scheme</key>
+		<string>prefs:root=General&amp;path=Reset://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Ringtone</string>
+		<key>scheme</key>
+		<string>prefs:root=Sounds&amp;path=Ringtone://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Safari</string>
+		<key>scheme</key>
+		<string>prefs:root=Safari://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Sounds</string>
+		<key>scheme</key>
+		<string>prefs:root=Sounds://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Software Update</string>
+		<key>scheme</key>
+		<string>prefs:root=General&amp;path=SOFTWARE_UPDATE_LINK://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Touch ID &amp; Passcode</string>
+		<key>scheme</key>
+		<string>prefs:root=TOUCHID_PASSCODE://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Twitter</string>
+		<key>scheme</key>
+		<string>prefs:root=TWITTER://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Usage</string>
+		<key>scheme</key>
+		<string>prefs:root=General&amp;path=USAGE://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Videos</string>
+		<key>scheme</key>
+		<string>prefs:root=VIDEO://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; VPN</string>
+		<key>scheme</key>
+		<string>prefs:root=General&amp;path=VPN://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Wallpaper</string>
+		<key>scheme</key>
+		<string>prefs:root=Wallpaper://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_settings</string>
+		<key>name</key>
+		<string>Preferences -&gt; Wi-Fi</string>
+		<key>scheme</key>
+		<string>prefs:root=WIFI://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_notes</string>
+		<key>name</key>
+		<string>Notes</string>
+		<key>scheme</key>
+		<string>mobilenotes://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_clock</string>
+		<key>name</key>
+		<string>Clock</string>
+		<key>scheme</key>
+		<string>app-clock://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_clock</string>
+		<key>name</key>
+		<string>World Clock</string>
+		<key>scheme</key>
+		<string>clock-worldclock://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_clock</string>
+		<key>name</key>
+		<string>Alarm</string>
+		<key>scheme</key>
+		<string>clock-alarm://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_clock</string>
+		<key>name</key>
+		<string>Stopwatch</string>
+		<key>scheme</key>
+		<string>clock-stopwatch://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_clock</string>
+		<key>name</key>
+		<string>Timer</string>
+		<key>scheme</key>
+		<string>clock-timer://</string>
+	</dict>
+	<dict>
+		<key>descrip</key>
+		<string>app_weather</string>
+		<key>name</key>
+		<string>Weather</string>
+		<key>scheme</key>
+		<string>weather://</string>
+	</dict>
+</array>
+</plist>

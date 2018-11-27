@@ -2,10 +2,9 @@
 //  Freedom
 //  Created by Super on 16/2/17.
 #import "TLMoreKeyboard.h"
-#define     HEIGHT_TOP_SPACE            15
-#define     HEIGHT_COLLECTIONVIEW       (HEIGHT_CHAT_KEYBOARD * 0.85 - HEIGHT_TOP_SPACE)
+#define     HEIGHT_COLLECTIONVIEW       (215.0f * 0.85 - 15)
 #define     WIDTH_COLLECTION_CELL       60
-#import "UIImage+expanded.h"
+#import <XCategory/UIImage+expanded.h>
 @implementation TLMoreKeyboardItem
 + (TLMoreKeyboardItem *)createByType:(TLMoreKeyboardItemType)type title:(NSString *)title imagePath:(NSString *)imagePath{
     TLMoreKeyboardItem *item = [[TLMoreKeyboardItem alloc] init];
@@ -112,8 +111,8 @@ static TLMoreKeyboard *moreKB;
     [view addSubview:self];
     [self mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(view);
-        make.height.mas_equalTo(HEIGHT_CHAT_KEYBOARD);
-        make.bottom.mas_equalTo(view).mas_offset(HEIGHT_CHAT_KEYBOARD);
+        make.height.mas_equalTo(215.0f);
+        make.bottom.mas_equalTo(view).mas_offset(215.0f);
     }];
     [view layoutIfNeeded];
     if (animation) {
@@ -147,7 +146,7 @@ static TLMoreKeyboard *moreKB;
     if (animation) {
         [UIView animateWithDuration:0.3 animations:^{
             [self mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.bottom.mas_equalTo(self.superview).mas_offset(HEIGHT_CHAT_KEYBOARD);
+                make.bottom.mas_equalTo(self.superview).mas_offset(215.0f);
             }];
             [self.superview layoutIfNeeded];
             if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
@@ -167,7 +166,7 @@ static TLMoreKeyboard *moreKB;
     }
 }
 - (void)reset{
-    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.frameWidth, self.collectionView.frameHeight) animated:NO];
+    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.frame.size.width, self.collectionView.frameHeight) animated:NO];
 }
 - (void)setChatMoreKeyboardData:(NSMutableArray *)chatMoreKeyboardData{
     _chatMoreKeyboardData = chatMoreKeyboardData;
@@ -177,12 +176,12 @@ static TLMoreKeyboard *moreKB;
 }
 #pragma mark - Event Response -
 - (void) pageControlChanged:(UIPageControl *)pageControl{
-    [self.collectionView scrollRectToVisible:CGRectMake(self.collectionView.frameWidth * pageControl.currentPage, 0, self.collectionView.frameWidth, self.collectionView.frameHeight) animated:YES];
+    [self.collectionView scrollRectToVisible:CGRectMake(self.collectionView.frame.size.width * pageControl.currentPage, 0, self.collectionView.frame.size.width, self.collectionView.frameHeight) animated:YES];
 }
 #pragma mark - Private Methods -
 - (void)p_addMasonry{
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self).mas_offset(HEIGHT_TOP_SPACE);
+        make.top.mas_equalTo(self).mas_offset(15);
         make.left.and.right.mas_equalTo(self);
         make.height.mas_equalTo(HEIGHT_COLLECTIONVIEW);
     }];
@@ -199,7 +198,7 @@ static TLMoreKeyboard *moreKB;
     CGContextSetStrokeColorWithColor(context, colorGrayLine.CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0, 0);
-    CGContextAddLineToPoint(context, WIDTH_SCREEN, 0);
+    CGContextAddLineToPoint(context, APPW, 0);
     CGContextStrokePath(context);
 }
 #pragma mark - Getter -
@@ -208,7 +207,7 @@ static TLMoreKeyboard *moreKB;
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
         float h = HEIGHT_COLLECTIONVIEW / 2 * 0.93;
-        float spaceX = (WIDTH_SCREEN - WIDTH_COLLECTION_CELL * 4) / 5;
+        float spaceX = (APPW - WIDTH_COLLECTION_CELL * 4) / 5;
         float spaceY = HEIGHT_COLLECTIONVIEW - h * 2;
         [layout setItemSize:CGSizeMake(WIDTH_COLLECTION_CELL, h)];
         [layout setMinimumInteritemSpacing:spaceY];
@@ -267,7 +266,7 @@ static TLMoreKeyboard *moreKB;
 }
 //Mark: UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    [self.pageControl setCurrentPage:(int)(scrollView.contentOffset.x / WIDTH_SCREEN)];
+    [self.pageControl setCurrentPage:(int)(scrollView.contentOffset.x / APPW)];
 }
 #pragma mark - Private Methods -
 - (NSUInteger)p_transformIndex:(NSUInteger)index{

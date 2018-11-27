@@ -1,14 +1,14 @@
 //  TLDBManager.m
 //  Freedom
 // Created by Super
-#import "TLDBManager.h"
+#import "WXDBManager.h"
 #import "TLUserHelper.h"
 #import "TLMessageManager.h"
 #import <XCategory/NSDate+expanded.h>
 @implementation TLDBMessageStore
 - (id)init{
     if (self = [super init]) {
-        self.dbQueue = [TLDBManager sharedInstance].messageQueue;
+        self.dbQueue = [WXDBManager sharedInstance].messageQueue;
         BOOL ok = [self createTable];
         if (!ok) {
             DLog(@"DB: 聊天记录表创建失败");
@@ -40,7 +40,7 @@
                         message.userID,
                         fid,
                         TLNoNilString(subfid),
-                        TLTimeStamp(message.date),
+                        [NSString stringWithFormat:@"%lf", [message.date timeIntervalSince1970]],
                         [NSNumber numberWithInteger:message.partnerType],
                         [NSNumber numberWithInteger:message.ownerTyper],
                         [NSNumber numberWithInteger:message.messageType],
@@ -172,7 +172,7 @@
 @implementation TLDBConversationStore
 - (id)init{
     if (self = [super init]) {
-        self.dbQueue = [TLDBManager sharedInstance].messageQueue;
+        self.dbQueue = [WXDBManager sharedInstance].messageQueue;
         BOOL ok = [self createTable];
         if (!ok) {
             DLog(@"DB: 聊天记录表创建失败");
@@ -191,7 +191,7 @@
                         uid,
                         fid,
                         [NSNumber numberWithInteger:type],
-                        TLTimeStamp(date),
+                        [NSString stringWithFormat:@"%lf", [date timeIntervalSince1970]],
                         [NSNumber numberWithInteger:unreadCount],
                         @"", @"", @"", @"", @"", nil];
     BOOL ok = [self excuteSQL:sqlString withArrParameter:arrPara];
@@ -264,7 +264,7 @@
 @implementation TLDBExpressionStore
 - (id)init{
     if (self = [super init]) {
-        self.dbQueue = [TLDBManager sharedInstance].commonQueue;
+        self.dbQueue = [WXDBManager sharedInstance].commonQueue;
         BOOL ok = [self createTable];
         if (!ok) {
             DLog(@"DB: 聊天记录表创建失败");
@@ -296,7 +296,7 @@
                     [NSNumber numberWithInteger:group.count],
                     TLNoNilString(group.authID),
                     TLNoNilString(group.authName),
-                    TLTimeStamp(group.date),
+                    [NSString stringWithFormat:@"%lf", [group.date timeIntervalSince1970]],
                     @"", @"", @"", @"", @"", nil];
     BOOL ok = [self excuteSQL:sqlString withArrParameter:arr];
     if (!ok) {
@@ -385,7 +385,7 @@
 @implementation TLDBFriendStore
 - (id)init{
     if (self = [super init]) {
-        self.dbQueue = [TLDBManager sharedInstance].commonQueue;
+        self.dbQueue = [WXDBManager sharedInstance].commonQueue;
         BOOL ok = [self createTable];
         if (!ok) {
             DLog(@"DB: 好友表创建失败");
@@ -466,7 +466,7 @@
 @implementation TLDBGroupStore
 - (id)init{
     if (self = [super init]) {
-        self.dbQueue = [TLDBManager sharedInstance].commonQueue;
+        self.dbQueue = [WXDBManager sharedInstance].commonQueue;
         BOOL ok = [self createTable];
         if (!ok) {
             DLog(@"DB: 讨论组表创建失败");
@@ -620,7 +620,7 @@
 @implementation TLDBBaseStore
 - (id)init{
     if (self = [super init]) {
-        self.dbQueue = [TLDBManager sharedInstance].commonQueue;
+        self.dbQueue = [WXDBManager sharedInstance].commonQueue;
     }
     return self;
 }
@@ -677,13 +677,13 @@
 }
 @end
 
-static TLDBManager *manager;
-@implementation TLDBManager
-+ (TLDBManager *)sharedInstance{
+static WXDBManager *manager;
+@implementation WXDBManager
++ (WXDBManager *)sharedInstance{
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         NSString *userID = [TLUserHelper sharedHelper].user.userID;
-        manager = [[TLDBManager alloc] initWithUserID:userID];
+        manager = [[WXDBManager alloc] initWithUserID:userID];
     });
     return manager;
 }

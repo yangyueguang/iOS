@@ -1,6 +1,6 @@
 #
 # 前言
-本框架是由薛超为期一周时间设计的用于iOS_APP开发的框架，分类清晰，设计巧妙，封装性好。如果在使用中遇到什么问题可以及时修改优化本框架。
+本框架是由Super为期一周时间设计的用于iOS_APP开发的框架，分类清晰，设计巧妙，封装性好。如果在使用中遇到什么问题可以及时修改优化本框架。
 熟练使用本框架的人基本掌握了以下开发能力:
 * 1、掌握C/Objective-C /CocoaTouch编程，对Swift略有涉猎。
 * 2、熟悉各种UI控件，熟悉多视图开发，能够实现复杂的界面交互以及应用间通讯。
@@ -15,7 +15,7 @@
 * 11、高新技术：二维码、摇一摇、蓝牙技术、发短信打电话发邮件、应用间切换、本地通知。
 #
 #简介
-薛超APP框架是集合了以下功能系列：
+SuperAPP框架是集合了以下功能系列：
 1.是主流的APP框架，四个tabBar，分别为首页、服务、发现、我的。
 2.启动从storyboard和APPDelegate启动，首先会启动utility/BaseFile/HomeTabBarController，该类调用自定义的HomeTabBar和HomeNavigationController。
 3.初始设置绑定storyboard对应的TabBarcontroller和NavigationController并做相应的配置。
@@ -110,6 +110,32 @@ iOS语音通话（语音对讲）http://blog.csdn.net/u011619283/article/details
 8.参照开发文档，按需接入微信登录、发消息、分享、收藏、支付、图像识别、语音识别、语音合成、语义理解
 9.在数据中心可查看微信用户的分析数据以及分享、收藏、登录、智能等用户行为统计数据信息。https://open.weixin.qq.com/cgi-bin/frame?t=statistics/analysis_tmpl&lang=zh_CN&token=8699abf1cc006cd477c0fa38add3e628394455d6
 10.微信样例//@简书地址:   http://www.jianshu.com/p/af8cbc9d51b0  @Github地址: https://github.com/lyoniOS/WxPayDemo
+##https://github.com/SwiftyJSON/SwiftyJSON
+#pod 'ACMediaFrame'
+##https://github.com/honeycao/ACMediaFrame 媒体库选择和展示的框架。
+#pod 'TZImagePickerController'
+#pod 'SDCycleScrollView'
+##https://github.com/gsdios/SDCycleScrollView 图片轮播
+#pod 'JHChart'
+#pod 'AAInfographics'
+##https://github.com/AAChartModel/AAChartKit-Swift
+#pod 'HYBUnicodeReadable'
+#pod 'ReactiveCocoa', '~> 7.0'
+#pod 'ReactiveSwift', '~> 3.0'
+##https://github.com/ReactiveCocoa/ReactiveSwift
+#pod 'SwiftyJSONModel'
+#pod 'RxSwift',    '~> 4.0'
+#pod 'RxCocoa',    '~> 4.0'
+#pod 'SmartJSWebView'
+##https://github.com/pcjbird/SmartJSWebView/
+#pod 'Moya/RxSwift'
+##https://github.com/Moya/Moya
+#pod 'Moya/ReactiveSwift', '~> 11.0'
+#这是一个不错的小伙子，封装了好多有用的东西。
+#https://github.com/NJHu/iOSProject
+#https://github.com/vsouza/awesome-ios
+#https://github.com/xswm1123/TYSlidePageScrollView
+#https://github.com/codeWorm2015/videoPlayer
 */
 #pragma mark 支付宝接入https://open.alipay.com
 /*1.接入支付宝必须注册一个支付宝账户：https://open.alipay.com/platform/home.htm
@@ -121,7 +147,7 @@ iOS语音通话（语音对讲）http://blog.csdn.net/u011619283/article/details
 7.在文档中心详细阅读支付宝API文档。https://doc.open.alipay.com/doc2/apiList?docType=4
 8.按需接入支付宝的相应功能。支付能力、理财能力、口碑开店能力、会员营销、支付宝卡券、会员能力、生活号、行业能力、信用能力、安全能力、云监控、社交能力、服务市场管理以及基础能力。
 报错：openssl/asn1.h file not found 在header searchPaths：$(PROJECT_DIR)/GuangFuBao/wechart&alipay/alipaySKD
-使用alipaySDK需要在buildsettings searchPath header  增加这一行："$(SRCROOT)/薛超APP框架/ThirdSDK/alipaySDK"
+使用alipaySDK需要在buildsettings searchPath header  增加这一行："$(SRCROOT)/SuperAPP框架/ThirdSDK/alipaySDK"
 支付宝样例http://www.jianshu.com/p/b3063678c462
 */
 #pragma mark 支付宝分享

@@ -5,7 +5,7 @@
 2017.1.12
 1.修改了BaseScrollView类文件，重构了其中的封装方法。
 2.增加并修改了好多category文件夹里的扩展。
-3.增加了网络请求类集合NetEngine。
-4.在微能量里面增加了tabBar跳转tabBar和navigation跳转tabBar的方法。
+3.在微能量里面增加了tabBar跳转tabBar和navigation跳转tabBar的方法。
 2017.2.7
 1.修改了BaseScrollView类，因为原本的类没有Navigation不能push，因此修改增加inViewController的类把有导航的控制器传进去。
+2.完成了Swift改版

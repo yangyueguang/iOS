@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Taobao Community View Controller-->
         <scene sceneID="sNd-Xh-y4n">
             <objects>
-                <viewController storyboardIdentifier="TaobaoCommunityViewController" id="YTB-lM-IzH" customClass="TaobaoCommunityViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaobaoCommunityViewController" id="YTB-lM-IzH" customClass="TaobaoCommunityViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3nH-ql-oAb"/>
                         <viewControllerLayoutGuide type="bottom" id="DBw-Wf-hls"/>
@@ -31,7 +31,7 @@
         <!--Taobao Me View Controller-->
         <scene sceneID="RwO-qZ-N0a">
             <objects>
-                <viewController storyboardIdentifier="TaobaoMeViewController" id="q4i-GJ-dmh" customClass="TaobaoMeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaobaoMeViewController" id="q4i-GJ-dmh" customClass="TaobaoMeViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y2V-dI-FLf"/>
                         <viewControllerLayoutGuide type="bottom" id="hmA-We-Cyh"/>
@@ -50,7 +50,7 @@
         <!--Taobao Mini View Controller-->
         <scene sceneID="FnL-fE-nmg">
             <objects>
-                <viewController storyboardIdentifier="TaobaoMiniViewController" id="XP3-pV-GPR" customClass="TaobaoMiniViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaobaoMiniViewController" id="XP3-pV-GPR" customClass="TaobaoMiniViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ihp-J4-Ike"/>
                         <viewControllerLayoutGuide type="bottom" id="zMk-Un-KSi"/>
@@ -69,7 +69,7 @@
         <!--Taobao Shop Car View Controller-->
         <scene sceneID="jWt-43-MDa">
             <objects>
-                <viewController storyboardIdentifier="TaobaoShopCarViewController" id="GbE-Ga-QWk" customClass="TaobaoShopCarViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaobaoShopCarViewController" id="GbE-Ga-QWk" customClass="TaobaoShopCarViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pqa-uR-2en"/>
                         <viewControllerLayoutGuide type="bottom" id="OAg-mP-gs9"/>
@@ -88,7 +88,7 @@
         <!--Taobao Home View Controller-->
         <scene sceneID="DLM-Cm-dEh">
             <objects>
-                <viewController storyboardIdentifier="TaobaoHomeViewController" id="DNA-KE-KTC" customClass="TaobaoHomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaobaoHomeViewController" id="DNA-KE-KTC" customClass="TaobaoHomeViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kje-HS-fMU"/>
                         <viewControllerLayoutGuide type="bottom" id="a6f-jH-Pfe"/>
@@ -107,7 +107,7 @@
         <!--Taobao Tab Bar Controller-->
         <scene sceneID="utB-2P-Nkb">
             <objects>
-                <tabBarController storyboardIdentifier="TaobaoTabBarController" id="IBN-B7-sHg" customClass="TaobaoTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TaobaoTabBarController" id="IBN-B7-sHg" customClass="TaobaoTabBarController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="9qB-sQ-BgG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -128,11 +128,11 @@
         <!--首页-->
         <scene sceneID="suG-TH-dz1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mYN-Yu-0ge" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mYN-Yu-0ge" customClass="TaobaoNavigationViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="tt_tabbar_1" selectedImage="tt_tabbar_1on" id="jiT-FE-b7v"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MZh-MQ-V3D">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -147,11 +147,11 @@
         <!--微淘-->
         <scene sceneID="bFl-d3-77U">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E84-KQ-1b6" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E84-KQ-1b6" customClass="TaobaoNavigationViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="微淘" image="tt_tabbar_2" selectedImage="tt_tabbar_2on" id="oKB-sI-vW0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="a6O-uD-gKc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -166,11 +166,11 @@
         <!--社区-->
         <scene sceneID="tME-dI-8hQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cmg-OT-jTx" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cmg-OT-jTx" customClass="TaobaoNavigationViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="社区" image="tt_tabbar_3" selectedImage="tt_tabbar_3on" id="D92-bT-6nI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DbE-bm-ErD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -185,11 +185,11 @@
         <!--购物车-->
         <scene sceneID="yki-iK-Rcg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="J66-bE-0OS" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="J66-bE-0OS" customClass="TaobaoNavigationViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="购物车" image="tt_tabbar_4" selectedImage="tt_tabbar_4on" id="7zU-m5-laT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7JW-Dk-U1q">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -204,11 +204,11 @@
         <!--我的淘宝-->
         <scene sceneID="zgv-fm-f3f">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="M5a-0e-vh3" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="M5a-0e-vh3" customClass="TaobaoNavigationViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的淘宝" image="tt_tabbar_5" selectedImage="tt_tabbar_5on" id="bTa-KN-ulD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cca-NB-kbc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

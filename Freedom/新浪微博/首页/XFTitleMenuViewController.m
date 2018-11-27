@@ -1,10 +1,10 @@
 //  XFTitleMenuViewController.m
 //  Freedom
 //  Created by Fay on 15/9/17.
-#import "XFTitleMenuViewController.h"
-@interface XFTitleMenuViewController ()
+#import "SinaTitleMenuViewController.h"
+@interface SinaTitleMenuViewController ()
 @end
-@implementation XFTitleMenuViewController
+@implementation SinaTitleMenuViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -14,10 +14,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 #pragma mark - Table view data source
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -45,6 +42,3 @@
     return cell;
 }
 @end
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com

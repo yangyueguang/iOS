@@ -1,9 +1,8 @@
-//   FreedomViewController.m
 //   Freedom
 //  Created by Super on 14-8-8.
 #import "E_ReaderViewController.h"
-#import "E_ReaderView.h"
-#import "E_CommonManager.h"
+#import "BookSubViews.h"
+#import "BookReadMode.h"
 #define MAX_FONT_SIZE 27
 #define MIN_FONT_SIZE 17
 @interface E_ReaderViewController ()<E_ReaderViewDelegate>{
@@ -14,7 +13,6 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -26,7 +24,6 @@
     _readerView.magnifiterImage = _themeBgImage;
     _readerView.delegate = self;
     [self.view addSubview:_readerView];
-    
 }
 #pragma mark - ReaderViewDelegate
 - (void)shutOffGesture:(BOOL)yesOrNo{
@@ -44,15 +41,10 @@
 - (void)setText:(NSString *)text{
     _text = text;
     _readerView.text = text;
-   
     [_readerView render];
 }
 - (NSUInteger )font{
     return _readerView.font;
-}
-- (void)didReceiveMemoryWarning{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 - (CGSize)readerTextSize{
     return _readerView.bounds.size;

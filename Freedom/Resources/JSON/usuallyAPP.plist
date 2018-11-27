@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <dict>
+        <key>trackName</key>
+        <string>微信</string>
+        <key>trackId</key>
+        <string>414478124</string>
+        <key>scheme</key>
+        <string>weixin://</string>
+    </dict>
+
+    <dict>
+        <key>trackName</key>
+        <string>淘宝</string>
+        <key>trackId</key>
+        <string>387682726</string>
+        <key>scheme</key>
+        <string>taobao://</string>
+    </dict>
+
+    <dict>
+        <key>trackName</key>
+        <string>QQ</string>
+        <key>trackId</key>
+        <string>444934666</string>
+        <key>scheme</key>
+        <string>mqq://</string>
+    </dict>
+
+    <dict>
+        <key>trackName</key>
+        <string>百度</string>
+        <key>trackId</key>
+        <string>382201985</string>
+        <key>scheme</key>
+        <string>BaiduSSO://</string>
+    </dict>
+
+    <dict>
+        <key>trackName</key>
+        <string>墨迹天气</string>
+        <key>trackId</key>
+        <string>434209233</string>
+        <key>scheme</key>
+        <string>rm434209233MojiWeather://</string>
+    </dict>
+
+    <dict>
+        <key>trackName</key>
+        <string>UC浏览器</string>
+        <key>trackId</key>
+        <string>527109739</string>
+        <key>scheme</key>
+        <string>ucbrowser://</string>
+    </dict>
+
+    <dict>
+        <key>trackName</key>
+        <string>百度地图</string>
+        <key>trackId</key>
+        <string>452186370</string>
+        <key>scheme</key>
+        <string>bdmap://</string>
+    </dict>
+
+    <dict>
+        <key>trackName</key>
+        <string>今日头条</string>
+        <key>trackId</key>
+        <string>529092160</string>
+        <key>scheme</key>
+        <string>snssdk141://</string>
+    </dict>
+
+    <dict>
+        <key>trackName</key>
+        <string>美团</string>
+        <key>trackId</key>
+        <string>423084029</string>
+        <key>scheme</key>
+        <string>imeituan://</string>
+    </dict>
+
+<dict>
+    <key>trackName</key>
+    <string>京东</string>
+    <key>trackId</key>
+    <string>414245413</string>
+    <key>scheme</key>
+    <string>openapp.jdmoble://</string>
+</dict>
+
+<dict>
+    <key>trackName</key>
+    <string>唯品会</string>
+    <key>trackId</key>
+    <string>417200582</string>
+    <key>scheme</key>
+    <string>VSSpecialSwitch://</string>
+</dict>
+
+<dict>
+    <key>trackName</key>
+    <string>大众点评</string>
+    <key>trackId</key>
+    <string>351091731</string>
+    <key>scheme</key>
+    <string>dianping://</string>
+</dict>
+
+<dict>
+    <key>trackName</key>
+    <string>支付宝</string>
+    <key>trackId</key>
+    <string>333206289</string>
+    <key>scheme</key>
+    <string>alipay://</string>
+</dict>
+
+<dict>
+    <key>trackName</key>
+    <string>手机卫士</string>
+    <key>trackId</key>
+    <string>441216572</string>
+    <key>scheme</key>
+    <string>systemexpert360://</string>
+</dict>
+
+<dict>
+    <key>trackName</key>
+    <string>优酷</string>
+    <key>trackId</key>
+    <string>336141475</string>
+    <key>scheme</key>
+    <string>youku://</string>
+</dict>
+
+<dict>
+    <key>trackName</key>
+    <string>酷狗音乐</string>
+    <key>trackId</key>
+    <string>472208016</string>
+    <key>scheme</key>
+    <string>kugouURL://</string>
+</dict>
+
+<dict>
+    <key>trackName</key>
+    <string>微博</string>
+    <key>trackId</key>
+    <string>350962117</string>
+    <key>scheme</key>
+    <string>sinaweibo://</string>
+</dict>
+
+<dict>
+    <key>trackName</key>
+    <string>携程</string>
+    <key>trackId</key>
+    <string>379395415</string>
+    <key>scheme</key>
+    <string>ctrip://</string>
+</dict>
+
+<dict>
+    <key>trackName</key>
+    <string>滴滴打车</string>
+    <key>trackId</key>
+    <string>554499054</string>
+    <key>scheme</key>
+    <string>diditaxi://</string>
+</dict>
+
+<dict>
+    <key>trackName</key>
+    <string>58同城</string>
+    <key>trackId</key>
+    <string>404612543</string>
+    <key>scheme</key>
+    <string>wbmain://</string>
+</dict>
+<dict>
+    <key>trackName</key>
+    <string>百度云</string>
+    <key>trackId</key>
+    <string>547166701</string>
+    <key>scheme</key>
+    <string>baiduyun://</string>
+</dict>
+<dict>
+    <key>trackName</key>
+    <string>高德地图</string>
+    <key>trackId</key>
+    <string>461703208</string>
+    <key>scheme</key>
+    <string>iosamap://</string>
+</dict>
+<dict>
+    <key>trackName</key>
+    <string>掌上阅读</string>
+    <key>trackId</key>
+    <string>463150061</string>
+    <key>scheme</key>
+    <string>iReader://</string>
+</dict>
+<dict>
+    <key>trackName</key>
+    <string>天猫</string>
+    <key>trackId</key>
+    <string>518966501</string>
+    <key>scheme</key>
+    <string>tmall://</string>
+</dict>
+
+<dict>
+    <key>trackName</key>
+    <string>whatsapp</string>
+    <key>trackId</key>
+    <string>310633997</string>
+    <key>scheme</key>
+    <string>whatsapp://</string>
+</dict>
+
+<dict>
+    <key>trackName</key>
+    <string>FaceBook</string>
+    <key>trackId</key>
+    <string>284882215</string>
+    <key>scheme</key>
+    <string>fbapi://</string>
+</dict>
+<!--weixin://dl/scan 扫一扫-->
+<!--weixin://dl/feedback 反馈-->
+<!--weixin://dl/moments 朋友圈-->
+<!--weixin://dl/settings 设置-->
+<!--weixin://dl/notifications 消息通知设置-->
+<!--weixin://dl/chat 聊天设置-->
+<!--weixin://dl/general 通用设置-->
+<!--weixin://dl/officialaccounts 公众号-->
+<!--weixin://dl/games 游戏-->
+<!--weixin://dl/help 帮助-->
+<!--weixin://dl/feedback 反馈-->
+<!--weixin://dl/profile 个人信息-->
+<!--weixin://dl/features 功能插件-->
+</array>
+</plist>

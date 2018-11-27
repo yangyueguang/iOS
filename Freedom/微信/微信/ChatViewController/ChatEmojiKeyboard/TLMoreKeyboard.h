@@ -9,14 +9,14 @@
 @property (nonatomic, strong) NSString *imagePath;
 + (TLMoreKeyboardItem *)createByType:(TLMoreKeyboardItemType)type title:(NSString *)title imagePath:(NSString *)imagePath;
 @end
-@protocol TLMoreKeyboardDelegate <NSObject>
+@protocol WXMoreKeyboardDelegate <NSObject>
 @optional
 - (void) moreKeyboard:(id)keyboard didSelectedFunctionItem:(TLMoreKeyboardItem *)funcItem;
 @end
 @interface TLMoreKeyboard : UIView<UICollectionViewDataSource, UICollectionViewDelegate>
 - (void)registerCellClass;
 @property (nonatomic, assign) id<TLKeyboardDelegate> keyboardDelegate;
-@property (nonatomic, assign) id<TLMoreKeyboardDelegate> delegate;
+@property (nonatomic, assign) id<WXMoreKeyboardDelegate> delegate;
 @property (nonatomic, strong) NSMutableArray *chatMoreKeyboardData;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIPageControl *pageControl;

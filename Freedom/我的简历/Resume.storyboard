@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Resume Call Me View Controller-->
         <scene sceneID="XxF-qs-0VN">
             <objects>
-                <viewController storyboardIdentifier="ResumeCallMeViewController" id="oXZ-Mv-h1l" customClass="ResumeCallMeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResumeCallMeViewController" id="oXZ-Mv-h1l" customClass="ResumeCallMeViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6v5-qv-mi1"/>
                         <viewControllerLayoutGuide type="bottom" id="FIE-MQ-MGD"/>
@@ -31,7 +31,7 @@
         <!--Resume Theory System View Controller-->
         <scene sceneID="QuI-bH-2O3">
             <objects>
-                <viewController storyboardIdentifier="ResumeTheorySystemViewController" id="xMp-fd-cK1" customClass="ResumeTheorySystemViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResumeTheorySystemViewController" id="xMp-fd-cK1" customClass="ResumeTheorySystemViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vW5-BJ-3HP"/>
                         <viewControllerLayoutGuide type="bottom" id="Q0S-VD-Dzb"/>
@@ -50,7 +50,7 @@
         <!--Resume Business CooperationVC-->
         <scene sceneID="Lyf-rT-RyA">
             <objects>
-                <viewController storyboardIdentifier="ResumeBusinessCooperationVC" id="n7n-ww-xHo" customClass="ResumeBusinessCooperationVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResumeBusinessCooperationVC" id="n7n-ww-xHo" customClass="ResumeBusinessCooperationVC" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FNs-by-DiN"/>
                         <viewControllerLayoutGuide type="bottom" id="jEN-3o-cOG"/>
@@ -69,7 +69,7 @@
         <!--Resume View Controller-->
         <scene sceneID="hwZ-CP-iRh">
             <objects>
-                <viewController storyboardIdentifier="ResumeViewController" id="6jT-K9-Yyi" customClass="ResumeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResumeViewController" id="6jT-K9-Yyi" customClass="ResumeViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kAO-6g-xPB"/>
                         <viewControllerLayoutGuide type="bottom" id="jvv-K8-mEM"/>
@@ -88,7 +88,7 @@
         <!--Resume Tab Bar Controller-->
         <scene sceneID="IFw-XI-KZ5">
             <objects>
-                <tabBarController storyboardIdentifier="ResumeTabBarController" id="Lr5-fL-bjJ" customClass="ResumeTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="ResumeTabBarController" id="Lr5-fL-bjJ" customClass="ResumeTabBarController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="FeM-yJ-AMY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -108,11 +108,11 @@
         <!--首页-->
         <scene sceneID="XTm-fl-7uB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YgJ-Y7-lXS" customClass="ResumeNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YgJ-Y7-lXS" customClass="ResumeNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="resume_tabbar_1" selectedImage="resume_tabbar_1on" id="NcJ-N8-sk2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="es7-ij-SK2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -127,11 +127,11 @@
         <!--事业合作-->
         <scene sceneID="pyn-nU-ffH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Thh-uY-5AY" customClass="ResumeNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Thh-uY-5AY" customClass="ResumeNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="事业合作" image="resume_tabbar_2" selectedImage="resume_tabbar_2on" id="dgc-hg-FCX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F0i-Wh-nbH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -146,11 +146,11 @@
         <!--理论体系-->
         <scene sceneID="WLJ-tG-eIX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mMv-sA-jRv" customClass="ResumeNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mMv-sA-jRv" customClass="ResumeNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="理论体系" image="resume_tabbar_3" selectedImage="resume_tabbar_3on" id="7ei-nu-RQk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sgf-zw-wiG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -165,11 +165,11 @@
         <!--联系我-->
         <scene sceneID="WKW-9k-yWD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bbn-7E-ieG" customClass="ResumeNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bbn-7E-ieG" customClass="ResumeNavigationController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="联系我" image="resume_tabbar_4" selectedImage="resume_tabbar_4on" id="81J-lC-5tM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y3X-8Z-YJd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -183,13 +183,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="resume_tabbar_1" width="16" height="16"/>
-        <image name="resume_tabbar_1on" width="16" height="16"/>
-        <image name="resume_tabbar_2" width="16" height="16"/>
-        <image name="resume_tabbar_2on" width="16" height="16"/>
-        <image name="resume_tabbar_3" width="16" height="16"/>
-        <image name="resume_tabbar_3on" width="16" height="16"/>
-        <image name="resume_tabbar_4" width="16" height="16"/>
-        <image name="resume_tabbar_4on" width="16" height="16"/>
+        <image name="resume_tabbar_1" width="32" height="32"/>
+        <image name="resume_tabbar_1on" width="32" height="32"/>
+        <image name="resume_tabbar_2" width="32" height="32"/>
+        <image name="resume_tabbar_2on" width="32" height="32"/>
+        <image name="resume_tabbar_3" width="32" height="32"/>
+        <image name="resume_tabbar_3on" width="32" height="32"/>
+        <image name="resume_tabbar_4" width="32" height="32"/>
+        <image name="resume_tabbar_4on" width="32" height="32"/>
     </resources>
 </document>

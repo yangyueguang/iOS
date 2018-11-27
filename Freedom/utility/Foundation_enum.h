@@ -75,4 +75,8 @@ typedef NS_ENUM(NSInteger, TLChatBarStatus) {
     TLChatBarStatusMore,
     TLChatBarStatusKeyboard,
 };
+typedef NS_ENUM(NSInteger, GestureType) {
+    TapGesType = 1,
+    LongGesType,
+};
 #endif
