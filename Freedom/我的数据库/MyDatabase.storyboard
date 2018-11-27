@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My Database View Controller-->
+        <scene sceneID="EMo-XW-KYL">
+            <objects>
+                <viewController storyboardIdentifier="MyDatabaseViewController" id="OuM-CD-vRT" customClass="MyDatabaseViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nrz-rs-eEF"/>
+                        <viewControllerLayoutGuide type="bottom" id="q5o-JX-dKj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BDB-GD-wfy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="E9Y-yN-Dlg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ibs-2K-HaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1171" y="-477"/>
+        </scene>
+        <!--My Database Tab Bar Controller-->
+        <scene sceneID="Zsf-y5-Aad">
+            <objects>
+                <tabBarController storyboardIdentifier="MyDatabaseTabBarController" id="oL8-fj-Noj" customClass="MyDatabaseTabBarController" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="iIz-c3-GEy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="oWJ-9X-XVy" kind="relationship" relationship="viewControllers" id="pYG-Ii-phS"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IhQ-NS-PlB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-37" y="-472"/>
+        </scene>
+        <!--我的数据库-->
+        <scene sceneID="9wT-5I-vXz">
+            <objects>
+                <navigationController storyboardIdentifier="MyDatabaseNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="oWJ-9X-XVy" customClass="MyDatabaseNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我的数据库" id="K3I-OH-oTG"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sDb-cm-Wl6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OuM-CD-vRT" kind="relationship" relationship="rootViewController" id="PFE-V1-A9a"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aav-sC-xwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="567" y="-472"/>
+        </scene>
+    </scenes>
+</document>

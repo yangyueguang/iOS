@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Energy News View Controller-->
+        <scene sceneID="Xwa-Mb-EIO">
+            <objects>
+                <viewController storyboardIdentifier="EnergyNewsViewController" id="AEi-XA-nYG" customClass="EnergyNewsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mdc-pV-qPe"/>
+                        <viewControllerLayoutGuide type="bottom" id="rn0-t7-kGq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iZs-b0-Xp1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ssh-dp-vzF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fcV-TN-jJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282" y="-513"/>
+        </scene>
+        <!--Energy Sample View Controller-->
+        <scene sceneID="2dp-Wq-pQE">
+            <objects>
+                <viewController storyboardIdentifier="EnergySampleViewController" id="7eg-Wn-dDA" customClass="EnergySampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XlD-Sb-3g2"/>
+                        <viewControllerLayoutGuide type="bottom" id="xDY-z4-sHT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LuL-yF-Elo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dqC-RG-t8Z"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BYP-HL-VPh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282" y="-1146"/>
+        </scene>
+        <!--Micro Energy Tab Bar Controller-->
+        <scene sceneID="f0d-oh-5lg">
+            <objects>
+                <tabBarController storyboardIdentifier="MicroEnergyTabBarController" id="2Fe-s5-UcV" customClass="MicroEnergyTabBarController" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="OOv-5u-UhR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ald-KL-hBo" kind="relationship" relationship="viewControllers" id="tgP-zA-RgA"/>
+                        <segue destination="Gwb-bG-uvF" kind="relationship" relationship="viewControllers" id="Pu0-sF-tRm"/>
+                        <segue destination="azq-e5-pza" kind="relationship" relationship="viewControllers" id="4du-T0-ik0"/>
+                        <segue destination="XCQ-Z4-SHv" kind="relationship" relationship="viewControllers" id="gyv-wh-T8F"/>
+                        <segue destination="xsk-ck-kO0" kind="relationship" relationship="viewControllers" id="rsW-Jm-jWx"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bfE-HV-a4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-176" y="309"/>
+        </scene>
+        <!--Energy ContactUS View Controller-->
+        <scene sceneID="6Wh-zs-C4W">
+            <objects>
+                <viewController storyboardIdentifier="EnergyContactUSViewController" id="5vV-pH-hJl" customClass="EnergyContactUSViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fUC-Yr-9nn"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Ii-U0-rZ9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KEF-1p-V8K">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Q1t-qq-fdq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VNl-QJ-7se" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282" y="1394"/>
+        </scene>
+        <!--Energy Home View Controller-->
+        <scene sceneID="kyf-dn-1cW">
+            <objects>
+                <viewController storyboardIdentifier="EnergyHomeViewController" id="R80-6d-xcG" customClass="EnergyHomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NVU-45-2ww"/>
+                        <viewControllerLayoutGuide type="bottom" id="JY8-nI-q7C"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z4z-RA-gku">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Afw-Fa-xHD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bzk-hC-hYH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282" y="118"/>
+        </scene>
+        <!--新闻动态-->
+        <scene sceneID="dSQ-Jq-sHG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gwb-bG-uvF" customClass="EnergyNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="新闻动态" image="weineng_tabbar_2" selectedImage="weineng_tabbar_2" id="lKd-GM-aIq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p8h-HB-K9e">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AEi-XA-nYG" kind="relationship" relationship="rootViewController" id="POq-8w-6uV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dKI-eB-IrQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="678" y="-513"/>
+        </scene>
+        <!--经典案例-->
+        <scene sceneID="B8K-Fn-JVB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ald-KL-hBo" customClass="EnergyNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="经典案例" image="weineng_tabbar_1" selectedImage="weineng_tabbar_1" id="4pd-4n-yNI"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Q2-Ta-VoK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7eg-Wn-dDA" kind="relationship" relationship="rootViewController" id="3o9-0w-ga1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9EC-vA-xmv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="686" y="-1146"/>
+        </scene>
+        <!--精品人人店-->
+        <scene sceneID="nOL-Hi-Vud">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XCQ-Z4-SHv" customClass="EnergyNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="精品人人店" image="weineng_tabbar_4" id="KN8-bo-a2T"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0iw-4z-rMd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="M9f-Wm-GkT" kind="relationship" relationship="rootViewController" id="eY1-ZX-tEU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xzu-vq-d94" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="932" y="777"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bDI-R2-Sdq">
+            <objects>
+                <viewController id="M9f-Wm-GkT" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W4J-4o-3r8"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ckn-wT-MjU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0vh-Kz-DJ5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dTi-8O-wV6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ah-l1-QdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1630" y="782"/>
+        </scene>
+        <!--联系我们-->
+        <scene sceneID="at2-fX-EgU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xsk-ck-kO0" customClass="EnergyNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="联系我们" image="weineng_tabbar_5" id="AiU-4U-caa"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HnQ-mc-spb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5vV-pH-hJl" kind="relationship" relationship="rootViewController" id="Tsx-lS-G0p"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="glv-Lv-hcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="678" y="1394"/>
+        </scene>
+        <!--HOME-->
+        <scene sceneID="eA7-d6-I1a">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="azq-e5-pza" customClass="EnergyNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="HOME" image="weineng_tabbar_3" selectedImage="weineng_tabbar_3" id="Fut-ar-4m4"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cF5-il-zfA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="R80-6d-xcG" kind="relationship" relationship="rootViewController" id="9Gi-Sn-RUw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="scf-eG-owv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="678" y="124"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="weineng_tabbar_1" width="16" height="16"/>
+        <image name="weineng_tabbar_2" width="16" height="16"/>
+        <image name="weineng_tabbar_3" width="16" height="16"/>
+        <image name="weineng_tabbar_4" width="16" height="16"/>
+        <image name="weineng_tabbar_5" width="16" height="16"/>
+    </resources>
+</document>

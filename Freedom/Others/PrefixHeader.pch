@@ -1,0 +1,32 @@
+//  PrefixHeader.pch
+//  Freedom
+//  Created by Super on 16/6/13.
+//  Copyright © 2016年 Super. All rights reserved.
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <XCategory/UIControl+expanded.h>
+#import <XCategory/NSString+expanded.h>
+#import <XCategory/UIColor+expanded.h>
+#import <XCategory/NSFileManager+expanded.h>
+#import <XCategory/UIBarButtonItem+expanded.h>
+#import <XCategory/UIView+expanded.h>
+#import <XCategory/UIImage+expanded.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <MJRefresh/MJRefresh.h>
+#import <MJExtension/MJExtension.h>
+#import <AFNetworking/AFNetworking.h>
+#import <Masonry/Masonry.h>
+#import <BlocksKit/BlocksKit.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "Foundation.h"
+#import "BaseViewController.h"
+#import "BaseTabBarController.h"
+#import "BaseNavigationController.h"
+#import "NetEngine.h"
+#import "FreedomTools.h"
+#import "NSObject+Freedom.h"
+#endif
+#endif /* PrefixHeader_pch */

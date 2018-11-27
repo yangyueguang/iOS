@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Toutiao Video View Controller-->
+        <scene sceneID="T1J-J7-3JR">
+            <objects>
+                <viewController storyboardIdentifier="ToutiaoVideoViewController" id="hlA-lA-PKL" customClass="ToutiaoVideoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wga-Vy-mJK"/>
+                        <viewControllerLayoutGuide type="bottom" id="H2s-eG-4TT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ija-sK-6br">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZzE-Uo-Cqw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="urV-bh-fIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="509" y="-481"/>
+        </scene>
+        <!--Toutiao Attention View Controller-->
+        <scene sceneID="Ube-o6-36z">
+            <objects>
+                <viewController storyboardIdentifier="ToutiaoAttentionViewController" id="BVq-eq-syi" customClass="ToutiaoAttentionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="i82-uD-Gla"/>
+                        <viewControllerLayoutGuide type="bottom" id="uf5-Qc-WLg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oAl-IX-StT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jx5-Yx-ZFi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c6n-g8-4DR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="509" y="153"/>
+        </scene>
+        <!--Toutiao Me View Controller-->
+        <scene sceneID="duS-a2-LLX">
+            <objects>
+                <viewController storyboardIdentifier="ToutiaoMeViewController" id="ttP-Uq-mtu" customClass="ToutiaoMeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tet-2q-dZG"/>
+                        <viewControllerLayoutGuide type="bottom" id="et5-DV-H48"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gvl-Tg-Toq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5Wy-ub-d2C"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iOG-SA-kLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="509" y="783"/>
+        </scene>
+        <!--Toutiao View Controller-->
+        <scene sceneID="ge2-wS-u47">
+            <objects>
+                <viewController storyboardIdentifier="ToutiaoViewController" id="7Zw-nk-oaa" customClass="ToutiaoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZI7-Wa-fx1"/>
+                        <viewControllerLayoutGuide type="bottom" id="L3w-gt-Vzs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WLC-7w-5Si">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="79d-8e-nkB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0BR-gA-35P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="517" y="-1112"/>
+        </scene>
+        <!--Toutiao Tab Bar Controller-->
+        <scene sceneID="Ghs-VZ-9x2">
+            <objects>
+                <tabBarController storyboardIdentifier="ToutiaoTabBarController" id="Bao-Ia-mLh" customClass="ToutiaoTabBarController" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="fwh-7E-bwc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="J0q-Xy-4kz" kind="relationship" relationship="viewControllers" id="u9x-F1-PXQ"/>
+                        <segue destination="aog-jF-uQQ" kind="relationship" relationship="viewControllers" id="DMO-Px-8cR"/>
+                        <segue destination="Uq5-Vg-AXw" kind="relationship" relationship="viewControllers" id="wu4-K2-lhQ"/>
+                        <segue destination="AlW-9g-6ZK" kind="relationship" relationship="viewControllers" id="g3r-HY-ijj"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCZ-Pv-QPU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-778" y="-87"/>
+        </scene>
+        <!--关注-->
+        <scene sceneID="FTu-Ld-Ho4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uq5-Vg-AXw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="关注" image="toutiao_tabbar_3" selectedImage="toutiao_tabbar_3on" id="g3R-7Y-aZr"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Evt-7B-bFT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BVq-eq-syi" kind="relationship" relationship="rootViewController" id="yw0-cg-taA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mAB-qC-ves" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-93" y="153"/>
+        </scene>
+        <!--首页-->
+        <scene sceneID="i6f-dX-biZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="J0q-Xy-4kz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="首页" image="toutiao_tabbar_1" selectedImage="toutiao_tabbar_1on" id="Aft-hQ-dfH"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZAQ-iQ-YBH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7Zw-nk-oaa" kind="relationship" relationship="rootViewController" id="X9g-1A-Xoe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dis-gS-mxr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-93" y="-1112"/>
+        </scene>
+        <!--视频-->
+        <scene sceneID="tS3-qC-fGK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aog-jF-uQQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="视频" image="toutiao_tabbar_2" selectedImage="toutiao_tabbar_2on" id="N9R-xf-Wwz"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VX6-6K-tVN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hlA-lA-PKL" kind="relationship" relationship="rootViewController" id="rah-aO-KNF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iOe-6m-y6p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-93" y="-481"/>
+        </scene>
+        <!--我的-->
+        <scene sceneID="XWc-ts-aui">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AlW-9g-6ZK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我的" image="toutiao_tabbar_4" selectedImage="toutiao_tabbar_4on" id="aIC-DD-L4i"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vp4-zg-YQl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ttP-Uq-mtu" kind="relationship" relationship="rootViewController" id="36L-5N-bY3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SSh-ef-kjo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-93" y="783"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="toutiao_tabbar_1" width="16" height="16"/>
+        <image name="toutiao_tabbar_1on" width="16" height="16"/>
+        <image name="toutiao_tabbar_2" width="16" height="16"/>
+        <image name="toutiao_tabbar_2on" width="16" height="16"/>
+        <image name="toutiao_tabbar_3" width="16" height="16"/>
+        <image name="toutiao_tabbar_3on" width="16" height="16"/>
+        <image name="toutiao_tabbar_4" width="16" height="16"/>
+        <image name="toutiao_tabbar_4on" width="16" height="16"/>
+    </resources>
+</document>
