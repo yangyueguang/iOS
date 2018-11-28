@@ -4,7 +4,7 @@
 // Created by Super
 #import "WXShakeViewController.h"
 #import "WXShakeSettingViewController.h"
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 #define     SHAKE_HEIGHT    90
 typedef NS_ENUM(NSUInteger, TLShakeButtonType) {
     TLShakeButtonTypePeople,

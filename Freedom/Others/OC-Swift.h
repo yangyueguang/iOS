@@ -19,5 +19,5 @@
 #import "RCDRCIMDataSource.h"
 #import "NSObject+Freedom.h"
 #import "RCDataBaseManager.h"
-
+#import "UILabel+expanded.h"
 #import <CommonCrypto/CommonDigest.h>

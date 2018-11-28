@@ -7,7 +7,6 @@
 //
 import UIKit
 import ElasticTransitionObjC
-import BaseFile
 import XExtension
 import SVProgressHUD
 class LibraryCollectionViewCell: BaseCollectionViewCell {

@@ -13,8 +13,8 @@ class SinaNavigationController: XBaseNavigationViewController {
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)
         if viewControllers.count > 1 {
-            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(target: self, action: #selector(self.back), image: "u_cellLeftA", heighlightImage: "u_cellLeftA_y")
-            viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(target: self, action: #selector(self.more), image: "u_navi3p_b", heighlightImage: "u_navi3p_y")
+//            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(target: self, action: #selector(self.back), image: "u_cellLeftA", heighlightImage: "u_cellLeftA_y")
+//            viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(target: self, action: #selector(self.more), image: "u_navi3p_b", heighlightImage: "u_navi3p_y")
         }
     }
     func back() {

@@ -2,9 +2,7 @@
 //  TaobaoMiniVideoViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
-import XCategory
 class TaobaoMiniVideoViewCell:BaseTableViewCell{
     override func initUI() {
         super.initUI()

@@ -6,7 +6,6 @@
 //  Copyright © 2018 薛超. All rights reserved.
 import UIKit
 import XExtension
-import BaseFile
 class SinaMessageViewController: SinaBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +28,7 @@ class SinaMessageViewController: SinaBaseViewController {
         let ID = "cell"
         if indexPath.row == 0 {
             let _searchBar = UISearchBar()
-            _searchBar.frameWidth = APPW
-            _searchBar.frameHeight = 40
+            _searchBar.frame = CGRect(x: _searchBar.frame.origin.x, y: _searchBar.frame.origin.y, width: APPW, height: 40)
             _searchBar.placeholder = "大家都在搜：男模遭趴光"
             let d = UITableViewCell(style: .default, reuseIdentifier: nil)
             d.contentView.addSubview(_searchBar)

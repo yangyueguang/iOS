@@ -2,7 +2,6 @@
 //  SettingViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class KugouSettingViewCell:BaseTableViewCell{
     override func initUI() {

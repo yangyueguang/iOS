@@ -2,9 +2,7 @@
 //  TaobaoShopCarViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
-import XCategory
 class TaobaoShopCarViewCell:BaseTableViewCell{
     override func initUI() {
         icon = UIImageView()

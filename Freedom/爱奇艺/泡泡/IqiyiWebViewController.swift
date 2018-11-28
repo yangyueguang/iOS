@@ -2,7 +2,6 @@
 //  JFWebViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class IqiyiWebViewController: IqiyiBaseViewController,UIWebViewDelegate{
     let webView = UIWebView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - 64))

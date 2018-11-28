@@ -5,7 +5,7 @@
 #import "WXDBManager.h"
 #import "WXUserHelper.h"
 #import "TLEmojiBaseCell.h"
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 #define     IEXPRESSION_HOST_URL        @"http://123.57.155.230:8080/ibiaoqing/admin/"
 #define     IEXPRESSION_NEW_URL         [IEXPRESSION_HOST_URL stringByAppendingString:@"expre/listBy.do?pageNumber=%ld&status=Y&status1=B"]
 #define     IEXPRESSION_BANNER_URL      [IEXPRESSION_HOST_URL stringByAppendingString: @"advertisement/getAll.do?status=on"]
@@ -186,7 +186,7 @@
 - (void)requestExpressionSearchByKeyword:(NSString *)keyword
                                  success:(void (^)(id data))success
                                  failure:(void (^)(NSString *error))failure{
-    NSString *urlString = [NSString stringWithFormat:IEXPRESSION_SEARCH_URL, [[keyword urlEncode] urlEncode]];
+    NSString *urlString = [NSString stringWithFormat:IEXPRESSION_SEARCH_URL, [keyword urlEncodedString]];
     [[AFHTTPSessionManager manager] POST:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSArray *respArray = [responseObject mj_JSONObject];
         NSString *status = respArray[0];

@@ -2,9 +2,7 @@
 //  TaobaoMeViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
-import XCategory
 class TaobaoMeViewCell1:BaseCollectionViewCell{
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 10, y: 0, width: APPW / 5 - 20, height: 40))

@@ -8,7 +8,7 @@
 #import "WXUserHelper.h"
 #import "WXTableViewCell.h"
 #import "WXModes.h"
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 #import "UIButton+WebCache.h"
 #define     MINE_SPACE_X        14.0f
 #define     MINE_SPACE_Y        12.0f

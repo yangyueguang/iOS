@@ -12,7 +12,8 @@ class SinaTabBar: UITabBar {
         super.init(frame: frame)
         centerButton.setBackgroundImage(UIImage(named: "tabbar_compose_button"), for: .normal)
         centerButton.setImage(UIImage(named: "tabbar_compose_icon_add"), for: .normal)
-        centerButton.frameSize = (centerButton.currentBackgroundImage?.size)!
+        let size = (centerButton.currentBackgroundImage?.size)!
+        centerButton.frame = CGRect(x: centerButton.frameX, y: centerButton.frameY, width: size.width, height: size.height)
         centerButton.center = CGPoint(x: APPW * 0.5, y: 50 * 0.5)
         addSubview(centerButton)
     }

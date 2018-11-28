@@ -2,7 +2,6 @@
 //  JFVideoDetailViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class IqiyiVideoDetailModel: NSObject {
     var total_vv = ""

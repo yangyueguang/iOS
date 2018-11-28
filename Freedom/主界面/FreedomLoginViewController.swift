@@ -6,7 +6,10 @@ import XExtension
 import SVProgressHUD
 import AFNetworking
 import SwiftyJSON
+import RxSwift
+import RxCocoa
 //FIXME:登录下面的切换视图
+private let disposeBag = DisposeBag()
 class LoginBottomView:UIView{
     let leftBtn = UIButton()
     let rightBtn = UIButton()
@@ -466,15 +469,15 @@ class FreedomLoginViewController:FreedomBaseLoginViewController{
         self.actionBtn.setTitle("登录", for: .normal)
         bottomV.leftBtn.setTitle("新用户", for: .normal)
         bottomV.rightBtn.setTitle("找回密码", for: .normal)
-        bottomV.leftBtn.addEventHandler({[unowned self] (sender) in
+        bottomV.leftBtn.rx.tap.subscribe(onNext: { (sender) in
             self.gotoRegisterVC()
-        }, for: .touchUpInside)
-        bottomV.rightBtn.addEventHandler({[unowned self] (sender) in
+        }).disposed(by: disposeBag)
+        bottomV.rightBtn.rx.tap.subscribe(onNext: { (sender) in
             self.gotoFindPswVC()
-        }, for: .touchUpInside)
-        actionBtn.addEventHandler({[unowned self] (sender) in
+        }).disposed(by: disposeBag)
+        actionBtn.rx.tap.subscribe(onNext: { (sender) in
             self.loginAction()
-        }, for: .touchUpInside)
+        }).disposed(by: disposeBag)
         view.addSubviews([userNameT,passWordT,actionBtn,bottomV])
     }
 }
@@ -488,18 +491,21 @@ class FreedomRegisterViewController:FreedomBaseLoginViewController {
         self.actionBtn.setTitle("注册", for: .normal)
         bottomV.leftBtn.setTitle("登录", for: .normal)
         bottomV.rightBtn.setTitle("找回密码", for: .normal)
-        bottomV.leftBtn.addEventHandler({[unowned self] (sender) in
+        bottomV.leftBtn.rx.tap.subscribe(onNext: { (sender) in
             self.gotoLoginVC()
-        }, for: .touchUpInside)
-        bottomV.rightBtn.addEventHandler({[unowned self] (sender) in
+        }).disposed(by: disposeBag)
+        bottomV.leftBtn.rx.tap.subscribe(onNext: { (sender) in
+            self.gotoLoginVC()
+        }).disposed(by: disposeBag)
+        bottomV.rightBtn.rx.tap.subscribe(onNext: { (sender) in
             self.gotoFindPswVC()
-        }, for: .touchUpInside)
-        actionBtn.addEventHandler({[unowned self] (sender) in
+        }).disposed(by: disposeBag)
+        actionBtn.rx.tap.subscribe(onNext: { (sender) in
             self.registerAction()
-        }, for: .touchUpInside)
-        timeBtn.addEventHandler({[unowned self] (sender) in
+        }).disposed(by: disposeBag)
+        timeBtn.rx.tap.subscribe(onNext: { (sender) in
             self.getVerficationCode(true)
-        }, for: .touchUpInside)
+        }).disposed(by: disposeBag)
         view.addSubviews([phoneT,userNameT,passWordT,messageCodeT,timeBtn,actionBtn,bottomV])
     }
 
@@ -514,18 +520,18 @@ class FreedomFindPswViewController:FreedomBaseLoginViewController {
         self.actionBtn.setTitle("修改密码", for: .normal)
         bottomV.leftBtn.setTitle("登录", for: .normal)
         bottomV.rightBtn.setTitle("注册", for: .normal)
-        bottomV.leftBtn.addEventHandler({[unowned self] (sender) in
+        bottomV.leftBtn.rx.tap.subscribe(onNext: { (sender) in
             self.gotoLoginVC()
-        }, for: .touchUpInside)
-        bottomV.rightBtn.addEventHandler({[unowned self] (sender) in
+        }).disposed(by: disposeBag)
+        bottomV.rightBtn.rx.tap.subscribe(onNext: { (sender) in
             self.gotoRegisterVC()
-        }, for: .touchUpInside)
-        actionBtn.addEventHandler({[unowned self] (sender) in
+        }).disposed(by: disposeBag)
+        actionBtn.rx.tap.subscribe(onNext: { (sender) in
             self.findPwdBackAction()
-        }, for: .touchUpInside)
-        timeBtn.addEventHandler({[unowned self] (sender) in
+        }).disposed(by: disposeBag)
+        timeBtn.rx.tap.subscribe(onNext: { (sender) in
             self.getVerficationCode(false)
-        }, for: .touchUpInside)
+        }).disposed(by: disposeBag)
         view.addSubviews([phoneT,passWordT,messageCodeT,timeBtn,actionBtn,bottomV])
     }
 }

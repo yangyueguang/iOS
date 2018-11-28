@@ -4,11 +4,10 @@
 #import "WXConversationViewController.h"
 #import "WXSearchController.h"
 #import <BlocksKit/BlocksKit+UIKit.h>
-#import <XCategory/NSDate+expanded.h>
 #import "WXTableViewCell.h"
 #import "WXModes.h"
 #import "WXUserHelper.h"
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 #define     CONV_SPACE_X            10.0f
 #define     CONV_SPACE_Y            9.5f
 #define     REDPOINT_WIDTH          10.0f
@@ -219,7 +218,7 @@
     }
     [self.usernameLabel setText:conversation.partnerName];
     [self.detailLabel setText:conversation.content];
-    [self.timeLabel setText:conversation.date.conversaionTimeInfo];
+    [self.timeLabel setText:conversation.date.timeToNow];
     switch (conversation.remindType) {
         case TLMessageRemindTypeNormal:
         [self.remindImageView setHidden:YES];

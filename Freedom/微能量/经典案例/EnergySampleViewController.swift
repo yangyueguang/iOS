@@ -7,7 +7,6 @@
 //
 import UIKit
 import UIKit
-import BaseFile
 import XExtension
 import XCarryOn
 class EnergySampleViewCell:BaseTableViewCell{

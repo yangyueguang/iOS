@@ -2,7 +2,6 @@
 //  IqiyiViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 import MJRefresh
 import MJExtension

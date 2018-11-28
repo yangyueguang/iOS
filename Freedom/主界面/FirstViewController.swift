@@ -5,7 +5,6 @@
 //  Created by Super on 6/15/18.
 //  Copyright © 2018 Super. All rights reserved.
 import UIKit
-import BaseFile
 import XExtension
 import SVProgressHUD
 import ElasticTransitionObjC
@@ -296,10 +295,10 @@ class FirstViewController: XBaseViewController,UICollectionViewDataSource, UICol
     }
     func collectionView(_ cv: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let dic = items[indexPath.item]
-        let color = UIColor.random()
+        let color = UIColor.randomColor
         if exampleSwitch.isOn {
             let cell = cv.dequeueReusableCell(withReuseIdentifier: CollectionViewCell1.identifier(), for: indexPath) as? CollectionViewCell1
-            cell?.icon.layer.borderColor = color?.cgColor
+            cell?.icon.layer.borderColor = color.cgColor
             cell?.title.text = dic["title"]
             cell?.icon.image = UIImage(named:dic["icon"]!)
             if let aCell = cell {

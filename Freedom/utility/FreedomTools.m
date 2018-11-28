@@ -299,7 +299,7 @@ char pinyinFirstLetter(unsigned short hanzi){
     } else {
         UIView *defaultPortrait =
         [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        defaultPortrait.backgroundColor = [UIColor randomColor];
+        defaultPortrait.backgroundColor = [UIColor redColor];
         NSString *firstLetter = [ChineseToPinyin firstPinyinFromChinise:groupInfo.groupName];
         UILabel *firstCharacterLabel = [[UILabel alloc] initWithFrame:CGRectMake(defaultPortrait.frame.size.width / 2 - 30, defaultPortrait.frame.size.height / 2 - 30, 60, 60)];
         firstCharacterLabel.text = firstLetter;
@@ -325,7 +325,7 @@ char pinyinFirstLetter(unsigned short hanzi){
     } else {
         UIView *defaultPortrait =
         [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        defaultPortrait.backgroundColor = [UIColor randomColor];
+        defaultPortrait.backgroundColor = [UIColor redColor];
         NSString *firstLetter = [ChineseToPinyin firstPinyinFromChinise:userInfo.name];
         UILabel *firstCharacterLabel = [[UILabel alloc] initWithFrame:CGRectMake(defaultPortrait.frame.size.width / 2 - 30, defaultPortrait.frame.size.height / 2 - 30, 60, 60)];
         firstCharacterLabel.text = firstLetter;

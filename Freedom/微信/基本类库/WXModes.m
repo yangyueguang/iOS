@@ -252,7 +252,7 @@ static UILabel *hLabel = nil;
         hLabel = [[UILabel alloc] initWithFrame:[UIScreen mainScreen].bounds];
         [hLabel setNumberOfLines:0];
     }
-    hLabel.frameWidth = width;
+    hLabel.frame = CGRectMake(hLabel.frame.origin.x, hLabel.frame.origin.y, width, hLabel.frame.size.height);
     [hLabel setFont:font];
     [hLabel setText:text];
     return [hLabel sizeThatFits:CGSizeMake(width, MAXFLOAT)].height;

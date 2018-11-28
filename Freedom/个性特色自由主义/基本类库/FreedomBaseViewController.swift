@@ -7,7 +7,6 @@
 //
 import UIKit
 import XExtension
-import BaseFile
 class FreedomBaseViewController: XBaseViewController {
     override func viewDidLoad() {
        

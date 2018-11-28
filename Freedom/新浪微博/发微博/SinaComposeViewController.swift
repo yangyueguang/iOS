@@ -6,8 +6,6 @@
 //  Copyright © 2018 薛超. All rights reserved.
 import UIKit
 import SVProgressHUD
-import BaseFile
-import XCategory
 import AFNetworking
 class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
     var textView: SinaEmotionTextView = SinaEmotionTextView()/** 输入控件 */
@@ -17,8 +15,7 @@ class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate,UINav
     var switchingKeybaord = false/** 是否正在切换键盘 */
     override func viewDidLoad() {
         super.viewDidLoad()
-        emotionKeyboard.frameWidth = view.frame.size.width
-        emotionKeyboard.frameHeight = 256
+        emotionKeyboard.frame = CGRect(x: emotionKeyboard.frame.origin.x, y: emotionKeyboard.frame.origin.y, width: view.frame.size.width, height: 256)
         view.backgroundColor = UIColor.white
         //设置导航栏内容
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(self.cancel))
@@ -27,11 +24,9 @@ class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate,UINav
         let prefix = "发微博"
         if  let ac = acount {
             let titleView = UILabel()
-            titleView.frameHeight = 100
-            titleView.frameWidth = 200
             titleView.numberOfLines = 0
             titleView.textAlignment = .center
-            titleView.frameY = 50
+            titleView.frame = CGRect(x: titleView.frame.origin.x, y: 50, width: 200, height: 100)
             let str = "\(prefix)\n\(ac.name)"
             // 创建一个带有属性的字符串（比如颜色属性、字体属性等文字属性）
             let attStr = NSMutableAttributedString(string: str)

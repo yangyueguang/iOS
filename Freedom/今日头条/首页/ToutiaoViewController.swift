@@ -3,7 +3,6 @@
 //  ToutiaoViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class ToutiaoViewController: ToutiaoBaseViewController {
 let titleScrollView = UIScrollView()//标题ScrollView

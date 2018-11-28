@@ -4,7 +4,6 @@
 #import "BookFriendsViewController.h"
 #import "BookFriendsTableViewCell.h"
 #import "BookFriendsMode.h"
-#import <XCategory/NSString+expanded.h>
 typedef  void(^didRemoveImage)(void);
 @interface YMShowImageView : UIView<UIScrollViewDelegate>{
     UIImageView *showImage;
@@ -222,7 +221,7 @@ typedef  void(^didRemoveImage)(void);
 }
 - (void) adjustTextInputHeightForText:(NSString*)text animated:(BOOL)animated{
     int h1 = [text sizeOfFont:_textView.font].height;
-    int h2 = [text sizeOfFont:_textView.font maxSize:CGSizeMake(_textView.frame.size.width - 16, 170.0f)].height;
+    int h2 = [text sizeOfFont:_textView.font maxW:CGSizeMake(_textView.frame.size.width - 16, 170.0f).width].height;
     [UIView animateWithDuration:(animated ? .1f : 0) animations:^{
          int h = h2 == h1 ? inputHeightWithShadow : h2 + 24;
          if (h>78) {

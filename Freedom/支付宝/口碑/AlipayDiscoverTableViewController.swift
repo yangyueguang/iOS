@@ -2,7 +2,6 @@
 //  SDDiscoverTableViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class AlipayDiscoverTableViewHeaderItemModel: NSObject {
     var imageName = ""

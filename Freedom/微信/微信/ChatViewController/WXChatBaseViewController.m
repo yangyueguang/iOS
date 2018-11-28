@@ -2,10 +2,9 @@
 //  Freedom
 // Created by Super
 #import "WXChatBaseViewController.h"
-#import <XCategory/UIImage+expanded.h>
 #import "WXMessageManager.h"
 #import "WXUserHelper.h"
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 #define     SIZE_TIPS    CGSizeMake(55, 100)
 #define     WIDTH_TEXTVIEW          self.frame.size.width * 0.94
 @interface WXTextDisplayView : UIView

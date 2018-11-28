@@ -7,7 +7,6 @@
 //
 import UIKit
 import XExtension
-import BaseFile
 class PersonalApplyViewCell:BaseTableViewCell{
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x: 10, y: 10, width: 60, height: 60))

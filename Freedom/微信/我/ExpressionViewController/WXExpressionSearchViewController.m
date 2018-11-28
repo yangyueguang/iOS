@@ -6,7 +6,6 @@
 #import "WXExpressionHelper.h"
 #import "WXRootViewController.h"
 #import "WXExpressionChosenViewController.h"
-#import <XCategory/UIBarButtonItem+expanded.h>
 @interface WXExpressionSearchViewController () <WXExpressionCellDelegate>
 @property (nonatomic, strong) WXExpressionHelper *proxy;
 @property (nonatomic, strong) NSArray *data;

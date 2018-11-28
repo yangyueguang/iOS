@@ -4,8 +4,7 @@
 #import "WXDBManager.h"
 #import "WXUserHelper.h"
 #import "WXMessageManager.h"
-#import <XCategory/NSDate+expanded.h>
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 @implementation WXDBMessageStore
 - (id)init{
     if (self = [super init]) {
@@ -85,7 +84,7 @@
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
             WXMessage * message = [self p_createDBMessageByFMResultSet:retSet];
-            if (([message.date isThisWeek] && [lastDate isThisWeek]) || (![message.date isThisWeek] && [lastDate isSameMonthAsDate:message.date])) {
+            if ([message.date isToday]) {
                 [array addObject:message];
             }else{
                 lastDate = message.date;

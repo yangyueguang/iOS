@@ -3,7 +3,6 @@
 //  Freedom
 import UIKit
 import XExtension
-import BaseFile
 class MicroEnergyTabBarController: XBaseTabBarController,UITabBarControllerDelegate {
     let myTabBar = EnergySuperMarketTabBarController.sharedRootViewController
     override func viewDidLoad() {

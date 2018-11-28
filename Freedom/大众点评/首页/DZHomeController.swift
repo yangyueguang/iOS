@@ -2,7 +2,6 @@
 //  DZHomeController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class DZHomeViewCell1:BaseCollectionViewCell{
     override func initUI() {//120
@@ -155,7 +154,7 @@ class DZHomeController: DZBaseViewController,UICollectionViewDataSource,UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        let more = UIBarButtonItem(image: UIImage(renderingOriginalName: "u_add_y"), style: .plain, actionBlick: {() -> Void in
+        let more = UIBarButtonItem(image: UIImage(named: "u_add_y"), style: .plain, actionBlick: {() -> Void in
         })
         navigationItem.rightBarButtonItem = more
         let map = UIBarButtonItem(title: "北京", style: .plain, actionBlick: {() -> Void in

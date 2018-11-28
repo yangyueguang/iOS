@@ -2,9 +2,7 @@
 //  JFSubscribeViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
-import XCategory
 import MJRefresh
 class IqiyiSubItemModel: NSObject {
     var itemID: NSNumber?

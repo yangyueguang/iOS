@@ -2,7 +2,6 @@
 //  EnergyNewsViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 import XCarryOn
 class EnergyNewsViewCell:BaseTableViewCell{

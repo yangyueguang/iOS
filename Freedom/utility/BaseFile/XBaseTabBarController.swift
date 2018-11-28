@@ -6,7 +6,6 @@
 //  Copyright © 2018年 Super. All rights reserved.
 //
 import UIKit
-import BaseFile
 class XBaseTabBarController: BaseTabBarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()

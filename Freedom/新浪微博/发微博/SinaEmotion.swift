@@ -5,8 +5,6 @@
 //  Created by Super on 6/28/18.
 //  Copyright © 2018 薛超. All rights reserved.
 import UIKit
-import BaseFile
-import XCategory
 import MJExtension
 class SinaEmotionButton: UIButton {
     var emotion: SinaEmotion?

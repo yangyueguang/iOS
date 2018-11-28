@@ -2,7 +2,7 @@
 //  Freedom
 // Created by Super
 #import "TLEmojiBaseCell.h"
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 @implementation TLEmoji
 + (NSDictionary *)replacedKeyFromPropertyName{
     return @{

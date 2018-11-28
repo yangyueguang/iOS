@@ -2,12 +2,11 @@
 //  Freedom
 // Created by Super
 #import "WXSearchController.h"
-#import <XCategory/UIImage+expanded.h>
 @implementation WXSearchController
 - (id)initWithSearchResultsController:(UIViewController *)searchResultsController{
     if (self = [super initWithSearchResultsController:searchResultsController]) {
         [self.searchBar setFrame:CGRectMake(0, 0, APPW, HEIGHT_NAVBAR)];
-        [self.searchBar setBackgroundImage:[UIImage imageWithColor:colorGrayBG]];
+//        [self.searchBar setBackgroundImage:[UIImage imageWithColor:colorGrayBG]];
         [self.searchBar setBarTintColor:colorGrayBG];
         [self.searchBar setTintColor:colorGreenDefault];
         UITextField *tf = [[[self.searchBar.subviews firstObject] subviews] lastObject];

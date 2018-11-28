@@ -2,7 +2,6 @@
 //  SDServiceTableViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 import MJRefresh
 class AlipayServiceTableViewCellModel: NSObject {

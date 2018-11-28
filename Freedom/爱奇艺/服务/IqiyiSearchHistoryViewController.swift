@@ -2,7 +2,6 @@
 //  JFSearchHistoryViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class IqiyiSearchTextField: UITextField {
     override init(frame: CGRect) {

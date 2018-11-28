@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import BaseFile
 var USER_INFO_HEADER_HEIGHT:CGFloat = 340 + statusBarHeight
 var SLIDE_TABBAR_FOOTER_HEIGHT:CGFloat = 40
 

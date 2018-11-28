@@ -285,7 +285,7 @@
     });
   }
   hud = [MBProgressHUD showHUDAddedTo:self.mapView animated:YES];
-  hud.color = [UIColor colorWithRGBHex:0x343637];
+  hud.color = [UIColor greenColor];
   hud.labelText = @"定位中...";
   [hud show:YES];
 }

@@ -4,7 +4,6 @@
 // Created by Super
 #import "WXGroupQRCodeViewController.h"
 #import "WXQRCodeViewController.h"
-#import <XCategory/NSDate+expanded.h>
 @interface WXGroupQRCodeViewController ()
 @property (nonatomic, strong) WXQRCodeViewController *qrCodeVC;
 @end
@@ -25,8 +24,8 @@
     self.qrCodeVC.avatarPath = group.groupAvatarPath;
     self.qrCodeVC.username = group.groupName;
     self.qrCodeVC.qrCode = group.groupID;
-    NSDate *date = [NSDate dateWithDaysFromNow:7];
-    self.qrCodeVC.introduction = [NSString stringWithFormat:@"该二维码7天内(%lu月%lu日前)有效，重新进入将更新", (long)date.month, (long)date.day];
+    NSDate *date = [NSDate date];
+    self.qrCodeVC.introduction = [NSString stringWithFormat:@"该二维码7天内(%lu月%lu日前)有效，重新进入将更新", (long)date.YMDComponents.month, (long)date.YMDComponents.day];
 }
 #pragma mark - Event Response -
 - (void)rightBarButtonDown:(UIBarButtonItem *)sender{

@@ -2,7 +2,6 @@
 //  JFLoginViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class IqiyiLoginBtnCell:BaseTableViewCell{
 }

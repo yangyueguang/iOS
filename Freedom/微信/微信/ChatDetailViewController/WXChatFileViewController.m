@@ -2,12 +2,10 @@
 //  Freedom
 //  Created by Super on 16/3/18.
 #import "WXChatFileViewController.h"
-#import <XCategory/NSDate+expanded.h>
 #import "MWPhotoBrowser.h"
 #import "WXRootViewController.h"
 #import "WXMessageManager.h"
-#import <XCategory/UIBarButtonItem+expanded.h>
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 #define     HEIGHT_collectionView_HEADER    28
 #define     WIDTH_collectionView_CELL       APPW / 4 * 0.98
 #define     SPACE_collectionView_CELL       (APPW - WIDTH_collectionView_CELL * 4) / 3
@@ -162,7 +160,7 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     WXMessage *message = [self.data[indexPath.section] objectAtIndex:indexPath.row];
     WXChatFileHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TLChatFileHeaderView" forIndexPath:indexPath];
-    [headerView setTitle:[message.date chatFileTimeInfo]];
+    [headerView setTitle:[message.date timeToNow]];
     return headerView;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{

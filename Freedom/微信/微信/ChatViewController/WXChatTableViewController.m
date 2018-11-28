@@ -6,13 +6,12 @@
 #define     PAGE_MESSAGE_COUNT      15
 #import "UIImage+GIF.h"
 #import <UMMobClick/MobClick.h>
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 #define     MSG_SPACE_TOP       14//2
 #define     MSG_SPACE_BTM       20
 #define     MSG_SPACE_LEFT      19
 #define     MSG_SPACE_RIGHT     22
 #import "UIButton+WebCache.h"
-#import <XCategory/NSDate+expanded.h>
 #define     TIMELABEL_HEIGHT    20.0f
 #define     TIMELABEL_SPACE_Y   10.0f
 #define     NAMELABEL_HEIGHT    14.0f
@@ -42,7 +41,7 @@
     if (_message && [_message.messageID isEqualToString:message.messageID]) {
         return;
     }
-    [self.timeLabel setText:[NSString stringWithFormat:@"  %@  ", message.date.chatTimeInfo]];
+    [self.timeLabel setText:[NSString stringWithFormat:@"  %@  ", message.date.timeToNow]];
     [self.usernameLabel setText:[message.fromUser chat_username]];
     if ([message.fromUser chat_avatarPath].length > 0) {
         NSString *path = [NSFileManager pathUserAvatar:[message.fromUser chat_avatarPath]];

@@ -38,7 +38,6 @@ target 'Freedom' do
 #    pod 'HYBUnicodeReadable'
     pod 'TZImagePickerController'
     pod 'JSPatch'#https://github.com/bang590/JSPatch
-    pod 'XCategory'
     pod 'XCarryOn'
     pod 'ScottAlertController'
     pod 'SSKeychain'  #https://github.com/Mingriweiji-github/sskeychain-master
@@ -49,7 +48,6 @@ target 'Freedom' do
     pod 'RongCloudIM/RedPacket'
 #Swift.frameworks
 pod 'XExtension'
-pod 'BaseFile'
 pod 'IQKeyboardManagerSwift'
 pod 'RealmSwift'
 pod 'SnapKit'

@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import BaseFile
 let AWEME_CELL:String = "AwemeListCell"
 
 enum AwemeType {

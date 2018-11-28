@@ -6,7 +6,7 @@
 #import "WXUserHelper.h"
 #import "WXChatViewController.h"
 #import "WXRootViewController.h"
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 #define     FRIENDS_SPACE_X         10.0f
 #define     FRIENDS_SPACE_Y         9.5f
 @interface WXGroupCell ()

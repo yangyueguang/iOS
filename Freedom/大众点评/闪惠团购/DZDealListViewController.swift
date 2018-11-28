@@ -2,9 +2,7 @@
 //  DZDealListViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
-import XCategory
 class DZDealListViewTransverseCell:BaseTableViewCell{
     override func initUI() {
         super.initUI()

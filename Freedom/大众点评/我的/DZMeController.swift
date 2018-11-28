@@ -2,7 +2,6 @@
 //  DZMeController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class DZMeViewCell:BaseTableViewCell{
     override func initUI() {

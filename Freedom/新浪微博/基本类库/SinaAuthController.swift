@@ -5,8 +5,6 @@
 //  Created by Super on 6/28/18.
 //  Copyright © 2018 薛超. All rights reserved.
 import UIKit
-import BaseFile
-import XCategory
 import SVProgressHUD
 import AFNetworking
 class SinaAccount: NSObject {

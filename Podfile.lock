@@ -31,8 +31,6 @@ PODS:
     - AXNavigationBackItemInjection
     - AXPracticalHUD
     - NJKWebViewProgress
-  - BaseFile (0.3.6):
-    - SDWebImage
   - BlocksKit (2.2.5):
     - BlocksKit/All (= 2.2.5)
   - BlocksKit/All (2.2.5):
@@ -139,7 +137,6 @@ PODS:
   - XCarryOn (0.3.6):
     - Masonry
     - MJRefresh
-  - XCategory (0.3.5)
   - XExtension (0.3.6)
   - XMLDictionary (1.4.1)
 
@@ -149,7 +146,6 @@ DEPENDENCIES:
   - AFNetworking
   - Alamofire
   - AXWebViewController
-  - BaseFile
   - BlocksKit
   - Bugly
   - CocoaAsyncSocket
@@ -194,7 +190,6 @@ DEPENDENCIES:
   - UAProgressView
   - UMengAnalytics
   - XCarryOn
-  - XCategory
   - XExtension
   - XMLDictionary
 
@@ -210,7 +205,6 @@ SPEC REPOS:
     - AXNavigationBackItemInjection
     - AXPracticalHUD
     - AXWebViewController
-    - BaseFile
     - BlocksKit
     - Bugly
     - CocoaAsyncSocket
@@ -256,7 +250,6 @@ SPEC REPOS:
     - UAProgressView
     - UMengAnalytics
     - XCarryOn
-    - XCategory
     - XExtension
     - XMLDictionary
 
@@ -271,7 +264,6 @@ SPEC CHECKSUMS:
   AXNavigationBackItemInjection: efe0446967f3cbcc85a9118decd1e145138912dd
   AXPracticalHUD: 821d170b31e050c426ef8754b07b4264a8b1d861
   AXWebViewController: 96566c473fce2806f4da696132b31777f5404c9f
-  BaseFile: 59a237e1252e00a0d3c40c418d528db2181fa4b4
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
@@ -317,10 +309,9 @@ SPEC CHECKSUMS:
   UAProgressView: 6796f5aa05037fb2940521636163b9db40a6c534
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   XCarryOn: 7d31c0225d460f355d2cadedda800e76e66eb4f3
-  XCategory: ecc42bfaf0d3f7b398d731e20a87f5eb37949b00
   XExtension: 9f271bba0e4928297a41a316590c3f49440b46ad
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: dfcafe6b36accd53f2c21eb3f16b2ed9507dcc48
+PODFILE CHECKSUM: c52a105cd3e435bc744954bb464868b9ca595e7d
 
 COCOAPODS: 1.5.3

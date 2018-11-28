@@ -12,7 +12,7 @@
 #import "MWPhotoBrowser.h"
 #import <ReactiveCocoa/ReactiveCocoa-Swift.h>
 #import "WXUserHelper.h"
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 @interface UIImagePickerController (Fixed)
 @end
 @implementation UIImagePickerController (Fixed)

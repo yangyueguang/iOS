@@ -6,7 +6,7 @@
 #import "TLEmojiBaseCell.h"
 #import "WXDBManager.h"
 #import "WXModes.h"
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 #import <AddressBookUI/AddressBookUI.h>
 #import <Contacts/Contacts.h>
 #import <ContactsUI/ContactsUI.h>
@@ -34,7 +34,7 @@
     _username = username;
     if (self.remarkName.length == 0 && self.nikeName.length == 0 && self.username.length > 0) {
         self.pinyin = username.pinyin;
-        self.pinyinInitial = username.pinyinInitial;
+        self.pinyinInitial = username.pinyin;
     }
 }
 - (void)setNikeName:(NSString *)nikeName{
@@ -44,7 +44,7 @@
     _nikeName = nikeName;
     if (self.remarkName.length == 0 && self.nikeName.length > 0) {
         self.pinyin = nikeName.pinyin;
-        self.pinyinInitial = nikeName.pinyinInitial;
+        self.pinyinInitial = nikeName.pinyin;
     }
 }
 - (void)setRemarkName:(NSString *)remarkName{
@@ -54,7 +54,7 @@
     _remarkName = remarkName;
     if (_remarkName.length > 0) {
         self.pinyin = remarkName.pinyin;
-        self.pinyinInitial = remarkName.pinyinInitial;
+        self.pinyinInitial = remarkName.pinyin;
     }
 }
 #pragma mark - Getter
@@ -174,7 +174,7 @@
 }
 - (NSString *)pinyinInitial{
     if (_pinyinInitial == nil) {
-        _pinyinInitial = self.groupName.pinyinInitial;
+        _pinyinInitial = self.groupName.pinyin;
     }
     return _pinyinInitial;
 }
@@ -238,7 +238,7 @@
 }
 - (NSString *)pinyinInitial{
     if (_pinyinInitial == nil) {
-        _pinyinInitial = self.name.pinyinInitial;
+        _pinyinInitial = self.name.pinyin;
     }
     return _pinyinInitial;
 }

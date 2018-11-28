@@ -2,7 +2,6 @@
 //  DetailTableViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class DetailTableViewController: TaobaoBaseViewController {
     private var titles = ["图文详情", "商品评论", "店铺推荐"]

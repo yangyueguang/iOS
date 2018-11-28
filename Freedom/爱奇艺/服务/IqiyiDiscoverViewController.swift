@@ -2,7 +2,6 @@
 //  JFDiscoverViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 import MJRefresh
 class IqiyiImageScrollView: UIView, UIScrollViewDelegate {

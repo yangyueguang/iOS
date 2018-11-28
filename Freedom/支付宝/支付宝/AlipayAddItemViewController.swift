@@ -2,7 +2,6 @@
 //  SDAddItemViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class AlipayAddItemGridView: UIScrollView, UIScrollViewDelegate {
     var gridModelsArray = [Any]()

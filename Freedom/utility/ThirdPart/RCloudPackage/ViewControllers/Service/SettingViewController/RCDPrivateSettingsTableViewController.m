@@ -264,7 +264,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
       }
       if ([portraitUrl isEqualToString:@""]) {
         UIView *defaultPortrait = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
-          defaultPortrait.backgroundColor = [UIColor randomColor];
+          defaultPortrait.backgroundColor = [UIColor redColor];
           NSString *firstLetter = [ChineseToPinyin firstPinyinFromChinise:nickname];
           UILabel *firstCharacterLabel = [[UILabel alloc] initWithFrame:CGRectMake(defaultPortrait.frame.size.width / 2 - 30, defaultPortrait.frame.size.height / 2 - 30, 60, 60)];
           firstCharacterLabel.text = firstLetter;

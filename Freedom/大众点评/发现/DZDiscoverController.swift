@@ -2,7 +2,6 @@
 //  DZDiscoverController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class DZDiscoverController: DZBaseViewController {
     override func viewDidLoad() {

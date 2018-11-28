@@ -3,7 +3,6 @@
 // Created by Super
 #import "WXWebViewController.h"
 #import <UMMobClick/MobClick.h>
-#import <XCategory/UIBarButtonItem+expanded.h>
 #define     WEBVIEW_NAVBAR_ITEMS_FIXED_SPACE    9
 @interface WXWebViewController ()
 @property (nonatomic, strong) WKWebView *webView;
@@ -47,7 +46,7 @@
     [self.progressView setProgress:0.0f];
     [self.webView loadRequest:[NSURLRequest requestWithURL:TLURL(self.url)]];
     if (!self.disableBackButton && self.navigationItem.leftBarButtonItems.count <= 2) {
-        [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem fixItemSpace:-WEBVIEW_NAVBAR_ITEMS_FIXED_SPACE], self.backButtonItem]];
+        [self.navigationItem setLeftBarButtonItems:@[self.backButtonItem]];
     }
 }
 - (void)viewWillDisappear:(BOOL)animated{
@@ -97,7 +96,7 @@
 - (void)navBackButotnDown{
     if (self.webView.canGoBack) {
         [self.webView goBack];
-        [self.navigationItem setLeftBarButtonItems:@[[UIBarButtonItem fixItemSpace:-WEBVIEW_NAVBAR_ITEMS_FIXED_SPACE], self.backButtonItem, self.closeButtonItem]];
+        [self.navigationItem setLeftBarButtonItems:@[self.backButtonItem, self.closeButtonItem]];
     }else{
         [self.navigationController popViewControllerAnimated:YES];
     }

@@ -10,7 +10,6 @@
 #define         WIDTH_CELL          ((APPW - EDGE * 2 - SPACE_CELL * 2.0) / 3.0)
 #define         HEIGHT_CELL         (WIDTH_CELL + 20)
 #import "WXExpressionHelper.h"
-#import <XCategory/UIImage+expanded.h>
 #import <UIKit/UIKit.h>
 #import "TLEmojiBaseCell.h"
 @interface WXExpressionPublicCell : UICollectionViewCell

@@ -2,7 +2,6 @@
 //  DZDealController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class DZDealController: DZBaseViewController {
     override func viewDidLoad() {

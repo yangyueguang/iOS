@@ -13,6 +13,7 @@
 #import "RCDBaseSettingTableViewCell.h"
 #import <RongIMKit/RongIMKit.h>
 #import "RCDBaseSettingTableViewCell.h"
+#import <XExtension/XExtension-umbrella.h>
 @interface RCDSquareCell : RCDBaseSettingTableViewCell
 -(id)initWithIconName:(NSString *)iconName TitleName:(NSString *)titleName;
 @end
@@ -25,7 +26,7 @@
         self.leftImageCornerRadius = 5.f;
         self.leftLabel.text = titleName;
         self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
-        self.selectedBackgroundView.backgroundColor = [UIColor colorWithRGBHex:0xf5f5f5];
+        self.selectedBackgroundView.backgroundColor = [UIColor greenColor];
     }
     return self;
 }

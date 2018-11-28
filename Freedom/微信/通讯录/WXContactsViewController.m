@@ -9,7 +9,7 @@
 #define     FRIENDS_SPACE_Y         9.5f
 #import "WXTableViewCell.h"
 #import <UMMobClick/MobClick.h>
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 #import "WXFriendsViewController.h"
 /*通讯录 Cell*/
 @interface WechatContactCell : WXTableViewCell

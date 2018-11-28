@@ -42,13 +42,13 @@
             return;
         }
         self.scannerLine.center = CGPointMake(self.bgView.center.x,self.scannerLine.center.y);
-        self.scannerLine.frameWidth = self.bgView.frame.size.width * 1.4;
         self.scannerLine.frameHeight = 10;
         if (self.scannerLine.frameY + self.scannerLine.frameHeight >= self.frameHeight) {
             self.scannerLine.frameY = 0;
         }else{
             self.scannerLine.frameY ++;
         }
+        self.scannerLine.frame = CGRectMake(self.scannerLine.frame.origin.x, self.scannerLine.frame.origin.y, self.bgView.frame.size.width * 1.4, self.scannerLine.frame.size.height);
     } repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }

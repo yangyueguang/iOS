@@ -11,7 +11,6 @@
 #import "WXRootViewController.h"
 #define         WIDTH_AVATAR        65
 #import "WXTableViewCell.h"
-#import <XCategory/UIBarButtonItem+expanded.h>
 @interface WXMomentsProxy : NSObject
 - (NSArray *)testData;
 @end

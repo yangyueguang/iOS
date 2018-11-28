@@ -1241,6 +1241,18 @@
 		DF7B408921AC020A00E3D975 /* AwemeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406C21AC020A00E3D975 /* AwemeListController.swift */; };
 		DF7B408A21AC020A00E3D975 /* AwemeListCellViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406D21AC020A00E3D975 /* AwemeListCellViews.swift */; };
 		DF7B408B21AC020A00E3D975 /* AVPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */; };
+		DFFA80AF21AE9672009B1999 /* NSFileManager+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80AE21AE9672009B1999 /* NSFileManager+expanded.m */; };
+		DFFA80B521AEC3D4009B1999 /* NSObject+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80B421AEC3D4009B1999 /* NSObject+expanded.m */; };
+		DFFA80B821AEC407009B1999 /* UILabel+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80B621AEC407009B1999 /* UILabel+expanded.m */; };
+		DFFA80C221AEC84D009B1999 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80B921AEC84B009B1999 /* BaseTableViewCell.swift */; };
+		DFFA80C321AEC84D009B1999 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80BA21AEC84B009B1999 /* BaseNavigationViewController.swift */; };
+		DFFA80C421AEC84D009B1999 /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80BB21AEC84B009B1999 /* BaseTabBarViewController.swift */; };
+		DFFA80C521AEC84D009B1999 /* BaseStaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80BC21AEC84C009B1999 /* BaseStaticView.swift */; };
+		DFFA80C621AEC84D009B1999 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80BD21AEC84C009B1999 /* BaseViewController.swift */; };
+		DFFA80C721AEC84D009B1999 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80BE21AEC84C009B1999 /* BaseCollectionViewCell.swift */; };
+		DFFA80C821AEC84D009B1999 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80BF21AEC84C009B1999 /* BaseCollectionView.swift */; };
+		DFFA80C921AEC84D009B1999 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80C021AEC84D009B1999 /* BaseScrollView.swift */; };
+		DFFA80CA21AEC84D009B1999 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80C121AEC84D009B1999 /* BaseTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2716,6 +2728,21 @@
 		DF7B406C21AC020A00E3D975 /* AwemeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwemeListController.swift; sourceTree = "<group>"; };
 		DF7B406D21AC020A00E3D975 /* AwemeListCellViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwemeListCellViews.swift; sourceTree = "<group>"; };
 		DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerManager.swift; sourceTree = "<group>"; };
+		DFFA80AD21AE9672009B1999 /* NSFileManager+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+expanded.h"; sourceTree = "<group>"; };
+		DFFA80AE21AE9672009B1999 /* NSFileManager+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+expanded.m"; sourceTree = "<group>"; };
+		DFFA80B321AEC3D3009B1999 /* NSObject+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+expanded.h"; sourceTree = "<group>"; };
+		DFFA80B421AEC3D4009B1999 /* NSObject+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+expanded.m"; sourceTree = "<group>"; };
+		DFFA80B621AEC407009B1999 /* UILabel+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+expanded.m"; sourceTree = "<group>"; };
+		DFFA80B721AEC407009B1999 /* UILabel+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+expanded.h"; sourceTree = "<group>"; };
+		DFFA80B921AEC84B009B1999 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		DFFA80BA21AEC84B009B1999 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
+		DFFA80BB21AEC84B009B1999 /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
+		DFFA80BC21AEC84C009B1999 /* BaseStaticView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseStaticView.swift; sourceTree = "<group>"; };
+		DFFA80BD21AEC84C009B1999 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		DFFA80BE21AEC84C009B1999 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		DFFA80BF21AEC84C009B1999 /* BaseCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
+		DFFA80C021AEC84D009B1999 /* BaseScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScrollView.swift; sourceTree = "<group>"; };
+		DFFA80C121AEC84D009B1999 /* BaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
 		ECEF9FF4F388896C86BFA3B3 /* Pods-MyFirstAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstAPP/Pods-MyFirstAPP.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2931,6 +2958,8 @@
 		7745C1E21D6713CD002212DE /* 基本类库 */ = {
 			isa = PBXGroup;
 			children = (
+				DFFA80AD21AE9672009B1999 /* NSFileManager+expanded.h */,
+				DFFA80AE21AE9672009B1999 /* NSFileManager+expanded.m */,
 				71ECDFC32091F9F700495467 /* WXRootViewController.h */,
 				71ECDFC42091F9F700495467 /* WXRootViewController.m */,
 				BF6E568A1FAAEE61005F7DF8 /* WXImageBrowserController.h */,
@@ -3865,6 +3894,10 @@
 				71250EC52091C0F20093B59B /* FreedomTools.m */,
 				71250EC72091C1DA0093B59B /* NSObject+Freedom.h */,
 				71250EC82091C1DA0093B59B /* NSObject+Freedom.m */,
+				DFFA80B321AEC3D3009B1999 /* NSObject+expanded.h */,
+				DFFA80B421AEC3D4009B1999 /* NSObject+expanded.m */,
+				DFFA80B721AEC407009B1999 /* UILabel+expanded.h */,
+				DFFA80B621AEC407009B1999 /* UILabel+expanded.m */,
 				BF4E8BB22106F588002547CF /* NSObject+Safe.h */,
 				BF4E8BB32106F588002547CF /* NSObject+Safe.m */,
 				713728CE20AE9FC500A3227A /* FoundationSwift.swift */,
@@ -3879,6 +3912,15 @@
 		7759B6E81D0EA3E900AE3A59 /* BaseFile */ = {
 			isa = PBXGroup;
 			children = (
+				DFFA80BF21AEC84C009B1999 /* BaseCollectionView.swift */,
+				DFFA80BE21AEC84C009B1999 /* BaseCollectionViewCell.swift */,
+				DFFA80BA21AEC84B009B1999 /* BaseNavigationViewController.swift */,
+				DFFA80C021AEC84D009B1999 /* BaseScrollView.swift */,
+				DFFA80BC21AEC84C009B1999 /* BaseStaticView.swift */,
+				DFFA80BB21AEC84B009B1999 /* BaseTabBarViewController.swift */,
+				DFFA80C121AEC84D009B1999 /* BaseTableView.swift */,
+				DFFA80B921AEC84B009B1999 /* BaseTableViewCell.swift */,
+				DFFA80BD21AEC84C009B1999 /* BaseViewController.swift */,
 				7115A5AE20AABCB8000D0B96 /* XBaseTabBarController.swift */,
 				7115A5A420AA9EF1000D0B96 /* XBaseNavigationViewController.swift */,
 				7115A5A220AA9ECB000D0B96 /* XBaseViewController.swift */,
@@ -6760,7 +6802,6 @@
 				"${BUILT_PRODUCTS_DIR}/AXWebViewController/AXWebViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
-				"${BUILT_PRODUCTS_DIR}/BaseFile/BaseFile.framework",
 				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
@@ -6803,7 +6844,6 @@
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/UAProgressView/UAProgressView.framework",
 				"${BUILT_PRODUCTS_DIR}/XCarryOn/XCarryOn.framework",
-				"${BUILT_PRODUCTS_DIR}/XCategory/XCategory.framework",
 				"${BUILT_PRODUCTS_DIR}/XExtension/XExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/XMLDictionary/XMLDictionary.framework",
 			);
@@ -6819,7 +6859,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXWebViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BaseFile.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlocksKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
@@ -6862,7 +6901,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UAProgressView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCarryOn.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCategory.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XMLDictionary.framework",
 			);
@@ -6909,10 +6947,12 @@
 				713EE30E20ADA08F0085B65D /* IqiyiSubscribeViewController.swift in Sources */,
 				BFEF19882101E821003DCAC1 /* RRStockChartView.m in Sources */,
 				BF58BB5520EF1945002CB4EE /* RCDAboutRongCloudTableViewController.m in Sources */,
+				DFFA80C521AEC84D009B1999 /* BaseStaticView.swift in Sources */,
 				7115A5E420AAD9F0000D0B96 /* ResumeCallMeViewController.swift in Sources */,
 				BFEF19932101E821003DCAC1 /* StockCategory.m in Sources */,
 				BF58BB3F20EF1945002CB4EE /* RCDSearchViewController.m in Sources */,
 				BF58BB6320EF1945002CB4EE /* RCAnnotationView.m in Sources */,
+				DFFA80B521AEC3D4009B1999 /* NSObject+expanded.m in Sources */,
 				BF6E57BD1FAC0714005F7DF8 /* WXExpressionDetailViewController.m in Sources */,
 				BF6E57BC1FAC070C005F7DF8 /* WXExpressionPublicViewController.m in Sources */,
 				BF6E57B81FAC06C6005F7DF8 /* WXMyQRCodeViewController.m in Sources */,
@@ -6929,6 +6969,7 @@
 				BF6E57AF1FAC066B005F7DF8 /* WXMineInfoViewController.m in Sources */,
 				7115A5D220AAD3A3000D0B96 /* PersonalLuxuryViewController.swift in Sources */,
 				DF7B408221AC020A00E3D975 /* DouyinMessageViewController.swift in Sources */,
+				DFFA80C821AEC84D009B1999 /* BaseCollectionView.swift in Sources */,
 				BF6E572F1FABFCF2005F7DF8 /* WXPrivacySettingViewController.m in Sources */,
 				BF6E572E1FABFCEA005F7DF8 /* WXAccountAndSafetyViewController.m in Sources */,
 				BF6E572D1FABFCE0005F7DF8 /* WXNewMessageSettingViewController.m in Sources */,
@@ -7037,6 +7078,7 @@
 				BF4A81452105EDCF00D32FB0 /* XBaseTableView.m in Sources */,
 				BF5B9B831F8E67CC00BD885E /* HappyViewController.swift in Sources */,
 				BFEF19A52101E821003DCAC1 /* mztools.c in Sources */,
+				DFFA80B821AEC407009B1999 /* UILabel+expanded.m in Sources */,
 				BFEF19A02101E821003DCAC1 /* StockChartTitleView.m in Sources */,
 				7121194220ABDD4B0087E05B /* EnergyShopTabBarController.swift in Sources */,
 				71ECDFC82091F9F800495467 /* WXModes.m in Sources */,
@@ -7131,6 +7173,7 @@
 				7115A5B420AAC2E3000D0B96 /* PersonalApplyTabBarController.swift in Sources */,
 				BF58BB2D20EF1945002CB4EE /* RCDContactSelectedTableViewController.m in Sources */,
 				7121197020AC24F60087E05B /* ToutiaoVideoViewController.swift in Sources */,
+				DFFA80C421AEC84D009B1999 /* BaseTabBarViewController.swift in Sources */,
 				7741F0BC1D6D380800EED332 /* README.md in Sources */,
 				71ECE04E2092128E00495467 /* WXUserGroupCell.m in Sources */,
 				713EE2C020AD9B060085B65D /* DZDealListViewController.swift in Sources */,
@@ -7146,6 +7189,7 @@
 				DF7B408B21AC020A00E3D975 /* AVPlayerManager.swift in Sources */,
 				71ECDFC12091F9EF00495467 /* WXUserHelper.m in Sources */,
 				DF7B408821AC020A00E3D975 /* AwemeListCell.swift in Sources */,
+				DFFA80CA21AEC84D009B1999 /* BaseTableView.swift in Sources */,
 				BF58BB5720EF1945002CB4EE /* RCDChatViewController.m in Sources */,
 				DF7B407721AC020A00E3D975 /* Extensions.swift in Sources */,
 				BF58B94A20EB22C9002CB4EE /* XTablesViewController.swift in Sources */,
@@ -7190,6 +7234,7 @@
 				BF58BB4F20EF1945002CB4EE /* RCDChangePasswordViewController.m in Sources */,
 				BFEF19A42101E821003DCAC1 /* ioapi.c in Sources */,
 				7121195020AC0C000087E05B /* JuhePublicViewController.swift in Sources */,
+				DFFA80C621AEC84D009B1999 /* BaseViewController.swift in Sources */,
 				BF58BB4920EF1945002CB4EE /* RCDDiscussGroupSettingViewController.m in Sources */,
 				7165A3E220A5903D001C60D6 /* WXBaseViewController.m in Sources */,
 				7115A5E620AAECED000D0B96 /* BooksTabBarController.swift in Sources */,
@@ -7225,7 +7270,9 @@
 				713EE2E220AD9C240085B65D /* AlipayDiscoverTableViewController.swift in Sources */,
 				713EE30020ADA00E0085B65D /* IqiyiNavigationController.swift in Sources */,
 				BF6E56AF1FAAF7D6005F7DF8 /* WXSettingViewController.m in Sources */,
+				DFFA80C721AEC84D009B1999 /* BaseCollectionViewCell.swift in Sources */,
 				BFEF19CB2101E990003DCAC1 /* TSViewController.m in Sources */,
+				DFFA80C321AEC84D009B1999 /* BaseNavigationViewController.swift in Sources */,
 				7121196020AC0C620087E05B /* JuheDynamicViewController.swift in Sources */,
 				7121192020ABC4990087E05B /* EnergyBaseViewController.swift in Sources */,
 				7121194620ABE3660087E05B /* MicroEnergyTabBarController.swift in Sources */,
@@ -7272,6 +7319,7 @@
 				BFEF19942101E821003DCAC1 /* StockDetailHeaderView.m in Sources */,
 				BF58BB1520EF1944002CB4EE /* RCloudModel.m in Sources */,
 				BF58BB2520EF1944002CB4EE /* RCDChatRoomViewController.m in Sources */,
+				DFFA80AF21AE9672009B1999 /* NSFileManager+expanded.m in Sources */,
 				71ECE001209210BF00495467 /* WXTagsViewController.m in Sources */,
 				713EE31420ADA0AF0085B65D /* IqiyiClassifyViewController.swift in Sources */,
 				DF7B408521AC020A00E3D975 /* DouyinMeViewController.swift in Sources */,
@@ -7295,6 +7343,7 @@
 				71267A522092DC7B006E1B96 /* BookFriendsMode.m in Sources */,
 				7788AC621D7996E000376C95 /* E_CommentViewController.m in Sources */,
 				BF58BB4D20EF1945002CB4EE /* RCDMessageNoDisturbSettingController.m in Sources */,
+				DFFA80C221AEC84D009B1999 /* BaseTableViewCell.swift in Sources */,
 				BF5B9B711F8E675100BD885E /* LoveViewController.swift in Sources */,
 				7121192E20ABC5060087E05B /* EnergyDetailViewController.swift in Sources */,
 				713EE2B020AD8FDB0085B65D /* AlipayNavigationViewController.swift in Sources */,
@@ -7305,6 +7354,7 @@
 				713EE2E020AD9C120085B65D /* AlipayAddItemViewController.swift in Sources */,
 				BFEF19992101E821003DCAC1 /* HYKLineBelowView.m in Sources */,
 				7788AC631D7996E000376C95 /* E_ReaderViewController.m in Sources */,
+				DFFA80C921AEC84D009B1999 /* BaseScrollView.swift in Sources */,
 				71ECE01D2092121F00495467 /* WXMomentDetailViewController.m in Sources */,
 				7121196820AC24A70087E05B /* ToutiaoBaseViewController.swift in Sources */,
 				7121195420AC0C170087E05B /* JuheAboutUSViewController.swift in Sources */,

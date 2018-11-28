@@ -3,7 +3,7 @@
 // Created by Super
 #import "WXQRCodeViewController.h"
 #import <BlocksKit/BlocksKit+UIKit.h>
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 #define         SPACE_EDGE                  20
 #define         WIDTH_AVATAR                68
 @interface WXQRCodeViewController ()

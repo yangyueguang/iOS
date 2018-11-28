@@ -7,9 +7,8 @@
 #import "WXModes.h"
 #import <ReactiveCocoa/ReactiveCocoa-Swift.h>
 #import "WXCommonSettingViewController.h"
-#import <XCategory/UIImage+expanded.h>
 #import "WXBaseViewController.h"
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 #define     SPACE_EDGE                      10
 #define     WIDTH_COLLECTIONVIEW_CELL       (APPW - SPACE_EDGE * 2) / 3 * 0.98
 #define     SPACE_COLLECTIONVIEW_CELL       (APPW - SPACE_EDGE * 2 - WIDTH_COLLECTIONVIEW_CELL * 3) / 2
@@ -139,7 +138,7 @@
 }
 #pragma mark - Private Methods -
 - (void)p_setChatBackgroundImage:(UIImage *)image{
-    image = [image scalingToSize:self.view.frameSize];
+    
     NSData *imageData = (UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) :UIImageJPEGRepresentation(image, 1));
     NSString *imageName = [NSString stringWithFormat:@"%lf.jpg", [NSDate date].timeIntervalSince1970];
     NSString *imagePath = [NSFileManager pathUserChatBackgroundImage:imageName];;

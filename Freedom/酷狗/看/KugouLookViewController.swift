@@ -2,7 +2,6 @@
 //  LookViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class KugouLookViewCell:BaseTableViewCell{
     override func initUI() {

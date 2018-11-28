@@ -12,7 +12,7 @@
 #import "WXUserHelper.h"
 #import "CocoaLumberjack.h"
 #import <UMMobClick/MobClick.h>
-#import <XCategory/NSFileManager+expanded.h>
+#import "NSFileManager+expanded.h"
 #import <BlocksKit/BlocksKit+UIKit.h>
 static WXRootViewController *rootVC = nil;
 @interface WXRootViewController ()

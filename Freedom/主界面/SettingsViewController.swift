@@ -8,7 +8,6 @@
 import UIKit
 import ElasticTransitionObjC
 import XExtension
-import BaseFile
 class SettingsViewController: XBaseViewController ,ElasticMenuTransitionDelegate{
     var contentLength:CGFloat = APPW * 0.8
     var dismissByBackgroundTouch = true

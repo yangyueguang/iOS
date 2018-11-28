@@ -2,7 +2,6 @@
 //  SDHomeViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
 class AlipayHomeGridItemModel: NSObject {
     var imageResString = ""

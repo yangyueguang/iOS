@@ -2,9 +2,7 @@
 //  TaobaoMiniDynamicViewController.swift
 //  Freedom
 import UIKit
-import BaseFile
 import XExtension
-import XCategory
 class TaobaoMiniDynamicViewCell:BaseTableViewCell{
     override func initUI() {
         super.initUI()
