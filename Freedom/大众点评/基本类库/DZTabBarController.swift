@@ -2,7 +2,7 @@
 //  DianpingTabBarController.swift
 //  Freedom
 import UIKit
-class DZTabBarController: XBaseTabBarController {
+class DZTabBarController: BaseTabBarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         for vc in self.children{

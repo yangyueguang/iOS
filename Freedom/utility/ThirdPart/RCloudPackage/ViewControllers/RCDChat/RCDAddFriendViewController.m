@@ -15,8 +15,8 @@
 @implementation RCDAddFriendViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.backgroundColor = [UIColor colorWithRGBHex:0xf0f0f6];
-    self.tableView.separatorColor = [UIColor colorWithRGBHex:0xdfdfdf];
+    self.tableView.backgroundColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
+    self.tableView.separatorColor = [FreedomTools colorWithRGBHex:0xdfdfdf];
     self.navigationItem.title = @"添加好友";
     [self setHeaderView];
     [self setFooterView];
@@ -76,7 +76,7 @@
 - (void)setFooterView{
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 500)];
     self.addFriendBtn = [[UIButton alloc]initWithFrame:CGRectMake(10,30,self.view.bounds.size.width, 86)];
-    [self.addFriendBtn setBackgroundColor:[UIColor colorWithRGBHex:0x0099ff]];
+    [self.addFriendBtn setBackgroundColor:[FreedomTools colorWithRGBHex:0x0099ff]];
     self.addFriendBtn.layer.masksToBounds = YES;
     self.addFriendBtn.layer.cornerRadius = 5.f;
     [self.addFriendBtn setTitle:@"添加好友" forState:UIControlStateNormal];
@@ -86,7 +86,7 @@
     self.startChat = [[UIButton alloc]initWithFrame:CGRectMake(10,30,self.view.bounds.size.width, 86)];
     [self.startChat setTitle:@"发起会话" forState:UIControlStateNormal];
     [self.startChat setTintColor:[UIColor blackColor]];
-    [self.startChat setBackgroundColor:[UIColor colorWithRGBHex:0x0099ff]];
+    [self.startChat setBackgroundColor:[FreedomTools colorWithRGBHex:0x0099ff]];
     self.startChat.layer.masksToBounds = YES;
     self.startChat.layer.cornerRadius = 5.f;
     [view addSubview:self.startChat];

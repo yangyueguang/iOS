@@ -37,9 +37,11 @@ char pinyinFirstLetter(unsigned short hanzi);
 + (NSString *)getFirstUpperLetter:(NSString *)hanzi;
 + (NSMutableDictionary *)sortedArrayWithPinYinDic:(NSArray *)userList;
 + (BOOL)isContains:(NSString *)firstString withString:(NSString *)secondString;
-+ (UIImage*) getImageWithColor:(UIColor*)color andHeight:(CGFloat)height;
++ (UIImage*)imageWithColor:(UIColor*)color;
 + (UIBarButtonItem *)barButtonItemContainImage:(UIImage *)buttonImage imageViewFrame:(CGRect)imageFrame buttonTitle:(NSString *)buttonTitle titleColor:(UIColor*)titleColor titleFrame:(CGRect)titleFrame buttonFrame:(CGRect)buttonFrame target:(id)target action:(SEL)method;
 /// 正则判断字符串是否是中文
 + (BOOL)isChinese:(NSString *)str;
 + (void)show:(NSString *)msg;
+
++ (UIColor *)colorWithRGBHex:(UInt32)hex ;
 @end

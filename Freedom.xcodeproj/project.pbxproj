@@ -7,13 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7115A5A320AA9ECB000D0B96 /* XBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5A220AA9ECB000D0B96 /* XBaseViewController.swift */; };
-		7115A5A520AA9EF1000D0B96 /* XBaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5A420AA9EF1000D0B96 /* XBaseNavigationViewController.swift */; };
 		7115A5A720AA9FE3000D0B96 /* FreedomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5A620AA9FE3000D0B96 /* FreedomNavigationController.swift */; };
 		7115A5A920AAA191000D0B96 /* FreedomBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5A820AAA191000D0B96 /* FreedomBooksViewController.swift */; };
 		7115A5AB20AAA1C4000D0B96 /* FreedomBooksEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5AA20AAA1C4000D0B96 /* FreedomBooksEditViewController.swift */; };
 		7115A5AD20AAA1F1000D0B96 /* FreedomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5AC20AAA1F1000D0B96 /* FreedomViewController.swift */; };
-		7115A5AF20AABCB8000D0B96 /* XBaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5AE20AABCB8000D0B96 /* XBaseTabBarController.swift */; };
 		7115A5B120AABCF6000D0B96 /* FreedomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5B020AABCF6000D0B96 /* FreedomTabBarController.swift */; };
 		7115A5B420AAC2E3000D0B96 /* PersonalApplyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5B320AAC2E3000D0B96 /* PersonalApplyTabBarController.swift */; };
 		7115A5B620AAC314000D0B96 /* PersonalApplyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5B520AAC314000D0B96 /* PersonalApplyNavigationController.swift */; };
@@ -162,7 +159,6 @@
 		713EE31420ADA0AF0085B65D /* IqiyiClassifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EE31320ADA0AF0085B65D /* IqiyiClassifyViewController.swift */; };
 		713EE31620ADA0BA0085B65D /* IqiyiWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EE31520ADA0BA0085B65D /* IqiyiWebViewController.swift */; };
 		71517B1C2094803300B40538 /* JSONObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71517B1B2094803300B40538 /* JSONObject.swift */; };
-		7165A3B120A57EFE001C60D6 /* XTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165A3B020A57EFE001C60D6 /* XTableView.swift */; };
 		7165A3C920A58D77001C60D6 /* emoticonkeyboardbutton_sd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7165A3B220A58D64001C60D6 /* emoticonkeyboardbutton_sd.png */; };
 		7165A3CE20A58D77001C60D6 /* compose_slogan.png in Resources */ = {isa = PBXBuildFile; fileRef = 7165A3B720A58D68001C60D6 /* compose_slogan.png */; };
 		7165A3D020A58D77001C60D6 /* emoticon_keyboard_magnifier.png in Resources */ = {isa = PBXBuildFile; fileRef = 7165A3B920A58D6A001C60D6 /* emoticon_keyboard_magnifier.png */; };
@@ -972,7 +968,6 @@
 		BF4A80F92105D21300D32FB0 /* NetManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80F82105D21300D32FB0 /* NetManger.swift */; };
 		BF4A81452105EDCF00D32FB0 /* XBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A81442105EDCF00D32FB0 /* XBaseTableView.m */; };
 		BF4A81482105EDDA00D32FB0 /* CLLRefreshHeadController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A81462105EDD900D32FB0 /* CLLRefreshHeadController.m */; };
-		BF4E8BB42106F588002547CF /* NSObject+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4E8BB32106F588002547CF /* NSObject+Safe.m */; };
 		BF58B91C20EA1920002CB4EE /* MyAPP.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91B20EA1920002CB4EE /* MyAPP.plist */; };
 		BF58B92620EA1CE2002CB4EE /* app-xjb.png in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91E20EA1CE0002CB4EE /* app-xjb.png */; };
 		BF58B92720EA1CE2002CB4EE /* app-beeManager.png in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91F20EA1CE1002CB4EE /* app-beeManager.png */; };
@@ -1241,9 +1236,9 @@
 		DF7B408921AC020A00E3D975 /* AwemeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406C21AC020A00E3D975 /* AwemeListController.swift */; };
 		DF7B408A21AC020A00E3D975 /* AwemeListCellViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406D21AC020A00E3D975 /* AwemeListCellViews.swift */; };
 		DF7B408B21AC020A00E3D975 /* AVPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */; };
+		DFA5BF3621B6A74D00CB9223 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5BF3521B6A74D00CB9223 /* User.swift */; };
 		DFFA80AF21AE9672009B1999 /* NSFileManager+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80AE21AE9672009B1999 /* NSFileManager+expanded.m */; };
 		DFFA80B521AEC3D4009B1999 /* NSObject+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80B421AEC3D4009B1999 /* NSObject+expanded.m */; };
-		DFFA80B821AEC407009B1999 /* UILabel+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80B621AEC407009B1999 /* UILabel+expanded.m */; };
 		DFFA80C221AEC84D009B1999 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80B921AEC84B009B1999 /* BaseTableViewCell.swift */; };
 		DFFA80C321AEC84D009B1999 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80BA21AEC84B009B1999 /* BaseNavigationViewController.swift */; };
 		DFFA80C421AEC84D009B1999 /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80BB21AEC84B009B1999 /* BaseTabBarViewController.swift */; };
@@ -1275,13 +1270,10 @@
 /* Begin PBXFileReference section */
 		02AF73C9BE55F816B9D738C7 /* Pods_MyFirstAPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFirstAPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60338462214883C1C05F8646 /* Pods_Freedom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freedom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7115A5A220AA9ECB000D0B96 /* XBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBaseViewController.swift; sourceTree = "<group>"; };
-		7115A5A420AA9EF1000D0B96 /* XBaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBaseNavigationViewController.swift; sourceTree = "<group>"; };
 		7115A5A620AA9FE3000D0B96 /* FreedomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomNavigationController.swift; sourceTree = "<group>"; };
 		7115A5A820AAA191000D0B96 /* FreedomBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomBooksViewController.swift; sourceTree = "<group>"; };
 		7115A5AA20AAA1C4000D0B96 /* FreedomBooksEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomBooksEditViewController.swift; sourceTree = "<group>"; };
 		7115A5AC20AAA1F1000D0B96 /* FreedomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomViewController.swift; sourceTree = "<group>"; };
-		7115A5AE20AABCB8000D0B96 /* XBaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBaseTabBarController.swift; sourceTree = "<group>"; };
 		7115A5B020AABCF6000D0B96 /* FreedomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomTabBarController.swift; sourceTree = "<group>"; };
 		7115A5B320AAC2E3000D0B96 /* PersonalApplyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalApplyTabBarController.swift; sourceTree = "<group>"; };
 		7115A5B520AAC314000D0B96 /* PersonalApplyNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalApplyNavigationController.swift; sourceTree = "<group>"; };
@@ -1437,7 +1429,6 @@
 		713EE31320ADA0AF0085B65D /* IqiyiClassifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IqiyiClassifyViewController.swift; sourceTree = "<group>"; };
 		713EE31520ADA0BA0085B65D /* IqiyiWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IqiyiWebViewController.swift; sourceTree = "<group>"; };
 		71517B1B2094803300B40538 /* JSONObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONObject.swift; sourceTree = "<group>"; };
-		7165A3B020A57EFE001C60D6 /* XTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTableView.swift; sourceTree = "<group>"; };
 		7165A3B220A58D64001C60D6 /* emoticonkeyboardbutton_sd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emoticonkeyboardbutton_sd.png; sourceTree = "<group>"; };
 		7165A3B720A58D68001C60D6 /* compose_slogan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose_slogan.png; sourceTree = "<group>"; };
 		7165A3B920A58D6A001C60D6 /* emoticon_keyboard_magnifier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emoticon_keyboard_magnifier.png; sourceTree = "<group>"; };
@@ -2323,8 +2314,6 @@
 		BF4A81442105EDCF00D32FB0 /* XBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBaseTableView.m; sourceTree = "<group>"; };
 		BF4A81462105EDD900D32FB0 /* CLLRefreshHeadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLRefreshHeadController.m; sourceTree = "<group>"; };
 		BF4A81472105EDDA00D32FB0 /* CLLRefreshHeadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLRefreshHeadController.h; sourceTree = "<group>"; };
-		BF4E8BB22106F588002547CF /* NSObject+Safe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Safe.h"; sourceTree = "<group>"; };
-		BF4E8BB32106F588002547CF /* NSObject+Safe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Safe.m"; sourceTree = "<group>"; };
 		BF58B91B20EA1920002CB4EE /* MyAPP.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyAPP.plist; sourceTree = "<group>"; };
 		BF58B91E20EA1CE0002CB4EE /* app-xjb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-xjb.png"; sourceTree = "<group>"; };
 		BF58B91F20EA1CE1002CB4EE /* app-beeManager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-beeManager.png"; sourceTree = "<group>"; };
@@ -2728,12 +2717,11 @@
 		DF7B406C21AC020A00E3D975 /* AwemeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwemeListController.swift; sourceTree = "<group>"; };
 		DF7B406D21AC020A00E3D975 /* AwemeListCellViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwemeListCellViews.swift; sourceTree = "<group>"; };
 		DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerManager.swift; sourceTree = "<group>"; };
+		DFA5BF3521B6A74D00CB9223 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DFFA80AD21AE9672009B1999 /* NSFileManager+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+expanded.h"; sourceTree = "<group>"; };
 		DFFA80AE21AE9672009B1999 /* NSFileManager+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+expanded.m"; sourceTree = "<group>"; };
 		DFFA80B321AEC3D3009B1999 /* NSObject+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+expanded.h"; sourceTree = "<group>"; };
 		DFFA80B421AEC3D4009B1999 /* NSObject+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+expanded.m"; sourceTree = "<group>"; };
-		DFFA80B621AEC407009B1999 /* UILabel+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+expanded.m"; sourceTree = "<group>"; };
-		DFFA80B721AEC407009B1999 /* UILabel+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+expanded.h"; sourceTree = "<group>"; };
 		DFFA80B921AEC84B009B1999 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		DFFA80BA21AEC84B009B1999 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		DFFA80BB21AEC84B009B1999 /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
@@ -3896,12 +3884,9 @@
 				71250EC82091C1DA0093B59B /* NSObject+Freedom.m */,
 				DFFA80B321AEC3D3009B1999 /* NSObject+expanded.h */,
 				DFFA80B421AEC3D4009B1999 /* NSObject+expanded.m */,
-				DFFA80B721AEC407009B1999 /* UILabel+expanded.h */,
-				DFFA80B621AEC407009B1999 /* UILabel+expanded.m */,
-				BF4E8BB22106F588002547CF /* NSObject+Safe.h */,
-				BF4E8BB32106F588002547CF /* NSObject+Safe.m */,
 				713728CE20AE9FC500A3227A /* FoundationSwift.swift */,
 				BF58BA2F20EDE837002CB4EE /* FreedomToolSwift.swift */,
+				DFA5BF3521B6A74D00CB9223 /* User.swift */,
 				77CC4F3B1D90DF6200DD2EC8 /* Foundation.h */,
 				77CC4F361D90DCC700DD2EC8 /* Foundation_API.h */,
 				779E70041E31AA5200216928 /* Foundation_enum.h */,
@@ -3921,10 +3906,6 @@
 				DFFA80C121AEC84D009B1999 /* BaseTableView.swift */,
 				DFFA80B921AEC84B009B1999 /* BaseTableViewCell.swift */,
 				DFFA80BD21AEC84C009B1999 /* BaseViewController.swift */,
-				7115A5AE20AABCB8000D0B96 /* XBaseTabBarController.swift */,
-				7115A5A420AA9EF1000D0B96 /* XBaseNavigationViewController.swift */,
-				7115A5A220AA9ECB000D0B96 /* XBaseViewController.swift */,
-				7165A3B020A57EFE001C60D6 /* XTableView.swift */,
 				77CC4F121D90DCA400DD2EC8 /* BaseOCViewController.h */,
 				77CC4F131D90DCA400DD2EC8 /* BaseOCViewController.m */,
 			);
@@ -7036,7 +7017,6 @@
 				BFEF19892101E821003DCAC1 /* HYStockChartViewController.m in Sources */,
 				BF6E56981FAAF3F7005F7DF8 /* WXWebViewController.m in Sources */,
 				7121194820AC03220087E05B /* JuheDataTabBarController.swift in Sources */,
-				BF4E8BB42106F588002547CF /* NSObject+Safe.m in Sources */,
 				71ECE0482092128E00495467 /* TLEmojiBaseCell.m in Sources */,
 				BFEF198C2101E821003DCAC1 /* HYStockChartTool.m in Sources */,
 				BFAC49C320D36A2700E5CB8D /* LibraryCollectionViewController.swift in Sources */,
@@ -7051,14 +7031,12 @@
 				713728CF20AE9FC600A3227A /* FoundationSwift.swift in Sources */,
 				713EE2D620AD9BAE0085B65D /* TaobaoCommunityViewController.swift in Sources */,
 				713EE2EA20AD9CC00085B65D /* KugouLookViewController.swift in Sources */,
-				7115A5A320AA9ECB000D0B96 /* XBaseViewController.swift in Sources */,
 				BF58BA2420EDBFBC002CB4EE /* DownloadService.swift in Sources */,
 				BFEF199F2101E821003DCAC1 /* HYTimeLineAboveView.m in Sources */,
 				713EE2B820AD903F0085B65D /* AlipayBaseViewController.swift in Sources */,
 				BF5B9B601F8E63CF00BD885E /* SearchDownloadBookViewController.swift in Sources */,
 				7121191E20ABC46F0087E05B /* EnergyNavigationController.swift in Sources */,
 				BFEF199A2101E821003DCAC1 /* HYKLineView.m in Sources */,
-				7165A3B120A57EFE001C60D6 /* XTableView.swift in Sources */,
 				7115A5DA20AAD9AA000D0B96 /* ResumeViewController.swift in Sources */,
 				7115A5F020AAFBF6000D0B96 /* MyDatabaseNavigationController.swift in Sources */,
 				7121193620ABC55C0087E05B /* EnergyShopHomeViewController.swift in Sources */,
@@ -7078,7 +7056,6 @@
 				BF4A81452105EDCF00D32FB0 /* XBaseTableView.m in Sources */,
 				BF5B9B831F8E67CC00BD885E /* HappyViewController.swift in Sources */,
 				BFEF19A52101E821003DCAC1 /* mztools.c in Sources */,
-				DFFA80B821AEC407009B1999 /* UILabel+expanded.m in Sources */,
 				BFEF19A02101E821003DCAC1 /* StockChartTitleView.m in Sources */,
 				7121194220ABDD4B0087E05B /* EnergyShopTabBarController.swift in Sources */,
 				71ECDFC82091F9F800495467 /* WXModes.m in Sources */,
@@ -7152,9 +7129,7 @@
 				BF5B9B771F8E677F00BD885E /* RelativeViewController.swift in Sources */,
 				7115A5B620AAC314000D0B96 /* PersonalApplyNavigationController.swift in Sources */,
 				BFEF19912101E821003DCAC1 /* HYStockChartConstant.m in Sources */,
-				7115A5AF20AABCB8000D0B96 /* XBaseTabBarController.swift in Sources */,
 				71ECE0252092121F00495467 /* WXScanningViewController.m in Sources */,
-				7115A5A520AA9EF1000D0B96 /* XBaseNavigationViewController.swift in Sources */,
 				713EE2A820AD8F500085B65D /* AlipayTabBarController.swift in Sources */,
 				7115A5A720AA9FE3000D0B96 /* FreedomNavigationController.swift in Sources */,
 				BF58BB6720EF1945002CB4EE /* AFHttpTool.m in Sources */,
@@ -7229,6 +7204,7 @@
 				7115A5AB20AAA1C4000D0B96 /* FreedomBooksEditViewController.swift in Sources */,
 				DF7B407F21AC020A00E3D975 /* DouyinFollowViewController.swift in Sources */,
 				BFC6D93F20E4ABFE00F17378 /* SinaMessageViewController.swift in Sources */,
+				DFA5BF3621B6A74D00CB9223 /* User.swift in Sources */,
 				713EE2EE20AD9CD90085B65D /* KugouLocalMusicViewController.swift in Sources */,
 				71517B1C2094803300B40538 /* JSONObject.swift in Sources */,
 				BF58BB4F20EF1945002CB4EE /* RCDChangePasswordViewController.m in Sources */,

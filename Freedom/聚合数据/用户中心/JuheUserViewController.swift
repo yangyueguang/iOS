@@ -17,7 +17,7 @@ class JuheUserViewCell:BaseTableViewCell{
 class JuheUserViewController: JuheBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cellHeight = 60
+        self.tableView.rowHeight = 60
         title = "个人中心"
         self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH-TopHeight))
     let headerView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 260))

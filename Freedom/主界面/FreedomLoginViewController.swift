@@ -44,7 +44,7 @@ class LoginTextField:UITextField{
     }
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()!
-        context.setStrokeColor(RGBAColor(161, 168, 168,0.2).cgColor)
+        context.setStrokeColor(UIColor(161, 168, 168,0.2).cgColor)
         context.setLineWidth(1.0)
         context.beginPath()
         context.move(to: CGPoint(x: bounds.origin.x, y: 45))
@@ -54,7 +54,7 @@ class LoginTextField:UITextField{
     }
 }
 //FIXME:登录控制器
-class FreedomBaseLoginViewController: XBaseViewController,UITextFieldDelegate,RCIMConnectionStatusDelegate {
+class FreedomBaseLoginViewController: BaseViewController,UITextFieldDelegate,RCIMConnectionStatusDelegate {
     var retryTime: Timer?
     var countTimer: Timer?
     var seconds = 0

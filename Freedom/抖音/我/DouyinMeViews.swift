@@ -283,7 +283,7 @@ class UserInfoHeader: UICollectionReusableView {
         }
     }
 
-    func initData(user:User) {
+    func initData(user:DouYinUser) {
 
         avatar.setImageWithURL(imageUrl: URL.init(string: user.avatar_medium?.url_list.first ?? "")!, completed: {[weak self] (image, error) in
             self?.avatarBackground.image = image

@@ -4,6 +4,7 @@
 import UIKit
 import XExtension
 import MJRefresh
+import XCarryOn
 class IqiyiClassifyModel: NSObject {
     var normal_icon_for_ipad_v_4 = ""
     var top_state: NSNumber?
@@ -68,7 +69,7 @@ class IqiyiClassifyViewController: IqiyiBaseViewController {
             return dataSource.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

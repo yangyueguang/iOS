@@ -33,7 +33,7 @@ class JuheTabBar: UITabBar {
         }
     }
 }
-class JuheDataTabBarController: XBaseTabBarController{
+class JuheDataTabBarController: BaseTabBarViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         var i=0

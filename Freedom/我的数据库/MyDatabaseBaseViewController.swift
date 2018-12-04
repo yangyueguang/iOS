@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Super. All rights reserved.
 //
 import UIKit
-class MyDatabaseBaseViewController: XBaseViewController {
+class MyDatabaseBaseViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

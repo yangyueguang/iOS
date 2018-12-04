@@ -20,7 +20,7 @@ class AlipayYuEBaoTableViewCellContentView: UIView {
         let yestodayView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 180))
         let IncomeView = UIView(frame: CGRect(x: 0, y: 200, width: APPW, height: 100))
         let shouyiView = UIView(frame: CGRect(x: 0, y: YH(IncomeView), width: APPW, height: 150))
-        yestodayView.backgroundColor = RGBAColor(255, 80, 2 ,1)
+        yestodayView.backgroundColor = UIColor(255, 80, 2 ,1)
         shouyiView.backgroundColor = UIColor.lightGray
         let yI = UIImageView(frame: CGRect(x: 15, y: 20, width: 10, height: 10))
         let yl = UILabel(frame: CGRect(x: XW(yI), y: 15, width: 100, height: 20))
@@ -165,7 +165,7 @@ class AlipayYuEBaoTableViewController: AlipayBaseViewController {
         })
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 550
     }
 }

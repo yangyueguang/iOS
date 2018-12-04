@@ -41,7 +41,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 //设置tableView样式
-  self.tableView.separatorColor = [UIColor colorWithRGBHex:0xdfdfdf];
+  self.tableView.separatorColor = [FreedomTools colorWithRGBHex:0xdfdfdf];
   self.tableView.tableFooterView = [UIView new];
   // self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width,12)];
   _chatRoomList = [[NSMutableArray alloc] init];

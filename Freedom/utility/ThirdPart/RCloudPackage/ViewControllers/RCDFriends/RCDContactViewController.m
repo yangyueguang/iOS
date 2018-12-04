@@ -70,12 +70,12 @@
   self.matchFriendList = [[NSMutableArray alloc] init];
   self.allFriendSectionDic = [[NSDictionary alloc] init];
   self.friendsTabelView.tableFooterView = [UIView new];
-  self.friendsTabelView.backgroundColor = [UIColor colorWithRGBHex:0xf0f0f6];
-  self.friendsTabelView.separatorColor = [UIColor colorWithRGBHex:0xdfdfdf];
+  self.friendsTabelView.backgroundColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
+  self.friendsTabelView.separatorColor = [FreedomTools colorWithRGBHex:0xdfdfdf];
   self.friendsTabelView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.friendsTabelView.bounds.size.width, 0.01f)];
   //设置右侧索引
   self.friendsTabelView.sectionIndexBackgroundColor = [UIColor clearColor];
-  self.friendsTabelView.sectionIndexColor = [UIColor colorWithRGBHex:0x555555];
+  self.friendsTabelView.sectionIndexColor = [FreedomTools colorWithRGBHex:0x555555];
   if ([self.friendsTabelView respondsToSelector:@selector(setSeparatorInset:)]) {
     [self.friendsTabelView setSeparatorInset:UIEdgeInsetsMake(0, 14, 0, 0)];
   }
@@ -86,11 +86,11 @@
   //设置顶部搜索栏的背景图片
   [self.searchFriendsBar setBackgroundImage:searchBarBg];
   //设置顶部搜索栏的背景色
-  [self.searchFriendsBar setBackgroundColor:[UIColor colorWithRGBHex:0xf0f0f6]];
+  [self.searchFriendsBar setBackgroundColor:[FreedomTools colorWithRGBHex:0xf0f0f6]];
   //设置顶部搜索栏输入框的样式
   UITextField *searchField = [self.searchFriendsBar valueForKey:@"_searchField"];
   searchField.layer.borderWidth = 0.5f;
-  searchField.layer.borderColor = [[UIColor colorWithRGBHex:0xdfdfdf] CGColor];
+  searchField.layer.borderColor = [[FreedomTools colorWithRGBHex:0xdfdfdf] CGColor];
   searchField.layer.cornerRadius = 5.f;
   self.searchFriendsBar.placeholder = @"搜索";
   self.defaultCellsTitle = [NSArray
@@ -166,7 +166,7 @@
   UILabel *title = [[UILabel alloc] initWithFrame:CGRectZero];
   title.frame = CGRectMake(13, 3, 15, 15);
   title.font = [UIFont systemFontOfSize:15.f];
-  title.textColor = [UIColor colorWithRGBHex:0x999999];
+  title.textColor = [FreedomTools colorWithRGBHex:0x999999];
   [view addSubview:title];
   if (section == 0) {
     title.text = nil;

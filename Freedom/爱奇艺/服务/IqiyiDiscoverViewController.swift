@@ -174,7 +174,7 @@ class IqiyiDiscoverViewController: IqiyiBaseViewController {
         return dataSource.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 280
         } else {

@@ -59,7 +59,7 @@
 #define Font(x)           [UIFont systemFontOfSize:x]
 /***********************       颜        色      ************************/
 #define RGBCOLOR(r,g,b)   [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
-#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+#define UIColor(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
 /************************   文  件  与  文  件  夹  ***********************/
 #define HOMEPATH          NSHomeDirectory()//主页路径
 #define documentPath      [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES) objectAtIndex:0]//Documents路径
@@ -79,9 +79,9 @@
 #define     BORDER_WIDTH_1PX            ([[UIScreen mainScreen] scale] > 0.0 ? 1.0 / [[UIScreen mainScreen] scale] : 1.0)
 #define     TLURL(urlString)    [NSURL URLWithString:urlString]
 #define     TLNoNilString(str)  (str.length > 0 ? str : @"")
-#define colorGrayLine RGBACOLOR(200, 200, 200, 1.0)
-#define colorGrayBG RGBACOLOR(239.0, 239.0, 244.0, 1.0)
-#define colorGreenDefault RGBACOLOR(2.0, 187.0, 0.0, 1.0f)
+#define colorGrayLine UIColor(200, 200, 200, 1.0)
+#define colorGrayBG UIColor(239.0, 239.0, 244.0, 1.0)
+#define colorGreenDefault UIColor(2.0, 187.0, 0.0, 1.0f)
 #define baseDomain   @"www.baidu.com"
 #define basePort     @"80"
 #define basePath     @"app"

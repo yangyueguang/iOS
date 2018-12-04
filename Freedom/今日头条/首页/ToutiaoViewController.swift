@@ -100,8 +100,8 @@ let tagids = ["12","13","14","17","19","21","22","24","25"]
         let tranScale:CGFloat = 1.2 - 1 ;//左右按钮的缩放比例
     leftButton.transform = CGAffineTransform(scaleX: scaleL * tranScale+1, y: scaleR*tranScale+1)
         rightButton?.transform = CGAffineTransform(scaleX: scaleR * tranScale + 1, y: scaleR * tranScale + 1)
-    let rightColor = RGBAColor(250, 250, 250, 1)
-        let leftColor = RGBAColor(230, 230, 230,  1)
+    let rightColor = UIColor(250, 250, 250, 1)
+        let leftColor = UIColor(230, 230, 230,  1)
         leftButton.setTitleColor(leftColor, for: .normal)
         rightButton?.setTitleColor(rightColor, for: .normal)
     }

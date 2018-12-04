@@ -59,7 +59,7 @@
     _info = info;
     [self.button setTitle:info.title forState:UIControlStateNormal];
     [self.button setBackgroundColor:info.buttonColor];
-    [self.button setBackgroundImage:[UIImage imageWithColor:info.buttonHLColor] forState:UIControlStateHighlighted];
+    [self.button setBackgroundImage:[FreedomTools imageWithColor:info.buttonHLColor] forState:UIControlStateHighlighted];
     [self.button setTitleColor:info.titleColor forState:UIControlStateNormal];
     [self.button.layer setBorderColor:info.buttonBorderColor.CGColor];
 }

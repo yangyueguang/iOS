@@ -3,7 +3,6 @@
 #import <objc/message.h>
 #include <string.h>
 @implementation NSObject (expanded)
-
 ///将NSArray或者NSDictionary转化为NSString
 -(NSString *)JSONString{
     NSError* error = nil;

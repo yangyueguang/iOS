@@ -190,7 +190,7 @@
 @implementation WXChatBar
 - (id)init{
     if (self = [super init]) {
-        [self setBackgroundColor:RGBACOLOR(245.0, 245.0, 247.0, 1.0)];
+        [self setBackgroundColor:UIColor(245.0, 245.0, 247.0, 1.0)];
         [self p_initImage];
         
         [self addSubview:self.modeButton];
@@ -519,7 +519,7 @@
         [_talkButton setTitle:@"按住 说话" forState:UIControlStateNormal];
         [_talkButton setTitle:@"松开 结束" forState:UIControlStateHighlighted];
         [_talkButton setTitleColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1.0] forState:UIControlStateNormal];
-        [_talkButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:0.0 alpha:0.1]] forState:UIControlStateHighlighted];
+        [_talkButton setBackgroundImage:[FreedomTools imageWithColor:[UIColor colorWithWhite:0.0 alpha:0.1]] forState:UIControlStateHighlighted];
         [_talkButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
         [_talkButton.layer setMasksToBounds:YES];
         [_talkButton.layer setCornerRadius:4.0f];

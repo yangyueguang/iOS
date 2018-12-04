@@ -23,7 +23,7 @@
   self.navigationItem.title = @"设置备注";
   [self setNavigationButtons];
   [self setLayouts];
-  self.view.backgroundColor = [UIColor colorWithRGBHex:0xf0f0f6];
+  self.view.backgroundColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
   [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textFieldEditChanged:) name:@"UITextFieldTextDidChangeNotification" object:self.remarks];
 }
 - (void)setNavigationButtons{
@@ -33,7 +33,7 @@
   [self.rightBtn addSubview:self.rightLabel];
   [self.rightBtn addTarget:self action:@selector(clickRightBtn:) forControlEvents:UIControlEventTouchUpInside];
   UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:self.rightBtn ];
-  [self.rightLabel setTextColor:[UIColor colorWithRGBHex:0x9fcdfd]];
+  [self.rightLabel setTextColor:[FreedomTools colorWithRGBHex:0x9fcdfd]];
   self.rightBtn.userInteractionEnabled = NO;
   self.navigationItem.rightBarButtonItem = rightButton;
   UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -86,7 +86,7 @@ if ([remarksStr isEqualToString:self.friendInfo.displayName]) {
 - (void)setLayouts{
   UILabel *titleLabel = [[UILabel alloc] init];
   titleLabel.font = [UIFont systemFontOfSize:14.f];
-  titleLabel.textColor = [UIColor colorWithRGBHex:0x999999];
+  titleLabel.textColor = [FreedomTools colorWithRGBHex:0x999999];
   titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
   [self.view addSubview:titleLabel];
   titleLabel.text = @"备注名";
@@ -98,7 +98,7 @@ if ([remarksStr isEqualToString:self.friendInfo.displayName]) {
   self.remarks.translatesAutoresizingMaskIntoConstraints = NO;
   self.remarks.delegate = self;
   self.remarks.font = [UIFont systemFontOfSize:16.f];
-  self.remarks.textColor = [UIColor colorWithRGBHex:0x000000];
+  self.remarks.textColor = [FreedomTools colorWithRGBHex:0x000000];
   self.remarks.clearButtonMode = UITextFieldViewModeWhileEditing;
   if (self.friendInfo.displayName != nil) {
     self.remarks.text = self.friendInfo.displayName;
@@ -179,7 +179,7 @@ if ([remarksStr isEqualToString:self.friendInfo.displayName]) {
     self.rightBtn.userInteractionEnabled = YES;
     [self.rightLabel setTextColor:[UIColor whiteColor]];
   } else {
-    [self.rightLabel setTextColor:[UIColor colorWithRGBHex:0x9fcdfd]];
+    [self.rightLabel setTextColor:[FreedomTools colorWithRGBHex:0x9fcdfd]];
     self.rightBtn.userInteractionEnabled = NO;
   }
 }

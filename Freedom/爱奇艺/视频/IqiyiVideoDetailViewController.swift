@@ -202,7 +202,7 @@ class IqiyiVideoDetailViewController: IqiyiBaseViewController {
         return recommendArray.count + 1
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 160
         } else {

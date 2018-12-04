@@ -21,7 +21,7 @@ class LibraryCollectionViewCell: BaseCollectionViewCell {
         addSubviews([icon, title])
     }
 }
-class LibraryCollectionViewController: XBaseViewController,ElasticMenuTransitionDelegate,UICollectionViewDelegate,UICollectionViewDataSource {
+class LibraryCollectionViewController: BaseViewController,ElasticMenuTransitionDelegate,UICollectionViewDelegate,UICollectionViewDataSource {
     var contentLength:CGFloat = APPW
     var items:[[String:String]] = (UIApplication.shared.delegate as! AppDelegate).items
     var dismissByBackgroundTouch = true

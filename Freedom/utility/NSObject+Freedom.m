@@ -3,10 +3,12 @@
 //  Created by Super on 2018/4/26.
 //  Copyright © 2018年 Super. All rights reserved.
 //
+#import "NSObject+Freedom.h"
 #import <QuartzCore/QuartzCore.h>
 #import <objc/message.h>
 #include <string.h>
 #import <objc/runtime.h>
+#import <CommonCrypto/CommonDigest.h>
 @implementation RCUnderlineTextField
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -295,21 +297,6 @@ static const char *getPropertyType(objc_property_t property) {
     return [NSArray arrayWithArray:meths];
 }
 @end
-@implementation UIImage (Freedom)
-
-+ (UIImage *)imageWithColor:(UIColor *)color{
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-
-    return theImage;
-}
-
-@end
 char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
 
 @implementation UIBarButtonItem (expanded)
@@ -415,17 +402,7 @@ static char kBackgroundViewKey;
 @end
 
 
-#import <CommonCrypto/CommonDigest.h>
 @implementation NSString(expanded)
-- (NSString*) urlEncodedString {
-    NSString *charactersToEscape = @"?!@#$^&%*+,:;='\"`<>()[]{}/\\| ";
-    NSCharacterSet *allowedCharacters = [[NSCharacterSet characterSetWithCharactersInString:charactersToEscape] invertedSet];
-    return [self stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacters];
-}
-- (NSString*) urlDecodedString {
-    return [self stringByRemovingPercentEncoding];
-}
-
 - (BOOL)notEmptyOrNull{
     if ([self isEqualToString:@""]||[self isEqualToString:@"null"] || [self isEqualToString:@"\"\""] || [self isEqualToString:@"''"]) {
         return NO;
@@ -522,21 +499,6 @@ static char kBackgroundViewKey;
 - (CGSize)sizeOfFont:(UIFont *)font{
     return [self sizeOfFont:font maxW:MAXFLOAT];
 }
-
-
-- (NSArray *)matchesWithPattern:(NSString *)pattern{
-    NSError *error = nil;
-    NSRegularExpression *regex = [NSRegularExpression
-                                  regularExpressionWithPattern:pattern
-                                  options:NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators error:&error];
-    if (error) {
-        NSLog(@"匹配方案错误:%@", error.localizedDescription);
-        return nil;
-    }
-    return [regex matchesInString:self options:0 range:NSMakeRange(0, self.length)];
-}
-
-
 -(NSString*)deleteSpace{
     NSMutableString *allStr = [self mutableCopy];
     CFStringTrimWhitespace((CFMutableStringRef)allStr);
@@ -547,30 +509,11 @@ static char kBackgroundViewKey;
 @end
 
 @implementation NSDate (expanded)
-/*计算这个月的第一天是礼拜几*/
-- (NSUInteger)weeklyOrdinality{
-    return [[NSCalendar currentCalendar] ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitWeekOfMonth forDate:self];
-}
 //获取年月日对象
 - (NSDateComponents *)YMDComponents{
     return [[NSCalendar currentCalendar] components:NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekOfMonth | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitWeekday | NSCalendarUnitWeekdayOrdinal fromDate:self];
 }
 
-//通过数字返回星期几
--(NSString *)getWeekString{
-    NSString *str_week;
-    int a = self.YMDComponents.weekday;
-    switch (a) {
-        case 1:str_week = @"周日";break;
-        case 2:str_week = @"周一";break;
-        case 3:str_week = @"周二";break;
-        case 4:str_week = @"周三";break;
-        case 5:str_week = @"周四";break;
-        case 6:str_week = @"周五";break;
-        case 7:str_week = @"周六";break;
-    }
-    return str_week;
-}
 -(NSString *)timeToNow{
     NSString *timeString = @"";
     NSTimeInterval late=[self timeIntervalSince1970]*1;
@@ -603,21 +546,6 @@ static char kBackgroundViewKey;
     return timeString;
 }
 
-- (BOOL) isInFuture{
-    return ([self compare:[NSDate date]] == NSOrderedDescending);
-
-}
-- (BOOL)isInPast{
-    return ([self compare:[NSDate date]] == NSOrderedAscending);
-}
-
-- (BOOL) isToday{
-    NSDateComponents *components1 = [self YMDComponents];
-    NSDateComponents *components2 = [[NSDate date]YMDComponents];
-    return ((components1.year == components2.year) &&
-            (components1.month == components2.month) &&
-            (components1.day == components2.day));
-}
 @end
 @implementation UIView(Addition)
 -(BOOL) containsSubView:(UIView *)subView{
@@ -657,47 +585,135 @@ static char kBackgroundViewKey;
     va_end(ap);
 }
 
--(void)imageWithURL:(NSString *)url useProgress:(BOOL)useProgress useActivity:(BOOL)useActivity defaultImage:(NSString *)strImage{
-    if ([self isKindOfClass:[UIImageView class]]) {
-        UIView *tempView = nil;
-        UIImageView *imgView = (UIImageView *)self;
-        if (![strImage isEqualToString:@""]&&![strImage isEqualToString:@"null"]&&![strImage isEqualToString:@"\"\""] &&![strImage isEqualToString:@"''"]) {
-            imgView.image=[UIImage imageNamed:strImage];
-        }
-        if ([url isEqualToString:@""]||[url isEqualToString:@"null"] || [url isEqualToString:@"\"\""] || [url isEqualToString:@"''"]) {
-            return;
-        }
-        if (useProgress) {
-            CGFloat width = self.frame.size.width *0.8;
-            CGFloat fX = (self.frame.size.width - width)/2.0;
-            CGFloat fY = self.frame.size.height/2.0 - 10;
-            UIProgressView *progressIndicator = [[UIProgressView alloc] initWithFrame:CGRectMake(fX, fY, width, 20)];
-            [progressIndicator setProgressViewStyle:UIProgressViewStyleBar];
-            //            [progressIndicator setProgressTintColor:[UIColor grayColor]];
-            [progressIndicator setProgressTintColor:[UIColor colorWithRed:0 green:97 blue:167 alpha:1]];
-            [progressIndicator setTrackTintColor:[UIColor grayColor]];
-            tempView = progressIndicator;
-            progressIndicator.autoresizingMask =  UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleWidth;
-        }else if (useActivity){
-            UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-            [activityIndicatorView setCenter:CGPointMake(self.frame.size.width/2.0, self.frame.size.height/2.0)];
-            [activityIndicatorView startAnimating];
-            tempView = activityIndicatorView;
-            activityIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
-        }
-        [self addSubview:tempView];
+@end
+#import <objc/message.h>
+@implementation NSObject (Safe)
+
++ (NSArray *)allProperties {
+    unsigned int count;
+    objc_property_t *properties = class_copyPropertyList([self class], &count);
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        objc_property_t property = properties[i];
+        const char *cName = property_getName(property);
+        [array addObject:[NSString stringWithCString:cName encoding:NSUTF8StringEncoding]];
+    }
+    return array;
+}
+@end
+@implementation NSArray (Safe)
+
++ (void)load {
+    method_exchangeImplementations(class_getInstanceMethod(objc_getClass("__NSPlaceholderArray"), @selector(initWithObjects:count:)),class_getInstanceMethod(objc_getClass("__NSPlaceholderArray"), @selector(safe_initWithObjects:count:)));
+    method_exchangeImplementations(class_getInstanceMethod(objc_getClass("__NSArray0"), @selector(objectAtIndex:)),class_getInstanceMethod(objc_getClass("__NSArray0"), @selector(empty_objectAtIndex:)));
+    method_exchangeImplementations(class_getInstanceMethod(objc_getClass("__NSArrayI"), @selector(objectAtIndex:)),class_getInstanceMethod(objc_getClass("__NSArrayI"), @selector(safe_objectAtIndex:)));
+    if ([[UIDevice currentDevice] systemVersion].integerValue > 10) { //ios10及以下不可用
+        method_exchangeImplementations(class_getInstanceMethod(objc_getClass("__NSArrayI"), @selector(objectAtIndexedSubscript:)),class_getInstanceMethod(objc_getClass("__NSArrayI"), @selector(safe_objectAtIndexedSubscript:)));
     }
 }
-
+- (instancetype)safe_initWithObjects:(const id  _Nonnull __unsafe_unretained *)objects count:(NSUInteger)cnt {
+    BOOL hasNilObject = NO;
+    for (NSUInteger i = 0; i < cnt; i++) {
+        if (objects[i] == nil) {
+            hasNilObject = YES;
+            NSLog(@"\"initWithObjects:count:\" at index %lu is nil", i);
+        }
+    }
+    if (hasNilObject) {
+        id __unsafe_unretained newObjects[cnt];
+        NSUInteger index = 0;
+        for (NSUInteger i = 0; i < cnt; ++i) {
+            if (objects[i] != nil) {
+                newObjects[index++] = objects[i];
+            }
+        }
+        return [self safe_initWithObjects:newObjects count:index];
+    }
+    return [self safe_initWithObjects:objects count:cnt];
+}
+- (id)empty_objectAtIndex:(NSUInteger)index {
+    return nil;
+}
+- (id)safe_objectAtIndex:(NSUInteger)index {
+    if (index >= self.count) {
+        return nil;
+    }
+    return [self safe_objectAtIndex:index];
+}
+- (id)safe_objectAtIndexedSubscript:(NSUInteger)idx {
+    if (idx >= self.count) {
+        return nil;
+    }
+    return [self safe_objectAtIndexedSubscript:idx];
+}
 @end
-@implementation UIColor (Extention)
-+ (UIColor *)colorWithRGBHex:(UInt32)hex {
-    int r = (hex >> 16) & 0xFF;
-    int g = (hex >> 8) & 0xFF;
-    int b = (hex) & 0xFF;
-    return [UIColor colorWithRed:r / 255.0f
-                           green:g / 255.0f
-                            blue:b / 255.0f
-                           alpha:1.0f];
+@implementation NSMutableArray (Safe)
++ (void)load {
+    method_exchangeImplementations(class_getInstanceMethod(objc_getClass("__NSArrayM"), @selector(insertObject:atIndex:)),class_getInstanceMethod(objc_getClass("__NSArrayM"), @selector(safe_insertObject:atIndex:)));
+    method_exchangeImplementations(class_getInstanceMethod(objc_getClass("__NSArrayM"), @selector(objectAtIndex:)),class_getInstanceMethod(objc_getClass("__NSArrayM"), @selector(safe_objectAtIndex:)));
+    if ([[UIDevice currentDevice] systemVersion].integerValue > 10) { //ios10及以下不可用
+        method_exchangeImplementations(class_getInstanceMethod(objc_getClass("__NSArrayM"), @selector(objectAtIndexedSubscript:)),class_getInstanceMethod(objc_getClass("__NSArrayM"), @selector(safe_objectAtIndexedSubscript:)));
+    }
+}
+- (void)safe_insertObject:(id)anObject atIndex:(NSUInteger)index {
+    @autoreleasepool {
+        if (!anObject) {
+            return;
+        }
+        [self safe_insertObject:anObject atIndex:index];
+    }
+}
+- (id)safe_objectAtIndex:(NSUInteger)index {
+    @autoreleasepool {
+        if (index >= self.count) {
+            return nil;
+        }
+        return [self safe_objectAtIndex:index];
+    }
+}
+- (id)safe_objectAtIndexedSubscript:(NSUInteger)idx {
+    @autoreleasepool {
+        if (idx >= self.count) {
+            return nil;
+        }
+        return [self safe_objectAtIndexedSubscript:idx];
+    }
+}
+- (void)safeAddObject:(id)anObject{
+    if (anObject) {
+        [self addObject:anObject];
+    }
+}
+- (void)safeRemoveObjectAtIndex:(NSUInteger)index{
+    if (index < [self count]) {
+        [self removeObjectAtIndex:index];
+    }
+}
+- (BOOL)expanNSMutableArray{
+    if (!self || [self isEqual:[NSNull null]] || self.count < 1) {
+        return false;
+    }
+    return true;
+}
+@end
+@implementation NSMutableDictionary (Safe)
++ (void)load {
+    Method setObjectMethod = class_getInstanceMethod(objc_getClass("__NSDictionaryM"), @selector(setObject:forKey:));
+    Method safe_setObjectMethod = class_getInstanceMethod(objc_getClass("__NSDictionaryM"), @selector(safe_setObject:forKey:));
+    method_exchangeImplementations(setObjectMethod, safe_setObjectMethod);
+}
+- (void)safe_setObject:(id)object forKey:(NSString *)key {
+    if (!object) {
+        object = @"";
+    }
+    [self safe_setObject:object forKey:key];
+}
+@end
+
+@implementation NSString (Blue)
+/** 删除线 */
+- (NSAttributedString *)strickout {
+    NSDictionary *attributes = @{NSStrikethroughStyleAttributeName : @(NSUnderlineStyleSingle)};
+    return [[NSMutableAttributedString alloc] initWithString:self attributes:attributes];
 }
 @end

@@ -2,7 +2,7 @@
 //  EnergyShopTabBarController.swift
 //  Freedom
 import UIKit
-class EnergyShopTabBarController: XBaseTabBarController {
+class EnergyShopTabBarController: BaseTabBarViewController {
     static let sharedRootViewController = EnergyShopTabBarController()
     override func viewDidLoad() {
         super.viewDidLoad()

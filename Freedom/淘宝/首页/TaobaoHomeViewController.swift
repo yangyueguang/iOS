@@ -98,7 +98,7 @@ class GridCell: UICollectionViewCell {
         bgview.layer.shadowOpacity = 0.2
         bgview.layer.shadowRadius = 10
         let titleLab = UILabel(frame: CGRect(x: 0, y: YH(iv), width: W(self), height: 40))
-        titleLab.highlightedTextColor = RGBAColor(200, 200, 200)
+        titleLab.highlightedTextColor = UIColor(200, 200, 200)
         let priceLabel = UILabel(frame: CGRect(x: 10, y: YH(titleLab), width: 100, height: 20))
         let flagLab = UILabel(frame: CGRect(x: W(self) - 60, y: Y(priceLabel), width: 40, height: 20))
         flagLab.backgroundColor = UIColor.red
@@ -248,11 +248,11 @@ class Headview3: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let line = UIView(frame: CGRect(x: 0, y: 20, width: APPW, height: 1))
-        line.backgroundColor = RGBAColor(224, 225, 226, 1)
+        line.backgroundColor = UIColor(224, 225, 226, 1)
         let lable = UILabel(frame: CGRect(x: 100, y: 10, width: 300, height: 20))
         lable.textAlignment = .center
         lable.text = "实时推荐最适合你的宝贝"
-        lable.backgroundColor = RGBAColor(245, 245, 245, 1)
+        lable.backgroundColor = UIColor(245, 245, 245, 1)
         contentMode = .center
         addSubviews([line, lable])
     }
@@ -328,7 +328,7 @@ class TaobaoHomeViewController: TaobaoBaseViewController,UICollectionViewDelegat
         layout.headerReferenceSize = CGSize(width: 320, height: 40)
         grid = UICollectionView(frame: view.frame, collectionViewLayout: layout)
         view.addSubview(grid)
-        grid.backgroundColor = RGBAColor(245, 245, 245, 1)
+        grid.backgroundColor = UIColor(245, 245, 245, 1)
         grid.delegate = self
         grid.dataSource = self
         grid.register(GridCell.self, forCellWithReuseIdentifier: "GridCell")

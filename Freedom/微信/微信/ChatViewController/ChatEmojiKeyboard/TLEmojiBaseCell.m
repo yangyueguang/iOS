@@ -260,7 +260,7 @@
     if (self = [super initWithFrame:frame]) {
         [self setBackgroundColor:[UIColor clearColor]];
         UIView *selectedView = [[UIView alloc] init];
-        [selectedView setBackgroundColor:RGBACOLOR(245.0, 245.0, 247.0, 1.0)];
+        [selectedView setBackgroundColor:UIColor(245.0, 245.0, 247.0, 1.0)];
         [self setSelectedBackgroundView:selectedView];
         
         [self.contentView addSubview:self.groupIconView];

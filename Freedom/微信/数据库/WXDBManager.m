@@ -75,6 +75,13 @@
     }
     complete(data, hasMore);
 }
+- (BOOL)isToday:(NSDate *)date{
+    NSDateComponents *components1 = [date YMDComponents];
+    NSDateComponents *components2 = [[NSDate date]YMDComponents];
+    return ((components1.year == components2.year) &&
+            (components1.month == components2.month) &&
+            (components1.day == components2.day));
+}
 - (NSArray *)chatFilesByUserID:(NSString *)userID partnerID:(NSString *)partnerID{
     __block NSMutableArray *data = [[NSMutableArray alloc] init];
     NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_CHAT_FILES, MESSAGE_TABLE_NAME, userID, partnerID];
@@ -84,7 +91,7 @@
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
             WXMessage * message = [self p_createDBMessageByFMResultSet:retSet];
-            if ([message.date isToday]) {
+            if ([self isToday:message.date]) {
                 [array addObject:message];
             }else{
                 lastDate = message.date;

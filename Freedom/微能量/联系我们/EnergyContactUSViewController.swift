@@ -22,7 +22,7 @@ class EnergyContactUSViewController: EnergyBaseViewController {
     let banner = BaseScrollView(banner: CGRect(x: 0, y: 0, width: APPW, height: 120), icons: ["",""])
         banner.backgroundColor = .red
         self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH-TopHeight))
-        self.cellHeight = 80
+        self.tableView.rowHeight = 80
         self.tableView.dataArray = NSMutableArray(array: ["一键导航","关注公众号","查看历史消息","微信营销交流","客服聊天","诚聘精英"])
     self.tableView.tableHeaderView = banner
     self.tableView.delegate = self;

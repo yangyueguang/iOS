@@ -98,11 +98,11 @@ PODS:
     - ReactiveSwift (~> 4.0)
   - ReactiveSwift (4.0.0):
     - Result (~> 4.0)
-  - Realm (3.11.2):
-    - Realm/Headers (= 3.11.2)
-  - Realm/Headers (3.11.2)
-  - RealmSwift (3.11.2):
-    - Realm (= 3.11.2)
+  - Realm (3.12.0):
+    - Realm/Headers (= 3.12.0)
+  - Realm/Headers (3.12.0)
+  - RealmSwift (3.12.0):
+    - Realm (= 3.12.0)
   - RESideMenu (4.0.7)
   - Result (4.0.0)
   - RongCloudIM/CallKit (2.8.32):
@@ -124,20 +124,18 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
-  - SmartJSWebView (1.1.1)
+  - SmartJSWebView (1.1.3)
   - SnapKit (4.2.0)
   - SSKeychain (1.4.1)
   - Starscream (3.0.6)
   - SVProgressHUD (2.2.5)
   - SwiftWebViewBridge (0.3.0)
   - SwiftyJSON (4.2.0)
-  - TZImagePickerController (3.1.3)
+  - TZImagePickerController (3.1.5)
   - UAProgressView (0.1.4)
   - UMengAnalytics (4.2.4)
-  - XCarryOn (0.3.6):
-    - Masonry
-    - MJRefresh
-  - XExtension (0.3.6)
+  - XCarryOn (0.3.8)
+  - XExtension (0.3.8)
   - XMLDictionary (1.4.1)
 
 DEPENDENCIES:
@@ -288,8 +286,8 @@ SPEC CHECKSUMS:
   PPRevealSideViewController: eb2109c91688f34647dc8427d683f1d43ec012f9
   ReactiveCocoa: fbd26e9ba60e98417ee47433e59465a98ed9da0f
   ReactiveSwift: a2bb9ace428a109e9c0209615645d9d286c8c433
-  Realm: 864477d028db77f7c5a0cba64a4892ad53db128a
-  RealmSwift: 12b8262fc08020b47de4fd88eb3d5c9425b34ec7
+  Realm: cdaef23c4ddb36ab1ddffed23f5a7f3332fc5585
+  RealmSwift: 5576324033f0aa5ef1e0a839a3da2281dff47a7f
   RESideMenu: f24c508404b49c667344c54aba7e590883533958
   Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
   RongCloudIM: 48bfc2fcb8d7cae8ce1e19cb5fb26d6d90616375
@@ -298,20 +296,20 @@ SPEC CHECKSUMS:
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   ScottAlertController: 2edee4ca00ee521777740d8e02ad550f7354f61d
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
-  SmartJSWebView: dfaf861a620cab1cf575407d6914dde7e4ea4934
+  SmartJSWebView: f300dcd3a3a71eefeaea9203e4f0d44427e8099f
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftWebViewBridge: 902b8e6945352c74aa5c0975c4dcd48f420f7d44
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-  TZImagePickerController: 3f1fea61ac4a7ecc7f4ef5213375c00b020d5b9b
+  TZImagePickerController: 6cc6e9c1a73bb8e62cfef98fd40af2d90634dcf5
   UAProgressView: 6796f5aa05037fb2940521636163b9db40a6c534
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
-  XCarryOn: 7d31c0225d460f355d2cadedda800e76e66eb4f3
-  XExtension: 9f271bba0e4928297a41a316590c3f49440b46ad
+  XCarryOn: 1bb60e8f9584c481d20eca75ed1a44c5f0b50384
+  XExtension: 118f2ea51afc977e578be7b2845b1225913ed0b4
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: c52a105cd3e435bc744954bb464868b9ca595e7d
+PODFILE CHECKSUM: 461b0bff8f3e03a497cf8adba230e23df993f398
 
 COCOAPODS: 1.5.3

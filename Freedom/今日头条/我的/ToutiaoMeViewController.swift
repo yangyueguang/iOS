@@ -29,7 +29,7 @@ class ToutiaoMeViewController: ToutiaoBaseViewController {
             button.setImage(UIImage(named:"userLogo"), for: .normal)
             topView.addSubview(button)
         }
-        topView.backgroundColor = RGBAColor(10, 10, 10,  1)
+        topView.backgroundColor = UIColor(10, 10, 10,  1)
         let label = UILabel(frame: CGRect(x: 10, y: view.bounds.size.height-30, width: APPW-20, height: 20))
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .white

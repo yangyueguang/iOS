@@ -22,7 +22,7 @@
   [super viewDidLoad];
   self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
   self.tableView.tableFooterView = [UIView new];
-  self.tableView.backgroundColor = [UIColor colorWithRGBHex:0xf0f0f6];
+  self.tableView.backgroundColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
   self.navigationItem.title = @"帐号设置";
     UIButton *buttonItem = [[UIButton alloc]initWithFrame:CGRectMake(0, 6, 87, 23)];
     [buttonItem setImage:[UIImage imageNamed:@"navigator_btn_back"] forState:UIControlStateNormal];
@@ -209,11 +209,11 @@
  UITableViewCell *quitCell = [[UITableViewCell alloc] init];
   UILabel *label = [[UILabel alloc] init];
   label.font = [UIFont systemFontOfSize:16];
-  label.textColor = [UIColor colorWithRGBHex:0x000000];
+  label.textColor = [FreedomTools colorWithRGBHex:0x000000];
   label.text = @"退出登录";
   label.translatesAutoresizingMaskIntoConstraints = NO;
   quitCell.contentView.layer.borderWidth = 0.5;
-  quitCell.contentView.layer.borderColor = [[UIColor colorWithRGBHex:0xdfdfdf] CGColor];
+  quitCell.contentView.layer.borderColor = [[FreedomTools colorWithRGBHex:0xdfdfdf] CGColor];
   [quitCell setSeparatorInset:UIEdgeInsetsMake(0, 100, 0, 1000)];
   [quitCell.contentView addSubview:label];
   [quitCell.contentView

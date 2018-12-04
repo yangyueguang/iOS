@@ -9,6 +9,45 @@ import Foundation
 import UIKit
 import Social
 import LocalAuthentication
+public func W(_ obj:UIView?)->CGFloat{
+    if obj != nil {
+        return obj!.frame.size.width
+    }else{
+        return 0
+    }
+}
+public func H(_ obj:UIView?)->CGFloat{
+    if obj != nil {
+        return obj!.frame.size.height
+    }else{
+        return 0
+    }
+}
+public func X(_ obj:UIView?)->CGFloat{
+    if obj != nil {
+        return obj!.frame.origin.x
+    }else{
+        return 0
+    }
+}
+public func Y(_ obj:UIView)->CGFloat{
+    return obj.frame.origin.y
+}
+public func XW(_ obj:UIView?)->CGFloat{
+    if obj != nil{
+        return obj!.frame.origin.x + obj!.frame.size.width
+    }else{
+        return 0
+    }
+}
+public func YH(_ obj:UIView?)->CGFloat{
+    if obj != nil{
+        return obj!.frame.origin.y + obj!.frame.size.height
+    }else{
+        return 0
+    }
+}
+
 ///验证TouchID
 func checkTouchID(){
     //步骤1：检查Touch ID是否可用

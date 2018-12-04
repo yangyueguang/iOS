@@ -187,28 +187,28 @@
 - (UIView *)topView{
     if (_topView == nil) {
         _topView = [[UIView alloc] init];
-        [_topView setBackgroundColor:RGBACOLOR(71, 70, 73, 1.0)];
+        [_topView setBackgroundColor:UIColor(71, 70, 73, 1.0)];
     }
     return _topView;
 }
 - (UIView *)btmView{
     if (_btmView == nil) {
         _btmView = [[UIView alloc] init];
-        [_btmView setBackgroundColor:RGBACOLOR(71, 70, 73, 1.0)];
+        [_btmView setBackgroundColor:UIColor(71, 70, 73, 1.0)];
     }
     return _btmView;
 }
 - (UIView *)leftView{
     if (_leftView == nil) {
         _leftView = [[UIView alloc] init];
-        [_leftView setBackgroundColor:RGBACOLOR(71, 70, 73, 1.0)];
+        [_leftView setBackgroundColor:UIColor(71, 70, 73, 1.0)];
     }
     return _leftView;
 }
 - (UIView *)rightView{
     if (_rightView == nil) {
         _rightView = [[UIView alloc] init];
-        [_rightView setBackgroundColor:RGBACOLOR(71, 70, 73, 1.0)];
+        [_rightView setBackgroundColor:UIColor(71, 70, 73, 1.0)];
     }
     return _rightView;
 }

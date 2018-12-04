@@ -18,13 +18,13 @@ class IqiyiLoginViewController: IqiyiBaseViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         view.addSubview(tableView)
-        view.backgroundColor = RGBAColor(249, 249, 249,1)
+        view.backgroundColor = UIColor(249, 249, 249,1)
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 70
         } else {

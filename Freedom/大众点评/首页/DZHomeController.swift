@@ -24,10 +24,10 @@ class DZHomeViewCell1:BaseCollectionViewCell{
         let a = UILabel(frame: CGRect(x: 10, y: 0, width: APPW / 2 - 20, height: 18), font: fontnomal, color: redcolor, text: "外卖贺新春")
         let b = UILabel(frame: CGRect(x: X(a), y: YH(a), width: W(a), height: H(a)), font: fontnomal, color: blacktextcolor, text: "省事省力又省心")
         let c = UILabel(frame: CGRect(x: X(a), y: YH(b), width: 100, height: 15), font: fontnomal, color: yellowcolor, text: "用外卖订年夜饭")
-        c?.layer.cornerRadius = 7
-        c?.layer.borderWidth = 1
-        c?.layer.borderColor = redcolor.cgColor
-        view.addSubviews([a!, b!, c!])
+        c.layer.cornerRadius = 7
+        c.layer.borderWidth = 1
+        c.layer.borderColor = redcolor.cgColor
+        view.addSubviews([a, b, c])
         return view
     }
     func setCollectionDataWithDic(_ dict: [AnyHashable: Any]?) {
@@ -119,8 +119,8 @@ class DZHomeHeadView1: UICollectionReusableView {
             icon.layer.cornerRadius = 20
             icon.image = UIImage(named: "userLogo")
             let label1 = UILabel(frame: CGRect(x: XW(icon) + 10, y: 10, width: APPW / 2, height: 40), font: fontnomal, color: blacktextcolor, text: "好友蜂蜜绿茶，吃完这家，还有下一家。地点中环广场店")
-            label1?.numberOfLines = 0
-            view.addSubviews([icon, label1!])
+            label1.numberOfLines = 0
+            view.addSubviews([icon, label1])
             view.backgroundColor = redcolor
             if index % 2 != 0 {
                 view.backgroundColor = yellowcolor

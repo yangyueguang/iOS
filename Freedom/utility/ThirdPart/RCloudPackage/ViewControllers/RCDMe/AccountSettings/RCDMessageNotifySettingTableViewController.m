@@ -38,7 +38,7 @@
   [super viewDidLoad];
   self.navigationItem.title = @"新消息通知";
   self.tableView.tableFooterView = [UIView new];
-  self.tableView.backgroundColor = [UIColor colorWithRGBHex:0xf0f0f6];
+  self.tableView.backgroundColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 #pragma mark - Table view Delegate

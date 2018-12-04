@@ -71,7 +71,7 @@
         [_delButton setTitle:@"移除" forState:UIControlStateNormal];
         [_delButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [_delButton setBackgroundColor:colorGrayBG];
-        [_delButton setBackgroundImage:[UIImage imageWithColor:colorGrayLine] forState:UIControlStateHighlighted];
+        [_delButton setBackgroundImage:[FreedomTools imageWithColor:colorGrayLine] forState:UIControlStateHighlighted];
         [_delButton.titleLabel setFont:[UIFont systemFontOfSize:13.0f]];
         [_delButton addTarget:self action:@selector(delButtonDown) forControlEvents:UIControlEventTouchUpInside];
         [_delButton.layer setMasksToBounds:YES];

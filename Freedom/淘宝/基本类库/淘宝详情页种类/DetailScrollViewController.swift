@@ -20,19 +20,19 @@ class DetailScrollViewController: TaobaoBaseViewController {
         label.textAlignment = .center
         scrollView?.addSubview(label)
         label = UILabel(frame: CGRect(x: 0, y: view.bounds.size.height - 64, width: view.bounds.size.width, height: view.bounds.size.height - 64))
-        label.backgroundColor = UIColor.red
+        label.backgroundColor = .red
         label.text = "Label 2"
         label.textAlignment = .center
         scrollView?.addSubview(label)
         label = UILabel(frame: CGRect(x: 0, y: view.bounds.size.height - 64, width: view.bounds.size.width, height: view.bounds.size.height - 64))
-        label.backgroundColor = UIColor.red
+        label.backgroundColor = .red
         label.text = "Label 2"
         label.textAlignment = .center
         scrollView?.addSubview(label)
         if let aView = detailView {
             view.addSubview(aView)
         }
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = .lightGray
         detailView?.reloadData()
         scrollView?.contentSize = CGSize(width: view.bounds.size.width, height: (view.bounds.size.height - 64) * 2)
     }

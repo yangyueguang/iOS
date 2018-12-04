@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Super. All rights reserved.
 //
 import UIKit
-class ResumeTabBarController: XBaseTabBarController {
+class ResumeTabBarController: BaseTabBarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.barTintColor = .white

@@ -66,7 +66,7 @@
 }
 -(void)awakeFromNib{
     [super awakeFromNib];
-    self.backgroundColor = AssistBackgroundColor;
+    self.backgroundColor = [UIColor whiteColor];
     self.symbolLabel.textColor = AssistTextColor;
     self.chineseNameLabel.textColor = MainTextColor;
     self.closePriceLabel.textColor = MainTextColor;
@@ -189,10 +189,10 @@
 }
 -(void)awakeFromNib{
     [super awakeFromNib];
-    self.ma5Label.textColor = [UIColor colorWithRGBHex:0xff783c];
-    self.ma10Label.textColor = [UIColor colorWithRGBHex:0x49a5ff];
-    self.ma20Label.textColor = [UIColor colorWithRGBHex:0xffbf43];
-    self.ma30Label.textColor = [UIColor colorWithRGBHex:0x49a5ff];
+    self.ma5Label.textColor = [FreedomTools colorWithRGBHex:0xff783c];
+    self.ma10Label.textColor = [FreedomTools colorWithRGBHex:0x49a5ff];
+    self.ma20Label.textColor = [FreedomTools colorWithRGBHex:0xffbf43];
+    self.ma30Label.textColor = [FreedomTools colorWithRGBHex:0x49a5ff];
     self.ma5Label.font = [UIFont hlFontWithSize:10];
     self.ma10Label.font = [UIFont hlFontWithSize:10];
     self.ma20Label.font = [UIFont hlFontWithSize:10];

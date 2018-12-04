@@ -3,11 +3,11 @@
 //  Freedom
 import UIKit
 import XExtension
-class MicroEnergyTabBarController: XBaseTabBarController,UITabBarControllerDelegate {
+class MicroEnergyTabBarController: BaseTabBarViewController,UITabBarControllerDelegate {
     let myTabBar = EnergySuperMarketTabBarController.sharedRootViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.barTintColor = RGBAColor(59, 59,59, 1);
+        self.tabBar.barTintColor = UIColor(59, 59,59, 1);
         myTabBar.hidesBottomBarWhenPushed = true
         myTabBar.superTabbar = self;
        var i=0

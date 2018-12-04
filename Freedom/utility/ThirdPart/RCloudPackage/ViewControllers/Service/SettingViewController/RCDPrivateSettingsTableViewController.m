@@ -33,7 +33,7 @@
     [self.contentView addSubview:self.PortraitImageView];
     self.NickNameLabel = [[UILabel alloc]init];
     self.NickNameLabel.font = [UIFont boldSystemFontOfSize:16];
-    self.NickNameLabel.textColor = [UIColor colorWithRGBHex:0x000000];
+    self.NickNameLabel.textColor = [FreedomTools colorWithRGBHex:0x000000];
     [self.contentView addSubview:self.NickNameLabel];
     self.NickNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     NSDictionary *views = NSDictionaryOfVariableBindings(_PortraitImageView, _NickNameLabel);
@@ -77,7 +77,7 @@
         self.NickNameLabel = [[UILabel alloc] init];
         self.NickNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
         self.NickNameLabel.font = [UIFont systemFontOfSize:16.f];
-        self.NickNameLabel.textColor = [UIColor colorWithRGBHex:0x000000];
+        self.NickNameLabel.textColor = [FreedomTools colorWithRGBHex:0x000000];
         [self addSubview:self.NickNameLabel];
         NSDictionary *subViews = NSDictionaryOfVariableBindings(_PortraitImageView,_NickNameLabel);
         [self
@@ -101,7 +101,7 @@
             self.displayNameLabel = [[UILabel alloc] init];
             self.displayNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
             self.displayNameLabel.font = [UIFont systemFontOfSize:12.f];
-            self.displayNameLabel.textColor = [UIColor colorWithRGBHex:0x999999];
+            self.displayNameLabel.textColor = [FreedomTools colorWithRGBHex:0x999999];
             [self addSubview:self.displayNameLabel];
             [self
              addConstraint:[NSLayoutConstraint
@@ -195,7 +195,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     [self.navigationItem setLeftBarButtonItem:leftButton];
     self.title = @"聊天详情";
     self.tableView.tableFooterView = [UIView new];
-    self.tableView.backgroundColor = [UIColor colorWithRGBHex:0xf0f0f6];
+    self.tableView.backgroundColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 - (void)leftBarButtonItemPressed:(id)sender{

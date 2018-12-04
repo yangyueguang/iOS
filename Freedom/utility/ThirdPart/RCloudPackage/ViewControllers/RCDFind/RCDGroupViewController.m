@@ -120,7 +120,7 @@ UITableViewDataSource, UITableViewDelegate>
         self.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_group_hover"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         //设置tableView样式
         self.tableView.separatorColor =
-        [UIColor colorWithRGBHex:0xdfdfdf];
+        [FreedomTools colorWithRGBHex:0xdfdfdf];
         self.tableView.tableFooterView = [UIView new];
         __weak RCDGroupViewController *weakSelf = self;
         _groups = [NSMutableArray arrayWithArray:[[RCDataBaseManager shareInstance] getAllGroup]];

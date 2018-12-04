@@ -110,7 +110,7 @@
   self.edgesForExtendedLayout = UIRectEdgeNone;
   self.navigationController.navigationBar.translucent = NO;
   self.tableView.tableFooterView = [UIView new];
-  self.tableView.backgroundColor = [UIColor colorWithRGBHex:0xf0f0f6];
+  self.tableView.backgroundColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tabBarController.navigationItem.rightBarButtonItem = nil;
   self.tabBarController.navigationController.navigationBar.tintColor = [UIColor whiteColor];

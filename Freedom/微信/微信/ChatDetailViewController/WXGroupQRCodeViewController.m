@@ -10,7 +10,7 @@
 @implementation WXGroupQRCodeViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:RGBACOLOR(46.0, 49.0, 50.0, 1.0)];
+    [self.view setBackgroundColor:UIColor(46.0, 49.0, 50.0, 1.0)];
     [self.navigationItem setTitle:@"群二维码名片"];
     
     [self.view addSubview:self.qrCodeVC.view];

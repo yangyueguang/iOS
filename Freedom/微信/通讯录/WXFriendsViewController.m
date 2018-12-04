@@ -167,7 +167,7 @@
     [self.tableView setSeparatorColor:colorGrayLine];
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
-    [self.tableView setSectionIndexColor:RGBACOLOR(46.0, 49.0, 50.0, 1.0)];
+    [self.tableView setSectionIndexColor:UIColor(46.0, 49.0, 50.0, 1.0)];
     [self.tableView setTableHeaderView:self.searchController.searchBar];
     
     [self.tableView setTableFooterView:self.footerLabel];

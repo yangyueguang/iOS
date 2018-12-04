@@ -12,7 +12,7 @@ class TaobaoMiniArticleViewController: TaobaoBaseViewController {
         tableView.delegate = self
         view.addSubview(tableView)
     }
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 280
     }
 }

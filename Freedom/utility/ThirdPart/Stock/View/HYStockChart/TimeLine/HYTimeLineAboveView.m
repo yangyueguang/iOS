@@ -9,6 +9,13 @@
 #import "MJExtension.h"
 #import "StockCategory.h"
 #import "HYTimeLineAboveView.h"
+
+///边框线颜色
+#define GridLineColor [FreedomTools colorWithRGBHex:0x999999]
+/// 涨的颜色
+#define IncreaseColor [UIColor colorWithRed:206/255.0 green:65/255.0 blue:51/255.0 alpha:1.0]
+/// 跌的颜色
+#define DecreaseColor [UIColor colorWithRed:37/255.0 green:174/255.0 blue:68/255.0 alpha:1.0]
 @interface YYTimeLineMaskView : UIView
 //当前长按选中的model
 @property (nonatomic, strong) HYTimeLineModel *selectedModel;
@@ -118,7 +125,7 @@
     CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
     CGContextFillRect(context, rect);
     //时间标题背景色
-    CGContextSetFillColorWithColor(context, AssistBackgroundColor.CGColor);
+    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
     CGContextFillRect(context, CGRectMake(0, HYStockChartTimeLineAboveViewMaxY, self.frame.size.width, self.frame.size.height-HYStockChartTimeLineAboveViewMaxY));
     [self drawGridBackground:context rect:rect];
     HYTimeLine *timeLine = [[HYTimeLine alloc] initWithContext:context];
@@ -546,7 +553,7 @@
 -(UILabel *)private_createTimeLabel{
     UILabel *timeLabel = [UILabel new];
     timeLabel.font = [UIFont systemFontOfSize:11];
-    timeLabel.textColor = [UIColor colorWithRGBHex:0x2d333a];
+    timeLabel.textColor = [FreedomTools colorWithRGBHex:0x2d333a];
     return timeLabel;
 }
 -(CGFloat)private_getXAxisUnitValue{

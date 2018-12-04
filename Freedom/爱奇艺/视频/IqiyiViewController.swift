@@ -4,6 +4,7 @@
 import UIKit
 import XExtension
 import MJRefresh
+import XCarryOn
 import MJExtension
 class IqiyiHomeModel: NSObject {
     var search_default_word_for_ipad = ""
@@ -403,7 +404,7 @@ class IqiyiViewController: IqiyiBaseViewController ,IqiyiHomeBoxCellDelegate {
             return height + 5
         }
     }
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 180
         } else {

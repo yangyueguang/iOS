@@ -15,7 +15,7 @@ class ToutiaoHomeSampleViewCell:BaseTableViewCell{
 class ToutiaoHomeSampleViewController: ToutiaoBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cellHeight = 90
+        self.tableView.rowHeight = 90
     self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH), style: .grouped)
     self.tableView.dataSource = self;
     self.tableView.delegate = self;

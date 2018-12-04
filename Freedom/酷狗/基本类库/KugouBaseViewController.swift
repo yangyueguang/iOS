@@ -3,7 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
-class KugouBaseViewController: XBaseViewController {
+class KugouBaseViewController: BaseViewController {
     var navBar = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 64))
     var backItem: UIImageView = UIImageView()
     var leftItem: UIImageView = UIImageView()
@@ -59,7 +59,7 @@ class KugouBaseViewController: XBaseViewController {
         navBar.addSubview(rightButton)
         navBar.addSubview(titleLabel)
         navBar.addSubview(titleLine)
-        navBar.backgroundColor = RGBAColor(51, 124, 200 ,1)
+        navBar.backgroundColor = UIColor(51, 124, 200 ,1)
         view.addSubview(navBar)
     }
     func backItemTouched(_ sender: Any?) {

@@ -2,7 +2,7 @@
 //  TaobaoNavigationViewController.swift
 //  Freedom
 import UIKit
-class TaobaoNavigationViewController: XBaseNavigationViewController {
+class TaobaoNavigationViewController: BaseNavigationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

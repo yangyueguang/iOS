@@ -87,7 +87,7 @@
 - (UIView *)bgView{
     if (_bgView == nil) {
         _bgView = [[UIView alloc] init];
-        [_bgView setBackgroundColor:RGBACOLOR(46.0, 49.0, 50.0, 1.0)];
+        [_bgView setBackgroundColor:UIColor(46.0, 49.0, 50.0, 1.0)];
         [_bgView setAlpha:0.8f];
     }
     return _bgView;
@@ -110,7 +110,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"聊天文件"];
-    [self.view setBackgroundColor:RGBACOLOR(46.0, 49.0, 50.0, 1.0)];
+    [self.view setBackgroundColor:UIColor(46.0, 49.0, 50.0, 1.0)];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     if ([UIDevice currentDevice].systemVersion.floatValue >= 9.0) {
         [layout setSectionHeadersPinToVisibleBounds:YES];

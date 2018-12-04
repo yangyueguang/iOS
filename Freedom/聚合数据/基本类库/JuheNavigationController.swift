@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Super. All rights reserved.
 //
 import UIKit
-class JuheNavigationController: XBaseNavigationViewController {
+class JuheNavigationController: BaseNavigationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

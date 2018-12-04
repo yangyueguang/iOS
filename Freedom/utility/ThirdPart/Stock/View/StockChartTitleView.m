@@ -24,7 +24,7 @@
       [btn setTitle:_titleArray[i] forState:UIControlStateNormal];
       [btn.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16]];
       if (i == 0) {
-        [btn setTitleColor:RGBACOLOR(60, 177, 227, 1)
+        [btn setTitleColor:UIColor(60, 177, 227, 1)
                   forState:UIControlStateNormal];
       } else {
         [btn setTitleColor:[UIColor colorWithWhite:102/255.0 alpha:1]
@@ -37,7 +37,7 @@
       [_titleBtnArray addObject:btn];
     }
     _indicateLine = [[UIView alloc] init];
-    _indicateLine.backgroundColor = RGBACOLOR(60, 177, 227, 1);
+    _indicateLine.backgroundColor = UIColor(60, 177, 227, 1);
     _indicateLine.layer.cornerRadius = 1;
     _indicateLine.layer.masksToBounds = YES;
     [self addSubview:_indicateLine];
@@ -72,7 +72,7 @@
   for (int i = 0; i < _titleBtnArray.count; i++) {
     UIButton *btn = _titleBtnArray[i];
     if (i == column) {
-      [btn setTitleColor:RGBACOLOR(60, 177, 227, 1)
+      [btn setTitleColor:UIColor(60, 177, 227, 1)
                 forState:UIControlStateNormal];
     } else {
         [btn setTitleColor:[UIColor colorWithWhite:102/255.0 alpha:1]

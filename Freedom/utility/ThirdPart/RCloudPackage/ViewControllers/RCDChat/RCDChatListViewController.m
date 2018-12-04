@@ -85,7 +85,7 @@
 - (void)setUp{
     CGSize size = self.bounds.size;
     CGFloat cornerRadius = (size.height > size.width ? size.width / 2.0 : size.height / 2.0);
-    self.backgroundColor = [UIColor colorWithRGBHex:0xf43530];
+    self.backgroundColor = [FreedomTools colorWithRGBHex:0xf43530];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.titleLabel.font = [UIFont systemFontOfSize:12.f];
     _maxDistance = cornerRadius * 5;
@@ -254,7 +254,7 @@
     UIView *badgeView = [[UIView alloc]init];
     badgeView.tag = 888+index;
     badgeView.layer.cornerRadius = 5.f;//圆形
-    badgeView.backgroundColor = [UIColor colorWithRGBHex:0xf43530];//颜色：红色
+    badgeView.backgroundColor = [FreedomTools colorWithRGBHex:0xf43530];//颜色：红色
     CGRect tabFrame = self.frame;
     //确定小红点的位置
     float percentX = (index +0.5) / TabbarItemNums;
@@ -333,12 +333,12 @@
         [_ivAva setBackgroundColor:[UIColor blackColor]];
         _lblDetail = [UILabel new];
         [_lblDetail setFont:[UIFont systemFontOfSize:14.f]];
-        [_lblDetail setTextColor:[UIColor colorWithRGBHex:0x8c8c8c]];
+        [_lblDetail setTextColor:[FreedomTools colorWithRGBHex:0x8c8c8c]];
         _lblDetail.text =
         [NSString stringWithFormat:@"来自%@的好友请求", _userName];
         _lblName = [UILabel new];
         [_lblName setFont:[UIFont boldSystemFontOfSize:16.f]];
-        [_lblName setTextColor:[UIColor colorWithRGBHex:0x252525]];
+        [_lblName setTextColor:[FreedomTools colorWithRGBHex:0x252525]];
         _lblName.text = @"好友消息";
         _labelTime = [[UILabel alloc] init];
         _labelTime.backgroundColor = [UIColor clearColor];
@@ -451,13 +451,13 @@
     _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.conversationListTableView.frame.size.width, 44)];
       _searchBar.placeholder = @"搜索";
       _searchBar.keyboardType = UIKeyboardTypeDefault;
-      _searchBar.backgroundImage = [FreedomTools getImageWithColor:[UIColor clearColor] andHeight:44.0f];
+      _searchBar.backgroundImage = [FreedomTools imageWithColor:[UIColor clearColor]];
       //设置顶部搜索栏的背景色
-      [_searchBar setBackgroundColor:[UIColor colorWithRGBHex:0xf0f0f6]];
+      [_searchBar setBackgroundColor:[FreedomTools colorWithRGBHex:0xf0f0f6]];
       //设置顶部搜索栏输入框的样式
       UITextField *searchField = [_searchBar valueForKey:@"_searchField"];
       searchField.layer.borderWidth = 0.5f;
-      searchField.layer.borderColor = [[UIColor colorWithRGBHex:0xdfdfdf] CGColor];
+      searchField.layer.borderColor = [[FreedomTools colorWithRGBHex:0xdfdfdf] CGColor];
       searchField.layer.cornerRadius = 5.f;
   }
   return _searchBar;
@@ -521,23 +521,23 @@
   self.conversationListTableView.tableHeaderView = self.headerView;
   //设置tableView样式
   self.conversationListTableView.separatorColor =
-      [UIColor colorWithRGBHex:0xdfdfdf];
+      [FreedomTools colorWithRGBHex:0xdfdfdf];
   self.conversationListTableView.tableFooterView = [UIView new];
   // 设置在NavigatorBar中显示连接中的提示
   self.showConnectingStatusOnNavigatorBar = YES;
   //修改tabbar的背景色
   UIView *tabBarBG = [UIView new];
-  tabBarBG.backgroundColor = [UIColor colorWithRGBHex:0xf9f9f9];
+  tabBarBG.backgroundColor = [FreedomTools colorWithRGBHex:0xf9f9f9];
   tabBarBG.frame = self.tabBarController.tabBar.bounds;
   [[UITabBar appearance] insertSubview:tabBarBG atIndex:0];
   [[UITabBarItem appearance]
       setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                               [UIColor colorWithRGBHex:0x999999],
+                                               [FreedomTools colorWithRGBHex:0x999999],
                                                NSForegroundColorAttributeName, nil]
                     forState:UIControlStateNormal];
   [[UITabBarItem appearance]
       setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                               [UIColor colorWithRGBHex:0x0099ff],
+                                               [FreedomTools colorWithRGBHex:0x0099ff],
                                                NSForegroundColorAttributeName, nil]
                     forState:UIControlStateSelected];
   
@@ -727,7 +727,7 @@
   UIBarButtonItem *rightBarButton = self.tabBarController.navigationItem.rightBarButtonItems[1];
   CGRect targetFrame = rightBarButton.customView.frame;
   targetFrame.origin.y = targetFrame.origin.y + 15;
-  [KxMenu setTintColor:[UIColor colorWithRGBHex:0x000000]];
+  [KxMenu setTintColor:[FreedomTools colorWithRGBHex:0x000000]];
   [KxMenu setTitleFont:[UIFont systemFontOfSize:17]];
   [KxMenu showMenuInView:self.tabBarController.navigationController
                              .navigationBar.superview

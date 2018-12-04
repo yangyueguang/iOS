@@ -3,7 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
-class IqiyiNavigationController: XBaseNavigationViewController {
+class IqiyiNavigationController: BaseNavigationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.isTranslucent = false
@@ -12,7 +12,7 @@ class IqiyiNavigationController: XBaseNavigationViewController {
             .foregroundColor : UIColor.white,
             .font : Font(16)
         ]
-        navigationBar.barTintColor = RGBAColor(47, 47, 47,1)
+        navigationBar.barTintColor = UIColor(47, 47, 47,1)
         if (Double(UIDevice.current.systemVersion) ?? 0.0 >= 7.0) {
             edgesForExtendedLayout = []//视图控制器，四条边不指定
             extendedLayoutIncludesOpaqueBars = false//不透明的操作栏

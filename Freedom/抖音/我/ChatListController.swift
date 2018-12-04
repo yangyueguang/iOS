@@ -67,7 +67,7 @@ class ChatListController: DouyinBaseViewController {
     }
     
     func setUpView() {
-        tableView = XTableView.init(frame: CGRect.init(x: 0, y: safeAreaTopHeight, width: screenWidth, height: screenHeight - (self.navagationBarHeight() + statusBarHeight) - 10 - safeAreaBottomHeight))
+        tableView = BaseTableView.init(frame: CGRect.init(x: 0, y: safeAreaTopHeight, width: screenWidth, height: screenHeight - (self.navagationBarHeight() + statusBarHeight) - 10 - safeAreaBottomHeight))
         tableView.backgroundColor = ColorClear
         tableView.delegate = self
         tableView.dataSource = self
@@ -206,7 +206,7 @@ class ChatListController: DouyinBaseViewController {
         return data.count
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let chat = data[indexPath.row]
         return chat.cellHeight
     }

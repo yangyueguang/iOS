@@ -35,7 +35,7 @@
     if (image) {
         [self.imageView setImage:image];
     }else{
-        [self.imageView sd_setImageWithURL:TLURL(group.groupIconURL) placeholderImage:[UIImage imageWithColor:colorGrayBG]];
+        [self.imageView sd_setImageWithURL:TLURL(group.groupIconURL) placeholderImage:[FreedomTools imageWithColor:colorGrayBG]];
     }
 }
 #pragma mark - Private Methods

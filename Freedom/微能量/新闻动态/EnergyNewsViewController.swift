@@ -20,7 +20,7 @@ class EnergyNewsViewController: EnergyBaseViewController {
         super.viewDidLoad()
         title = "新闻动态";
     self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH-TopHeight))
-        self.cellHeight = 70
+        self.tableView.rowHeight = 70
         self.tableView.dataArray = NSMutableArray(array: ["人人店分销团队如何持续裂变","微营销流量引入的几点思考","”微时代 新电商“邀您对话千万资产","养出80%的回购率","0.2元低成本吸粉的玩法","阿罗古堡人人店，上线当月销量近60万","高潮迭起 微巴人人店征战中国","微营销对话微市场，新时代的迭起"])
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

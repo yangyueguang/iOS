@@ -180,6 +180,15 @@ char pinyinFirstLetter(unsigned short hanzi){
 }
 @end
 @implementation FreedomTools
++ (UIColor *)colorWithRGBHex:(UInt32)hex {
+    int r = (hex >> 16) & 0xFF;
+    int g = (hex >> 8) & 0xFF;
+    int b = (hex) & 0xFF;
+    return [UIColor colorWithRed:r / 255.0f
+                           green:g / 255.0f
+                            blue:b / 255.0f
+                           alpha:1.0f];
+}
 +(FreedomTools *)sharedManager{
     static FreedomTools *shareUrl = nil;
     static dispatch_once_t predicate;
@@ -445,8 +454,8 @@ char pinyinFirstLetter(unsigned short hanzi){
     }
     return NO;
 }
-+ (UIImage*) getImageWithColor:(UIColor*)color andHeight:(CGFloat)height{
-    CGRect r= CGRectMake(0.0f, 0.0f, 1.0f, height);
++ (UIImage*)imageWithColor:(UIColor*)color{
+    CGRect r= CGRectMake(0.0f, 0.0f, 1.0f, 1);
     UIGraphicsBeginImageContext(r.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, [color CGColor]);
@@ -476,7 +485,7 @@ char pinyinFirstLetter(unsigned short hanzi){
 }
 + (void)show:(nullable NSString *)msg {
     UILabel *_msgLab = [[UILabel alloc] initWithFrame:CGRectMake(0, -64, APPW, 64)];
-    _msgLab.backgroundColor = RGBACOLOR(0, 0, 0, 0.6);
+    _msgLab.backgroundColor = UIColor(0, 0, 0, 0.6);
     _msgLab.text = msg;
     _msgLab.textColor = [UIColor whiteColor];
     _msgLab.font = [UIFont boldSystemFontOfSize:18];

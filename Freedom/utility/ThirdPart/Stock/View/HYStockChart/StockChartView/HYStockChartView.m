@@ -55,7 +55,7 @@
 }
 -(void)awakeFromNib{
     [super awakeFromNib];
-    self.backgroundColor = AssistBackgroundColor;
+    self.backgroundColor = [UIColor whiteColor];
     self.chineseNameLabel.textColor = MainTextColor;
     self.currentPriceLabel.textColor = MainTextColor;
     self.volumeLabel.textColor = MainTextColor;
@@ -122,7 +122,7 @@ static CGFloat const HYStockChartSegmentIndicatorViewWidth = 40;
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = AssistBackgroundColor;
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }

@@ -11,7 +11,7 @@
 @implementation WXMyQRCodeViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:RGBACOLOR(46.0, 49.0, 50.0, 1.0)];
+    [self.view setBackgroundColor:UIColor(46.0, 49.0, 50.0, 1.0)];
     [self.navigationItem setTitle:@"我的二维码"];
     [self.view addSubview:self.qrCodeVC.view];
     [self addChildViewController:self.qrCodeVC];

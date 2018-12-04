@@ -124,7 +124,7 @@ class XCollectionViewDialLayout: UICollectionViewLayout {
         return theAttributes
     }
 }
-class FirstViewController: XBaseViewController,UICollectionViewDataSource, UICollectionViewDelegate,UISearchBarDelegate {
+class FirstViewController: BaseViewController,UICollectionViewDataSource, UICollectionViewDelegate,UISearchBarDelegate {
     static let sharedVC = FirstViewController()
     @IBOutlet weak var homecollectionView: UICollectionView!
     var items:[[String:String]] = (UIApplication.shared.delegate as! AppDelegate).items
@@ -185,7 +185,7 @@ class FirstViewController: XBaseViewController,UICollectionViewDataSource, UICol
         homecollectionView.register(CollectionViewCell2.self, forCellWithReuseIdentifier: CollectionViewCell2.identifier())
         homecollectionView.delegate = self
         homecollectionView.dataSource = self
-        homecollectionView.backgroundColor = RGBAColor(230, 230, 230, 1)
+        homecollectionView.backgroundColor = UIColor(230, 230, 230, 1)
         //下雪 每隔1秒下一次
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.snowAnimat(_:)), userInfo: nil, repeats: true)
         timer?.fireDate = Date(timeIntervalSinceNow: 200)
@@ -295,7 +295,7 @@ class FirstViewController: XBaseViewController,UICollectionViewDataSource, UICol
     }
     func collectionView(_ cv: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let dic = items[indexPath.item]
-        let color = UIColor.randomColor
+        let color = UIColor.random
         if exampleSwitch.isOn {
             let cell = cv.dequeueReusableCell(withReuseIdentifier: CollectionViewCell1.identifier(), for: indexPath) as? CollectionViewCell1
             cell?.icon.layer.borderColor = color.cgColor

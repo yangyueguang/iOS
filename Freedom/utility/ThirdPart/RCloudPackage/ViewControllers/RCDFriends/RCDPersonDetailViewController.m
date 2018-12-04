@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self setNavigationButtons];
-  self.view.backgroundColor = [UIColor colorWithRGBHex:0xf0f0f6];
+  self.view.backgroundColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
   self.infoView = [[UIView alloc]initWithFrame:CGRectMake(0,0, self.view.frame.size.width, 85)];
   self.infoView = [[UIView alloc]init];
   self.infoView.backgroundColor = [UIColor whiteColor];
@@ -57,7 +57,7 @@
   self.bottomLine.translatesAutoresizingMaskIntoConstraints = NO;
   [self.view addSubview:self.bottomLine];
   self.conversationBtn = [[UIButton alloc]init];
-  self.conversationBtn.backgroundColor = [UIColor colorWithRGBHex:0x0099ff];
+  self.conversationBtn.backgroundColor = [FreedomTools colorWithRGBHex:0x0099ff];
   self.conversationBtn.translatesAutoresizingMaskIntoConstraints = NO;
   [self.conversationBtn setTitle:@"发起会话" forState:UIControlStateNormal];
   [self.conversationBtn addTarget:self action:@selector(btnConversation:) forControlEvents:UIControlEventTouchUpInside];
@@ -127,7 +127,7 @@
   self.conversationBtn.layer.masksToBounds = YES;
   self.conversationBtn.layer.cornerRadius = 5.f;
   self.conversationBtn.layer.borderWidth = 0.5;
-  self.conversationBtn.layer.borderColor = [[UIColor colorWithRGBHex:0x0181dd] CGColor];
+  self.conversationBtn.layer.borderColor = [[FreedomTools colorWithRGBHex:0x0181dd] CGColor];
   self.audioCallBtn.layer.masksToBounds = YES;
   self.audioCallBtn.layer.cornerRadius = 5.f;
   self.videoCallBtn.layer.masksToBounds = YES;
@@ -290,7 +290,7 @@
   [remarksView addGestureRecognizer:clickRemarksView];
   UILabel *remarkLabel = [[UILabel alloc] init];
   remarkLabel.font = [UIFont systemFontOfSize:16.f];
-  remarkLabel.textColor = [UIColor colorWithRGBHex:0x000000];
+  remarkLabel.textColor = [FreedomTools colorWithRGBHex:0x000000];
   remarkLabel.translatesAutoresizingMaskIntoConstraints = NO;
   [remarksView addSubview:remarkLabel];
   remarkLabel.text = @"设置备注";
@@ -482,11 +482,11 @@
     self.displayNameLabel.hidden = NO;
     self.displayNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.displayNameLabel.font = [UIFont systemFontOfSize:16.f];
-    self.displayNameLabel.textColor = [UIColor colorWithRGBHex:0x000000];
+    self.displayNameLabel.textColor = [FreedomTools colorWithRGBHex:0x000000];
     self.displayNameLabel.text = self.friendInfo.displayName;
     [self.infoView addSubview:self.displayNameLabel];
     self.lblName.text = [NSString stringWithFormat:@"昵称: %@",self.friendInfo.name];
-    self.lblName.textColor = [UIColor colorWithRGBHex:0x999999];
+    self.lblName.textColor = [FreedomTools colorWithRGBHex:0x999999];
     self.lblName.font = [UIFont systemFontOfSize:14.f];
     self.subViews = NSDictionaryOfVariableBindings(_displayNameLabel,_phoneNumberLabel,_lblName);
       [self.infoView
@@ -514,7 +514,7 @@
     self.displayNameLabel.hidden = YES;
     self.lblName.text = self.friendInfo.name;
     self.lblName.font = [UIFont systemFontOfSize:16.f];
-    self.lblName.textColor = [UIColor colorWithRGBHex:0x000000];
+    self.lblName.textColor = [FreedomTools colorWithRGBHex:0x000000];
     self.subViews = NSDictionaryOfVariableBindings(_displayNameLabel,_phoneNumberLabel,_lblName);
     [self.infoView addConstraint:[NSLayoutConstraint
                       constraintWithItem:self.phoneNumberLabel
@@ -546,7 +546,7 @@
   [self.view layoutIfNeeded];
 }
 -(void)setPhoneNumber {
-   self.phoneNumberLabel.textColor = [UIColor colorWithRGBHex:0x999999];
+   self.phoneNumberLabel.textColor = [FreedomTools colorWithRGBHex:0x999999];
     self.phoneNumberLabel.font = [UIFont systemFontOfSize:14.f];
     self.phoneNumberLabel.text = @"手机号: --";
     self.phoneNumberLabel.userInteractionEnabled = YES;
@@ -558,7 +558,7 @@
              self.phoneNumberLabel.text = [NSString stringWithFormat:@"手机号: %@",[infoDic objectForKey:@"phone"]];
              //创建 NSMutableAttributedString
              NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString: self.phoneNumberLabel.text];
-             [attributedStr addAttribute: NSForegroundColorAttributeName value: [UIColor colorWithRGBHex:0x0099ff] range: NSMakeRange(5, 11)];
+             [attributedStr addAttribute: NSForegroundColorAttributeName value: [FreedomTools colorWithRGBHex:0x0099ff] range: NSMakeRange(5, 11)];
              self.phoneNumberLabel.attributedText = attributedStr;
              self.phonenumber = [NSString stringWithFormat:@"%@",[infoDic objectForKey:@"phone"]];
              [self.phoneNumberLabel addGestureRecognizer:clickPhoneNumber];

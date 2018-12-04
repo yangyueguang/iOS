@@ -6,5 +6,5 @@
 //  Copyright © 2018年 Super. All rights reserved.
 //
 import UIKit
-class FreedomTabBarController: XBaseTabBarController {
+class FreedomTabBarController: BaseTabBarViewController {
 }

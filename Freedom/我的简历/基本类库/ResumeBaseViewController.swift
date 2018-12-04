@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Super. All rights reserved.
 //
 import UIKit
-class ResumeBaseViewController: XBaseViewController {
+class ResumeBaseViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

@@ -159,7 +159,7 @@
         animas = [NSMutableArray array];
         self.foreView = [[UIView alloc]init];
         self.foreView.backgroundColor = [UIColor whiteColor];
-        self.xLabelColor = self.yLabelColor = [UIColor colorWithRGBHex:0x333333];
+        self.xLabelColor = self.yLabelColor = [FreedomTools colorWithRGBHex:0x333333];
         [self addSubview:self.foreView];
     }
     return self;
@@ -293,7 +293,7 @@
     }
     [self fillLineChart];
     [super drawRect:rect];
-    [self.yLabeleUnit drawAtPoint:CGPointMake(5,0) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor colorWithRGBHex:0x333333]}];
+    [self.yLabeleUnit drawAtPoint:CGPointMake(5,0) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[FreedomTools colorWithRGBHex:0x333333]}];
 }
 ///FIXME:画上下左右的label
 - (void)drawXLabelsAndYLabels{
@@ -469,7 +469,7 @@
             }
         }
     }
-    [self drawLinearGradient:context path:fillPath alpha:0.15f startColor:RGBACOLOR(246,85,14,1).CGColor endColor:RGBACOLOR(246,85,14,0.5).CGColor];
+    [self drawLinearGradient:context path:fillPath alpha:0.15f startColor:UIColor(246,85,14,1).CGColor endColor:UIColor(246,85,14,0.5).CGColor];
     CGPathRelease(fillPath);
 }
 ///FIXME:绘制趋势图

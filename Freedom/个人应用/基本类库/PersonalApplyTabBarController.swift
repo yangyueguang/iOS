@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Super. All rights reserved.
 //
 import UIKit
-class PersonalApplyTabBarController: XBaseTabBarController {
+class PersonalApplyTabBarController: BaseTabBarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

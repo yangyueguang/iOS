@@ -2,5 +2,5 @@
 //  DianpingBaseViewController.swift
 //  Freedom
 import UIKit
-class DZBaseViewController: XBaseViewController {
+class DZBaseViewController: BaseViewController {
 }

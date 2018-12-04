@@ -2,7 +2,7 @@
 //  AlipayTabBarController.swift
 //  Freedom
 import UIKit
-class AlipayTabBarController: XBaseTabBarController {
+class AlipayTabBarController: BaseTabBarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent

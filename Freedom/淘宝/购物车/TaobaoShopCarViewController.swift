@@ -3,6 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
+import XCarryOn
 class TaobaoShopCarViewCell:BaseTableViewCell{
     override func initUI() {
         icon = UIImageView()
@@ -27,7 +28,7 @@ class TaobaoShopCarViewCell:BaseTableViewCell{
         edit.setTitle("编辑", for: .normal)
         edit.titleLabel?.font = fontnomal
         lingquan.titleLabel?.font = edit.titleLabel?.font
-        headView.addSubviews([selecth, headTitle!, lingquan, edit])
+        headView.addSubviews([selecth, headTitle, lingquan, edit])
         let contentV = UIView(frame: CGRect(x: 0, y: YH(headView), width: APPW, height: 80))
         let selectc = UIButton(frame: CGRect(x: 10, y: 32, width: 15, height: 15))
         selectc.setImage(UIImage(named: "taobaono"), for: .normal)
@@ -39,10 +40,10 @@ class TaobaoShopCarViewCell:BaseTableViewCell{
         script.textColor = graycolor
         script.frame = CGRect(x: X(title), y: YH(title), width: W(title), height: 20)
         let newPrice = UILabel(frame: CGRect(x: X(script), y: YH(script), width: 60, height: 20), font: fontnomal, color: redcolor, text: "￥199")
-        let oldPrice = UILabel(frame: CGRect(x: XW(newPrice), y: Y(newPrice!), width: 80, height: H(newPrice)), font: fontnomal, color: graycolor, text: "￥299")
-        let num = UILabel(frame: CGRect(x: APPW - 50, y: Y(newPrice!), width: 40, height: 20), font: fontnomal, color: graycolor, text: "x1")
-        num?.textAlignment = .right
-        contentV.addSubviews([selectc, icon, title, script, newPrice!, oldPrice!, num!])
+        let oldPrice = UILabel(frame: CGRect(x: XW(newPrice), y: Y(newPrice), width: 80, height: H(newPrice)), font: fontnomal, color: graycolor, text: "￥299")
+        let num = UILabel(frame: CGRect(x: APPW - 50, y: Y(newPrice), width: 40, height: 20), font: fontnomal, color: graycolor, text: "x1")
+        num.textAlignment = .right
+        contentV.addSubviews([selectc, icon, title, script, newPrice, oldPrice, num])
         addSubviews([headView, contentV, line])
         icon.image = UIImage(named: "taobao05.jpg")
         title.text = "冬季外套女装学生韩版棉衣女中长款面包服女加厚棉服宽松冬装棉袄"
@@ -71,7 +72,7 @@ class TaobaoShopCarViewController: TaobaoBaseViewController {
         heji.font = fontTitle
         let pay = UIButton(frame: CGRect(x: APPW - 80, y: 0, width: 80, height: 40))
         pay.setTitle("结算(0)", for: .normal)
-        pay.backgroundColor = RGBAColor(252, 74, 1)
+        pay.backgroundColor = UIColor(252, 74, 1)
         totalView.addSubviews([totalb, heji, pay])
         view.addSubview(totalView)
     }

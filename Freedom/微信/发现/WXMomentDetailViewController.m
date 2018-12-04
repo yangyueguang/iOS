@@ -82,8 +82,8 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
     CGContextAddLineToPoint(context, startX + width, endY);
     CGContextAddLineToPoint(context, startX - width, endY);
     CGContextClosePath(context);
-    [RGBACOLOR(243.0, 243.0, 245.0, 1.0) setFill];
-    [RGBACOLOR(243.0, 243.0, 245.0, 1.0) setStroke];
+    [UIColor(243.0, 243.0, 245.0, 1.0) setFill];
+    [UIColor(243.0, 243.0, 245.0, 1.0) setStroke];
     CGContextDrawPath(context, kCGPathFillStroke);
 }
 #pragma mark -
@@ -91,7 +91,7 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
     if (_tableView == nil) {
         _tableView = [[UITableView alloc] init];
         [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-        [_tableView setBackgroundColor:RGBACOLOR(243.0, 243.0, 245.0, 1.0)];
+        [_tableView setBackgroundColor:UIColor(243.0, 243.0, 245.0, 1.0)];
         [_tableView setDelegate:self];
         [_tableView setDataSource:self];
         [_tableView setScrollsToTop:NO];
@@ -252,7 +252,7 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
         _usernameView = [[UIButton alloc] init];
         _usernameView.tag = TLMomentViewButtonTypeUserName;
         [_usernameView.titleLabel setFont:[UIFont boldSystemFontOfSize:15.0f]];
-        [_usernameView setTitleColor:RGBACOLOR(74.0, 99.0, 141.0, 1.0) forState:UIControlStateNormal];
+        [_usernameView setTitleColor:UIColor(74.0, 99.0, 141.0, 1.0) forState:UIControlStateNormal];
         [_usernameView addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _usernameView;

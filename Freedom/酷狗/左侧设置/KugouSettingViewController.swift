@@ -3,6 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
+import XCarryOn
 class KugouSettingViewCell:BaseTableViewCell{
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x:0, y:0, width:0, height:120))
@@ -66,7 +67,7 @@ class KugouSettingViewController: KugouBaseViewController {
         return foot
     }
     func setupTableView() {
-        tableView = BaseTableView(frame: CGRect(x: 0, y: (topView?.height())!, width: APPW, height: APPH - 210), style: .plain)
+        tableView = BaseTableView(frame: CGRect(x: 0, y: (topView?.height)!, width: APPW, height: APPH - 210), style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.clear

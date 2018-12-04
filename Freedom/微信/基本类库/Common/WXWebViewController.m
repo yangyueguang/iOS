@@ -28,7 +28,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
-    [self.view setBackgroundColor:RGBACOLOR(46.0, 49.0, 50.0, 1.0)];
+    [self.view setBackgroundColor:UIColor(46.0, 49.0, 50.0, 1.0)];
     [self.webView.scrollView setBackgroundColor:[UIColor clearColor]];
     for (id vc in self.webView.scrollView.subviews) {
         NSString *className = NSStringFromClass([vc class]);

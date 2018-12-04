@@ -19,7 +19,7 @@ class EnergyBusinessListViewController: EnergyBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH-TopHeight))
-        self.cellHeight = 70
+        self.tableView.rowHeight = 70
         self.tableView.dataArray = NSMutableArray(array: ["桌上美食","真心真艺","音响科技有限公司","智联招聘","前程无忧","百度百科","雅虎中国","360","布丁酒店","如家","莫泰168","宜家家居","微软中国","苹果公司","IBM"])
      self.tableView.delegate = self;
     self.tableView.dataSource = self;

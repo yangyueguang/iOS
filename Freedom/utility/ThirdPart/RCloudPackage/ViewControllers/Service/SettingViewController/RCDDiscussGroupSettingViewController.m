@@ -45,7 +45,7 @@ NSString *const RCDUpdateNameTableViewCellIdentifier = @"RCDUpdateNameTableViewC
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRGBHex:0x0195ff]];
+    [self.navigationController.navigationBar setBarTintColor:[FreedomTools colorWithRGBHex:0x0195ff]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(backBarButtonItemClicked:)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonItemClicked:)];

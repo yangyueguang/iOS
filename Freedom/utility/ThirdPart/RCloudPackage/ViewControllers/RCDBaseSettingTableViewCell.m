@@ -49,11 +49,11 @@
 - (void)initialize {
   self.leftLabel = [[UILabel alloc] init];
   self.leftLabel.font = [UIFont systemFontOfSize:16.f];
-  self.leftLabel.textColor = [UIColor colorWithRGBHex:0x000000];
+  self.leftLabel.textColor = [FreedomTools colorWithRGBHex:0x000000];
   self.leftLabel.translatesAutoresizingMaskIntoConstraints = NO;
   self.rightLabel = [[UILabel alloc] init];
   self.rightLabel.font = [UIFont systemFontOfSize:14.f];
-  self.rightLabel.textColor = [UIColor colorWithRGBHex:0x999999];
+  self.rightLabel.textColor = [FreedomTools colorWithRGBHex:0x999999];
   self.rightLabel.translatesAutoresizingMaskIntoConstraints = NO;
   self.rightArrow = [[UIImageView alloc] init];
   self.rightArrow.image = [UIImage imageNamed:@"right_arrow"];
@@ -63,7 +63,7 @@
   self.switchButton.on = self.switchButtonStatus;
   self.switchButton.translatesAutoresizingMaskIntoConstraints = NO;
   self.bottomLine = [[UIView alloc] init];
-  self.bottomLine.backgroundColor = [UIColor colorWithRGBHex:0xdfdfdf];
+  self.bottomLine.backgroundColor = [FreedomTools colorWithRGBHex:0xdfdfdf];
   self.bottomLine.translatesAutoresizingMaskIntoConstraints = NO;
   [self.contentView addSubview:self.leftLabel];
   [self.contentView addSubview:self.rightLabel];

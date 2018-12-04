@@ -22,7 +22,7 @@
         placeholderLabel.numberOfLines=0; //设置可以输入多行文字时可以自动换行
         [self addSubview:placeholderLabel];
         self.placeholderLabel= placeholderLabel; //赋值保存
-        self.myPlaceholderColor= [UIColor colorWithRGBHex:0x999999]; //设置占位文字默认颜色
+        self.myPlaceholderColor= [FreedomTools colorWithRGBHex:0x999999]; //设置占位文字默认颜色
         self.font= [UIFont systemFontOfSize:16]; //设置默认的字体
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:self]; //通知:监听文字的改变
         //设置可以上下拖动
@@ -80,7 +80,7 @@
     self.AnnouncementContent = [[UITextViewAndPlaceholder alloc] initWithFrame:CGRectZero];
     self.AnnouncementContent.delegate = self;
     self.AnnouncementContent.font = [UIFont systemFontOfSize:16.f];
-    self.AnnouncementContent.textColor = [UIColor colorWithRGBHex:0x000000];
+    self.AnnouncementContent.textColor = [FreedomTools colorWithRGBHex:0x000000];
     self.AnnouncementContent.myPlaceholder = @"请编辑群公告";
     self.AnnouncementContent.frame = CGRectMake(4.5, 8, self.view.frame.size.width - 5, self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - 90);
     self.heigh = self.AnnouncementContent.frame.size.height;
@@ -96,7 +96,7 @@
   [self.rightBtn addSubview:self.rightLabel];
   [self.rightBtn addTarget:self action:@selector(clickRightBtn:) forControlEvents:UIControlEventTouchUpInside];
   UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:self.rightBtn ];
-  [self.rightLabel setTextColor:[UIColor colorWithRGBHex:0x9fcdfd]];
+  [self.rightLabel setTextColor:[FreedomTools colorWithRGBHex:0x9fcdfd]];
   self.rightBtn .userInteractionEnabled = NO;
   self.navigationItem.rightBarButtonItem = rightButton;
   self.leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 34)];
@@ -193,7 +193,7 @@
   NSInteger number = [textView.text length];
   if (number == 0) {
     self.rightBtn.userInteractionEnabled = NO;
-    [self.rightLabel setTextColor:[UIColor colorWithRGBHex:0x9fcdfd]];
+    [self.rightLabel setTextColor:[FreedomTools colorWithRGBHex:0x9fcdfd]];
   }
   if (number > 0) {
     self.rightBtn.userInteractionEnabled = YES;
@@ -213,7 +213,7 @@
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.yOffset = -46.f;
     self.hud.minSize = CGSizeMake(120, 120);
-    self.hud.color = [UIColor colorWithRGBHex:0x343637];
+    self.hud.color = [FreedomTools colorWithRGBHex:0x343637];
     self.hud.margin = 0;
     [self.hud show:YES];
     //发布成功后，使用自定义图片

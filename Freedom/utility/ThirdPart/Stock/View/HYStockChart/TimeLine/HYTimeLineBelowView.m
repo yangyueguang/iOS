@@ -5,6 +5,9 @@
 #import "TimeLineModel.h"
 #import "HYStockChartConstant.h"
 #import "StockCategory.h"
+
+///边框线颜色
+#define GridLineColor [FreedomTools colorWithRGBHex:0x999999]
 /************************分时线下面的view的位置模型************************/
 @interface HYTimeLineBelowPositionModel : NSObject
 @property(nonatomic,assign) CGPoint startPoint;

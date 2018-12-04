@@ -23,7 +23,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self.navigationItem setTitle:@"选择背景图"];
-    [self.collectionView setBackgroundColor:RGBACOLOR(46.0, 49.0, 50.0, 1.0)];
+    [self.collectionView setBackgroundColor:UIColor(46.0, 49.0, 50.0, 1.0)];
     [self.view addSubview:self.collectionView];
     
     [self p_addMasonry];

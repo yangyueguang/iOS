@@ -2,7 +2,7 @@
 //  AlipayNavigationViewController.swift
 //  Freedom
 import UIKit
-class AlipayNavigationViewController: XBaseNavigationViewController {
+class AlipayNavigationViewController: BaseNavigationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

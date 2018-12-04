@@ -127,7 +127,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [self.view addSubview:self.tableView];
   self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
   self.tableView.tableFooterView = [UIView new];
-  self.tableView.backgroundColor = [UIColor colorWithRGBHex:0xf0f0f6];
+  self.tableView.backgroundColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tableView.scrollEnabled = NO;
 }

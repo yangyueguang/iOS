@@ -47,7 +47,7 @@ class DetailTableViewController: TaobaoBaseViewController {
         return data.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 85
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

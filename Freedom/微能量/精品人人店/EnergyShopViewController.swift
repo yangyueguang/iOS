@@ -20,7 +20,7 @@ class EnergyShopViewController: EnergyBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH-110))
-        self.cellHeight = 80
+        self.tableView.rowHeight = 80
         self.tableView.dataArray = NSMutableArray(array: ["酒水","茶饮","水果","生鲜","土地产","旅游","美丽人生","养生","服饰鞋袜","百货","美食","坚果零食","饰品","手工制品","家电家居","健身","宠品"])
     self.tableView.delegate = self
     self.tableView.dataSource = self

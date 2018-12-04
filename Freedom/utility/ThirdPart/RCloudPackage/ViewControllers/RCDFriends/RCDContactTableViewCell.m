@@ -29,12 +29,12 @@
   _nicknameLabel = [[UILabel alloc] init];
   _nicknameLabel.translatesAutoresizingMaskIntoConstraints = NO;
   [_nicknameLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15.0]];
-  _nicknameLabel.textColor = [UIColor colorWithRGBHex:0x000000];
+  _nicknameLabel.textColor = [FreedomTools colorWithRGBHex:0x000000];
   [self.contentView addSubview:_nicknameLabel];
   _userIdLabel = [[UILabel alloc] init];
   _userIdLabel.translatesAutoresizingMaskIntoConstraints = NO;
   [_userIdLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15.0]];
-  _userIdLabel.textColor = [UIColor colorWithRGBHex:0x000000];
+  _userIdLabel.textColor = [FreedomTools colorWithRGBHex:0x000000];
   [self.contentView addSubview:_userIdLabel];
   NSDictionary *views = NSDictionaryOfVariableBindings(_portraitView, _nicknameLabel,_userIdLabel);
   [self.contentView
@@ -89,6 +89,6 @@
     
   }
   self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
-  self.selectedBackgroundView.backgroundColor = [UIColor colorWithRGBHex:0xf5f5f5];
+  self.selectedBackgroundView.backgroundColor = [FreedomTools colorWithRGBHex:0xf5f5f5];
 }
 @end

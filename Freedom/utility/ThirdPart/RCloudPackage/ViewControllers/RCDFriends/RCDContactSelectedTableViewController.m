@@ -254,7 +254,7 @@
   [self.searchBar setText:NSLocalizedStringFromTable(@"ToSearch", @"RongCloudKit", nil)];
   self.searchField = [self.searchBar valueForKey:@"_searchField"];
   self.searchField.clearButtonMode = UITextFieldViewModeNever;
-  self.searchField.textColor = [UIColor colorWithRGBHex:0x999999];
+  self.searchField.textColor = [FreedomTools colorWithRGBHex:0x999999];
   self.searchBarLeftView = self.searchField.leftView;
   [self.searchBar setDelegate:self];
   [self.searchBar setKeyboardType:UIKeyboardTypeDefault];
@@ -265,16 +265,7 @@
   }
   [self.view addSubview:self.searchBar];
 }
-- (UIImage*) GetImageWithColor:(UIColor*)color andHeight:(CGFloat)height{
-  CGRect r= CGRectMake(0.0f, 0.0f, 1.0f, height);
-  UIGraphicsBeginImageContext(r.size);
-  CGContextRef context = UIGraphicsGetCurrentContext();
-  CGContextSetFillColorWithColor(context, [color CGColor]);
-  CGContextFillRect(context, r);
-  UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-  UIGraphicsEndImageContext();
-  return img;
-}
+
 - (CGRect)getSearchBarFrame :(CGRect)frame{
   CGRect searchBarFrame = CGRectZero;
   frame.origin.x = frame.size.width;
@@ -318,7 +309,7 @@
 - (void)clickedDone:(id)sender {
     self.rightBtn.customView.userInteractionEnabled = NO;
   hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-  hud.color = [UIColor colorWithRGBHex:0x343637];
+  hud.color = [FreedomTools colorWithRGBHex:0x343637];
   //    hud.labelText = @"";
   [hud show:YES];
   if (self.isAllowsMultipleSelection == NO) {

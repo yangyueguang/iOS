@@ -176,7 +176,7 @@
       [_GroupMemberIdList addObject:[RCIM sharedRCIM].currentUserInfo.userId];
     }
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.color = [UIColor colorWithRGBHex:0x343637];
+    hud.color = [FreedomTools colorWithRGBHex:0x343637];
     hud.labelText = @"创建中...";
     [hud show:YES];
     [[RCDHttpTool shareInstance]createGroupWithGroupName:nameStr GroupMemberList:_GroupMemberIdList complete:^(NSString *groupId) {

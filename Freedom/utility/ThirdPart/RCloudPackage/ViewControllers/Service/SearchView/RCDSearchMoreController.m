@@ -42,10 +42,10 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 40-16-7, self.view.frame.size.width, 16)];
     label.font = [UIFont systemFontOfSize:14.];
     label.text = self.type;
-    label.textColor = [UIColor colorWithRGBHex:0x999999];
+    label.textColor = [FreedomTools colorWithRGBHex:0x999999];
     [_headerView addSubview:label];
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 39.5, self.view.frame.size.width-10, 0.5)];
-    view.backgroundColor = [UIColor colorWithRGBHex:0xdfdfdf];
+    view.backgroundColor = [FreedomTools colorWithRGBHex:0xdfdfdf];
     [self.headerView addSubview:view];
   }
   return _headerView;
@@ -74,7 +74,7 @@
   UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
   [self.navigationItem setLeftBarButtonItem:leftButton];
   self.tableView.tableFooterView = [UIView new];
-  self.tableView.separatorColor = [UIColor colorWithRGBHex:0xdfdfdf];
+  self.tableView.separatorColor = [FreedomTools colorWithRGBHex:0xdfdfdf];
 }
 - (void)leftBarButtonBackAction{
   [self.navigationController popViewControllerAnimated:YES];
@@ -84,13 +84,13 @@
   _searchBars = [[UISearchBar alloc] initWithFrame:CGRectZero];
     _searchBars.placeholder = @"搜索";
     _searchBars.keyboardType = UIKeyboardTypeDefault;
-    _searchBars.backgroundImage = [FreedomTools getImageWithColor:[UIColor clearColor] andHeight:44.0f];
+    _searchBars.backgroundImage = [FreedomTools imageWithColor:[UIColor clearColor]];
     //设置顶部搜索栏的背景色
-    [_searchBars setBackgroundColor:[UIColor colorWithRGBHex:0xf0f0f6]];
+    [_searchBars setBackgroundColor:[FreedomTools colorWithRGBHex:0xf0f0f6]];
     //设置顶部搜索栏输入框的样式
     UITextField *searchField = [self valueForKey:@"_searchField"];
     searchField.layer.borderWidth = 0.5f;
-    searchField.layer.borderColor = [[UIColor colorWithRGBHex:0xdfdfdf] CGColor];
+    searchField.layer.borderColor = [[FreedomTools colorWithRGBHex:0xdfdfdf] CGColor];
     searchField.layer.cornerRadius = 5.f;
   _searchBars.delegate = self;
   _searchBars.placeholder = nil;
@@ -99,7 +99,7 @@
   [self.searchView addSubview:self.searchBars];
   _cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_searchBars.frame)-3, CGRectGetMinY(self.searchBars.frame),55, 44)];
   [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
-  [_cancelButton setTitleColor:[UIColor colorWithRGBHex:0x0099ff] forState:UIControlStateNormal];
+  [_cancelButton setTitleColor:[FreedomTools colorWithRGBHex:0x0099ff] forState:UIControlStateNormal];
   _cancelButton.titleLabel.font = [UIFont systemFontOfSize:18.];
   [_cancelButton addTarget:self action:@selector(cancelButtonClicked) forControlEvents:UIControlEventTouchUpInside];
   [self.searchView addSubview:_cancelButton];
@@ -112,12 +112,12 @@
   [super viewWillAppear:animated];
   self.tableView.tableHeaderView = self.headerView;
   if (self.isShowSeachBar) {
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRGBHex:0xf0f0f6];
+    self.navigationController.navigationBar.barTintColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
   }
 }
 - (void)viewWillDisappear:(BOOL)animated{
   [super viewWillDisappear:animated];
-  self.navigationController.navigationBar.barTintColor = [UIColor colorWithRGBHex:0x0099ff];
+  self.navigationController.navigationBar.barTintColor = [FreedomTools colorWithRGBHex:0x0099ff];
 }
 - (void)viewWillLayoutSubviews{
   [super viewWillLayoutSubviews];
@@ -236,9 +236,9 @@
   NSString *searchStr = [searchText stringByReplacingOccurrencesOfString:@" "  withString:@""];
   if (!self.resultArray.count && searchText.length>0 && searchStr.length > 0) {
     NSString *str =[NSString stringWithFormat:@"没有搜索到“%@”相关的内容",searchText];
-    self.emptyLabel.textColor = [UIColor colorWithRGBHex:0x999999];
+    self.emptyLabel.textColor = [FreedomTools colorWithRGBHex:0x999999];
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:str];
-    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRGBHex:0x0099ff] range:NSMakeRange(6, searchText.length)];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[FreedomTools colorWithRGBHex:0x0099ff] range:NSMakeRange(6, searchText.length)];
     self.emptyLabel.attributedText = attributedString;
     CGFloat height = [self labelAdaptive:str];
     CGRect rect = self.emptyLabel.frame;

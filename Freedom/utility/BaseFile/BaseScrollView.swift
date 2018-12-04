@@ -37,7 +37,7 @@ open class BaseScrollView : UIScrollView, UIScrollViewDelegate {
     private var pagecontroller: UIPageControl?
     private var round = false
     //小项目滑动的图标要不要圆
-    private var size = CGSize.zero
+//    private var size = CGSize.zero
     //小项目滑动的图标尺寸大小
     private var hang: Int = 0
     override init(frame: CGRect) {

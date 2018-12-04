@@ -13,7 +13,7 @@ static TLEmojiKeyboard *emojiKB;
 }
 - (id)init{
     if (self = [super init]) {
-        [self setBackgroundColor:RGBACOLOR(245.0, 245.0, 247.0, 1.0)];
+        [self setBackgroundColor:UIColor(245.0, 245.0, 247.0, 1.0)];
         [self addSubview:self.collectionView];
         [self addSubview:self.pageControl];
         [self addSubview:self.groupControl];

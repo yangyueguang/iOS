@@ -8,7 +8,7 @@ import XCarryOn
 class JuheContectUSViewCell:BaseCollectionViewCell{
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x:0, y:0, width:APPW*2/3, height:120))
-        self.title = UILabel(frame: CGRect(x:0, y:YH( self.icon), width:self.icon.width(), height: 20))
+        self.title = UILabel(frame: CGRect(x:0, y:YH( self.icon), width:self.icon.width, height: 20))
         self.title.textAlignment = .center
         self.addSubviews([self.title,self.icon])
         self.title.text = "name"

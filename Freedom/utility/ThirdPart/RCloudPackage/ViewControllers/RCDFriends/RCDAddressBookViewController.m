@@ -26,7 +26,7 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         self.displayLabel = [UILabel new];
-        self.displayLabel.textColor = [UIColor colorWithRGBHex:0x999999];
+        self.displayLabel.textColor = [FreedomTools colorWithRGBHex:0x999999];
         self.displayLabel.font = [UIFont systemFontOfSize:14.f];
         self.displayLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:self.displayLabel];
@@ -160,7 +160,7 @@
 }
 - (void)doAccept:(UIButton *)sender {
   hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-  hud.color = [UIColor colorWithRGBHex:0x343637];
+  hud.color = [FreedomTools colorWithRGBHex:0x343637];
   hud.labelText = @"添加好友中...";
   [hud show:YES];
   NSInteger tempTag = sender.tag;

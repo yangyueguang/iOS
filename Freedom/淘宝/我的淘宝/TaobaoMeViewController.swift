@@ -3,6 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
+import XCarryOn
 class TaobaoMeViewCell1:BaseCollectionViewCell{
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 10, y: 0, width: APPW / 5 - 20, height: 40))
@@ -66,17 +67,17 @@ class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDelegate,
         navigationItem.leftBarButtonItem = `left`
         navigationItem.rightBarButtonItems = [right1, right2] as? [UIBarButtonItem]
         let headView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 100))
-        headView.backgroundColor = RGBAColor(252, 50, 50)
+        headView.backgroundColor = UIColor(252, 50, 50, 1)
         let icon = UIImageView(frame: CGRect(x: APPW / 2 - 30, y: 0, width: 60, height: 60))
         icon.layer.cornerRadius = 30
         icon.image = UIImage(named: "userLogo")
         icon.clipsToBounds = true
-        let name = UILabel(frame: CGRect(x: 10, y: YH(icon), width: APPW - 20, height: 20), font: fontSmallTitle, color: whitecolor, text: "杨越光", textAlignment: .center)
-        let taoqi = UILabel(frame: CGRect(x: APPW / 2 - 40, y: YH(name), width: 80, height: 15), font: fontnomal, color: redcolor, text: "淘气值：710", textAlignment: .center)
-        taoqi?.clipsToBounds = true
-        taoqi?.layer.cornerRadius = 7
-        taoqi?.backgroundColor = yellowcolor
-        headView.addSubviews([icon, name!, taoqi!])
+        let name = UILabel(frame: CGRect(x: 10, y: YH(icon), width: APPW - 20, height: 20), font: fontSmallTitle, color: whitecolor, text: "杨越光", alignment: .center)
+        let taoqi = UILabel(frame: CGRect(x: APPW / 2 - 40, y: YH(name), width: 80, height: 15), font: fontnomal, color: redcolor, text: "淘气值：710", alignment: .center)
+        taoqi.clipsToBounds = true
+        taoqi.layer.cornerRadius = 7
+        taoqi.backgroundColor = yellowcolor
+        headView.addSubviews([icon, name, taoqi])
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: (APPW - 50) / 4, height: 90)
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)

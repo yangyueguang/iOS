@@ -6,6 +6,7 @@
 #import "HYStockChartConstant.h"
 #import "StockCategory.h"
 #import "HYStockChartTool.h"
+
 @interface HYKLine()
 @property(nonatomic,assign) CGContextRef context;
 @property(nonatomic,assign) CGPoint lastDrawDatePoint;

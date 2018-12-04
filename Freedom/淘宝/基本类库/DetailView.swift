@@ -6,6 +6,7 @@
 //  Copyright © 2018 Super. All rights reserved.
 import UIKit
 import XExtension
+import XCarryOn
 class DetailView: UIView {
     var sectionView: UIView!
     var sectionLineView: UIView!
@@ -16,14 +17,10 @@ class DetailView: UIView {
     //banner视图，包含滚动视图和页面控件
     var topView: UIView!//顶部视图的容器
     var bottomView: UIView!
-    private var width: CGFloat = 0.0
-    private var height: CGFloat = 0.0
     private var middleHeight: CGFloat = 44.0
     private var currentIndex: Int = -1
     override init(frame: CGRect) {
         super.init(frame: frame)
-        width = frame.size.width
-        height = frame.size.height
         backgroundColor = UIColor.white
         topScrollPageView = UIView(frame: CGRect(x: 0, y: -370, width: width, height: 370))
         topScrollPageView.layer.masksToBounds = false

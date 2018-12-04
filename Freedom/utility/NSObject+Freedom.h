@@ -33,9 +33,6 @@
 -(void)showAlerWithtitle:(NSString*)t message:(NSString*)m style:(UIAlertControllerStyle)style ac1:(UIAlertAction* (^)(void))ac1 ac2:(UIAlertAction* (^)(void))ac2 ac3:(UIAlertAction* (^)(void))ac3 completion:(void(^)())completion;
 -(void)setupForDismissKeyboard;
 @end
-@interface UIImage (Freedom)
-+ (UIImage *)imageWithColor:(UIColor *)color;
-@end
 typedef void (^BarButtonActionBlock)();
 @interface UIBarButtonItem (expanded)
 - (id)initWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style actionBlick:(BarButtonActionBlock)actionBlock;
@@ -55,8 +52,6 @@ typedef void (^BarButtonActionBlock)();
 - (void)wr_clear;
 @end
 @interface NSString(expanded)
-- (NSString*)urlEncodedString;
-- (NSString*)urlDecodedString;
 - (NSString *) pinyin;
 - (NSDictionary *)dictionaryFromURLParameters;
 - (NSString *)emoji;
@@ -64,28 +59,32 @@ typedef void (^BarButtonActionBlock)();
 - (BOOL)isEmoji;
 - (CGSize)sizeOfFont:(UIFont *)font maxW:(CGFloat)maxW;
 - (CGSize)sizeOfFont:(UIFont *)font;
-/** 查找多个匹配方案结果 */
-- (NSArray *)matchesWithPattern:(NSString *)pattern;
-/** 查找多个匹配方案结果，并根据键值数组生成对应的字典数组 */
-- (NSArray *)matchesWithPattern:(NSString *)pattern keys:(NSArray *)keys;
 @end
 @interface NSDate (expanded)
-- (NSUInteger)weeklyOrdinality;
 - (NSDateComponents *)YMDComponents;
--(NSString *)getWeekString;
 -(NSString *)timeToNow;
-- (BOOL) isInFuture;
-- (BOOL) isInPast;
-- (BOOL) isToday;
 @end
 @interface UIView(Addition)
 -(BOOL) containsSubView:(UIView *)subView;
 -(BOOL) containsSubViewOfClassType:(Class)aclass;
 -(void)addSubviews:(UIView *)view,...;
--(void)imageWithURL:(NSString *)url useProgress:(BOOL)useProgress useActivity:(BOOL)useActivity defaultImage:(NSString *)strImage;
 -(void)bestRoundCorner;
 @end
-@interface UIColor (Extention)
 
-+ (UIColor *)colorWithRGBHex:(UInt32)hex ;
+@interface NSObject (Safe)
++ (NSArray *)allProperties;
 @end
+@interface NSArray (Safe)
+@end
+@interface NSMutableArray (Safe)
+- (void)safeAddObject:(id)anObject;
+- (void)safeRemoveObjectAtIndex:(NSUInteger)index;
+- (BOOL)expanNSMutableArray;
+@end
+@interface NSMutableDictionary (Safe)
+@end
+@interface NSString (Safe)
+/** 删除线 */
+- (NSAttributedString *)strickout;
+@end
+

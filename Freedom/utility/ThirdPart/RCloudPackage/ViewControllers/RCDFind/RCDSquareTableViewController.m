@@ -119,12 +119,12 @@
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
   UIView *sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width,35.5)];
-  sectionHeaderView.backgroundColor = [UIColor colorWithRGBHex:0xf0f0f6];
+  sectionHeaderView.backgroundColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 35.5-0.5, [[UIScreen mainScreen] bounds].size.width, 0.5)];
-    line.backgroundColor = [UIColor colorWithRGBHex:0xdfdfdf];
+    line.backgroundColor = [FreedomTools colorWithRGBHex:0xdfdfdf];
     [sectionHeaderView addSubview:line];
   UILabel *Title = [[UILabel alloc] initWithFrame:CGRectMake(9, (35.5-20)/2.0, 200, 20)];
-  [Title setTextColor:[UIColor colorWithRGBHex:0x000000]];
+  [Title setTextColor:[FreedomTools colorWithRGBHex:0x000000]];
   [Title setFont:[UIFont systemFontOfSize:16.f]];
   [sectionHeaderView addSubview:Title];
   switch (section) {

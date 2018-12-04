@@ -50,7 +50,7 @@ class BaseModel:NSObject, HandyJSON {
     }
 }
 
-class User: BaseModel {
+class DouYinUser: BaseModel {
 
     var weibo_name:String?
     var google_account:String?
@@ -162,7 +162,7 @@ class Activity: BaseModel {
 }
 
 class Aweme: BaseModel {
-    var author:User?
+    var author:DouYinUser?
     var music:Music?
     var cmt_swt:Bool?
     var video_text = [Video_text]()
@@ -446,7 +446,7 @@ class Comment: BaseModel {
     var user_digged:Int?
     var text_extra = [Any]()
     var user_type:String?
-    var user:User?
+    var user:DouYinUser?
     var visitor:Visitor?
 
     var isTemp:Bool = false

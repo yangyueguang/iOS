@@ -8,7 +8,8 @@
 import UIKit
 import ElasticTransitionObjC
 import XExtension
-class SettingsViewController: XBaseViewController ,ElasticMenuTransitionDelegate{
+import XCarryOn
+class SettingsViewController: BaseViewController ,ElasticMenuTransitionDelegate{
     var contentLength:CGFloat = APPW * 0.8
     var dismissByBackgroundTouch = true
     var dismissByBackgroundDrag = true
@@ -44,7 +45,7 @@ class SettingsViewController: XBaseViewController ,ElasticMenuTransitionDelegate
         }
         return UITableViewCell()
     }
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

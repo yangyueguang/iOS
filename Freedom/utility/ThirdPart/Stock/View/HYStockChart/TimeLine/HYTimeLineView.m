@@ -9,6 +9,11 @@
 #import "StockCategory.h"
 #import "FiveRange_TradeDetailTableView.h"
 #import "HYStockChartTool.h"
+
+/// 涨的颜色
+#define IncreaseColor [UIColor colorWithRed:206/255.0 green:65/255.0 blue:51/255.0 alpha:1.0]
+/// 跌的颜色
+#define DecreaseColor [UIColor colorWithRed:37/255.0 green:174/255.0 blue:68/255.0 alpha:1.0]
 @class HYTimeLineModel;
 /************************分时线长按的简介view************************/
 @interface HYTimeLineLongPressProfileView : UIView
@@ -57,7 +62,7 @@
 }
 -(void)awakeFromNib{
     [super awakeFromNib];
-    self.backgroundColor = AssistBackgroundColor;
+    self.backgroundColor = [UIColor whiteColor];
     self.chineseNameLabel.textColor = MainTextColor;
     self.symbolLabel.textColor = AssistTextColor;
     self.priceLabel.textColor = MainTextColor;
@@ -231,7 +236,7 @@
 }
 -(void)awakeFromNib{
     [super awakeFromNib];
-    self.backgroundColor = AssistBackgroundColor;
+    self.backgroundColor = [UIColor whiteColor];
     self.chineseNameLabel.textColor = MainTextColor;
     self.symbolLabel.textColor = AssistTextColor;
     self.priceLabel.textColor = MainTextColor;

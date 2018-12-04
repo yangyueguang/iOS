@@ -12,7 +12,7 @@ class ResumeListViewCell:BaseTableViewCell{
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x: 10, y: 10, width: 40, height: 40))
         self.title = UILabel(frame: CGRect(x: XW( self.icon)+10, y: 10, width: APPW-100, height: 20))
-        self.script = UILabel(frame: CGRect(x: self.title.x(), y: YH( self.title), width: APPW-100, height: 20))
+        self.script = UILabel(frame: CGRect(x: self.title.x, y: YH( self.title), width: APPW-100, height: 20))
         self.script.textColor = .gray
         addSubviews([self.icon,self.title,self.script])
     }
@@ -30,7 +30,7 @@ self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: AP
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listArray.count
     }
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

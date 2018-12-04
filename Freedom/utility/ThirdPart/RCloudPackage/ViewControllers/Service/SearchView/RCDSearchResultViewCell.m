@@ -18,7 +18,7 @@
         range = [self getRange:highlightedText inText:string];
     }
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:string];
-    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRGBHex:0x0099ff] range:range];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[FreedomTools colorWithRGBHex:0x0099ff] range:range];
     self.attributedText = attributedString.copy;
 }
 - (NSRange)getRange:(NSString *)searchText inText:(NSString *)text{
@@ -159,19 +159,19 @@
   [self.contentView addSubview:self.headerView];
   self.nameLabel = [[RCDLabel alloc] initWithFrame:CGRectZero];
   self.nameLabel.font = [UIFont systemFontOfSize:15.f];
-  self.nameLabel.textColor = [UIColor colorWithRGBHex:0x000000];
+  self.nameLabel.textColor = [FreedomTools colorWithRGBHex:0x000000];
   [self.contentView addSubview:self.nameLabel];
   self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(APPW-100-10, (65-48)/2, 100,17)];
-  self.timeLabel.textColor = [UIColor colorWithRGBHex:0x999999];
+  self.timeLabel.textColor = [FreedomTools colorWithRGBHex:0x999999];
   self.timeLabel.font = [UIFont systemFontOfSize:15.f];
   self.timeLabel.textAlignment = NSTextAlignmentRight;
   [self.contentView addSubview:self.timeLabel];
   self.otherLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-  self.otherLabel.textColor = [UIColor colorWithRGBHex:0x999999];
+  self.otherLabel.textColor = [FreedomTools colorWithRGBHex:0x999999];
   self.otherLabel.font = [UIFont systemFontOfSize:14.f];
   self.additionalLabel = [[RCDLabel alloc] initWithFrame:CGRectZero];
   self.additionalLabel.font = [UIFont systemFontOfSize:14.f];
-  self.additionalLabel.textColor = [UIColor colorWithRGBHex:0x999999];
+  self.additionalLabel.textColor = [FreedomTools colorWithRGBHex:0x999999];
   [self.contentView addSubview:self.otherLabel];
   [self.contentView addSubview:self.additionalLabel];
 }

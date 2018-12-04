@@ -18,7 +18,7 @@
 @implementation UIImagePickerController (Fixed)
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [self.navigationBar setBarTintColor:RGBACOLOR(46.0, 49.0, 50.0, 1.0)];
+    [self.navigationBar setBarTintColor:UIColor(46.0, 49.0, 50.0, 1.0)];
     [self.navigationBar setTintColor:[UIColor whiteColor]];
     [self.view setBackgroundColor:colorGrayBG];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:17.5f]}];

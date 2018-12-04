@@ -69,7 +69,7 @@
         [_iconButton.layer setCornerRadius:5.0f];
         [_iconButton.layer setBorderWidth:BORDER_WIDTH_1PX];
         [_iconButton.layer setBorderColor:[UIColor grayColor].CGColor];
-        [_iconButton setBackgroundImage:[UIImage imageWithColor:colorGrayLine] forState:UIControlStateHighlighted];
+        [_iconButton setBackgroundImage:[FreedomTools imageWithColor:colorGrayLine] forState:UIControlStateHighlighted];
         [_iconButton addTarget:self action:@selector(iconButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _iconButton;
@@ -94,7 +94,7 @@ static TLMoreKeyboard *moreKB;
 }
 - (id)init{
     if (self = [super init]) {
-        [self setBackgroundColor:RGBACOLOR(245.0, 245.0, 247.0, 1.0)];
+        [self setBackgroundColor:UIColor(245.0, 245.0, 247.0, 1.0)];
         [self addSubview:self.collectionView];
         [self addSubview:self.pageControl];
         [self p_addMasonry];

@@ -22,7 +22,7 @@ class DouyinMeViewController: DouyinBaseViewController {
     var selectIndex:Int = 0
     
     let uid:String = "97795069353"
-    var user:User?
+    var user:DouYinUser?
     
     var workAwemes = [Aweme]()
     var favoriteAwemes = [Aweme]()
@@ -108,7 +108,7 @@ class DouyinMeViewController: DouyinBaseViewController {
     
     func loadUserData() {
         UserRequest.findUser(uid: uid, success: {[weak self] data in
-            self?.user = data as? User
+            self?.user = data as? DouYinUser
             self?.setNavigationBarTitle(title: self?.user?.nickname ?? "")
             self?.collectionView?.reloadSections(IndexSet.init(integer: 0))
         }, failure: { error in

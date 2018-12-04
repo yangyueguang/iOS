@@ -52,21 +52,21 @@ UICollectionViewDelegate>
 }
 - (void)initialize{
     self.collectionViewResource = [NSMutableArray new];
-    self.verticalLine = [self createLine:[UIColor colorWithRGBHex:0xdfdfdf]];
+    self.verticalLine = [self createLine:[FreedomTools colorWithRGBHex:0xdfdfdf]];
     [self.contentView addSubview:self.verticalLine];
     self.hasReadButton = [self createButton:[NSString stringWithFormat:@"%lu人已读",(unsigned long)self.userList.count]];
     [self.hasReadButton addTarget:self action:@selector(clickHasReadButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.hasReadButton];
     self.hasReadButton.selected = YES;
-    self.leftSelectLine = [self createLine:[UIColor colorWithRGBHex:0x0099ff]];
+    self.leftSelectLine = [self createLine:[FreedomTools colorWithRGBHex:0x0099ff]];
     [self.hasReadButton addSubview:self.leftSelectLine];
     self.unReadButton = [self createButton:@"0人未读"];
     [self.unReadButton addTarget:self action:@selector(clickUnreadButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.unReadButton];
-    self.rightSelectLine = [self createLine:[UIColor colorWithRGBHex:0x0099ff]];
+    self.rightSelectLine = [self createLine:[FreedomTools colorWithRGBHex:0x0099ff]];
     [self.unReadButton addSubview:self.rightSelectLine];
     self.rightSelectLine.hidden = YES;
-    self.line = [self createLine:[UIColor colorWithRGBHex:0xdfdfdf]];
+    self.line = [self createLine:[FreedomTools colorWithRGBHex:0xdfdfdf]];
     [self.contentView addSubview:self.line];
     self.CellSubviews = NSDictionaryOfVariableBindings(_verticalLine, _hasReadButton,_unReadButton, _line);
     [self setAutoLayout];
@@ -79,8 +79,8 @@ UICollectionViewDelegate>
 }
 - (UIButton *)createButton:(NSString *)buttonTitle {
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectZero];
-    UIColor *normalColor = [UIColor colorWithRGBHex:0x000000];
-    UIColor *selectedColor = [UIColor colorWithRGBHex:0x0099ff];
+    UIColor *normalColor = [FreedomTools colorWithRGBHex:0x000000];
+    UIColor *selectedColor = [FreedomTools colorWithRGBHex:0x0099ff];
     [button setTitle:buttonTitle forState:UIControlStateNormal];
     [button setTitleColor:normalColor forState:UIControlStateNormal];
     [button setTitleColor:selectedColor forState:UIControlStateHighlighted];
@@ -333,19 +333,19 @@ UICollectionViewDelegate>
   self.headerView = [[UIView alloc] initWithFrame:CGRectZero];
   self.nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
   self.nameLabel.font = [UIFont systemFontOfSize:16.f];
-  self.nameLabel.textColor =[UIColor colorWithRGBHex:0x000000];
+  self.nameLabel.textColor =[FreedomTools colorWithRGBHex:0x000000];
   self.nameLabel.text = [RCIM sharedRCIM].currentUserInfo.name;
   self.nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
   [self.headerView addSubview:self.nameLabel];
   self.timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
   self.timeLabel.font = [UIFont systemFontOfSize:14.f];
-  self.timeLabel.textColor =[UIColor colorWithRGBHex:0x999999];
+  self.timeLabel.textColor =[FreedomTools colorWithRGBHex:0x999999];
   self.timeLabel.text = self.messageSendTime;
   self.timeLabel.translatesAutoresizingMaskIntoConstraints = NO;
   [self.headerView addSubview:self.timeLabel];
   self.messageContentLabel = [[UILabel alloc] initWithFrame:CGRectZero];
   self.messageContentLabel.font = [UIFont systemFontOfSize:16.f];
-  self.messageContentLabel.textColor =[UIColor colorWithRGBHex:0x000000];
+  self.messageContentLabel.textColor =[FreedomTools colorWithRGBHex:0x000000];
   self.messageContentLabel.text = self.messageContent;
   self.messageContentLabel.numberOfLines = 4;
   self.messageContentLabel.translatesAutoresizingMaskIntoConstraints = NO;

@@ -101,7 +101,7 @@ typedef NS_ENUM(NSUInteger, TLShakeButtonType) {
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self.navigationItem setTitle:@"摇一摇"];
-    [self.view setBackgroundColor:RGBACOLOR(46.0, 49.0, 50.0, 1.0)];
+    [self.view setBackgroundColor:UIColor(46.0, 49.0, 50.0, 1.0)];
     
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_setting"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown:)];
     [self.navigationItem setRightBarButtonItem:rightBarButton];
@@ -222,7 +222,7 @@ typedef NS_ENUM(NSUInteger, TLShakeButtonType) {
 - (UIImageView *)topLogoView{
     if (_topLogoView == nil) {
         _topLogoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"shake_logo_top"]];
-        [_topLogoView setBackgroundColor:RGBACOLOR(46.0, 49.0, 50.0, 1.0)];
+        [_topLogoView setBackgroundColor:UIColor(46.0, 49.0, 50.0, 1.0)];
         [_topLogoView setContentMode:UIViewContentModeBottom];
     }
     return _topLogoView;
@@ -230,7 +230,7 @@ typedef NS_ENUM(NSUInteger, TLShakeButtonType) {
 - (UIImageView *)bottomLogoView{
     if (_bottomLogoView == nil) {
         _bottomLogoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"shake_logo_bottom"]];
-        [_bottomLogoView setBackgroundColor:RGBACOLOR(46.0, 49.0, 50.0, 1.0)];
+        [_bottomLogoView setBackgroundColor:UIColor(46.0, 49.0, 50.0, 1.0)];
         [_bottomLogoView setContentMode:UIViewContentModeTop];
     }
     return _bottomLogoView;

@@ -24,9 +24,9 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.rightSeparatorSpace = 16;
-        [self setBackgroundColor:RGBACOLOR(71, 70, 73, 1.0)];
+        [self setBackgroundColor:UIColor(71, 70, 73, 1.0)];
         UIView *selectedView = [[UIView alloc] init];
-        [selectedView setBackgroundColor:RGBACOLOR(65, 64, 67, 1.0)];
+        [selectedView setBackgroundColor:UIColor(65, 64, 67, 1.0)];
         [self setSelectedBackgroundView:selectedView];
         
         [self.contentView addSubview:self.iconImageView];
@@ -146,8 +146,8 @@
     CGContextAddLineToPoint(context, startX + width, endY);
     CGContextAddLineToPoint(context, startX - width, endY);
     CGContextClosePath(context);
-    [RGBACOLOR(71, 70, 73, 1.0) setFill];
-    [RGBACOLOR(71, 70, 73, 1.0) setStroke];
+    [UIColor(71, 70, 73, 1.0) setFill];
+    [UIColor(71, 70, 73, 1.0) setStroke];
     CGContextDrawPath(context, kCGPathFillStroke);
 }
 #pragma mark - Getter -
@@ -157,7 +157,7 @@
         [_tableView setScrollEnabled:NO];
         [_tableView setDelegate:self];
         [_tableView setDataSource:self];
-        [_tableView setBackgroundColor:RGBACOLOR(71, 70, 73, 1.0)];
+        [_tableView setBackgroundColor:UIColor(71, 70, 73, 1.0)];
         [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [_tableView.layer setMasksToBounds:YES];
         [_tableView.layer setCornerRadius:3.0f];
@@ -346,7 +346,7 @@
     if (_timeLabel == nil) {
         _timeLabel = [[UILabel alloc] init];
         [_timeLabel setFont:[UIFont systemFontOfSize:12.5f]];
-        [_timeLabel setTextColor:RGBACOLOR(160, 160, 160, 1.0)];
+        [_timeLabel setTextColor:UIColor(160, 160, 160, 1.0)];
     }
     return _timeLabel;
 }

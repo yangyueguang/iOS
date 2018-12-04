@@ -25,7 +25,7 @@
   self.navigationItem.title = @"密码修改";
   [self initialize];
   [self setNavigationButton];
-  self.view.backgroundColor = [UIColor colorWithRGBHex:0xf0f0f6];
+  self.view.backgroundColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
   [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textFieldEditChanged:) name:@"UITextFieldTextDidChangeNotification" object:nil];
 }
 - (void)initialize{
@@ -64,7 +64,7 @@
   UILabel *label = [[UILabel alloc] init];
   label.text = labelName;
   label.font = [UIFont systemFontOfSize:14.f];
-  label.textColor = [UIColor colorWithRGBHex:0x999999];
+  label.textColor = [FreedomTools colorWithRGBHex:0x999999];
   label.translatesAutoresizingMaskIntoConstraints = NO;
   return label;
 }
@@ -72,7 +72,7 @@
   UIView *subView = [[UIView alloc] init];
   subView.backgroundColor = [UIColor whiteColor];
   subView.layer.borderWidth = 0.5;
-  subView.layer.borderColor = [[UIColor colorWithRGBHex:0xdfdfdd] CGColor];
+  subView.layer.borderColor = [[FreedomTools colorWithRGBHex:0xdfdfdd] CGColor];
   subView.translatesAutoresizingMaskIntoConstraints = NO;
   return subView;
 }
@@ -82,7 +82,7 @@
   subTextField.clearButtonMode = UITextFieldViewModeAlways;
   subTextField.secureTextEntry = YES;
   subTextField.font = [UIFont systemFontOfSize:14.f];
-  subTextField.textColor = [UIColor colorWithRGBHex:0x000000];
+  subTextField.textColor = [FreedomTools colorWithRGBHex:0x000000];
   if (placeholder != nil) {
     subTextField.placeholder = placeholder;
   }

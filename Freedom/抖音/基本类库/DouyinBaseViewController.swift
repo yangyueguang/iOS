@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DouyinBaseViewController: XBaseViewController {
+class DouyinBaseViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

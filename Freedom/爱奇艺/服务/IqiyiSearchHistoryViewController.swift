@@ -74,7 +74,7 @@ class IqiyisearchHeaderView: UITableViewHeaderFooterView {
             }
             //        headView = [[[NSBundle mainBundle] loadNibNamed:@"JFsearchHeaderView" owner:nil options:nil] lastObject];
         }
-        headView?.backgroundColor = RGBAColor(200, 199, 204,1)
+        headView?.backgroundColor = UIColor(200, 199, 204,1)
         return headView!
     }
 }
@@ -156,7 +156,7 @@ class IqiyiSearchHistoryViewController: IqiyiBaseViewController,UITextFieldDeleg
         return 2
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

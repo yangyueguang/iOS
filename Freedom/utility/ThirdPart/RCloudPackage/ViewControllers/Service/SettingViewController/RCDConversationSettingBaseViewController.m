@@ -22,7 +22,7 @@
         [_ivAva setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:_ivAva];
         _titleLabel = [UILabel new];
-        [_titleLabel setTextColor:[UIColor colorWithRGBHex:0x999999]];
+        [_titleLabel setTextColor:[FreedomTools colorWithRGBHex:0x999999]];
         [_titleLabel setFont:[UIFont systemFontOfSize:13]];
         [_titleLabel setTextAlignment:NSTextAlignmentCenter];
         [self.contentView addSubview:_titleLabel];

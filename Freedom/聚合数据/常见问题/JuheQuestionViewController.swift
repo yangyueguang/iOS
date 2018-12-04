@@ -27,7 +27,7 @@ class JuheQuestionViewController: JuheBaseViewController {
     let searchBar = UISearchBar()
     searchBar.placeholder = "输入问题关键字";
     self.navigationItem.titleView = searchBar;
-    self.cellHeight = 60
+    self.tableView.rowHeight = 60
         self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))
         self.tableView.dataArray = NSMutableArray(array: ["","","","","","",""])
     self.tableView.dataSource = self;

@@ -147,8 +147,8 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.tableView.tableFooterView = [UIView new];
-  self.tableView.backgroundColor = [UIColor colorWithRGBHex:0xf0f0f6];
-  self.tableView.separatorColor = [UIColor colorWithRGBHex:0xdfdfdf];
+  self.tableView.backgroundColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
+  self.tableView.separatorColor = [FreedomTools colorWithRGBHex:0xdfdfdf];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   numberOfSections = 0;
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -279,7 +279,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
   [_btJoinOrQuitGroup addTarget:self action:@selector(btnJOQAction:) forControlEvents:UIControlEventTouchUpInside];
   _btJoinOrQuitGroup.layer.cornerRadius = 5.f;
   _btJoinOrQuitGroup.layer.borderWidth = 0.5f;
-  _btJoinOrQuitGroup.layer.borderColor = [[UIColor colorWithRGBHex:0xcc4445] CGColor];
+  _btJoinOrQuitGroup.layer.borderColor = [[FreedomTools colorWithRGBHex:0xcc4445] CGColor];
   [view addSubview:_btJoinOrQuitGroup];
   //解散群组按钮
   _btDismissGroup = [[UIButton alloc] init];
@@ -292,7 +292,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
   _btDismissGroup.layer.cornerRadius = 5.f;
   [_btDismissGroup setHidden:YES];
   _btDismissGroup.layer.borderWidth = 0.5f;
-  _btDismissGroup.layer.borderColor = [[UIColor colorWithRGBHex:0xcc4445] CGColor];
+  _btDismissGroup.layer.borderColor = [[FreedomTools colorWithRGBHex:0xcc4445] CGColor];
   [view addSubview:_btDismissGroup];
   //自动布局
   [_btChat setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -398,7 +398,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
   image = [UIImage imageWithData:data];
   [self dismissViewControllerAnimated:YES completion:nil];
   hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-  hud.color = [UIColor colorWithRGBHex:0x343637];
+  hud.color = [FreedomTools colorWithRGBHex:0x343637];
   hud.labelText = @"上传头像中...";
   [hud show:YES];
    __weak typeof(self) weakSelf = self;

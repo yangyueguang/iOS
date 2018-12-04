@@ -2,7 +2,7 @@
 //  DianpingNavigationController.swift
 //  Freedom
 import UIKit
-class DZNavigationController: XBaseNavigationViewController {
+class DZNavigationController: BaseNavigationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

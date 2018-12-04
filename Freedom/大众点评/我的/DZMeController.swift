@@ -3,6 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
+import XCarryOn
 class DZMeViewCell:BaseTableViewCell{
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x:0, y:0, width:0, height:120))
@@ -90,7 +91,7 @@ class DZMeController: DZBaseViewController {
             return headerView
         } else {
             let headerView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 5))
-            headerView.backgroundColor = RGBAColor(239, 239, 244)
+            headerView.backgroundColor = UIColor(239, 239, 244)
             return headerView
         }
     }

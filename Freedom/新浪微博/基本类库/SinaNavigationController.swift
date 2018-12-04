@@ -5,7 +5,7 @@
 //  Created by Super on 6/28/18.
 //  Copyright © 2018 薛超. All rights reserved.
 import UIKit
-class SinaNavigationController: XBaseNavigationViewController {
+class SinaNavigationController: BaseNavigationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.orange ,NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)]

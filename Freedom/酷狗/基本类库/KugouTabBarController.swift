@@ -169,7 +169,7 @@ class TabBarView: UIView, AVAudioPlayerDelegate {
         }
     }
 }
-class KugouTabBarController: XBaseTabBarController {
+class KugouTabBarController: BaseTabBarViewController {
     let coustomTabBar = TabBarView(frame: CGRect(x: 0, y: 49 - TabBarH, width: APPW, height: TabBarH))
     override func viewDidLoad() {
         super.viewDidLoad()

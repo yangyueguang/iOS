@@ -51,24 +51,24 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
   [super viewWillAppear:animated];
-  self.navigationController.navigationBar.barTintColor = [UIColor colorWithRGBHex:0xf0f0f6];
+  self.navigationController.navigationBar.barTintColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
 }
 - (void)viewWillDisappear:(BOOL)animated{
   [super viewWillDisappear:animated];
-  self.navigationController.navigationBar.barTintColor = [UIColor colorWithRGBHex:0x0099ff];
+  self.navigationController.navigationBar.barTintColor = [FreedomTools colorWithRGBHex:0x0099ff];
 }
 - (void)loadSearchView{
   self.searchView = [[UIView alloc] initWithFrame:CGRectMake( 0, 0, APPW, 44)];
   _searchBars = [[UISearchBar alloc] initWithFrame:CGRectZero];
     _searchBars.placeholder = @"搜索";
     _searchBars.keyboardType = UIKeyboardTypeDefault;
-    _searchBars.backgroundImage = [FreedomTools getImageWithColor:[UIColor clearColor] andHeight:44.0f];
+    _searchBars.backgroundImage = [FreedomTools imageWithColor:[UIColor clearColor]];
     //设置顶部搜索栏的背景色
-    [_searchBars setBackgroundColor:[UIColor colorWithRGBHex:0xf0f0f6]];
+    [_searchBars setBackgroundColor:[FreedomTools colorWithRGBHex:0xf0f0f6]];
     //设置顶部搜索栏输入框的样式
     UITextField *searchField = [_searchBars valueForKey:@"_searchField"];
     searchField.layer.borderWidth = 0.5f;
-    searchField.layer.borderColor = [[UIColor colorWithRGBHex:0xdfdfdf] CGColor];
+    searchField.layer.borderColor = [[FreedomTools colorWithRGBHex:0xdfdfdf] CGColor];
     searchField.layer.cornerRadius = 5.f;
   _searchBars.delegate = self;
   _searchBars.tintColor=[UIColor blueColor];
@@ -77,7 +77,7 @@
   [self.searchView addSubview:self.searchBars];
   _cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_searchBars.frame)-3, CGRectGetMinY(self.searchBars.frame),55, 44)];
   [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
-  [_cancelButton setTitleColor:[UIColor colorWithRGBHex:0x0099ff] forState:UIControlStateNormal];
+  [_cancelButton setTitleColor:[FreedomTools colorWithRGBHex:0x0099ff] forState:UIControlStateNormal];
   _cancelButton.titleLabel.font = [UIFont systemFontOfSize:18.];
   [_cancelButton addTarget:self action:@selector(cancelButtonClicked) forControlEvents:UIControlEventTouchUpInside];
   [self.searchView addSubview:_cancelButton];
@@ -161,9 +161,9 @@
   NSString *searchStr = [searchText stringByReplacingOccurrencesOfString:@" "  withString:@""];
   if (!self.resultArray.count && searchText.length>0 && searchStr.length > 0) {
     NSString *str =[NSString stringWithFormat:@"没有搜索到“%@”相关的内容",searchText];
-    self.emptyLabel.textColor = [UIColor colorWithRGBHex:0x999999];
+    self.emptyLabel.textColor = [FreedomTools colorWithRGBHex:0x999999];
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:str];
-    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRGBHex:0x0099ff] range:NSMakeRange(6, searchText.length)];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[FreedomTools colorWithRGBHex:0x0099ff] range:NSMakeRange(6, searchText.length)];
     self.emptyLabel.attributedText = attributedString;
     CGFloat height = [self labelAdaptive:str];
     CGRect rect = self.emptyLabel.frame;

@@ -186,7 +186,7 @@
 - (void)requestExpressionSearchByKeyword:(NSString *)keyword
                                  success:(void (^)(id data))success
                                  failure:(void (^)(NSString *error))failure{
-    NSString *urlString = [NSString stringWithFormat:IEXPRESSION_SEARCH_URL, [keyword urlEncodedString]];
+    NSString *urlString = [NSString stringWithFormat:IEXPRESSION_SEARCH_URL, keyword];
     [[AFHTTPSessionManager manager] POST:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSArray *respArray = [responseObject mj_JSONObject];
         NSString *status = respArray[0];

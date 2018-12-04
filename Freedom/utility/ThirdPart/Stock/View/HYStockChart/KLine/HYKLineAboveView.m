@@ -41,16 +41,16 @@ typedef NS_ENUM(NSInteger, HYMAType){
     UIColor *lineColor = nil;
     switch (self.MAType) {
         case HYMA5Type:
-            lineColor = [UIColor colorWithRGBHex:0xff783c];
+            lineColor = [FreedomTools colorWithRGBHex:0xff783c];
             break;
         case HYMA10Type:
-            lineColor = [UIColor colorWithRGBHex:0x49a5ff];
+            lineColor = [FreedomTools colorWithRGBHex:0x49a5ff];
             break;
         case HYMA20Type:
-            lineColor = [UIColor colorWithRGBHex:0xffbf43];
+            lineColor = [FreedomTools colorWithRGBHex:0xffbf43];
             break;
         case HYMA30Type:
-            lineColor = [UIColor colorWithRGBHex:0x49a5ff];
+            lineColor = [FreedomTools colorWithRGBHex:0x49a5ff];
             break;
         default:
             break;
@@ -139,7 +139,7 @@ typedef NS_ENUM(NSInteger, HYMAType){
     [self drawline:context startPoint:middleStartPoint stopPoint:middleEndPoint color:[UIColor colorWithWhite:226/255.0 alpha:1] lineWidth:0.25];
     
     //设置显示日期那个区域的背景颜色
-    CGContextSetFillColorWithColor(context, AssistBackgroundColor.CGColor);
+    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
     CGContextFillRect(context, CGRectMake(0, HYStockChartKLineAboveViewMaxY, self.frame.size.width, self.frame.size.height-HYStockChartKLineAboveViewMaxY));
     HYKLine *kLine = [[HYKLine alloc] initWithContext:context];
     kLine.maxY = HYStockChartKLineAboveViewMaxY;

@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Super. All rights reserved.
 //
 import UIKit
-class ToutiaoTabBarController: XBaseTabBarController {
+class ToutiaoTabBarController: BaseTabBarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .default

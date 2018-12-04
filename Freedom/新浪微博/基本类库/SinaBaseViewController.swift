@@ -6,7 +6,7 @@
 //  Copyright © 2018 薛超. All rights reserved.
 //
 import UIKit
-class SinaBaseViewController: XBaseViewController {
+class SinaBaseViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

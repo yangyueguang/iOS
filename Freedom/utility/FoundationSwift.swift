@@ -8,23 +8,36 @@
 //
 import Foundation
 import XExtension
+import XCarryOn
 public func Font(_ fontSize:CGFloat)->UIFont{
     return UIFont.systemFont(ofSize: fontSize)
 }
 public func BoldFont(_ fontSize:CGFloat)->UIFont{
     return UIFont.boldSystemFont(ofSize: fontSize)
 }
+public func Dlog<T>(_ message: T, file: String = #file,method: String = #function,line: Int = #line){
+    #if DEBUG
+    print("\n\((file as NSString).lastPathComponent)[\(line)]: \(method)\n\(message)")
+    #endif
+}
+public var TopHeight:CGFloat {
+    if APPH >= 812.0{
+        return 88.0
+    }
+    return 64.0
+}
 public let fontTitle = Font(15)
 public let fontnomal = Font(13)
 public let fontSmallTitle = Font(14)
 public let clearcolor = UIColor.clear
-public let gradcolor  = RGBAColor(224, 225, 226, 1)
-public let redcolor = RGBAColor(229, 59, 25, 1)
+public let gradcolor  = UIColor(224, 225, 226, 1)
+public let redcolor = UIColor(229, 59, 25, 1)
 public let yellowcolor = UIColor.yellow
 public let greencolor = UIColor.green
 public let whitecolor = UIColor.white
-public let blacktextcolor = RGBAColor(33, 34, 35, 1)
-public let gradtextcolor = RGBAColor(116, 117, 118, 1)
+public let blacktextcolor = UIColor(33, 34, 35, 1)
+public let gradtextcolor = UIColor(116, 117, 118, 1)
+public let APPH = UIScreen.main.bounds.size.height
 public let graycolor = UIColor.gray
 public let TabBarH:CGFloat = 49
 public let APPW = UIScreen.main.bounds.size.width

@@ -42,7 +42,7 @@
              self.nickName = self.userName.text;
          });
      }];
-    self.view.backgroundColor = [UIColor colorWithRGBHex:0xf0f0f6];
+    self.view.backgroundColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
     [self setNavigationButton];
     [self setSubViews];
     self.navigationItem.title = @"昵称修改";
@@ -96,7 +96,7 @@
     self.BGView = [UIView new];
     self.BGView.backgroundColor = [UIColor whiteColor];
     self.BGView.layer.borderWidth = 0.5;
-    self.BGView.layer.borderColor = [[UIColor colorWithRGBHex:0xdfdfdf] CGColor];
+    self.BGView.layer.borderColor = [[FreedomTools colorWithRGBHex:0xdfdfdf] CGColor];
     self.BGView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.BGView];
     UITapGestureRecognizer *clickBGView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(beginEditNickname)];
@@ -105,7 +105,7 @@
     self.userName.borderStyle = UITextBorderStyleNone;
     self.userName.clearButtonMode = UITextFieldViewModeAlways;
     self.userName.font = [UIFont systemFontOfSize:16.f];
-    self.userName.textColor = [UIColor colorWithRGBHex:0x000000];
+    self.userName.textColor = [FreedomTools colorWithRGBHex:0x000000];
     self.userName.delegate = self;
     self.userName.translatesAutoresizingMaskIntoConstraints = NO;
     [self.BGView addSubview:self.userName];
@@ -171,7 +171,7 @@
   self.tableView.tableFooterView = [UIView new];
   self.tabBarController.navigationItem.rightBarButtonItem = nil;
   self.tabBarController.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-  self.tableView.backgroundColor = [UIColor colorWithRGBHex:0xf0f0f6];
+  self.tableView.backgroundColor = [FreedomTools colorWithRGBHex:0xf0f0f6];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.navigationItem.title = @"个人信息";
     UIButton *buttonItem = [[UIButton alloc]initWithFrame:CGRectMake(0, 6, 87, 23)];
@@ -308,7 +308,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
   image = [UIImage imageWithData:data];
   [self dismissViewControllerAnimated:YES completion:nil];
   hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-  hud.color = [UIColor colorWithRGBHex:0x343637];
+  hud.color = [FreedomTools colorWithRGBHex:0x343637];
   hud.labelText = @"上传头像中...";
   [hud show:YES];
   [RCDHTTPTOOL uploadImageToQiNiu:[RCIM sharedRCIM].currentUserInfo.userId ImageData:data success:^(NSString *url) {
