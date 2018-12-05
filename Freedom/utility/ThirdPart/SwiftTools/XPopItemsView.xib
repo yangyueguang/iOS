@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XPopItemsView" customModule="Freedom" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="F18-7c-NBn" id="SDN-gg-AeC"/>
+                <outlet property="contentView" destination="gYT-V7-Apm" id="IgV-3i-xt9"/>
+                <outlet property="titleScrollView" destination="JNG-2w-R5u" id="2Yi-ea-JPT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view alpha="0.5" contentMode="scaleToFill" id="iN0-l3-epB" customClass="XPopItemsView" customModule="Freedom" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JNG-2w-R5u">
+                    <rect key="frame" x="0.0" y="20" width="375" height="68"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Gvv-tv-i0P"/>
+                    </constraints>
+                </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYT-V7-Apm">
+                    <rect key="frame" x="0.0" y="80" width="375" height="310"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="F18-7c-NBn">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="15" id="wxh-nO-fo4">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="15" minY="10" maxX="15" maxY="10"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q3v-3p-Ggu">
+                            <rect key="frame" x="0.0" y="260" width="375" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXE-tb-TyP">
+                                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="取    消"/>
+                                    <connections>
+                                        <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="qsY-jy-QCE"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2J-Oa-8ji">
+                                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
+                                    <color key="backgroundColor" red="1" green="0.10633502139999999" blue="0.088816554389999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="确     定"/>
+                                    <connections>
+                                        <action selector="submitAction:" destination="-1" eventType="touchUpInside" id="Osf-3d-NfN"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="e2J-Oa-8ji" firstAttribute="top" secondItem="Q3v-3p-Ggu" secondAttribute="top" id="2Ec-gG-Juy"/>
+                                <constraint firstItem="e2J-Oa-8ji" firstAttribute="width" secondItem="gXE-tb-TyP" secondAttribute="width" id="P3a-zg-r3g"/>
+                                <constraint firstAttribute="trailing" secondItem="e2J-Oa-8ji" secondAttribute="trailing" id="RHz-6h-wae"/>
+                                <constraint firstAttribute="bottom" secondItem="e2J-Oa-8ji" secondAttribute="bottom" id="Vaw-rd-vAr"/>
+                                <constraint firstAttribute="bottom" secondItem="gXE-tb-TyP" secondAttribute="bottom" id="gO7-n1-zpf"/>
+                                <constraint firstItem="e2J-Oa-8ji" firstAttribute="leading" secondItem="gXE-tb-TyP" secondAttribute="trailing" id="jgN-gj-7VE"/>
+                                <constraint firstItem="gXE-tb-TyP" firstAttribute="top" secondItem="Q3v-3p-Ggu" secondAttribute="top" id="r4O-oI-mrq"/>
+                                <constraint firstAttribute="height" constant="50" id="upq-jy-Q0d"/>
+                                <constraint firstItem="gXE-tb-TyP" firstAttribute="leading" secondItem="Q3v-3p-Ggu" secondAttribute="leading" id="vGz-e3-04V"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="F18-7c-NBn" secondAttribute="trailing" id="9Q6-bh-CzG"/>
+                        <constraint firstItem="Q3v-3p-Ggu" firstAttribute="leading" secondItem="gYT-V7-Apm" secondAttribute="leading" id="MHw-kt-h5h"/>
+                        <constraint firstItem="F18-7c-NBn" firstAttribute="leading" secondItem="gYT-V7-Apm" secondAttribute="leading" id="MNI-yy-Gff"/>
+                        <constraint firstItem="F18-7c-NBn" firstAttribute="top" secondItem="gYT-V7-Apm" secondAttribute="top" id="Voc-PQ-zcp"/>
+                        <constraint firstAttribute="trailing" secondItem="Q3v-3p-Ggu" secondAttribute="trailing" id="Y5F-MD-8ao"/>
+                        <constraint firstItem="Q3v-3p-Ggu" firstAttribute="top" secondItem="F18-7c-NBn" secondAttribute="bottom" id="kLp-vz-my3"/>
+                        <constraint firstAttribute="bottom" secondItem="Q3v-3p-Ggu" secondAttribute="bottom" id="so3-7d-AAl"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="gYT-V7-Apm" secondAttribute="bottom" constant="277" id="0hs-ks-FyC"/>
+                <constraint firstItem="JNG-2w-R5u" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="6Ff-UP-WlL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gYT-V7-Apm" secondAttribute="trailing" id="ZCQ-sl-e6W"/>
+                <constraint firstItem="gYT-V7-Apm" firstAttribute="top" secondItem="JNG-2w-R5u" secondAttribute="bottom" id="m9L-Fu-L3U"/>
+                <constraint firstItem="JNG-2w-R5u" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="nEZ-Fh-BkN"/>
+                <constraint firstItem="gYT-V7-Apm" firstAttribute="leading" secondItem="JNG-2w-R5u" secondAttribute="leading" id="ory-DL-T4j"/>
+                <constraint firstItem="JNG-2w-R5u" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="z5G-Me-eUB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
+        </view>
+    </objects>
+</document>

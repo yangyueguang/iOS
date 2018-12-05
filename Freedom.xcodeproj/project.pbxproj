@@ -979,7 +979,6 @@
 		BF58B93620EA1F51002CB4EE /* app-sales.png in Resources */ = {isa = PBXBuildFile; fileRef = BF58B93520EA1F51002CB4EE /* app-sales.png */; };
 		BF58B94A20EB22C9002CB4EE /* XTablesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58B94920EB22C8002CB4EE /* XTablesViewController.swift */; };
 		BF58B95A20ECFC0B002CB4EE /* BaseSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58B95920ECFC0B002CB4EE /* BaseSearchBar.swift */; };
-		BF58B95E20EDAB92002CB4EE /* TeamDesigner.m in Sources */ = {isa = PBXBuildFile; fileRef = BF58B95C20EDAB92002CB4EE /* TeamDesigner.m */; };
 		BF58B96020EDAB9F002CB4EE /* real.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF58B95F20EDAB9F002CB4EE /* real.plist */; };
 		BF58BA2320EDBFBC002CB4EE /* PreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58BA1F20EDBFBB002CB4EE /* PreViewController.swift */; };
 		BF58BA2420EDBFBC002CB4EE /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58BA2020EDBFBB002CB4EE /* DownloadService.swift */; };
@@ -1231,10 +1230,13 @@
 		DF7B408B21AC020A00E3D975 /* AVPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */; };
 		DFA5BF3621B6A74D00CB9223 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5BF3521B6A74D00CB9223 /* User.swift */; };
 		DFF4AB9421B76E2100F03C71 /* BaseExcelView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9121B76E2000F03C71 /* BaseExcelView.m */; };
-		DFF4AB9521B76E2100F03C71 /* SelectButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9321B76E2100F03C71 /* SelectButtons.m */; };
 		DFF4AB9921B7969A00F03C71 /* XRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */; };
 		DFF4AB9B21B7AC5900F03C71 /* XAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */; };
 		DFF4AB9D21B7B80000F03C71 /* XCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9C21B7B80000F03C71 /* XCardsView.swift */; };
+		DFF4AB9F21B7BFA400F03C71 /* XPopItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9E21B7BFA400F03C71 /* XPopItemsView.swift */; };
+		DFF4ABA121B7BFEC00F03C71 /* XExcellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4ABA021B7BFEC00F03C71 /* XExcellView.swift */; };
+		DFF4ABA321B7FB6000F03C71 /* XExcellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFF4ABA221B7FB6000F03C71 /* XExcellView.xib */; };
+		DFF4ABB121B80A7500F03C71 /* XPopItemsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFF4ABB021B80A7500F03C71 /* XPopItemsView.xib */; };
 		DFFA80AF21AE9672009B1999 /* NSFileManager+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80AE21AE9672009B1999 /* NSFileManager+expanded.m */; };
 		DFFA80B521AEC3D4009B1999 /* NSObject+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80B421AEC3D4009B1999 /* NSObject+expanded.m */; };
 		DFFA80C221AEC84D009B1999 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80B921AEC84B009B1999 /* BaseTableViewCell.swift */; };
@@ -2319,8 +2321,6 @@
 		BF58B93520EA1F51002CB4EE /* app-sales.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-sales.png"; sourceTree = "<group>"; };
 		BF58B94920EB22C8002CB4EE /* XTablesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XTablesViewController.swift; sourceTree = "<group>"; };
 		BF58B95920ECFC0B002CB4EE /* BaseSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSearchBar.swift; sourceTree = "<group>"; };
-		BF58B95C20EDAB92002CB4EE /* TeamDesigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamDesigner.m; sourceTree = "<group>"; };
-		BF58B95D20EDAB92002CB4EE /* TeamDesigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamDesigner.h; sourceTree = "<group>"; };
 		BF58B95F20EDAB9F002CB4EE /* real.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = real.plist; sourceTree = "<group>"; };
 		BF58BA1F20EDBFBB002CB4EE /* PreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreViewController.swift; sourceTree = "<group>"; };
 		BF58BA2020EDBFBB002CB4EE /* DownloadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
@@ -2705,11 +2705,13 @@
 		DFA5BF3521B6A74D00CB9223 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DFF4AB9021B76E2000F03C71 /* BaseExcelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseExcelView.h; sourceTree = "<group>"; };
 		DFF4AB9121B76E2000F03C71 /* BaseExcelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseExcelView.m; sourceTree = "<group>"; };
-		DFF4AB9221B76E2100F03C71 /* SelectButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectButtons.h; sourceTree = "<group>"; };
-		DFF4AB9321B76E2100F03C71 /* SelectButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectButtons.m; sourceTree = "<group>"; };
 		DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRefreshHeader.swift; sourceTree = "<group>"; };
 		DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAudioPlayer.swift; sourceTree = "<group>"; };
 		DFF4AB9C21B7B80000F03C71 /* XCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCardsView.swift; sourceTree = "<group>"; };
+		DFF4AB9E21B7BFA400F03C71 /* XPopItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPopItemsView.swift; sourceTree = "<group>"; };
+		DFF4ABA021B7BFEC00F03C71 /* XExcellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XExcellView.swift; sourceTree = "<group>"; };
+		DFF4ABA221B7FB6000F03C71 /* XExcellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XExcellView.xib; sourceTree = "<group>"; };
+		DFF4ABB021B80A7500F03C71 /* XPopItemsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XPopItemsView.xib; sourceTree = "<group>"; };
 		DFFA80AD21AE9672009B1999 /* NSFileManager+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+expanded.h"; sourceTree = "<group>"; };
 		DFFA80AE21AE9672009B1999 /* NSFileManager+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+expanded.m"; sourceTree = "<group>"; };
 		DFFA80B321AEC3D3009B1999 /* NSObject+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+expanded.h"; sourceTree = "<group>"; };
@@ -4212,10 +4214,6 @@
 				DFF4AB9621B773D700F03C71 /* OCFile */,
 				DFF4AB9021B76E2000F03C71 /* BaseExcelView.h */,
 				DFF4AB9121B76E2000F03C71 /* BaseExcelView.m */,
-				DFF4AB9221B76E2100F03C71 /* SelectButtons.h */,
-				DFF4AB9321B76E2100F03C71 /* SelectButtons.m */,
-				BF58B95D20EDAB92002CB4EE /* TeamDesigner.h */,
-				BF58B95C20EDAB92002CB4EE /* TeamDesigner.m */,
 			);
 			path = ThirdPart;
 			sourceTree = "<group>";
@@ -5767,6 +5765,10 @@
 				DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */,
 				DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */,
 				DFF4AB9C21B7B80000F03C71 /* XCardsView.swift */,
+				DFF4AB9E21B7BFA400F03C71 /* XPopItemsView.swift */,
+				DFF4ABB021B80A7500F03C71 /* XPopItemsView.xib */,
+				DFF4ABA021B7BFEC00F03C71 /* XExcellView.swift */,
+				DFF4ABA221B7FB6000F03C71 /* XExcellView.xib */,
 			);
 			path = SwiftTools;
 			sourceTree = "<group>";
@@ -6299,6 +6301,7 @@
 				779938DF1E2F7B6500866968 /* d_sikao.png in Resources */,
 				772E842E1D76BC15004EDF50 /* fx_golden_box_normal.png in Resources */,
 				7772A81C1D64648B00444973 /* books.png in Resources */,
+				DFF4ABA321B7FB6000F03C71 /* XExcellView.xib in Resources */,
 				7772A81B1D64648B00444973 /* ZUAN.png in Resources */,
 				77645F121D68259900ACCCAC /* EmotionsSendBtnBlueHL.png in Resources */,
 				7741F1251D6D50F900EED332 /* alipayMeBaozhang.png in Resources */,
@@ -6670,6 +6673,7 @@
 				772E869D1D76BC15004EDF50 /* ktv_occupation_trade.png in Resources */,
 				774BFB181D767389005CA603 /* vocal.mp3 in Resources */,
 				77993A4D1E2F7B9D00866968 /* [熊猫]@2x.png in Resources */,
+				DFF4ABB121B80A7500F03C71 /* XPopItemsView.xib in Resources */,
 				77993A381E2F7B9D00866968 /* [抓狂]@2x.png in Resources */,
 				7741F12C1D6D50F900EED332 /* alipayHome16.png in Resources */,
 				7165A3CE20A58D77001C60D6 /* compose_slogan.png in Resources */,
@@ -6924,7 +6928,6 @@
 				7115A5E420AAD9F0000D0B96 /* ResumeCallMeViewController.swift in Sources */,
 				BFEF19932101E821003DCAC1 /* StockCategory.m in Sources */,
 				BF58BB3F20EF1945002CB4EE /* RCDSearchViewController.m in Sources */,
-				DFF4AB9521B76E2100F03C71 /* SelectButtons.m in Sources */,
 				BF58BB6320EF1945002CB4EE /* RCAnnotationView.m in Sources */,
 				DFFA80B521AEC3D4009B1999 /* NSObject+expanded.m in Sources */,
 				BF6E57BD1FAC0714005F7DF8 /* WXExpressionDetailViewController.m in Sources */,
@@ -6979,7 +6982,6 @@
 				7115A5F220AAFC0F000D0B96 /* MyDatabaseBaseViewController.swift in Sources */,
 				BF6E56A41FAAF524005F7DF8 /* WXTableViewCell.m in Sources */,
 				BF6E56A21FAAF510005F7DF8 /* WXInfoViewController.m in Sources */,
-				BF58B95E20EDAB92002CB4EE /* TeamDesigner.m in Sources */,
 				7121194C20AC03BC0087E05B /* JuheBaseViewController.swift in Sources */,
 				BF0E8B0820DCB0B500150476 /* AppManager.m in Sources */,
 				7121197220AC25000087E05B /* ToutiaoAttentionViewController.swift in Sources */,
@@ -7036,6 +7038,7 @@
 				7115A5CE20AAD38C000D0B96 /* PersonalHouseViewController.swift in Sources */,
 				BF5B9B5E1F8E636E00BD885E /* EconomicsViewController.swift in Sources */,
 				7788AC311D7996B100376C95 /* E_Paging.mm in Sources */,
+				DFF4ABA121B7BFEC00F03C71 /* XExcellView.swift in Sources */,
 				BF5B9B751F8E676F00BD885E /* FamilyViewController.swift in Sources */,
 				7121192C20ABC4FB0087E05B /* EnergyHomeViewController.swift in Sources */,
 				7115A5E020AAD9D8000D0B96 /* ResumeBusinessCooperationVC.swift in Sources */,
@@ -7293,6 +7296,7 @@
 				DF7B408521AC020A00E3D975 /* DouyinMeViewController.swift in Sources */,
 				71ECE0462092128E00495467 /* WXChatViewController.m in Sources */,
 				BF58BA2520EDBFBC002CB4EE /* HTMLParser.m in Sources */,
+				DFF4AB9F21B7BFA400F03C71 /* XPopItemsView.swift in Sources */,
 				713EE2FA20AD9D490085B65D /* DetailWapViewController.swift in Sources */,
 				713EE2BC20AD9AEC0085B65D /* DZHomeController.swift in Sources */,
 				DF7B408921AC020A00E3D975 /* AwemeListController.swift in Sources */,
