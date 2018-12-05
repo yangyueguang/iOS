@@ -765,7 +765,7 @@ static NSString *_defaultService;
 
 #pragma mark -
 
-- (NSArray UIC_KEY_TYPE *)allKeys
+- (NSArray <NSString *> *)allKeys
 {
     NSArray *items = [self.class prettify:[self itemClassObject] items:[self items]];
     NSMutableArray *keys = [[NSMutableArray alloc] init];
@@ -778,7 +778,7 @@ static NSString *_defaultService;
     return keys.copy;
 }
 
-+ (NSArray UIC_KEY_TYPE *)allKeysWithItemClass:(UICKeyChainStoreItemClass)itemClass
++ (NSArray <NSString *> *)allKeysWithItemClass:(UICKeyChainStoreItemClass)itemClass
 {
     CFTypeRef itemClassObject = kSecClassGenericPassword;
     if (itemClass == UICKeyChainStoreItemClassGenericPassword) {
@@ -1028,12 +1028,12 @@ static NSString *_defaultService;
     [self setSharedPassword:nil forAccount:account completion:completion];
 }
 
-+ (void)requestSharedWebCredentialWithCompletion:(void (^)(NSArray UIC_CREDENTIAL_TYPE *credentials, NSError *error))completion
++ (void)requestSharedWebCredentialWithCompletion:(void (^)(NSArray <NSDictionary <NSString *, NSString *>*> *credentials, NSError *error))completion
 {
     [self requestSharedWebCredentialForDomain:nil account:nil completion:completion];
 }
 
-+ (void)requestSharedWebCredentialForDomain:(NSString *)domain account:(NSString *)account completion:(void (^)(NSArray UIC_CREDENTIAL_TYPE *credentials, NSError *error))completion
++ (void)requestSharedWebCredentialForDomain:(NSString *)domain account:(NSString *)account completion:(void (^)(NSArray <NSDictionary <NSString *, NSString *>*> *credentials, NSError *error))completion
 {
     SecRequestSharedWebCredential((__bridge CFStringRef)domain, (__bridge CFStringRef)account, ^(CFArrayRef credentials, CFErrorRef error) {
         if (error) {

@@ -18,5 +18,10 @@
  }
  */
 + (NSArray<NSNumber *> *)decodePolyline: (NSString *)polylineString;
+/**
+ *  根据谷歌的decoded Polyline 获取 解压后的 经纬度
+ *  @param encodedPolyline 谷歌的压缩的 polyline 字符串 （@"_p~iF~ps|U_ulLnnqC_mqNvxq`@"）
+ *  @return 经纬度数组
+ */
 - (NSArray<NSValue  *> *)decodePolyline:(NSString *)encodedPolyline;
 @end

@@ -1,23 +1,14 @@
 //
 //  CRKeychainItem.h
-//  iTour
-//
-//  Created by 蔡凌 on 2017/7/11.
 //  Copyright © 2017年 薛超. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-
-
-/**
- Keychain操作类，对应一个keychain item
- 如果是未添加过的keychain 那么当调用 setDataToKeychain 和 setStringToKeychain等方法时才会写入到keychain里面
- */
 @interface CRKeychainItem : NSObject
-@property (readonly) NSString *_Nonnull identifier;
-@property (readonly) NSString *_Nullable account;
-@property (readonly) NSString *_Nullable group;
-@property (readonly) BOOL isAdded;
+@property () NSString *_Nonnull identifier;
+@property () NSString *_Nullable account;
+@property () NSString *_Nullable group;
+@property () BOOL isAdded;
 
 - (instancetype _Nullable )initWithIdentifier:(nonnull NSString *)identifier
                            Account:(nullable NSString *)account
