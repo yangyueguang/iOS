@@ -20,7 +20,7 @@
     [super viewDidLoad];
     [self.navigationBar setBarTintColor:UIColor(46.0, 49.0, 50.0, 1.0)];
     [self.navigationBar setTintColor:[UIColor whiteColor]];
-    [self.view setBackgroundColor:colorGrayBG];
+    [self.view setBackgroundColor:[UIColor lightGrayColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:17.5f]}];
 }
 - (void)viewWillDisappear:(BOOL)animated{
@@ -185,7 +185,7 @@ static WXChatViewController *chatVC;
             NSString *imagePatha = [NSFileManager pathUserChatImage:imagePath];
             url = [NSURL fileURLWithPath:imagePatha];
         }else{
-            url = TLURL(message.content[@"url"]);
+            url = [NSURL URLWithString:message.content[@"url"]];
         }
         
         MWPhoto *photo = [MWPhoto photoWithURL:url];

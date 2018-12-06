@@ -28,14 +28,14 @@ class AlipayYuEBaoTableViewCellContentView: UIView {
         yI.image = UIImage(named: "calendar")
         yl.text = "昨日收益 (元)"
         yl.textColor = UIColor.white
-        yl.font = fontnomal
+        yl.font = fontSmall
         yesIncomeL.font = BoldFont(48)
         yesIncomeL.textColor = UIColor.white
         yesterdayIncomeLabel = yesIncomeL
         totalMoneyAmountLabel = UILabel(frame: CGRect(x: 10, y: 50, width: APPW - 20, height: 80))
         let totalL = UILabel(frame: CGRect(x: 10, y: 10, width: APPW - 20, height: 20))
         totalL.textColor = UIColor.lightGray
-        totalL.font = fontnomal
+        totalL.font = fontSmall
         totalL.text = "总金额（元）"
         totalMoneyAmountLabel?.textColor = UIColor.red
         totalMoneyAmountLabel?.font = BoldFont(38)

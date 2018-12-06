@@ -47,7 +47,7 @@
         NSString *path = [NSFileManager pathUserAvatar:[message.fromUser chat_avatarPath]];
         [self.avatarButton setImage:[UIImage imageNamed:path] forState:UIControlStateNormal];
     }else{
-        [self.avatarButton sd_setImageWithURL:TLURL([message.fromUser chat_avatarURL]) forState:UIControlStateNormal];
+        [self.avatarButton sd_setImageWithURL:[NSURL URLWithString:[message.fromUser chat_avatarURL]] forState:UIControlStateNormal];
     }
     
     // 时间
@@ -154,7 +154,7 @@
     if (_avatarButton == nil) {
         _avatarButton = [[UIButton alloc] init];
         [_avatarButton.layer setMasksToBounds:YES];
-        [_avatarButton.layer setBorderWidth:BORDER_WIDTH_1PX];
+        [_avatarButton.layer setBorderWidth:1];
         [_avatarButton.layer setBorderColor:[UIColor colorWithWhite:0.7 alpha:1.0].CGColor];
         [_avatarButton addTarget:self action:@selector(avatarButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -515,11 +515,11 @@ static UILabel *textLabel;
             [self.msgImageView setImage:[UIImage sd_animatedGIFWithData:data]];
         }else{
             __weak typeof(self) weakSelf = self;
-            [self.msgImageView sd_setImageWithURL:TLURL(message.url) completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [self.msgImageView sd_setImageWithURL:[NSURL URLWithString:message.url] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                 if ([[imageURL description] isEqualToString:[(WXExpressionMessage *)weakSelf.message url]]) {
                     dispatch_async(dispatch_get_global_queue(0, 0), ^{
                         NSData *data = [NSData dataWithContentsOfURL:imageURL];
-                        [data writeToFile:cachePath atomically:NO];      // 再写入到缓存中
+                        [data writeToFile:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] atomically:NO];      // 再写入到缓存中
                         if ([[imageURL description] isEqualToString:[(WXExpressionMessage *)weakSelf.message url]]) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 [self.msgImageView setImage:[UIImage sd_animatedGIFWithData:data]];

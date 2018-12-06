@@ -10,7 +10,7 @@ class DZDealListViewTransverseCell:BaseTableViewCell{
         title.frame = CGRect(x: X(icon), y: YH(icon), width: W(icon), height: 30)
         script.frame = CGRect(x: X(title), y: YH(title), width: W(title), height: 13)
         title.numberOfLines = 0
-        title.font = fontnomal
+        title.font = fontSmall
         script.font = Font(11)
         line.frame = CGRect(x: 0, y: 100 - 1, width: APPW, height: 1)
         icon.image = UIImage(named: "image4.jpg")
@@ -23,17 +23,17 @@ class DZDealListViewVerticalCell:BaseTableViewCell{
         super.initUI()
         icon.frame = CGRect(x: 10, y: 10, width: 70, height: 70)
 
-        let name = UILabel(frame: CGRect(x: XW(icon) + 10, y: 10, width: APPW - XW(icon) - 30, height: 20), font: fontSmallTitle,color:UIColor(0, 111, 255),text: "")
-        let times = UILabel(frame: CGRect(x: APPW - 100, y: Y(name), width: 80, height: 15), font: Font(11), color: graycolor, text: nil)
+        let name = UILabel(frame: CGRect(x: XW(icon) + 10, y: 10, width: APPW - XW(icon) - 30, height: 20), font: fontMiddle,color:UIColor(0, 111, 255),text: "")
+        let times = UILabel(frame: CGRect(x: APPW - 100, y: Y(name), width: 80, height: 15), font: Font(11), color: .gray, text: nil)
         times.textAlignment = .right
         title.frame = CGRect(x: X(name), y: YH(name) + 5, width: W(name), height: 20)
-        title.font = fontnomal
+        title.font = fontSmall
         script.frame = CGRect(x: X(title), y: YH(title) + 5, width: 80, height: 20)
-        let sees = UILabel(frame: CGRect(x: X(times), y: Y(script), width: W(times), height: 15), font: Font(11), color: graycolor, text: nil)
+        let sees = UILabel(frame: CGRect(x: X(times), y: Y(script), width: W(times), height: 15), font: Font(11), color: .gray, text: nil)
         sees.textAlignment = .right
         line.frame = CGRect(x: 0, y: 100 - 1, width: APPW, height: 1)
-        script.backgroundColor = redcolor
-        script.textColor = whitecolor
+        script.backgroundColor = .red
+        script.textColor = .white
         addSubviews([name, times, sees])
         icon.image = UIImage(named: "image2.jpg")
         name.text = "传说张无忌肉夹馍"

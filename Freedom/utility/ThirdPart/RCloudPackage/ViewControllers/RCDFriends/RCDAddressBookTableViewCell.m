@@ -74,7 +74,7 @@
         if ([user.portraitUri isEqualToString:@""]) {
             UIView *defaultPortrait = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
             defaultPortrait.backgroundColor = [UIColor redColor];
-            NSString *firstLetter = [ChineseToPinyin firstPinyinFromChinise:user.name];
+            NSString *firstLetter = [user.name pinyinFirstLetter];
             UILabel *firstCharacterLabel = [[UILabel alloc] initWithFrame:CGRectMake(defaultPortrait.frame.size.width / 2 - 30, defaultPortrait.frame.size.height / 2 - 30, 60, 60)];
             firstCharacterLabel.text = firstLetter;
             firstCharacterLabel.textColor = [UIColor whiteColor];

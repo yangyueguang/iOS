@@ -147,7 +147,7 @@ class AlipayHomeGridView: UIScrollView, UIScrollViewDelegate {
         pay.setImage(UIImage(named: "home_pay"), for: .normal)
         header.addSubview(pay)
         let line = UIView(frame: CGRect(x: APPW / 2, y: 0, width: 0.5, height: 100))
-        line.backgroundColor = whitecolor
+        line.backgroundColor = .white
         header.addSubview(line)
         addSubview(header)
         let cycleScrollADViewBackgroundView = UIView()

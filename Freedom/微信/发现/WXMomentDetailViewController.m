@@ -171,7 +171,7 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
 }
 - (void)setMoment:(WXMoment *)moment{
     _moment = moment;
-    [self.avatarView sd_setImageWithURL:TLURL(moment.user.avatarURL) forState:UIControlStateNormal];
+    [self.avatarView sd_setImageWithURL:[NSURL URLWithString:moment.user.avatarURL] forState:UIControlStateNormal];
     [self.usernameView setTitle:moment.user.showName forState:UIControlStateNormal];
     [self.dateLabel setText:@"1小时前"];
     [self.originLabel setText:@"微博"];
@@ -494,7 +494,7 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
 - (void)momentViewClickImage:(NSArray *)images atIndex:(NSInteger)index{
     NSMutableArray *data = [[NSMutableArray alloc] initWithCapacity:images.count];
     for (NSString *imageUrl in images) {
-        MWPhoto *photo = [MWPhoto photoWithURL:TLURL(imageUrl)];
+        MWPhoto *photo = [MWPhoto photoWithURL:[NSURL URLWithString:imageUrl]];
         [data addObject:photo];
     }
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:data];

@@ -38,7 +38,7 @@
         [self.rightImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(self.rightImageView.mas_height);
         }];
-        [self.rightImageView sd_setImageWithURL:TLURL(menuItem.rightIconURL) placeholderImage:[UIImage imageNamed:PuserLogo]];
+        [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:menuItem.rightIconURL] placeholderImage:[UIImage imageNamed:PuserLogo]];
     }
     [self.redPointView setHidden:!menuItem.showRightRedPoint];
 }
@@ -115,10 +115,10 @@
 - (void) loadView{
     self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, APPW, APPH)];
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    [self.tableView setBackgroundColor:colorGrayBG];
+    [self.tableView setBackgroundColor:[UIColor lightGrayColor]];
     [self.tableView setLayoutMargins:UIEdgeInsetsMake(0, 15, 0, 0)];
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 0)];
-    [self.tableView setSeparatorColor:colorGrayLine];
+    [self.tableView setSeparatorColor:[UIColor grayColor]];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, APPW, 20)]];
 }
 - (void) viewDidLoad{

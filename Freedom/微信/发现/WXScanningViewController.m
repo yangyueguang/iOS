@@ -74,7 +74,7 @@
         [_textLabel setFont:[UIFont systemFontOfSize:12.0f]];
         [_textLabel setTextAlignment:NSTextAlignmentCenter];
         [_textLabel setTextColor:[UIColor whiteColor]];
-        [_textLabel setHighlightedTextColor:colorGreenDefault];
+        [_textLabel setHighlightedTextColor:[UIColor greenColor]];
     }
     return _textLabel;
 }
@@ -329,7 +329,7 @@
         _myQRButton = [[UIButton alloc] init];
         [_myQRButton setTitle:@"我的二维码" forState:UIControlStateNormal];
         [_myQRButton.titleLabel setFont:[UIFont systemFontOfSize:15.0f]];
-        [_myQRButton setTitleColor:colorGreenDefault forState:UIControlStateNormal];
+        [_myQRButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
         [_myQRButton addTarget:self action:@selector(myQRButtonDown) forControlEvents:UIControlEventTouchUpInside];
         [_myQRButton setHidden:YES];
     }

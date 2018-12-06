@@ -35,7 +35,7 @@
     if (image) {
         [self.imageView setImage:image];
     }else{
-        [self.imageView sd_setImageWithURL:TLURL(group.groupIconURL) placeholderImage:[FreedomTools imageWithColor:colorGrayBG]];
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:group.groupIconURL] placeholderImage:[FreedomTools imageWithColor:[UIColor lightGrayColor]]];
     }
 }
 #pragma mark - Private Methods
@@ -57,8 +57,8 @@
         [_imageView setUserInteractionEnabled:NO];
         [_imageView.layer setMasksToBounds:YES];
         [_imageView.layer setCornerRadius:5.0f];
-        [_imageView.layer setBorderWidth:BORDER_WIDTH_1PX];
-        [_imageView.layer setBorderColor:colorGrayLine.CGColor];
+        [_imageView.layer setBorderWidth:1];
+        [_imageView.layer setBorderColor:[UIColor grayColor].CGColor];
     }
     return _imageView;
 }
@@ -82,7 +82,7 @@
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    CGRect rect = CGRectMake(0, HEIGHT_NAVBAR + NavY, APPW, APPH - HEIGHT_NAVBAR - NavY);
+    CGRect rect = CGRectMake(0, TopHeight + 20, APPW, APPH - TopHeight - 20);
     self.collectionView = [[UICollectionView alloc] initWithFrame:rect collectionViewLayout:layout];
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
     [self.collectionView setDataSource:self];

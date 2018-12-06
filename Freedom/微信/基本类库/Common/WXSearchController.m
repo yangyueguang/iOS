@@ -5,31 +5,31 @@
 @implementation WXSearchController
 - (id)initWithSearchResultsController:(UIViewController *)searchResultsController{
     if (self = [super initWithSearchResultsController:searchResultsController]) {
-        [self.searchBar setFrame:CGRectMake(0, 0, APPW, HEIGHT_NAVBAR)];
-        [self.searchBar setBackgroundImage:[FreedomTools imageWithColor:colorGrayBG]];
-        [self.searchBar setBarTintColor:colorGrayBG];
-        [self.searchBar setTintColor:colorGreenDefault];
+        [self.searchBar setFrame:CGRectMake(0, 0, APPW, TopHeight)];
+        [self.searchBar setBackgroundImage:[FreedomTools imageWithColor:[UIColor lightGrayColor]]];
+        [self.searchBar setBarTintColor:[UIColor lightGrayColor]];
+        [self.searchBar setTintColor:[UIColor greenColor]];
         UITextField *tf = [[[self.searchBar.subviews firstObject] subviews] lastObject];
         [tf.layer setMasksToBounds:YES];
-        [tf.layer setBorderWidth:BORDER_WIDTH_1PX];
-        [tf.layer setBorderColor:colorGrayLine.CGColor];
+        [tf.layer setBorderWidth:1];
+        [tf.layer setBorderColor:[UIColor grayColor].CGColor];
         [tf.layer setCornerRadius:5.0f];
         
         for (UIView *view in self.searchBar.subviews[0].subviews) {
             if ([view isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
                 UIView *bg = [[UIView alloc] init];
-                [bg setBackgroundColor:colorGrayBG];
+                [bg setBackgroundColor:[UIColor lightGrayColor]];
                 [view addSubview:bg];
                 [bg mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.edges.mas_equalTo(0);
                 }];
                 
                 UIView *line = [[UIView alloc] init];
-                [line setBackgroundColor:colorGrayLine];
+                [line setBackgroundColor:[UIColor grayColor]];
                 [view addSubview:line];
                 [line mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.left.and.right.and.bottom.mas_equalTo(0);
-                    make.height.mas_equalTo(BORDER_WIDTH_1PX);
+                    make.height.mas_equalTo(1);
                 }];
                 break;
             }

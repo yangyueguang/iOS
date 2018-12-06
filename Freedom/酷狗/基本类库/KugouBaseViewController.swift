@@ -33,12 +33,12 @@ class KugouBaseViewController: BaseViewController {
         rightItem.isUserInteractionEnabled = true
         rightItem.frame = CGRect(x: APPW - 35, y: 28, width: CGFloat(ItemImagewidth), height: CGFloat(ItemImagewidth))
         leftButton.addTarget(self, action: #selector(self.leftButtonClick(_:)), for: .touchUpInside)
-        leftButton.titleLabel?.font = fontSmallTitle
+        leftButton.titleLabel?.font = fontMiddle
         leftButton.setTitleColor(UIColor.white, for: [])
         leftButton.frame = CGRect(x: 5, y: 28, width: CGFloat(ItemButtonwidth), height: CGFloat(ItemImagewidth))
         rightButton = UIButton()
         rightButton.addTarget(self, action: #selector(self.rightButtonClick(_:)), for: .touchUpInside)
-        rightButton.titleLabel?.font = fontSmallTitle
+        rightButton.titleLabel?.font = fontMiddle
         rightButton.setTitleColor(UIColor.white, for: [])
         rightButton.frame = CGRect(x: APPW - 55, y: 28, width: CGFloat(ItemButtonwidth), height: CGFloat(ItemImagewidth))
         titleLine = UILabel()
@@ -47,7 +47,7 @@ class KugouBaseViewController: BaseViewController {
         titleLabel = UILabel()
         titleLabel.backgroundColor = UIColor.clear
         titleLabel.numberOfLines = 1
-        titleLabel.textColor = whitecolor
+        titleLabel.textColor = .white
         titleLabel.textAlignment = .center
         titleLabel.font = BoldFont(17)
         titleLabel.frame = CGRect(x: 0, y: 20, width: APPW, height: 64 - 20)

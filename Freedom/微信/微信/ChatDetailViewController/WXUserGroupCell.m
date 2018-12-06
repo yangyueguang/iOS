@@ -29,7 +29,7 @@
 - (void)setUser:(WXUser *)user{
     _user = user;
     if (user != nil) {
-        [self.avatarView sd_setImageWithURL:TLURL(user.avatarURL) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:PuserLogo]];
+        [self.avatarView sd_setImageWithURL:[NSURL URLWithString:user.avatarURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:PuserLogo]];
         [self.usernameLabel setText:user.showName];
     }else{
         [self.avatarView setImage:[UIImage imageNamed:@"chatdetail_add_member"] forState:UIControlStateNormal];

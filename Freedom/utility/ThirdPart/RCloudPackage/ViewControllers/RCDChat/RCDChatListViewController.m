@@ -564,6 +564,24 @@
   [self checkVersion];
     [self updateBadgeValueForTabBarItem];
 }
+- (UIBarButtonItem *)barButtonItemContainImage:(UIImage *)buttonImage imageViewFrame:(CGRect)imageFrame buttonTitle:(NSString *)buttonTitle titleColor:(UIColor*)titleColor titleFrame:(CGRect)titleFrame buttonFrame:(CGRect)buttonFrame target:(id)target action:(SEL)method {
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] init];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = buttonFrame;
+    UIImageView *image = [[UIImageView alloc]initWithImage:buttonImage];
+    image.frame = imageFrame;
+    [button addSubview:image];
+    if (buttonTitle != nil && titleColor != nil) {
+        UILabel *titleText = [[UILabel alloc] initWithFrame:titleFrame];
+        titleText.text = buttonTitle;
+        [titleText setBackgroundColor:[UIColor clearColor]];
+        [titleText setTextColor:titleColor];
+        [button addSubview:titleText];
+    }
+    [button addTarget:target action:method forControlEvents:UIControlEventTouchUpInside];
+    item.customView = button;
+    return item;
+}
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
     //判断如果有未读数存在，发出定位到未读数会话的通知
@@ -574,7 +592,7 @@
   
   _isClick = YES;
   //自定义rightBarButtonItem
-    UIBarButtonItem *rightBtn = [FreedomTools barButtonItemContainImage:[UIImage imageNamed:@"u_add"] imageViewFrame:CGRectMake(0, 0, 17, 17) buttonTitle:nil titleColor:nil titleFrame:CGRectZero buttonFrame:CGRectMake(0, 0, 17, 17) target:self action:@selector(showMenu:)];
+    UIBarButtonItem *rightBtn = [self barButtonItemContainImage:[UIImage imageNamed:@"u_add"] imageViewFrame:CGRectMake(0, 0, 17, 17) buttonTitle:nil titleColor:nil titleFrame:CGRectZero buttonFrame:CGRectMake(0, 0, 17, 17) target:self action:@selector(showMenu:)];
     NSArray<UIBarButtonItem *> *barButtonItems;
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     negativeSpacer.width = -6;

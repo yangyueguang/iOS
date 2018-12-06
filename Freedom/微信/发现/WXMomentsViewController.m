@@ -92,9 +92,9 @@
 }
 - (void)setUser:(WXUser *)user{
     _user = user;
-    [self.backgroundWall sd_setImageWithURL:TLURL(user.detailInfo.momentsWallURL) forState:UIControlStateNormal];
-    [self.backgroundWall sd_setImageWithURL:TLURL(user.detailInfo.momentsWallURL) forState:UIControlStateHighlighted];
-    [self.avatarView sd_setImageWithURL:TLURL(user.avatarURL) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:PuserLogo]];
+    [self.backgroundWall sd_setImageWithURL:[NSURL URLWithString:user.detailInfo.momentsWallURL] forState:UIControlStateNormal];
+    [self.backgroundWall sd_setImageWithURL:[NSURL URLWithString:user.detailInfo.momentsWallURL] forState:UIControlStateHighlighted];
+    [self.avatarView sd_setImageWithURL:[NSURL URLWithString:user.avatarURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:PuserLogo]];
     [self.usernameLabel setText:user.nikeName];
     [self.mottoLabel setText:user.detailInfo.motto];
 }
@@ -127,7 +127,7 @@
 - (UIButton *)backgroundWall{
     if (_backgroundWall == nil) {
         _backgroundWall = [[UIButton alloc] init];
-        [_backgroundWall setBackgroundColor:colorGrayLine];
+        [_backgroundWall setBackgroundColor:[UIColor grayColor]];
     }
     return _backgroundWall;
 }
@@ -240,7 +240,7 @@
 - (void)momentViewClickImage:(NSArray *)images atIndex:(NSInteger)index{
     NSMutableArray *data = [[NSMutableArray alloc] initWithCapacity:images.count];
     for (NSString *imageUrl in images) {
-        MWPhoto *photo = [MWPhoto photoWithURL:TLURL(imageUrl)];
+        MWPhoto *photo = [MWPhoto photoWithURL:[NSURL URLWithString:imageUrl]];
         [data addObject:photo];
     }
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:data];

@@ -95,7 +95,7 @@
 #pragma mark - Public Methdos -
 - (void)setAvatarURL:(NSString *)avatarURL{
     _avatarURL = avatarURL;
-    [self.avatarImageView sd_setImageWithURL:TLURL(avatarURL) placeholderImage:[UIImage imageNamed:PuserLogo]];
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarURL] placeholderImage:[UIImage imageNamed:PuserLogo]];
 }
 - (void)setAvatarPath:(NSString *)avatarPath{
     _avatarPath = avatarPath;
@@ -130,7 +130,7 @@
 - (void)p_addMasonry{
     [self.whiteBGView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
-        make.centerY.mas_equalTo(self.view).mas_offset(HEIGHT_NAVBAR / 2);
+        make.centerY.mas_equalTo(self.view).mas_offset(TopHeight / 2);
         make.width.mas_equalTo(self.view).multipliedBy(0.85);
         make.bottom.mas_equalTo(self.introductionLabel.mas_bottom).mas_offset(15);
     }];
@@ -165,7 +165,7 @@
         [_whiteBGView setBackgroundColor:[UIColor whiteColor]];
         [_whiteBGView.layer setMasksToBounds:YES];
         [_whiteBGView.layer setCornerRadius:2.0f];
-        [_whiteBGView.layer setBorderWidth:BORDER_WIDTH_1PX];
+        [_whiteBGView.layer setBorderWidth:1];
         [_whiteBGView.layer setBorderColor:[UIColor blackColor].CGColor];
     }
     return _whiteBGView;
@@ -175,8 +175,8 @@
         _avatarImageView = [[UIImageView alloc] init];
         [_avatarImageView.layer setMasksToBounds:YES];
         [_avatarImageView.layer setCornerRadius:3.0f];
-        [_avatarImageView.layer setBorderWidth:BORDER_WIDTH_1PX];
-        [_avatarImageView.layer setBorderColor:colorGrayLine.CGColor];
+        [_avatarImageView.layer setBorderWidth:1];
+        [_avatarImageView.layer setBorderColor:[UIColor grayColor].CGColor];
     }
     return _avatarImageView;
 }

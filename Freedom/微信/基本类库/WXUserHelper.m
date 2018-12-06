@@ -431,7 +431,7 @@ static WXFriendHelper *friendHelper = nil;
             WXUser *user = [group.users objectAtIndex:i];
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, width, width)];
             [view addSubview:imageView];
-            [imageView sd_setImageWithURL:TLURL(user.avatarURL) placeholderImage:[UIImage imageNamed:PuserLogo] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [imageView sd_setImageWithURL:[NSURL URLWithString:user.avatarURL] placeholderImage:[UIImage imageNamed:PuserLogo] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                 count ++;
                 if (count == usersCount) {     // 图片全部下载完成
                     UIGraphicsBeginImageContextWithOptions(view.frame.size, NO, 2.0);
@@ -551,12 +551,12 @@ static WXFriendHelper *friendHelper = nil;
     WXInfo *sendMsg = TLCreateInfo(@"发消息", nil);
     sendMsg.type = TLInfoTypeButton;
     sendMsg.titleColor = [UIColor whiteColor];
-    sendMsg.buttonBorderColor = colorGrayLine;
+    sendMsg.buttonBorderColor = [UIColor grayColor];
     [arr addObject:sendMsg];
     if (![userInfo.userID isEqualToString:[WXUserHelper sharedHelper].user.userID]) {
         WXInfo *video = TLCreateInfo(@"视频聊天", nil);
         video.type = TLInfoTypeButton;
-        video.buttonBorderColor = colorGrayLine;
+        video.buttonBorderColor = [UIColor grayColor];
         video.buttonColor = [UIColor whiteColor];
         [arr addObject:video];
     }

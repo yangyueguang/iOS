@@ -44,7 +44,7 @@
     [super viewWillAppear:animated];
     [MobClick beginLogPageView:@"WebVC"];
     [self.progressView setProgress:0.0f];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:TLURL(self.url)]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
     if (!self.disableBackButton && self.navigationItem.leftBarButtonItems.count <= 2) {
         [self.navigationItem setLeftBarButtonItems:@[self.backButtonItem]];
     }
@@ -65,7 +65,7 @@
     _url = url;
     if ([self.view isFirstResponder]) {
         [self.progressView setProgress:0.0f];
-        [self.webView loadRequest:[NSURLRequest requestWithURL:TLURL(self.url)]];
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
     }
 }
 - (void)setShowLoadingProgress:(BOOL)showLoadingProgress{
@@ -116,7 +116,7 @@
 #pragma mark - Getter -
 - (WKWebView *)webView{
     if (_webView == nil) {
-        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVBAR + NavY, APPW, APPH - HEIGHT_NAVBAR - NavY)];
+        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, TopHeight + 20, APPW, APPH - TopHeight - 20)];
         [_webView setAllowsBackForwardNavigationGestures:YES];
         [_webView setNavigationDelegate:self];
     }
@@ -124,9 +124,9 @@
 }
 - (UIProgressView *)progressView{
     if (_progressView == nil) {
-        _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVBAR + NavY, APPW, 10.0f)];
+        _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, TopHeight + 20, APPW, 10.0f)];
         [_progressView setTransform: CGAffineTransformMakeScale(1.0f, 2.0f)];
-        [_progressView setProgressTintColor:colorGreenDefault];
+        [_progressView setProgressTintColor:[UIColor greenColor]];
         [_progressView setTrackTintColor:[UIColor clearColor]];
     }
     return _progressView;
@@ -145,7 +145,7 @@
 }
 - (UILabel *)authLabel{
     if (_authLabel == nil) {
-        _authLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, HEIGHT_NAVBAR + NavY + 13, APPW - 40, 0)];
+        _authLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, TopHeight + 20 + 13, APPW - 40, 0)];
         [_authLabel setFont:[UIFont systemFontOfSize:12.0f]];
         [_authLabel setTextAlignment:NSTextAlignmentCenter];
         [_authLabel setTextColor:[UIColor grayColor]];

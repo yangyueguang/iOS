@@ -6,7 +6,7 @@
 @implementation WXTableViewController
 - (void) viewDidLoad{
     [super viewDidLoad];
-    [self.view setBackgroundColor:colorGrayBG];
+    [self.view setBackgroundColor:[UIColor lightGrayColor]];
     [self.tableView setTableFooterView:[UIView new]];
 }
 - (void)viewWillAppear:(BOOL)animated{

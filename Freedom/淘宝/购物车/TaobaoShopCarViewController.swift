@@ -12,21 +12,21 @@ class TaobaoShopCarViewCell:BaseTableViewCell{
         title.font = fontTitle
         title.numberOfLines = 0
         script = UILabel()
-        script.font = fontnomal
+        script.font = fontSmall
         title.textColor = blacktextcolor
         script.textColor = title.textColor
         line = UIView(frame: CGRect(x: 0, y: 99, width: APPW, height: 1))
-        line.backgroundColor = gradcolor
+        line.backgroundColor = .lightGray
         let headView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 20))
         let selecth = UIButton(frame: CGRect(x: 10, y: 2.5, width: 15, height: 15))
         selecth.setImage(UIImage(named: "taobaono"), for: .normal)
         selecth.setImage(UIImage(named: "taobaoon"), for: .selected)
-        let headTitle = UILabel(frame: CGRect(x: XW(selecth), y: 0, width: APPW - 150, height: 20), font: fontnomal, color: gradtextcolor, text: "中华精品城 >")
+        let headTitle = UILabel(frame: CGRect(x: XW(selecth), y: 0, width: APPW - 150, height: 20), font: fontSmall, color: gradtextcolor, text: "中华精品城 >")
         let lingquan = UIButton(frame: CGRect(x: APPW - 100, y: 0, width: 40, height: 20))
         lingquan.setTitle("领券", for: .normal)
         let edit = UIButton(frame: CGRect(x: XW(lingquan) + 10, y: 0, width: 40, height: 20))
         edit.setTitle("编辑", for: .normal)
-        edit.titleLabel?.font = fontnomal
+        edit.titleLabel?.font = fontSmall
         lingquan.titleLabel?.font = edit.titleLabel?.font
         headView.addSubviews([selecth, headTitle, lingquan, edit])
         let contentV = UIView(frame: CGRect(x: 0, y: YH(headView), width: APPW, height: 80))
@@ -36,12 +36,12 @@ class TaobaoShopCarViewCell:BaseTableViewCell{
         icon.frame = CGRect(x: XW(selectc) + 10, y: 5, width: 60, height: 70)
         title.frame = CGRect(x: XW(icon) + 10, y: Y(icon), width: APPW - XW(icon) - 20, height: 30)
         title.numberOfLines = 0
-        title.font = fontnomal
-        script.textColor = graycolor
+        title.font = fontSmall
+        script.textColor = .gray
         script.frame = CGRect(x: X(title), y: YH(title), width: W(title), height: 20)
-        let newPrice = UILabel(frame: CGRect(x: X(script), y: YH(script), width: 60, height: 20), font: fontnomal, color: redcolor, text: "￥199")
-        let oldPrice = UILabel(frame: CGRect(x: XW(newPrice), y: Y(newPrice), width: 80, height: H(newPrice)), font: fontnomal, color: graycolor, text: "￥299")
-        let num = UILabel(frame: CGRect(x: APPW - 50, y: Y(newPrice), width: 40, height: 20), font: fontnomal, color: graycolor, text: "x1")
+        let newPrice = UILabel(frame: CGRect(x: X(script), y: YH(script), width: 60, height: 20), font: fontSmall, color: .red, text: "￥199")
+        let oldPrice = UILabel(frame: CGRect(x: XW(newPrice), y: Y(newPrice), width: 80, height: H(newPrice)), font: fontSmall, color: .gray, text: "￥299")
+        let num = UILabel(frame: CGRect(x: APPW - 50, y: Y(newPrice), width: 40, height: 20), font: fontSmall, color: .gray, text: "x1")
         num.textAlignment = .right
         contentV.addSubviews([selectc, icon, title, script, newPrice, oldPrice, num])
         addSubviews([headView, contentV, line])

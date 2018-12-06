@@ -89,7 +89,7 @@
     if (item.rightImagePath) {
         [self.rightImageView setImage: [UIImage imageNamed:item.rightImagePath]];
     }else if (item.rightImageURL){
-        [self.rightImageView sd_setImageWithURL:TLURL(item.rightImageURL) placeholderImage:[UIImage imageNamed:PuserLogo]];
+        [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:item.rightImageURL] placeholderImage:[UIImage imageNamed:PuserLogo]];
     }else{
         [self.rightImageView setImage:nil];
     }
@@ -211,10 +211,10 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [self.tableView setTableHeaderView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, APPW, 15.0f)]];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, APPW, 12.0f)]];
-    [self.tableView setBackgroundColor:colorGrayBG];
+    [self.tableView setBackgroundColor:[UIColor lightGrayColor]];
     [self.tableView setLayoutMargins:UIEdgeInsetsMake(0, 15, 0, 0)];
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 0)];
-    [self.tableView setSeparatorColor:colorGrayLine];
+    [self.tableView setSeparatorColor:[UIColor grayColor]];
 }
 - (void)viewDidLoad{
     [super viewDidLoad];

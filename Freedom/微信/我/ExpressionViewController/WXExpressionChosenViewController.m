@@ -36,7 +36,7 @@
     if (image) {
         [self.iconImageView setImage:image];
     }else{
-        [self.iconImageView sd_setImageWithURL:TLURL(group.groupIconURL)];
+        [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:group.groupIconURL]];
     }
     [self.titleLabel setText:group.groupName];
     [self.detailLabel setText:group.groupDetailInfo];
@@ -47,12 +47,12 @@
         [self.downloadButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     }else if (group.status == TLEmojiGroupStatusDownloading) {
         [self.downloadButton setTitle:@"下载中" forState:UIControlStateNormal];
-        [self.downloadButton.layer setBorderColor:colorGreenDefault.CGColor];
-        [self.downloadButton setTitleColor:colorGreenDefault forState:UIControlStateNormal];
+        [self.downloadButton.layer setBorderColor:[UIColor greenColor].CGColor];
+        [self.downloadButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
     }else{
         [self.downloadButton setTitle:@"下载" forState:UIControlStateNormal];
-        [self.downloadButton.layer setBorderColor:colorGreenDefault.CGColor];
-        [self.downloadButton setTitleColor:colorGreenDefault forState:UIControlStateNormal];
+        [self.downloadButton.layer setBorderColor:[UIColor greenColor].CGColor];
+        [self.downloadButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
     }
 }
 #pragma mark - Event Response
@@ -130,11 +130,11 @@
         _downloadButton = [[UIButton alloc] init];
         [_downloadButton setTitle:@"下载" forState:UIControlStateNormal];
         [_downloadButton.titleLabel setFont:[UIFont systemFontOfSize:14.0f]];
-        [_downloadButton setTitleColor:colorGreenDefault forState:UIControlStateNormal];
+        [_downloadButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
         [_downloadButton.layer setMasksToBounds:YES];
         [_downloadButton.layer setCornerRadius:3.0f];
         [_downloadButton.layer setBorderWidth:1.0f];
-        [_downloadButton.layer setBorderColor:colorGreenDefault.CGColor];
+        [_downloadButton.layer setBorderColor:[UIColor greenColor].CGColor];
         [_downloadButton addTarget:self action:@selector(downloadButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _downloadButton;
@@ -187,7 +187,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
-    [self.tableView setFrame:CGRectMake(0, HEIGHT_NAVBAR + NavY, APPW, APPH - NavY - HEIGHT_NAVBAR)];
+    [self.tableView setFrame:CGRectMake(0, TopHeight + 20, APPW, APPH - 20 - TopHeight)];
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setTableHeaderView:self.searchController.searchBar];
     

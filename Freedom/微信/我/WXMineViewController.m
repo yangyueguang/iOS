@@ -66,7 +66,7 @@
         [self.avatarImageView setImage:[UIImage imageNamed:user.avatarPath]];
     }
     else{
-        [self.avatarImageView sd_setImageWithURL:TLURL(user.avatarURL) placeholderImage:[UIImage imageNamed:@"userLogo"]];
+        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:user.avatarURL] placeholderImage:[UIImage imageNamed:@"userLogo"]];
     }
     [self.nikenameLabel setText:user.nikeName];
     [self.usernameLabel setText:user.username ? [@"微信号：" stringByAppendingString:user.username] : @""];

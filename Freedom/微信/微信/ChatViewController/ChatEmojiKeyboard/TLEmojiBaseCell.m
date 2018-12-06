@@ -283,7 +283,7 @@
     [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5);
-    CGContextSetStrokeColorWithColor(context, colorGrayLine.CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, self.frame.size.width - 0.5, 5);
     CGContextAddLineToPoint(context, self.frame.size.width - 0.5, self.frameHeight - 5);
@@ -321,7 +321,7 @@
 - (void)setSendButtonStatus:(TLGroupControlSendButtonStatus)sendButtonStatus{
     if (_sendButtonStatus != sendButtonStatus) {
         if (_sendButtonStatus == TLGroupControlSendButtonStatusNone) {
-            [UIView animateWithDuration:BORDER_WIDTH_1PX animations:^{
+            [UIView animateWithDuration:1 animations:^{
                 [self.sendButton mas_updateConstraints:^(MASConstraintMaker *make) {
                     make.right.mas_equalTo(self);
                 }];
@@ -331,7 +331,7 @@
         
         _sendButtonStatus = sendButtonStatus;
         if (sendButtonStatus == TLGroupControlSendButtonStatusNone) {
-            [UIView animateWithDuration:BORDER_WIDTH_1PX animations:^{
+            [UIView animateWithDuration:1 animations:^{
                 [self.sendButton mas_updateConstraints:^(MASConstraintMaker *make) {
                     make.right.mas_equalTo(self).mas_offset(WIDTH_SENDBUTTON);
                 }];
@@ -432,7 +432,7 @@
     [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5);
-    CGContextSetStrokeColorWithColor(context, colorGrayLine.CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, WIDTH_EMOJIGROUP_CELL, 5);
     CGContextAddLineToPoint(context, WIDTH_EMOJIGROUP_CELL, self.frameHeight - 5);

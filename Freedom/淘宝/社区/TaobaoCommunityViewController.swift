@@ -13,10 +13,10 @@ class TaobaoCommunityViewCell1:BaseCollectionViewCell{
         icon.clipsToBounds = true
         script = UILabel(frame: CGRect(x: 10, y: YH(icon), width: APPW - 20, height: 60))
         script.numberOfLines = 0
-        script.font = fontnomal
+        script.font = fontSmall
         script.textColor = gradtextcolor
         line = UIView(frame: CGRect(x: 0, y: 198, width: APPW, height: 2))
-        line.backgroundColor = whitecolor
+        line.backgroundColor = .white
         addSubviews([title, icon, script, line])
         title.text = "我想买一个6000到8000左右的游戏本，求各位大神给个推荐"
         icon.image = UIImage(named: "image4.jpg")
@@ -27,7 +27,7 @@ class TaobaoCommunityViewCell2:BaseCollectionViewCell {
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW / 2 - 20, height: 100))
         title = UILabel(frame: CGRect(x: 0, y: YH(icon), width: W(icon), height: 70))
-        title.font = fontnomal
+        title.font = fontSmall
         title.textColor = gradtextcolor
         title.numberOfLines = 0
         addSubviews([icon, title])
@@ -45,10 +45,10 @@ class TaobaoCommunityHeadView: UICollectionReusableView {
     }
     func initUI() {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 5, width: APPW, height: 20))
-        titleLabel.textColor = redcolor
+        titleLabel.textColor = .red
         titleLabel.textAlignment = .center
         titleLabel.text = "每日必看"
-        backgroundColor = whitecolor
+        backgroundColor = .white
         addSubview(titleLabel)
     }
 }

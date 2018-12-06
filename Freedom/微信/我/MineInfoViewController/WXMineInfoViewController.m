@@ -29,7 +29,7 @@
     if (item.rightImagePath) {
         [self.avatarImageView setImage: [UIImage imageNamed:item.rightImagePath]];
     }else if (item.rightImageURL){
-        [self.avatarImageView sd_setImageWithURL:TLURL(item.rightImageURL) placeholderImage:[UIImage imageNamed:PuserLogo]];
+        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:item.rightImageURL] placeholderImage:[UIImage imageNamed:PuserLogo]];
     }else{
         [self.avatarImageView setImage:nil];
     }

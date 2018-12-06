@@ -21,12 +21,12 @@ class DZHomeViewCell1:BaseCollectionViewCell{
     }
     func getViewWithFrame(_ rect: CGRect) -> UIView {
         let view = UIView(frame: rect)
-        let a = UILabel(frame: CGRect(x: 10, y: 0, width: APPW / 2 - 20, height: 18), font: fontnomal, color: redcolor, text: "外卖贺新春")
-        let b = UILabel(frame: CGRect(x: X(a), y: YH(a), width: W(a), height: H(a)), font: fontnomal, color: blacktextcolor, text: "省事省力又省心")
-        let c = UILabel(frame: CGRect(x: X(a), y: YH(b), width: 100, height: 15), font: fontnomal, color: yellowcolor, text: "用外卖订年夜饭")
+        let a = UILabel(frame: CGRect(x: 10, y: 0, width: APPW / 2 - 20, height: 18), font: fontSmall, color: .red, text: "外卖贺新春")
+        let b = UILabel(frame: CGRect(x: X(a), y: YH(a), width: W(a), height: H(a)), font: fontSmall, color: blacktextcolor, text: "省事省力又省心")
+        let c = UILabel(frame: CGRect(x: X(a), y: YH(b), width: 100, height: 15), font: fontSmall, color: .yellow, text: "用外卖订年夜饭")
         c.layer.cornerRadius = 7
         c.layer.borderWidth = 1
-        c.layer.borderColor = redcolor.cgColor
+        c.layer.borderColor = UIColor.red.cgColor
         view.addSubviews([a, b, c])
         return view
     }
@@ -39,8 +39,8 @@ class DZHomeViewCell2:BaseCollectionViewCell{
         icon = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW / 4, height: 60))
         title = UILabel(frame: CGRect(x: 20, y: YH(icon), width: W(icon), height: 20))
         script = UILabel(frame: CGRect(x: X(title), y: YH(title), width: W(title), height: H(title)))
-        script.font = fontnomal
-        title.font = fontSmallTitle
+        script.font = fontSmall
+        title.font = fontMiddle
         script.textColor = gradtextcolor
         addSubviews([icon, title, script])
     }
@@ -58,7 +58,7 @@ class DZHomeViewCell3:BaseCollectionViewCell{
         title = UILabel(frame: CGRect(x: 0, y: YH(icon), width: W(icon), height: 18))
         script = UILabel(frame: CGRect(x: X(title), y: YH(title), width: W(title), height: 15))
         script.font = Font(12)
-        title.font = fontnomal
+        title.font = fontSmall
         script.textColor = gradtextcolor
         title.textAlignment = .center
         script.textAlignment = .center
@@ -80,19 +80,19 @@ class DZHomeViewCell4:BaseCollectionViewCell{
         let b = UILabel(frame: CGRect(x: X(title), y: YH(script), width: W(title), height: H(title)))
         let d = UILabel(frame: CGRect(x: X(a), y: Y(b), width: W(a), height: H(a)))
         d.textAlignment = .right
-        d.font = fontnomal
+        d.font = fontSmall
         a.font = d.font
         script.font = a.font
         script.numberOfLines = 0
-        d.textColor = graycolor
+        d.textColor = .gray
         a.textColor = d.textColor
         script.textColor = a.textColor
-        b.textColor = redcolor
+        b.textColor = .red
         a.text = "575m"
         b.text = "￥69"
         d.text = "已售50000"
         let ling = UIView(frame: CGRect(x: 10, y: 99, width: APPW - 20, height: 1))
-        ling.backgroundColor = whitecolor
+        ling.backgroundColor = .white
         addSubviews([icon, title, a, script, b, d, ling])
     }
     func setCollectionDataWithDic(_ dict: [AnyHashable: Any]?) {
@@ -118,12 +118,12 @@ class DZHomeHeadView1: UICollectionReusableView {
             icon.clipsToBounds = true
             icon.layer.cornerRadius = 20
             icon.image = UIImage(named: "userLogo")
-            let label1 = UILabel(frame: CGRect(x: XW(icon) + 10, y: 10, width: APPW / 2, height: 40), font: fontnomal, color: blacktextcolor, text: "好友蜂蜜绿茶，吃完这家，还有下一家。地点中环广场店")
+            let label1 = UILabel(frame: CGRect(x: XW(icon) + 10, y: 10, width: APPW / 2, height: 40), font: fontSmall, color: blacktextcolor, text: "好友蜂蜜绿茶，吃完这家，还有下一家。地点中环广场店")
             label1.numberOfLines = 0
             view.addSubviews([icon, label1])
-            view.backgroundColor = redcolor
+            view.backgroundColor = .red
             if index % 2 != 0 {
-                view.backgroundColor = yellowcolor
+                view.backgroundColor = .yellow
             }
             return view
         }, vertically: true, setFire: true)
@@ -141,10 +141,10 @@ class DZHomeHeadView2: UICollectionReusableView {
     }
     func initUI() {
         titleLabel = UILabel(frame: CGRect(x: 0, y: 5, width: APPW, height: 20))
-        titleLabel?.textColor = redcolor
+        titleLabel?.textColor = .red
         titleLabel?.textAlignment = .center
         titleLabel?.text = "为你优选BEST"
-        backgroundColor = whitecolor
+        backgroundColor = .white
         if let aLabel = titleLabel {
             addSubview(aLabel)
         }
@@ -166,7 +166,7 @@ class DZHomeController: DZBaseViewController,UICollectionViewDataSource,UICollec
         let titles = ["美食", "电影", "酒店", "休闲娱乐", "外卖", "机票/火车票", "丽人", "周边游", "亲子", "KTV", "高端酒店", "足疗按摩", "结婚", "家族", "学习培训", "景点", "游乐园", "生活服务", "洗浴", "全部分类"]
         let icons = ["taobaomini1", "taobaomini2", "taobaomini3", "taobaomini4", "taobaomini5", "taobaomini1", "taobaomini2", "taobaomini3", "taobaomini4", "taobaomini5", "taobaomini1", "taobaomini2", "taobaomini3", "taobaomini4", "taobaomini5", "taobaomini1", "taobaomini2", "taobaomini3", "taobaomini4", "taobaomini5"]
         let itemScrollView = BaseScrollView(scrollItem: CGRect(x: 0, y: 60, width: APPW, height: 200), icons: icons, titles: titles, size: CGSize(width: APPW / 5.0, height: 70), hang: 2, round: true)
-        itemScrollView.backgroundColor = whitecolor
+        itemScrollView.backgroundColor = .white
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: (APPW - 50) / 4, height: 90)
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)

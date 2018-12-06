@@ -93,7 +93,7 @@
     [self setNeedsDisplay];
     [self setFrame:view.bounds];
     
-    CGRect rect = CGRectMake(view.frame.size.width - WIDTH_TABLEVIEW - 5, HEIGHT_NAVBAR + NavY + 10, WIDTH_TABLEVIEW, self.data.count * HEIGHT_TABLEVIEW_CELL);
+    CGRect rect = CGRectMake(view.frame.size.width - WIDTH_TABLEVIEW - 5, TopHeight + 20 + 10, WIDTH_TABLEVIEW, self.data.count * HEIGHT_TABLEVIEW_CELL);
     [self.tableView setFrame:rect];
 }
 - (BOOL)isShow{
@@ -138,8 +138,8 @@
 #pragma mark - Private Methods -
 - (void)drawRect:(CGRect)rect{
     CGFloat startX = self.frame.size.width - 27;
-    CGFloat startY = NavY + HEIGHT_NAVBAR + 3;
-    CGFloat endY = NavY + HEIGHT_NAVBAR + 10;
+    CGFloat startY = 20 + TopHeight + 3;
+    CGFloat endY = 20 + TopHeight + 10;
     CGFloat width = 6;
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextMoveToPoint(context, startX, startY);
@@ -212,7 +212,7 @@
         NSString *path = [NSFileManager pathUserAvatar:conversation.avatarPath];
         [self.avatarImageView setImage:[UIImage imageNamed:path]];
     }else if (conversation.avatarURL.length > 0){
-        [self.avatarImageView sd_setImageWithURL:TLURL(conversation.avatarURL) placeholderImage:[UIImage imageNamed:PuserLogo]];
+        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:conversation.avatarURL] placeholderImage:[UIImage imageNamed:PuserLogo]];
     }else{
         [self.avatarImageView setImage:nil];
     }

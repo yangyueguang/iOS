@@ -83,7 +83,7 @@
         _button = [[UIButton alloc] init];
         [_button.layer setMasksToBounds:YES];
         [_button.layer setCornerRadius:4.0f];
-        [_button.layer setBorderWidth:BORDER_WIDTH_1PX];
+        [_button.layer setBorderWidth:1];
         [_button.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
         [_button addTarget:self action:@selector(cellButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -93,7 +93,7 @@
 @implementation WXInfoHeaderFooterView
 - (id) initWithReuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
-        [self.contentView setBackgroundColor:colorGrayBG];
+        [self.contentView setBackgroundColor:[UIColor lightGrayColor]];
     }
     return self;
 }
@@ -104,7 +104,7 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [self.tableView setTableHeaderView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, APPW, 15.0f)]];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, APPW, 12.0f)]];
-    [self.tableView setBackgroundColor:colorGrayBG];
+    [self.tableView setBackgroundColor:[UIColor lightGrayColor]];
 }
 - (void)viewDidLoad{
     [super viewDidLoad];

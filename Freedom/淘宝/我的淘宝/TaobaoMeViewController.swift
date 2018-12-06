@@ -8,7 +8,7 @@ class TaobaoMeViewCell1:BaseCollectionViewCell{
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 10, y: 0, width: APPW / 5 - 20, height: 40))
         title = UILabel(frame: CGRect(x: 0, y: YH(icon), width: APPW / 5 - 10, height: 20))
-        title.font = fontnomal
+        title.font = fontSmall
         title.textAlignment = .center
         addSubviews([title, icon])
         title.text = "待收货"
@@ -19,7 +19,7 @@ class TaobaoMeViewCell2:BaseCollectionViewCell{
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 10, y: 0, width: APPW / 5 - 20, height: 40))
         title = UILabel(frame: CGRect(x: 0, y: YH(icon), width: APPW / 5 - 12, height: 20))
-        title.font = fontnomal
+        title.font = fontSmall
         title.textAlignment = .center
         addSubviews([title, icon])
         title.text = "蚂蚁花呗"
@@ -38,14 +38,14 @@ class TaobaoMeHeadView: UICollectionReusableView {
     }
     func initUI() {
         titleLabel = UILabel(frame: CGRect(x: 10, y: 5, width: APPW / 2, height: 20))
-        titleLabel?.textColor = redcolor
+        titleLabel?.textColor = .red
         titleLabel?.text = "必备工具"
         let more = UILabel(frame: CGRect(x: XW(titleLabel), y: Y(titleLabel!), width: APPW - XW(titleLabel) - 10, height: 20))
-        more.textColor = graycolor
+        more.textColor = .gray
         more.textAlignment = .right
-        more.font = fontnomal
+        more.font = fontSmall
         more.text = "查看更多 >"
-        backgroundColor = whitecolor
+        backgroundColor = .white
         if let aLabel = titleLabel {
             addSubview(aLabel)
         }
@@ -56,7 +56,7 @@ class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "我的淘宝"
-        navigationController?.navigationBar.tintColor = redcolor
+        navigationController?.navigationBar.tintColor = .red
         let image = UIImage(named: "Taobaomessage")?.withRenderingMode(.alwaysOriginal)
         let `left` = UIBarButtonItem(title: "设置", style: .plain, actionBlick: {() -> Void in
         })
@@ -72,11 +72,11 @@ class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDelegate,
         icon.layer.cornerRadius = 30
         icon.image = UIImage(named: "userLogo")
         icon.clipsToBounds = true
-        let name = UILabel(frame: CGRect(x: 10, y: YH(icon), width: APPW - 20, height: 20), font: fontSmallTitle, color: whitecolor, text: "杨越光", alignment: .center)
-        let taoqi = UILabel(frame: CGRect(x: APPW / 2 - 40, y: YH(name), width: 80, height: 15), font: fontnomal, color: redcolor, text: "淘气值：710", alignment: .center)
+        let name = UILabel(frame: CGRect(x: 10, y: YH(icon), width: APPW - 20, height: 20), font: fontMiddle, color: .white, text: "杨越光", alignment: .center)
+        let taoqi = UILabel(frame: CGRect(x: APPW / 2 - 40, y: YH(name), width: 80, height: 15), font: fontSmall, color: .red, text: "淘气值：710", alignment: .center)
         taoqi.clipsToBounds = true
         taoqi.layer.cornerRadius = 7
-        taoqi.backgroundColor = yellowcolor
+        taoqi.backgroundColor = .yellow
         headView.addSubviews([icon, name, taoqi])
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: (APPW - 50) / 4, height: 90)

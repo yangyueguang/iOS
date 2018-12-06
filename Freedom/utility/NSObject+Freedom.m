@@ -178,125 +178,7 @@
     [self.view endEditing:YES];
 }
 @end
-@implementation NSObject (Freedom)
-//获取对象的所有属性，不包括属性值
-- (NSArray *)getAllProperties{
-    u_int count;
-    objc_property_t *properties  =class_copyPropertyList([self class], &count);
-    NSMutableArray *propertiesArray = [NSMutableArray arrayWithCapacity:count];
-    for (int i = 0; i<count; i++){
-        const char* propertyName =property_getName(properties[i]);
-        [propertiesArray addObject:[NSString stringWithUTF8String: propertyName]];
-    }
-    free(properties);
-    return propertiesArray;
-}
-//获取对象的所有属性及属性类型
-- (NSDictionary*)propertiesDictionary{
-    if (self == NULL){return nil;}
-    NSMutableDictionary *results = [NSMutableDictionary dictionary];
-    unsigned int outCount, i;
-    objc_property_t *properties = class_copyPropertyList([self class], &outCount);
-    for (i = 0; i < outCount; i++) {
-        objc_property_t property = properties[i];
-        const char *propName = property_getName(property);
-        const char *realType = getPropertyType(property);
-        NSLog(@"属性名：%s 属性类型：%s", propName, realType);
-        [results setObject:[NSString stringWithUTF8String:realType] forKey:[NSString stringWithUTF8String:propName]];
-    }
-    free(properties);
-    return [NSDictionary dictionaryWithDictionary:results];
-}
-static const char *getPropertyType(objc_property_t property) {
-    const char *attributes = property_getAttributes(property);//获取属性描述字符串
-    char *type;
-    if (attributes[1] == '@') {//对象数据类型
-        char buffer[1 + strlen(attributes)];
-        strcpy(buffer, attributes);
-        char *state = buffer;
-        char *attribute = strsep(&state, ",");
-        NSString *name = [[NSString alloc] initWithBytes:attribute + 3 length:strlen(attribute) - 4 encoding:NSASCIIStringEncoding];
-        type = (char *)[name cStringUsingEncoding:NSASCIIStringEncoding];
-    }else{//普通数据类型
-        const char *t = [[[[NSString stringWithUTF8String:attributes]componentsSeparatedByString:@","][0]substringFromIndex:1]UTF8String];
-        if (strcmp(t, @encode(char)) == 0) {
-            type = "char";
-        } else if (strcmp(t, @encode(int)) == 0) {
-            type = "int";
-        } else if (strcmp(t, @encode(short)) == 0) {
-            type = "short";
-        } else if (strcmp(t, @encode(long)) == 0) {
-            type = "long";
-        } else if (strcmp(t, @encode(long long)) == 0) {
-            type = "long long";
-        } else if (strcmp(t, @encode(unsigned char)) == 0) {
-            type = "unsigned char";
-        } else if (strcmp(t, @encode(unsigned int)) == 0) {
-            type = "unsigned int";
-        } else if (strcmp(t, @encode(unsigned short)) == 0) {
-            type = "unsigned short";
-        } else if (strcmp(t, @encode(unsigned long)) == 0) {
-            type = "unsigned long";
-        } else if (strcmp(t, @encode(unsigned long long)) == 0) {
-            type = "unsigned long long";
-        } else if (strcmp(t, @encode(float)) == 0) {
-            type = "float";
-        } else if (strcmp(t, @encode(double)) == 0) {
-            type = "double";
-        } else if (strcmp(t, @encode(_Bool)) == 0 || strcmp(t, @encode(bool)) == 0) {
-            type = "BOOL";
-        } else if (strcmp(t, @encode(void)) == 0) {
-            type = "void";
-        } else if (strcmp(t, @encode(char *)) == 0) {
-            type = "char *";
-        } else if (strcmp(t, @encode(id)) == 0) {
-            type = "id";
-        } else if (strcmp(t, @encode(Class)) == 0) {
-            type = "Class";
-        } else if (strcmp(t, @encode(SEL)) == 0) {
-            type = "SEL";
-        } else {
-            type = "";
-        }
-    }
-    return type;
-}
 
-//获取类的属性的数据类型
-- (const char*)findPropertyTypeWithName:(NSString*)name{
-    const char * propertyName = name.UTF8String;
-    unsigned int outCount = 0;
-    objc_property_t *properties = class_copyPropertyList([self class], &outCount);
-    for (int i = 0; i < outCount; i++) {
-        objc_property_t property = properties[i];
-        const char *property_name = property_getName(property);
-        if (strcmp(property_name, propertyName) == 0) {//找到了对应的属性
-            return getPropertyType(property);
-        }
-    }
-    return nil;
-}
-//获取对象的所有方法
-- (NSArray*)getMothList{
-    unsigned int mothCout_f =0;
-    NSMutableArray *meths = [NSMutableArray array];
-    Method* mothList_f = class_copyMethodList([self class],&mothCout_f);
-    for(int i=0;i<mothCout_f;i++){
-        Method temp_f = mothList_f[i];
-        //        IMP imp_f = method_getImplementation(temp_f);
-        //        imp_f();
-        SEL name_f = method_getName(temp_f);
-        const char* name_s =sel_getName(name_f);
-        int arguments = method_getNumberOfArguments(temp_f);
-        //        const char* encoding =method_getTypeEncoding(temp_f);
-        //        SEL nas = NSSelectorFromString([NSString stringWithUTF8String:name_s]);
-        [meths addObject:[NSString stringWithUTF8String:name_s]];
-        NSLog(@"方法名：%@ 参数个数：%d",NSStringFromSelector(name_f),arguments);
-    }
-    free(mothList_f);
-    return [NSArray arrayWithArray:meths];
-}
-@end
 char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
 
 @implementation UIBarButtonItem (expanded)
@@ -348,60 +230,6 @@ char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
 }
 @end
 
-@implementation UINavigationBar (expanded)
-static char kBackgroundViewKey;
-- (UIView*)backgroundView{
-    return objc_getAssociatedObject(self, &kBackgroundViewKey);
-}
-- (void)setBackgroundView:(UIView*)backgroundView{
-    objc_setAssociatedObject(self, &kBackgroundViewKey, backgroundView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-- (void)wr_setBackgroundColor:(UIColor *)color{
-    if (self.backgroundView == nil){
-        // 设置导航栏本身全透明
-        [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-        self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), self.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height)];
-        // _UIBarBackground是导航栏的第一个子控件
-        [self.subviews.firstObject insertSubview:self.backgroundView atIndex:0];
-        // 隐藏导航栏底部默认黑线
-        [self setShadowImage:[UIImage new]];
-    }
-    self.backgroundView.backgroundColor = color;
-}
-- (void)wr_setBackgroundAplha:(CGFloat)alpha{
-    if (self.backgroundView != nil) {
-        self.backgroundView.alpha = alpha;
-    }
-}
-- (void)wr_setBarButtonItemsAlpha:(CGFloat)alpha hasSystemBackIndicator:(BOOL)hasSystemBackIndicator{
-    for (UIView *view in self.subviews){
-        if (hasSystemBackIndicator == YES){
-            // _UIBarBackground对应的view是系统导航栏，不需要改变其透明度
-            if (![view isKindOfClass:NSClassFromString(@"_UIBarBackground")]) {
-                view.alpha = alpha;
-            }
-        }else{
-            // 这里如果不做判断的话，会显示 backIndicatorImage
-            if (![view isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")] && ![view isKindOfClass:NSClassFromString(@"_UIBarBackground")]){
-                view.alpha = alpha;
-            }
-        }
-    }
-}
-- (void)wr_setTranslationY:(CGFloat)translationY{
-    // CGAffineTransformMakeTranslation  平移
-    self.transform = CGAffineTransformMakeTranslation(0, translationY);
-}
-- (void)wr_clear{
-    // 设置导航栏不透明
-    [self setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [self.backgroundView removeFromSuperview];
-    self.backgroundView = nil;
-}
-
-@end
-
-
 @implementation NSString(expanded)
 - (BOOL)notEmptyOrNull{
     if ([self isEqualToString:@""]||[self isEqualToString:@"null"] || [self isEqualToString:@"\"\""] || [self isEqualToString:@"''"]) {
@@ -432,6 +260,13 @@ static char kBackgroundViewKey;
     CFStringTransform((CFMutableStringRef)str, NULL, kCFStringTransformMandarinLatin, NO);
     CFStringTransform((CFMutableStringRef)str, NULL, kCFStringTransformStripDiacritics, NO);
     return [str stringByReplacingOccurrencesOfString:@" " withString:@""];
+}
+
+- (NSString*)pinyinFirstLetter {
+    NSString *pinyin = self.pinyin;
+//    char a = [pinyin UTF8String][0];
+    return [[pinyin capitalizedString]substringToIndex:1];
+//    return [pinyin characterAtIndex:0];
 }
 
 - (NSDictionary *)dictionaryFromURLParameters{
@@ -585,21 +420,6 @@ static char kBackgroundViewKey;
     va_end(ap);
 }
 
-@end
-#import <objc/message.h>
-@implementation NSObject (Safe)
-
-+ (NSArray *)allProperties {
-    unsigned int count;
-    objc_property_t *properties = class_copyPropertyList([self class], &count);
-    NSMutableArray *array = [NSMutableArray array];
-    for (int i = 0; i < count; i++) {
-        objc_property_t property = properties[i];
-        const char *cName = property_getName(property);
-        [array addObject:[NSString stringWithCString:cName encoding:NSUTF8StringEncoding]];
-    }
-    return array;
-}
 @end
 @implementation NSArray (Safe)
 

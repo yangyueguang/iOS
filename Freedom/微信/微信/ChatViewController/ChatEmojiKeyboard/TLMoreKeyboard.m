@@ -67,9 +67,9 @@
         _iconButton = [[UIButton alloc] init];
         [_iconButton.layer setMasksToBounds:YES];
         [_iconButton.layer setCornerRadius:5.0f];
-        [_iconButton.layer setBorderWidth:BORDER_WIDTH_1PX];
+        [_iconButton.layer setBorderWidth:1];
         [_iconButton.layer setBorderColor:[UIColor grayColor].CGColor];
-        [_iconButton setBackgroundImage:[FreedomTools imageWithColor:colorGrayLine] forState:UIControlStateHighlighted];
+        [_iconButton setBackgroundImage:[FreedomTools imageWithColor:[UIColor grayColor]] forState:UIControlStateHighlighted];
         [_iconButton addTarget:self action:@selector(iconButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _iconButton;
@@ -194,7 +194,7 @@ static TLMoreKeyboard *moreKB;
     [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5);
-    CGContextSetStrokeColorWithColor(context, colorGrayLine.CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0, 0);
     CGContextAddLineToPoint(context, APPW, 0);
@@ -228,7 +228,7 @@ static TLMoreKeyboard *moreKB;
     if (_pageControl == nil) {
         _pageControl = [[UIPageControl alloc] init];
         _pageControl.center = CGPointMake(self.center.x,_pageControl.center.y);
-        [_pageControl setPageIndicatorTintColor:colorGrayLine];
+        [_pageControl setPageIndicatorTintColor:[UIColor grayColor]];
         [_pageControl setCurrentPageIndicatorTintColor:[UIColor grayColor]];
         [_pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];
     }

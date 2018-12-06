@@ -44,10 +44,10 @@ static NSString *const groupMemberTableName = @"GROUPMEMBERTABLE";
 - (void)moveDBFile {
   NSString *const rongIMDemoDBString = @"RongIMDemoDB";
   NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"RongCloud"];
-  NSArray<NSString*> *subPaths = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentPath error:nil];
+  NSArray<NSString*> *subPaths = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES) objectAtIndex:0] error:nil];
   [subPaths enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
     if ([obj hasPrefix:rongIMDemoDBString]) {
-      [self moveFile:obj fromPath:documentPath toPath:libraryPath];
+      [self moveFile:obj fromPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES) objectAtIndex:0] toPath:libraryPath];
     }
   }];
 }

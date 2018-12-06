@@ -124,7 +124,7 @@ static TLEmojiKeyboard *emojiKB;
     // 顶部直线
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5);
-    CGContextSetStrokeColorWithColor(context, colorGrayLine.CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0, 0);
     CGContextAddLineToPoint(context, APPW, 0);
@@ -150,7 +150,7 @@ static TLEmojiKeyboard *emojiKB;
     if (_pageControl == nil) {
         _pageControl = [[UIPageControl alloc] init];
         _pageControl.center = CGPointMake(self.center.x, _pageControl.center.y);
-        [_pageControl setPageIndicatorTintColor:colorGrayLine];
+        [_pageControl setPageIndicatorTintColor:[UIColor grayColor]];
         [_pageControl setCurrentPageIndicatorTintColor:[UIColor grayColor]];
         [_pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];
     }

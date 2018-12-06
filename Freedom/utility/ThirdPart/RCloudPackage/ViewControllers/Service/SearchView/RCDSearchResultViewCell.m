@@ -139,7 +139,7 @@
   if (!(model.portraitUri.length>0)) {
     UIView *defaultPortrait = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
       defaultPortrait.backgroundColor = [UIColor greenColor];
-      NSString *firstLetter = [ChineseToPinyin firstPinyinFromChinise:self.nameLabel.text];
+      NSString *firstLetter = [self.nameLabel.text pinyinFirstLetter];
       UILabel *firstCharacterLabel = [[UILabel alloc] initWithFrame:CGRectMake(defaultPortrait.frame.size.width / 2 - 30, defaultPortrait.frame.size.height / 2 - 30, 60, 60)];
       firstCharacterLabel.text = firstLetter;
       firstCharacterLabel.textColor = [UIColor whiteColor];
@@ -149,7 +149,7 @@
     UIImage *portrait = [defaultPortrait imageFromView];
     self.headerView.image = portrait;
   } else {
-    [self.headerView sd_setImageWithURL:[NSURL URLWithString:model.portraitUri] placeholderImage:[FreedomTools imageNamed:@"default_portrait_msg" ofBundle:@"RongCloud.bundle"]];
+    [self.headerView sd_setImageWithURL:[NSURL URLWithString:model.portraitUri]];
   }
 }
 - (void)loadView{

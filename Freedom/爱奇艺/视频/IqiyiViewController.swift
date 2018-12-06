@@ -207,7 +207,7 @@ class IqiyiHomeBoxCell: UITableViewCell,IqiyiImageCardViewDelegate {
         headView.addSubview(titleLabel!)
         //
         let lineView = UIView(frame: CGRect(x: 5, y: 38, width: APPW - 10, height: 1))
-        lineView.backgroundColor = gradcolor
+        lineView.backgroundColor = .gray
         backView.addSubview(lineView)
         //图
         cardView1 = IqiyiImageCardView(frame: CGRect(x: 0, y: 40, width: (APPW - 5) / 2, height: 150))
@@ -275,7 +275,7 @@ class IqiyiHomeVideoBoxCell: UITableViewCell {
         headView.addSubview(titleLabel)
         //
         let lineView = UIView(frame: CGRect(x: 5, y: 38, width: APPW - 10, height: 1))
-        lineView.backgroundColor = gradcolor
+        lineView.backgroundColor = .gray
         backView.addSubview(lineView)
         //图
         cardView1 = IqiyiImageCardView(frame: CGRect(x: 0, y: 40, width: (APPW - 5) / 3, height: 230))

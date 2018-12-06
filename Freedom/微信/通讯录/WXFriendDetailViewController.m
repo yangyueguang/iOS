@@ -48,7 +48,7 @@
             imageView = self.imageViewsArray[i];
         }
         [self.contentView addSubview:imageView];
-        [imageView sd_setImageWithURL:TLURL(imageURL) placeholderImage:[UIImage imageNamed:PuserLogo]];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:PuserLogo]];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.contentView).mas_offset(spaceY);
             make.bottom.mas_equalTo(self.contentView).mas_offset(-spaceY);
@@ -114,7 +114,7 @@
         [self.avatarView setImage:[UIImage imageNamed:user.avatarPath] forState:UIControlStateNormal];
     }
     else{
-        [self.avatarView sd_setImageWithURL:TLURL(user.avatarURL) forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:PuserLogo]];
+        [self.avatarView sd_setImageWithURL:[NSURL URLWithString:user.avatarURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:PuserLogo]];
     }
     [self.shownameLabel setText:user.showName];
     if (user.username.length > 0) {
@@ -274,7 +274,7 @@
         NSString *imagePath = [NSFileManager pathUserAvatar:self.user.avatarPath];
         url = [NSURL fileURLWithPath:imagePath];
     }else{
-        url = TLURL(self.user.avatarURL);
+        url = [NSURL URLWithString:self.user.avatarURL];
     }
     
     MWPhoto *photo = [MWPhoto photoWithURL:url];

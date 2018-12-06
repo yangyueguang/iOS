@@ -329,7 +329,7 @@ typedef id (*_IMP)(id, SEL, id);
     [super viewDidLoad];
     [self.navigationBar setBarTintColor:UIColor(46.0, 49.0, 50.0, 1.0)];
     [self.navigationBar setTintColor:[UIColor whiteColor]];
-    [self.view setBackgroundColor:colorGrayBG];
+    [self.view setBackgroundColor:[UIColor lightGrayColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],
                                                            NSFontAttributeName:[UIFont boldSystemFontOfSize:17.5f]}];
 }

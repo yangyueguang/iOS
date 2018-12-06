@@ -125,7 +125,7 @@ typedef NS_ENUM(NSUInteger, TLBottleButtonType) {
     if (hidden) {
 //        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
         [UIView animateWithDuration:0.5 animations:^{
-            [self.navigationController.navigationBar setFrameY: -HEIGHT_NAVBAR - NavY];
+            [self.navigationController.navigationBar setFrameY: -TopHeight - 20];
         } completion:^(BOOL finished) {
             [self.navigationController.navigationBar setHidden:YES];
         }];
@@ -133,7 +133,7 @@ typedef NS_ENUM(NSUInteger, TLBottleButtonType) {
         [self.navigationController.navigationBar setHidden:NO];
 //        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
         [UIView animateWithDuration:0.2 animations:^{
-            [self.navigationController.navigationBar setFrameY:NavY];
+            [self.navigationController.navigationBar setFrameY:20];
         }];
     }
 }

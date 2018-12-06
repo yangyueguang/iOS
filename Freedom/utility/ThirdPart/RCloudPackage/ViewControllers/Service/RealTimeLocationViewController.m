@@ -159,7 +159,7 @@
 {
         CGFloat scrollViewWidth = [self getScrollViewWidth];
         UIImageView *userHead = [[UIImageView alloc] init];
-        [userHead sd_setImageWithURL:[NSURL URLWithString:user.portraitUri] placeholderImage:[FreedomTools imageNamed:@"default_portrait_msg" ofBundle:@"RongCloud.bundle"]];
+        [userHead sd_setImageWithURL:[NSURL URLWithString:user.portraitUri]];
         [userHead setFrame:CGRectMake(scrollViewWidth - self.headViewSize, 0,self.headViewSize, self.headViewSize)];
         if (self.avatarStyle == RC_USER_AVATAR_CYCLE) {
             userHead.layer.cornerRadius = self.headViewSize / 2;

@@ -476,7 +476,7 @@
     [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5);
-    CGContextSetStrokeColorWithColor(context, colorGrayLine.CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0, 0);
     CGContextAddLineToPoint(context, APPW, 0);
@@ -505,7 +505,7 @@
         [_textView setFont:[UIFont systemFontOfSize:16.0f]];
         [_textView setReturnKeyType:UIReturnKeySend];
         [_textView.layer setMasksToBounds:YES];
-        [_textView.layer setBorderWidth:BORDER_WIDTH_1PX];
+        [_textView.layer setBorderWidth:1];
         [_textView.layer setBorderColor:[UIColor colorWithWhite:0.0 alpha:0.3].CGColor];
         [_textView.layer setCornerRadius:4.0f];
         [_textView setDelegate:self];
@@ -523,7 +523,7 @@
         [_talkButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
         [_talkButton.layer setMasksToBounds:YES];
         [_talkButton.layer setCornerRadius:4.0f];
-        [_talkButton.layer setBorderWidth:BORDER_WIDTH_1PX];
+        [_talkButton.layer setBorderWidth:1];
         [_talkButton.layer setBorderColor:[UIColor colorWithWhite:0.0 alpha:0.3].CGColor];
         [_talkButton setHidden:YES];
         [_talkButton addTarget:self action:@selector(talkButtonTouchDown:) forControlEvents:UIControlEventTouchDown];

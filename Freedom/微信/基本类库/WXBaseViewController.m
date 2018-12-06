@@ -6,6 +6,7 @@
 //  Copyright © 2018年 Super. All rights reserved.
 #import "WXBaseViewController.h"
 #import <UMMobClick/MobClick.h>
+#import "Freedom-Swift.h"
 @implementation UIViewController (JZExtension)
 - (void)setHidesNavigationBarWhenPushed:(BOOL)hidesNavigationBarWhenPushed {
     objc_setAssociatedObject(self, @selector(hidesNavigationBarWhenPushed), @(hidesNavigationBarWhenPushed), OBJC_ASSOCIATION_ASSIGN);
@@ -32,7 +33,7 @@
 @implementation WXBaseViewController
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [self.view setBackgroundColor:colorGrayBG];
+    [self.view setBackgroundColor:[UIColor lightGrayColor]];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -41,6 +42,10 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [MobClick endLogPageView:self.analyzeTitle];
+}
+- (void) motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    AppDelegate *dele = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    [dele showRadialMenu];
 }
 - (void)dealloc{
     DLog(@"dealloc %@", self.navigationItem.title);

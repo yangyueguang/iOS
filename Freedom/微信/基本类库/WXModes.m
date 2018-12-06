@@ -183,7 +183,7 @@
 }
 - (UIColor *)buttonColor{
     if (_buttonColor == nil) {
-        return colorGreenDefault;
+        return [UIColor greenColor];
     }
     return _buttonColor;
 }
@@ -201,7 +201,7 @@
 }
 - (UIColor *)buttonBorderColor{
     if (_buttonBorderColor == nil) {
-        return colorGrayLine;
+        return [UIColor grayColor];
     }
     return _buttonBorderColor;
 }

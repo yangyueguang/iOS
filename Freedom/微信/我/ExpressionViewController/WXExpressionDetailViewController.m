@@ -40,7 +40,7 @@
 - (void)setGroup:(TLEmojiGroup *)group{
     _group = group;
     if (group.bannerURL.length > 0) {
-        [self.bannerView sd_setImageWithURL:TLURL(group.bannerURL)];
+        [self.bannerView sd_setImageWithURL:[NSURL URLWithString:group.bannerURL]];
         [self.bannerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(HEIGHT_EXP_BANNER);
         }];
@@ -56,10 +56,10 @@
         [self.downloadButton setBackgroundColor:[UIColor grayColor]];
     }else if (group.status == TLEmojiGroupStatusDownloading) {
         [self.downloadButton setTitle:@"下载中" forState:UIControlStateNormal];
-        [self.downloadButton setBackgroundColor: colorGreenDefault];
+        [self.downloadButton setBackgroundColor: [UIColor greenColor]];
     }else{
         [self.downloadButton setTitle:@"下载" forState:UIControlStateNormal];
-        [self.downloadButton setBackgroundColor: colorGreenDefault];
+        [self.downloadButton setBackgroundColor: [UIColor greenColor]];
     }
 }
 #pragma mark - Private Methods
@@ -84,13 +84,13 @@
     }];
     
     UIView *line1 = [[UIView alloc] init];
-    [line1 setBackgroundColor:colorGrayLine];
+    [line1 setBackgroundColor:[UIColor grayColor]];
     [self.contentView addSubview:line1];
     UIView *line2 = [[UIView alloc] init];
-    [line2 setBackgroundColor:colorGrayLine];
+    [line2 setBackgroundColor:[UIColor grayColor]];
     [self.contentView addSubview:line2];
     UILabel *label = [[UILabel alloc] init];
-    [label setTextColor:colorGrayLine];
+    [label setTextColor:[UIColor grayColor]];
     [label setFont:[UIFont systemFontOfSize:12.0f]];
     [label setText:@"长按表情可预览"];
     [self.contentView addSubview:label];
@@ -100,13 +100,13 @@
         make.right.mas_equalTo(line2.mas_left).mas_offset(-5.0f);
     }];
     [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(BORDER_WIDTH_1PX);
+        make.height.mas_equalTo(1);
         make.left.mas_equalTo(15.0f);
         make.centerY.mas_equalTo(label);
         make.width.mas_equalTo(line2);
     }];
     [line2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(BORDER_WIDTH_1PX);
+        make.height.mas_equalTo(1);
         make.right.mas_equalTo(-15.0f);
         make.centerY.mas_equalTo(label);
     }];
@@ -135,12 +135,12 @@
     if (_downloadButton == nil) {
         _downloadButton = [[UIButton alloc] init];
         [_downloadButton setTitle:@"下载" forState:UIControlStateNormal];
-        [_downloadButton setBackgroundColor:colorGreenDefault];
+        [_downloadButton setBackgroundColor:[UIColor greenColor]];
         [_downloadButton.titleLabel setFont:[UIFont systemFontOfSize:13.0f]];
         [_downloadButton.layer setMasksToBounds:YES];
         [_downloadButton.layer setCornerRadius:3.0f];
-        [_downloadButton.layer setBorderWidth:BORDER_WIDTH_1PX];
-        [_downloadButton.layer setBorderColor:colorGrayLine.CGColor];
+        [_downloadButton.layer setBorderWidth:1];
+        [_downloadButton.layer setBorderColor:[UIColor grayColor].CGColor];
         [_downloadButton addTarget:self action:@selector(downloadButtonDown:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _downloadButton;
@@ -183,7 +183,7 @@
     if (image) {
         [self.imageView setImage:image];
     }else{
-        [self.imageView sd_setImageWithURL:TLURL(emoji.emojiURL)];
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:emoji.emojiURL]];
     }
 }
 #pragma mark - Private Methods
@@ -302,7 +302,7 @@
             TLEmoji *emoji = [self.group objectAtIndex:indexPath.row];
             [SVProgressHUD showWithStatus:@"正在将表情保存到系统相册"];
             NSString *urlString = [NSString stringWithFormat:@"http://123.57.155.230:8080/ibiaoqing/admin/expre/download.do?pId=%@",emoji.emojiID];
-            NSData *data = [NSData dataWithContentsOfURL:TLURL(urlString)];
+            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
             if (!data) {
                 data = [NSData dataWithContentsOfFile:emoji.emojiPath];
             }

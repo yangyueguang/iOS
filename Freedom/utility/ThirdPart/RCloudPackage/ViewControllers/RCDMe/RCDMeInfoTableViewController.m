@@ -81,8 +81,26 @@
        }];
     }
 }
+- (UIBarButtonItem *)barButtonItemContainImage:(UIImage *)buttonImage imageViewFrame:(CGRect)imageFrame buttonTitle:(NSString *)buttonTitle titleColor:(UIColor*)titleColor titleFrame:(CGRect)titleFrame buttonFrame:(CGRect)buttonFrame target:(id)target action:(SEL)method {
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] init];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = buttonFrame;
+    UIImageView *image = [[UIImageView alloc]initWithImage:buttonImage];
+    image.frame = imageFrame;
+    [button addSubview:image];
+    if (buttonTitle != nil && titleColor != nil) {
+        UILabel *titleText = [[UILabel alloc] initWithFrame:titleFrame];
+        titleText.text = buttonTitle;
+        [titleText setBackgroundColor:[UIColor clearColor]];
+        [titleText setTextColor:titleColor];
+        [button addSubview:titleText];
+    }
+    [button addTarget:target action:method forControlEvents:UIControlEventTouchUpInside];
+    item.customView = button;
+    return item;
+}
 - (void)setNavigationButton {
-    self.leftBtn = [FreedomTools barButtonItemContainImage:[UIImage imageNamed:@"navigator_btn_back"] imageViewFrame:CGRectMake(-6, 4, 10, 17) buttonTitle:@"返回" titleColor:[UIColor whiteColor] titleFrame:CGRectMake(9, 4, 85, 17) buttonFrame:CGRectMake(0, 6, 87, 23) target:self action:@selector(clickBackBtn)];
+    self.leftBtn = [self barButtonItemContainImage:[UIImage imageNamed:@"navigator_btn_back"] imageViewFrame:CGRectMake(-6, 4, 10, 17) buttonTitle:@"返回" titleColor:[UIColor whiteColor] titleFrame:CGRectMake(9, 4, 85, 17) buttonFrame:CGRectMake(0, 6, 87, 23) target:self action:@selector(clickBackBtn)];
     self.navigationItem.leftBarButtonItem = self.leftBtn;
     self.rightBtn = [[UIBarButtonItem alloc]initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveUserName:)];
     self.rightBtn.customView.userInteractionEnabled = NO;

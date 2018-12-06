@@ -40,10 +40,10 @@ static NSString *curID;
         [self.imageView setImage:[UIImage sd_animatedGIFWithData:data]];
     }else{
         NSString *urlString = [NSString stringWithFormat:@"http://123.57.155.230:8080/ibiaoqing/admin/expre/download.do?pId=%@",emoji.emojiID];
-        [self.imageView sd_setImageWithURL:TLURL(emoji.emojiURL) completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:emoji.emojiURL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             if ([urlString containsString:curID]) {
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                    NSData *data = [NSData dataWithContentsOfURL:TLURL(urlString)];
+                    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
                     if ([urlString containsString:curID]) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [self.imageView setImage:[UIImage sd_animatedGIFWithData:data]];

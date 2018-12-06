@@ -67,14 +67,14 @@
             NSData *data = nil;
             if (i == group.data.count) {
                 emojiPath = [NSString stringWithFormat:@"%@icon_%@", groupPath, group.groupID];
-                data = [NSData dataWithContentsOfURL:TLURL(group.groupIconURL)];
+                data = [NSData dataWithContentsOfURL:[NSURL URLWithString:group.groupIconURL]];
             }else{
                 TLEmoji *emoji = group.data[i];
                 NSString *urlString = [NSString stringWithFormat:@"http://123.57.155.230:8080/ibiaoqing/admin/expre/download.do?pId=%@",emoji.emojiID];
-                data = [NSData dataWithContentsOfURL:TLURL(urlString)];
+                data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
                 if (data == nil) {
                     urlString = [NSString stringWithFormat:@"http://123.57.155.230:8080/ibiaoqing/admin/expre/downloadsuo.do?pId=%@", emoji.emojiID];
-                    data = [NSData dataWithContentsOfURL:TLURL(urlString)];
+                    data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
                 }
                 emojiPath = [NSString stringWithFormat:@"%@%@", groupPath, emoji.emojiID];
             }

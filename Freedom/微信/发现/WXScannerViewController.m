@@ -103,7 +103,7 @@
         _bgView = [[UIView alloc] init];
         [_bgView setBackgroundColor:[UIColor clearColor]];
         [_bgView.layer setMasksToBounds:YES];
-        [_bgView.layer setBorderWidth:BORDER_WIDTH_1PX];
+        [_bgView.layer setBorderWidth:1];
         [_bgView.layer setBorderColor:[UIColor whiteColor].CGColor];
     }
     return _bgView;

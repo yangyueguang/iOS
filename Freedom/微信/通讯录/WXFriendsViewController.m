@@ -36,7 +36,7 @@
     if (user.avatarPath) {
         [self.avatarImageView setImage:[UIImage imageNamed:user.avatarPath]];
     }else{
-        [self.avatarImageView sd_setImageWithURL:TLURL(user.avatarURL) placeholderImage:[UIImage imageNamed:PuserLogo]];
+        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:user.avatarURL] placeholderImage:[UIImage imageNamed:PuserLogo]];
     }
     
     [self.usernameLabel setText:user.showName];
@@ -104,7 +104,7 @@
 - (id) initWithReuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
         UIView *bgView = [UIView new];
-        [bgView setBackgroundColor:colorGrayBG];
+        [bgView setBackgroundColor:[UIColor lightGrayColor]];
         [self setBackgroundView:bgView];
         [self addSubview:self.titleLabel];
     }
@@ -164,7 +164,7 @@
 - (void)p_initUI{
     [self.tableView setLayoutMargins:UIEdgeInsetsMake(0, 10, 0, 0)];
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 10, 0, 0)];
-    [self.tableView setSeparatorColor:colorGrayLine];
+    [self.tableView setSeparatorColor:[UIColor grayColor]];
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
     [self.tableView setSectionIndexColor:UIColor(46.0, 49.0, 50.0, 1.0)];

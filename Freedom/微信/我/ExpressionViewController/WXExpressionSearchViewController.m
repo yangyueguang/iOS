@@ -18,7 +18,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.tableView setFrame:CGRectMake(0, HEIGHT_NAVBAR + NavY, APPW, APPH - NavY - HEIGHT_NAVBAR)];
+    [self.tableView setFrame:CGRectMake(0, TopHeight + 20, APPW, APPH - 20 - TopHeight)];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];

@@ -33,7 +33,7 @@
             NSString *imagePatha = [NSFileManager pathUserChatImage:imagePath];
             [self.imageView setImage:[UIImage imageNamed:imagePatha]];
         }else if (imageURL.length > 0) {
-            [self.imageView sd_setImageWithURL:TLURL(imageURL) placeholderImage:[UIImage imageNamed:@"userLogo"]];
+            [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"userLogo"]];
         }else{
             [self.imageView setImage:nil];
         }
@@ -216,7 +216,7 @@
                         url = [NSURL fileURLWithPath:imagePath];
                     }
                     else {
-                        url = TLURL(me.content[@"url"]);
+                        url = [NSURL URLWithString:me.content[@"url"]];
                     }
                     MWPhoto *photo = [MWPhoto photoWithURL:url];
                     [_browserData addObject:photo];
@@ -238,7 +238,7 @@
                     url = [NSURL fileURLWithPath:imagePatha];
                 }
                 else {
-                    url = TLURL(message.content[@"url"]);
+                    url = [NSURL URLWithString:message.content[@"url"]];
                 }
                 MWPhoto *photo = [MWPhoto photoWithURL:url];
                 [_browserData addObject:photo];

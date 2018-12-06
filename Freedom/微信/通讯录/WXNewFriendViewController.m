@@ -127,7 +127,7 @@ static const NSString *TLThirdPartFriendTypeGoogle = @"3";
     [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5);
-    CGContextSetStrokeColorWithColor(context, colorGrayLine.CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
     CGContextBeginPath(context);
     if (self.thridPartItems.count == 2) {
         CGContextMoveToPoint(context, self.frame.size.width / 2.0, 0);

@@ -16,7 +16,7 @@
 }
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.tableView.frameY = HEIGHT_NAVBAR + NavY;
+    self.tableView.frameY = TopHeight + 20;
     self.tableView.frameHeight = APPH - self.tableView.frameY;
 }
 #pragma mark - UITableViewDataSource

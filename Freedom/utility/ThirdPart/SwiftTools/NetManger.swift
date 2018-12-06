@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 class NetManger: NSObject {
     func searchAddress(withText text: String, location: String, radios radio: Float, resultBlock: @escaping (_ id :AnyObject?, _ error :Error?) -> Void) {
         let baseAPI = "https://www.aaa.place/textsearch/json"
@@ -24,6 +25,17 @@ class NetManger: NSObject {
         let allapi = "https://www.aaa.place/textsearch/json?query=\(text)&location=\(location)&radius=\(radio)&key="
         Alamofire.request(allapi).responseJSON { (result) in
             print(result)
+        }
+    }
+    class func getResponseData(_ url:String, parameters:[String:AnyObject]? = nil, success:@escaping(_ result:JSON)-> Void, error:@escaping (_ error:NSError)->Void) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        Alamofire.request(url, parameters: parameters).responseJSON { (response) in
+            if let jsonData = response.result.value {
+                success(JSON(jsonData))
+            } else if let er = response.result.error {
+                error(er as NSError)
+            }
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
 }

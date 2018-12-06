@@ -42,13 +42,13 @@
         NSString *path = [NSFileManager pathContactsAvatar:contact.avatarPath];
         [self.avatarImageView setImage:[UIImage imageNamed:path]];
     }else{
-        [self.avatarImageView sd_setImageWithURL:TLURL(contact.avatarURL) placeholderImage:[UIImage imageNamed:PuserLogo]];
+        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:contact.avatarURL] placeholderImage:[UIImage imageNamed:PuserLogo]];
     }
     
     [self.usernameLabel setText:contact.name];
     [self.subTitleLabel setText:contact.tel];
     if (contact.status == TLContactStatusStranger) {
-        [self.rightButton setBackgroundColor:colorGreenDefault];
+        [self.rightButton setBackgroundColor:[UIColor greenColor]];
         [self.rightButton setTitle:@"添加" forState:UIControlStateNormal];
         [self.rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.rightButton.layer setBorderColor:[UIColor colorWithWhite:0.7 alpha:1.0].CGColor];
@@ -119,7 +119,7 @@
         [_rightButton.titleLabel setFont:[UIFont systemFontOfSize:14.0f]];
         [_rightButton.layer setMasksToBounds:YES];
         [_rightButton.layer setCornerRadius:4.0f];
-        [_rightButton.layer setBorderWidth:BORDER_WIDTH_1PX];
+        [_rightButton.layer setBorderWidth:1];
     }
     return _rightButton;
 }
@@ -239,7 +239,7 @@
 }
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.tableView.frameY = HEIGHT_NAVBAR + NavY;
+    self.tableView.frameY = TopHeight + 20;
     self.tableView.frameHeight = APPH - self.tableView.frameY;
 }
 #pragma mark - UITableViewDataSource

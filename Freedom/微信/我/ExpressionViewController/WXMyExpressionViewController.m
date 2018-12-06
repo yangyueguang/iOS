@@ -70,14 +70,14 @@
         _delButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
         [_delButton setTitle:@"移除" forState:UIControlStateNormal];
         [_delButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [_delButton setBackgroundColor:colorGrayBG];
-        [_delButton setBackgroundImage:[FreedomTools imageWithColor:colorGrayLine] forState:UIControlStateHighlighted];
+        [_delButton setBackgroundColor:[UIColor lightGrayColor]];
+        [_delButton setBackgroundImage:[FreedomTools imageWithColor:[UIColor grayColor]] forState:UIControlStateHighlighted];
         [_delButton.titleLabel setFont:[UIFont systemFontOfSize:13.0f]];
         [_delButton addTarget:self action:@selector(delButtonDown) forControlEvents:UIControlEventTouchUpInside];
         [_delButton.layer setMasksToBounds:YES];
         [_delButton.layer setCornerRadius:3.0f];
-        [_delButton.layer setBorderWidth:BORDER_WIDTH_1PX];
-        [_delButton.layer setBorderColor:colorGrayLine.CGColor];
+        [_delButton.layer setBorderWidth:1];
+        [_delButton.layer setBorderColor:[UIColor grayColor].CGColor];
     }
     return _delButton;
 }

@@ -3,6 +3,123 @@
 #import <objc/message.h>
 #include <string.h>
 @implementation NSObject (expanded)
+//获取对象的所有属性，不包括属性值
+- (NSArray *)getAllProperties{
+    u_int count;
+    objc_property_t *properties  =class_copyPropertyList([self class], &count);
+    NSMutableArray *propertiesArray = [NSMutableArray arrayWithCapacity:count];
+    for (int i = 0; i<count; i++){
+        const char* propertyName =property_getName(properties[i]);
+        [propertiesArray addObject:[NSString stringWithUTF8String: propertyName]];
+    }
+    free(properties);
+    return propertiesArray;
+}
+//获取对象的所有属性及属性类型
+- (NSDictionary*)propertiesDictionary{
+    if (self == NULL){return nil;}
+    NSMutableDictionary *results = [NSMutableDictionary dictionary];
+    unsigned int outCount, i;
+    objc_property_t *properties = class_copyPropertyList([self class], &outCount);
+    for (i = 0; i < outCount; i++) {
+        objc_property_t property = properties[i];
+        const char *propName = property_getName(property);
+        const char *realType = getPropertyType(property);
+        NSLog(@"属性名：%s 属性类型：%s", propName, realType);
+        [results setObject:[NSString stringWithUTF8String:realType] forKey:[NSString stringWithUTF8String:propName]];
+    }
+    free(properties);
+    return [NSDictionary dictionaryWithDictionary:results];
+}
+static const char *getPropertyType(objc_property_t property) {
+    const char *attributes = property_getAttributes(property);//获取属性描述字符串
+    char *type;
+    if (attributes[1] == '@') {//对象数据类型
+        char buffer[1 + strlen(attributes)];
+        strcpy(buffer, attributes);
+        char *state = buffer;
+        char *attribute = strsep(&state, ",");
+        NSString *name = [[NSString alloc] initWithBytes:attribute + 3 length:strlen(attribute) - 4 encoding:NSASCIIStringEncoding];
+        type = (char *)[name cStringUsingEncoding:NSASCIIStringEncoding];
+    }else{//普通数据类型
+        const char *t = [[[[NSString stringWithUTF8String:attributes]componentsSeparatedByString:@","][0]substringFromIndex:1]UTF8String];
+        if (strcmp(t, @encode(char)) == 0) {
+            type = "char";
+        } else if (strcmp(t, @encode(int)) == 0) {
+            type = "int";
+        } else if (strcmp(t, @encode(short)) == 0) {
+            type = "short";
+        } else if (strcmp(t, @encode(long)) == 0) {
+            type = "long";
+        } else if (strcmp(t, @encode(long long)) == 0) {
+            type = "long long";
+        } else if (strcmp(t, @encode(unsigned char)) == 0) {
+            type = "unsigned char";
+        } else if (strcmp(t, @encode(unsigned int)) == 0) {
+            type = "unsigned int";
+        } else if (strcmp(t, @encode(unsigned short)) == 0) {
+            type = "unsigned short";
+        } else if (strcmp(t, @encode(unsigned long)) == 0) {
+            type = "unsigned long";
+        } else if (strcmp(t, @encode(unsigned long long)) == 0) {
+            type = "unsigned long long";
+        } else if (strcmp(t, @encode(float)) == 0) {
+            type = "float";
+        } else if (strcmp(t, @encode(double)) == 0) {
+            type = "double";
+        } else if (strcmp(t, @encode(_Bool)) == 0 || strcmp(t, @encode(bool)) == 0) {
+            type = "BOOL";
+        } else if (strcmp(t, @encode(void)) == 0) {
+            type = "void";
+        } else if (strcmp(t, @encode(char *)) == 0) {
+            type = "char *";
+        } else if (strcmp(t, @encode(id)) == 0) {
+            type = "id";
+        } else if (strcmp(t, @encode(Class)) == 0) {
+            type = "Class";
+        } else if (strcmp(t, @encode(SEL)) == 0) {
+            type = "SEL";
+        } else {
+            type = "";
+        }
+    }
+    return type;
+}
+
+//获取类的属性的数据类型
+- (const char*)findPropertyTypeWithName:(NSString*)name{
+    const char * propertyName = name.UTF8String;
+    unsigned int outCount = 0;
+    objc_property_t *properties = class_copyPropertyList([self class], &outCount);
+    for (int i = 0; i < outCount; i++) {
+        objc_property_t property = properties[i];
+        const char *property_name = property_getName(property);
+        if (strcmp(property_name, propertyName) == 0) {//找到了对应的属性
+            return getPropertyType(property);
+        }
+    }
+    return nil;
+}
+//获取对象的所有方法
+- (NSArray*)getMothList{
+    unsigned int mothCout_f =0;
+    NSMutableArray *meths = [NSMutableArray array];
+    Method* mothList_f = class_copyMethodList([self class],&mothCout_f);
+    for(int i=0;i<mothCout_f;i++){
+        Method temp_f = mothList_f[i];
+        //        IMP imp_f = method_getImplementation(temp_f);
+        //        imp_f();
+        SEL name_f = method_getName(temp_f);
+        const char* name_s =sel_getName(name_f);
+        int arguments = method_getNumberOfArguments(temp_f);
+        //        const char* encoding =method_getTypeEncoding(temp_f);
+        //        SEL nas = NSSelectorFromString([NSString stringWithUTF8String:name_s]);
+        [meths addObject:[NSString stringWithUTF8String:name_s]];
+        NSLog(@"方法名：%@ 参数个数：%d",NSStringFromSelector(name_f),arguments);
+    }
+    free(mothList_f);
+    return [NSArray arrayWithArray:meths];
+}
 ///将NSArray或者NSDictionary转化为NSString
 -(NSString *)JSONString{
     NSError* error = nil;
@@ -16,6 +133,17 @@
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
++ (NSArray *)allProperties {
+    unsigned int count;
+    objc_property_t *properties = class_copyPropertyList([self class], &count);
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        objc_property_t property = properties[i];
+        const char *cName = property_getName(property);
+        [array addObject:[NSString stringWithCString:cName encoding:NSUTF8StringEncoding]];
+    }
+    return array;
+}
 // 计算方位角,正北向为0度，以顺时针方向递增
 -(double)computeAzimuthCLL:(CLLocationCoordinate2D)la1 :(CLLocationCoordinate2D)la2{
     double lat1 = la1.latitude, lon1 = la1.longitude, lat2 = la2.latitude, lon2 = la2.longitude;
@@ -460,7 +588,7 @@
     }
 }
 //获取对象的所有属性，不包括属性值
-- (NSArray *)getAllProperties{
+- (NSArray *)getAllProperties1{
     u_int count;
     objc_property_t *properties  =class_copyPropertyList([self class], &count);
     NSMutableArray *propertiesArray = [NSMutableArray arrayWithCapacity:count];
@@ -472,7 +600,7 @@
     return propertiesArray;
 }
 //获取对象的所有属性及属性类型
-- (NSDictionary*)propertiesDictionary{
+- (NSDictionary*)propertiesDictionary1{
     if (self == NULL){return nil;}
     NSMutableDictionary *results = [NSMutableDictionary dictionary];
     unsigned int outCount, i;
@@ -487,7 +615,7 @@
     free(properties);
     return [NSDictionary dictionaryWithDictionary:results];
 }
-static const char *getPropertyType(objc_property_t property) {
+static const char *getPropertyType1(objc_property_t property) {
     const char *attributes = property_getAttributes(property);//获取属性描述字符串
     char *type;
     if (attributes[1] == '@') {//对象数据类型
@@ -542,7 +670,7 @@ static const char *getPropertyType(objc_property_t property) {
     return type;
 }
 //获取类的属性的数据类型
-- (const char*)findPropertyTypeWithName:(NSString*)name{
+- (const char*)findPropertyTypeWithName1:(NSString*)name{
     const char * propertyName = name.UTF8String;
     unsigned int outCount = 0;
     objc_property_t *properties = class_copyPropertyList([self class], &outCount);
@@ -556,7 +684,7 @@ static const char *getPropertyType(objc_property_t property) {
     return nil;
 }
 //获取对象的所有方法
-- (NSArray*)getMothList{
+- (NSArray*)getMothList1{
     unsigned int mothCout_f =0;
     NSMutableArray *meths = [NSMutableArray array];
     Method* mothList_f = class_copyMethodList([self class],&mothCout_f);

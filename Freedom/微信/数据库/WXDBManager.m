@@ -5,6 +5,8 @@
 #import "WXUserHelper.h"
 #import "WXMessageManager.h"
 #import "NSFileManager+expanded.h"
+
+#define     TLNoNilString(str)  (str.length > 0 ? str : @"")
 @implementation WXDBMessageStore
 - (id)init{
     if (self = [super init]) {

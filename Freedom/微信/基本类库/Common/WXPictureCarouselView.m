@@ -19,7 +19,7 @@
     return self;
 }
 - (void)setModel:(id<WXPictureCarouselProtocol>)model{
-    [self.imageView sd_setImageWithURL:TLURL([model pictureURL])];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:[model pictureURL]]];
 }
 #pragma mark - 
 - (void)p_addMasonry{

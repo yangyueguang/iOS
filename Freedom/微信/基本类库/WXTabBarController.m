@@ -35,8 +35,8 @@ static WXTabBarController *rootVC = nil;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tabBar setBackgroundColor:colorGrayBG];
-    [self.tabBar setTintColor:colorGreenDefault];
+    [self.tabBar setBackgroundColor:[UIColor lightGrayColor]];
+    [self.tabBar setTintColor:[UIColor greenColor]];
     for(UIViewController *s in self.childViewControllers){
         [self setupChildController:s image:s.tabBarItem.image SHImage:s.tabBarItem.selectedImage title:s.title];
     }

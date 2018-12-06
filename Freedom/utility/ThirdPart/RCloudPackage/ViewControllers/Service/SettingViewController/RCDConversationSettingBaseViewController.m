@@ -28,7 +28,6 @@
         [self.contentView addSubview:_titleLabel];
         _btnImg = [[UIButton alloc] initWithFrame:CGRectZero];
         [_btnImg setHidden:YES];
-        [_btnImg setImage:[FreedomTools imageNamed:@"delete_member_tip" ofBundle:@"RongCloud.bundle"] forState:UIControlStateNormal];
         [_btnImg addTarget:self action:@selector(deleteItem:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_btnImg];
         [_ivAva setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -56,7 +55,7 @@
     if ([userModel.portraitUri isEqualToString:@""]) {
         UIView *defaultPortrait = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
         defaultPortrait.backgroundColor = [UIColor redColor];
-        NSString *firstLetter = [ChineseToPinyin firstPinyinFromChinise:userModel.name];
+        NSString *firstLetter = [userModel.name pinyinFirstLetter];
         UILabel *firstCharacterLabel = [[UILabel alloc] initWithFrame:CGRectMake(defaultPortrait.frame.size.width / 2 - 30, defaultPortrait.frame.size.height / 2 - 30, 60, 60)];
         firstCharacterLabel.text = firstLetter;
         firstCharacterLabel.textColor = [UIColor whiteColor];
@@ -131,12 +130,10 @@
         cell.btnImg.hidden = YES;
         cell.gestureRecognizers = nil;
         cell.titleLabel.text = @"";
-        [cell.ivAva setImage:[FreedomTools imageNamed:@"add_members" ofBundle:@"RongCloud.bundle"]];
     } else {
         cell.btnImg.hidden = YES;
         cell.gestureRecognizers = nil;
         cell.titleLabel.text = @"";
-        [cell.ivAva setImage:[FreedomTools imageNamed:@"delete_members" ofBundle:@"RongCloud.bundle"]];
 //    长按显示减号
 //    UILongPressGestureRecognizer *longPressGestureRecognizer =
 //    [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(showDeleteTip:)];
