@@ -959,8 +959,6 @@
 		BF4A80F22105CFCC00D32FB0 /* GPAPolylineEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80E72105CFC900D32FB0 /* GPAPolylineEncoding.m */; };
 		BF4A80F72105CFE100D32FB0 /* CRCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80F52105CFE000D32FB0 /* CRCrypto.m */; };
 		BF4A80F92105D21300D32FB0 /* NetManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80F82105D21300D32FB0 /* NetManger.swift */; };
-		BF4A81452105EDCF00D32FB0 /* XBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A81442105EDCF00D32FB0 /* XBaseTableView.m */; };
-		BF4A81482105EDDA00D32FB0 /* CLLRefreshHeadController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A81462105EDD900D32FB0 /* CLLRefreshHeadController.m */; };
 		BF58B91C20EA1920002CB4EE /* MyAPP.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91B20EA1920002CB4EE /* MyAPP.plist */; };
 		BF58B92620EA1CE2002CB4EE /* app-xjb.png in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91E20EA1CE0002CB4EE /* app-xjb.png */; };
 		BF58B92720EA1CE2002CB4EE /* app-beeManager.png in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91F20EA1CE1002CB4EE /* app-beeManager.png */; };
@@ -1225,6 +1223,8 @@
 		DF7B408B21AC020A00E3D975 /* AVPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */; };
 		DFA5BF3621B6A74D00CB9223 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5BF3521B6A74D00CB9223 /* User.swift */; };
 		DFA5D3AE21BA184F00339006 /* PlayLRCSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */; };
+		DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */; };
+		DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */; };
 		DFF4AB9921B7969A00F03C71 /* XRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */; };
 		DFF4AB9B21B7AC5900F03C71 /* XAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */; };
 		DFF4AB9D21B7B80000F03C71 /* XCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9C21B7B80000F03C71 /* XCardsView.swift */; };
@@ -2291,10 +2291,6 @@
 		BF4A80F52105CFE000D32FB0 /* CRCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCrypto.m; sourceTree = "<group>"; };
 		BF4A80F62105CFE000D32FB0 /* CRCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCrypto.h; sourceTree = "<group>"; };
 		BF4A80F82105D21300D32FB0 /* NetManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetManger.swift; sourceTree = "<group>"; };
-		BF4A81432105EDCE00D32FB0 /* XBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBaseTableView.h; sourceTree = "<group>"; };
-		BF4A81442105EDCF00D32FB0 /* XBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBaseTableView.m; sourceTree = "<group>"; };
-		BF4A81462105EDD900D32FB0 /* CLLRefreshHeadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLRefreshHeadController.m; sourceTree = "<group>"; };
-		BF4A81472105EDDA00D32FB0 /* CLLRefreshHeadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLRefreshHeadController.h; sourceTree = "<group>"; };
 		BF58B91B20EA1920002CB4EE /* MyAPP.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyAPP.plist; sourceTree = "<group>"; };
 		BF58B91E20EA1CE0002CB4EE /* app-xjb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-xjb.png"; sourceTree = "<group>"; };
 		BF58B91F20EA1CE1002CB4EE /* app-beeManager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-beeManager.png"; sourceTree = "<group>"; };
@@ -2691,6 +2687,8 @@
 		DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerManager.swift; sourceTree = "<group>"; };
 		DFA5BF3521B6A74D00CB9223 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLRCSView.swift; sourceTree = "<group>"; };
+		DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBaseTableView.swift; sourceTree = "<group>"; };
+		DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRefreshControl.swift; sourceTree = "<group>"; };
 		DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRefreshHeader.swift; sourceTree = "<group>"; };
 		DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAudioPlayer.swift; sourceTree = "<group>"; };
 		DFF4AB9C21B7B80000F03C71 /* XCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCardsView.swift; sourceTree = "<group>"; };
@@ -3835,7 +3833,6 @@
 		7759B6CB1D0EA3E900AE3A59 /* utility */ = {
 			isa = PBXGroup;
 			children = (
-				BF4A81042105DA3000D32FB0 /* 新的扩展 */,
 				7772A7F11D64433500444973 /* ThirdPart */,
 				7759B6E81D0EA3E900AE3A59 /* BaseFile */,
 				71250EC42091C0F20093B59B /* FreedomTools.h */,
@@ -5107,17 +5104,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		BF4A81042105DA3000D32FB0 /* 新的扩展 */ = {
-			isa = PBXGroup;
-			children = (
-				BF4A81472105EDDA00D32FB0 /* CLLRefreshHeadController.h */,
-				BF4A81462105EDD900D32FB0 /* CLLRefreshHeadController.m */,
-				BF4A81432105EDCE00D32FB0 /* XBaseTableView.h */,
-				BF4A81442105EDCF00D32FB0 /* XBaseTableView.m */,
-			);
-			path = "新的扩展";
-			sourceTree = "<group>";
-		};
 		BF58B91D20EA1CD2002CB4EE /* MyAPPicon */ = {
 			isa = PBXGroup;
 			children = (
@@ -5714,6 +5700,8 @@
 			isa = PBXGroup;
 			children = (
 				BF58B94920EB22C8002CB4EE /* XTablesViewController.swift */,
+				DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */,
+				DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */,
 				BF58BA3120EDF132002CB4EE /* SwiftNotice.swift */,
 				71517B1B2094803300B40538 /* JSONObject.swift */,
 				BFC6D93220E322D100F17378 /* XRadiaMenu.swift */,
@@ -6899,7 +6887,6 @@
 				DF7B407B21AC020A00E3D975 /* Models.swift in Sources */,
 				BF6E57B71FAC06BB005F7DF8 /* WXMyExpressionViewController.m in Sources */,
 				BF6E57B31FAC0692005F7DF8 /* WXExpressionChosenViewController.m in Sources */,
-				BF4A81482105EDDA00D32FB0 /* CLLRefreshHeadController.m in Sources */,
 				BF58BB4C20EF1945002CB4EE /* RCDPushSettingViewController.m in Sources */,
 				BF6E57B01FAC0673005F7DF8 /* WXMineViewController.m in Sources */,
 				BF6E57AF1FAC066B005F7DF8 /* WXMineInfoViewController.m in Sources */,
@@ -6913,6 +6900,7 @@
 				7121194020ABC5940087E05B /* EnergyContactDetailViewController.swift in Sources */,
 				BF6E572C1FABFCDA005F7DF8 /* WXCommonSettingViewController.m in Sources */,
 				BF58BB3520EF1945002CB4EE /* RCDGroupViewController.m in Sources */,
+				DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */,
 				BFEF199C2101E821003DCAC1 /* HYTimeLineBelowView.m in Sources */,
 				BF58BB4E20EF1945002CB4EE /* RCDMessageNotifySettingTableViewController.m in Sources */,
 				7121196E20AC24EA0087E05B /* ToutiaoHomeDetailViewController.swift in Sources */,
@@ -7006,7 +6994,6 @@
 				7115A5BA20AAC3E6000D0B96 /* PersonalApplyViewController.swift in Sources */,
 				713EE2FC20AD9D550085B65D /* SingleOneSectionTableViewController.swift in Sources */,
 				DF7B407321AC020A00E3D975 /* CircleProgress.swift in Sources */,
-				BF4A81452105EDCF00D32FB0 /* XBaseTableView.m in Sources */,
 				BF5B9B831F8E67CC00BD885E /* HappyViewController.swift in Sources */,
 				BFEF19A52101E821003DCAC1 /* mztools.c in Sources */,
 				BFEF19A02101E821003DCAC1 /* StockChartTitleView.m in Sources */,
@@ -7191,6 +7178,7 @@
 				71ECDFC02091F9EF00495467 /* WXMessageManager.m in Sources */,
 				BFEF19872101E821003DCAC1 /* JLLineChart.m in Sources */,
 				71ECE0452092128E00495467 /* WXImageExpressionDisplayView.m in Sources */,
+				DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */,
 				BF58BB3120EF1945002CB4EE /* RCDGroupAnnouncementViewController.m in Sources */,
 				7121194A20AC03800087E05B /* JuheNavigationController.swift in Sources */,
 				7788AC661D7996E000376C95 /* E_WebViewControler.m in Sources */,
