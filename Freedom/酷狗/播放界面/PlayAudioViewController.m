@@ -5,43 +5,7 @@
 //
 #import "PlayAudioViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
-#import "NSData+KRCParse.h"
 #import "Freedom-Swift.h"
-@interface KRC : NSObject{
-    //FileStream fs;
-    //头部4字节
-    NSMutableData * HeadBytes;
-    //异或加密内容
-    NSMutableData * EncodedBytes;
-    //解异或加密后ZIP数据
-    NSMutableData * ZipBytes;
-    //UNZIP后数据
-    NSData * UnzipBytes;
-}
-- (NSString *) Decode: (NSString * )filePath;
-@end
-@implementation KRC
-//异或加密 密钥
-- (NSString *) Decode: (NSString * )filePath{
-    NSString * EncKey = @"@Gaw^2tGQ61-ÎÒni";
-    //char EncKey[] = { '@', 'G', 'a', 'w', '^', '2', 't', 'G', 'Q', '6', '1', '-', 'Î', 'Ò', 'n', 'i' };
-    NSData * totalBytes = [[NSMutableData alloc] initWithContentsOfFile:filePath];
-    //HeadBytes = [[NSMutableData alloc] initWithData:[totalBytes subdataWithRange:NSMakeRange(0, 4)]];
-    EncodedBytes = [[NSMutableData alloc] initWithData:[totalBytes subdataWithRange:NSMakeRange(4, totalBytes.length - 4)]];
-    ZipBytes = [[NSMutableData alloc] initWithCapacity:EncodedBytes.length];
-    Byte * encodedBytes = EncodedBytes.mutableBytes;
-    int EncodedBytesLength = EncodedBytes.length;
-    for (int i = 0; i < EncodedBytesLength; i++){
-        int l = i % 16;
-        char c = [EncKey characterAtIndex:l];
-        Byte b = (Byte)((encodedBytes[i]) ^ c);
-        [ZipBytes appendBytes:&b length:1];
-    }
-    UnzipBytes = [NSData gtm_dataByInflatingData:ZipBytes];
-    NSString *s = [[NSString alloc] initWithData:UnzipBytes encoding:NSUTF8StringEncoding];
-    return s;
-}
-@end
 @interface LyricsUtil : NSObject
 //根据每行歌词得到相应行的给个字的时间点数组
 +(NSMutableArray *)timeArrayWithLineLyric:(NSString *)lineLyric;
@@ -534,9 +498,7 @@
 #pragma mark 以下是新增的逐词播放
     //拿到歌词
     NSString *path = [[NSBundle mainBundle] pathForResource:@"lll.Krc" ofType:nil];
-    
-    KRC * krc = [KRC new];
-    _lyrics = [krc Decode:path];
+    _lyrics = [FreedomTools parseKRCWordWithPath:path];
     
     //播放歌
     NSURL * url = [[NSBundle mainBundle]URLForResource:@"vocal" withExtension:@"mp3"];
