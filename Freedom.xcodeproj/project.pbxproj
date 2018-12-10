@@ -1221,6 +1221,7 @@
 		DF7B408921AC020A00E3D975 /* AwemeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406C21AC020A00E3D975 /* AwemeListController.swift */; };
 		DF7B408A21AC020A00E3D975 /* AwemeListCellViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406D21AC020A00E3D975 /* AwemeListCellViews.swift */; };
 		DF7B408B21AC020A00E3D975 /* AVPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */; };
+		DF846C8D21BE55FD002D9CA2 /* NSObject+Mirror.m in Sources */ = {isa = PBXBuildFile; fileRef = DF846C8B21BE55FD002D9CA2 /* NSObject+Mirror.m */; };
 		DFA5BF3621B6A74D00CB9223 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5BF3521B6A74D00CB9223 /* User.swift */; };
 		DFA5D3AE21BA184F00339006 /* PlayLRCSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */; };
 		DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */; };
@@ -1233,7 +1234,6 @@
 		DFF4ABA321B7FB6000F03C71 /* XExcellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFF4ABA221B7FB6000F03C71 /* XExcellView.xib */; };
 		DFF4ABB121B80A7500F03C71 /* XPopItemsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFF4ABB021B80A7500F03C71 /* XPopItemsView.xib */; };
 		DFFA80AF21AE9672009B1999 /* NSFileManager+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80AE21AE9672009B1999 /* NSFileManager+expanded.m */; };
-		DFFA80B521AEC3D4009B1999 /* NSObject+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80B421AEC3D4009B1999 /* NSObject+expanded.m */; };
 		DFFA80C221AEC84D009B1999 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80B921AEC84B009B1999 /* BaseTableViewCell.swift */; };
 		DFFA80C321AEC84D009B1999 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80BA21AEC84B009B1999 /* BaseNavigationViewController.swift */; };
 		DFFA80C421AEC84D009B1999 /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80BB21AEC84B009B1999 /* BaseTabBarViewController.swift */; };
@@ -2685,6 +2685,8 @@
 		DF7B406C21AC020A00E3D975 /* AwemeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwemeListController.swift; sourceTree = "<group>"; };
 		DF7B406D21AC020A00E3D975 /* AwemeListCellViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwemeListCellViews.swift; sourceTree = "<group>"; };
 		DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerManager.swift; sourceTree = "<group>"; };
+		DF846C8B21BE55FD002D9CA2 /* NSObject+Mirror.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Mirror.m"; sourceTree = "<group>"; };
+		DF846C8C21BE55FD002D9CA2 /* NSObject+Mirror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Mirror.h"; sourceTree = "<group>"; };
 		DFA5BF3521B6A74D00CB9223 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLRCSView.swift; sourceTree = "<group>"; };
 		DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBaseTableView.swift; sourceTree = "<group>"; };
@@ -2698,8 +2700,6 @@
 		DFF4ABB021B80A7500F03C71 /* XPopItemsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XPopItemsView.xib; sourceTree = "<group>"; };
 		DFFA80AD21AE9672009B1999 /* NSFileManager+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+expanded.h"; sourceTree = "<group>"; };
 		DFFA80AE21AE9672009B1999 /* NSFileManager+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+expanded.m"; sourceTree = "<group>"; };
-		DFFA80B321AEC3D3009B1999 /* NSObject+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+expanded.h"; sourceTree = "<group>"; };
-		DFFA80B421AEC3D4009B1999 /* NSObject+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+expanded.m"; sourceTree = "<group>"; };
 		DFFA80B921AEC84B009B1999 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		DFFA80BA21AEC84B009B1999 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		DFFA80BB21AEC84B009B1999 /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
@@ -3839,8 +3839,6 @@
 				71250EC52091C0F20093B59B /* FreedomTools.m */,
 				71250EC72091C1DA0093B59B /* NSObject+Freedom.h */,
 				71250EC82091C1DA0093B59B /* NSObject+Freedom.m */,
-				DFFA80B321AEC3D3009B1999 /* NSObject+expanded.h */,
-				DFFA80B421AEC3D4009B1999 /* NSObject+expanded.m */,
 				713728CE20AE9FC500A3227A /* FoundationSwift.swift */,
 				BF58BA2F20EDE837002CB4EE /* FreedomToolSwift.swift */,
 				DFA5BF3521B6A74D00CB9223 /* User.swift */,
@@ -5678,6 +5676,8 @@
 		DFF4AB9621B773D700F03C71 /* OCFile */ = {
 			isa = PBXGroup;
 			children = (
+				DF846C8C21BE55FD002D9CA2 /* NSObject+Mirror.h */,
+				DF846C8B21BE55FD002D9CA2 /* NSObject+Mirror.m */,
 				BF0E8B0620DCB0B400150476 /* AppManager.h */,
 				BF0E8B0720DCB0B500150476 /* AppManager.m */,
 				BF4A80DD2105CDFF00D32FB0 /* CRKeychainItem.h */,
@@ -6877,7 +6877,6 @@
 				BFEF19932101E821003DCAC1 /* StockCategory.m in Sources */,
 				BF58BB3F20EF1945002CB4EE /* RCDSearchViewController.m in Sources */,
 				BF58BB6320EF1945002CB4EE /* RCAnnotationView.m in Sources */,
-				DFFA80B521AEC3D4009B1999 /* NSObject+expanded.m in Sources */,
 				BF6E57BD1FAC0714005F7DF8 /* WXExpressionDetailViewController.m in Sources */,
 				BF6E57BC1FAC070C005F7DF8 /* WXExpressionPublicViewController.m in Sources */,
 				BF6E57B81FAC06C6005F7DF8 /* WXMyQRCodeViewController.m in Sources */,
@@ -7149,6 +7148,7 @@
 				71517B1C2094803300B40538 /* JSONObject.swift in Sources */,
 				BF58BB4F20EF1945002CB4EE /* RCDChangePasswordViewController.m in Sources */,
 				BFEF19A42101E821003DCAC1 /* ioapi.c in Sources */,
+				DF846C8D21BE55FD002D9CA2 /* NSObject+Mirror.m in Sources */,
 				7121195020AC0C000087E05B /* JuhePublicViewController.swift in Sources */,
 				DFFA80C621AEC84D009B1999 /* BaseViewController.swift in Sources */,
 				BF58BB4920EF1945002CB4EE /* RCDDiscussGroupSettingViewController.m in Sources */,
