@@ -7,7 +7,7 @@ import XCarryOn
 class JuheUserViewCell:BaseTableViewCell{
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x: 10, y: 10, width: 40, height: 40))
-        self.title = UILabel(frame: CGRect(x:XW(self.icon)+10, y:20, width:200, height: 20))
+        self.title = UILabel(frame: CGRect(x:self.icon.right+10, y:20, width:200, height: 20))
         self.line = UIView(frame: CGRect(x: 10, y: 59, width: APPW-20, height: 1))
         self.addSubviews([self.title,self.icon,self.line])
         self.title.text = "name"
@@ -24,13 +24,13 @@ class JuheUserViewController: JuheBaseViewController {
     let icon = UIImageView(frame: CGRect(x: 10, y: 15, width: 60, height:60))
     icon.layer.cornerRadius = 30
     icon.layer.masksToBounds = true
-        let name = UILabel(frame: CGRect(x: XW(icon)+10, y: 10, width: 300, height: 20))
+        let name = UILabel(frame: CGRect(x: icon.right+10, y: 10, width: 300, height: 20))
     name.text = "用户名：18326891683  👑已认证"
-        let openid = UILabel(frame: CGRect(x: name.frame.origin.x, y:YH(name), width: 400, height: 20))
+        let openid = UILabel(frame: CGRect(x: name.frame.origin.x, y:name.bottom, width: 400, height: 20))
         openid.text = "OpenId:JH12bd23ef316e3d8a9dfe7402ef8bc453"
-        let email = UILabel(frame: CGRect(x: name.frame.origin.x, y: YH(openid), width: 300, height: 20))
+        let email = UILabel(frame: CGRect(x: name.frame.origin.x, y: openid.bottom, width: 300, height: 20))
     email.text = "绑定邮箱:1069106050@qq.com"
-        let phone = UILabel(frame: CGRect(x: name.frame.origin.x, y: YH(email), width: 300, height: 20))
+        let phone = UILabel(frame: CGRect(x: name.frame.origin.x, y: email.bottom, width: 300, height: 20))
        phone.text = "手机号码:18721064516"
     headerView.addSubviews([icon,name,openid,email,phone])
     icon.image = UIImage(named:"userLogo")

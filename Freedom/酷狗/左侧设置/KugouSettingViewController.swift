@@ -121,16 +121,16 @@ class KugouSettingViewController: KugouBaseViewController {
 //        } else {
 //            bottomView.transform = view.transform.scaledBy(x: scare, y: scare)
 //            if ((APPW - 50) / APPW + tranX) >= 0 {
-//                presentingViewController.view.frameX = ((APPW - 50) / APPW + tranX) * APPW
-//                presentingViewController.view.frameY = (100 / APPH - tranY) * APPH
-//                presentingViewController.view.frameHeight = APPH - 2 * presentingViewController.view.frameY
+//                presentingViewController.view.x = ((APPW - 50) / APPW + tranX) * APPW
+//                presentingViewController.view.y = (100 / APPH - tranY) * APPH
+//                presentingViewController.view.height = APPH - 2 * presentingViewController.view.y
 //            }
 //            if pan?.state == .ended {
 //                if ((APPW - 50) / APPW + tranX) <= 0.2 {
 //                    UIView.animate(withDuration: 0.1, animations: {() -> Void in
-//                        self.presentingViewController.view.frameX = 0
-//                        self.presentingViewController.view.frameY = 0
-//                        self.presentingViewController.view.frameHeight = APPH
+//                        self.presentingViewController.view.x = 0
+//                        self.presentingViewController.view.y = 0
+//                        self.presentingViewController.view.height = APPH
 //                        self.bottomView.transform = CGAffineTransform(scaleX: 1, y: 1)
 //                    }, completion: {(_ finished: Bool) -> Void in
 //                        self.dismiss(animated: true) {() -> Void in }
@@ -138,9 +138,9 @@ class KugouSettingViewController: KugouBaseViewController {
 //                    })
 //                } else {
 //                    UIView.animate(withDuration: 0.3, animations: {() -> Void in
-//                        self.presentingViewController.view.frameX = APPW - 50
-//                        self.presentingViewController.view.frameY = 100
-//                        self.presentingViewController.view.frameHeight = APPH - 200
+//                        self.presentingViewController.view.x = APPW - 50
+//                        self.presentingViewController.view.y = 100
+//                        self.presentingViewController.view.height = APPH - 200
 //                        self.bottomView.transform = CGAffineTransform(scaleX: 1, y: 1)
 //                    })
 //                }

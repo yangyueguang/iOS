@@ -86,8 +86,8 @@ class AlipayHomeGridViewListItemView: UIView {
         super.layoutSubviews()
         let margin: CGFloat = 10
         button.frame = bounds
-        let h: CGFloat = H(button)
-        let w: CGFloat = W(button)
+        let h: CGFloat = button.height
+        let w: CGFloat = button.width
         button.imageEdgeInsets = UIEdgeInsets(top: h * 0.2, left: w * 0.32, bottom: h * 0.3, right: w * 0.32)
         button.titleEdgeInsets = UIEdgeInsets(top: h * 0.6, left: -w * 0.4, bottom: 0, right: 0)
         iconView?.frame = CGRect(x: frame.size.width - (iconView?.frame.size.width)! - margin, y: margin, width: 20, height: 20)
@@ -139,11 +139,11 @@ class AlipayHomeGridView: UIScrollView, UIScrollViewDelegate {
         let header = UIView()
         header.frame = CGRect(x: 0, y: 0, width: APPW, height: 100)
         header.backgroundColor = UIColor(red: 38 / 255.0, green: 42 / 255.0, blue: 59 / 255.0, alpha: 1)
-        let scan = UIButton(frame: CGRect(x: 0, y: 0, width: header.frame.size.width * 0.5, height: header.frameHeight))
+        let scan = UIButton(frame: CGRect(x: 0, y: 0, width: header.frame.size.width * 0.5, height: header.height))
         scan.setImage(UIImage(named: "scan_y"), for: .normal)
         scan.addTarget(self, action: #selector(self.scanButtonClicked), for: .touchUpInside)
         header.addSubview(scan)
-        let pay = UIButton(frame: CGRect(x: scan.frame.size.width, y: 0, width: header.frame.size.width * 0.5, height: header.frameHeight))
+        let pay = UIButton(frame: CGRect(x: scan.frame.size.width, y: 0, width: header.frame.size.width * 0.5, height: header.height))
         pay.setImage(UIImage(named: "home_pay"), for: .normal)
         header.addSubview(pay)
         let line = UIView(frame: CGRect(x: APPW / 2, y: 0, width: 0.5, height: 100))

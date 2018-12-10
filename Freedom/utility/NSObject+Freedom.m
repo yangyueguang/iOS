@@ -23,27 +23,6 @@
 }
 @end
 @implementation UIView (Freedom)
-- (CGFloat)frameHeight {
-    return self.frame.size.height;
-}
-- (void)setFrameHeight:(CGFloat)newHeight {
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y,
-                            self.frame.size.width, newHeight);
-}
-- (CGFloat)frameX {
-    return self.frame.origin.x;
-}
-- (void)setFrameX:(CGFloat)newX {
-    self.frame = CGRectMake(newX, self.frame.origin.y,
-                            self.frame.size.width, self.frame.size.height);
-}
-- (CGFloat)frameY {
-    return self.frame.origin.y;
-}
-- (void)setFrameY:(CGFloat)newY {
-    self.frame = CGRectMake(self.frame.origin.x, newY,
-                            self.frame.size.width, self.frame.size.height);
-}
 - (void)shake{
     CAKeyframeAnimation *keyAn = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     [keyAn setDuration:0.5f];

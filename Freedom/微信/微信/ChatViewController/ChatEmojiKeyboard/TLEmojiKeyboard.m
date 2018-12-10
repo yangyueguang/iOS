@@ -46,7 +46,7 @@ static TLEmojiKeyboard *emojiKB;
             }];
             [view layoutIfNeeded];
             if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
-                [_keyboardDelegate chatKeyboard:self didChangeHeight:view.frameHeight - self.frameY];
+                [_keyboardDelegate chatKeyboard:self didChangeHeight:view.frame.size.height - self.frame.origin.y];
             }
         } completion:^(BOOL finished) {
             if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardDidShow:)]) {
@@ -78,7 +78,7 @@ static TLEmojiKeyboard *emojiKB;
             }];
             [self.superview layoutIfNeeded];
             if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
-                [_keyboardDelegate chatKeyboard:self didChangeHeight:self.superview.frameHeight - self.frameY];
+                [_keyboardDelegate chatKeyboard:self didChangeHeight:self.superview.frame.size.height - self.frame.origin.y];
             }
         } completion:^(BOOL finished) {
             [self removeFromSuperview];
@@ -94,7 +94,7 @@ static TLEmojiKeyboard *emojiKB;
     }
 }
 - (void)reset{
-    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.frame.size.width, self.collectionView.frameHeight) animated:NO];
+    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.frame.size.width, self.collectionView.frame.size.height) animated:NO];
     // 更新发送按钮状态
     [self updateSendButtonStatus];
 }
@@ -301,7 +301,7 @@ static TLEmojiKeyboard *emojiKB;
     [self.pageControl setNumberOfPages:group.pageNumber];
     [self.pageControl setCurrentPage:0];
     [self.collectionView reloadData];
-    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.frame.size.width, self.collectionView.frameHeight) animated:NO];
+    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.frame.size.width, self.collectionView.frame.size.height) animated:NO];
     // 更新发送按钮状态
     [self updateSendButtonStatus];
     // 更新chatBar的textView状态
@@ -343,7 +343,7 @@ static UICollectionViewCell *lastCell;
         CGPoint point = [sender locationInView:self.collectionView];
         
         for (UICollectionViewCell *cell in self.collectionView.visibleCells) {
-            if (cell.frameX - minimumLineSpacing / 2.0 <= point.x && cell.frameY - minimumInteritemSpacing / 2.0 <= point.y && cell.frameX + cell.frame.size.width + minimumLineSpacing / 2.0 >= point.x && cell.frameY + cell.frameHeight + minimumInteritemSpacing / 2.0 >= point.y) {
+            if (cell.frame.origin.x - minimumLineSpacing / 2.0 <= point.x && cell.frame.origin.y - minimumInteritemSpacing / 2.0 <= point.y && cell.frame.origin.x + cell.frame.size.width + minimumLineSpacing / 2.0 >= point.x && cell.frame.origin.y + cell.frame.size.height + minimumInteritemSpacing / 2.0 >= point.y) {
                 if (lastCell == cell) {
                     return;
                 }

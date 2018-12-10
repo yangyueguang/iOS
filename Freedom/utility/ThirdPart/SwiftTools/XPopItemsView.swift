@@ -277,9 +277,9 @@ class XPopItemsView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
                 }
                 return
             }
-            self.contentView.frameY = -self.contentView.height
+            self.contentView.y = -self.contentView.height
             UIView.animate(withDuration: 0.25, animations: {
-                self.contentView.frameY = 0
+                self.contentView.y = 0
             }) { finished in
             }
         })
@@ -292,14 +292,14 @@ class XPopItemsView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         DispatchQueue.main.async(execute: {
             self.currentEditButton.isSelected = false
             UIView.animate(withDuration: 0.25, animations: {
-                self.contentView.frameY =  -self.contentView.height
+                self.contentView.y =  -self.contentView.height
             }) { finished in
             }
         })
     }
 
     func showOrHid() {
-        if contentView.frameY < 0  {
+        if contentView.y < 0  {
             show()
         } else {
             hide()

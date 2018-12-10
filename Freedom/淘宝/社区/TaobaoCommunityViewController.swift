@@ -8,10 +8,10 @@ class TaobaoCommunityViewCell1:BaseCollectionViewCell{
         title = UILabel(frame: CGRect(x: 10, y: 0, width: APPW - 20, height: 40))
         title.numberOfLines = 0
         title.font = fontTitle
-        icon = UIImageView(frame: CGRect(x: 10, y: YH(title), width: W(self) - 20, height: 100))
+        icon = UIImageView(frame: CGRect(x: 10, y: title.bottom, width: self.width - 20, height: 100))
         icon.layer.cornerRadius = 10
         icon.clipsToBounds = true
-        script = UILabel(frame: CGRect(x: 10, y: YH(icon), width: APPW - 20, height: 60))
+        script = UILabel(frame: CGRect(x: 10, y: icon.bottom, width: APPW - 20, height: 60))
         script.numberOfLines = 0
         script.font = fontSmall
         script.textColor = gradtextcolor
@@ -26,7 +26,7 @@ class TaobaoCommunityViewCell1:BaseCollectionViewCell{
 class TaobaoCommunityViewCell2:BaseCollectionViewCell {
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW / 2 - 20, height: 100))
-        title = UILabel(frame: CGRect(x: 0, y: YH(icon), width: W(icon), height: 70))
+        title = UILabel(frame: CGRect(x: 0, y: icon.bottom, width: icon.width, height: 70))
         title.font = fontSmall
         title.textColor = gradtextcolor
         title.numberOfLines = 0

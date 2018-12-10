@@ -439,7 +439,7 @@ static WXFriendHelper *friendHelper = nil;
                     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
                     UIGraphicsEndImageContext();
                     CGImageRef imageRef = image.CGImage;
-                    CGImageRef imageRefRect =CGImageCreateWithImageInRect(imageRef, CGRectMake(0, 0, view.frame.size.width * 2, view.frameHeight * 2));
+                    CGImageRef imageRefRect =CGImageCreateWithImageInRect(imageRef, CGRectMake(0, 0, view.frame.size.width * 2, view.frame.size.height * 2));
                     UIImage *ansImage = [[UIImage alloc] initWithCGImage:imageRefRect];
                     NSData *imageViewData = UIImagePNGRepresentation(ansImage);
                     NSString *savedImagePath = [NSFileManager pathUserAvatar:group.groupAvatarPath];

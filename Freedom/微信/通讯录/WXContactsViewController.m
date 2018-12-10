@@ -239,8 +239,7 @@
 }
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.tableView.frameY = TopHeight + 20;
-    self.tableView.frameHeight = APPH - self.tableView.frameY;
+    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, TopHeight + 20, self.tableView.frame.size.width, APPH - self.tableView.frame.origin.y);
 }
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

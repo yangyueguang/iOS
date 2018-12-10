@@ -24,18 +24,18 @@ class AlipayScanViewController: AlipayBaseViewController {
         maskView = mask
         mask.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor
         mask.layer.borderWidth = kBorderW
-        mask.bounds = CGRect(x: 0, y: 0, width: view.frame.size.width + kBorderW + kMargin * 2, height: view.frameHeight * 0.9)
-        mask.center = CGPoint(x: view.frame.size.width * 0.5, y: view.frameHeight * 0.5)
-        mask.frameY = 0
+        mask.bounds = CGRect(x: 0, y: 0, width: view.frame.size.width + kBorderW + kMargin * 2, height: view.height * 0.9)
+        mask.center = CGPoint(x: view.frame.size.width * 0.5, y: view.height * 0.5)
+        mask.y = 0
         view.addSubview(mask)
     }
     func setupBottomBar() {
-        let bottomBar = UIView(frame: CGRect(x: 0, y: view.frameHeight * 0.9, width: view.frame.size.width, height: view.frameHeight * 0.1))
+        let bottomBar = UIView(frame: CGRect(x: 0, y: view.height * 0.9, width: view.frame.size.width, height: view.height * 0.1))
         bottomBar.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.8)
         view.addSubview(bottomBar)
     }
     func setupScanWindowView() {
-        let scanWindowH: CGFloat = view.frameHeight * 0.9 - kBorderW * 2
+        let scanWindowH: CGFloat = view.height * 0.9 - kBorderW * 2
         let scanWindowW: CGFloat = view.frame.size.width - kMargin * 2
         let scanWindow = UIView(frame: CGRect(x: kMargin, y: kBorderW, width: scanWindowW, height: scanWindowH))
         scanWindow.clipsToBounds = true
@@ -61,7 +61,7 @@ class AlipayScanViewController: AlipayBaseViewController {
         let bottomLeft = UIButton(frame: CGRect(x: 0, y: scanWindowH - buttonWH, width: buttonWH, height: buttonWH))
         bottomLeft.setImage(UIImage(named: "u_scan_3"), for: .normal)
         scanWindow.addSubview(bottomLeft)
-        let bottomRight = UIButton(frame: CGRect(x: topRight.frameX, y: bottomLeft.frameY, width: buttonWH, height: buttonWH))
+        let bottomRight = UIButton(frame: CGRect(x: topRight.x, y: bottomLeft.y, width: buttonWH, height: buttonWH))
         bottomRight.setImage(UIImage(named: "u_scan_4"), for: .normal)
         scanWindow.addSubview(bottomRight)
     }

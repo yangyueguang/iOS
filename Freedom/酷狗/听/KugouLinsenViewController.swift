@@ -46,25 +46,25 @@ class KugoumainHeaderView: UIView {
         let phoneimage = UIImageView(frame: CGRect(x: 20, y: lineView.frame.maxY + 15, width: 20, height: 20))
         phoneimage.image = UIImage(named: "main_phone")
         addSubview(phoneimage)
-        let lable = UILabel(frame: CGRect(x: phoneimage.frame.maxX + 8, y: phoneimage.frameY, width: 100, height: 25))
+        let lable = UILabel(frame: CGRect(x: phoneimage.frame.maxX + 8, y: phoneimage.y, width: 100, height: 25))
         lable.text = "本地音乐"
         lable.font = UIFont.systemFont(ofSize: 14)
         lable.textColor = UIColor.white
         addSubview(lable)
 //        let everyMusic = MPMediaQuery()
 //        let musicArr = everyMusic.items
-        let lable2 = UILabel(frame: CGRect(x: APPW - 130, y: phoneimage.frameY, width: 100, height: 25))
+        let lable2 = UILabel(frame: CGRect(x: APPW - 130, y: phoneimage.y, width: 100, height: 25))
         lable2.text = "3首"
         lable2.font = UIFont.systemFont(ofSize: 12)
         lable2.textColor = UIColor.white
         lable2.textAlignment = .right
         addSubview(lable2)
         lable2.isUserInteractionEnabled = true
-        let lable3 = UILabel(frame: CGRect(x: 0, y: lable2.frameY, width: APPW, height: lable2.frameHeight))
+        let lable3 = UILabel(frame: CGRect(x: 0, y: lable2.y, width: APPW, height: lable2.height))
         addSubview(lable3)
         lable3.isUserInteractionEnabled = true
         lable3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.clickLable2)))
-        let imageArrow = UIImageView(frame: CGRect(x: lable2.frame.maxX, y: lable2.frameY, width: 25, height: 25))
+        let imageArrow = UIImageView(frame: CGRect(x: lable2.frame.maxX, y: lable2.y, width: 25, height: 25))
         imageArrow.image = UIImage(named: "arrow")
         addSubview(imageArrow)
         // 底部

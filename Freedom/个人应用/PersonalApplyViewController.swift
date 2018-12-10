@@ -11,10 +11,10 @@ import XCarryOn
 class PersonalApplyViewCell:BaseTableViewCell{
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x: 10, y: 10, width: 60, height: 60))
-        self.title = UILabel(frame: CGRect(x:XW(self.icon)+10, y: 20, width: APPW-XW( self.icon)-20, height: 20))
+        self.title = UILabel(frame: CGRect(x:self.icon.right+10, y: 20, width: APPW-self.icon.right-20, height: 20))
         self.title.font = UIFont.systemFont(ofSize: 14)
         self.title.textAlignment = .center
-        self.script = UILabel(frame:CGRect(x: self.title.x, y: YH( self.title), width: self.title.width, height: self.title.height))
+        self.script = UILabel(frame:CGRect(x: self.title.x, y:  self.title.bottom, width: self.title.width, height: self.title.height))
         self.script.textColor = .gray
         self.line = UIView(frame: CGRect(x: 10, y: 79, width: APPW-20, height: 1))
         self.addSubviews([self.title,self.icon,self.script,self.line])

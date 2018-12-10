@@ -121,7 +121,7 @@ static TLMoreKeyboard *moreKB;
             }];
             [view layoutIfNeeded];
             if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
-                [_keyboardDelegate chatKeyboard:self didChangeHeight:view.frameHeight - self.frameY];
+                [_keyboardDelegate chatKeyboard:self didChangeHeight:view.frame.size.height - self.frame.origin.y];
             }
         } completion:^(BOOL finished) {
             if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboardDidShow:)]) {
@@ -149,7 +149,7 @@ static TLMoreKeyboard *moreKB;
             }];
             [self.superview layoutIfNeeded];
             if (_keyboardDelegate && [_keyboardDelegate respondsToSelector:@selector(chatKeyboard:didChangeHeight:)]) {
-                [_keyboardDelegate chatKeyboard:self didChangeHeight:self.superview.frameHeight - self.frameY];
+                [_keyboardDelegate chatKeyboard:self didChangeHeight:self.superview.frame.size.height - self.frame.origin.y];
             }
         } completion:^(BOOL finished) {
             [self removeFromSuperview];
@@ -165,7 +165,7 @@ static TLMoreKeyboard *moreKB;
     }
 }
 - (void)reset{
-    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.frame.size.width, self.collectionView.frameHeight) animated:NO];
+    [self.collectionView scrollRectToVisible:CGRectMake(0, 0, self.collectionView.frame.size.width, self.collectionView.frame.size.height) animated:NO];
 }
 - (void)setChatMoreKeyboardData:(NSMutableArray *)chatMoreKeyboardData{
     _chatMoreKeyboardData = chatMoreKeyboardData;
@@ -175,7 +175,7 @@ static TLMoreKeyboard *moreKB;
 }
 #pragma mark - Event Response -
 - (void) pageControlChanged:(UIPageControl *)pageControl{
-    [self.collectionView scrollRectToVisible:CGRectMake(self.collectionView.frame.size.width * pageControl.currentPage, 0, self.collectionView.frame.size.width, self.collectionView.frameHeight) animated:YES];
+    [self.collectionView scrollRectToVisible:CGRectMake(self.collectionView.frame.size.width * pageControl.currentPage, 0, self.collectionView.frame.size.width, self.collectionView.frame.size.height) animated:YES];
 }
 #pragma mark - Private Methods -
 - (void)p_addMasonry{

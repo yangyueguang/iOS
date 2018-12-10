@@ -112,7 +112,7 @@
 }
 - (void) layoutSubviews{
     [super layoutSubviews];
-    [self.titleLabel setFrame:CGRectMake(10, 0, self.frame.size.width - 15, self.frameHeight)];
+    [self.titleLabel setFrame:CGRectMake(10, 0, self.frame.size.width - 15, self.frame.size.height)];
 }
 - (void) setTitle:(NSString *)title{
     _title = title;
@@ -245,7 +245,7 @@
 // 检索时空出搜索框
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index{
     if(index == 0) {
-        [self.tableView scrollRectToVisible:CGRectMake(0, 0, tableView.frame.size.width, tableView.frameHeight) animated:NO];
+        [self.tableView scrollRectToVisible:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height) animated:NO];
         return -1;
     }
     return index;

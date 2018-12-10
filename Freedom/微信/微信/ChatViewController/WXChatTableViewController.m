@@ -202,8 +202,8 @@
 }
 - (void)layoutSubviews{
     [super layoutSubviews];
-    [self.maskLayer setFrame:CGRectMake(0, 0, self.frame.size.width, self.frameHeight)];
-    [self.contentLayer setFrame:CGRectMake(0, 0, self.frame.size.width, self.frameHeight)];
+    [self.maskLayer setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    [self.contentLayer setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 }
 - (void)setThumbnailPath:(NSString *)imagePath highDefinitionImageURL:(NSString *)imageURL{
     if (imagePath == nil) {

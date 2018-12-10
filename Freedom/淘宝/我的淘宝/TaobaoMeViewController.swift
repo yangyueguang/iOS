@@ -7,7 +7,7 @@ import XCarryOn
 class TaobaoMeViewCell1:BaseCollectionViewCell{
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 10, y: 0, width: APPW / 5 - 20, height: 40))
-        title = UILabel(frame: CGRect(x: 0, y: YH(icon), width: APPW / 5 - 10, height: 20))
+        title = UILabel(frame: CGRect(x: 0, y: icon.bottom, width: APPW / 5 - 10, height: 20))
         title.font = fontSmall
         title.textAlignment = .center
         addSubviews([title, icon])
@@ -18,7 +18,7 @@ class TaobaoMeViewCell1:BaseCollectionViewCell{
 class TaobaoMeViewCell2:BaseCollectionViewCell{
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 10, y: 0, width: APPW / 5 - 20, height: 40))
-        title = UILabel(frame: CGRect(x: 0, y: YH(icon), width: APPW / 5 - 12, height: 20))
+        title = UILabel(frame: CGRect(x: 0, y: icon.bottom, width: APPW / 5 - 12, height: 20))
         title.font = fontSmall
         title.textAlignment = .center
         addSubviews([title, icon])
@@ -27,7 +27,7 @@ class TaobaoMeViewCell2:BaseCollectionViewCell{
     }
 }
 class TaobaoMeHeadView: UICollectionReusableView {
-    var titleLabel: UILabel?
+    var titleLabel: UILabel!
     override init(frame: CGRect) {
         super.init(frame: frame)
         initUI()
@@ -38,9 +38,9 @@ class TaobaoMeHeadView: UICollectionReusableView {
     }
     func initUI() {
         titleLabel = UILabel(frame: CGRect(x: 10, y: 5, width: APPW / 2, height: 20))
-        titleLabel?.textColor = .red
-        titleLabel?.text = "必备工具"
-        let more = UILabel(frame: CGRect(x: XW(titleLabel), y: Y(titleLabel!), width: APPW - XW(titleLabel) - 10, height: 20))
+        titleLabel.textColor = .red
+        titleLabel.text = "必备工具"
+        let more = UILabel(frame: CGRect(x: titleLabel.right, y: titleLabel!.y, width: APPW - titleLabel.right - 10, height: 20))
         more.textColor = .gray
         more.textAlignment = .right
         more.font = fontSmall
@@ -72,8 +72,8 @@ class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDelegate,
         icon.layer.cornerRadius = 30
         icon.image = UIImage(named: "userLogo")
         icon.clipsToBounds = true
-        let name = UILabel(frame: CGRect(x: 10, y: YH(icon), width: APPW - 20, height: 20), font: fontMiddle, color: .white, text: "杨越光", alignment: .center)
-        let taoqi = UILabel(frame: CGRect(x: APPW / 2 - 40, y: YH(name), width: 80, height: 15), font: fontSmall, color: .red, text: "淘气值：710", alignment: .center)
+        let name = UILabel(frame: CGRect(x: 10, y: icon.bottom, width: APPW - 20, height: 20), font: fontMiddle, color: .white, text: "杨越光", alignment: .center)
+        let taoqi = UILabel(frame: CGRect(x: APPW / 2 - 40, y: name.bottom, width: 80, height: 15), font: fontSmall, color: .red, text: "淘气值：710", alignment: .center)
         taoqi.clipsToBounds = true
         taoqi.layer.cornerRadius = 7
         taoqi.backgroundColor = .yellow

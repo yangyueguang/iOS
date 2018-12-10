@@ -9,7 +9,7 @@ class EnergyHomeViewCell:BaseCollectionViewCell{
         self.icon = UIImageView(frame: CGRect(x:0, y: 0, width: APPW/5, height:60))
         self.icon.layer.cornerRadius = 20
         self.icon.clipsToBounds = true
-        self.title = UILabel(frame: CGRect(x: 0, y: YH( self.icon), width:self.icon.width, height: 20))
+        self.title = UILabel(frame: CGRect(x: 0, y:  self.icon.bottom, width:self.icon.width, height: 20))
         self.title.textAlignment = .center
         self.contentMode = .center
         self.addSubviews([self.title,self.icon])
@@ -30,7 +30,7 @@ class EnergyHomeViewController: EnergyBaseViewController,UICollectionViewDelegat
         
     let layout = UICollectionViewFlowLayout()
     layout.itemSize = CGSize(width: APPW/5, height:80);
-    layout.sectionInset = UIEdgeInsets(top: YH(banner)+10, left: 10, bottom: 0, right: 10);
+    layout.sectionInset = UIEdgeInsets(top: banner.bottom+10, left: 10, bottom: 0, right: 10);
     layout.minimumInteritemSpacing = 10;
     layout.minimumLineSpacing = 10;
         self.collectionView = BaseCollectionView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH-110), collectionViewLayout: layout)

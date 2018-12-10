@@ -5,25 +5,25 @@ import UIKit
 import XExtension
 class DZHomeViewCell1:BaseCollectionViewCell{
     override func initUI() {//120
-        icon = UIImageView(frame: CGRect(x: 10, y: 60, width: W(self) / 2 - 10, height: 60))
-        let view: UIView? = getViewWithFrame(CGRect(x: 0, y: 0, width: APPW / 2 - 10, height: 55))
-        let view2: UIView? = getViewWithFrame(CGRect(x: APPW / 2, y: 0, width: APPW / 2 - 10, height: 55))
-        let view3: UIView? = getViewWithFrame(CGRect(x: X(view2), y: YH(view2) + 10, width: W(view2), height: H(view2)))
-        let image1 = UIImageView(frame: CGRect(x: W(view2) - 40, y: 0, width: 40, height: H(view2)))
+        icon = UIImageView(frame: CGRect(x: 10, y: 60, width: self.width / 2 - 10, height: 60))
+        let view = getViewWithFrame(CGRect(x: 0, y: 0, width: APPW / 2 - 10, height: 55))
+        let view2 = getViewWithFrame(CGRect(x: APPW / 2, y: 0, width: APPW / 2 - 10, height: 55))
+        let view3 = getViewWithFrame(CGRect(x: view2.x, y: view2.bottom + 10, width: view2.width, height: view2.height))
+        let image1 = UIImageView(frame: CGRect(x: view2.width - 40, y: 0, width: 40, height: view2.height))
         image1.image = UIImage(named: "image1.jpg")
-        let image2 = UIImageView(frame: CGRect(x: W(view2) - 40, y: 0, width: 40, height: H(view2)))
+        let image2 = UIImageView(frame: CGRect(x: view2.width - 40, y: 0, width: 40, height: view2.height))
         image2.image = UIImage(named: "image2.jpg")
-        view2?.addSubview(image1)
-        view3?.addSubview(image2)
+        view2.addSubview(image1)
+        view3.addSubview(image2)
         line = UIView(frame: CGRect(x: 0, y: 198, width: APPW, height: 2))
         line.backgroundColor = .white
-        addSubviews([view!, view2!, icon, view3!])
+        addSubviews([view, view2, icon, view3])
     }
     func getViewWithFrame(_ rect: CGRect) -> UIView {
         let view = UIView(frame: rect)
         let a = UILabel(frame: CGRect(x: 10, y: 0, width: APPW / 2 - 20, height: 18), font: fontSmall, color: .red, text: "外卖贺新春")
-        let b = UILabel(frame: CGRect(x: X(a), y: YH(a), width: W(a), height: H(a)), font: fontSmall, color: blacktextcolor, text: "省事省力又省心")
-        let c = UILabel(frame: CGRect(x: X(a), y: YH(b), width: 100, height: 15), font: fontSmall, color: .yellow, text: "用外卖订年夜饭")
+        let b = UILabel(frame: CGRect(x: a.x, y: a.bottom, width: a.width, height: a.height), font: fontSmall, color: blacktextcolor, text: "省事省力又省心")
+        let c = UILabel(frame: CGRect(x: a.x, y: b.bottom, width: 100, height: 15), font: fontSmall, color: .yellow, text: "用外卖订年夜饭")
         c.layer.cornerRadius = 7
         c.layer.borderWidth = 1
         c.layer.borderColor = UIColor.red.cgColor
@@ -37,8 +37,8 @@ class DZHomeViewCell1:BaseCollectionViewCell{
 class DZHomeViewCell2:BaseCollectionViewCell{
     override func initUI() {//100
         icon = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW / 4, height: 60))
-        title = UILabel(frame: CGRect(x: 20, y: YH(icon), width: W(icon), height: 20))
-        script = UILabel(frame: CGRect(x: X(title), y: YH(title), width: W(title), height: H(title)))
+        title = UILabel(frame: CGRect(x: 20, y: icon.bottom, width: icon.width, height: 20))
+        script = UILabel(frame: CGRect(x: title.x, y: title.bottom, width: title.width, height: title.height))
         script.font = fontSmall
         title.font = fontMiddle
         script.textColor = gradtextcolor
@@ -55,8 +55,8 @@ class DZHomeViewCell3:BaseCollectionViewCell{
         icon = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW / 4 - 11, height: 50))
         icon.clipsToBounds = true
         icon.layer.cornerRadius = 10
-        title = UILabel(frame: CGRect(x: 0, y: YH(icon), width: W(icon), height: 18))
-        script = UILabel(frame: CGRect(x: X(title), y: YH(title), width: W(title), height: 15))
+        title = UILabel(frame: CGRect(x: 0, y: icon.bottom, width: icon.width, height: 18))
+        script = UILabel(frame: CGRect(x: title.x, y: title.bottom, width: title.width, height: 15))
         script.font = Font(12)
         title.font = fontSmall
         script.textColor = gradtextcolor
@@ -73,12 +73,12 @@ class DZHomeViewCell3:BaseCollectionViewCell{
 class DZHomeViewCell4:BaseCollectionViewCell{
     override func initUI() {//100
         icon = UIImageView(frame: CGRect(x: 10, y: 0, width: APPW / 4, height: 80))
-        title = UILabel(frame: CGRect(x: XW(icon) + 10, y: Y(icon), width: APPW - XW(icon) - 20, height: 20))
-        script = UILabel(frame: CGRect(x: X(title), y: YH(title), width: W(title), height: 40))
-        let a = UILabel(frame: CGRect(x: APPW - 80, y: Y(title), width: 70, height: H(title)))
+        title = UILabel(frame: CGRect(x: icon.right + 10, y: icon.y, width: APPW - icon.right - 20, height: 20))
+        script = UILabel(frame: CGRect(x: title.x, y: title.bottom, width: title.width, height: 40))
+        let a = UILabel(frame: CGRect(x: APPW - 80, y: title.y, width: 70, height: title.height))
         a.textAlignment = .right
-        let b = UILabel(frame: CGRect(x: X(title), y: YH(script), width: W(title), height: H(title)))
-        let d = UILabel(frame: CGRect(x: X(a), y: Y(b), width: W(a), height: H(a)))
+        let b = UILabel(frame: CGRect(x: title.x, y: script.bottom, width: title.width, height: title.height))
+        let d = UILabel(frame: CGRect(x: a.x, y: b.y, width: a.width, height: a.height))
         d.textAlignment = .right
         d.font = fontSmall
         a.font = d.font
@@ -118,7 +118,7 @@ class DZHomeHeadView1: UICollectionReusableView {
             icon.clipsToBounds = true
             icon.layer.cornerRadius = 20
             icon.image = UIImage(named: "userLogo")
-            let label1 = UILabel(frame: CGRect(x: XW(icon) + 10, y: 10, width: APPW / 2, height: 40), font: fontSmall, color: blacktextcolor, text: "好友蜂蜜绿茶，吃完这家，还有下一家。地点中环广场店")
+            let label1 = UILabel(frame: CGRect(x: icon.right + 10, y: 10, width: APPW / 2, height: 40), font: fontSmall, color: blacktextcolor, text: "好友蜂蜜绿茶，吃完这家，还有下一家。地点中环广场店")
             label1.numberOfLines = 0
             view.addSubviews([icon, label1])
             view.backgroundColor = .red

@@ -99,7 +99,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     float footerHeight = APPH - self.tableView.contentSize.height - TopHeight - 15;
-    [self.tableView.tableFooterView setFrameHeight:footerHeight];
+    CGRect rec = self.tableView.tableFooterView.frame;
+    rec.size.height = footerHeight;
+    self.tableView.tableFooterView.frame = rec;
 }
 #pragma mark - Delegate -
 //MARK: UITableViewDataSource

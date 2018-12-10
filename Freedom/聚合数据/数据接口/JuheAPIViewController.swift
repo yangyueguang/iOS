@@ -13,7 +13,7 @@ class JuheAPICollectionViewCell:BaseCollectionViewCell{
         self.icon = UIImageView(frame: CGRect(x: 10, y: 0, width:self.bounds.size.width-20, height: self.bounds.size.width-20))
         self.icon.layer.cornerRadius = 10
         self.icon.clipsToBounds = true
-        self.title = UILabel(frame: CGRect(x:0, y:YH( self.icon), width:self.icon.bounds.size.width, height: 20))
+        self.title = UILabel(frame: CGRect(x:0, y: self.icon.bottom, width:self.icon.bounds.size.width, height: 20))
         self.title.textAlignment = .center
         self.addSubviews([self.title,self.icon])
         self.title.text = "name"
@@ -32,7 +32,7 @@ view.backgroundColor = .white
     let banner = BaseScrollView(banner: CGRect(x: 0, y: 0, width: APPW, height: 120), icons: ["",""])
         let layout = UICollectionViewFlowLayout()
     layout.itemSize = CGSize(width: (APPW-50)/4, height:90);
-        layout.sectionInset = UIEdgeInsets(top: YH( banner)+10, left: 10, bottom: 0, right:10)
+        layout.sectionInset = UIEdgeInsets(top:  banner.bottom+10, left: 10, bottom: 0, right:10)
     layout.minimumInteritemSpacing = 10;
     layout.minimumLineSpacing = 10;
     

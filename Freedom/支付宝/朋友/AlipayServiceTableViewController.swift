@@ -64,15 +64,15 @@ class AlipayServiceTableViewHeader : UIView,UITextFieldDelegate{
     override func layoutSubviews() {
         let _: CGFloat = 8
         layoutTextFieldSubviews()
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: textFieldSearchIcon.frameHeight * 1.4, height: textFieldSearchIcon.frameHeight))
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: textFieldSearchIcon.height * 1.4, height: textFieldSearchIcon.height))
         textField.leftViewMode = .always
     }
     func layoutTextFieldSubviews() {
         let rect: CGRect = CGRect(x: 0, y: 0, width: APPW, height: 200)
-        textFieldPlaceholderLabel.bounds = CGRect(x: 0, y: 0, width: rect.size.width, height: textField.frameHeight)
-        textFieldPlaceholderLabel.center = CGPoint(x: textField.frame.size.width * 0.5, y: textField.frameHeight * 0.5)
-        textFieldSearchIcon.bounds = CGRect(x: 0, y: 0, width: textField.frameHeight * 0.6, height: textField.frameHeight * 0.6)
-        textFieldSearchIcon.center = CGPoint(x: textFieldPlaceholderLabel.frameX - textFieldSearchIcon.frame.size.width * 0.5, y: textFieldPlaceholderLabel.center.y)
+        textFieldPlaceholderLabel.bounds = CGRect(x: 0, y: 0, width: rect.size.width, height: textField.height)
+        textFieldPlaceholderLabel.center = CGPoint(x: textField.frame.size.width * 0.5, y: textField.height * 0.5)
+        textFieldSearchIcon.bounds = CGRect(x: 0, y: 0, width: textField.height * 0.6, height: textField.height * 0.6)
+        textFieldSearchIcon.center = CGPoint(x: textFieldPlaceholderLabel.x - textFieldSearchIcon.frame.size.width * 0.5, y: textFieldPlaceholderLabel.center.y)
     }
     
     func textFieldValueChanged(_ field: UITextField?) {
@@ -80,7 +80,7 @@ class AlipayServiceTableViewHeader : UIView,UITextFieldDelegate{
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.textField.becomeFirstResponder()
-        let deltaX: CGFloat = textFieldSearchIcon.frameX - 5
+        let deltaX: CGFloat = textFieldSearchIcon.x - 5
         UIView.animate(withDuration: 0.4, animations: {() -> Void in
             self.textFieldSearchIcon.transform = CGAffineTransform(translationX: -deltaX, y: 0)
             self.textFieldPlaceholderLabel.transform = CGAffineTransform(translationX: -deltaX, y: 0)
@@ -108,7 +108,7 @@ class AlipayServiceTableViewController: AlipayBaseViewController {
         navigationItem.title = "朋友"
         tableView.rowHeight = 70
         let header = AlipayServiceTableViewHeader(frame: CGRect.zero)
-        header.frameHeight = 44
+        header.height = 44
         header.setPlaceholderText("搜索朋友")
         tableView.tableHeaderView = header
         var temp = [AnyHashable]()

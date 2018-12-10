@@ -114,7 +114,7 @@ class MJDIYHeader: MJRefreshHeader {
     }
     override var pullingPercent: CGFloat {
         didSet {
-            icon.frameY = 30 * pullingPercent
+            icon.y = 30 * pullingPercent
         }
     }
 

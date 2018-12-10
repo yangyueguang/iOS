@@ -131,12 +131,12 @@ static const NSString *TLThirdPartFriendTypeGoogle = @"3";
     CGContextBeginPath(context);
     if (self.thridPartItems.count == 2) {
         CGContextMoveToPoint(context, self.frame.size.width / 2.0, 0);
-        CGContextAddLineToPoint(context, self.frame.size.width / 2.0, self.frameHeight);
+        CGContextAddLineToPoint(context, self.frame.size.width / 2.0, self.frame.size.height);
     }else if (self.thridPartItems.count == 3) {
         CGContextMoveToPoint(context, self.frame.size.width / 3.0, 0);
-        CGContextAddLineToPoint(context, self.frame.size.width / 3.0, self.frameHeight);
+        CGContextAddLineToPoint(context, self.frame.size.width / 3.0, self.frame.size.height);
         CGContextMoveToPoint(context, self.frame.size.width / 3.0 * 2, 0);
-        CGContextAddLineToPoint(context, self.frame.size.width / 3.0 * 2, self.frameHeight);
+        CGContextAddLineToPoint(context, self.frame.size.width / 3.0 * 2, self.frame.size.height);
     }
     CGContextStrokePath(context);
 }

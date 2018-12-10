@@ -19,11 +19,11 @@ class AlipayYuEBaoTableViewCellContentView: UIView {
         super.init(frame: frame)
         let yestodayView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 180))
         let IncomeView = UIView(frame: CGRect(x: 0, y: 200, width: APPW, height: 100))
-        let shouyiView = UIView(frame: CGRect(x: 0, y: YH(IncomeView), width: APPW, height: 150))
+        let shouyiView = UIView(frame: CGRect(x: 0, y: IncomeView.bottom, width: APPW, height: 150))
         yestodayView.backgroundColor = UIColor(255, 80, 2 ,1)
         shouyiView.backgroundColor = UIColor.lightGray
         let yI = UIImageView(frame: CGRect(x: 15, y: 20, width: 10, height: 10))
-        let yl = UILabel(frame: CGRect(x: XW(yI), y: 15, width: 100, height: 20))
+        let yl = UILabel(frame: CGRect(x: yI.right, y: 15, width: 100, height: 20))
         let yesIncomeL = UILabel(frame: CGRect(x: 10, y: 30, width: APPW, height: 120))
         yI.image = UIImage(named: "calendar")
         yl.text = "昨日收益 (元)"

@@ -48,7 +48,7 @@ class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate,UINav
         textView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangeFrame(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.emotionDidSelect(_:)), name: NSNotification.Name("EmotionDidSelectNotification"), object: nil)
-        toolbar.frame = CGRect(x: 0, y: view.frameHeight - toolbar.frameHeight, width: view.frame.size.width, height: 44)
+        toolbar.frame = CGRect(x: 0, y: view.height - toolbar.height, width: view.frame.size.width, height: 44)
         toolbar.didClickBlock = { buttonType in
             switch buttonType {
             case 0:self.openImagePickerController(.camera)
@@ -80,11 +80,11 @@ class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate,UINav
         let keyboardF : CGRect = ((notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue)!
         let duration  = (notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
         UIView.animate(withDuration: TimeInterval(duration!), animations: {
-            if keyboardF.origin.y > self.view.frameHeight {
+            if keyboardF.origin.y > self.view.height {
                 // 键盘的Y值已经远远超过了控制器view的高度
-                self.toolbar.frameY = self.view.frameHeight - self.toolbar.frameHeight
+                self.toolbar.y = self.view.height - self.toolbar.height
             } else {
-                self.toolbar.frameY = keyboardF.origin.y - self.toolbar.frameHeight
+                self.toolbar.y = keyboardF.origin.y - self.toolbar.height
             }
         })
     }

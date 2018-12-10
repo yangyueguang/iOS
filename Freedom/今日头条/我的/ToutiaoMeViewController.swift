@@ -39,7 +39,7 @@ class ToutiaoMeViewController: ToutiaoBaseViewController {
         head.addSubview(topView)
         let titles = ["收藏","历史","夜间"]
         for i in 0..<3{
-            let buton = UIButton(frame: CGRect(x: CGFloat(i)*APPW/3, y: YH( view), width: APPW/3, height: 60))
+            let buton = UIButton(frame: CGRect(x: CGFloat(i)*APPW/3, y:  view.bottom, width: APPW/3, height: 60))
             buton.setImage(UIImage(named:"wechart"), for: .normal)
             buton.setImage(UIImage(named:titles[i]), for: .normal)
             buton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 45, bottom: 20, right: 45)

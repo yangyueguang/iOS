@@ -55,7 +55,9 @@ static NSString *curID;
     }
 }
 - (void)setRect:(CGRect)rect{
-    self.frameY = rect.origin.y - self.frameHeight + 13;
+    CGRect frame = self.frame;
+    frame.origin.y = rect.origin.y - self.frame.size.height + 13;
+    self.frame = frame;
     CGFloat w = WIDTH_TIPS - WIDTH_CENTER;
     CGFloat centerX = rect.origin.x + rect.size.width / 2;
     if (rect.origin.x + rect.size.width < self.frame.size.width) {     // 箭头在左边

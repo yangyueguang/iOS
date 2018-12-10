@@ -7,8 +7,8 @@ class DZDealListViewTransverseCell:BaseTableViewCell{
     override func initUI() {
         super.initUI()
         icon.frame = CGRect(x: 10, y: 0, width: APPW - 20, height: 60)
-        title.frame = CGRect(x: X(icon), y: YH(icon), width: W(icon), height: 30)
-        script.frame = CGRect(x: X(title), y: YH(title), width: W(title), height: 13)
+        title.frame = CGRect(x: icon.x, y: icon.bottom, width: icon.width, height: 30)
+        script.frame = CGRect(x: title.x, y: title.bottom, width: title.width, height: 13)
         title.numberOfLines = 0
         title.font = fontSmall
         script.font = Font(11)
@@ -23,13 +23,13 @@ class DZDealListViewVerticalCell:BaseTableViewCell{
         super.initUI()
         icon.frame = CGRect(x: 10, y: 10, width: 70, height: 70)
 
-        let name = UILabel(frame: CGRect(x: XW(icon) + 10, y: 10, width: APPW - XW(icon) - 30, height: 20), font: fontMiddle,color:UIColor(0, 111, 255),text: "")
-        let times = UILabel(frame: CGRect(x: APPW - 100, y: Y(name), width: 80, height: 15), font: Font(11), color: .gray, text: nil)
+        let name = UILabel(frame: CGRect(x: icon.right + 10, y: 10, width: APPW - icon.right - 30, height: 20), font: fontMiddle,color:UIColor(0, 111, 255),text: "")
+        let times = UILabel(frame: CGRect(x: APPW - 100, y: name.y, width: 80, height: 15), font: Font(11), color: .gray, text: nil)
         times.textAlignment = .right
-        title.frame = CGRect(x: X(name), y: YH(name) + 5, width: W(name), height: 20)
+        title.frame = CGRect(x: name.x, y: name.bottom + 5, width: name.width, height: 20)
         title.font = fontSmall
-        script.frame = CGRect(x: X(title), y: YH(title) + 5, width: 80, height: 20)
-        let sees = UILabel(frame: CGRect(x: X(times), y: Y(script), width: W(times), height: 15), font: Font(11), color: .gray, text: nil)
+        script.frame = CGRect(x: title.x, y: title.bottom + 5, width: 80, height: 20)
+        let sees = UILabel(frame: CGRect(x: times.x, y: script.y, width: times.width, height: 15), font: Font(11), color: .gray, text: nil)
         sees.textAlignment = .right
         line.frame = CGRect(x: 0, y: 100 - 1, width: APPW, height: 1)
         script.backgroundColor = .red
@@ -47,7 +47,7 @@ class DZDealListViewVerticalCell:BaseTableViewCell{
 class DZDealListViewController: DZBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-            tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: view.frameHeight - 20), style: .plain)
+            tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: view.height - 20), style: .plain)
             tableView.dataArray = ["b", "a", "v", "f", "d", "a", "w", "u", "n", "o", "b", "a", "v", "f", "d", "a", "w", "u", "n", "o", "b", "a", "v", "f", "d", "a", "w", "u", "n", "o", "2"]
             tableView.dataSource = self
             tableView.delegate = self

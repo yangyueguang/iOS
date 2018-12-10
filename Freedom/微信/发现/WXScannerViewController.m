@@ -42,12 +42,14 @@
             return;
         }
         self.scannerLine.center = CGPointMake(self.bgView.center.x,self.scannerLine.center.y);
-        self.scannerLine.frameHeight = 10;
-        if (self.scannerLine.frameY + self.scannerLine.frameHeight >= self.frameHeight) {
-            self.scannerLine.frameY = 0;
+        CGRect rec = self.scannerLine.frame;
+        rec.size.height = 10;
+        if (self.scannerLine.frame.origin.y + self.scannerLine.frame.size.height >= self.frame.size.height) {
+            rec.origin.y = 0;
         }else{
-            self.scannerLine.frameY ++;
+            rec.origin.y ++;
         }
+        self.scannerLine.frame = rec;
         self.scannerLine.frame = CGRectMake(self.scannerLine.frame.origin.x, self.scannerLine.frame.origin.y, self.bgView.frame.size.width * 1.4, self.scannerLine.frame.size.height);
     } repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
@@ -64,13 +66,17 @@
     }
     
     if (hiddenScannerIndicator) {
-        self.scannerLine.frameY = 0;
+        CGRect rec = self.scannerLine.frame;
+        rec.origin.y = 0;
+        self.scannerLine.frame = rec;
         [self.scannerLine setHidden:YES];
         _hiddenScannerIndicator = hiddenScannerIndicator;
     }else{
         _hiddenScannerIndicator = hiddenScannerIndicator;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.scannerLine.frameY = 0;
+            CGRect rec = self.scannerLine.frame;
+            rec.origin.y = 0;
+            self.scannerLine.frame = rec;
             [self.scannerLine setHidden:hiddenScannerIndicator];
         });
     }
@@ -305,7 +311,7 @@
     }];
     
     // rect值范围0-1，基准点在右上角
-    CGRect rect = CGRectMake(self.scannerView.frameY / APPH, self.scannerView.frameX / APPW, self.scannerView.frameHeight / APPH, self.scannerView.frame.size.width / APPW);
+    CGRect rect = CGRectMake(self.scannerView.frame.origin.y / APPH, self.scannerView.frame.origin.x/ APPW, self.scannerView.frame.size.height / APPH, self.scannerView.frame.size.width / APPW);
     [self.scannerSession.outputs[0] setRectOfInterest:rect];
     if (!self.isRunning) {
         [self startCodeReading];

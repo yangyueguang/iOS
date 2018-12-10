@@ -20,7 +20,7 @@ class BaseSearchBarView: UISearchBar {
             searchBarTextField.backgroundColor = .black
             searchBarTextField.layer.cornerRadius = 18// searchBarTextField.frame.size.width/2
             searchBarTextField.clipsToBounds = true
-            searchBarTextField.frameHeight = 10
+            searchBarTextField.height = 10
             searchBarTextField.defaultTextAttributes = [:]
         }
 //        let sea = subviews.first?.subviews.last

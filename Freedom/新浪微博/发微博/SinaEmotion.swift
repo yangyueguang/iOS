@@ -110,12 +110,12 @@ class SinaEmotionListView: UIView, UIScrollViewDelegate {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        pageControl.frame = CGRect(x: 0, y: frameHeight - pageControl.frameHeight, width: frame.size.width, height: 35)
-        scrollView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: pageControl.frameY)
+        pageControl.frame = CGRect(x: 0, y: height - pageControl.height, width: frame.size.width, height: 35)
+        scrollView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: pageControl.y)
         let count: Int = scrollView.subviews.count
         for i in 0..<count {
             let pageView = scrollView.subviews[i] as? SinaEmotionPageView
-            pageView?.frame = CGRect(x: CGFloat(i) * (pageView?.frame.size.width)!, y: 0, width: scrollView.frame.size.width, height: scrollView.frameHeight)
+            pageView?.frame = CGRect(x: CGFloat(i) * (pageView?.frame.size.width)!, y: 0, width: scrollView.frame.size.width, height: scrollView.height)
         }
         scrollView.contentSize = CGSize(width: CGFloat(count) * scrollView.frame.size.width, height: 0)
     }
@@ -242,7 +242,7 @@ class SinaEmotionTabBar: UIView {
         let btnW = frame.size.width / CGFloat(btnCount)
         for i in 0..<btnCount {
             let btn: UIButton? = subviews[i] as? UIButton
-            btn?.frame = CGRect(x: CGFloat(i) * btnW, y: 0, width: btnW, height: frameHeight)
+            btn?.frame = CGRect(x: CGFloat(i) * btnW, y: 0, width: btnW, height: height)
         }
     }
 }
@@ -293,12 +293,12 @@ class SinaEmotionPageView: UIView {
         let inset: CGFloat = 20
         let count = emotions.count
         let btnw: CGFloat = (frame.size.width - 2 * inset) / 7
-        let btnH: CGFloat = (frameHeight - inset) / 3
+        let btnH: CGFloat = (height - inset) / 3
         for i in 0..<count {
             let btn: UIButton? = subviews[i + 1] as? UIButton
             btn?.frame = CGRect(x: inset + CGFloat(i % 7) * btnw, y: inset + CGFloat(i / 7) * btnH, width: btnw, height: btnH)
         }
-        deleteButton.frame = CGRect(x: frame.size.width - inset - btnw, y: frameHeight - btnH, width: btnw, height: btnH)
+        deleteButton.frame = CGRect(x: frame.size.width - inset - btnw, y: height - btnH, width: btnw, height: btnH)
     }
 }
 class SinaComposeToolbar: UIView {
@@ -339,7 +339,7 @@ class SinaComposeToolbar: UIView {
         super.layoutSubviews()
         let count = subviews.count
         let btnW = CGFloat(frame.size.width / CGFloat(count))
-        let btnH = frameHeight
+        let btnH = height
         for i in 0..<count {
             let btn: UIButton? = subviews[i] as? UIButton
             btn?.frame = CGRect(x: CGFloat(i) * btnW, y: 0, width: btnW, height: btnH)
@@ -395,7 +395,7 @@ class SinaEmotionKeyboard: UIView {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        tabBar.frame = CGRect(x: 0, y: frameHeight - tabBar.frameHeight, width: frame.size.width, height: 37)
-        showingListView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: tabBar.frameY)
+        tabBar.frame = CGRect(x: 0, y: height - tabBar.height, width: frame.size.width, height: 37)
+        showingListView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: tabBar.y)
     }
 }

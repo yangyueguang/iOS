@@ -105,7 +105,7 @@
     }
 }
 - (void)setRect:(CGRect)rect{
-    self.center = CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height - self.frameHeight + 15.0+self.frameHeight/2);
+    self.center = CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height - self.frame.size.height + 15.0+self.frame.size.height/2);
 }
 #pragma mark - Private Methods -
 - (void)p_addMasonry{
@@ -296,19 +296,19 @@
 - (void)textViewDidChange:(UITextView *)textView{
     CGFloat height = [textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, MAXFLOAT)].height;
     height = height > 36 ? height : 36;
-    height = (height <= 115 ? height : textView.frameHeight);
-    if (height != textView.frameHeight) {
+    height = (height <= 115 ? height : textView.frame.size.height);
+    if (height != textView.frame.size.height) {
         [UIView animateWithDuration:0.2 animations:^{
             [textView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(height);
             }];
             [self.superview layoutIfNeeded];
             if (_delegate && [_delegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
-                [_delegate chatBar:self didChangeTextViewHeight:textView.frameHeight];
+                [_delegate chatBar:self didChangeTextViewHeight:textView.frame.size.height];
             }
         } completion:^(BOOL finished) {
             if (_delegate && [_delegate respondsToSelector:@selector(chatBar:didChangeTextViewHeight:)]) {
-                [_delegate chatBar:self didChangeTextViewHeight:textView.frameHeight];
+                [_delegate chatBar:self didChangeTextViewHeight:textView.frame.size.height];
             }
         }];
     }

@@ -39,7 +39,7 @@ class DaRenTaoCell: UICollectionViewCell {
         daren.setTitleColor(UIColor.red, for: .normal)
         let more = UILabel(frame: CGRect(x: APPW - 80, y: 0, width: 60, height: 20))
         more.text = "更多 >"
-        let mainView = UIView(frame: CGRect(x: 0, y: YH(daren), width: APPW, height: H(self) - YH(daren) - 30))
+        let mainView = UIView(frame: CGRect(x: 0, y: daren.bottom, width: APPW, height: self.height - daren.bottom - 30))
         mainView.backgroundColor = UIColor.white
         let height: CGFloat = (APPW - 32) / 3 + 14 + 3 + 12 + 3
         let view1 = TitlesImageViewFull(frame: CGRect(x: 8, y: 6, width: (APPW - 32) / 3, height: height))
@@ -58,9 +58,9 @@ class DaRenTaoCell: UICollectionViewCell {
         view3.subtitle.text = "我有我的fan"
         view2.imageview.image = UIImage(named: "a")
         view3.imageview.image = UIImage(named: "a")
-        let subscrib = UILabel(frame: CGRect(x: 10, y: YH(mainView) - 20, width: APPW - 100, height: 20))
+        let subscrib = UILabel(frame: CGRect(x: 10, y: mainView.bottom - 20, width: APPW - 100, height: 20))
         subscrib.text = "小秘书为你精选推荐的N个达人"
-        let icon = UIImageView(frame: CGRect(x: APPW - 40, y: Y(subscrib), width: 30, height: 30))
+        let icon = UIImageView(frame: CGRect(x: APPW - 40, y: subscrib.y, width: 30, height: 30))
         icon.image = UIImage(named: "a")
         addSubviews([daren, more, mainView, subscrib, icon])
     }
@@ -71,11 +71,11 @@ class DaRenTaoCell: UICollectionViewCell {
 class Cell1: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let image1 = UIImageView(frame: CGRect(x: 0, y: 0, width: W(self) * 2 / 5.0, height: H(self)))
-        let image2 = UIImageView(frame: CGRect(x: XW(image1) + 1, y: 0, width: W(self) - XW(image1) - 1, height: H(self) / 2.0))
-        let view = UIView(frame: CGRect(x: X(image2), y: YH(image2) + 1, width: W(image2), height: H(image2) - 1))
-        let image3 = UIImageView(frame: CGRect(x: 0, y: 0, width: (W(view) - 1) / 2.0, height: H(view)))
-        let image4 = UIImageView(frame: CGRect(x: XW(image3) + 1, y: 0, width: W(image3), height: H(image3)))
+        let image1 = UIImageView(frame: CGRect(x: 0, y: 0, width: self.width * 2 / 5.0, height:self.height))
+        let image2 = UIImageView(frame: CGRect(x: image1.right + 1, y: 0, width: self.width - image1.right - 1, height: self.height / 2.0))
+        let view = UIView(frame: CGRect(x: image2.x, y: image2.bottom + 1, width: image2.width, height: image2.height - 1))
+        let image3 = UIImageView(frame: CGRect(x: 0, y: 0, width: (view.width - 1) / 2.0, height: view.height))
+        let image4 = UIImageView(frame: CGRect(x: image3.right + 1, y: 0, width: image3.width, height: image3.height))
         view.addSubviews([image3, image4])
         addSubviews([image1, image2, view])
         image1.image = UIImage(named: "taobao01.jpg")
@@ -90,17 +90,17 @@ class Cell1: UICollectionViewCell {
 class GridCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let iv = UIImageView(frame: CGRect(x: 0, y: 0, width: W(self), height: H(self) - 60))
+        let iv = UIImageView(frame: CGRect(x: 0, y: 0, width: self.width, height: self.height - 60))
         iv.clipsToBounds = true
         let bgview = UIView(frame: bounds)
         bgview.layer.shadowColor = UIColor.black.cgColor
         bgview.layer.shadowOffset = CGSize(width: 0, height: 1)
         bgview.layer.shadowOpacity = 0.2
         bgview.layer.shadowRadius = 10
-        let titleLab = UILabel(frame: CGRect(x: 0, y: YH(iv), width: W(self), height: 40))
+        let titleLab = UILabel(frame: CGRect(x: 0, y: iv.bottom, width: self.width, height: 40))
         titleLab.highlightedTextColor = UIColor(200, 200, 200)
-        let priceLabel = UILabel(frame: CGRect(x: 10, y: YH(titleLab), width: 100, height: 20))
-        let flagLab = UILabel(frame: CGRect(x: W(self) - 60, y: Y(priceLabel), width: 40, height: 20))
+        let priceLabel = UILabel(frame: CGRect(x: 10, y: titleLab.bottom, width: 100, height: 20))
+        let flagLab = UILabel(frame: CGRect(x: self.width - 60, y: priceLabel.y, width: 40, height: 20))
         flagLab.backgroundColor = UIColor.red
         addSubviews([bgview, iv, titleLab, priceLabel, flagLab])
         iv.image = UIImage(named: "image1.jpg")
@@ -115,11 +115,11 @@ class GridCell: UICollectionViewCell {
 class GridCell2: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let image1 = UIImageView(frame: CGRect(x: 0, y: 0, width: W(self) * 2 / 3.0, height: H(self) - 40))
-        let image2 = UIImageView(frame: CGRect(x: XW(image1), y: 0, width: W(self) - XW(image1), height: H(image1) / 2))
-        let image3 = UIImageView(frame: CGRect(x: X(image2), y: YH(image2), width: W(image2), height: H(image2)))
-        let label1 = UILabel(frame: CGRect(x: 10, y: YH(image1), width: W(self) - 20, height: 20))
-        let label2 = UILabel(frame: CGRect(x: X(label1), y: YH(label1), width: W(label1), height: H(label1)))
+        let image1 = UIImageView(frame: CGRect(x: 0, y: 0, width: self.width * 2 / 3.0, height: self.height - 40))
+        let image2 = UIImageView(frame: CGRect(x: image1.right, y: 0, width: self.width - image1.right, height: image1.height / 2))
+        let image3 = UIImageView(frame: CGRect(x: image2.x, y: image2.bottom, width: image2.width, height: image2.height))
+        let label1 = UILabel(frame: CGRect(x: 10, y: image1.bottom, width: self.width - 20, height: 20))
+        let label2 = UILabel(frame: CGRect(x: label1.x, y: label1.bottom, width: label1.width, height: label1.height))
         label2.font = Font(13)
         addSubviews([image1, image2, image3, label1, label2])
         image1.image = UIImage(named: "image1.jpg")
@@ -135,11 +135,11 @@ class GridCell2: UICollectionViewCell {
 class GridCell3: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let iv = UIImageView(frame: CGRect(x: 10, y: 10, width: W(self) - 20, height: W(self) - 20))
+        let iv = UIImageView(frame: CGRect(x: 10, y: 10, width: self.width - 20, height: self.width - 20))
         iv.layer.cornerRadius = (APPW / 5 - 8 / 5 - 20) / 2
         iv.layer.masksToBounds = true
         iv.clipsToBounds = true
-        let name = UILabel(frame: CGRect(x: 0, y: YH(iv), width: W(self), height: 20))
+        let name = UILabel(frame: CGRect(x: 0, y: iv.bottom, width: self.width, height: 20))
         name.textAlignment = .center
         name.text = "天猫来了"
         addSubviews([iv, name])
@@ -153,12 +153,12 @@ class HotShiChangCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let dataArr = [["title": "内衣", "subtitle": "性感装备", "image": "taobao06.jpg", "icon": ""], ["title": "数码", "subtitle": "潮流新机", "image": "taobao06.jpg", "icon": ""], ["title": "运动", "subtitle": "潮流新品", "image": "taobao07.jpg", "icon": ""], ["title": "家电", "subtitle": "爆款现货抢", "image": "taobao06.jpg", "icon": ""], ["title": "美女", "subtitle": "暖被窝女神", "image": "taobao07.jpg", "icon": ""], ["title": "质+", "subtitle": "休息裙", "image": "taobao06.jpg", "icon": ""], ["title": "中老年", "subtitle": "巧策", "image": "taobao07.jpg", "icon": ""], ["title": "篮球公园", "subtitle": "虎扑识货", "image": "taobao06.jpg", "icon": ""]]
-        let titleButton = UIButton(frame: CGRect(x: W(self) / 2 - 50, y: 0, width: 100, height: 20))
+        let titleButton = UIButton(frame: CGRect(x: self.width / 2 - 50, y: 0, width: 100, height: 20))
         titleButton.setTitle("热门市场", for: .normal)
         titleButton.setImage(UIImage(named: "hot"), for: .normal)
-        let more = UILabel(frame: CGRect(x: W(self) - 80, y: 0, width: 60, height: 20))
+        let more = UILabel(frame: CGRect(x: self.width - 80, y: 0, width: 60, height: 20))
         more.text = "更多 >"
-        let mainView = UIView(frame: CGRect(x: 0, y: YH(titleButton), width: W(self), height: H(self) - YH(titleButton) - 80))
+        let mainView = UIView(frame: CGRect(x: 0, y: titleButton.bottom, width: self.width, height: self.width - titleButton.bottom - 80))
         mainView.backgroundColor = UIColor.clear
         let view1 = TitlesImageViewFull(frame: CGRect(x: 0, y: 0, width: (APPW - 1) / 2, height: 120))
         let view2 = TitlesImageViewFull(frame: CGRect(x: (APPW - 1) / 2 + 1, y: 0, width: (APPW - 1) / 2, height: 120))
@@ -172,7 +172,7 @@ class HotShiChangCell: UICollectionViewCell {
         view2.subtitle.text = "新品推荐"
         view1.imageview.image = UIImage(named: "taobao05.jpg")
         view2.imageview.image = UIImage(named: "taobao05.jpg")
-        let footimage = UIImageView(frame: CGRect(x: 0, y: YH(mainView), width: W(self), height: 80))
+        let footimage = UIImageView(frame: CGRect(x: 0, y: mainView.bottom, width: self.width, height: 80))
         footimage.image = UIImage(named: "image2.jpg")
         addSubviews([titleButton, more, mainView, footimage])
         var view: TitlesImageViewFull?
@@ -232,8 +232,8 @@ class Headview2: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let icon = UIImageView(frame: CGRect(x: 0, y: 10, width: 40, height: 40))
-        let title = UILabel(frame: CGRect(x: XW(icon), y: 0, width: 200, height: 20))
-        let subscrib = UILabel(frame: CGRect(x: X(title), y: YH(title), width: W(title), height: 20))
+        let title = UILabel(frame: CGRect(x: icon.right, y: 0, width: 200, height: 20))
+        let subscrib = UILabel(frame: CGRect(x: title.x, y: title.bottom, width: title.width, height: 20))
         contentMode = .center
         addSubviews([icon, title, subscrib])
         icon.image = UIImage(named: "xin")
@@ -263,9 +263,9 @@ class Headview3: UICollectionReusableView {
 class Footview0: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: H(self), height: H(self)))
+        let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: self.height, height: self.height))
         icon.image = UIImage(named: "toutiao.jpg")
-        let mainview = UIView(frame: CGRect(x: XW(icon) + 1, y: 0, width: W(self) - XW(icon) - 1, height: H(self)))
+        let mainview = UIView(frame: CGRect(x: icon.right + 1, y: 0, width: self.width - icon.right - 1, height: self.height))
         let scroll = UIScrollView()
         scroll.frame = CGRect(x: 0, y: 0, width: APPW - 50 * 3 / 2, height: 50)
         scroll.isPagingEnabled = true
@@ -293,7 +293,7 @@ class Footview1: UICollectionReusableView {
         let name = UILabel(frame: CGRect(x: 10, y: 10, width: APPW - 20, height: 20))
         name.textAlignment = .center
         name.text = "宝贝已经看完了，18：00后更新"
-        let image = UIImageView(frame: CGRect(x: 10, y: YH(name), width: W(name), height: 70))
+        let image = UIImageView(frame: CGRect(x: 10, y: name.bottom, width: name.width, height: 70))
         image.image = UIImage(named: "image2.jpg")
         addSubviews([name, image])
     }

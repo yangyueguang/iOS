@@ -11,14 +11,14 @@ import ElasticTransitionObjC
 class CollectionViewCell1:BaseCollectionViewCell {
     var view: UIView = UIView()
     override func initUI() {
-        view.frame = CGRect(x: 0, y: (H(self) - 80) * 0.5, width: 80, height: 80)
+        view.frame = CGRect(x: 0, y: (self.height - 80) * 0.5, width: 80, height: 80)
         view.backgroundColor = UIColor.clear
         icon = UIImageView(frame: view.frame)
         icon.layer.borderWidth = 2
         icon.layer.cornerRadius = 40
         view.addSubview(icon)
         contentView.addSubview(view)
-        title = UILabel(frame: CGRect(x: XW(icon), y: (H(self) - 20) * 0.5, width: 200, height: 20))
+        title = UILabel(frame: CGRect(x: icon.right, y: (self.height - 20) * 0.5, width: 200, height: 20))
         contentView.addSubview(title)
         icon.clipsToBounds = true
     }
@@ -225,14 +225,14 @@ class FirstViewController: BaseViewController,UICollectionViewDataSource, UIColl
         settingsView.backgroundColor = UIColor(white: 1.0, alpha: 0.6)
         exampleSwitch.addTarget(self, action: #selector(self.switchExample), for: .valueChanged)
         exampleSwitch.isOn = true
-        radiusLabel.frame = CGRect(x: 30, y: YH(exampleSwitch) + 20, width: APPW - 60, height: 20)
-        radiusSlider.frame = CGRect(x: 30, y: YH(radiusLabel) + 10, width: W(settingsView) - 60, height: 20)
+        radiusLabel.frame = CGRect(x: 30, y: exampleSwitch.bottom + 20, width: APPW - 60, height: 20)
+        radiusSlider.frame = CGRect(x: 30, y: radiusLabel.bottom + 10, width: settingsView.width - 60, height: 20)
         radiusSlider.addTarget(self, action: #selector(self.updateDialSettings), for: .valueChanged)
-        angularSpacingLabel.frame = CGRect(x: 30, y: YH(radiusSlider) + 20, width: 100, height: 20)
-        angularSpacingSlider.frame = CGRect(x: 30, y: YH(angularSpacingLabel) + 10, width: W(settingsView) - 60, height: 20)
+        angularSpacingLabel.frame = CGRect(x: 30, y: radiusSlider.bottom + 20, width: 100, height: 20)
+        angularSpacingSlider.frame = CGRect(x: 30, y: angularSpacingLabel.bottom + 10, width: settingsView.width - 60, height: 20)
         angularSpacingSlider.addTarget(self, action: #selector(self.updateDialSettings), for: .valueChanged)
-        xOffsetLabel.frame = CGRect(x: 30, y: YH(angularSpacingSlider) + 20, width: 100, height: 20)
-        xOffsetSlider.frame = CGRect(x: 30, y: YH(xOffsetLabel) + 10, width: W(settingsView) - 60, height: 20)
+        xOffsetLabel.frame = CGRect(x: 30, y: angularSpacingSlider.bottom + 20, width: 100, height: 20)
+        xOffsetSlider.frame = CGRect(x: 30, y: xOffsetLabel.bottom + 10, width: settingsView.width - 60, height: 20)
         xOffsetSlider.addTarget(self, action: #selector(self.updateDialSettings), for: .valueChanged)
         settingsView.addSubviews([exampleSwitch, radiusLabel, radiusSlider, angularSpacingLabel, angularSpacingSlider, xOffsetLabel, xOffsetSlider])
         view.addSubview(settingsView)

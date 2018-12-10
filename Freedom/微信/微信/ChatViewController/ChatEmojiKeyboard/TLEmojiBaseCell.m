@@ -286,7 +286,7 @@
     CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, self.frame.size.width - 0.5, 5);
-    CGContextAddLineToPoint(context, self.frame.size.width - 0.5, self.frameHeight - 5);
+    CGContextAddLineToPoint(context, self.frame.size.width - 0.5, self.frame.size.height - 5);
     CGContextStrokePath(context);
 }
 #pragma mark - Getter -
@@ -384,11 +384,11 @@
     return cell;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(WIDTH_EMOJIGROUP_CELL, self.frameHeight);
+    return CGSizeMake(WIDTH_EMOJIGROUP_CELL, self.frame.size.height);
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     if (section == self.emojiGroupData.count - 1) {
-        return CGSizeMake(WIDTH_EMOJIGROUP_CELL * 2, self.frameHeight);
+        return CGSizeMake(WIDTH_EMOJIGROUP_CELL * 2, self.frame.size.height);
     }
     return CGSizeZero;
 }
@@ -435,7 +435,7 @@
     CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, WIDTH_EMOJIGROUP_CELL, 5);
-    CGContextAddLineToPoint(context, WIDTH_EMOJIGROUP_CELL, self.frameHeight - 5);
+    CGContextAddLineToPoint(context, WIDTH_EMOJIGROUP_CELL, self.frame.size.height - 5);
     CGContextStrokePath(context);
 }
 #pragma mark - Event Response -

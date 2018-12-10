@@ -32,7 +32,7 @@ class KugouLookViewController: KugouBaseViewController {
         let titleArr = ["MV", "繁星直播", "酷狗LIVE"]
         for i in 0..<3 {
             let btnX: CGFloat = magin + (magin + btnW) * CGFloat(i)
-            let btn = UIButton(frame: CGRect(x: btnX, y: banner.frameHeight + 15, width: btnW, height: btnH))
+            let btn = UIButton(frame: CGRect(x: btnX, y: banner.height + 15, width: btnW, height: btnH))
             btn.imageView?.contentMode = .scaleAspectFit
             btn.titleLabel?.textAlignment = .center
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)

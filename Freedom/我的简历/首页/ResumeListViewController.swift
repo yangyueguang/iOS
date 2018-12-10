@@ -11,8 +11,8 @@ import XCarryOn
 class ResumeListViewCell:BaseTableViewCell{
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x: 10, y: 10, width: 40, height: 40))
-        self.title = UILabel(frame: CGRect(x: XW( self.icon)+10, y: 10, width: APPW-100, height: 20))
-        self.script = UILabel(frame: CGRect(x: self.title.x, y: YH( self.title), width: APPW-100, height: 20))
+        self.title = UILabel(frame: CGRect(x: self.icon.right+10, y: 10, width: APPW-100, height: 20))
+        self.script = UILabel(frame: CGRect(x: self.title.x, y:  self.title.bottom, width: APPW-100, height: 20))
         self.script.textColor = .gray
         addSubviews([self.icon,self.title,self.script])
     }

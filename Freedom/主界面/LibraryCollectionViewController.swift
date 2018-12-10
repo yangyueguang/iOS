@@ -15,7 +15,7 @@ class LibraryCollectionViewCell: BaseCollectionViewCell {
         icon.frame = CGRect(x: 0, y: 0, width: APPW / 5, height: 80)
         icon.layer.cornerRadius = 40
         icon.clipsToBounds = true
-        title.frame = CGRect(x: 0, y: YH(icon), width: W(icon), height: 20)
+        title.frame = CGRect(x: 0, y: icon.bottom, width: icon.width, height: 20)
         title.textAlignment = .center
         backgroundColor = UIColor.clear
         addSubviews([icon, title])

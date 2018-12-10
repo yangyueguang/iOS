@@ -8,7 +8,7 @@ class JuheDynamicCollectionViewCell:BaseCollectionViewCell{
     override func initUI() {
         backgroundColor = .white
         self.icon = UIImageView(frame: CGRect(x: 10, y:0, width:self.bounds.size.width-20, height:self.bounds.size.height-20))
-        self.title = UILabel(frame: CGRect(x:10, y:YH( self.icon), width:self.bounds.size.width-20, height: 20))
+        self.title = UILabel(frame: CGRect(x:10, y: self.icon.bottom, width:self.bounds.size.width-20, height: 20))
         self.title.textAlignment = .center
         title.font = UIFont.systemFont(ofSize: 14)
         title.backgroundColor = .red

@@ -12,7 +12,7 @@ class JuheQuestionViewCell:BaseTableViewCell{
     override func initUI() {
         accessoryType = .disclosureIndicator
         self.icon = UIImageView(frame: CGRect(x: 10, y: 10, width: 40, height: 40))
-        self.title = UILabel(frame: CGRect(x:XW( self.icon)+10, y: 10, width: APPW-XW( self.icon)-20, height: 20))
+        self.title = UILabel(frame: CGRect(x:self.icon.right+10, y: 10, width: APPW-self.icon.right-20, height: 20))
         self.line = UIView(frame: CGRect(x: 10, y: 69, width: APPW-20, height: 1))
         self.addSubviews([self.title,self.icon,self.line])
         self.title.text = "免费接口，不认证会影响使用吗？"

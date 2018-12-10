@@ -45,7 +45,7 @@
         CGContextBeginPath(context);
         CGFloat startX = (self.bottomLineStyle == TLCellLineStyleFill ? 0 : _leftSeparatorSpace);
         CGFloat endX = self.frame.size.width - self.rightSeparatorSpace;
-        CGFloat y = self.frameHeight;
+        CGFloat y = self.frame.size.height;
         CGContextMoveToPoint(context, startX, y);
         CGContextAddLineToPoint(context, endX, y);
         CGContextStrokePath(context);

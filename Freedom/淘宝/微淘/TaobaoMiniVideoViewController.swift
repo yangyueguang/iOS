@@ -7,20 +7,20 @@ class TaobaoMiniVideoViewCell:BaseTableViewCell{
     override func initUI() {
         super.initUI()
         icon.frame = CGRect(x: 10, y: 10, width: 30, height: 30)
-        let name = UILabel(frame: CGRect(x: XW(icon) + 10, y: Y(icon) - 5, width: APPW - XW(icon) - 20, height: 20), font: fontMiddle, color:UIColor(0, 111, 255), text: nil)
-        let times = UILabel(frame: CGRect(x: X(name), y: YH(name), width: W(name), height: 15), font: fontSmall, color: .gray, text: nil)
-        let picV = UIImageView(frame: CGRect(x: X(icon), y: YH(icon) + 10, width: APPW - 20, height: 130))
-        let cellContentView = UIView(frame: CGRect(x: X(picV), y: YH(picV), width: W(picV), height: 60))
+        let name = UILabel(frame: CGRect(x: icon.right + 10, y: icon.y - 5, width: APPW - icon.right - 20, height: 20), font: fontMiddle, color:UIColor(0, 111, 255), text: nil)
+        let times = UILabel(frame: CGRect(x: name.x, y: name.bottom, width: name.width, height: 15), font: fontSmall, color: .gray, text: nil)
+        let picV = UIImageView(frame: CGRect(x: icon.x, y: icon.bottom + 10, width: APPW - 20, height: 130))
+        let cellContentView = UIView(frame: CGRect(x: picV.x, y: picV.bottom, width: picV.width, height: 60))
         cellContentView.backgroundColor = .lightGray
         title.removeFromSuperview()
         script.removeFromSuperview()
-        title.frame = CGRect(x: 0, y: 0, width: W(cellContentView), height: 20)
-        script.frame = CGRect(x: X(title), y: YH(title), width: W(title), height: 40)
+        title.frame = CGRect(x: 0, y: 0, width: cellContentView.width, height: 20)
+        script.frame = CGRect(x: title.x, y: title.bottom, width: title.width, height: 40)
         script.numberOfLines = 0
         cellContentView.addSubviews([title, script])
-        let sees = UILabel(frame: CGRect(x: 10, y: YH(cellContentView) + 10, width: 100, height: 15), font: fontSmall, color: .gray, text: nil)
-        let zan = UIButton(frame: CGRect(x: APPW - 130, y: Y(sees) - 2, width: 55, height: 19))
-        let pinglun = UIButton(frame: CGRect(x: XW(zan) + 10, y: Y(zan), width: W(zan), height: H(zan)))
+        let sees = UILabel(frame: CGRect(x: 10, y: cellContentView.bottom + 10, width: 100, height: 15), font: fontSmall, color: .gray, text: nil)
+        let zan = UIButton(frame: CGRect(x: APPW - 130, y: sees.y - 2, width: 55, height: 19))
+        let pinglun = UIButton(frame: CGRect(x: zan.right + 10, y: zan.y, width: zan.width, height: zan.height))
         zan.layer.cornerRadius = 7.5
         zan.layer.borderWidth = 0.5
         zan.clipsToBounds = true
@@ -46,7 +46,7 @@ class TaobaoMiniVideoViewCell:BaseTableViewCell{
 class TaobaoMiniVideoViewController: TaobaoBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: view.frameHeight - 20), style: .plain)
+        tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: view.height - 20), style: .plain)
         tableView.dataArray = ["b", "a", "v", "f", "d", "a", "w", "u", "n", "o", "2"]
         tableView.dataSource = self
         tableView.delegate = self

@@ -207,7 +207,7 @@ open class BaseScrollView : UIScrollView, UIScrollViewDelegate {
             button.addSubview(namelable)
         }
         self.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: stary + size.height)
-        print("最终的frameY是：\(self.frame.size.height+self.frame.origin.y))")
+        print("最终的y是：\(self.frame.size.height+self.frame.origin.y))")
     }
 
     //FIXME:内容小项目滑动，一般在主页并且有分页的
@@ -259,7 +259,7 @@ open class BaseScrollView : UIScrollView, UIScrollViewDelegate {
         }
         self.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: size.height * CGFloat(hang))
         contentSize = CGSize(width: self.frame.size.width * CGFloat(titles.count / qnum + (titles.count % qnum>0 ? 1 : 0)), height: frame.size.height)
-        print("最终的frameY是：\(self.frame.size.height))")
+        print("最终的y是：\(self.frame.size.height))")
     }
     
     //FIXME:内容视图滑动，如新闻类

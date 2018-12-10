@@ -28,7 +28,7 @@ class AlipayDiscoverTableViewController: AlipayBaseViewController {
         super.viewDidLoad()
         navigationItem.title = "口碑"
         let header = UIView(frame: CGRect.zero)
-        header.frameHeight = 90
+        header.height = 90
         let model01 = AlipayAssetsTableViewControllerCellModel(title: "淘宝电影", iconImageName: "adw_icon_movie_normal", destinationControllerClass: BaseTableView.self)
         let model02 = AlipayAssetsTableViewControllerCellModel(title: "快抢", iconImageName: "adw_icon_flashsales_normal", destinationControllerClass: BaseTableView.self)
         let model03 = AlipayAssetsTableViewControllerCellModel(title: "快的打车", iconImageName: "adw_icon_taxi_normal", destinationControllerClass: BaseTableView.self)

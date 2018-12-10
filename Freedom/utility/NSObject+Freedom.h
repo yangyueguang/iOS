@@ -11,10 +11,6 @@
 @interface UIView (Freedom)
 - (void)shake;
 - (UIImage *)imageFromView ;
-
-@property (nonatomic) CGFloat frameX;
-@property (nonatomic) CGFloat frameY;
-@property (nonatomic) CGFloat frameHeight;
 -(void)linearColorFromcolors:(NSArray<UIColor*>*)colors;
 -(void)linearColorFromcolors:(NSArray<UIColor*>*)colors isHorizantal:(BOOL)hor;
 -(UIImage*)gotCircleLinearFromColors:(NSArray<UIColor*> *)colors;
