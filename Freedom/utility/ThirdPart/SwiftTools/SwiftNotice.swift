@@ -56,7 +56,7 @@ enum NoticeType{
     case error
     case info
 }
-class SwiftNotice: NSObject {
+public class SwiftNotice: NSObject {
     static var windows = Array<UIWindow?>()
     static let rv = UIApplication.shared.keyWindow?.subviews.first as UIView?
     static var timer: DispatchSource!
