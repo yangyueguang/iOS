@@ -1226,6 +1226,8 @@
 		DFA5D3AE21BA184F00339006 /* PlayLRCSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */; };
 		DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */; };
 		DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */; };
+		DFC433E921C3F74F003E1BCB /* XNetKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC433E821C3F74F003E1BCB /* XNetKit.swift */; };
+		DFC433EB21C3F7A7003E1BCB /* cer.der in Resources */ = {isa = PBXBuildFile; fileRef = DFC433EA21C3F7A7003E1BCB /* cer.der */; };
 		DFC662C821C0E96600B41558 /* XHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC662C721C0E96600B41558 /* XHud.swift */; };
 		DFF4AB9921B7969A00F03C71 /* XRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */; };
 		DFF4AB9B21B7AC5900F03C71 /* XAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */; };
@@ -2692,6 +2694,8 @@
 		DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLRCSView.swift; sourceTree = "<group>"; };
 		DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBaseTableView.swift; sourceTree = "<group>"; };
 		DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRefreshControl.swift; sourceTree = "<group>"; };
+		DFC433E821C3F74F003E1BCB /* XNetKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNetKit.swift; sourceTree = "<group>"; };
+		DFC433EA21C3F7A7003E1BCB /* cer.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cer.der; sourceTree = "<group>"; };
 		DFC662C721C0E96600B41558 /* XHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHud.swift; sourceTree = "<group>"; };
 		DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRefreshHeader.swift; sourceTree = "<group>"; };
 		DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAudioPlayer.swift; sourceTree = "<group>"; };
@@ -4337,6 +4341,7 @@
 				BFAC49BE20D25EE700E5CB8D /* AppDelegate.swift */,
 				7789138D1D0FDDDB0096AB3B /* PrefixHeader.pch */,
 				BF5B9B631F8E645100BD885E /* OC-Swift.h */,
+				DFC433EA21C3F7A7003E1BCB /* cer.der */,
 				77DFEC6F1E20B9090003E192 /* logs */,
 				7741F0BB1D6D380800EED332 /* README.md */,
 				77BFCBFE1E1F413C00C95B5E /* notes.md */,
@@ -5713,6 +5718,7 @@
 				BF4A80E22105CFC600D32FB0 /* XTip.swift */,
 				BF4A80DF2105CE5E00D32FB0 /* BaseSearchBarView.swift */,
 				BF4A80F82105D21300D32FB0 /* NetManger.swift */,
+				DFC433E821C3F74F003E1BCB /* XNetKit.swift */,
 				BF58BA1F20EDBFBB002CB4EE /* PreViewController.swift */,
 				DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */,
 				DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */,
@@ -6129,6 +6135,7 @@
 				77645F7A1D68259900ACCCAC /* ReceiverVoiceNodeDownloading.png in Resources */,
 				77645EF01D68259900ACCCAC /* contacts_add_bottle.png in Resources */,
 				77645EFB1D68259900ACCCAC /* contacts_add_nearby.png in Resources */,
+				DFC433EB21C3F7A7003E1BCB /* cer.der in Resources */,
 				77993A711E2F7B9D00866968 /* [跳跳]@2x.png in Resources */,
 				772E87E01D76BC15004EDF50 /* MV_keyBtn_hanguo.png in Resources */,
 				77BD14AB1D6E817A00DE5DB9 /* xin.png in Resources */,
@@ -7193,6 +7200,7 @@
 				DFFA80C721AEC84D009B1999 /* BaseCollectionViewCell.swift in Sources */,
 				BFEF19CB2101E990003DCAC1 /* TSViewController.m in Sources */,
 				DFFA80C321AEC84D009B1999 /* BaseNavigationViewController.swift in Sources */,
+				DFC433E921C3F74F003E1BCB /* XNetKit.swift in Sources */,
 				7121196020AC0C620087E05B /* JuheDynamicViewController.swift in Sources */,
 				7121192020ABC4990087E05B /* EnergyBaseViewController.swift in Sources */,
 				7121194620ABE3660087E05B /* MicroEnergyTabBarController.swift in Sources */,
