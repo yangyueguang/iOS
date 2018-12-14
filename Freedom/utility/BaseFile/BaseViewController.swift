@@ -2,6 +2,7 @@
 import UIKit
 import XExtension
 import SVProgressHUD
+import Alamofire
 @objcMembers
 open class BaseViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     @objc open var userInfo: Any!
@@ -24,6 +25,24 @@ open class BaseViewController : UIViewController, UITableViewDelegate, UITableVi
         let backItem: UIBarButtonItem = UIBarButtonItem()
         backItem.title = "返回"
         self.navigationItem.backBarButtonItem = backItem;
+    }
+
+
+    private func monitorNetworkStatus() {
+        let net = NetworkReachabilityManager()
+        net?.listener = { status in
+            switch status {
+            case .notReachable:
+                print("断网")
+            case .reachable(.ethernetOrWiFi):
+                print("WiFi网络")
+            case .reachable(.wwan):
+                print("4G网络")
+            default:
+                print("未知网络")
+            }
+        }
+        net?.startListening()
     }
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
