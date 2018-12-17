@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class NetManger: NSObject {
+    static let shared = NetManger()
     let serverTrustPolicies: [String: ServerTrustPolicy] = [
         "test.example.com": .pinCertificates(
             certificates: ServerTrustPolicy.certificates(),
