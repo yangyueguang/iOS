@@ -958,7 +958,6 @@
 		BF4A80F12105CFCC00D32FB0 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80E52105CFC700D32FB0 /* UICKeyChainStore.m */; };
 		BF4A80F22105CFCC00D32FB0 /* GPAPolylineEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80E72105CFC900D32FB0 /* GPAPolylineEncoding.m */; };
 		BF4A80F72105CFE100D32FB0 /* CRCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80F52105CFE000D32FB0 /* CRCrypto.m */; };
-		BF4A80F92105D21300D32FB0 /* NetManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80F82105D21300D32FB0 /* NetManger.swift */; };
 		BF58B91C20EA1920002CB4EE /* MyAPP.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91B20EA1920002CB4EE /* MyAPP.plist */; };
 		BF58B92620EA1CE2002CB4EE /* app-xjb.png in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91E20EA1CE0002CB4EE /* app-xjb.png */; };
 		BF58B92720EA1CE2002CB4EE /* app-beeManager.png in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91F20EA1CE1002CB4EE /* app-beeManager.png */; };
@@ -2293,7 +2292,6 @@
 		BF4A80ED2105CFCB00D32FB0 /* GPAPolylineEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPAPolylineEncoding.h; sourceTree = "<group>"; };
 		BF4A80F52105CFE000D32FB0 /* CRCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCrypto.m; sourceTree = "<group>"; };
 		BF4A80F62105CFE000D32FB0 /* CRCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCrypto.h; sourceTree = "<group>"; };
-		BF4A80F82105D21300D32FB0 /* NetManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetManger.swift; sourceTree = "<group>"; };
 		BF58B91B20EA1920002CB4EE /* MyAPP.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyAPP.plist; sourceTree = "<group>"; };
 		BF58B91E20EA1CE0002CB4EE /* app-xjb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-xjb.png"; sourceTree = "<group>"; };
 		BF58B91F20EA1CE1002CB4EE /* app-beeManager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-beeManager.png"; sourceTree = "<group>"; };
@@ -5717,7 +5715,6 @@
 				BF58BA2020EDBFBB002CB4EE /* DownloadService.swift */,
 				BF4A80E22105CFC600D32FB0 /* XTip.swift */,
 				BF4A80DF2105CE5E00D32FB0 /* BaseSearchBarView.swift */,
-				BF4A80F82105D21300D32FB0 /* NetManger.swift */,
 				DFC433E821C3F74F003E1BCB /* XNetKit.swift */,
 				BF58BA1F20EDBFBB002CB4EE /* PreViewController.swift */,
 				DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */,
@@ -6956,7 +6953,6 @@
 				DF7B408A21AC020A00E3D975 /* AwemeListCellViews.swift in Sources */,
 				BF58BB2620EF1945002CB4EE /* RCDPrivateSettingsTableViewController.m in Sources */,
 				7121196620AC24940087E05B /* ToutiaoNavigationViewController.swift in Sources */,
-				BF4A80F92105D21300D32FB0 /* NetManger.swift in Sources */,
 				DF7B407221AC020A00E3D975 /* RefreshControl.swift in Sources */,
 				713EE2F020AD9CE50085B65D /* KugouMainViewController.swift in Sources */,
 				BF58BB6420EF1945002CB4EE /* RealTimeLocationViewController.m in Sources */,

@@ -2,6 +2,8 @@
 //  XNetKit.swift
 //  Demo
 import UIKit
+import Alamofire
+import SwiftyJSON
 import AFNetworking
 typealias XP12Block = (String) -> SecIdentity?
 typealias XQueryStringSerializationBlock = (URLRequest, Any, NSErrorPointer) -> String
@@ -30,7 +32,7 @@ class XNetKitConfig: NSObject {
     var domain = ""
     var port = ""
     var baseURL = ""
-    var method = "POST"
+    var method:HTTPMethod = HTTPMethod.get
     var timeout: TimeInterval = 30.0
     var headers: [String: String] = [
         "Authorization": "",
@@ -38,6 +40,9 @@ class XNetKitConfig: NSObject {
         "Content-Type": "application/x-www-form-urlencoded",
         "token": ""
     ]
+    var realURL: String {
+        return scheme + domain + port + "/" + baseURL + "/"
+    }
     var requestType = XRequestSerializerType.json
     var responseType = XResponseSerializerType.json
     var policy = AFSecurityPolicy.default()
@@ -66,12 +71,88 @@ class XNetKitConfig: NSObject {
         policy = securityPolicy
     }
 }
-/// 网络请求类
+
+//FIXME: 以下是返回数据解析类
+public struct APIResponse {
+    enum ResponseType: Error {
+        case success
+        case timeOut
+        case invalidToken
+        case netError
+        case unknown
+    }
+    public class APIResponseConfiguration {
+        static let shared = APIResponseConfiguration()
+        var tokenInavalidCode = "500"
+        var tokenInvalid: (()->Void)? = nil
+        var successCode = "0000"
+        var dataKey = "data"
+        var messageKey = "message"
+        var codeKey = "code"
+    }
+    var config = APIResponseConfiguration.shared
+    var responseType = ResponseType.unknown
+    let request: URLRequest?
+    let response: URLResponse?
+    let data: Data?
+    let error: Error?
+
+    var dictionary: [String: Any] = [:]
+    var body:[String: Any] = [:]
+    var message = ""
+
+    public init(request: URLRequest?,
+                response: URLResponse?,
+                data: Data?,
+                error: Error?,
+                dictionary: [String: Any]?) {
+        self.request = request
+        self.response = response
+        self.data = data
+        self.error = error
+        self.dictionary = dictionary ?? [:]
+        if let err = self.error {
+            let errorCode = (err as NSError).code
+            if errorCode == NSURLErrorCancelled
+                || errorCode == NSURLErrorCannotFindHost
+                || errorCode == NSURLErrorNotConnectedToInternet
+                || errorCode == NSURLErrorCannotConnectToHost
+                || errorCode == NSURLErrorTimedOut {
+                self.responseType = .netError
+                return
+            }
+        }
+        if let resultCode = (self.dictionary[config.codeKey] as? String) {
+            if resultCode == config.tokenInavalidCode {
+                self.responseType = .invalidToken
+                self.config.tokenInvalid?()
+            }else if resultCode == config.successCode {
+                self.responseType = .success
+            }
+        }
+        if let body = self.dictionary[config.dataKey] as? [String : Any] {
+            self.body = body
+        }
+        if let message = self.dictionary[config.messageKey] as? String {
+            self.message = message
+        }
+    }
+}
+
+/// 以下是AFNetworking网络请求类
 class XNetKit: NSObject {
     static let kit = XNetKit()
     var config = XNetKitConfig.shared
     private var m_requestRecord: [String : XNetKitConfig] = [:]
     private var m_lock: pthread_mutex_t = pthread_mutex_t.init()
+    let serverTrustPolicies: [String: ServerTrustPolicy] = [
+        "test.example.com": .pinCertificates(
+            certificates: ServerTrustPolicy.certificates(),
+            validateCertificateChain: true,
+            validateHost: true
+        ),
+        "insecure.expired-apis.com": ServerTrustPolicy.disableEvaluation
+    ]
     private lazy var sessionManager: AFHTTPSessionManager = {
         let manager = AFHTTPSessionManager(baseURL: nil)
         manager.responseSerializer = AFJSONResponseSerializer()
@@ -100,12 +181,11 @@ class XNetKit: NSObject {
         return m_requestRecord[path]
     }
     /// 基本请求
-    func request(_ url: String, parameters: [String: Any], method: String?, completion:@escaping (APIResponse) -> Void) -> Void {
-        config.method = method ?? config.method
+    func requestAFN(_ url: String, parameters: [String: Any], method: HTTPMethod = HTTPMethod.get, completion:@escaping (APIResponse) -> Void) -> Void {
+        config.method = method
         sessionManager.requestSerializer = requestSerizlizer(forAPI: config)
         sessionManager.responseSerializer = responseSerizlizer(forAPI: config)
-        let URLString = config.scheme + config.domain + config.port + "/" + config.baseURL + "/" + url
-        let request = sessionManager.requestSerializer.request(withMethod: config.method, urlString: URLString, parameters: parameters, error: nil) as URLRequest
+        let request = sessionManager.requestSerializer.request(withMethod: config.method.rawValue, urlString: config.realURL + url, parameters: parameters, error: nil) as URLRequest
         //        sessionManager.setDataTaskDidReceiveDataBlock { (session, task, obj) in
         //            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         //            print(obj)
@@ -195,70 +275,40 @@ class XNetKit: NSObject {
         }
         return block
     }
-}
-//FIXME: 以下是返回数据解析类
-public struct APIResponse {
-    enum ResponseType: Error {
-        case success
-        case timeOut
-        case invalidToken
-        case netError
-        case unknown
-    }
-    public class APIResponseConfiguration {
-        static let shared = APIResponseConfiguration()
-        var tokenInavalidCode = "500"
-        var tokenInvalid: (()->Void)? = nil
-        var successCode = "0000"
-        var dataKey = "data"
-        var messageKey = "message"
-        var codeKey = "code"
-    }
-    var config = APIResponseConfiguration.shared
-    var responseType = ResponseType.unknown
-    let request: URLRequest?
-    let response: URLResponse?
-    let data: Data?
-    let error: Error?
 
-    var dictionary: [String: Any] = [:]
-    var body:[String: Any] = [:]
-    var message = ""
 
-    public init(request: URLRequest?,
-                response: URLResponse?,
-                data: Data?,
-                error: Error?,
-                dictionary: [String: Any]?) {
-        self.request = request
-        self.response = response
-        self.data = data
-        self.error = error
-        self.dictionary = dictionary ?? [:]
-        if let err = self.error {
-            let errorCode = (err as NSError).code
-            if errorCode == NSURLErrorCancelled
-                || errorCode == NSURLErrorCannotFindHost
-                || errorCode == NSURLErrorNotConnectedToInternet
-                || errorCode == NSURLErrorCannotConnectToHost
-                || errorCode == NSURLErrorTimedOut {
-                self.responseType = .netError
-                return
-            }
+    //FIXME: 以下是Almofire的网络请求
+    @discardableResult
+    public func requestPolicy(_ url: String,
+                              parameters: Parameters?,
+                              method: HTTPMethod = .get ,
+                              encoding: ParameterEncoding = URLEncoding.default,
+                              headers: HTTPHeaders = [:], completion:@escaping (APIResponse) -> Void) -> DataRequest{
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        let manager = SessionManager(serverTrustPolicyManager: ServerTrustPolicyManager(policies: self.serverTrustPolicies))
+        let baseRequest = manager.request(config.realURL + url, method: method, parameters: parameters, encoding: encoding, headers: headers)
+        baseRequest.responseJSON { (response) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            let res = APIResponse(request: baseRequest.request, response: nil, data: nil, error: response.result.error, dictionary: response.result.value as? [String: Any])
+            completion(res)
         }
-        if let resultCode = (self.dictionary[config.codeKey] as? String) {
-            if resultCode == config.tokenInavalidCode {
-                self.responseType = .invalidToken
-                self.config.tokenInvalid?()
-            }else if resultCode == config.successCode {
-                self.responseType = .success
-            }
+        return baseRequest
+    }
+
+    @discardableResult
+    public func request(_ url: String,
+                        parameters: Parameters?,
+                        method: HTTPMethod = .get ,
+                        encoding: ParameterEncoding = URLEncoding.default,
+                        headers: HTTPHeaders = [:], completion:@escaping (APIResponse) -> Void) -> DataRequest{
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        let baseRequest = Alamofire.request(config.realURL + url, method: method, parameters: parameters, encoding: encoding, headers: headers)
+        baseRequest.responseJSON { (response) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            let res = APIResponse(request: baseRequest.request, response: nil, data: nil, error: response.result.error, dictionary: response.result.value as? [String: Any])
+            completion(res)
         }
-        if let body = self.dictionary[config.dataKey] as? [String : Any] {
-            self.body = body
-        }
-        if let message = self.dictionary[config.messageKey] as? String {
-            self.message = message
-        }
+        return baseRequest
     }
 }
+
