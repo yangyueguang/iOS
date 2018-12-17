@@ -48,12 +48,23 @@
   }
   result(dic.copy,array.copy);
 }
+- (BOOL)isContains:(NSString *)firstString withString:(NSString *)secondString{
+    if (firstString.length == 0 || secondString.length == 0) {
+        return NO;
+    }
+    NSString *twoStr = [[secondString stringByReplacingOccurrencesOfString:@" "  withString:@""] lowercaseString];
+    if ([[firstString lowercaseString] containsString:[secondString lowercaseString]] || [[firstString lowercaseString] containsString:twoStr]
+        || [[[firstString pinyin] lowercaseString] containsString:twoStr]) {
+        return YES;
+    }
+    return NO;
+}
 - (NSArray *)searchFriendBysearchText:(NSString *)searchText{
   NSMutableArray *friendResults = [NSMutableArray array];
   NSArray *friendArray = [[RCDataBaseManager shareInstance] getAllFriends];
   for (RCDUserInfo *user in friendArray) {
     if ([user.status isEqualToString:@"20"]) {
-      if (user.displayName && [FreedomTools isContains:user.displayName withString:searchText]) {
+      if (user.displayName && [self isContains:user.displayName withString:searchText]) {
         RCDSearchResultModel *model = [[RCDSearchResultModel alloc] init];
         model.conversationType = ConversationType_PRIVATE;
         model.targetId = user.userId;
@@ -61,7 +72,7 @@
         model.portraitUri = user.portraitUri;
         model.searchType = RCDSearchFriend;
         [friendResults addObject:model];
-      }else if([FreedomTools isContains:user.name withString:searchText]){
+      }else if([self isContains:user.name withString:searchText]){
         RCDSearchResultModel *model = [[RCDSearchResultModel alloc] init];
         model.conversationType = ConversationType_PRIVATE;
         model.targetId = user.userId;
@@ -81,7 +92,7 @@
   NSMutableArray *groupResults = [NSMutableArray array];
   NSArray *groupArray = [[RCDataBaseManager shareInstance] getAllGroup];
   for (RCDGroupInfo *group in groupArray) {
-    if ([FreedomTools isContains:group.groupName withString:searchText]) {
+    if ([self isContains:group.groupName withString:searchText]) {
       RCDSearchResultModel *model = [[RCDSearchResultModel alloc] init];
       model.conversationType = ConversationType_GROUP;
       model.targetId = group.groupId;
@@ -96,13 +107,13 @@
       for (RCUserInfo *user in groupMember) {
         RCDUserInfo *friendUser = [[RCDataBaseManager shareInstance] getFriendInfo:user.userId];
         if (friendUser && friendUser.displayName.length>0) {
-          if ([FreedomTools isContains:friendUser.displayName withString:searchText]) {
+          if ([self isContains:friendUser.displayName withString:searchText]) {
             str = [self changeString:str appendStr:friendUser.displayName];
-          }else if([FreedomTools isContains:user.name withString:searchText]){
+          }else if([self isContains:user.name withString:searchText]){
             str = [self changeString:str appendStr:[NSString stringWithFormat:@"%@(%@)",friendUser.displayName,user.name]];
           }
         }else{
-          if([FreedomTools isContains:user.name withString:searchText]){
+          if([self isContains:user.name withString:searchText]){
             str = [self changeString:str appendStr:user.name];
           }
         }

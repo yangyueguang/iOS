@@ -845,7 +845,7 @@ titleForHeaderInSection:(NSInteger)section {
     for (RCUserInfo *userInfo in [_friendsArr copy]) {
       //忽略大小写去判断是否包含
       if ([userInfo.name rangeOfString:searchText options:NSCaseInsensitiveSearch].location != NSNotFound
-          || [[FreedomTools hanZiToPinYinWithString:userInfo.name] rangeOfString:searchText options:NSCaseInsensitiveSearch].location != NSNotFound) {
+          || [[userInfo.name pinyin] rangeOfString:searchText options:NSCaseInsensitiveSearch].location != NSNotFound) {
         [self.matchSearchList addObject:userInfo];
       }
     }
@@ -892,7 +892,7 @@ titleForHeaderInSection:(NSInteger)section {
   } else {
     for (RCUserInfo *userInfo in [_friendsArr copy]) {
       //忽略大小写去判断是否包含
-      if ([userInfo.name rangeOfString:temp options:NSCaseInsensitiveSearch].location != NSNotFound || [[FreedomTools hanZiToPinYinWithString:userInfo.name] rangeOfString:temp options:NSCaseInsensitiveSearch].location != NSNotFound) {
+      if ([userInfo.name rangeOfString:temp options:NSCaseInsensitiveSearch].location != NSNotFound || [[userInfo.name pinyin] rangeOfString:temp options:NSCaseInsensitiveSearch].location != NSNotFound) {
         [self.matchSearchList addObject:userInfo];
       }
     }

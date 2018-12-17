@@ -62,10 +62,8 @@ class TaobaoCommunityViewController: TaobaoBaseViewController,UICollectionViewDe
         navigationItem.titleView = searchBar
         navigationController?.navigationBar.tintColor = UIColor.gray
         let image = UIImage(named: "Taobaomessage")?.withRenderingMode(.alwaysOriginal)
-        let leftI = UIBarButtonItem(image: UIImage(named: "TaobaoScanner"), style: .done, actionBlick: {() -> Void in
-        })
-        let rightI = UIBarButtonItem(image: image, style: .done, actionBlick: {() -> Void in
-        })
+        let leftI = UIBarButtonItem(image: UIImage(named:"TaobaoScanner"), style: .done, target: nil, action: nil)
+        let rightI = UIBarButtonItem(image: image, style: .done, target: nil, action:nil)
         navigationItem.leftBarButtonItem = leftI
         navigationItem.rightBarButtonItem = rightI
         _ = [

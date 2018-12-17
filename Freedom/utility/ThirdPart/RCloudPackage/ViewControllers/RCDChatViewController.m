@@ -1163,7 +1163,7 @@ NSMutableDictionary *userInputStatus;
         user.portraitUri = [FreedomTools defaultUserPortrait:user];
       }
       if ([user.portraitUri hasPrefix:@"file:///"]) {
-        NSString *filePath = [FreedomTools getIconCachePath:[NSString stringWithFormat:@"user%@.png", user.userId]];
+        NSString *filePath = [self getIconCachePath:[NSString stringWithFormat:@"user%@.png", user.userId]];
         if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
           NSURL *portraitPath = [NSURL fileURLWithPath:filePath];
           user.portraitUri = [portraitPath absoluteString];
@@ -1174,6 +1174,16 @@ NSMutableDictionary *userInputStatus;
       [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:user.userId];
     }
   });
+}
+- (NSString *)getIconCachePath:(NSString *)fileName {
+    NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *filePath = [cachPath stringByAppendingPathComponent: [NSString stringWithFormat:@"CachedIcons/%@",fileName]]; // 保存文件的名称
+    NSString *dirPath = [cachPath stringByAppendingPathComponent:[NSString stringWithFormat:@"CachedIcons"]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:dirPath]) {
+        [fileManager createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return filePath;
 }
 - (void)refreshTitle{
   if (self.csInfo.nickName == nil) {

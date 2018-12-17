@@ -154,9 +154,7 @@ class FirstViewController: BaseViewController,UICollectionViewDataSource, UIColl
         let leftNav = UIBarButtonItem(title: "设置", style: .done, actionBlick: {
             self.gotoSettingsView(nil)
         })
-        let rightNav = UIBarButtonItem(image: UIImage(named: "u_seting"), style: .done, actionBlick: {
-            self.showSettingsView(nil)
-        })
+        let rightNav = UIBarButtonItem(image: UIImage(named: "u_seting"), style: .done, target: nil, action: nil)
         let navigationItem = UINavigationItem(title: "自由主义")
         //    [firstNavigationBar pushNavigationItem:navigationBarTitle animated:YES];
         navigationItem.leftBarButtonItem = leftNav

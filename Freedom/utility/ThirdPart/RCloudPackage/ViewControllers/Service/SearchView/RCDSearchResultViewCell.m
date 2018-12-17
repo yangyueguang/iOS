@@ -28,8 +28,8 @@
         range = [[text lowercaseString] rangeOfString:[searchText lowercaseString]];
     }else if ([[text lowercaseString] containsString:twoStr]){
         range = [[text lowercaseString] rangeOfString:twoStr];
-    }else if( [[[FreedomTools hanZiToPinYinWithString:text] lowercaseString] containsString:twoStr]){
-        NSString * str = [FreedomTools hanZiToPinYinWithString:text];
+    }else if( [[[text pinyin] lowercaseString] containsString:twoStr]){
+        NSString * str = [text pinyin];
         range = [str rangeOfString:[searchText uppercaseString]];
     }
     return range;

@@ -303,7 +303,7 @@ RCDPersonDetailViewController *detailViewController = [[RCDPersonDetailViewContr
     for (RCUserInfo *userInfo in [self getAllFriendList]) {
       //忽略大小写去判断是否包含
       if ([userInfo.name rangeOfString:searchText options:NSCaseInsensitiveSearch].location != NSNotFound
-          || [[FreedomTools hanZiToPinYinWithString:userInfo.name] rangeOfString:searchText options:NSCaseInsensitiveSearch].location != NSNotFound) {
+          || [[userInfo.name pinyin] rangeOfString:searchText options:NSCaseInsensitiveSearch].location != NSNotFound) {
         [self.matchFriendList addObject:userInfo];
       }
     }

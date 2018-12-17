@@ -216,7 +216,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         DispatchQueue.global().async {
             self.firstConfigAllAPPIds()
         }
-        FreedomTools.expireLogFiles()
+        
         firstInitUMeng()
 //        RCDMainTabBarViewController.shareInstance().firstInitRongCloud()
         let backButtonImage = UIImage(named: "返回")?.withRenderingMode(.alwaysTemplate)

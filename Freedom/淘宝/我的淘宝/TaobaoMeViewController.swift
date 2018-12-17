@@ -60,10 +60,8 @@ class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDelegate,
         let image = UIImage(named: "Taobaomessage")?.withRenderingMode(.alwaysOriginal)
         let `left` = UIBarButtonItem(title: "设置", style: .plain, actionBlick: {() -> Void in
         })
-        let right1 = UIBarButtonItem(image: UIImage(named: "TaobaoScanner"), style: .done, actionBlick: {() -> Void in
-        })
-        let right2 = UIBarButtonItem(image: image, style: .done, actionBlick: {() -> Void in
-        })
+        let right1 = UIBarButtonItem(image: UIImage(named: "TaobaoScanner"), style: .done, target: nil, action: nil)
+        let right2 = UIBarButtonItem(image: image, style: .done, target: nil, action: nil)
         navigationItem.leftBarButtonItem = `left`
         navigationItem.rightBarButtonItems = [right1, right2] as? [UIBarButtonItem]
         let headView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 100))

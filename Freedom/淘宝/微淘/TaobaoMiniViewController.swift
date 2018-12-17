@@ -6,12 +6,9 @@ import XExtension
 class TaobaoMiniViewController: TaobaoBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let leftI = UIBarButtonItem(image: UIImage(named: "TaobaoScanner"), style: .done, actionBlick: {() -> Void in
-        })
-        let rightI = UIBarButtonItem(image: UIImage(named: "TaobaoScanner"), style: .done, actionBlick: {() -> Void in
-        })
-        let rightII = UIBarButtonItem(image: UIImage(named: "TaobaoScanner"), style: .done, actionBlick: {() -> Void in
-        })
+        let leftI = UIBarButtonItem(image: UIImage(named: "TaobaoScanner"), style: .done, target: nil, action: nil)
+        let rightI = UIBarButtonItem(image: UIImage(named: "TaobaoScanner"), style: .done, target: nil, action: nil)
+        let rightII = UIBarButtonItem(image: UIImage(named: "TaobaoScanner"), style: .done, target: nil, action: nil)
         navigationItem.leftBarButtonItem = leftI
         navigationItem.rightBarButtonItems = [rightI, rightII] as? [UIBarButtonItem]
         title = "微淘"

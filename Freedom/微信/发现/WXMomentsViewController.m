@@ -169,9 +169,7 @@
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60.0f)]];
     
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_camera"] style:UIBarButtonItemStylePlain actionBlick:^{
-        
-    }];
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_camera"] style:UIBarButtonItemStyleDone target:nil action:nil];
     [self.navigationItem setRightBarButtonItem:rightBarButton];
     
     [self registerCellForTableView:self.tableView];

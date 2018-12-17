@@ -3839,6 +3839,7 @@
 		7759B6CB1D0EA3E900AE3A59 /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				DFF4AB9721B794B200F03C71 /* SwiftTools */,
 				7772A7F11D64433500444973 /* ThirdPart */,
 				7759B6E81D0EA3E900AE3A59 /* BaseFile */,
 				71250EC42091C0F20093B59B /* FreedomTools.h */,
@@ -4170,7 +4171,6 @@
 		7772A7F11D64433500444973 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
-				DFF4AB9721B794B200F03C71 /* SwiftTools */,
 				BFEF19B32101E931003DCAC1 /* 混编文件 */,
 				BFEF197A2101E820003DCAC1 /* SSZipArchive */,
 				BFEF19402101E820003DCAC1 /* Stock */,

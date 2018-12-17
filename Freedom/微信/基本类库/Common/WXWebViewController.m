@@ -135,7 +135,9 @@
 }
 - (UIBarButtonItem *)backButtonItem{
     if (_backButtonItem == nil) {
-        _backButtonItem = [[UIBarButtonItem alloc] initWithBackTitle:@"返回" target:self action:@selector(navBackButotnDown)];
+        _backButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone actionBlick:^{
+            [self navBackButotnDown];
+        }];
     }
     return _backButtonItem;
 }

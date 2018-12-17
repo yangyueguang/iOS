@@ -154,7 +154,8 @@ class SinaEmotionTextView: UITextView {
     }
     func insert(_ emotion: SinaEmotion) {
         if emotion.code != "" {
-            insertText(emotion.code.emoji() ?? "")
+//            insertText(emotion.code.emoji() ?? "")
+            insertText("")
         } else if emotion.png != "" {
             let attch = SinaEmotionAttachment()
             attch.emotion = emotion

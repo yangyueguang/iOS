@@ -334,11 +334,9 @@ class IqiyiViewController: IqiyiBaseViewController ,IqiyiHomeBoxCellDelegate {
         homeTableView?.mj_header.beginRefreshing()
     }
     func initNav() {
-        let leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"qylogo_p"), style: .plain) {
-        }
+        let leftBarButtonItem = UIBarButtonItem(image:  UIImage(named:"qylogo_p"), style: .done, target: nil, action: nil)
         navigationItem.leftBarButtonItem = leftBarButtonItem
-        let rightUploadBarButtonItem = UIBarButtonItem(image: UIImage(named:"wcamera"), style: .plain) {
-        }
+        let rightUploadBarButtonItem = UIBarButtonItem(image: UIImage(named:"wcamera"), style: .done, target: nil, action: nil)
         let rightHistoryBarButtonItem = UIBarButtonItem(image: UIImage(named:"whistory"), style: .plain, target: self, action: #selector(self.rightHistoryBarButtonItemClick))
         let rightSearchBarButtonItem = UIBarButtonItem(image: UIImage(named:"wsearch"), style: .plain, target: self, action: #selector(self.rightSearchBarButtonItemClick))
         navigationItem.rightBarButtonItems = [rightSearchBarButtonItem, rightUploadBarButtonItem, rightHistoryBarButtonItem] as? [UIBarButtonItem]

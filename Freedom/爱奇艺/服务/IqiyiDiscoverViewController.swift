@@ -146,8 +146,7 @@ class IqiyiDiscoverViewController: IqiyiBaseViewController {
         searchButton.addTarget(self, action: #selector(self.searchButtonClick), for: .touchUpInside)
         searchButton.setTitleColor(UIColor.gray, for: .normal)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchButton)
-        let rightItem = UIBarButtonItem(image: UIImage(named:"wnavi"), style: .plain) {
-        }
+        let rightItem = UIBarButtonItem(image: UIImage(named:"wnavi"), style: .done, target: nil, action: nil)
         navigationItem.rightBarButtonItem = rightItem
         let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - 64), style: .plain)
         tableView.delegate = self
