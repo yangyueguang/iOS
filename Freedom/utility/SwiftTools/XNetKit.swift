@@ -180,7 +180,11 @@ class XNetKit: NSObject {
     func configFromPath(_ path: String) -> XNetKitConfig? {
         return m_requestRecord[path]
     }
-    /// 基本请求
+    /// AFN请求
+    static public func requestAFN(_ url: String, parameters: [String: Any], method: HTTPMethod = HTTPMethod.get, completion:@escaping (APIResponse) -> Void) -> Void {
+        self.kit.requestAFN(url, parameters: parameters, method: method, completion: completion)
+    }
+    /// AFN请求
     func requestAFN(_ url: String, parameters: [String: Any], method: HTTPMethod = HTTPMethod.get, completion:@escaping (APIResponse) -> Void) -> Void {
         config.method = method
         sessionManager.requestSerializer = requestSerizlizer(forAPI: config)
@@ -295,6 +299,14 @@ class XNetKit: NSObject {
         return baseRequest
     }
 
+    @discardableResult
+    static public func request(_ url: String,
+                        parameters: Parameters?,
+                        method: HTTPMethod = .get ,
+                        encoding: ParameterEncoding = URLEncoding.default,
+                        headers: HTTPHeaders = [:], completion:@escaping (APIResponse) -> Void) -> DataRequest{
+       return self.kit.request(url, parameters: parameters, method: method, encoding: encoding, headers: headers, completion: completion)
+    }
     @discardableResult
     public func request(_ url: String,
                         parameters: Parameters?,
