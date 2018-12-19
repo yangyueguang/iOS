@@ -1225,6 +1225,7 @@
 		DFA5D3AE21BA184F00339006 /* PlayLRCSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */; };
 		DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */; };
 		DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */; };
+		DFB5FF4F21C9EAC30057C922 /* XAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FF4E21C9EAC30057C922 /* XAlertViewController.swift */; };
 		DFC433E921C3F74F003E1BCB /* XNetKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC433E821C3F74F003E1BCB /* XNetKit.swift */; };
 		DFC433EB21C3F7A7003E1BCB /* cer.der in Resources */ = {isa = PBXBuildFile; fileRef = DFC433EA21C3F7A7003E1BCB /* cer.der */; };
 		DFC662C821C0E96600B41558 /* XHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC662C721C0E96600B41558 /* XHud.swift */; };
@@ -2692,6 +2693,7 @@
 		DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLRCSView.swift; sourceTree = "<group>"; };
 		DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBaseTableView.swift; sourceTree = "<group>"; };
 		DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRefreshControl.swift; sourceTree = "<group>"; };
+		DFB5FF4E21C9EAC30057C922 /* XAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAlertViewController.swift; sourceTree = "<group>"; };
 		DFC433E821C3F74F003E1BCB /* XNetKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNetKit.swift; sourceTree = "<group>"; };
 		DFC433EA21C3F7A7003E1BCB /* cer.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cer.der; sourceTree = "<group>"; };
 		DFC662C721C0E96600B41558 /* XHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHud.swift; sourceTree = "<group>"; };
@@ -5707,6 +5709,7 @@
 				BF58B94920EB22C8002CB4EE /* XTablesViewController.swift */,
 				DFC662C721C0E96600B41558 /* XHud.swift */,
 				DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */,
+				DFB5FF4E21C9EAC30057C922 /* XAlertViewController.swift */,
 				DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */,
 				BF58BA3120EDF132002CB4EE /* SwiftNotice.swift */,
 				71517B1B2094803300B40538 /* JSONObject.swift */,
@@ -7168,6 +7171,7 @@
 				BF58BB5820EF1945002CB4EE /* RCDSquareTableViewController.m in Sources */,
 				7121193220ABC5320087E05B /* EnergyShopViewController.swift in Sources */,
 				71ECDFFF209210BF00495467 /* WXContactsViewController.m in Sources */,
+				DFB5FF4F21C9EAC30057C922 /* XAlertViewController.swift in Sources */,
 				BF5B9B7F1F8E67B900BD885E /* WidomViewController.swift in Sources */,
 				713EE30820ADA06B0085B65D /* IqiyiWatchRecordViewController.swift in Sources */,
 				BFAC49C120D36A0F00E5CB8D /* SettingsViewController.swift in Sources */,
