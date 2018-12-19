@@ -2,10 +2,6 @@
 //  Freedom
 // Created by Super
 #import "WXUserGroupCell.h"
-#define     USER_CELL_WIDTH         57
-#define     USER_CELL_HEIGHT        75
-#define     USER_CELL_ROWSPACE     15
-#define     USER_CELL_COLSPACE      ((APPW - USER_CELL_WIDTH * 4) / 5)
 #import "UIButton+WebCache.h"
 #import "WXUserHelper.h"
 @interface WXUserGroupItemCell : UICollectionViewCell
@@ -115,9 +111,9 @@
 - (UICollectionView *)collectionView{
     if (_collectionView == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        [layout setItemSize:CGSizeMake(USER_CELL_WIDTH, USER_CELL_HEIGHT)];
-        [layout setMinimumInteritemSpacing:USER_CELL_COLSPACE];
-        [layout setSectionInset:UIEdgeInsetsMake(USER_CELL_ROWSPACE, USER_CELL_COLSPACE * 0.9, USER_CELL_ROWSPACE, USER_CELL_ROWSPACE * 0.9)];
+        [layout setItemSize:CGSizeMake(57, 75)];
+        [layout setMinimumInteritemSpacing:(APPW - 57 * 4) / 5];
+        [layout setSectionInset:UIEdgeInsetsMake(15, (APPW - 57 * 4) / 5 * 0.9, 15, 15 * 0.9)];
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         [_collectionView setBackgroundColor:[UIColor whiteColor]];
         [_collectionView setScrollEnabled:NO];

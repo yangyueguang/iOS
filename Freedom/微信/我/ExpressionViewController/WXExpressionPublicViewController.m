@@ -5,10 +5,6 @@
 #import "WXExpressionSearchViewController.h"
 #import "WXSearchController.h"
 #import "WXExpressionDetailViewController.h"
-#define         EDGE                20.0
-#define         SPACE_CELL          EDGE
-#define         WIDTH_CELL          ((APPW - EDGE * 2 - SPACE_CELL * 2.0) / 3.0)
-#define         HEIGHT_CELL         (WIDTH_CELL + 20)
 #import "WXExpressionHelper.h"
 #import <UIKit/UIKit.h>
 #import "TLEmojiBaseCell.h"
@@ -163,18 +159,18 @@
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row < self.data.count) {
-        return CGSizeMake(WIDTH_CELL, HEIGHT_CELL);
+        return CGSizeMake(((APPW - 20 * 2 - 20 * 2.0) / 3.0), (((APPW - 20 * 2 - 20 * 2.0) / 3.0) + 20));
     }
     return collectionView.bounds.size;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return self.data.count == 0 ? 0 : SPACE_CELL;
+    return self.data.count == 0 ? 0 : 20;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return self.data.count == 0 ? 0 : SPACE_CELL;
+    return self.data.count == 0 ? 0 : 20;
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return self.data.count == 0 ? UIEdgeInsetsMake(0, 0, 0, 0) : UIEdgeInsetsMake(EDGE, EDGE, EDGE, EDGE);
+    return self.data.count == 0 ? UIEdgeInsetsMake(0, 0, 0, 0) : UIEdgeInsetsMake(20,20,20,20);
 }
 - (void)loadDataWithLoadingView:(BOOL)showLoadingView{
     if (showLoadingView) {

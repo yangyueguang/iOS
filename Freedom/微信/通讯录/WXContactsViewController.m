@@ -5,8 +5,6 @@
 #import "WXSearchController.h"
 #import "WXUserHelper.h"
 #import <BlocksKit/BlocksKit+UIKit.h>
-#define     FRIENDS_SPACE_X         10.0f
-#define     FRIENDS_SPACE_Y         9.5f
 #import "WXTableViewCell.h"
 #import <UMMobClick/MobClick.h>
 #import "NSFileManager+expanded.h"
@@ -24,7 +22,7 @@
 @implementation WechatContactCell
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.leftSeparatorSpace = FRIENDS_SPACE_X;
+        self.leftSeparatorSpace = 10;
         
         [self.contentView addSubview:self.avatarImageView];
         [self.contentView addSubview:self.usernameLabel];
@@ -66,14 +64,14 @@
 #pragma mark - Prvate Methods -
 - (void) p_addMasonry{
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(FRIENDS_SPACE_X);
-        make.top.mas_equalTo(FRIENDS_SPACE_Y);
-        make.bottom.mas_equalTo(- FRIENDS_SPACE_Y + 0.5);
+        make.left.mas_equalTo(10);
+        make.top.mas_equalTo(9.5);
+        make.bottom.mas_equalTo(- 9.5 + 0.5);
         make.width.mas_equalTo(self.avatarImageView.mas_height);
     }];
     
     [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(FRIENDS_SPACE_X);
+        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(10);
         make.top.mas_equalTo(self.avatarImageView).mas_offset(-1);
         make.right.mas_lessThanOrEqualTo(self.rightButton.mas_left).mas_offset(-10);
     }];

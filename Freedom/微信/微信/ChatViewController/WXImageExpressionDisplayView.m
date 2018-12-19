@@ -3,10 +3,6 @@
 //  Created by Super on 16/3/16.
 #import "WXImageExpressionDisplayView.h"
 #import "UIImage+GIF.h"
-#define     WIDTH_TIPS      150
-#define     HEIGHT_TIPS     162
-#define     WIDTH_CENTER    25
-#define     SPACE_IMAGE     16
 @interface WXImageExpressionDisplayView ()
 @property (nonatomic, strong) UIImageView *bgLeftView;
 @property (nonatomic, strong) UIImageView *bgCenterView;
@@ -15,7 +11,7 @@
 @end
 @implementation WXImageExpressionDisplayView
 - (id)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:CGRectMake(0, 0, WIDTH_TIPS, HEIGHT_TIPS)]) {
+    if (self = [super initWithFrame:CGRectMake(0, 0, 150, 162)]) {
         [self addSubview:self.bgLeftView];
         [self addSubview:self.bgCenterView];
         [self addSubview:self.bgRightView];
@@ -58,15 +54,15 @@ static NSString *curID;
     CGRect frame = self.frame;
     frame.origin.y = rect.origin.y - self.frame.size.height + 13;
     self.frame = frame;
-    CGFloat w = WIDTH_TIPS - WIDTH_CENTER;
+    CGFloat w = 150 - 25;
     CGFloat centerX = rect.origin.x + rect.size.width / 2;
     if (rect.origin.x + rect.size.width < self.frame.size.width) {     // 箭头在左边
-        self.center = CGPointMake(centerX + (WIDTH_TIPS - w / 4 - WIDTH_CENTER) / 2 - SPACE_IMAGE,self.center.y);
+        self.center = CGPointMake(centerX + (150 - w / 4 - 25) / 2 - 16,self.center.y);
         [self.bgLeftView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(w / 4);
         }];
     }else if (APPW - rect.origin.x < self.frame.size.width) {   // 箭头在右边
-        self.center = CGPointMake(centerX - (WIDTH_TIPS - w / 4 - WIDTH_CENTER) / 2 + SPACE_IMAGE,self.center.y);
+        self.center = CGPointMake(centerX - (150 - w / 4 - 25) / 2 + 16,self.center.y);
         [self.bgLeftView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(w / 4 * 3);
         }];
@@ -85,7 +81,7 @@ static NSString *curID;
     [self.bgCenterView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.bgLeftView.mas_right);
         make.top.and.bottom.mas_equalTo(self.bgLeftView);
-        make.width.mas_equalTo(WIDTH_CENTER);
+        make.width.mas_equalTo(25);
     }];
     [self.bgRightView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.bgCenterView.mas_right);

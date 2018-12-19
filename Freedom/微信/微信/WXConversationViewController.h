@@ -4,7 +4,6 @@
 #import "WXTableViewController.h"
 #import "WXFriendSearchViewController.h"
 #import "WXChatViewController.h"
-#define     HEIGHT_CONVERSATION_CELL        64.0f
 #import "WXMessageManager.h"
 #import "WXModes.h"
 @class WechatAddMenuView;

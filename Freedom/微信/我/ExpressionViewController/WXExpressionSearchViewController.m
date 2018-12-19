@@ -4,7 +4,7 @@
 #import "WXExpressionSearchViewController.h"
 #import "WXExpressionDetailViewController.h"
 #import "WXExpressionHelper.h"
-#import "WXRootViewController.h"
+#import "WXTabBarController.h"
 #import "WXExpressionChosenViewController.h"
 @interface WXExpressionSearchViewController () <WXExpressionCellDelegate>
 @property (nonatomic, strong) WXExpressionHelper *proxy;

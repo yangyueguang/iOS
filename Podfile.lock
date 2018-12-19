@@ -134,8 +134,8 @@ PODS:
   - TZImagePickerController (3.1.5)
   - UAProgressView (0.1.4)
   - UMengAnalytics (4.2.4)
-  - XCarryOn (0.3.8)
-  - XExtension (0.3.8)
+  - XCarryOn (0.3.9)
+  - XExtension (0.4.0)
   - XMLDictionary (1.4.1)
 
 DEPENDENCIES:
@@ -306,8 +306,8 @@ SPEC CHECKSUMS:
   TZImagePickerController: 6cc6e9c1a73bb8e62cfef98fd40af2d90634dcf5
   UAProgressView: 6796f5aa05037fb2940521636163b9db40a6c534
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
-  XCarryOn: 1bb60e8f9584c481d20eca75ed1a44c5f0b50384
-  XExtension: 118f2ea51afc977e578be7b2845b1225913ed0b4
+  XCarryOn: 5fc35e5080ae50c835d94f4976b4784a87978d71
+  XExtension: 403513a797a2c2ddf5d7af9ab8c54b2efc4312ae
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
 PODFILE CHECKSUM: 461b0bff8f3e03a497cf8adba230e23df993f398

@@ -40,7 +40,7 @@
 #pragma mark - Delegate -
 //MARK: UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return HEIGHT_FRIEND_CELL;
+    return 54;
 }
 //MARK: UISearchResultsUpdating
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {

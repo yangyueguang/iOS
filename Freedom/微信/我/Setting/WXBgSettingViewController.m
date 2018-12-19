@@ -9,9 +9,6 @@
 #import "WXCommonSettingViewController.h"
 #import "WXBaseViewController.h"
 #import "NSFileManager+expanded.h"
-#define     SPACE_EDGE                      10
-#define     WIDTH_COLLECTIONVIEW_CELL       (APPW - SPACE_EDGE * 2) / 3 * 0.98
-#define     SPACE_COLLECTIONVIEW_CELL       (APPW - SPACE_EDGE * 2 - WIDTH_COLLECTIONVIEW_CELL * 3) / 2
 @interface WXChatBackgroundSelectViewController : WXBaseViewController<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 - (void)registerCellForCollectionView:(UICollectionView *)collectionView;
 @property (nonatomic, strong) NSMutableArray *data;
@@ -39,10 +36,10 @@
     if (_collectionView == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         [layout setSectionHeadersPinToVisibleBounds:YES];
-        [layout setItemSize:CGSizeMake(WIDTH_COLLECTIONVIEW_CELL, WIDTH_COLLECTIONVIEW_CELL)];
-        [layout setMinimumInteritemSpacing:SPACE_COLLECTIONVIEW_CELL];
-        [layout setMinimumLineSpacing:SPACE_COLLECTIONVIEW_CELL];
-        [layout setSectionInset:UIEdgeInsetsMake(0, SPACE_EDGE, 0, SPACE_EDGE)];
+        [layout setItemSize:CGSizeMake((APPW - 10 * 2) / 3 * 0.98, (APPW - 10 * 2) / 3 * 0.98)];
+        [layout setMinimumInteritemSpacing:(APPW - 10 * 2 - (APPW - 10 * 2) / 3 * 0.98 * 3) / 2];
+        [layout setMinimumLineSpacing:(APPW - 10 * 2 - (APPW - 10 * 2) / 3 * 0.98 * 3) / 2];
+        [layout setSectionInset:UIEdgeInsetsMake(0, 10, 0, 10)];
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         [_collectionView setBackgroundColor:[UIColor clearColor]];
         [_collectionView setDataSource:self];

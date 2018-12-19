@@ -30,7 +30,14 @@
 #pragma mark - Event Response
 - (void)rightBarButtonDown:(UIBarButtonItem *)sender{
     UIAlertAction *ac;
-    if ([self.navigationController findViewController:@"TLScanningViewController"]) {
+    UIViewController *vc;
+    for (UIViewController *viewController in self.navigationController.viewControllers) {
+        if ([viewController isKindOfClass:NSClassFromString(@"TLScanningViewController")]) {
+            vc = viewController;
+        }
+    }
+
+    if (vc) {
         ac = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     }else{
         ac = [UIAlertAction actionWithTitle:@"扫描二维码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

@@ -5,10 +5,8 @@
 #import "WXSearchController.h"
 #import "WXUserHelper.h"
 #import "WXChatViewController.h"
-#import "WXRootViewController.h"
+#import "WXTabBarController.h"
 #import "NSFileManager+expanded.h"
-#define     FRIENDS_SPACE_X         10.0f
-#define     FRIENDS_SPACE_Y         9.5f
 @interface WXGroupCell ()
 @property (nonatomic, strong) UIImageView *avatarImageView;
 @property (nonatomic, strong) UILabel *usernameLabel;
@@ -16,7 +14,7 @@
 @implementation WXGroupCell
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.leftSeparatorSpace = FRIENDS_SPACE_X;
+        self.leftSeparatorSpace = 10;
         
         [self.contentView addSubview:self.avatarImageView];
         [self.contentView addSubview:self.usernameLabel];
@@ -38,14 +36,14 @@
 #pragma mark - Private Methods -
 - (void) p_addMasonry{
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(FRIENDS_SPACE_X);
-        make.top.mas_equalTo(FRIENDS_SPACE_Y);
-        make.bottom.mas_equalTo(- FRIENDS_SPACE_Y + 0.5);
+        make.left.mas_equalTo(10);
+        make.top.mas_equalTo(9.5);
+        make.bottom.mas_equalTo(- 9.5 + 0.5);
         make.width.mas_equalTo(self.avatarImageView.mas_height);
     }];
     
     [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(FRIENDS_SPACE_X);
+        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(10);
         make.centerY.mas_equalTo(self.avatarImageView);
         make.right.mas_lessThanOrEqualTo(self.contentView).mas_offset(-20);
     }];
@@ -119,13 +117,13 @@
     WXGroup *group = [self.data objectAtIndex:indexPath.row];
     WXChatViewController *chatVC = [WXChatViewController sharedChatVC];
     [chatVC setPartner:group];
-    UIViewController *vc = [[WXRootViewController sharedRootViewController] childViewControllerAtIndex:0];
-    [[WXRootViewController sharedRootViewController] setSelectedIndex:0];
-    [vc setHidesBottomBarWhenPushed:YES];
-    [vc.navigationController pushViewController:chatVC animated:YES completion:^(BOOL finished) {
-        [self.navigationController popViewControllerAnimated:NO];
-    }];
-    [vc setHidesBottomBarWhenPushed:NO];
+//    UIViewController *vc = [[WXTabBarController sharedRootViewController] childViewControllerAtIndex:0];
+//    [[WXTabBarController sharedRootViewController] setSelectedIndex:0];
+//    [vc setHidesBottomBarWhenPushed:YES];
+//    [vc.navigationController pushViewController:chatVC animated:YES completion:^(BOOL finished) {
+//        [self.navigationController popViewControllerAnimated:NO];
+//    }];
+//    [vc setHidesBottomBarWhenPushed:NO];
 }
 //MARK: UISearchBarDelegate
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{

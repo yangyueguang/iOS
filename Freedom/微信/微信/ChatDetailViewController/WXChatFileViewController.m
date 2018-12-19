@@ -3,12 +3,9 @@
 //  Created by Super on 16/3/18.
 #import "WXChatFileViewController.h"
 #import "MWPhotoBrowser.h"
-#import "WXRootViewController.h"
+#import "WXTabBarController.h"
 #import "WXMessageManager.h"
 #import "NSFileManager+expanded.h"
-#define     HEIGHT_collectionView_HEADER    28
-#define     WIDTH_collectionView_CELL       APPW / 4 * 0.98
-#define     SPACE_collectionView_CELL       (APPW - WIDTH_collectionView_CELL * 4) / 3
 @interface WXChatFileCell : UICollectionViewCell
 @property (nonatomic, strong) WXMessage * message;
 @end
@@ -115,10 +112,10 @@
     if ([UIDevice currentDevice].systemVersion.floatValue >= 9.0) {
         [layout setSectionHeadersPinToVisibleBounds:YES];
     }
-    [layout setItemSize:CGSizeMake(WIDTH_collectionView_CELL, WIDTH_collectionView_CELL)];
-    [layout setMinimumInteritemSpacing:SPACE_collectionView_CELL];
-    [layout setMinimumLineSpacing:SPACE_collectionView_CELL];
-    [layout setHeaderReferenceSize:CGSizeMake(APPW, HEIGHT_collectionView_HEADER)];
+    [layout setItemSize:CGSizeMake(APPW / 4 * 0.98, APPW / 4 * 0.98)];
+    [layout setMinimumInteritemSpacing:(APPW - APPW / 4 * 0.98 * 4) / 3];
+    [layout setMinimumLineSpacing:(APPW - APPW / 4 * 0.98 * 4) / 3];
+    [layout setHeaderReferenceSize:CGSizeMake(APPW, 28)];
     [layout setFooterReferenceSize:CGSizeMake(APPW, 0)];
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     [self.collectionView setBackgroundColor:[UIColor clearColor]];

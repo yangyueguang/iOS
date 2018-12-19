@@ -22,7 +22,7 @@ typedef void (^ CompleteBlock)(NSMutableArray *data);
     return self;
 }
 - (void) p_initTestData{
-    WXSettingItem *item1 = TLCreateSettingItem(@"账号与安全");
+    WXSettingItem *item1 = [WXSettingItem createItemWithTitle:(@"账号与安全")];
     if (/* DISABLES CODE */ (1)) {
         item1.subTitle = @"已保护";
         item1.rightImagePath = @"u_protectHL";
@@ -32,16 +32,16 @@ typedef void (^ CompleteBlock)(NSMutableArray *data);
     }
     WXSettingGroup *group1 = TLCreateSettingGroup(nil, nil, @[item1]);
     
-    WXSettingItem *item2 = TLCreateSettingItem(@"新消息通知");
-    WXSettingItem *item3 = TLCreateSettingItem(@"隐私");
-    WXSettingItem *item4 = TLCreateSettingItem(@"通用");
+    WXSettingItem *item2 = [WXSettingItem createItemWithTitle:(@"新消息通知")];
+    WXSettingItem *item3 = [WXSettingItem createItemWithTitle:(@"隐私")];
+    WXSettingItem *item4 = [WXSettingItem createItemWithTitle:(@"通用")];
     WXSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[item2, item3, item4]));
     
-    WXSettingItem *item5 = TLCreateSettingItem(@"帮助与反馈");
-    WXSettingItem *item6 = TLCreateSettingItem(@"关于微信");
+    WXSettingItem *item5 = [WXSettingItem createItemWithTitle:(@"帮助与反馈")];
+    WXSettingItem *item6 = [WXSettingItem createItemWithTitle:(@"关于微信")];
     WXSettingGroup *group3 = TLCreateSettingGroup(nil, nil, (@[item5, item6]));
     
-    WXSettingItem *item7 = TLCreateSettingItem(@"退出登录");
+    WXSettingItem *item7 = [WXSettingItem createItemWithTitle:(@"退出登录")];
     item7.type = TLSettingItemTypeTitleButton;
     WXSettingGroup *group4 = TLCreateSettingGroup(nil, nil, @[item7]);
     

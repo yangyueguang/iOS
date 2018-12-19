@@ -7,9 +7,6 @@
 #import "WXExpressionDetailViewController.h"
 #import "WXExpressionHelper.h"
 #import "WXPictureCarouselView.h"
-#define         EDGE_TOP        10.0f
-#define         EDGE_LEFT       15.0f
-#define         ROW_SPCAE       10.0f
 @interface WXExpressionCell ()
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -68,26 +65,26 @@
 #pragma mark - Private Methods
 - (void)p_addMasonry{
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.contentView).mas_offset(EDGE_LEFT);
-        make.top.mas_equalTo(self.contentView).mas_offset(EDGE_TOP);
-        make.bottom.mas_equalTo(self.contentView).mas_offset(-EDGE_TOP);
+        make.left.mas_equalTo(self.contentView).mas_offset(15);
+        make.top.mas_equalTo(self.contentView).mas_offset(10);
+        make.bottom.mas_equalTo(self.contentView).mas_offset(-10);
         make.width.mas_equalTo(self.iconImageView.mas_height);
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.iconImageView.mas_centerY).mas_offset(-2.0f);
         make.left.mas_equalTo(self.iconImageView.mas_right).mas_offset(13.0f);
-        make.right.mas_lessThanOrEqualTo(self.downloadButton.mas_left).mas_offset(-EDGE_LEFT);
+        make.right.mas_lessThanOrEqualTo(self.downloadButton.mas_left).mas_offset(-15);
     }];
     [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.iconImageView.mas_centerY).mas_offset(5.0);
         make.left.mas_equalTo(self.titleLabel);
-        make.right.mas_lessThanOrEqualTo(self.downloadButton.mas_left).mas_offset(-EDGE_LEFT);
+        make.right.mas_lessThanOrEqualTo(self.downloadButton.mas_left).mas_offset(-15);
     }];
     [self.tagView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.top.mas_equalTo(self.contentView);
     }];
     [self.downloadButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.contentView).mas_offset(-EDGE_LEFT);
+        make.right.mas_equalTo(self.contentView).mas_offset(-15);
         make.centerY.mas_equalTo(self.contentView);
         make.size.mas_equalTo(CGSizeMake(60, 26));
     }];

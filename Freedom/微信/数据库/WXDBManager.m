@@ -6,7 +6,7 @@
 #import "WXMessageManager.h"
 #import "NSFileManager+expanded.h"
 
-#define     TLNoNilString(str)  (str.length > 0 ? str : @"")
+
 @implementation WXDBMessageStore
 - (id)init{
     if (self = [super init]) {
@@ -41,7 +41,7 @@
                         message.messageID,
                         message.userID,
                         fid,
-                        TLNoNilString(subfid),
+                        (subfid),
                         [NSString stringWithFormat:@"%lf", [message.date timeIntervalSince1970]],
                         [NSNumber numberWithInteger:message.partnerType],
                         [NSNumber numberWithInteger:message.ownerTyper],
@@ -297,12 +297,12 @@
                     uid,
                     group.groupID,
                     [NSNumber numberWithInteger:group.type],
-                    TLNoNilString(group.groupName),
-                    TLNoNilString(group.groupInfo),
-                    TLNoNilString(group.groupDetailInfo),
+                    (group.groupName),
+                    (group.groupInfo),
+                    (group.groupDetailInfo),
                     [NSNumber numberWithInteger:group.count],
-                    TLNoNilString(group.authID),
-                    TLNoNilString(group.authName),
+                    (group.authID),
+                    (group.authName),
                     [NSString stringWithFormat:@"%lf", [group.date timeIntervalSince1970]],
                     @"", @"", @"", @"", @"", nil];
     BOOL ok = [self excuteSQL:sqlString withArrParameter:arr];
@@ -361,7 +361,7 @@
         NSArray *arr = [NSArray arrayWithObjects:
                         groupID,
                         emoji.emojiID,
-                        TLNoNilString(emoji.emojiName),
+                        (emoji.emojiName),
                         @"", @"", @"", @"", @"", nil];
         BOOL ok = [self excuteSQL:sqlString withArrParameter:arr];
         if (!ok) {
@@ -406,12 +406,12 @@
 - (BOOL)addFriend:(WXUser *)user forUid:(NSString *)uid{
     NSString *sqlString = [NSString stringWithFormat:SQL_UPDATE_FRIEND, FRIENDS_TABLE_NAME];
     NSArray *arrPara = [NSArray arrayWithObjects:
-                        TLNoNilString(uid),
-                        TLNoNilString(user.userID),
-                        TLNoNilString(user.username),
-                        TLNoNilString(user.nikeName),
-                        TLNoNilString(user.avatarURL),
-                        TLNoNilString(user.remarkName),
+                        (uid),
+                        (user.userID),
+                        (user.username),
+                        (user.nikeName),
+                        (user.avatarURL),
+                        (user.remarkName),
                         @"", @"", @"", @"", @"", nil];
     BOOL ok = [self excuteSQL:sqlString withArrParameter:arrPara];
     return ok;
@@ -491,9 +491,9 @@
 - (BOOL)addGroup:(WXGroup *)group forUid:(NSString *)uid{
     NSString *sqlString = [NSString stringWithFormat:SQL_UPDATE_GROUP, GROUPS_TABLE_NAME];
     NSArray *arrPara = [NSArray arrayWithObjects:
-                        TLNoNilString(uid),
-                        TLNoNilString(group.groupID),
-                        TLNoNilString(group.groupName),
+                        (uid),
+                        (group.groupID),
+                        (group.groupName),
                         @"", @"", @"", @"", @"", nil];
     BOOL ok = [self excuteSQL:sqlString withArrParameter:arrPara];
     if (ok) {
@@ -560,13 +560,13 @@
 - (BOOL)addGroupMember:(WXUser *)user forUid:(NSString *)uid andGid:(NSString *)gid{
     NSString *sqlString = [NSString stringWithFormat:SQL_UPDATE_GROUP_MEMBER, GROUP_MEMBER_TABLE_NAMGE];
     NSArray *arrPara = [NSArray arrayWithObjects:
-                        TLNoNilString(uid),
-                        TLNoNilString(gid),
-                        TLNoNilString(user.userID),
-                        TLNoNilString(user.username),
-                        TLNoNilString(user.nikeName),
-                        TLNoNilString(user.avatarURL),
-                        TLNoNilString(user.remarkName),
+                        (uid),
+                        (gid),
+                        (user.userID),
+                        (user.username),
+                        (user.nikeName),
+                        (user.avatarURL),
+                        (user.remarkName),
                         @"", @"", @"", @"", @"", nil];
     BOOL ok = [self excuteSQL:sqlString withArrParameter:arrPara];
     return ok;

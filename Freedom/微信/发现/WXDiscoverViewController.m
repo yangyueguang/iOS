@@ -20,16 +20,19 @@
     }
     return self;
 }
+-(WXMenuItem*)TLCreateMenuItem:(NSString*)IconPath :(NSString*)Title{
+    return [WXMenuItem createMenuWithIconPath:IconPath title:Title];
+}
 - (void) p_initTestData{
-    WXMenuItem *item1 = TLCreateMenuItem(@"u_frendsCircle", @"朋友圈");
+    WXMenuItem *item1 = [self TLCreateMenuItem: @"u_frendsCircle": @"朋友圈"];
     item1.rightIconURL = @"http://img4.duitang.com/uploads/item/201510/16/20151016113134_TZye4.thumb.224_0.jpeg";
     item1.showRightRedPoint = YES;
-    WXMenuItem *item2 = TLCreateMenuItem(@"u_scan_b", @"扫一扫");
-    WXMenuItem *item3 = TLCreateMenuItem(@"u_shake", @"摇一摇");
-    WXMenuItem *item4 = TLCreateMenuItem(@"ff_IconLocationService", @"附近的人");
-    WXMenuItem *item5 = TLCreateMenuItem(@"ff_IconBottle", @"漂流瓶");
-    WXMenuItem *item6 = TLCreateMenuItem(@"CreditCard_ShoppingBag", @"购物");
-    WXMenuItem *item7 = TLCreateMenuItem(@"MoreGame", @"游戏");
+    WXMenuItem *item2 =[self TLCreateMenuItem:@"u_scan_b": @"扫一扫"];
+    WXMenuItem *item3 = [self TLCreateMenuItem:@"u_shake": @"摇一摇"];
+    WXMenuItem *item4 = [self TLCreateMenuItem:@"ff_IconLocationService": @"附近的人"];
+    WXMenuItem *item5 = [self TLCreateMenuItem:@"ff_IconBottle": @"漂流瓶"];
+    WXMenuItem *item6 = [self TLCreateMenuItem:@"CreditCard_ShoppingBag": @"购物"];
+    WXMenuItem *item7 = [self TLCreateMenuItem:@"MoreGame": @"游戏"];
     item7.rightIconURL = @"http://qq1234.org/uploads/allimg/140404/3_140404151205_8.jpg";
     item7.subTitle = @"英雄联盟计算器版";
     item7.showRightRedPoint = YES;

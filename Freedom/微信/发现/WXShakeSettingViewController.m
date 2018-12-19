@@ -18,18 +18,18 @@
     return self;
 }
 - (void) p_initTestData{
-    WXSettingItem *item1 = TLCreateSettingItem(@"使用默认背景图片");
+    WXSettingItem *item1 = [WXSettingItem createItemWithTitle:(@"使用默认背景图片")];
     item1.showDisclosureIndicator = NO;
-    WXSettingItem *item2 = TLCreateSettingItem(@"换张背景图片");
-    WXSettingItem *item3 = TLCreateSettingItem(@"音效");
+    WXSettingItem *item2 = [WXSettingItem createItemWithTitle:(@"换张背景图片")];
+    WXSettingItem *item3 = [WXSettingItem createItemWithTitle:(@"音效")];
     item3.type = TLSettingItemTypeSwitch;
     WXSettingGroup *group1 = TLCreateSettingGroup(nil, nil, (@[item1, item2, item3]));
     
-    WXSettingItem *item5 = TLCreateSettingItem(@"打招呼的人");
-    WXSettingItem *item6 = TLCreateSettingItem(@"摇到的历史");
+    WXSettingItem *item5 = [WXSettingItem createItemWithTitle:(@"打招呼的人")];
+    WXSettingItem *item6 = [WXSettingItem createItemWithTitle:(@"摇到的历史")];
     WXSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[item5, item6]));
     
-    WXSettingItem *item7 = TLCreateSettingItem(@"摇一摇消息");
+    WXSettingItem *item7 = [WXSettingItem createItemWithTitle:(@"摇一摇消息")];
     WXSettingGroup *group3 = TLCreateSettingGroup(nil, nil, (@[item7]));
     
     [self.shakeSettingData addObjectsFromArray:@[group1, group2, group3]];

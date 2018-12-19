@@ -3,8 +3,6 @@
 // Created by Super
 #import "WXTableViewController.h"
 #import "WXFriendSearchViewController.h"
-#define     HEIGHT_FRIEND_CELL      54.0f
-#define     HEIGHT_HEADER           22.0f
 #import "WXUserHelper.h"
 #import "WXTableViewCell.h"
 @interface WXFriendCell : WXTableViewCell

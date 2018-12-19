@@ -4,13 +4,8 @@
 #import "WXExpressionDetailViewController.h"
 #import "WXExpressionHelper.h"
 #import <BlocksKit/BlocksKit+UIKit.h>
-#define         EDGE                20.0
-#define         SPACE_CELL          15.0
-#define         WIDTH_CELL          ((APPW - EDGE * 2 - SPACE_CELL * 3.0) / 4.0)
 #import "UIImage+GIF.h"
-    
 #import "TLEmojiBaseCell.h"
-#define         HEIGHT_EXP_BANNER       (APPW * 0.45)
 @protocol WXExpressionDetailCellDelegate <NSObject>
 - (void)expressionDetailCellDownloadButtonDown:(TLEmojiGroup *)group;
 @end
@@ -42,7 +37,7 @@
     if (group.bannerURL.length > 0) {
         [self.bannerView sd_setImageWithURL:[NSURL URLWithString:group.bannerURL]];
         [self.bannerView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(HEIGHT_EXP_BANNER);
+            make.height.mas_equalTo((APPW * 0.45));
         }];
     }else{
         [self.bannerView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -157,7 +152,7 @@
 #pragma mark - Class Methods
 + (CGFloat)cellHeightForModel:(TLEmojiGroup *)group{
     CGFloat detailHeight = [group.groupDetailInfo boundingRectWithSize:CGSizeMake(APPW - 30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:13.0f]} context:nil].size.height;
-    CGFloat bannerHeight = group.bannerURL.length > 0 ? HEIGHT_EXP_BANNER : 0;
+    CGFloat bannerHeight = group.bannerURL.length > 0 ? (APPW * 0.45) : 0;
     CGFloat height = 105.0 + detailHeight + bannerHeight;
     return height;
 }
@@ -349,17 +344,17 @@
         CGFloat height = [WXExpressionDetailCell cellHeightForModel:self.group];
         return CGSizeMake(collectionView.frame.size.width, height);
     }else{
-        return CGSizeMake(WIDTH_CELL, WIDTH_CELL);
+        return CGSizeMake(((APPW - 20 * 2 - 15 * 3.0) / 4.0),((APPW - 20 * 2 - 15 * 3.0) / 4.0));
     }
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return section == 0 ? 0 : SPACE_CELL;
+    return section == 0 ? 0 : 15;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return section == 0 ? 0 : SPACE_CELL;
+    return section == 0 ? 0 : 15;
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return section == 0 ? UIEdgeInsetsZero : UIEdgeInsetsMake(EDGE, EDGE, EDGE, EDGE);
+    return section == 0 ? UIEdgeInsetsZero : UIEdgeInsetsMake(20,20,20,20);
 }
 //MAKR: TLExpressionDetailCellDelegate
 - (void)expressionDetailCellDownloadButtonDown:(TLEmojiGroup *)group{

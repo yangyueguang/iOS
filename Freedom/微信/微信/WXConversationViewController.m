@@ -8,11 +8,6 @@
 #import "WXModes.h"
 #import "WXUserHelper.h"
 #import "NSFileManager+expanded.h"
-#define     CONV_SPACE_X            10.0f
-#define     CONV_SPACE_Y            9.5f
-#define     REDPOINT_WIDTH          10.0f
-#define     WIDTH_TABLEVIEW             140.0f
-#define     HEIGHT_TABLEVIEW_CELL       45.0f
 @interface WechatAddMenuCell : WXTableViewCell
 @property (nonatomic, strong) WXAddMenuItem *item;
 @end
@@ -93,7 +88,7 @@
     [self setNeedsDisplay];
     [self setFrame:view.bounds];
     
-    CGRect rect = CGRectMake(view.frame.size.width - WIDTH_TABLEVIEW - 5, TopHeight + 20 + 10, WIDTH_TABLEVIEW, self.data.count * HEIGHT_TABLEVIEW_CELL);
+    CGRect rect = CGRectMake(view.frame.size.width - 140 - 5, TopHeight + 20 + 10, 140, self.data.count * 45);
     [self.tableView setFrame:rect];
 }
 - (BOOL)isShow{
@@ -133,7 +128,7 @@
     [self dismiss];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return HEIGHT_TABLEVIEW_CELL;
+    return 45;
 }
 #pragma mark - Private Methods -
 - (void)drawRect:(CGRect)rect{
@@ -191,7 +186,7 @@
 @implementation WechatConversationCell
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.leftSeparatorSpace = CONV_SPACE_X;
+        self.leftSeparatorSpace = 10;
         
         [self.contentView addSubview:self.avatarImageView];
         [self.contentView addSubview:self.usernameLabel];
@@ -280,15 +275,15 @@
 #pragma mark - Private Methods -
 - (void)p_addMasonry{
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(CONV_SPACE_X);
-        make.top.mas_equalTo(CONV_SPACE_Y);
-        make.bottom.mas_equalTo(- CONV_SPACE_Y);
+        make.left.mas_equalTo(10);
+        make.top.mas_equalTo(9.5);
+        make.bottom.mas_equalTo(- 9.5);
         make.width.mas_equalTo(self.avatarImageView.mas_height);
     }];
     
     [self.usernameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
     [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(CONV_SPACE_X);
+        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(10);
         make.top.mas_equalTo(self.avatarImageView).mas_offset(2.0);
         make.right.mas_lessThanOrEqualTo(self.timeLabel.mas_left).mas_offset(-5);
     }];
@@ -303,7 +298,7 @@
     [self.timeLabel setContentCompressionResistancePriority:300 forAxis:UILayoutConstraintAxisHorizontal];
     [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.usernameLabel);
-        make.right.mas_equalTo(self.contentView).mas_offset(-CONV_SPACE_X);
+        make.right.mas_equalTo(self.contentView).mas_offset(-10);
     }];
     
     [self.remindImageView setContentCompressionResistancePriority:310 forAxis:UILayoutConstraintAxisHorizontal];
@@ -315,7 +310,7 @@
     [self.redPointView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.avatarImageView.mas_right).mas_offset(-2);
         make.centerY.mas_equalTo(self.avatarImageView.mas_top).mas_offset(2);
-        make.width.and.height.mas_equalTo(REDPOINT_WIDTH);
+        make.width.and.height.mas_equalTo(10);
     }];
 }
 #pragma mark - Getter
@@ -363,7 +358,7 @@
         [_redPointView setBackgroundColor:[UIColor redColor]];
         
         [_redPointView.layer setMasksToBounds:YES];
-        [_redPointView.layer setCornerRadius:REDPOINT_WIDTH / 2.0];
+        [_redPointView.layer setCornerRadius:10 / 2.0];
         [_redPointView setHidden:YES];
     }
     return _redPointView;
@@ -500,7 +495,7 @@
 }
 //MARK: UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return HEIGHT_CONVERSATION_CELL;
+    return 80;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

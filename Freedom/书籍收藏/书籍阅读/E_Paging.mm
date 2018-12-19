@@ -6,7 +6,6 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
-#define CHAR_PER_LOAD 50000
 using namespace std;
 @interface E_Paging ()
 @end
@@ -16,7 +15,7 @@ using namespace std;
 - (void)paginate{
     //清空
     _pageOffsets.clear();
-    NSString *buffer = [self subStringWithRange:NSMakeRange(0, CHAR_PER_LOAD)];
+    NSString *buffer = [self subStringWithRange:NSMakeRange(0, 50000)];
     NSMutableAttributedString *attrString = [[NSMutableAttributedString  alloc] initWithString:buffer];
     buffer = nil; // 马上释放
     NSDictionary *strAttr = [self stringAttrWithFont:self.contentFont];
@@ -58,7 +57,7 @@ using namespace std;
             CFRelease(frame); frame = NULL;
             CFRelease(frameSetter);
             _pageOffsets.pop_back();
-            buffer = [self subStringWithRange:NSMakeRange(currentOffset, CHAR_PER_LOAD)];
+            buffer = [self subStringWithRange:NSMakeRange(currentOffset, 50000)];
             attrString = [[NSMutableAttributedString alloc] initWithString:buffer];
             [attrString setAttributes:strAttr range:NSMakeRange(0, attrString.length)];
             buffer = nil;

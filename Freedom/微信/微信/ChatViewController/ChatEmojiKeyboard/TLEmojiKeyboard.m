@@ -100,23 +100,23 @@ static TLEmojiKeyboard *emojiKB;
 }
 #pragma mark - Event Response -
 - (void) pageControlChanged:(UIPageControl *)pageControl{
-    [self.collectionView scrollRectToVisible:CGRectMake(APPW * pageControl.currentPage, 0, APPW, HEIGHT_PAGECONTROL) animated:YES];
+    [self.collectionView scrollRectToVisible:CGRectMake(APPW * pageControl.currentPage, 0, APPW, 215) animated:YES];
 }
 #pragma mark - Private Methods -
 - (void)p_addMasonry{
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self).mas_offset(HEIGHT_TOP_SPACE);
+        make.top.mas_equalTo(self).mas_offset(10);
         make.left.and.right.mas_equalTo(self);
-        make.height.mas_equalTo(HEIGHT_EMOJIVIEW);
+        make.height.mas_equalTo((215.0f * 0.75 - 10));
     }];
     [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self);
         make.bottom.mas_equalTo(self.groupControl.mas_top);
-        make.height.mas_equalTo(HEIGHT_PAGECONTROL);
+        make.height.mas_equalTo(215);
     }];
     [self.groupControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.and.bottom.mas_equalTo(self);
-        make.height.mas_equalTo(HEIGHT_GROUPCONTROL);
+        make.height.mas_equalTo(215*0.17);
     }];
 }
 - (void)drawRect:(CGRect)rect{
@@ -222,26 +222,26 @@ static TLEmojiKeyboard *emojiKB;
     float btmSpace = 0;
     float hfSpace = 0;
     if (self.curGroup.type == TLEmojiTypeFace || self.curGroup.type == TLEmojiTypeEmoji) {
-        cellWidth = cellHeight = (HEIGHT_EMOJIVIEW / self.curGroup.rowNumber) * 0.55;
+        cellWidth = cellHeight = ((215.0f * 0.75 - 10) / self.curGroup.rowNumber) * 0.55;
         topSpace = 11;
         btmSpace = 19;
         hfSpace = (APPW - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber + 1) * 1.4;
     }else if (self.curGroup.type == TLEmojiTypeImageWithTitle){
-        cellHeight = (HEIGHT_EMOJIVIEW / self.curGroup.rowNumber) * 0.96;
+        cellHeight = ((215.0f * 0.75 - 10) / self.curGroup.rowNumber) * 0.96;
         cellWidth = cellHeight * 0.8;
         hfSpace = (APPW - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber + 1) * 1.2;
     }else{
-        cellWidth = cellHeight = (HEIGHT_EMOJIVIEW / self.curGroup.rowNumber) * 0.72;
+        cellWidth = cellHeight = ((215.0f * 0.75 - 10) / self.curGroup.rowNumber) * 0.72;
         topSpace = 8;
         btmSpace = 16;
         hfSpace = (APPW - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber + 1) * 1.2;
     }
     
     cellSize = CGSizeMake(cellWidth, cellHeight);
-    headerReferenceSize = CGSizeMake(hfSpace, HEIGHT_EMOJIVIEW);
-    footerReferenceSize = CGSizeMake(hfSpace, HEIGHT_EMOJIVIEW);
+    headerReferenceSize = CGSizeMake(hfSpace, (215.0f * 0.75 - 10));
+    footerReferenceSize = CGSizeMake(hfSpace, (215.0f * 0.75 - 10));
     minimumLineSpacing = (APPW - hfSpace * 2 - cellWidth * self.curGroup.colNumber) / (self.curGroup.colNumber - 1);
-    minimumInteritemSpacing = (HEIGHT_EMOJIVIEW - topSpace - btmSpace - cellHeight * self.curGroup.rowNumber) / (self.curGroup.rowNumber - 1);
+    minimumInteritemSpacing = ((215.0f * 0.75 - 10) - topSpace - btmSpace - cellHeight * self.curGroup.rowNumber) / (self.curGroup.rowNumber - 1);
     sectionInsets = UIEdgeInsetsMake(topSpace, 0, btmSpace, 0);
 }
 #pragma mark - Delegate -

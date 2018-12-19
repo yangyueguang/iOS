@@ -93,7 +93,7 @@
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"排序" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown:)];
     [self.navigationItem setRightBarButtonItem:rightBarButtonItem];
     
-    if (self.navigationController.rootViewController == self) {
+    if (self.navigationController.viewControllers.firstObject == self) {
         UIBarButtonItem *dismissBarButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain actionBlick:^{
             [self dismissViewControllerAnimated:YES completion:nil];
         }];

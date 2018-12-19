@@ -10,9 +10,6 @@
 #import "WXUserHelper.h"
 #import "WXBaseViewController.h"
 #import "NSFileManager+expanded.h"
-#define     MIN_FONT_SIZE           15.0f
-#define     STANDARD_FONT_SZIE      16.0f
-#define     MAX_FONT_SZIE           20.0f
 #import "WXModes.h"
 @interface WXChatFontSettingView : UIView
 @property (nonatomic, assign) CGFloat curFontSize;
@@ -80,7 +77,7 @@
 - (UILabel *)miniFontLabel{
     if (_miniFontLabel == nil) {
         _miniFontLabel = [[UILabel alloc] init];
-        [_miniFontLabel setFont:[UIFont systemFontOfSize:MIN_FONT_SIZE]];
+        [_miniFontLabel setFont:[UIFont systemFontOfSize:15]];
         [_miniFontLabel setText:@"A"];
     }
     return _miniFontLabel;
@@ -88,7 +85,7 @@
 - (UILabel *)maxFontLabel{
     if (_maxFontLabel == nil) {
         _maxFontLabel = [[UILabel alloc] init];
-        [_maxFontLabel setFont:[UIFont systemFontOfSize:MAX_FONT_SZIE]];
+        [_maxFontLabel setFont:[UIFont systemFontOfSize:20]];
         [_maxFontLabel setText:@"A"];
     }
     return _maxFontLabel;
@@ -96,7 +93,7 @@
 - (UILabel *)standardFontLabel{
     if (_standardFontLabel == nil) {
         _standardFontLabel = [[UILabel alloc] init];
-        [_standardFontLabel setFont:[UIFont systemFontOfSize:STANDARD_FONT_SZIE]];
+        [_standardFontLabel setFont:[UIFont systemFontOfSize:16]];
         [_standardFontLabel setText:@"标准"];
     }
     return _standardFontLabel;
@@ -104,8 +101,8 @@
 - (UISlider *)slider{
     if (_slider == nil) {
         _slider = [[UISlider alloc] init];
-        [_slider setMinimumValue:MIN_FONT_SIZE];
-        [_slider setMaximumValue:MAX_FONT_SZIE];
+        [_slider setMinimumValue:15];
+        [_slider setMaximumValue:20];
         [_slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
     }
     return _slider;
@@ -200,14 +197,14 @@
 @end
 @implementation WXCommonSettingHelper
 + (NSMutableArray *)chatBackgroundSettingData{
-    WXSettingItem *select = TLCreateSettingItem(@"选择背景图");
+    WXSettingItem *select = [WXSettingItem createItemWithTitle:(@"选择背景图")];
     WXSettingGroup *group1 = TLCreateSettingGroup(nil, nil, @[select]);
     
-    WXSettingItem *album = TLCreateSettingItem(@"从手机相册中选择");
-    WXSettingItem *camera = TLCreateSettingItem(@"拍一张");
+    WXSettingItem *album = [WXSettingItem createItemWithTitle:(@"从手机相册中选择")];
+    WXSettingItem *camera = [WXSettingItem createItemWithTitle:(@"拍一张")];
     WXSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[album, camera]));
     
-    WXSettingItem *toAll = TLCreateSettingItem(@"将背景应用到所有聊天场景");
+    WXSettingItem *toAll = [WXSettingItem createItemWithTitle:(@"将背景应用到所有聊天场景")];
     toAll.type = TLSettingItemTypeTitleButton;
     WXSettingGroup *group3 = TLCreateSettingGroup(nil, nil, @[toAll]);
     
@@ -222,27 +219,27 @@
     return self;
 }
 - (void) p_initTestData{
-    WXSettingItem *item1 = TLCreateSettingItem(@"多语言");
+    WXSettingItem *item1 = [WXSettingItem createItemWithTitle:(@"多语言")];
     WXSettingGroup *group1 = TLCreateSettingGroup(nil, nil, @[item1]);
     
-    WXSettingItem *item2 = TLCreateSettingItem(@"字体大小");
-    WXSettingItem *item3 = TLCreateSettingItem(@"聊天背景");
-    WXSettingItem *item4 = TLCreateSettingItem(@"我的表情");
-    WXSettingItem *item5 = TLCreateSettingItem(@"朋友圈小视频");
+    WXSettingItem *item2 = [WXSettingItem createItemWithTitle:(@"字体大小")];
+    WXSettingItem *item3 = [WXSettingItem createItemWithTitle:(@"聊天背景")];
+    WXSettingItem *item4 = [WXSettingItem createItemWithTitle:(@"我的表情")];
+    WXSettingItem *item5 = [WXSettingItem createItemWithTitle:(@"朋友圈小视频")];
     WXSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[item2, item3, item4, item5]));
     
-    WXSettingItem *item6 = TLCreateSettingItem(@"听筒模式");
+    WXSettingItem *item6 = [WXSettingItem createItemWithTitle:(@"听筒模式")];
     item6.type = TLSettingItemTypeSwitch;
     WXSettingGroup *group3 = TLCreateSettingGroup(nil, nil, @[item6]);
     
-    WXSettingItem *item7 = TLCreateSettingItem(@"功能");
+    WXSettingItem *item7 = [WXSettingItem createItemWithTitle:(@"功能")];
     WXSettingGroup *group4 = TLCreateSettingGroup(nil, nil, @[item7]);
     
-    WXSettingItem *item8 = TLCreateSettingItem(@"聊天记录迁移");
-    WXSettingItem *item9 = TLCreateSettingItem(@"清理微信存储空间");
+    WXSettingItem *item8 = [WXSettingItem createItemWithTitle:(@"聊天记录迁移")];
+    WXSettingItem *item9 = [WXSettingItem createItemWithTitle:(@"清理微信存储空间")];
     WXSettingGroup *group5 = TLCreateSettingGroup(nil, nil, (@[item8, item9]));
     
-    WXSettingItem *item10 = TLCreateSettingItem(@"清空聊天记录");
+    WXSettingItem *item10 = [WXSettingItem createItemWithTitle:(@"清空聊天记录")];
     item10.type = TLSettingItemTypeTitleButton;
     WXSettingGroup *group6 = TLCreateSettingGroup(nil, nil, @[item10]);
     

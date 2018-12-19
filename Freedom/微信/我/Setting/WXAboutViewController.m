@@ -2,7 +2,6 @@
 //  Freedom
 // Created by Super
 #import "WXAboutViewController.h"
-#define     HEIGHT_TOPVIEW      100.0f
 #import "WXModes.h"
 @interface WXAboutHelper : NSObject
 @property (nonatomic, strong) NSMutableArray *abouSettingtData;
@@ -16,11 +15,11 @@
     return self;
 }
 - (void) p_initTestData{
-    WXSettingItem *item1 = TLCreateSettingItem(@"去评分");
-    WXSettingItem *item2 = TLCreateSettingItem(@"欢迎页");
-    WXSettingItem *item3 = TLCreateSettingItem(@"功能介绍");
-    WXSettingItem *item4 = TLCreateSettingItem(@"系统通知");
-    WXSettingItem *item5 = TLCreateSettingItem(@"举报与投诉");
+    WXSettingItem *item1 = [WXSettingItem createItemWithTitle:(@"去评分")];
+    WXSettingItem *item2 = [WXSettingItem createItemWithTitle:(@"欢迎页")];
+    WXSettingItem *item3 = [WXSettingItem createItemWithTitle:(@"功能介绍")];
+    WXSettingItem *item4 = [WXSettingItem createItemWithTitle:(@"系统通知")];
+    WXSettingItem *item5 = [WXSettingItem createItemWithTitle:(@"举报与投诉")];
     WXSettingGroup *group1 = TLCreateSettingGroup(nil, nil, (@[item1, item2, item3, item4, item5]));
     [self.abouSettingtData addObjectsFromArray:@[group1]];
 }
@@ -120,7 +119,7 @@
 //MARK: UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return HEIGHT_TOPVIEW;
+        return 100;
     }
     return 0;
 }

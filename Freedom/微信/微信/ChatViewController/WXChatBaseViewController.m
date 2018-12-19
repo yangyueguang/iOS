@@ -5,8 +5,6 @@
 #import "WXMessageManager.h"
 #import "WXUserHelper.h"
 #import "NSFileManager+expanded.h"
-#define     SIZE_TIPS    CGSizeMake(55, 100)
-#define     WIDTH_TEXTVIEW          self.frame.size.width * 0.94
 @interface WXTextDisplayView : UIView
 @property (nonatomic, strong) NSAttributedString *attrString;
 - (void)showInView:(UIView *)view withAttrText:(NSAttributedString *)attrText animation:(BOOL)animation;
@@ -44,7 +42,7 @@
     NSMutableAttributedString *mutableAttrString = [[NSMutableAttributedString alloc] initWithAttributedString:attrString];
     [mutableAttrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:25.0f] range:NSMakeRange(0, attrString.length)];
     [self.textView setAttributedText:mutableAttrString];
-    CGSize size = [self.textView sizeThatFits:CGSizeMake(WIDTH_TEXTVIEW, MAXFLOAT)];
+    CGSize size = [self.textView sizeThatFits:CGSizeMake(self.frame.size.width * 0.94, MAXFLOAT)];
     size.height = size.height > APPH ? APPH : size.height;
     [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(size);
@@ -76,7 +74,7 @@
 @end
 @implementation WXEmojiDisplayView
 - (id)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:CGRectMake(0, 0, SIZE_TIPS.width, SIZE_TIPS.height)]) {
+    if (self = [super initWithFrame:CGRectMake(0, 0, CGSizeMake(55, 100).width, CGSizeMake(55, 100).height)]) {
         [self setImage:[UIImage imageNamed:@"emojiKB_tips"]];
         [self addSubview:self.imageLabel];
         [self addSubview:self.imageView];

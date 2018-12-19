@@ -3,10 +3,6 @@
 //  Created by Super on 16/2/17.
 #import <UIKit/UIKit.h>
 #import "TLEmojiBaseCell.h"
-#define     HEIGHT_TOP_SPACE            10
-#define     HEIGHT_EMOJIVIEW            (215.0f * 0.75 - HEIGHT_TOP_SPACE)
-#define     HEIGHT_PAGECONTROL          215.0f * 0.1
-#define     HEIGHT_GROUPCONTROL         215.0f * 0.17
 @protocol TLKeyboardDelegate <NSObject>
 @optional
 - (void) chatKeyboardWillShow:(id)keyboard;

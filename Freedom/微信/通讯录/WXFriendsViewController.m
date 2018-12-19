@@ -10,8 +10,6 @@
 #import "WXTagsViewController.h"
 #import "WXPublicServerViewController.h"
 #import "WXFriendDetailViewController.h"
-#define     FRIENDS_SPACE_X         10.0f
-#define     FRIENDS_SPACE_Y         9.0f
 @interface WXFriendCell ()
 @property (nonatomic, strong) UIImageView *avatarImageView;
 @property (nonatomic, strong) UILabel *usernameLabel;
@@ -20,7 +18,7 @@
 @implementation WXFriendCell
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.leftSeparatorSpace = FRIENDS_SPACE_X;
+        self.leftSeparatorSpace = 10;
         
         [self.contentView addSubview:self.avatarImageView];
         [self.contentView addSubview:self.usernameLabel];
@@ -55,14 +53,14 @@
 #pragma mark - Prvate Methods -
 - (void)p_addMasonry{
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(FRIENDS_SPACE_X);
-        make.top.mas_equalTo(FRIENDS_SPACE_Y);
-        make.bottom.mas_equalTo(- FRIENDS_SPACE_Y + 0.5);
+        make.left.mas_equalTo(10);
+        make.top.mas_equalTo(9);
+        make.bottom.mas_equalTo(- 9 + 0.5);
         make.width.mas_equalTo(self.avatarImageView.mas_height);
     }];
     
     [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(FRIENDS_SPACE_X);
+        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(10);
         make.centerY.mas_equalTo(self.avatarImageView);
         make.right.mas_lessThanOrEqualTo(self.contentView).mas_offset(-20);
     }];
@@ -252,13 +250,13 @@
 }
 //MARK: UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return HEIGHT_FRIEND_CELL;
+    return 54;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
         return 0;
     }
-    return HEIGHT_HEADER;
+    return 22;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     WXUser *user = [self.data[indexPath.section] objectAtIndex:indexPath.row];

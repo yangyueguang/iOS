@@ -3,18 +3,10 @@
 //  Created by Super on 16/4/23.
 #import "WXMomentDetailViewController.h"
 #import "MWPhotoBrowser.h"
-#import "WXRootViewController.h"
+#import "WXTabBarController.h"
 #import "UIButton+WebCache.h"
-#import "WXRootViewController.h"
-#define     WIDTH_IMAGE_ONE     (APPW - 70) * 0.6
-#define     WIDTH_IMAGE         (APPW - 70) * 0.31
-#define     SPACE               4.0
+#import "WXTabBarController.h"
 #import "UIButton+WebCache.h"
-#define         EDGE_LEFT       10.0f
-#define         EDGE_TOP        15.0f
-#define         WIDTH_AVATAR    40.0f
-#define         SPACE_ROW       8.0f
-#define     EDGE_HEADER     5.0f
 #import "WXTableViewCell.h"
 typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
     TLMomentViewButtonTypeAvatar,
@@ -59,7 +51,7 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
         [self setBackgroundColor:[UIColor clearColor]];
         [self addSubview:self.tableView];
         [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self).mas_offset(EDGE_HEADER);
+            make.top.mas_equalTo(self).mas_offset(5);
             make.left.and.right.mas_equalTo(self);
             make.bottom.mas_equalTo(self).priorityLow();
         }];
@@ -75,7 +67,7 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
 - (void)drawRect:(CGRect)rect{
     CGFloat startX = 20;
     CGFloat startY = 0;
-    CGFloat endY = EDGE_HEADER;
+    CGFloat endY = 5;
     CGFloat width = 6;
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextMoveToPoint(context, startX, startY);
@@ -200,28 +192,28 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
         make.edges.mas_equalTo(self);
     }];
     [self.avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self).mas_offset(EDGE_TOP);
-        make.left.mas_equalTo(self).mas_offset(EDGE_LEFT);
-        make.size.mas_equalTo(CGSizeMake(WIDTH_AVATAR, WIDTH_AVATAR));
+        make.top.mas_equalTo(self).mas_offset(15);
+        make.left.mas_equalTo(self).mas_offset(10);
+        make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
     [self.usernameView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.avatarView);
-        make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(EDGE_LEFT);
-        make.right.mas_lessThanOrEqualTo(self).mas_offset(-EDGE_LEFT);
+        make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(10);
+        make.right.mas_lessThanOrEqualTo(self).mas_offset(-10);
         make.height.mas_equalTo(15.0f);
     }];
     [self.detailContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.usernameView);
-        make.top.mas_equalTo(self.usernameView.mas_bottom).mas_offset(SPACE_ROW);
-        make.right.mas_equalTo(self).mas_offset(-EDGE_LEFT);
+        make.top.mas_equalTo(self.usernameView.mas_bottom).mas_offset(8);
+        make.right.mas_equalTo(self).mas_offset(-10);
     }];
     [self.dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.detailContainerView.mas_bottom).mas_offset(SPACE_ROW);
+        make.top.mas_equalTo(self.detailContainerView.mas_bottom).mas_offset(8);
         make.left.mas_equalTo(self.usernameView);
     }];
     [self.originLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.dateLabel);
-        make.left.mas_equalTo(self.dateLabel.mas_right).mas_offset(EDGE_LEFT);
+        make.left.mas_equalTo(self.dateLabel.mas_right).mas_offset(10);
     }];
     [self.moreButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.dateLabel);
@@ -229,7 +221,7 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
         make.size.mas_equalTo(CGSizeMake(25, 25));
     }];
     [self.extensionContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.dateLabel.mas_bottom).mas_offset(SPACE_ROW);
+        make.top.mas_equalTo(self.dateLabel.mas_bottom).mas_offset(8);
         make.left.and.right.mas_equalTo(self.detailContainerView);
         make.height.mas_equalTo(0);
     }];
@@ -323,10 +315,10 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
     CGFloat imageWidth;
     CGFloat imageHeight;
     if (images.count == 1) {
-        imageWidth = WIDTH_IMAGE_ONE;
+        imageWidth = (APPW - 70) * 0.6;
         imageHeight = imageWidth * 0.8;
     }else{
-        imageHeight = imageWidth = WIDTH_IMAGE;
+        imageHeight = imageWidth = (APPW - 70) * 0.31;
     }
     
     
@@ -347,10 +339,10 @@ typedef NS_ENUM(NSInteger, TLMomentViewButtonType) {
         [self addSubview:imageView];
         
         if ((i != 0 && images.count != 4 && (i + 1) % 3 == 0) || (images.count == 4 && i == 1)) {
-            y += (imageHeight + SPACE);
+            y += (imageHeight + 10);
             x = 0;
         }else{
-            x += (imageWidth + SPACE);
+            x += (imageWidth + 10);
         }
     }
 }

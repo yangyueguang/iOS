@@ -2,8 +2,6 @@
 //  Freedom
 //  Created by Super on 16/2/17.
 #import "TLMoreKeyboard.h"
-#define     HEIGHT_COLLECTIONVIEW       (215.0f * 0.85 - 15)
-#define     WIDTH_COLLECTION_CELL       60
 @implementation TLMoreKeyboardItem
 + (TLMoreKeyboardItem *)createByType:(TLMoreKeyboardItemType)type title:(NSString *)title imagePath:(NSString *)imagePath{
     TLMoreKeyboardItem *item = [[TLMoreKeyboardItem alloc] init];
@@ -182,7 +180,7 @@ static TLMoreKeyboard *moreKB;
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self).mas_offset(15);
         make.left.and.right.mas_equalTo(self);
-        make.height.mas_equalTo(HEIGHT_COLLECTIONVIEW);
+        make.height.mas_equalTo((215.0f * 0.85 - 15));
     }];
     [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self);
@@ -205,14 +203,14 @@ static TLMoreKeyboard *moreKB;
     if (_collectionView == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-        float h = HEIGHT_COLLECTIONVIEW / 2 * 0.93;
-        float spaceX = (APPW - WIDTH_COLLECTION_CELL * 4) / 5;
-        float spaceY = HEIGHT_COLLECTIONVIEW - h * 2;
-        [layout setItemSize:CGSizeMake(WIDTH_COLLECTION_CELL, h)];
+        float h = (215.0f * 0.85 - 15) / 2 * 0.93;
+        float spaceX = (APPW - 60 * 4) / 5;
+        float spaceY = (215.0f * 0.85 - 15) - h * 2;
+        [layout setItemSize:CGSizeMake(60, h)];
         [layout setMinimumInteritemSpacing:spaceY];
         [layout setMinimumLineSpacing:spaceX];
-        [layout setHeaderReferenceSize:CGSizeMake(spaceX, HEIGHT_COLLECTIONVIEW)];
-        [layout setFooterReferenceSize:CGSizeMake(spaceX, HEIGHT_COLLECTIONVIEW)];
+        [layout setHeaderReferenceSize:CGSizeMake(spaceX, (215.0f * 0.85 - 15))];
+        [layout setFooterReferenceSize:CGSizeMake(spaceX, (215.0f * 0.85 - 15))];
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         [_collectionView setBackgroundColor:[UIColor clearColor]];
         [_collectionView setPagingEnabled:YES];

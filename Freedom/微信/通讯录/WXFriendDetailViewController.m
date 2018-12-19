@@ -3,15 +3,13 @@
 // Created by Super
 #import "WXFriendDetailViewController.h"
 #import "WXChatViewController.h"
-#import "WXRootViewController.h"
+#import "WXTabBarController.h"
 #import "MWPhotoBrowser.h"
 #import "WXUserHelper.h"
 #import "WXTableViewCell.h"
 #import "WXModes.h"
 #import "NSFileManager+expanded.h"
 #import "UIButton+WebCache.h"
-#define     MINE_SPACE_X        14.0f
-#define     MINE_SPACE_Y        12.0f
 #import "WXSettingViewController.h"
 @interface WechatFriendDetailAlbumCell : WXTableViewCell
 @property (nonatomic, strong) WXInfo *info;
@@ -85,15 +83,15 @@
 }
 - (void) addMasonry{
     [self.avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(MINE_SPACE_X);
-        make.top.mas_equalTo(MINE_SPACE_Y);
-        make.bottom.mas_equalTo(- MINE_SPACE_Y);
+        make.left.mas_equalTo(14);
+        make.top.mas_equalTo(12);
+        make.bottom.mas_equalTo(- 12);
         make.width.mas_equalTo(self.avatarView.mas_height);
     }];
     
     [self.shownameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
     [self.shownameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(MINE_SPACE_Y);
+        make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(12);
         make.top.mas_equalTo(self.avatarView.mas_top).mas_offset(3);
     }];
     
@@ -231,38 +229,39 @@
     WXInfo *info = [self.data[indexPath.section] objectAtIndex:indexPath.row];
     if (info.type == TLInfoTypeOther) {
         if (indexPath.section == 0) {
-            return HEIGHT_USER_CELL;
+            return 90;
         }
-        return HEIGHT_ALBUM_CELL;
+        return 80;
     }
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 //MARK: TLInfoButtonCellDelegate
 - (void)infoButtonCellClicked:(WXInfo *)info{
     if ([info.title isEqualToString:@"发消息"]) {
-        WXChatViewController *chatVC = [WXChatViewController sharedChatVC];
-        if ([self.navigationController findViewController:@"WXChatViewController"]) {
-            if ([[chatVC.partner chat_userID] isEqualToString:self.user.userID]) {
-                [self.navigationController popToViewControllerWithClassName:@"WXChatViewController" animated:YES];
-            }else {
-                [chatVC setPartner:self.user];
-                __block id navController = self.navigationController;
-                [self.navigationController popToRootViewControllerAnimated:YES completion:^(BOOL finished) {
-                    if (finished) {
-                        [navController pushViewController:chatVC animated:YES];
-                    }
-                }];
-            }
-        }else {
-            [chatVC setPartner:self.user];
-            UIViewController *vc = [[WXRootViewController sharedRootViewController] childViewControllerAtIndex:0];
-            [[WXRootViewController sharedRootViewController] setSelectedIndex:0];
-            [vc setHidesBottomBarWhenPushed:YES];
-            [vc.navigationController pushViewController:chatVC animated:YES completion:^(BOOL finished) {
-                [self.navigationController popViewControllerAnimated:NO];
-            }];
-            [vc setHidesBottomBarWhenPushed:NO];
-        }
+//        WXChatViewController *chatVC = [WXChatViewController sharedChatVC];
+//        if ([self.navigationController findViewController:@"WXChatViewController"]) {
+//            if ([[chatVC.partner chat_userID] isEqualToString:self.user.userID]) {
+//                UIViewController *vc = [self.navigationController findViewController:@"WXChatViewController"];
+//                [self.navigationController popToViewController:vc animated:YES];
+//            }else {
+//                [chatVC setPartner:self.user];
+//                __block id navController = self.navigationController;
+//                [self.navigationController popToRootViewControllerAnimated:YES completion:^(BOOL finished) {
+//                    if (finished) {
+//                        [navController pushViewController:chatVC animated:YES];
+//                    }
+//                }];
+//            }
+//        }else {
+//            [chatVC setPartner:self.user];
+//            UIViewController *vc = [[WXTabBarController sharedRootViewController] childViewControllerAtIndex:0];
+//            [[WXTabBarController sharedRootViewController] setSelectedIndex:0];
+//            [vc setHidesBottomBarWhenPushed:YES];
+//            [vc.navigationController pushViewController:chatVC animated:YES completion:^(BOOL finished) {
+//                [self.navigationController popViewControllerAnimated:NO];
+//            }];
+//            [vc setHidesBottomBarWhenPushed:NO];
+//        }
     }else {
         [super infoButtonCellClicked:info];
     }

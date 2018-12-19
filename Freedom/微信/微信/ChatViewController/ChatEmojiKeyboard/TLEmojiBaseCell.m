@@ -297,8 +297,6 @@
     return _groupIconView;
 }
 @end
-#define     WIDTH_EMOJIGROUP_CELL       46
-#define     WIDTH_SENDBUTTON            60
 @interface TLEmojiGroupControl () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) NSIndexPath *curIndexPath;
 @property (nonatomic, strong) UIButton *addButton;
@@ -333,7 +331,7 @@
         if (sendButtonStatus == TLGroupControlSendButtonStatusNone) {
             [UIView animateWithDuration:1 animations:^{
                 [self.sendButton mas_updateConstraints:^(MASConstraintMaker *make) {
-                    make.right.mas_equalTo(self).mas_offset(WIDTH_SENDBUTTON);
+                    make.right.mas_equalTo(self).mas_offset(60);
                 }];
                 [self layoutIfNeeded];
             }];
@@ -384,11 +382,11 @@
     return cell;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(WIDTH_EMOJIGROUP_CELL, self.frame.size.height);
+    return CGSizeMake(46, self.frame.size.height);
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     if (section == self.emojiGroupData.count - 1) {
-        return CGSizeMake(WIDTH_EMOJIGROUP_CELL * 2, self.frame.size.height);
+        return CGSizeMake(46 * 2, self.frame.size.height);
     }
     return CGSizeZero;
 }
@@ -409,12 +407,12 @@
 - (void)p_addMasonry{
     [self.addButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.top.and.bottom.mas_equalTo(self);
-        make.width.mas_equalTo(WIDTH_EMOJIGROUP_CELL);
+        make.width.mas_equalTo(46);
     }];
     
     [self.sendButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.bottom.and.right.mas_equalTo(self);
-        make.width.mas_equalTo(WIDTH_SENDBUTTON);
+        make.width.mas_equalTo(60);
     }];
     
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -434,8 +432,8 @@
     CGContextSetLineWidth(context, 0.5);
     CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
     CGContextBeginPath(context);
-    CGContextMoveToPoint(context, WIDTH_EMOJIGROUP_CELL, 5);
-    CGContextAddLineToPoint(context, WIDTH_EMOJIGROUP_CELL, self.frame.size.height - 5);
+    CGContextMoveToPoint(context, 46, 5);
+    CGContextAddLineToPoint(context, 46, self.frame.size.height - 5);
     CGContextStrokePath(context);
 }
 #pragma mark - Event Response -

@@ -9,8 +9,6 @@
 #import "WXExpressionViewController.h"
 #import "WXMineSettingViewController.h"
 #import "WXModes.h"
-#define     MINE_SPACE_X        14.0f
-#define     MINE_SPACE_Y        12.0f
 #import <UIKit/UIKit.h>
 @interface WXMineHeaderCell : UITableViewCell
 @property (nonatomic, strong) WXUser *user;
@@ -37,15 +35,15 @@
 }
 - (void) addMasonry{
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(MINE_SPACE_X);
-        make.top.mas_equalTo(MINE_SPACE_Y);
-        make.bottom.mas_equalTo(- MINE_SPACE_Y);
+        make.left.mas_equalTo(14);
+        make.top.mas_equalTo(12);
+        make.bottom.mas_equalTo(- 12);
         make.width.mas_equalTo(self.avatarImageView.mas_height);
     }];
     
     [self.nikenameLabel setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
     [self.nikenameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(MINE_SPACE_Y);
+        make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(10);
         make.bottom.mas_equalTo(self.avatarImageView.mas_centerY).mas_offset(-3.5);
     }];
     
@@ -113,14 +111,17 @@
     }
     return self;
 }
+-(WXMenuItem*)TLCreateMenuItem:(NSString*)IconPath :(NSString*)Title{
+    return [WXMenuItem createMenuWithIconPath:IconPath title:Title];
+}
 - (void) p_initTestData{
-    WXMenuItem *item0 = TLCreateMenuItem(nil, nil);
-    WXMenuItem *item1 = TLCreateMenuItem(@"u_album_b", @"相册");
-    WXMenuItem *item2 = TLCreateMenuItem(@"u_favorites", @"收藏");
-    WXMenuItem *item3 = TLCreateMenuItem(@"MoreMyBankCard", @"钱包");
-    WXMenuItem *item4 = TLCreateMenuItem(@"MyCardPackageIcon", @"优惠券");
-    WXMenuItem *item5 = TLCreateMenuItem(@"MoreExpressionShops", @"表情");
-    WXMenuItem *item6 = TLCreateMenuItem(@"setingHL", @"设置");
+    WXMenuItem *item0 =[self TLCreateMenuItem:nil: nil];
+    WXMenuItem *item1 = [self TLCreateMenuItem:@"u_album_b": @"相册"];
+    WXMenuItem *item2 = [self TLCreateMenuItem:@"u_favorites": @"收藏"];
+    WXMenuItem *item3 = [self TLCreateMenuItem:@"MoreMyBankCard": @"钱包"];
+    WXMenuItem *item4 = [self TLCreateMenuItem:@"MyCardPackageIcon": @"优惠券"];
+    WXMenuItem *item5 = [self TLCreateMenuItem:@"MoreExpressionShops": @"表情"];
+    WXMenuItem *item6 = [self TLCreateMenuItem:@"setingHL": @"设置"];
     [self.mineMenuData addObjectsFromArray:@[@[item0], @[item1, item2, item3, item4], @[item5], @[item6]]];
 }
 @end
@@ -135,11 +136,11 @@
     return self;
 }
 - (NSMutableArray *)mineInfoDataByUserInfo:(WXUser *)userInfo{
-    WXSettingItem *avatar = TLCreateSettingItem(@"头像");
+    WXSettingItem *avatar = [WXSettingItem createItemWithTitle:(@"头像")];
     avatar.rightImageURL = userInfo.avatarURL;
-    WXSettingItem *nikename = TLCreateSettingItem(@"名字");
+    WXSettingItem *nikename = [WXSettingItem createItemWithTitle:(@"名字")];
     nikename.subTitle = userInfo.nikeName.length > 0 ? userInfo.nikeName : @"未设置";
-    WXSettingItem *username = TLCreateSettingItem(@"微信号");
+    WXSettingItem *username = [WXSettingItem createItemWithTitle:(@"微信号")];
     if (userInfo.username.length > 0) {
         username.subTitle = userInfo.username;
         username.showDisclosureIndicator = NO;
@@ -148,16 +149,16 @@
         username.subTitle = @"未设置";
     }
     
-    WXSettingItem *qrCode = TLCreateSettingItem(@"我的二维码");
+    WXSettingItem *qrCode = [WXSettingItem createItemWithTitle:(@"我的二维码")];
     qrCode.rightImagePath = PQRCode;
-    WXSettingItem *location = TLCreateSettingItem(@"我的地址");
+    WXSettingItem *location = [WXSettingItem createItemWithTitle:(@"我的地址")];
     WXSettingGroup *group1 = TLCreateSettingGroup(nil, nil, (@[avatar, nikename, username, qrCode, location]));
     
-    WXSettingItem *sex = TLCreateSettingItem(@"性别");
+    WXSettingItem *sex = [WXSettingItem createItemWithTitle:(@"性别")];
     sex.subTitle = userInfo.detailInfo.sex;
-    WXSettingItem *city = TLCreateSettingItem(@"地区");
+    WXSettingItem *city = [WXSettingItem createItemWithTitle:(@"地区")];
     city.subTitle = userInfo.detailInfo.location;
-    WXSettingItem *motto = TLCreateSettingItem(@"个性签名");
+    WXSettingItem *motto = [WXSettingItem createItemWithTitle:(@"个性签名")];
     motto.subTitle = userInfo.detailInfo.motto.length > 0 ? userInfo.detailInfo.motto : @"未填写";
     WXSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[sex, city, motto]));
     

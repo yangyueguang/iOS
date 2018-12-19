@@ -8,8 +8,7 @@
 #import "WXMomentsViewController.h"
 #import "UIButton+WebCache.h"
 #import "WXUserHelper.h"
-#import "WXRootViewController.h"
-#define         WIDTH_AVATAR        65
+#import "WXTabBarController.h"
 #import "WXTableViewCell.h"
 @interface WXMomentsProxy : NSObject
 - (NSArray *)testData;
@@ -102,14 +101,14 @@
 - (void)p_addMasonry{
     [self.backgroundWall mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self.contentView);
-        make.bottom.mas_equalTo(self.mottoLabel.mas_top).mas_offset(- WIDTH_AVATAR / 3.0f - 8.0f);
+        make.bottom.mas_equalTo(self.mottoLabel.mas_top).mas_offset(- 65 / 3.0f - 8.0f);
         make.top.mas_lessThanOrEqualTo(self.contentView.mas_top);
     }];
     
     [self.avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(self.contentView).mas_offset(-20.0f);
-        make.centerY.mas_equalTo(self.backgroundWall.mas_bottom).mas_offset(- WIDTH_AVATAR / 6.0f);
-        make.size.mas_equalTo(CGSizeMake(WIDTH_AVATAR, WIDTH_AVATAR));
+        make.centerY.mas_equalTo(self.backgroundWall.mas_bottom).mas_offset(- 65 / 6.0f);
+        make.size.mas_equalTo(CGSizeMake(65, 65));
     }];
     
     [self.usernameLabel mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -5,7 +5,6 @@
 #import "WXShakeViewController.h"
 #import "WXShakeSettingViewController.h"
 #import "NSFileManager+expanded.h"
-#define     SHAKE_HEIGHT    90
 typedef NS_ENUM(NSUInteger, TLShakeButtonType) {
     TLShakeButtonTypePeople,
     TLShakeButtonTypeSong,
@@ -150,10 +149,10 @@ typedef NS_ENUM(NSUInteger, TLShakeButtonType) {
         [self.bottomLineView setHidden:NO];
         [UIView animateWithDuration:0.5 animations:^{
             [self.topLogoView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.bottom.mas_equalTo(self.view.mas_centerY).mas_offset(-10 - SHAKE_HEIGHT);
+                make.bottom.mas_equalTo(self.view.mas_centerY).mas_offset(-10 - 90);
             }];
             [self.bottomLogoView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(self.view.mas_centerY).mas_offset(-10 + SHAKE_HEIGHT);
+                make.top.mas_equalTo(self.view.mas_centerY).mas_offset(-10 + 90);
             }];
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {

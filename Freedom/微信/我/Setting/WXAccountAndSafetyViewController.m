@@ -19,7 +19,7 @@
     return self;
 }
 - (NSMutableArray *)mineAccountAndSafetyDataByUserInfo:(WXUser *)userInfo{
-    WXSettingItem *username = TLCreateSettingItem(@"微信号");
+    WXSettingItem *username = [WXSettingItem createItemWithTitle:(@"微信号")];
     if (userInfo.username.length > 0) {
         username.subTitle = userInfo.username;
         username.showDisclosureIndicator = NO;
@@ -29,17 +29,17 @@
     }
     WXSettingGroup *group1 = TLCreateSettingGroup(nil, nil, @[username]);
     
-    WXSettingItem *qqNumber = TLCreateSettingItem(@"QQ号");
+    WXSettingItem *qqNumber = [WXSettingItem createItemWithTitle:(@"QQ号")];
     qqNumber.subTitle = (userInfo.detailInfo.qqNumber.length > 0 ? userInfo.detailInfo.qqNumber : @"未绑定");
-    WXSettingItem *phoneNumber = TLCreateSettingItem(@"手机号");
+    WXSettingItem *phoneNumber = [WXSettingItem createItemWithTitle:(@"手机号")];
     phoneNumber.subTitle = (phoneNumber.subTitle.length > 0 ?userInfo.detailInfo.phoneNumber : @"未绑定");
-    WXSettingItem *email = TLCreateSettingItem(@"邮箱地址");
+    WXSettingItem *email = [WXSettingItem createItemWithTitle:(@"邮箱地址")];
     email.subTitle = userInfo.detailInfo.email.length > 0 ? userInfo.detailInfo.email : @"未绑定";
     WXSettingGroup *group2 = TLCreateSettingGroup(nil, nil, (@[qqNumber, phoneNumber, email]));
     
-    WXSettingItem *voiceLock = TLCreateSettingItem(@"声音锁");
-    WXSettingItem *password = TLCreateSettingItem(@"微信密码");
-    WXSettingItem *idProtect = TLCreateSettingItem(@"账号保护");
+    WXSettingItem *voiceLock = [WXSettingItem createItemWithTitle:(@"声音锁")];
+    WXSettingItem *password = [WXSettingItem createItemWithTitle:(@"微信密码")];
+    WXSettingItem *idProtect = [WXSettingItem createItemWithTitle:(@"账号保护")];
     if (/* DISABLES CODE */ (1)) {
         idProtect.subTitle = @"已保护";
         idProtect.rightImagePath = @"u_protectHL";
@@ -47,7 +47,7 @@
         idProtect.subTitle = @"未保护";
         idProtect.rightImagePath = @"u_protect";
     }
-    WXSettingItem *safetyCenter = TLCreateSettingItem(@"微信安全中心");
+    WXSettingItem *safetyCenter = [WXSettingItem createItemWithTitle:(@"微信安全中心")];
     WXSettingGroup *group3 = TLCreateSettingGroup(nil, @"如果遇到账号信息泄露、忘记密码、诈骗等账号问题，可前往微信安全中心。", (@[voiceLock, password, idProtect, safetyCenter]));
     
     [_data removeAllObjects];

@@ -3,8 +3,6 @@
 #import "E_ReaderViewController.h"
 #import "BookSubViews.h"
 #import "BookReadMode.h"
-#define MAX_FONT_SIZE 27
-#define MIN_FONT_SIZE 17
 @interface E_ReaderViewController ()<E_ReaderViewDelegate>{
     E_ReaderView *_readerView;
 }

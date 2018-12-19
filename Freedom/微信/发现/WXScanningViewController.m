@@ -7,7 +7,6 @@
 #import "WXMyQRCodeViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa-Swift.h>
 #import <BlocksKit/BlocksKit+UIKit.h>
-#define     HEIGHT_BOTTOM_VIEW      82
 @interface WXScannerButton : UIButton
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *iconPath;
@@ -217,16 +216,13 @@
     if ([ansStr hasPrefix:@"http"]) {
         WXWebViewController *webVC = [[WXWebViewController alloc] init];
         [webVC setUrl:ansStr];
-        __block id vc = self.navigationController.rootViewController;
-        [self.navigationController popViewControllerAnimated:NO completion:^(BOOL finished) {
-            if (finished) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [vc setHidesBottomBarWhenPushed:YES];
-                    [[vc navigationController] pushViewController:webVC animated:YES];
-                    [vc setHidesBottomBarWhenPushed:NO];
-                });
-            }
-        }];
+        __block id vc = self.navigationController.topViewController;
+        [self.navigationController popViewControllerAnimated:true];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [vc setHidesBottomBarWhenPushed:YES];
+            [[vc navigationController] pushViewController:webVC animated:YES];
+            [vc setHidesBottomBarWhenPushed:NO];
+        });
     }else{
         UIAlertController *alvc = [UIAlertController alertControllerWithTitle:@"扫描结果" message:ansStr preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *a = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -239,7 +235,7 @@
 - (void)p_addMasonry{
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.and.bottom.mas_equalTo(self.view);
-        make.height.mas_equalTo(HEIGHT_BOTTOM_VIEW);
+        make.height.mas_equalTo(82);
     }];
     
     // bottom

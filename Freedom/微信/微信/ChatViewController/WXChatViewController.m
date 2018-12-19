@@ -4,7 +4,7 @@
 #import "WXChatDetailViewController.h"
 #import "WXCGroupDetailViewController.h"
 #import <UMMobClick/MobClick.h>
-#import "WXRootViewController.h"
+#import "WXTabBarController.h"
 #import <BlocksKit/BlocksKit+UIKit.h>
 #import "WXExpressionViewController.h"
 #import "WXMyExpressionViewController.h"

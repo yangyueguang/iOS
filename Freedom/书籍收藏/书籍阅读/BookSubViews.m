@@ -9,12 +9,7 @@
 #import <CoreText/CoreText.h>
 #import "BookReadMode.h"
 #import <AVFoundation/AVFoundation.h>
-#define kE_CursorWidth 2
 #import "BookReadMode.h"
-#define MAX_FONT_SIZE 27
-#define MIN_FONT_SIZE 17
-#define MIN_TIPS @"字体已到最小"
-#define MAX_TIPS @"字体已到最大"
 @import Accelerate;
 @interface ILSlider ()
 @property (nonatomic, strong) UIColor *lineColor;//整条线的颜色
@@ -317,8 +312,8 @@
 #pragma mark - 小
 - (void)changeSmall{
     NSUInteger fontSize = [E_CommonManager fontSize];
-    if (fontSize <= MIN_FONT_SIZE) {
-        [E_HUDView showMsg:MIN_TIPS inView:self];
+    if (fontSize <= 17) {
+        [E_HUDView showMsg:@"字体已到最小" inView:self];
         return;
     }
     fontSize--;
@@ -329,8 +324,8 @@
 }
 - (void)changeBig{
     NSUInteger fontSize = [E_CommonManager fontSize];
-    if (fontSize >= MAX_FONT_SIZE) {
-        [E_HUDView showMsg:MAX_TIPS inView:self];
+    if (fontSize >= 27) {
+        [E_HUDView showMsg:@"字体已到最大" inView:self];
         return;
     }
     fontSize++;
@@ -342,8 +337,8 @@
 }
 - (void)updateFontButtons{
     NSUInteger fontSize = [E_CommonManager fontSize];
-    _bigFont.enabled = fontSize < MAX_FONT_SIZE;
-    _smallFont.enabled = fontSize > MIN_FONT_SIZE;
+    _bigFont.enabled = fontSize < 27;
+    _smallFont.enabled = fontSize > 17;
 }
 - (void)showDrawerView{
     [_delegate callDrawerView];
@@ -398,11 +393,11 @@
     }
     _dragDot = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"r_drag-dot"]];
     if (_direction == CursorLeft) {
-        self.frame = CGRectMake(setupPoint.x - kE_CursorWidth, setupPoint.y - _cursorHeight, kE_CursorWidth, _cursorHeight);
+        self.frame = CGRectMake(setupPoint.x - 2, setupPoint.y - _cursorHeight, 2, _cursorHeight);
         _dragDot.frame = CGRectMake(-7, -8, 15, 17);
         
     }else{
-        self.frame = CGRectMake(setupPoint.x, setupPoint.y - _cursorHeight, kE_CursorWidth, _cursorHeight);
+        self.frame = CGRectMake(setupPoint.x, setupPoint.y - _cursorHeight, 2, _cursorHeight);
         _dragDot.frame = CGRectMake(-6, _cursorHeight - 8, 15, 17);
     }
     [self addSubview:_dragDot];

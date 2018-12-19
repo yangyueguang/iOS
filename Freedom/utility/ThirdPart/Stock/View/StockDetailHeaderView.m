@@ -6,7 +6,6 @@
 #import "StockChartTitleView.h"
 #import "FiveRange_TradeDetailTableView.h"
 #import "RRStockChartView.h"
-#define kBtnTag 1000
 @interface StockDetailHeaderView ()
 @property (nonatomic,weak)StockDetailTopView *topView;
 @property (nonatomic,strong)UIView *stockHeaderBottomView;
@@ -59,7 +58,7 @@
 }
 - (void)scrollTradeContentClick:(UIButton *)sender{
     sender.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.0];
-    NSInteger currentPosition = sender.tag - kBtnTag - 1;
+    NSInteger currentPosition = sender.tag - 1000 - 1;
     [UIView animateWithDuration:0.25 animations:^{
         self.tradeDetailView.transform = CGAffineTransformMakeTranslation(-100 * currentPosition, 0);
         self.fiveRangeView.transform = CGAffineTransformMakeTranslation(-100 * currentPosition, 0);

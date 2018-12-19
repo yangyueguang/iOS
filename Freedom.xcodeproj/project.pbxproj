@@ -164,14 +164,8 @@
 		7165A3D020A58D77001C60D6 /* emoticon_keyboard_magnifier.png in Resources */ = {isa = PBXBuildFile; fileRef = 7165A3B920A58D6A001C60D6 /* emoticon_keyboard_magnifier.png */; };
 		7165A3D820A58D77001C60D6 /* emoticonkeyboardbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7165A3C120A58D71001C60D6 /* emoticonkeyboardbutton.png */; };
 		7165A3DC20A58D77001C60D6 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = 7165A3C520A58D74001C60D6 /* movie.png */; };
-		7165A3E220A5903D001C60D6 /* WXBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7165A3E120A5903D001C60D6 /* WXBaseViewController.m */; };
 		7165A3EA20A5A291001C60D6 /* FreedomBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165A3E920A5A291001C60D6 /* FreedomBaseViewController.swift */; };
 		71ECDFB52091EB4B00495467 /* JSPatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71ECDFB22091EB4A00495467 /* JSPatch.framework */; };
-		71ECDFC02091F9EF00495467 /* WXMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDFBB2091F9ED00495467 /* WXMessageManager.m */; };
-		71ECDFC12091F9EF00495467 /* WXUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDFBC2091F9ED00495467 /* WXUserHelper.m */; };
-		71ECDFC22091F9EF00495467 /* WXExpressionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDFBD2091F9EE00495467 /* WXExpressionHelper.m */; };
-		71ECDFC72091F9F800495467 /* WXRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDFC42091F9F700495467 /* WXRootViewController.m */; };
-		71ECDFC82091F9F800495467 /* WXModes.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDFC62091F9F800495467 /* WXModes.m */; };
 		71ECDFFE209210BF00495467 /* WXPublicServerSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDFEA209210BA00495467 /* WXPublicServerSearchViewController.m */; };
 		71ECDFFF209210BF00495467 /* WXContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDFEC209210BB00495467 /* WXContactsViewController.m */; };
 		71ECE000209210BF00495467 /* WXFriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDFED209210BB00495467 /* WXFriendDetailViewController.m */; };
@@ -444,8 +438,6 @@
 		7741F1481D6D50F900EED332 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7741F0F21D6D50F900EED332 /* calendar.png */; };
 		7741F14B1D6D50F900EED332 /* home_pay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7741F0F51D6D50F900EED332 /* home_pay.png */; };
 		7741F15B1D6D50F900EED332 /* scan_net.png in Resources */ = {isa = PBXBuildFile; fileRef = 7741F1051D6D50F900EED332 /* scan_net.png */; };
-		7745C2451D67188C002212DE /* WXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7745C2421D67188C002212DE /* WXNavigationController.m */; };
-		7745C2461D67188C002212DE /* WXTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7745C2441D67188C002212DE /* WXTabBarController.m */; };
 		774BA6431E28DA18007FF686 /* taobaoon.png in Resources */ = {isa = PBXBuildFile; fileRef = 774BA6411E28DA18007FF686 /* taobaoon.png */; };
 		774BA6441E28DA18007FF686 /* taobaono.png in Resources */ = {isa = PBXBuildFile; fileRef = 774BA6421E28DA18007FF686 /* taobaono.png */; };
 		774BFAE41D7672A0005CA603 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 774BFAE31D7672A0005CA603 /* AudioToolbox.framework */; };
@@ -1074,16 +1066,6 @@
 		BF5B9B811F8E67C000BD885E /* PowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B801F8E67C000BD885E /* PowerViewController.swift */; };
 		BF5B9B831F8E67CC00BD885E /* HappyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B821F8E67CC00BD885E /* HappyViewController.swift */; };
 		BF6115B920FDACC9007A010A /* unicode.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF6115B820FDACC9007A010A /* unicode.plist */; };
-		BF6E56961FAAF341005F7DF8 /* WXPictureCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E567F1FAAEE5F005F7DF8 /* WXPictureCarouselView.m */; };
-		BF6E56981FAAF3F7005F7DF8 /* WXWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E56801FAAEE5F005F7DF8 /* WXWebViewController.m */; };
-		BF6E569A1FAAF45A005F7DF8 /* WXSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E567E1FAAEE5E005F7DF8 /* WXSearchController.m */; };
-		BF6E569B1FAAF475005F7DF8 /* WXQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E56881FAAEE61005F7DF8 /* WXQRCodeViewController.m */; };
-		BF6E569D1FAAF48A005F7DF8 /* WXMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E56911FAAEE63005F7DF8 /* WXMenuViewController.m */; };
-		BF6E569E1FAAF4B8005F7DF8 /* WXTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E56821FAAEE5F005F7DF8 /* WXTableViewController.m */; };
-		BF6E56A21FAAF510005F7DF8 /* WXInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E56851FAAEE60005F7DF8 /* WXInfoViewController.m */; };
-		BF6E56A41FAAF524005F7DF8 /* WXTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E568F1FAAEE62005F7DF8 /* WXTableViewCell.m */; };
-		BF6E56A61FAAF563005F7DF8 /* WXImageBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E567D1FAAEE5E005F7DF8 /* WXImageBrowserController.m */; };
-		BF6E56AF1FAAF7D6005F7DF8 /* WXSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E56AC1FAAF7D6005F7DF8 /* WXSettingViewController.m */; };
 		BF6E57281FABFCB0005F7DF8 /* WXMineSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E571A1FABFC67005F7DF8 /* WXMineSettingViewController.m */; };
 		BF6E57291FABFCB7005F7DF8 /* WXBgSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E57261FABFC6B005F7DF8 /* WXBgSettingViewController.m */; };
 		BF6E572A1FABFCCE005F7DF8 /* WXAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E571F1FABFC69005F7DF8 /* WXAboutViewController.m */; };
@@ -1183,6 +1165,19 @@
 		BFEF19CB2101E990003DCAC1 /* TSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19C02101E98E003DCAC1 /* TSViewController.m */; };
 		BFEF19CE2101F8DF003DCAC1 /* LanguageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19CC2101F8DF003DCAC1 /* LanguageTableViewController.m */; };
 		CE7D3D02561A884A24654308 /* Pods_Freedom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60338462214883C1C05F8646 /* Pods_Freedom.framework */; };
+		DF6B51EE21CA6F5900460949 /* WXModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51ED21CA6F5900460949 /* WXModes.swift */; };
+		DF6B51F021CA6F6F00460949 /* WXExpressionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51EF21CA6F6F00460949 /* WXExpressionHelper.swift */; };
+		DF6B51F221CA6F7C00460949 /* WXMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51F121CA6F7C00460949 /* WXMessageManager.swift */; };
+		DF6B51F421CA6F8900460949 /* WXUserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51F321CA6F8900460949 /* WXUserHelper.swift */; };
+		DF6B51F621CA800500460949 /* WXInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51F521CA800500460949 /* WXInfoViewController.swift */; };
+		DF6B51F821CA800D00460949 /* WXMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51F721CA800D00460949 /* WXMenuViewController.swift */; };
+		DF6B51FC21CA801E00460949 /* WXPictureCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51FB21CA801E00460949 /* WXPictureCarouselView.swift */; };
+		DF6B51FE21CA802500460949 /* WXQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51FD21CA802500460949 /* WXQRCodeViewController.swift */; };
+		DF6B520021CA802C00460949 /* WXSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51FF21CA802C00460949 /* WXSearchController.swift */; };
+		DF6B520221CA803300460949 /* WXTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520121CA803300460949 /* WXTableViewCell.swift */; };
+		DF6B520421CA803900460949 /* WXTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520321CA803900460949 /* WXTableViewController.swift */; };
+		DF6B520621CA804200460949 /* WXWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520521CA804200460949 /* WXWebViewController.swift */; };
+		DF6B520821CA804B00460949 /* WXSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520721CA804B00460949 /* WXSettingViewController.swift */; };
 		DF7B3FBB21ABEEC500E3D975 /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = DF7B3FB421ABEEC500E3D975 /* comments.json */; };
 		DF7B3FBC21ABEEC500E3D975 /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DF7B3FB521ABEEC500E3D975 /* Emoticons.bundle */; };
 		DF7B3FBD21ABEEC500E3D975 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = DF7B3FB621ABEEC500E3D975 /* user.json */; };
@@ -1226,6 +1221,11 @@
 		DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */; };
 		DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */; };
 		DFB5FF4F21C9EAC30057C922 /* XAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FF4E21C9EAC30057C922 /* XAlertViewController.swift */; };
+		DFB5FF5621CA280A0057C922 /* WXExpanded.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FF5521CA280A0057C922 /* WXExpanded.swift */; };
+		DFB5FF5C21CA2F1C0057C922 /* WXTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FF5B21CA2F1C0057C922 /* WXTabBarController.swift */; };
+		DFB5FF5E21CA2F3E0057C922 /* WXNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FF5D21CA2F3E0057C922 /* WXNavigationController.swift */; };
+		DFB5FF6021CA2F530057C922 /* WXBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FF5F21CA2F530057C922 /* WXBaseViewController.swift */; };
+		DFB5FFA421CA379C0057C922 /* XIBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FFA321CA379C0057C922 /* XIBExtension.swift */; };
 		DFC433E921C3F74F003E1BCB /* XNetKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC433E821C3F74F003E1BCB /* XNetKit.swift */; };
 		DFC433EB21C3F7A7003E1BCB /* cer.der in Resources */ = {isa = PBXBuildFile; fileRef = DFC433EA21C3F7A7003E1BCB /* cer.der */; };
 		DFC662C821C0E96600B41558 /* XHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC662C721C0E96600B41558 /* XHud.swift */; };
@@ -1236,7 +1236,6 @@
 		DFF4ABA121B7BFEC00F03C71 /* XExcellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4ABA021B7BFEC00F03C71 /* XExcellView.swift */; };
 		DFF4ABA321B7FB6000F03C71 /* XExcellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFF4ABA221B7FB6000F03C71 /* XExcellView.xib */; };
 		DFF4ABB121B80A7500F03C71 /* XPopItemsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFF4ABB021B80A7500F03C71 /* XPopItemsView.xib */; };
-		DFFA80AF21AE9672009B1999 /* NSFileManager+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80AE21AE9672009B1999 /* NSFileManager+expanded.m */; };
 		DFFA80C221AEC84D009B1999 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80B921AEC84B009B1999 /* BaseTableViewCell.swift */; };
 		DFFA80C321AEC84D009B1999 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80BA21AEC84B009B1999 /* BaseNavigationViewController.swift */; };
 		DFFA80C421AEC84D009B1999 /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80BB21AEC84B009B1999 /* BaseTabBarViewController.swift */; };
@@ -1432,20 +1431,8 @@
 		7165A3B920A58D6A001C60D6 /* emoticon_keyboard_magnifier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emoticon_keyboard_magnifier.png; sourceTree = "<group>"; };
 		7165A3C120A58D71001C60D6 /* emoticonkeyboardbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emoticonkeyboardbutton.png; sourceTree = "<group>"; };
 		7165A3C520A58D74001C60D6 /* movie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movie.png; sourceTree = "<group>"; };
-		7165A3E020A5903D001C60D6 /* WXBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXBaseViewController.h; sourceTree = "<group>"; };
-		7165A3E120A5903D001C60D6 /* WXBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXBaseViewController.m; sourceTree = "<group>"; };
 		7165A3E920A5A291001C60D6 /* FreedomBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomBaseViewController.swift; sourceTree = "<group>"; };
 		71ECDFB22091EB4A00495467 /* JSPatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatch.framework; sourceTree = "<group>"; };
-		71ECDFBA2091F9EC00495467 /* WXUserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUserHelper.h; sourceTree = "<group>"; };
-		71ECDFBB2091F9ED00495467 /* WXMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXMessageManager.m; sourceTree = "<group>"; };
-		71ECDFBC2091F9ED00495467 /* WXUserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUserHelper.m; sourceTree = "<group>"; };
-		71ECDFBD2091F9EE00495467 /* WXExpressionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXExpressionHelper.m; sourceTree = "<group>"; };
-		71ECDFBE2091F9EE00495467 /* WXMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXMessageManager.h; sourceTree = "<group>"; };
-		71ECDFBF2091F9EF00495467 /* WXExpressionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXExpressionHelper.h; sourceTree = "<group>"; };
-		71ECDFC32091F9F700495467 /* WXRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXRootViewController.h; sourceTree = "<group>"; };
-		71ECDFC42091F9F700495467 /* WXRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXRootViewController.m; sourceTree = "<group>"; };
-		71ECDFC52091F9F800495467 /* WXModes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXModes.h; sourceTree = "<group>"; };
-		71ECDFC62091F9F800495467 /* WXModes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXModes.m; sourceTree = "<group>"; };
 		71ECDFEA209210BA00495467 /* WXPublicServerSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXPublicServerSearchViewController.m; sourceTree = "<group>"; };
 		71ECDFEB209210BA00495467 /* WXPublicServerSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXPublicServerSearchViewController.h; sourceTree = "<group>"; };
 		71ECDFEC209210BB00495467 /* WXContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXContactsViewController.m; sourceTree = "<group>"; };
@@ -1752,10 +1739,6 @@
 		7741F0F21D6D50F900EED332 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
 		7741F0F51D6D50F900EED332 /* home_pay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_pay.png; sourceTree = "<group>"; };
 		7741F1051D6D50F900EED332 /* scan_net.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan_net.png; sourceTree = "<group>"; };
-		7745C2411D67188C002212DE /* WXNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXNavigationController.h; sourceTree = "<group>"; };
-		7745C2421D67188C002212DE /* WXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXNavigationController.m; sourceTree = "<group>"; };
-		7745C2431D67188C002212DE /* WXTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXTabBarController.h; sourceTree = "<group>"; };
-		7745C2441D67188C002212DE /* WXTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXTabBarController.m; sourceTree = "<group>"; };
 		774BA6411E28DA18007FF686 /* taobaoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taobaoon.png; sourceTree = "<group>"; };
 		774BA6421E28DA18007FF686 /* taobaono.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taobaono.png; sourceTree = "<group>"; };
 		774BFAE31D7672A0005CA603 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -2479,26 +2462,6 @@
 		BF5B9B891F8E694000BD885E /* f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f.png; sourceTree = "<group>"; };
 		BF5C6ACF20F37731000DF336 /* Freedom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Freedom.entitlements; sourceTree = "<group>"; };
 		BF6115B820FDACC9007A010A /* unicode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = unicode.plist; sourceTree = "<group>"; };
-		BF6E56741FAAEE5C005F7DF8 /* WXTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXTableViewController.h; sourceTree = "<group>"; };
-		BF6E56791FAAEE5D005F7DF8 /* WXPictureCarouselView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXPictureCarouselView.h; sourceTree = "<group>"; };
-		BF6E567A1FAAEE5E005F7DF8 /* WXWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXWebViewController.h; sourceTree = "<group>"; };
-		BF6E567C1FAAEE5E005F7DF8 /* WXSearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXSearchController.h; sourceTree = "<group>"; };
-		BF6E567D1FAAEE5E005F7DF8 /* WXImageBrowserController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXImageBrowserController.m; sourceTree = "<group>"; };
-		BF6E567E1FAAEE5E005F7DF8 /* WXSearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXSearchController.m; sourceTree = "<group>"; };
-		BF6E567F1FAAEE5F005F7DF8 /* WXPictureCarouselView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXPictureCarouselView.m; sourceTree = "<group>"; };
-		BF6E56801FAAEE5F005F7DF8 /* WXWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXWebViewController.m; sourceTree = "<group>"; };
-		BF6E56821FAAEE5F005F7DF8 /* WXTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXTableViewController.m; sourceTree = "<group>"; };
-		BF6E56851FAAEE60005F7DF8 /* WXInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXInfoViewController.m; sourceTree = "<group>"; };
-		BF6E56881FAAEE61005F7DF8 /* WXQRCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXQRCodeViewController.m; sourceTree = "<group>"; };
-		BF6E568A1FAAEE61005F7DF8 /* WXImageBrowserController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXImageBrowserController.h; sourceTree = "<group>"; };
-		BF6E568B1FAAEE61005F7DF8 /* WXTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXTableViewCell.h; sourceTree = "<group>"; };
-		BF6E568F1FAAEE62005F7DF8 /* WXTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXTableViewCell.m; sourceTree = "<group>"; };
-		BF6E56901FAAEE62005F7DF8 /* WXMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXMenuViewController.h; sourceTree = "<group>"; };
-		BF6E56911FAAEE63005F7DF8 /* WXMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXMenuViewController.m; sourceTree = "<group>"; };
-		BF6E56941FAAEE63005F7DF8 /* WXInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXInfoViewController.h; sourceTree = "<group>"; };
-		BF6E56951FAAEE64005F7DF8 /* WXQRCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXQRCodeViewController.h; sourceTree = "<group>"; };
-		BF6E56AB1FAAF7D5005F7DF8 /* WXSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXSettingViewController.h; sourceTree = "<group>"; };
-		BF6E56AC1FAAF7D6005F7DF8 /* WXSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXSettingViewController.m; sourceTree = "<group>"; };
 		BF6E57181FABFC67005F7DF8 /* WXCommonSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXCommonSettingViewController.h; sourceTree = "<group>"; };
 		BF6E57191FABFC67005F7DF8 /* WXHelpAndFeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXHelpAndFeedbackViewController.h; sourceTree = "<group>"; };
 		BF6E571A1FABFC67005F7DF8 /* WXMineSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXMineSettingViewController.m; sourceTree = "<group>"; };
@@ -2650,6 +2613,19 @@
 		BFEF19CC2101F8DF003DCAC1 /* LanguageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageTableViewController.m; sourceTree = "<group>"; };
 		BFEF19CD2101F8DF003DCAC1 /* LanguageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageTableViewController.h; sourceTree = "<group>"; };
 		CF6599DF222DA1221C0BD6DC /* Pods-Freedom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freedom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Freedom/Pods-Freedom.release.xcconfig"; sourceTree = "<group>"; };
+		DF6B51ED21CA6F5900460949 /* WXModes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXModes.swift; sourceTree = "<group>"; };
+		DF6B51EF21CA6F6F00460949 /* WXExpressionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXExpressionHelper.swift; sourceTree = "<group>"; };
+		DF6B51F121CA6F7C00460949 /* WXMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXMessageManager.swift; sourceTree = "<group>"; };
+		DF6B51F321CA6F8900460949 /* WXUserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXUserHelper.swift; sourceTree = "<group>"; };
+		DF6B51F521CA800500460949 /* WXInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXInfoViewController.swift; sourceTree = "<group>"; };
+		DF6B51F721CA800D00460949 /* WXMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXMenuViewController.swift; sourceTree = "<group>"; };
+		DF6B51FB21CA801E00460949 /* WXPictureCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXPictureCarouselView.swift; sourceTree = "<group>"; };
+		DF6B51FD21CA802500460949 /* WXQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXQRCodeViewController.swift; sourceTree = "<group>"; };
+		DF6B51FF21CA802C00460949 /* WXSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXSearchController.swift; sourceTree = "<group>"; };
+		DF6B520121CA803300460949 /* WXTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXTableViewCell.swift; sourceTree = "<group>"; };
+		DF6B520321CA803900460949 /* WXTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXTableViewController.swift; sourceTree = "<group>"; };
+		DF6B520521CA804200460949 /* WXWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXWebViewController.swift; sourceTree = "<group>"; };
+		DF6B520721CA804B00460949 /* WXSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXSettingViewController.swift; sourceTree = "<group>"; };
 		DF7B3FB421ABEEC500E3D975 /* comments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comments.json; sourceTree = "<group>"; };
 		DF7B3FB521ABEEC500E3D975 /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
 		DF7B3FB621ABEEC500E3D975 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
@@ -2694,6 +2670,11 @@
 		DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBaseTableView.swift; sourceTree = "<group>"; };
 		DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRefreshControl.swift; sourceTree = "<group>"; };
 		DFB5FF4E21C9EAC30057C922 /* XAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAlertViewController.swift; sourceTree = "<group>"; };
+		DFB5FF5521CA280A0057C922 /* WXExpanded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXExpanded.swift; sourceTree = "<group>"; };
+		DFB5FF5B21CA2F1C0057C922 /* WXTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXTabBarController.swift; sourceTree = "<group>"; };
+		DFB5FF5D21CA2F3E0057C922 /* WXNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXNavigationController.swift; sourceTree = "<group>"; };
+		DFB5FF5F21CA2F530057C922 /* WXBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXBaseViewController.swift; sourceTree = "<group>"; };
+		DFB5FFA321CA379C0057C922 /* XIBExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBExtension.swift; sourceTree = "<group>"; };
 		DFC433E821C3F74F003E1BCB /* XNetKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNetKit.swift; sourceTree = "<group>"; };
 		DFC433EA21C3F7A7003E1BCB /* cer.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cer.der; sourceTree = "<group>"; };
 		DFC662C721C0E96600B41558 /* XHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHud.swift; sourceTree = "<group>"; };
@@ -2704,8 +2685,6 @@
 		DFF4ABA021B7BFEC00F03C71 /* XExcellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XExcellView.swift; sourceTree = "<group>"; };
 		DFF4ABA221B7FB6000F03C71 /* XExcellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XExcellView.xib; sourceTree = "<group>"; };
 		DFF4ABB021B80A7500F03C71 /* XPopItemsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XPopItemsView.xib; sourceTree = "<group>"; };
-		DFFA80AD21AE9672009B1999 /* NSFileManager+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+expanded.h"; sourceTree = "<group>"; };
-		DFFA80AE21AE9672009B1999 /* NSFileManager+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+expanded.m"; sourceTree = "<group>"; };
 		DFFA80B921AEC84B009B1999 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		DFFA80BA21AEC84B009B1999 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		DFFA80BB21AEC84B009B1999 /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
@@ -2929,27 +2908,15 @@
 		7745C1E21D6713CD002212DE /* 基本类库 */ = {
 			isa = PBXGroup;
 			children = (
-				DFFA80AD21AE9672009B1999 /* NSFileManager+expanded.h */,
-				DFFA80AE21AE9672009B1999 /* NSFileManager+expanded.m */,
-				71ECDFC32091F9F700495467 /* WXRootViewController.h */,
-				71ECDFC42091F9F700495467 /* WXRootViewController.m */,
-				BF6E568A1FAAEE61005F7DF8 /* WXImageBrowserController.h */,
-				BF6E567D1FAAEE5E005F7DF8 /* WXImageBrowserController.m */,
-				71ECDFC52091F9F800495467 /* WXModes.h */,
-				71ECDFC62091F9F800495467 /* WXModes.m */,
-				71ECDFBF2091F9EF00495467 /* WXExpressionHelper.h */,
-				71ECDFBD2091F9EE00495467 /* WXExpressionHelper.m */,
-				71ECDFBE2091F9EE00495467 /* WXMessageManager.h */,
-				71ECDFBB2091F9ED00495467 /* WXMessageManager.m */,
-				71ECDFBA2091F9EC00495467 /* WXUserHelper.h */,
-				71ECDFBC2091F9ED00495467 /* WXUserHelper.m */,
 				776460711D6843BE00ACCCAC /* Common */,
-				7745C2411D67188C002212DE /* WXNavigationController.h */,
-				7745C2421D67188C002212DE /* WXNavigationController.m */,
-				7745C2431D67188C002212DE /* WXTabBarController.h */,
-				7745C2441D67188C002212DE /* WXTabBarController.m */,
-				7165A3E020A5903D001C60D6 /* WXBaseViewController.h */,
-				7165A3E120A5903D001C60D6 /* WXBaseViewController.m */,
+				DFB5FF5521CA280A0057C922 /* WXExpanded.swift */,
+				DF6B51ED21CA6F5900460949 /* WXModes.swift */,
+				DF6B51F321CA6F8900460949 /* WXUserHelper.swift */,
+				DF6B51EF21CA6F6F00460949 /* WXExpressionHelper.swift */,
+				DF6B51F121CA6F7C00460949 /* WXMessageManager.swift */,
+				DFB5FF5B21CA2F1C0057C922 /* WXTabBarController.swift */,
+				DFB5FF5D21CA2F3E0057C922 /* WXNavigationController.swift */,
+				DFB5FF5F21CA2F530057C922 /* WXBaseViewController.swift */,
 			);
 			path = "基本类库";
 			sourceTree = "<group>";
@@ -3963,24 +3930,15 @@
 		776460711D6843BE00ACCCAC /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				BF6E56941FAAEE63005F7DF8 /* WXInfoViewController.h */,
-				BF6E56851FAAEE60005F7DF8 /* WXInfoViewController.m */,
-				BF6E56901FAAEE62005F7DF8 /* WXMenuViewController.h */,
-				BF6E56911FAAEE63005F7DF8 /* WXMenuViewController.m */,
-				BF6E56791FAAEE5D005F7DF8 /* WXPictureCarouselView.h */,
-				BF6E567F1FAAEE5F005F7DF8 /* WXPictureCarouselView.m */,
-				BF6E56951FAAEE64005F7DF8 /* WXQRCodeViewController.h */,
-				BF6E56881FAAEE61005F7DF8 /* WXQRCodeViewController.m */,
-				BF6E567C1FAAEE5E005F7DF8 /* WXSearchController.h */,
-				BF6E567E1FAAEE5E005F7DF8 /* WXSearchController.m */,
-				BF6E568B1FAAEE61005F7DF8 /* WXTableViewCell.h */,
-				BF6E568F1FAAEE62005F7DF8 /* WXTableViewCell.m */,
-				BF6E56741FAAEE5C005F7DF8 /* WXTableViewController.h */,
-				BF6E56821FAAEE5F005F7DF8 /* WXTableViewController.m */,
-				BF6E567A1FAAEE5E005F7DF8 /* WXWebViewController.h */,
-				BF6E56801FAAEE5F005F7DF8 /* WXWebViewController.m */,
-				BF6E56AB1FAAF7D5005F7DF8 /* WXSettingViewController.h */,
-				BF6E56AC1FAAF7D6005F7DF8 /* WXSettingViewController.m */,
+				DF6B51F521CA800500460949 /* WXInfoViewController.swift */,
+				DF6B51F721CA800D00460949 /* WXMenuViewController.swift */,
+				DF6B51FB21CA801E00460949 /* WXPictureCarouselView.swift */,
+				DF6B51FD21CA802500460949 /* WXQRCodeViewController.swift */,
+				DF6B51FF21CA802C00460949 /* WXSearchController.swift */,
+				DF6B520121CA803300460949 /* WXTableViewCell.swift */,
+				DF6B520321CA803900460949 /* WXTableViewController.swift */,
+				DF6B520521CA804200460949 /* WXWebViewController.swift */,
+				DF6B520721CA804B00460949 /* WXSettingViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -5707,6 +5665,7 @@
 			isa = PBXGroup;
 			children = (
 				BF58B94920EB22C8002CB4EE /* XTablesViewController.swift */,
+				DFB5FFA321CA379C0057C922 /* XIBExtension.swift */,
 				DFC662C721C0E96600B41558 /* XHud.swift */,
 				DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */,
 				DFB5FF4E21C9EAC30057C922 /* XAlertViewController.swift */,
@@ -6871,6 +6830,7 @@
 			files = (
 				71ECE04B2092128E00495467 /* WXChatFileViewController.m in Sources */,
 				BF6E57BF1FAC0723005F7DF8 /* WXExpressionSearchViewController.m in Sources */,
+				DF6B51FC21CA801E00460949 /* WXPictureCarouselView.swift in Sources */,
 				7115A5CA20AAD376000D0B96 /* PersonalConsumerViewController.swift in Sources */,
 				71ECE04D2092128E00495467 /* WXCGroupDetailViewController.m in Sources */,
 				BFAC49BF20D25EE700E5CB8D /* AppDelegate.swift in Sources */,
@@ -6889,10 +6849,12 @@
 				BF58BB6320EF1945002CB4EE /* RCAnnotationView.m in Sources */,
 				BF6E57BD1FAC0714005F7DF8 /* WXExpressionDetailViewController.m in Sources */,
 				BF6E57BC1FAC070C005F7DF8 /* WXExpressionPublicViewController.m in Sources */,
+				DF6B520021CA802C00460949 /* WXSearchController.swift in Sources */,
 				BF6E57B81FAC06C6005F7DF8 /* WXMyQRCodeViewController.m in Sources */,
 				BF58BB5620EF1945002CB4EE /* RCDChatListViewController.m in Sources */,
 				BFEF19A62101E821003DCAC1 /* SSZipArchive.m in Sources */,
 				713EE2AA20AD8F5C0085B65D /* KugouTabBarController.swift in Sources */,
+				DFB5FFA421CA379C0057C922 /* XIBExtension.swift in Sources */,
 				DF7B407B21AC020A00E3D975 /* Models.swift in Sources */,
 				BF6E57B71FAC06BB005F7DF8 /* WXMyExpressionViewController.m in Sources */,
 				BF6E57B31FAC0692005F7DF8 /* WXExpressionChosenViewController.m in Sources */,
@@ -6935,10 +6897,7 @@
 				DF7B406F21AC020A00E3D975 /* Constants.swift in Sources */,
 				713728CC20AE839900A3227A /* AlipayYuEBaoTableViewController.swift in Sources */,
 				7115A5D820AAD783000D0B96 /* ResumeBaseViewController.swift in Sources */,
-				BF6E56A61FAAF563005F7DF8 /* WXImageBrowserController.m in Sources */,
 				7115A5F220AAFC0F000D0B96 /* MyDatabaseBaseViewController.swift in Sources */,
-				BF6E56A41FAAF524005F7DF8 /* WXTableViewCell.m in Sources */,
-				BF6E56A21FAAF510005F7DF8 /* WXInfoViewController.m in Sources */,
 				7121194C20AC03BC0087E05B /* JuheBaseViewController.swift in Sources */,
 				BF0E8B0820DCB0B500150476 /* AppManager.m in Sources */,
 				7121197220AC25000087E05B /* ToutiaoAttentionViewController.swift in Sources */,
@@ -6947,35 +6906,32 @@
 				7115A5C620AAD35E000D0B96 /* PersonalFoodViewController.swift in Sources */,
 				71ECE0472092128E00495467 /* TLMoreKeyboard.m in Sources */,
 				71ECE0202092121F00495467 /* WXBottleViewController.m in Sources */,
+				DF6B520621CA804200460949 /* WXWebViewController.swift in Sources */,
 				71250EC92091C1DA0093B59B /* NSObject+Freedom.m in Sources */,
 				BFC6D94120E4AC0B00F17378 /* SinaComposeViewController.swift in Sources */,
 				7115A5CC20AAD382000D0B96 /* PersonalPhoneViewController.swift in Sources */,
-				BF6E569E1FAAF4B8005F7DF8 /* WXTableViewController.m in Sources */,
+				DF6B51FE21CA802500460949 /* WXQRCodeViewController.swift in Sources */,
 				713EE31220ADA0A40085B65D /* IqiyiMineViewController.swift in Sources */,
-				BF6E569D1FAAF48A005F7DF8 /* WXMenuViewController.m in Sources */,
 				DF7B408A21AC020A00E3D975 /* AwemeListCellViews.swift in Sources */,
 				BF58BB2620EF1945002CB4EE /* RCDPrivateSettingsTableViewController.m in Sources */,
 				7121196620AC24940087E05B /* ToutiaoNavigationViewController.swift in Sources */,
 				DF7B407221AC020A00E3D975 /* RefreshControl.swift in Sources */,
 				713EE2F020AD9CE50085B65D /* KugouMainViewController.swift in Sources */,
 				BF58BB6420EF1945002CB4EE /* RealTimeLocationViewController.m in Sources */,
-				BF6E569B1FAAF475005F7DF8 /* WXQRCodeViewController.m in Sources */,
 				71ECDFFE209210BF00495467 /* WXPublicServerSearchViewController.m in Sources */,
-				BF6E569A1FAAF45A005F7DF8 /* WXSearchController.m in Sources */,
 				BFEF19892101E821003DCAC1 /* HYStockChartViewController.m in Sources */,
-				BF6E56981FAAF3F7005F7DF8 /* WXWebViewController.m in Sources */,
 				7121194820AC03220087E05B /* JuheDataTabBarController.swift in Sources */,
 				71ECE0482092128E00495467 /* TLEmojiBaseCell.m in Sources */,
 				BFEF198C2101E821003DCAC1 /* HYStockChartTool.m in Sources */,
 				BFAC49C320D36A2700E5CB8D /* LibraryCollectionViewController.swift in Sources */,
 				7121195820AC0C2F0087E05B /* JuheAPIViewController.swift in Sources */,
-				BF6E56961FAAF341005F7DF8 /* WXPictureCarouselView.m in Sources */,
 				BF58BB3720EF1945002CB4EE /* RCDCreateGroupViewController.m in Sources */,
 				BF5B9B731F8E676500BD885E /* CareerViewController.swift in Sources */,
 				713EE2C620AD9B2B0085B65D /* DZMeController.swift in Sources */,
 				BF58BB3220EF1945002CB4EE /* RCDGroupMembersTableViewController.m in Sources */,
 				7115A5F420AAFC34000D0B96 /* MyDatabaseViewController.swift in Sources */,
 				713728CA20AE733F00A3227A /* AlipayModels.swift in Sources */,
+				DF6B520821CA804B00460949 /* WXSettingViewController.swift in Sources */,
 				713728CF20AE9FC600A3227A /* FoundationSwift.swift in Sources */,
 				713EE2D620AD9BAE0085B65D /* TaobaoCommunityViewController.swift in Sources */,
 				713EE2EA20AD9CC00085B65D /* KugouLookViewController.swift in Sources */,
@@ -7007,7 +6963,8 @@
 				BFEF19A52101E821003DCAC1 /* mztools.c in Sources */,
 				BFEF19A02101E821003DCAC1 /* StockChartTitleView.m in Sources */,
 				7121194220ABDD4B0087E05B /* EnergyShopTabBarController.swift in Sources */,
-				71ECDFC82091F9F800495467 /* WXModes.m in Sources */,
+				DFB5FF5621CA280A0057C922 /* WXExpanded.swift in Sources */,
+				DF6B520421CA803900460949 /* WXTableViewController.swift in Sources */,
 				BFAC491B20D2470F00E5CB8D /* BooksMainViewController.swift in Sources */,
 				7121195E20AC0C4F0087E05B /* JuheDetailQuestion.swift in Sources */,
 				BFEF198B2101E821003DCAC1 /* StockInfoDetailViewController.m in Sources */,
@@ -7038,6 +6995,8 @@
 				BFEF19CA2101E990003DCAC1 /* SumCFile.c in Sources */,
 				713EE2DE20AD9C070085B65D /* AlipayScanViewController.swift in Sources */,
 				713EE2D020AD9B8C0085B65D /* TaobaoMiniVideoViewController.swift in Sources */,
+				DF6B51F021CA6F6F00460949 /* WXExpressionHelper.swift in Sources */,
+				DF6B51F421CA6F8900460949 /* WXUserHelper.swift in Sources */,
 				71ECE01E2092121F00495467 /* WXScannerViewController.m in Sources */,
 				DF7B408021AC020A00E3D975 /* DouyinHomeViewController.swift in Sources */,
 				BF5B9B811F8E67C000BD885E /* PowerViewController.swift in Sources */,
@@ -7071,7 +7030,6 @@
 				7115A5C220AAD345000D0B96 /* PersonalHardwareViewController.swift in Sources */,
 				713EE2DA20AD9BC50085B65D /* TaobaoMeViewController.swift in Sources */,
 				BF58BB2220EF1944002CB4EE /* RCWKRequestHandler.m in Sources */,
-				71ECDFC22091F9EF00495467 /* WXExpressionHelper.m in Sources */,
 				71ECE0432092128E00495467 /* WXChatTableViewController.m in Sources */,
 				713EE2D820AD9BBA0085B65D /* TaobaoShopCarViewController.swift in Sources */,
 				7115A5AD20AAA1F1000D0B96 /* FreedomViewController.swift in Sources */,
@@ -7086,7 +7044,7 @@
 				7121192820ABC4E10087E05B /* EnergyNewsViewController.swift in Sources */,
 				713EE2B220AD90010085B65D /* DZBaseViewController.swift in Sources */,
 				7121195A20AC0C390087E05B /* JuheAPIDetailViewController.swift in Sources */,
-				71ECDFC72091F9F800495467 /* WXRootViewController.m in Sources */,
+				DFB5FF5C21CA2F1C0057C922 /* WXTabBarController.swift in Sources */,
 				DF7B407C21AC020A00E3D975 /* WebCacheManager.swift in Sources */,
 				7115A5E220AAD9E4000D0B96 /* ResumeTheorySystemViewController.swift in Sources */,
 				713EE2A620AD8F290085B65D /* TaobaoTabBarController.swift in Sources */,
@@ -7111,16 +7069,15 @@
 				BFEF199D2101E821003DCAC1 /* TimeLineModel.m in Sources */,
 				DF7B407921AC020A00E3D975 /* LoadMoreControl.swift in Sources */,
 				DF7B408B21AC020A00E3D975 /* AVPlayerManager.swift in Sources */,
-				71ECDFC12091F9EF00495467 /* WXUserHelper.m in Sources */,
 				DF7B408821AC020A00E3D975 /* AwemeListCell.swift in Sources */,
 				DFFA80CA21AEC84D009B1999 /* BaseTableView.swift in Sources */,
+				DF6B520221CA803300460949 /* WXTableViewCell.swift in Sources */,
 				BF58BB5720EF1945002CB4EE /* RCDChatViewController.m in Sources */,
 				DF7B407721AC020A00E3D975 /* Extensions.swift in Sources */,
 				BF58B94A20EB22C9002CB4EE /* XTablesViewController.swift in Sources */,
 				713EE2BA20AD906F0085B65D /* KugouNavigationViewController.swift in Sources */,
 				7115A5DC20AAD9C2000D0B96 /* ResumeListViewController.swift in Sources */,
 				713EE2D220AD9B970085B65D /* TaobaoMiniArticleViewController.swift in Sources */,
-				7745C2451D67188C002212DE /* WXNavigationController.m in Sources */,
 				BF58BB6620EF1945002CB4EE /* TFHpple.m in Sources */,
 				BF58BB4320EF1945002CB4EE /* RCDPrivateSettingViewController.m in Sources */,
 				713EE2CA20AD9B6C0085B65D /* TaobaoMiniViewController.swift in Sources */,
@@ -7139,6 +7096,7 @@
 				71ECE007209210BF00495467 /* WXAddFriendViewController.m in Sources */,
 				BF5B9B7D1F8E67A700BD885E /* HonorViewController.swift in Sources */,
 				BF4A80EF2105CFCC00D32FB0 /* XTip.swift in Sources */,
+				DF6B51EE21CA6F5900460949 /* WXModes.swift in Sources */,
 				BF5B9B6D1F8E674400BD885E /* MoneyViewController.swift in Sources */,
 				BFC6D93D20E4ABF300F17378 /* SinaHomeViewController.swift in Sources */,
 				7115A5BC20AAD31A000D0B96 /* PersonalInternetViewController.swift in Sources */,
@@ -7146,6 +7104,7 @@
 				7115A5F620AAFC40000D0B96 /* MyDatabaseEditViewController.swift in Sources */,
 				BFC6D94720E4AC3B00F17378 /* SinaEmotion.swift in Sources */,
 				776460701D68437F00ACCCAC /* WXDBManager.m in Sources */,
+				DFB5FF5E21CA2F3E0057C922 /* WXNavigationController.swift in Sources */,
 				BF5B9B791F8E678900BD885E /* FriendViewController.swift in Sources */,
 				71ECE0212092121F00495467 /* WXGameViewController.m in Sources */,
 				7115A5B120AABCF6000D0B96 /* FreedomTabBarController.swift in Sources */,
@@ -7162,9 +7121,9 @@
 				7121195020AC0C000087E05B /* JuhePublicViewController.swift in Sources */,
 				DFFA80C621AEC84D009B1999 /* BaseViewController.swift in Sources */,
 				BF58BB4920EF1945002CB4EE /* RCDDiscussGroupSettingViewController.m in Sources */,
-				7165A3E220A5903D001C60D6 /* WXBaseViewController.m in Sources */,
 				7115A5E620AAECED000D0B96 /* BooksTabBarController.swift in Sources */,
 				713EE2EC20AD9CCE0085B65D /* KugouLinsenViewController.swift in Sources */,
+				DFB5FF6021CA2F530057C922 /* WXBaseViewController.swift in Sources */,
 				BFEF19CE2101F8DF003DCAC1 /* LanguageTableViewController.m in Sources */,
 				71267A512092DC7B006E1B96 /* BookFriendsViewController.m in Sources */,
 				7121193C20ABC57C0087E05B /* EnergyShopMeViewController.swift in Sources */,
@@ -7186,7 +7145,6 @@
 				BF58BB6C20EF1945002CB4EE /* XPathQuery.m in Sources */,
 				DF7B407D21AC020A00E3D975 /* MenuPopView.swift in Sources */,
 				71ECE002209210BF00495467 /* WXPublicServerViewController.m in Sources */,
-				71ECDFC02091F9EF00495467 /* WXMessageManager.m in Sources */,
 				BFEF19872101E821003DCAC1 /* JLLineChart.m in Sources */,
 				71ECE0452092128E00495467 /* WXImageExpressionDisplayView.m in Sources */,
 				DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */,
@@ -7196,11 +7154,11 @@
 				BF58BB4720EF1945002CB4EE /* RCDConversationSettingBaseViewController.m in Sources */,
 				713EE2E220AD9C240085B65D /* AlipayDiscoverTableViewController.swift in Sources */,
 				713EE30020ADA00E0085B65D /* IqiyiNavigationController.swift in Sources */,
-				BF6E56AF1FAAF7D6005F7DF8 /* WXSettingViewController.m in Sources */,
 				DFFA80C721AEC84D009B1999 /* BaseCollectionViewCell.swift in Sources */,
 				BFEF19CB2101E990003DCAC1 /* TSViewController.m in Sources */,
 				DFFA80C321AEC84D009B1999 /* BaseNavigationViewController.swift in Sources */,
 				DFC433E921C3F74F003E1BCB /* XNetKit.swift in Sources */,
+				DF6B51F621CA800500460949 /* WXInfoViewController.swift in Sources */,
 				7121196020AC0C620087E05B /* JuheDynamicViewController.swift in Sources */,
 				7121192020ABC4990087E05B /* EnergyBaseViewController.swift in Sources */,
 				7121194620ABE3660087E05B /* MicroEnergyTabBarController.swift in Sources */,
@@ -7246,7 +7204,6 @@
 				BFEF19942101E821003DCAC1 /* StockDetailHeaderView.m in Sources */,
 				BF58BB1520EF1944002CB4EE /* RCloudModel.m in Sources */,
 				BF58BB2520EF1944002CB4EE /* RCDChatRoomViewController.m in Sources */,
-				DFFA80AF21AE9672009B1999 /* NSFileManager+expanded.m in Sources */,
 				71ECE001209210BF00495467 /* WXTagsViewController.m in Sources */,
 				713EE31420ADA0AF0085B65D /* IqiyiClassifyViewController.swift in Sources */,
 				DF7B408521AC020A00E3D975 /* DouyinMeViewController.swift in Sources */,
@@ -7259,6 +7216,7 @@
 				BF4A80F22105CFCC00D32FB0 /* GPAPolylineEncoding.m in Sources */,
 				BFEF19A12101E821003DCAC1 /* StockDetailTopView.m in Sources */,
 				BF58BB6B20EF1945002CB4EE /* TFHppleElement.m in Sources */,
+				DF6B51F221CA6F7C00460949 /* WXMessageManager.swift in Sources */,
 				71ECE005209210BF00495467 /* WXFriendsViewController.m in Sources */,
 				7121196C20AC24DF0087E05B /* ToutiaoHomeSampleViewController.swift in Sources */,
 				7115A5D620AAD73F000D0B96 /* ResumeNavigationController.swift in Sources */,
@@ -7267,7 +7225,6 @@
 				BF58BB3320EF1945002CB4EE /* RCDEditGroupNameViewController.m in Sources */,
 				BF58BA2320EDBFBC002CB4EE /* PreViewController.swift in Sources */,
 				DF7B408721AC020A00E3D975 /* DouyinMeViews.swift in Sources */,
-				7745C2461D67188C002212DE /* WXTabBarController.m in Sources */,
 				71267A522092DC7B006E1B96 /* BookFriendsMode.m in Sources */,
 				7788AC621D7996E000376C95 /* E_CommentViewController.m in Sources */,
 				BF58BB4D20EF1945002CB4EE /* RCDMessageNoDisturbSettingController.m in Sources */,
@@ -7275,6 +7232,7 @@
 				BF5B9B711F8E675100BD885E /* LoveViewController.swift in Sources */,
 				7121192E20ABC5060087E05B /* EnergyDetailViewController.swift in Sources */,
 				713EE2B020AD8FDB0085B65D /* AlipayNavigationViewController.swift in Sources */,
+				DF6B51F821CA800D00460949 /* WXMenuViewController.swift in Sources */,
 				BFEF19952101E821003DCAC1 /* HYStockChartProfileModel.m in Sources */,
 				7121196A20AC24D30087E05B /* ToutiaoViewController.swift in Sources */,
 				71ECE003209210BF00495467 /* WXNewFriendViewController.m in Sources */,
