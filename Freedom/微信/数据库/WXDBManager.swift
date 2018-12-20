@@ -67,7 +67,7 @@ class WXDBManager: NSObject {
 
             let userID = WXUserHelper.shared().user.userID
             manager = WXDBManager(userID: userID)
-        
+
         return manager
     }
 

@@ -1052,23 +1052,6 @@
 		BF5B9B811F8E67C000BD885E /* PowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B801F8E67C000BD885E /* PowerViewController.swift */; };
 		BF5B9B831F8E67CC00BD885E /* HappyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B821F8E67CC00BD885E /* HappyViewController.swift */; };
 		BF6115B920FDACC9007A010A /* unicode.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF6115B820FDACC9007A010A /* unicode.plist */; };
-		BF6E57281FABFCB0005F7DF8 /* WXMineSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E571A1FABFC67005F7DF8 /* WXMineSettingViewController.m */; };
-		BF6E57291FABFCB7005F7DF8 /* WXBgSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E57261FABFC6B005F7DF8 /* WXBgSettingViewController.m */; };
-		BF6E572A1FABFCCE005F7DF8 /* WXAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E571F1FABFC69005F7DF8 /* WXAboutViewController.m */; };
-		BF6E572B1FABFCD4005F7DF8 /* WXHelpAndFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E571C1FABFC68005F7DF8 /* WXHelpAndFeedbackViewController.m */; };
-		BF6E572C1FABFCDA005F7DF8 /* WXCommonSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E571E1FABFC68005F7DF8 /* WXCommonSettingViewController.m */; };
-		BF6E572D1FABFCE0005F7DF8 /* WXNewMessageSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E57251FABFC6B005F7DF8 /* WXNewMessageSettingViewController.m */; };
-		BF6E572E1FABFCEA005F7DF8 /* WXAccountAndSafetyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E57201FABFC69005F7DF8 /* WXAccountAndSafetyViewController.m */; };
-		BF6E572F1FABFCF2005F7DF8 /* WXPrivacySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E57231FABFC6B005F7DF8 /* WXPrivacySettingViewController.m */; };
-		BF6E57AF1FAC066B005F7DF8 /* WXMineInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E57981FAC055C005F7DF8 /* WXMineInfoViewController.m */; };
-		BF6E57B01FAC0673005F7DF8 /* WXMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E579B1FAC055C005F7DF8 /* WXMineViewController.m */; };
-		BF6E57B31FAC0692005F7DF8 /* WXExpressionChosenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E57A01FAC055D005F7DF8 /* WXExpressionChosenViewController.m */; };
-		BF6E57B71FAC06BB005F7DF8 /* WXMyExpressionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E57AA1FAC055D005F7DF8 /* WXMyExpressionViewController.m */; };
-		BF6E57B81FAC06C6005F7DF8 /* WXMyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E579A1FAC055C005F7DF8 /* WXMyQRCodeViewController.m */; };
-		BF6E57BC1FAC070C005F7DF8 /* WXExpressionPublicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E57A41FAC055D005F7DF8 /* WXExpressionPublicViewController.m */; };
-		BF6E57BD1FAC0714005F7DF8 /* WXExpressionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E57A21FAC055D005F7DF8 /* WXExpressionDetailViewController.m */; };
-		BF6E57BE1FAC071C005F7DF8 /* WXExpressionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E57A81FAC055D005F7DF8 /* WXExpressionViewController.m */; };
-		BF6E57BF1FAC0723005F7DF8 /* WXExpressionSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6E57A61FAC055D005F7DF8 /* WXExpressionSearchViewController.m */; };
 		BF7309DC20E0D98100FC3555 /* usuallyAPP.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7309DB20E0D98100FC3555 /* usuallyAPP.plist */; };
 		BF7309E420E1195500FC3555 /* my.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7309E320E1195500FC3555 /* my.plist */; };
 		BF93B91920F8B0C3007E4BFB /* FreedomLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93B91820F8B0C3007E4BFB /* FreedomLoginViewController.swift */; };
@@ -1178,6 +1161,23 @@
 		DF6B522221CB261A00460949 /* TLEmojiBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522121CB261A00460949 /* TLEmojiBaseCell.swift */; };
 		DF6B522421CB262100460949 /* TLEmojiKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522321CB262100460949 /* TLEmojiKeyboard.swift */; };
 		DF6B522621CB70CD00460949 /* WXDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522521CB70CD00460949 /* WXDBManager.swift */; };
+		DF6B522821CB76A300460949 /* WXAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522721CB76A300460949 /* WXAboutViewController.swift */; };
+		DF6B522A21CB76BD00460949 /* WXAccountAndSafetyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522921CB76BD00460949 /* WXAccountAndSafetyViewController.swift */; };
+		DF6B522E21CB76CF00460949 /* WXBgSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522D21CB76CF00460949 /* WXBgSettingViewController.swift */; };
+		DF6B523021CB76DD00460949 /* WXCommonSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522F21CB76DD00460949 /* WXCommonSettingViewController.swift */; };
+		DF6B523221CB76E300460949 /* WXHelpAndFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B523121CB76E300460949 /* WXHelpAndFeedbackViewController.swift */; };
+		DF6B523421CB76EB00460949 /* WXMineSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B523321CB76EB00460949 /* WXMineSettingViewController.swift */; };
+		DF6B523621CB76F200460949 /* WXNewMessageSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B523521CB76F200460949 /* WXNewMessageSettingViewController.swift */; };
+		DF6B523821CB76F800460949 /* WXPrivacySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B523721CB76F800460949 /* WXPrivacySettingViewController.swift */; };
+		DF6B523A21CB76FF00460949 /* WXExpressionChosenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B523921CB76FF00460949 /* WXExpressionChosenViewController.swift */; };
+		DF6B523C21CB770500460949 /* WXExpressionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B523B21CB770500460949 /* WXExpressionDetailViewController.swift */; };
+		DF6B523E21CB770B00460949 /* WXExpressionPublicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B523D21CB770B00460949 /* WXExpressionPublicViewController.swift */; };
+		DF6B524021CB771100460949 /* WXExpressionSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B523F21CB771100460949 /* WXExpressionSearchViewController.swift */; };
+		DF6B524221CB771700460949 /* WXExpressionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B524121CB771700460949 /* WXExpressionViewController.swift */; };
+		DF6B524421CB771D00460949 /* WXMyExpressionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B524321CB771D00460949 /* WXMyExpressionViewController.swift */; };
+		DF6B524621CB772500460949 /* WXMineInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B524521CB772500460949 /* WXMineInfoViewController.swift */; };
+		DF6B524821CB772B00460949 /* WXMyQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B524721CB772B00460949 /* WXMyQRCodeViewController.swift */; };
+		DF6B524A21CB773100460949 /* WXMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B524921CB773100460949 /* WXMineViewController.swift */; };
 		DF7B3FBB21ABEEC500E3D975 /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = DF7B3FB421ABEEC500E3D975 /* comments.json */; };
 		DF7B3FBC21ABEEC500E3D975 /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DF7B3FB521ABEEC500E3D975 /* Emoticons.bundle */; };
 		DF7B3FBD21ABEEC500E3D975 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = DF7B3FB621ABEEC500E3D975 /* user.json */; };
@@ -2433,40 +2433,6 @@
 		BF5B9B891F8E694000BD885E /* f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f.png; sourceTree = "<group>"; };
 		BF5C6ACF20F37731000DF336 /* Freedom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Freedom.entitlements; sourceTree = "<group>"; };
 		BF6115B820FDACC9007A010A /* unicode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = unicode.plist; sourceTree = "<group>"; };
-		BF6E57181FABFC67005F7DF8 /* WXCommonSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXCommonSettingViewController.h; sourceTree = "<group>"; };
-		BF6E57191FABFC67005F7DF8 /* WXHelpAndFeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXHelpAndFeedbackViewController.h; sourceTree = "<group>"; };
-		BF6E571A1FABFC67005F7DF8 /* WXMineSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXMineSettingViewController.m; sourceTree = "<group>"; };
-		BF6E571B1FABFC67005F7DF8 /* WXBgSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXBgSettingViewController.h; sourceTree = "<group>"; };
-		BF6E571C1FABFC68005F7DF8 /* WXHelpAndFeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXHelpAndFeedbackViewController.m; sourceTree = "<group>"; };
-		BF6E571D1FABFC68005F7DF8 /* WXAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXAboutViewController.h; sourceTree = "<group>"; };
-		BF6E571E1FABFC68005F7DF8 /* WXCommonSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXCommonSettingViewController.m; sourceTree = "<group>"; };
-		BF6E571F1FABFC69005F7DF8 /* WXAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXAboutViewController.m; sourceTree = "<group>"; };
-		BF6E57201FABFC69005F7DF8 /* WXAccountAndSafetyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXAccountAndSafetyViewController.m; sourceTree = "<group>"; };
-		BF6E57211FABFC6A005F7DF8 /* WXMineSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXMineSettingViewController.h; sourceTree = "<group>"; };
-		BF6E57221FABFC6A005F7DF8 /* WXPrivacySettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXPrivacySettingViewController.h; sourceTree = "<group>"; };
-		BF6E57231FABFC6B005F7DF8 /* WXPrivacySettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXPrivacySettingViewController.m; sourceTree = "<group>"; };
-		BF6E57241FABFC6B005F7DF8 /* WXAccountAndSafetyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXAccountAndSafetyViewController.h; sourceTree = "<group>"; };
-		BF6E57251FABFC6B005F7DF8 /* WXNewMessageSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXNewMessageSettingViewController.m; sourceTree = "<group>"; };
-		BF6E57261FABFC6B005F7DF8 /* WXBgSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXBgSettingViewController.m; sourceTree = "<group>"; };
-		BF6E57271FABFC6C005F7DF8 /* WXNewMessageSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXNewMessageSettingViewController.h; sourceTree = "<group>"; };
-		BF6E57971FAC055C005F7DF8 /* WXMineInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXMineInfoViewController.h; sourceTree = "<group>"; };
-		BF6E57981FAC055C005F7DF8 /* WXMineInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXMineInfoViewController.m; sourceTree = "<group>"; };
-		BF6E57991FAC055C005F7DF8 /* WXMyQRCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXMyQRCodeViewController.h; sourceTree = "<group>"; };
-		BF6E579A1FAC055C005F7DF8 /* WXMyQRCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXMyQRCodeViewController.m; sourceTree = "<group>"; };
-		BF6E579B1FAC055C005F7DF8 /* WXMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXMineViewController.m; sourceTree = "<group>"; };
-		BF6E579F1FAC055D005F7DF8 /* WXExpressionChosenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXExpressionChosenViewController.h; sourceTree = "<group>"; };
-		BF6E57A01FAC055D005F7DF8 /* WXExpressionChosenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXExpressionChosenViewController.m; sourceTree = "<group>"; };
-		BF6E57A11FAC055D005F7DF8 /* WXExpressionDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXExpressionDetailViewController.h; sourceTree = "<group>"; };
-		BF6E57A21FAC055D005F7DF8 /* WXExpressionDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXExpressionDetailViewController.m; sourceTree = "<group>"; };
-		BF6E57A31FAC055D005F7DF8 /* WXExpressionPublicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXExpressionPublicViewController.h; sourceTree = "<group>"; };
-		BF6E57A41FAC055D005F7DF8 /* WXExpressionPublicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXExpressionPublicViewController.m; sourceTree = "<group>"; };
-		BF6E57A51FAC055D005F7DF8 /* WXExpressionSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXExpressionSearchViewController.h; sourceTree = "<group>"; };
-		BF6E57A61FAC055D005F7DF8 /* WXExpressionSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXExpressionSearchViewController.m; sourceTree = "<group>"; };
-		BF6E57A71FAC055D005F7DF8 /* WXExpressionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXExpressionViewController.h; sourceTree = "<group>"; };
-		BF6E57A81FAC055D005F7DF8 /* WXExpressionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXExpressionViewController.m; sourceTree = "<group>"; };
-		BF6E57A91FAC055D005F7DF8 /* WXMyExpressionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXMyExpressionViewController.h; sourceTree = "<group>"; };
-		BF6E57AA1FAC055D005F7DF8 /* WXMyExpressionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXMyExpressionViewController.m; sourceTree = "<group>"; };
-		BF6E57AB1FAC055D005F7DF8 /* WXMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXMineViewController.h; sourceTree = "<group>"; };
 		BF7309DB20E0D98100FC3555 /* usuallyAPP.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = usuallyAPP.plist; sourceTree = "<group>"; };
 		BF7309E320E1195500FC3555 /* my.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = my.plist; sourceTree = "<group>"; };
 		BF93B91820F8B0C3007E4BFB /* FreedomLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomLoginViewController.swift; sourceTree = "<group>"; };
@@ -2611,6 +2577,23 @@
 		DF6B522121CB261A00460949 /* TLEmojiBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLEmojiBaseCell.swift; sourceTree = "<group>"; };
 		DF6B522321CB262100460949 /* TLEmojiKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLEmojiKeyboard.swift; sourceTree = "<group>"; };
 		DF6B522521CB70CD00460949 /* WXDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXDBManager.swift; sourceTree = "<group>"; };
+		DF6B522721CB76A300460949 /* WXAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXAboutViewController.swift; sourceTree = "<group>"; };
+		DF6B522921CB76BD00460949 /* WXAccountAndSafetyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXAccountAndSafetyViewController.swift; sourceTree = "<group>"; };
+		DF6B522D21CB76CF00460949 /* WXBgSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXBgSettingViewController.swift; sourceTree = "<group>"; };
+		DF6B522F21CB76DD00460949 /* WXCommonSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXCommonSettingViewController.swift; sourceTree = "<group>"; };
+		DF6B523121CB76E300460949 /* WXHelpAndFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXHelpAndFeedbackViewController.swift; sourceTree = "<group>"; };
+		DF6B523321CB76EB00460949 /* WXMineSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXMineSettingViewController.swift; sourceTree = "<group>"; };
+		DF6B523521CB76F200460949 /* WXNewMessageSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXNewMessageSettingViewController.swift; sourceTree = "<group>"; };
+		DF6B523721CB76F800460949 /* WXPrivacySettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXPrivacySettingViewController.swift; sourceTree = "<group>"; };
+		DF6B523921CB76FF00460949 /* WXExpressionChosenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXExpressionChosenViewController.swift; sourceTree = "<group>"; };
+		DF6B523B21CB770500460949 /* WXExpressionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXExpressionDetailViewController.swift; sourceTree = "<group>"; };
+		DF6B523D21CB770B00460949 /* WXExpressionPublicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXExpressionPublicViewController.swift; sourceTree = "<group>"; };
+		DF6B523F21CB771100460949 /* WXExpressionSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXExpressionSearchViewController.swift; sourceTree = "<group>"; };
+		DF6B524121CB771700460949 /* WXExpressionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXExpressionViewController.swift; sourceTree = "<group>"; };
+		DF6B524321CB771D00460949 /* WXMyExpressionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXMyExpressionViewController.swift; sourceTree = "<group>"; };
+		DF6B524521CB772500460949 /* WXMineInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXMineInfoViewController.swift; sourceTree = "<group>"; };
+		DF6B524721CB772B00460949 /* WXMyQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXMyQRCodeViewController.swift; sourceTree = "<group>"; };
+		DF6B524921CB773100460949 /* WXMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXMineViewController.swift; sourceTree = "<group>"; };
 		DF7B3FB421ABEEC500E3D975 /* comments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comments.json; sourceTree = "<group>"; };
 		DF7B3FB521ABEEC500E3D975 /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
 		DF7B3FB621ABEEC500E3D975 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
@@ -2937,8 +2920,7 @@
 				7764628C1D68446300ACCCAC /* Setting */,
 				BF6E579C1FAC055D005F7DF8 /* ExpressionViewController */,
 				BF6E57961FAC055C005F7DF8 /* MineInfoViewController */,
-				BF6E57AB1FAC055D005F7DF8 /* WXMineViewController.h */,
-				BF6E579B1FAC055C005F7DF8 /* WXMineViewController.m */,
+				DF6B524921CB773100460949 /* WXMineViewController.swift */,
 			);
 			path = "我";
 			sourceTree = "<group>";
@@ -3916,22 +3898,14 @@
 		7764628C1D68446300ACCCAC /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				BF6E571D1FABFC68005F7DF8 /* WXAboutViewController.h */,
-				BF6E571F1FABFC69005F7DF8 /* WXAboutViewController.m */,
-				BF6E57241FABFC6B005F7DF8 /* WXAccountAndSafetyViewController.h */,
-				BF6E57201FABFC69005F7DF8 /* WXAccountAndSafetyViewController.m */,
-				BF6E571B1FABFC67005F7DF8 /* WXBgSettingViewController.h */,
-				BF6E57261FABFC6B005F7DF8 /* WXBgSettingViewController.m */,
-				BF6E57181FABFC67005F7DF8 /* WXCommonSettingViewController.h */,
-				BF6E571E1FABFC68005F7DF8 /* WXCommonSettingViewController.m */,
-				BF6E57191FABFC67005F7DF8 /* WXHelpAndFeedbackViewController.h */,
-				BF6E571C1FABFC68005F7DF8 /* WXHelpAndFeedbackViewController.m */,
-				BF6E57211FABFC6A005F7DF8 /* WXMineSettingViewController.h */,
-				BF6E571A1FABFC67005F7DF8 /* WXMineSettingViewController.m */,
-				BF6E57271FABFC6C005F7DF8 /* WXNewMessageSettingViewController.h */,
-				BF6E57251FABFC6B005F7DF8 /* WXNewMessageSettingViewController.m */,
-				BF6E57221FABFC6A005F7DF8 /* WXPrivacySettingViewController.h */,
-				BF6E57231FABFC6B005F7DF8 /* WXPrivacySettingViewController.m */,
+				DF6B522721CB76A300460949 /* WXAboutViewController.swift */,
+				DF6B522921CB76BD00460949 /* WXAccountAndSafetyViewController.swift */,
+				DF6B522D21CB76CF00460949 /* WXBgSettingViewController.swift */,
+				DF6B522F21CB76DD00460949 /* WXCommonSettingViewController.swift */,
+				DF6B523121CB76E300460949 /* WXHelpAndFeedbackViewController.swift */,
+				DF6B523321CB76EB00460949 /* WXMineSettingViewController.swift */,
+				DF6B523521CB76F200460949 /* WXNewMessageSettingViewController.swift */,
+				DF6B523721CB76F800460949 /* WXPrivacySettingViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -5319,10 +5293,8 @@
 		BF6E57961FAC055C005F7DF8 /* MineInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
-				BF6E57971FAC055C005F7DF8 /* WXMineInfoViewController.h */,
-				BF6E57981FAC055C005F7DF8 /* WXMineInfoViewController.m */,
-				BF6E57991FAC055C005F7DF8 /* WXMyQRCodeViewController.h */,
-				BF6E579A1FAC055C005F7DF8 /* WXMyQRCodeViewController.m */,
+				DF6B524521CB772500460949 /* WXMineInfoViewController.swift */,
+				DF6B524721CB772B00460949 /* WXMyQRCodeViewController.swift */,
 			);
 			path = MineInfoViewController;
 			sourceTree = "<group>";
@@ -5330,18 +5302,12 @@
 		BF6E579C1FAC055D005F7DF8 /* ExpressionViewController */ = {
 			isa = PBXGroup;
 			children = (
-				BF6E579F1FAC055D005F7DF8 /* WXExpressionChosenViewController.h */,
-				BF6E57A01FAC055D005F7DF8 /* WXExpressionChosenViewController.m */,
-				BF6E57A11FAC055D005F7DF8 /* WXExpressionDetailViewController.h */,
-				BF6E57A21FAC055D005F7DF8 /* WXExpressionDetailViewController.m */,
-				BF6E57A31FAC055D005F7DF8 /* WXExpressionPublicViewController.h */,
-				BF6E57A41FAC055D005F7DF8 /* WXExpressionPublicViewController.m */,
-				BF6E57A51FAC055D005F7DF8 /* WXExpressionSearchViewController.h */,
-				BF6E57A61FAC055D005F7DF8 /* WXExpressionSearchViewController.m */,
-				BF6E57A71FAC055D005F7DF8 /* WXExpressionViewController.h */,
-				BF6E57A81FAC055D005F7DF8 /* WXExpressionViewController.m */,
-				BF6E57A91FAC055D005F7DF8 /* WXMyExpressionViewController.h */,
-				BF6E57AA1FAC055D005F7DF8 /* WXMyExpressionViewController.m */,
+				DF6B523921CB76FF00460949 /* WXExpressionChosenViewController.swift */,
+				DF6B523B21CB770500460949 /* WXExpressionDetailViewController.swift */,
+				DF6B523D21CB770B00460949 /* WXExpressionPublicViewController.swift */,
+				DF6B523F21CB771100460949 /* WXExpressionSearchViewController.swift */,
+				DF6B524121CB771700460949 /* WXExpressionViewController.swift */,
+				DF6B524321CB771D00460949 /* WXMyExpressionViewController.swift */,
 			);
 			path = ExpressionViewController;
 			sourceTree = "<group>";
@@ -6798,12 +6764,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF6E57BF1FAC0723005F7DF8 /* WXExpressionSearchViewController.m in Sources */,
 				DF6B51FC21CA801E00460949 /* WXPictureCarouselView.swift in Sources */,
 				7115A5CA20AAD376000D0B96 /* PersonalConsumerViewController.swift in Sources */,
 				BFAC49BF20D25EE700E5CB8D /* AppDelegate.swift in Sources */,
 				DF7B407121AC020A00E3D975 /* BaseRequest.swift in Sources */,
-				BF6E57BE1FAC071C005F7DF8 /* WXExpressionViewController.m in Sources */,
 				7121196420AC24790087E05B /* ToutiaoTabBarController.swift in Sources */,
 				BF58BB6920EF1945002CB4EE /* RCDHttpTool.m in Sources */,
 				713EE30E20ADA08F0085B65D /* IqiyiSubscribeViewController.swift in Sources */,
@@ -6815,29 +6779,19 @@
 				BF58BB3F20EF1945002CB4EE /* RCDSearchViewController.m in Sources */,
 				DF6B522421CB262100460949 /* TLEmojiKeyboard.swift in Sources */,
 				BF58BB6320EF1945002CB4EE /* RCAnnotationView.m in Sources */,
-				BF6E57BD1FAC0714005F7DF8 /* WXExpressionDetailViewController.m in Sources */,
-				BF6E57BC1FAC070C005F7DF8 /* WXExpressionPublicViewController.m in Sources */,
 				DF6B520021CA802C00460949 /* WXSearchController.swift in Sources */,
-				BF6E57B81FAC06C6005F7DF8 /* WXMyQRCodeViewController.m in Sources */,
 				BF58BB5620EF1945002CB4EE /* RCDChatListViewController.m in Sources */,
 				BFEF19A62101E821003DCAC1 /* SSZipArchive.m in Sources */,
 				713EE2AA20AD8F5C0085B65D /* KugouTabBarController.swift in Sources */,
 				DFB5FFA421CA379C0057C922 /* XIBExtension.swift in Sources */,
 				DF7B407B21AC020A00E3D975 /* Models.swift in Sources */,
-				BF6E57B71FAC06BB005F7DF8 /* WXMyExpressionViewController.m in Sources */,
-				BF6E57B31FAC0692005F7DF8 /* WXExpressionChosenViewController.m in Sources */,
 				BF58BB4C20EF1945002CB4EE /* RCDPushSettingViewController.m in Sources */,
-				BF6E57B01FAC0673005F7DF8 /* WXMineViewController.m in Sources */,
-				BF6E57AF1FAC066B005F7DF8 /* WXMineInfoViewController.m in Sources */,
+				DF6B523A21CB76FF00460949 /* WXExpressionChosenViewController.swift in Sources */,
 				7115A5D220AAD3A3000D0B96 /* PersonalLuxuryViewController.swift in Sources */,
 				DF7B408221AC020A00E3D975 /* DouyinMessageViewController.swift in Sources */,
 				DFFA80C821AEC84D009B1999 /* BaseCollectionView.swift in Sources */,
-				BF6E572F1FABFCF2005F7DF8 /* WXPrivacySettingViewController.m in Sources */,
-				BF6E572E1FABFCEA005F7DF8 /* WXAccountAndSafetyViewController.m in Sources */,
-				BF6E572D1FABFCE0005F7DF8 /* WXNewMessageSettingViewController.m in Sources */,
 				BF58BB3B20EF1945002CB4EE /* RCDSearchHistoryMessageController.m in Sources */,
 				7121194020ABC5940087E05B /* EnergyContactDetailViewController.swift in Sources */,
-				BF6E572C1FABFCDA005F7DF8 /* WXCommonSettingViewController.m in Sources */,
 				BF58BB3520EF1945002CB4EE /* RCDGroupViewController.m in Sources */,
 				DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */,
 				BFEF199C2101E821003DCAC1 /* HYTimeLineBelowView.m in Sources */,
@@ -6854,17 +6808,14 @@
 				BFEF19962101E821003DCAC1 /* FiveRange_TradeDetailTableView.m in Sources */,
 				713EE2E820AD9CB60085B65D /* KugouSingViewController.swift in Sources */,
 				BFC6D94520E4AC2200F17378 /* SinaMeViewController.swift in Sources */,
-				BF6E572B1FABFCD4005F7DF8 /* WXHelpAndFeedbackViewController.m in Sources */,
-				BF6E572A1FABFCCE005F7DF8 /* WXAboutViewController.m in Sources */,
-				BF6E57291FABFCB7005F7DF8 /* WXBgSettingViewController.m in Sources */,
 				DF7B407021AC020A00E3D975 /* PhotoView.swift in Sources */,
-				BF6E57281FABFCB0005F7DF8 /* WXMineSettingViewController.m in Sources */,
 				BF58BB3C20EF1945002CB4EE /* RCDSearchDataManager.m in Sources */,
 				BFEF19972101E821003DCAC1 /* HYStockChartView.m in Sources */,
 				7115A5D420AAD716000D0B96 /* ResumeTabBarController.swift in Sources */,
 				7121196220AC0C6E0087E05B /* JuheUserViewController.swift in Sources */,
 				DF7B406F21AC020A00E3D975 /* Constants.swift in Sources */,
 				713728CC20AE839900A3227A /* AlipayYuEBaoTableViewController.swift in Sources */,
+				DF6B523621CB76F200460949 /* WXNewMessageSettingViewController.swift in Sources */,
 				7115A5D820AAD783000D0B96 /* ResumeBaseViewController.swift in Sources */,
 				7115A5F220AAFC0F000D0B96 /* MyDatabaseBaseViewController.swift in Sources */,
 				7121194C20AC03BC0087E05B /* JuheBaseViewController.swift in Sources */,
@@ -6890,6 +6841,7 @@
 				71ECDFFE209210BF00495467 /* WXPublicServerSearchViewController.m in Sources */,
 				BFEF19892101E821003DCAC1 /* HYStockChartViewController.m in Sources */,
 				7121194820AC03220087E05B /* JuheDataTabBarController.swift in Sources */,
+				DF6B523E21CB770B00460949 /* WXExpressionPublicViewController.swift in Sources */,
 				BFEF198C2101E821003DCAC1 /* HYStockChartTool.m in Sources */,
 				BFAC49C320D36A2700E5CB8D /* LibraryCollectionViewController.swift in Sources */,
 				7121195820AC0C2F0087E05B /* JuheAPIViewController.swift in Sources */,
@@ -6907,6 +6859,7 @@
 				BFEF199F2101E821003DCAC1 /* HYTimeLineAboveView.m in Sources */,
 				713EE2B820AD903F0085B65D /* AlipayBaseViewController.swift in Sources */,
 				BF5B9B601F8E63CF00BD885E /* SearchDownloadBookViewController.swift in Sources */,
+				DF6B522821CB76A300460949 /* WXAboutViewController.swift in Sources */,
 				7121191E20ABC46F0087E05B /* EnergyNavigationController.swift in Sources */,
 				BFEF199A2101E821003DCAC1 /* HYKLineView.m in Sources */,
 				7115A5DA20AAD9AA000D0B96 /* ResumeViewController.swift in Sources */,
@@ -6933,6 +6886,7 @@
 				7121194220ABDD4B0087E05B /* EnergyShopTabBarController.swift in Sources */,
 				DFB5FF5621CA280A0057C922 /* WXExpanded.swift in Sources */,
 				DF6B520421CA803900460949 /* WXTableViewController.swift in Sources */,
+				DF6B523821CB76F800460949 /* WXPrivacySettingViewController.swift in Sources */,
 				BFAC491B20D2470F00E5CB8D /* BooksMainViewController.swift in Sources */,
 				7121195E20AC0C4F0087E05B /* JuheDetailQuestion.swift in Sources */,
 				BFEF198B2101E821003DCAC1 /* StockInfoDetailViewController.m in Sources */,
@@ -6972,6 +6926,7 @@
 				BF5B9B671F8E66D900BD885E /* EconomicDevelopmentViewController.swift in Sources */,
 				DFF4AB9921B7969A00F03C71 /* XRefreshHeader.swift in Sources */,
 				DF7B407421AC020A00E3D975 /* WebPImageView.swift in Sources */,
+				DF6B524821CB772B00460949 /* WXMyQRCodeViewController.swift in Sources */,
 				713EE2E420AD9C2F0085B65D /* AlipayServiceTableViewController.swift in Sources */,
 				BF58BB2720EF1945002CB4EE /* RCDContactViewController.m in Sources */,
 				713EE2FE20AD9FF30085B65D /* IqiyiTabBarController.swift in Sources */,
@@ -6994,6 +6949,7 @@
 				BF58BB3820EF1945002CB4EE /* RCDNavigationViewController.m in Sources */,
 				713EE2F620AD9D300085B65D /* DetailScrollViewController.swift in Sources */,
 				7788AC641D7996E000376C95 /* E_ScrollViewController.m in Sources */,
+				DF6B524621CB772500460949 /* WXMineInfoViewController.swift in Sources */,
 				77BFCC001E1F413C00C95B5E /* notes.md in Sources */,
 				71ECE0242092121F00495467 /* WXDiscoverViewController.m in Sources */,
 				7115A5D020AAD398000D0B96 /* PersonalCarViewController.swift in Sources */,
@@ -7004,6 +6960,7 @@
 				713EE2D820AD9BBA0085B65D /* TaobaoShopCarViewController.swift in Sources */,
 				7115A5AD20AAA1F1000D0B96 /* FreedomViewController.swift in Sources */,
 				BF5B9B6F1F8E674B00BD885E /* FreeViewController.swift in Sources */,
+				DF6B523021CB76DD00460949 /* WXCommonSettingViewController.swift in Sources */,
 				BF5B9B771F8E677F00BD885E /* RelativeViewController.swift in Sources */,
 				7115A5B620AAC314000D0B96 /* PersonalApplyNavigationController.swift in Sources */,
 				BFEF19912101E821003DCAC1 /* HYStockChartConstant.m in Sources */,
@@ -7055,6 +7012,7 @@
 				7121192A20ABC4EE0087E05B /* EnergyNewsDetailViewController.swift in Sources */,
 				713EE2AE20AD8FAB0085B65D /* TaobaoNavigationViewController.swift in Sources */,
 				7115A5EE20AAFBBA000D0B96 /* MyDatabaseTabBarController.swift in Sources */,
+				DF6B523421CB76EB00460949 /* WXMineSettingViewController.swift in Sources */,
 				7115A5A920AAA191000D0B96 /* FreedomBooksViewController.swift in Sources */,
 				7121193E20ABC58A0087E05B /* EnergyContactUSViewController.swift in Sources */,
 				7121192420ABC4C30087E05B /* EnergyBusinessListViewController.swift in Sources */,
@@ -7089,6 +7047,7 @@
 				BFEF19A42101E821003DCAC1 /* ioapi.c in Sources */,
 				DF846C8D21BE55FD002D9CA2 /* NSObject+Mirror.m in Sources */,
 				7121195020AC0C000087E05B /* JuhePublicViewController.swift in Sources */,
+				DF6B522E21CB76CF00460949 /* WXBgSettingViewController.swift in Sources */,
 				DFFA80C621AEC84D009B1999 /* BaseViewController.swift in Sources */,
 				BF58BB4920EF1945002CB4EE /* RCDDiscussGroupSettingViewController.m in Sources */,
 				7115A5E620AAECED000D0B96 /* BooksTabBarController.swift in Sources */,
@@ -7103,6 +7062,7 @@
 				DFB5FF4F21C9EAC30057C922 /* XAlertViewController.swift in Sources */,
 				BF5B9B7F1F8E67B900BD885E /* WidomViewController.swift in Sources */,
 				713EE30820ADA06B0085B65D /* IqiyiWatchRecordViewController.swift in Sources */,
+				DF6B524021CB771100460949 /* WXExpressionSearchViewController.swift in Sources */,
 				BFAC49C120D36A0F00E5CB8D /* SettingsViewController.swift in Sources */,
 				7115A5E820AAED13000D0B96 /* BooksNavigationController.swift in Sources */,
 				71267A5B2092E736006E1B96 /* BookSubViews.m in Sources */,
@@ -7129,6 +7089,7 @@
 				DFFA80C321AEC84D009B1999 /* BaseNavigationViewController.swift in Sources */,
 				DFC433E921C3F74F003E1BCB /* XNetKit.swift in Sources */,
 				DF6B51F621CA800500460949 /* WXInfoViewController.swift in Sources */,
+				DF6B523C21CB770500460949 /* WXExpressionDetailViewController.swift in Sources */,
 				7121196020AC0C620087E05B /* JuheDynamicViewController.swift in Sources */,
 				7121192020ABC4990087E05B /* EnergyBaseViewController.swift in Sources */,
 				7121194620ABE3660087E05B /* MicroEnergyTabBarController.swift in Sources */,
@@ -7154,6 +7115,7 @@
 				71ECE004209210BF00495467 /* WXGroupViewController.m in Sources */,
 				BF58BB4020EF1945002CB4EE /* RCDSearchResultViewCell.m in Sources */,
 				71250EC62091C0F20093B59B /* FreedomTools.m in Sources */,
+				DF6B524221CB771700460949 /* WXExpressionViewController.swift in Sources */,
 				7115A5B820AAC348000D0B96 /* PersonalApplyBaseViewController.swift in Sources */,
 				713EE2A420AD8F160085B65D /* DZTabBarController.swift in Sources */,
 				7121192620ABC4D10087E05B /* EnergyBusinessDetailViewController.swift in Sources */,
@@ -7162,6 +7124,7 @@
 				BF58BB2E20EF1945002CB4EE /* RCDSearchFriendViewController.m in Sources */,
 				BFAC49C520D3857700E5CB8D /* FirstViewController.swift in Sources */,
 				7121193020ABC5270087E05B /* EnergySuperHomeViewController.swift in Sources */,
+				DF6B524421CB771D00460949 /* WXMyExpressionViewController.swift in Sources */,
 				BFEF199E2101E821003DCAC1 /* HYTimeLineView.m in Sources */,
 				7121194E20AC0BF00087E05B /* JuheContectUSViewController.swift in Sources */,
 				BF58BB5920EF1945002CB4EE /* RCDServiceViewController.m in Sources */,
@@ -7199,17 +7162,20 @@
 				BF5B9B711F8E675100BD885E /* LoveViewController.swift in Sources */,
 				7121192E20ABC5060087E05B /* EnergyDetailViewController.swift in Sources */,
 				DF6B521E21CB25F700460949 /* WXConversationViewController.swift in Sources */,
+				DF6B523221CB76E300460949 /* WXHelpAndFeedbackViewController.swift in Sources */,
 				713EE2B020AD8FDB0085B65D /* AlipayNavigationViewController.swift in Sources */,
 				DF6B51F821CA800D00460949 /* WXMenuViewController.swift in Sources */,
 				BFEF19952101E821003DCAC1 /* HYStockChartProfileModel.m in Sources */,
 				7121196A20AC24D30087E05B /* ToutiaoViewController.swift in Sources */,
 				71ECE003209210BF00495467 /* WXNewFriendViewController.m in Sources */,
+				DF6B522A21CB76BD00460949 /* WXAccountAndSafetyViewController.swift in Sources */,
 				BFAC491920D23BD600E5CB8D /* DetailView.swift in Sources */,
 				713EE2E020AD9C120085B65D /* AlipayAddItemViewController.swift in Sources */,
 				DF6B520A21CB25A100460949 /* WXUserGroupCell.swift in Sources */,
 				BFEF19992101E821003DCAC1 /* HYKLineBelowView.m in Sources */,
 				7788AC631D7996E000376C95 /* E_ReaderViewController.m in Sources */,
 				DFFA80C921AEC84D009B1999 /* BaseScrollView.swift in Sources */,
+				DF6B524A21CB773100460949 /* WXMineViewController.swift in Sources */,
 				71ECE01D2092121F00495467 /* WXMomentDetailViewController.m in Sources */,
 				7121196820AC24A70087E05B /* ToutiaoBaseViewController.swift in Sources */,
 				DF6B521821CB25D900460949 /* WXChatViewController.swift in Sources */,
