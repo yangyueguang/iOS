@@ -186,19 +186,6 @@
 		71ECE0232092121F00495467 /* WXMomentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE0172092121E00495467 /* WXMomentsViewController.m */; };
 		71ECE0242092121F00495467 /* WXDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE0182092121E00495467 /* WXDiscoverViewController.m */; };
 		71ECE0252092121F00495467 /* WXScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE0192092121E00495467 /* WXScanningViewController.m */; };
-		71ECE0432092128E00495467 /* WXChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE0272092128D00495467 /* WXChatTableViewController.m */; };
-		71ECE0442092128E00495467 /* WXChatBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE0292092128D00495467 /* WXChatBaseViewController.m */; };
-		71ECE0452092128E00495467 /* WXImageExpressionDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE02A2092128D00495467 /* WXImageExpressionDisplayView.m */; };
-		71ECE0462092128E00495467 /* WXChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE02C2092128D00495467 /* WXChatViewController.m */; };
-		71ECE0472092128E00495467 /* TLMoreKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE0322092128D00495467 /* TLMoreKeyboard.m */; };
-		71ECE0482092128E00495467 /* TLEmojiBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE0332092128D00495467 /* TLEmojiBaseCell.m */; };
-		71ECE0492092128E00495467 /* TLEmojiKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE0342092128D00495467 /* TLEmojiKeyboard.m */; };
-		71ECE04A2092128E00495467 /* WXConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE0372092128E00495467 /* WXConversationViewController.m */; };
-		71ECE04B2092128E00495467 /* WXChatFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE03C2092128E00495467 /* WXChatFileViewController.m */; };
-		71ECE04C2092128E00495467 /* WXGroupQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE03D2092128E00495467 /* WXGroupQRCodeViewController.m */; };
-		71ECE04D2092128E00495467 /* WXCGroupDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE03E2092128E00495467 /* WXCGroupDetailViewController.m */; };
-		71ECE04E2092128E00495467 /* WXUserGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE03F2092128E00495467 /* WXUserGroupCell.m */; };
-		71ECE04F2092128E00495467 /* WXChatDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECE0412092128E00495467 /* WXChatDetailViewController.m */; };
 		7719171C1D65466E002F2BCD /* juheIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7719171A1D65466E002F2BCD /* juheIcon.png */; };
 		7719171D1D65466E002F2BCD /* toutiaoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7719171B1D65466E002F2BCD /* toutiaoIcon.png */; };
 		771917201D655039002F2BCD /* userLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7719171F1D655039002F2BCD /* userLogo.png */; };
@@ -525,7 +512,6 @@
 		77645FAA1D68259900ACCCAC /* ShakeCard.png in Resources */ = {isa = PBXBuildFile; fileRef = 77645DED1D68259900ACCCAC /* ShakeCard.png */; };
 		77645FAC1D68259900ACCCAC /* ShakeHideImg_women.png in Resources */ = {isa = PBXBuildFile; fileRef = 77645DEF1D68259900ACCCAC /* ShakeHideImg_women.png */; };
 		77645FF11D68384600ACCCAC /* WX.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77645FF01D68384600ACCCAC /* WX.storyboard */; };
-		776460701D68437F00ACCCAC /* WXDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 776460691D68437F00ACCCAC /* WXDBManager.m */; };
 		776463C61D6867A400ACCCAC /* UserErweima.png in Resources */ = {isa = PBXBuildFile; fileRef = 776463C51D6867A400ACCCAC /* UserErweima.png */; };
 		7772A80E1D64648B00444973 /* zhifubaoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7772A7FE1D64648B00444973 /* zhifubaoIcon.png */; };
 		7772A80F1D64648B00444973 /* yingyongIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7772A7FF1D64648B00444973 /* yingyongIcon.png */; };
@@ -1178,6 +1164,20 @@
 		DF6B520421CA803900460949 /* WXTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520321CA803900460949 /* WXTableViewController.swift */; };
 		DF6B520621CA804200460949 /* WXWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520521CA804200460949 /* WXWebViewController.swift */; };
 		DF6B520821CA804B00460949 /* WXSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520721CA804B00460949 /* WXSettingViewController.swift */; };
+		DF6B520A21CB25A100460949 /* WXUserGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520921CB25A100460949 /* WXUserGroupCell.swift */; };
+		DF6B520C21CB25A900460949 /* WXCGroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520B21CB25A900460949 /* WXCGroupDetailViewController.swift */; };
+		DF6B520E21CB25B100460949 /* WXChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520D21CB25B100460949 /* WXChatDetailViewController.swift */; };
+		DF6B521221CB25C300460949 /* WXChatFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521121CB25C300460949 /* WXChatFileViewController.swift */; };
+		DF6B521421CB25CA00460949 /* WXGroupQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521321CB25CA00460949 /* WXGroupQRCodeViewController.swift */; };
+		DF6B521621CB25D200460949 /* WXChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521521CB25D200460949 /* WXChatTableViewController.swift */; };
+		DF6B521821CB25D900460949 /* WXChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521721CB25D900460949 /* WXChatViewController.swift */; };
+		DF6B521A21CB25E100460949 /* WXChatBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521921CB25E100460949 /* WXChatBaseViewController.swift */; };
+		DF6B521C21CB25EA00460949 /* WXImageExpressionDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521B21CB25EA00460949 /* WXImageExpressionDisplayView.swift */; };
+		DF6B521E21CB25F700460949 /* WXConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521D21CB25F700460949 /* WXConversationViewController.swift */; };
+		DF6B522021CB261300460949 /* TLMoreKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521F21CB261300460949 /* TLMoreKeyboard.swift */; };
+		DF6B522221CB261A00460949 /* TLEmojiBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522121CB261A00460949 /* TLEmojiBaseCell.swift */; };
+		DF6B522421CB262100460949 /* TLEmojiKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522321CB262100460949 /* TLEmojiKeyboard.swift */; };
+		DF6B522621CB70CD00460949 /* WXDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522521CB70CD00460949 /* WXDBManager.swift */; };
 		DF7B3FBB21ABEEC500E3D975 /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = DF7B3FB421ABEEC500E3D975 /* comments.json */; };
 		DF7B3FBC21ABEEC500E3D975 /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DF7B3FB521ABEEC500E3D975 /* Emoticons.bundle */; };
 		DF7B3FBD21ABEEC500E3D975 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = DF7B3FB621ABEEC500E3D975 /* user.json */; };
@@ -1473,33 +1473,6 @@
 		71ECE0192092121E00495467 /* WXScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXScanningViewController.m; sourceTree = "<group>"; };
 		71ECE01A2092121F00495467 /* WXShakeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXShakeViewController.h; sourceTree = "<group>"; };
 		71ECE01B2092121F00495467 /* WXScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXScanningViewController.h; sourceTree = "<group>"; };
-		71ECE0272092128D00495467 /* WXChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXChatTableViewController.m; sourceTree = "<group>"; };
-		71ECE0282092128D00495467 /* WXChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXChatViewController.h; sourceTree = "<group>"; };
-		71ECE0292092128D00495467 /* WXChatBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXChatBaseViewController.m; sourceTree = "<group>"; };
-		71ECE02A2092128D00495467 /* WXImageExpressionDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXImageExpressionDisplayView.m; sourceTree = "<group>"; };
-		71ECE02B2092128D00495467 /* WXChatBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXChatBaseViewController.h; sourceTree = "<group>"; };
-		71ECE02C2092128D00495467 /* WXChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXChatViewController.m; sourceTree = "<group>"; };
-		71ECE02D2092128D00495467 /* WXChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXChatTableViewController.h; sourceTree = "<group>"; };
-		71ECE02F2092128D00495467 /* TLMoreKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMoreKeyboard.h; sourceTree = "<group>"; };
-		71ECE0302092128D00495467 /* TLEmojiBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiBaseCell.h; sourceTree = "<group>"; };
-		71ECE0312092128D00495467 /* TLEmojiKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLEmojiKeyboard.h; sourceTree = "<group>"; };
-		71ECE0322092128D00495467 /* TLMoreKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMoreKeyboard.m; sourceTree = "<group>"; };
-		71ECE0332092128D00495467 /* TLEmojiBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiBaseCell.m; sourceTree = "<group>"; };
-		71ECE0342092128D00495467 /* TLEmojiKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLEmojiKeyboard.m; sourceTree = "<group>"; };
-		71ECE0352092128D00495467 /* WXImageExpressionDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXImageExpressionDisplayView.h; sourceTree = "<group>"; };
-		71ECE0362092128D00495467 /* WXConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXConversationViewController.h; sourceTree = "<group>"; };
-		71ECE0372092128E00495467 /* WXConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXConversationViewController.m; sourceTree = "<group>"; };
-		71ECE0392092128E00495467 /* WXUserGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUserGroupCell.h; sourceTree = "<group>"; };
-		71ECE03A2092128E00495467 /* WXCGroupDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXCGroupDetailViewController.h; sourceTree = "<group>"; };
-		71ECE03B2092128E00495467 /* WXChatDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXChatDetailViewController.h; sourceTree = "<group>"; };
-		71ECE03C2092128E00495467 /* WXChatFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXChatFileViewController.m; sourceTree = "<group>"; };
-		71ECE03D2092128E00495467 /* WXGroupQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXGroupQRCodeViewController.m; sourceTree = "<group>"; };
-		71ECE03E2092128E00495467 /* WXCGroupDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXCGroupDetailViewController.m; sourceTree = "<group>"; };
-		71ECE03F2092128E00495467 /* WXUserGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXUserGroupCell.m; sourceTree = "<group>"; };
-		71ECE0402092128E00495467 /* WXChatFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXChatFileViewController.h; sourceTree = "<group>"; };
-		71ECE0412092128E00495467 /* WXChatDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXChatDetailViewController.m; sourceTree = "<group>"; };
-		71ECE0422092128E00495467 /* WXGroupQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXGroupQRCodeViewController.h; sourceTree = "<group>"; };
-		71ECE0502092165D00495467 /* TLDBMessageStoreSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDBMessageStoreSQL.h; sourceTree = "<group>"; };
 		7719171A1D65466E002F2BCD /* juheIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = juheIcon.png; sourceTree = "<group>"; };
 		7719171B1D65466E002F2BCD /* toutiaoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toutiaoIcon.png; sourceTree = "<group>"; };
 		7719171F1D655039002F2BCD /* userLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userLogo.png; sourceTree = "<group>"; };
@@ -1830,8 +1803,6 @@
 		77645DED1D68259900ACCCAC /* ShakeCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShakeCard.png; sourceTree = "<group>"; };
 		77645DEF1D68259900ACCCAC /* ShakeHideImg_women.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShakeHideImg_women.png; sourceTree = "<group>"; };
 		77645FF01D68384600ACCCAC /* WX.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WX.storyboard; sourceTree = "<group>"; };
-		776460681D68437F00ACCCAC /* WXDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXDBManager.h; sourceTree = "<group>"; };
-		776460691D68437F00ACCCAC /* WXDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXDBManager.m; sourceTree = "<group>"; };
 		776463C51D6867A400ACCCAC /* UserErweima.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserErweima.png; sourceTree = "<group>"; };
 		7772A7FE1D64648B00444973 /* zhifubaoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhifubaoIcon.png; sourceTree = "<group>"; };
 		7772A7FF1D64648B00444973 /* yingyongIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yingyongIcon.png; sourceTree = "<group>"; };
@@ -2626,6 +2597,20 @@
 		DF6B520321CA803900460949 /* WXTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXTableViewController.swift; sourceTree = "<group>"; };
 		DF6B520521CA804200460949 /* WXWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXWebViewController.swift; sourceTree = "<group>"; };
 		DF6B520721CA804B00460949 /* WXSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXSettingViewController.swift; sourceTree = "<group>"; };
+		DF6B520921CB25A100460949 /* WXUserGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXUserGroupCell.swift; sourceTree = "<group>"; };
+		DF6B520B21CB25A900460949 /* WXCGroupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXCGroupDetailViewController.swift; sourceTree = "<group>"; };
+		DF6B520D21CB25B100460949 /* WXChatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatDetailViewController.swift; sourceTree = "<group>"; };
+		DF6B521121CB25C300460949 /* WXChatFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatFileViewController.swift; sourceTree = "<group>"; };
+		DF6B521321CB25CA00460949 /* WXGroupQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXGroupQRCodeViewController.swift; sourceTree = "<group>"; };
+		DF6B521521CB25D200460949 /* WXChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatTableViewController.swift; sourceTree = "<group>"; };
+		DF6B521721CB25D900460949 /* WXChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatViewController.swift; sourceTree = "<group>"; };
+		DF6B521921CB25E100460949 /* WXChatBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatBaseViewController.swift; sourceTree = "<group>"; };
+		DF6B521B21CB25EA00460949 /* WXImageExpressionDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXImageExpressionDisplayView.swift; sourceTree = "<group>"; };
+		DF6B521D21CB25F700460949 /* WXConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXConversationViewController.swift; sourceTree = "<group>"; };
+		DF6B521F21CB261300460949 /* TLMoreKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMoreKeyboard.swift; sourceTree = "<group>"; };
+		DF6B522121CB261A00460949 /* TLEmojiBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLEmojiBaseCell.swift; sourceTree = "<group>"; };
+		DF6B522321CB262100460949 /* TLEmojiKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLEmojiKeyboard.swift; sourceTree = "<group>"; };
+		DF6B522521CB70CD00460949 /* WXDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXDBManager.swift; sourceTree = "<group>"; };
 		DF7B3FB421ABEEC500E3D975 /* comments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comments.json; sourceTree = "<group>"; };
 		DF7B3FB521ABEEC500E3D975 /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
 		DF7B3FB621ABEEC500E3D975 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
@@ -2777,14 +2762,10 @@
 		71ECE0262092128D00495467 /* ChatViewController */ = {
 			isa = PBXGroup;
 			children = (
-				71ECE02D2092128D00495467 /* WXChatTableViewController.h */,
-				71ECE0272092128D00495467 /* WXChatTableViewController.m */,
-				71ECE0282092128D00495467 /* WXChatViewController.h */,
-				71ECE02C2092128D00495467 /* WXChatViewController.m */,
-				71ECE02B2092128D00495467 /* WXChatBaseViewController.h */,
-				71ECE0292092128D00495467 /* WXChatBaseViewController.m */,
-				71ECE0352092128D00495467 /* WXImageExpressionDisplayView.h */,
-				71ECE02A2092128D00495467 /* WXImageExpressionDisplayView.m */,
+				DF6B521521CB25D200460949 /* WXChatTableViewController.swift */,
+				DF6B521721CB25D900460949 /* WXChatViewController.swift */,
+				DF6B521921CB25E100460949 /* WXChatBaseViewController.swift */,
+				DF6B521B21CB25EA00460949 /* WXImageExpressionDisplayView.swift */,
 				71ECE02E2092128D00495467 /* ChatEmojiKeyboard */,
 			);
 			path = ChatViewController;
@@ -2793,12 +2774,9 @@
 		71ECE02E2092128D00495467 /* ChatEmojiKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				71ECE02F2092128D00495467 /* TLMoreKeyboard.h */,
-				71ECE0302092128D00495467 /* TLEmojiBaseCell.h */,
-				71ECE0312092128D00495467 /* TLEmojiKeyboard.h */,
-				71ECE0322092128D00495467 /* TLMoreKeyboard.m */,
-				71ECE0332092128D00495467 /* TLEmojiBaseCell.m */,
-				71ECE0342092128D00495467 /* TLEmojiKeyboard.m */,
+				DF6B521F21CB261300460949 /* TLMoreKeyboard.swift */,
+				DF6B522121CB261A00460949 /* TLEmojiBaseCell.swift */,
+				DF6B522321CB262100460949 /* TLEmojiKeyboard.swift */,
 			);
 			path = ChatEmojiKeyboard;
 			sourceTree = "<group>";
@@ -2806,16 +2784,11 @@
 		71ECE0382092128E00495467 /* ChatDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
-				71ECE0392092128E00495467 /* WXUserGroupCell.h */,
-				71ECE03F2092128E00495467 /* WXUserGroupCell.m */,
-				71ECE03A2092128E00495467 /* WXCGroupDetailViewController.h */,
-				71ECE03E2092128E00495467 /* WXCGroupDetailViewController.m */,
-				71ECE03B2092128E00495467 /* WXChatDetailViewController.h */,
-				71ECE0412092128E00495467 /* WXChatDetailViewController.m */,
-				71ECE0402092128E00495467 /* WXChatFileViewController.h */,
-				71ECE03C2092128E00495467 /* WXChatFileViewController.m */,
-				71ECE0422092128E00495467 /* WXGroupQRCodeViewController.h */,
-				71ECE03D2092128E00495467 /* WXGroupQRCodeViewController.m */,
+				DF6B520921CB25A100460949 /* WXUserGroupCell.swift */,
+				DF6B520B21CB25A900460949 /* WXCGroupDetailViewController.swift */,
+				DF6B520D21CB25B100460949 /* WXChatDetailViewController.swift */,
+				DF6B521121CB25C300460949 /* WXChatFileViewController.swift */,
+				DF6B521321CB25CA00460949 /* WXGroupQRCodeViewController.swift */,
 			);
 			path = ChatDetailViewController;
 			sourceTree = "<group>";
@@ -2953,8 +2926,7 @@
 			children = (
 				71ECE0382092128E00495467 /* ChatDetailViewController */,
 				71ECE0262092128D00495467 /* ChatViewController */,
-				71ECE0362092128D00495467 /* WXConversationViewController.h */,
-				71ECE0372092128E00495467 /* WXConversationViewController.m */,
+				DF6B521D21CB25F700460949 /* WXConversationViewController.swift */,
 			);
 			path = "微信";
 			sourceTree = "<group>";
@@ -3920,9 +3892,7 @@
 		776460511D68435500ACCCAC /* 数据库 */ = {
 			isa = PBXGroup;
 			children = (
-				776460681D68437F00ACCCAC /* WXDBManager.h */,
-				776460691D68437F00ACCCAC /* WXDBManager.m */,
-				71ECE0502092165D00495467 /* TLDBMessageStoreSQL.h */,
+				DF6B522521CB70CD00460949 /* WXDBManager.swift */,
 			);
 			path = "数据库";
 			sourceTree = "<group>";
@@ -6828,17 +6798,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71ECE04B2092128E00495467 /* WXChatFileViewController.m in Sources */,
 				BF6E57BF1FAC0723005F7DF8 /* WXExpressionSearchViewController.m in Sources */,
 				DF6B51FC21CA801E00460949 /* WXPictureCarouselView.swift in Sources */,
 				7115A5CA20AAD376000D0B96 /* PersonalConsumerViewController.swift in Sources */,
-				71ECE04D2092128E00495467 /* WXCGroupDetailViewController.m in Sources */,
 				BFAC49BF20D25EE700E5CB8D /* AppDelegate.swift in Sources */,
 				DF7B407121AC020A00E3D975 /* BaseRequest.swift in Sources */,
 				BF6E57BE1FAC071C005F7DF8 /* WXExpressionViewController.m in Sources */,
 				7121196420AC24790087E05B /* ToutiaoTabBarController.swift in Sources */,
 				BF58BB6920EF1945002CB4EE /* RCDHttpTool.m in Sources */,
-				71ECE0492092128E00495467 /* TLEmojiKeyboard.m in Sources */,
 				713EE30E20ADA08F0085B65D /* IqiyiSubscribeViewController.swift in Sources */,
 				BFEF19882101E821003DCAC1 /* RRStockChartView.m in Sources */,
 				BF58BB5520EF1945002CB4EE /* RCDAboutRongCloudTableViewController.m in Sources */,
@@ -6846,6 +6813,7 @@
 				7115A5E420AAD9F0000D0B96 /* ResumeCallMeViewController.swift in Sources */,
 				BFEF19932101E821003DCAC1 /* StockCategory.m in Sources */,
 				BF58BB3F20EF1945002CB4EE /* RCDSearchViewController.m in Sources */,
+				DF6B522421CB262100460949 /* TLEmojiKeyboard.swift in Sources */,
 				BF58BB6320EF1945002CB4EE /* RCAnnotationView.m in Sources */,
 				BF6E57BD1FAC0714005F7DF8 /* WXExpressionDetailViewController.m in Sources */,
 				BF6E57BC1FAC070C005F7DF8 /* WXExpressionPublicViewController.m in Sources */,
@@ -6873,6 +6841,7 @@
 				BF58BB3520EF1945002CB4EE /* RCDGroupViewController.m in Sources */,
 				DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */,
 				BFEF199C2101E821003DCAC1 /* HYTimeLineBelowView.m in Sources */,
+				DF6B521421CB25CA00460949 /* WXGroupQRCodeViewController.swift in Sources */,
 				BF58BB4E20EF1945002CB4EE /* RCDMessageNotifySettingTableViewController.m in Sources */,
 				7121196E20AC24EA0087E05B /* ToutiaoHomeDetailViewController.swift in Sources */,
 				BF58BB2F20EF1945002CB4EE /* RCDAddFriendViewController.m in Sources */,
@@ -6904,8 +6873,8 @@
 				BFEF198A2101E821003DCAC1 /* StockNewsController.m in Sources */,
 				713EE2CC20AD9B760085B65D /* TaobaoMiniDynamicViewController.swift in Sources */,
 				7115A5C620AAD35E000D0B96 /* PersonalFoodViewController.swift in Sources */,
-				71ECE0472092128E00495467 /* TLMoreKeyboard.m in Sources */,
 				71ECE0202092121F00495467 /* WXBottleViewController.m in Sources */,
+				DF6B522221CB261A00460949 /* TLEmojiBaseCell.swift in Sources */,
 				DF6B520621CA804200460949 /* WXWebViewController.swift in Sources */,
 				71250EC92091C1DA0093B59B /* NSObject+Freedom.m in Sources */,
 				BFC6D94120E4AC0B00F17378 /* SinaComposeViewController.swift in Sources */,
@@ -6921,7 +6890,6 @@
 				71ECDFFE209210BF00495467 /* WXPublicServerSearchViewController.m in Sources */,
 				BFEF19892101E821003DCAC1 /* HYStockChartViewController.m in Sources */,
 				7121194820AC03220087E05B /* JuheDataTabBarController.swift in Sources */,
-				71ECE0482092128E00495467 /* TLEmojiBaseCell.m in Sources */,
 				BFEF198C2101E821003DCAC1 /* HYStockChartTool.m in Sources */,
 				BFAC49C320D36A2700E5CB8D /* LibraryCollectionViewController.swift in Sources */,
 				7121195820AC0C2F0087E05B /* JuheAPIViewController.swift in Sources */,
@@ -6968,10 +6936,10 @@
 				BFAC491B20D2470F00E5CB8D /* BooksMainViewController.swift in Sources */,
 				7121195E20AC0C4F0087E05B /* JuheDetailQuestion.swift in Sources */,
 				BFEF198B2101E821003DCAC1 /* StockInfoDetailViewController.m in Sources */,
-				71ECE04F2092128E00495467 /* WXChatDetailViewController.m in Sources */,
 				BFC6D93B20E4AB6D00F17378 /* SinaAuthController.swift in Sources */,
 				DF7B407821AC020A00E3D975 /* DouyinNavigationViewController.swift in Sources */,
 				71267A552092DC93006E1B96 /* BookFriendsTableViewCell.m in Sources */,
+				DF6B521C21CB25EA00460949 /* WXImageExpressionDisplayView.swift in Sources */,
 				BF58BB2820EF1945002CB4EE /* RCDContactTableViewCell.m in Sources */,
 				774BFB171D767389005CA603 /* PlayAudioViewController.m in Sources */,
 				7121195620AC0C210087E05B /* JuheChartViewController.swift in Sources */,
@@ -7014,12 +6982,14 @@
 				DF7B408321AC020A00E3D975 /* ChatListCells.swift in Sources */,
 				DF7B407521AC020A00E3D975 /* GestureAnimations.swift in Sources */,
 				7115A5C420AAD351000D0B96 /* PersonalComputerViewController.swift in Sources */,
+				DF6B520C21CB25A900460949 /* WXCGroupDetailViewController.swift in Sources */,
 				713EE30620ADA05F0085B65D /* IqiyiVideoDetailViewController.swift in Sources */,
 				BF58BA3220EDF132002CB4EE /* SwiftNotice.swift in Sources */,
 				713EE30C20ADA0850085B65D /* IqiyiSearchHistoryViewController.swift in Sources */,
 				BF4A80E02105CE5E00D32FB0 /* BaseSearchBarView.swift in Sources */,
 				7121194420ABE1280087E05B /* EnergySuperMarketTabBarController.swift in Sources */,
 				BF4A80DE2105CDFF00D32FB0 /* CRKeychainItem.m in Sources */,
+				DF6B521621CB25D200460949 /* WXChatTableViewController.swift in Sources */,
 				7115A5DE20AAD9CE000D0B96 /* ResumeDetailViewController.swift in Sources */,
 				BF58BB3820EF1945002CB4EE /* RCDNavigationViewController.m in Sources */,
 				713EE2F620AD9D300085B65D /* DetailScrollViewController.swift in Sources */,
@@ -7027,10 +6997,10 @@
 				77BFCC001E1F413C00C95B5E /* notes.md in Sources */,
 				71ECE0242092121F00495467 /* WXDiscoverViewController.m in Sources */,
 				7115A5D020AAD398000D0B96 /* PersonalCarViewController.swift in Sources */,
+				DF6B522021CB261300460949 /* TLMoreKeyboard.swift in Sources */,
 				7115A5C220AAD345000D0B96 /* PersonalHardwareViewController.swift in Sources */,
 				713EE2DA20AD9BC50085B65D /* TaobaoMeViewController.swift in Sources */,
 				BF58BB2220EF1944002CB4EE /* RCWKRequestHandler.m in Sources */,
-				71ECE0432092128E00495467 /* WXChatTableViewController.m in Sources */,
 				713EE2D820AD9BBA0085B65D /* TaobaoShopCarViewController.swift in Sources */,
 				7115A5AD20AAA1F1000D0B96 /* FreedomViewController.swift in Sources */,
 				BF5B9B6F1F8E674B00BD885E /* FreeViewController.swift in Sources */,
@@ -7038,6 +7008,7 @@
 				7115A5B620AAC314000D0B96 /* PersonalApplyNavigationController.swift in Sources */,
 				BFEF19912101E821003DCAC1 /* HYStockChartConstant.m in Sources */,
 				71ECE0252092121F00495467 /* WXScanningViewController.m in Sources */,
+				DF6B521221CB25C300460949 /* WXChatFileViewController.swift in Sources */,
 				713EE2A820AD8F500085B65D /* AlipayTabBarController.swift in Sources */,
 				7115A5A720AA9FE3000D0B96 /* FreedomNavigationController.swift in Sources */,
 				BF58BB6720EF1945002CB4EE /* AFHttpTool.m in Sources */,
@@ -7047,6 +7018,7 @@
 				DFB5FF5C21CA2F1C0057C922 /* WXTabBarController.swift in Sources */,
 				DF7B407C21AC020A00E3D975 /* WebCacheManager.swift in Sources */,
 				7115A5E220AAD9E4000D0B96 /* ResumeTheorySystemViewController.swift in Sources */,
+				DF6B522621CB70CD00460949 /* WXDBManager.swift in Sources */,
 				713EE2A620AD8F290085B65D /* TaobaoTabBarController.swift in Sources */,
 				BF5B9B691F8E671500BD885E /* ThinkDevelopmentViewController.swift in Sources */,
 				71ECE01C2092121F00495467 /* WXShoppingViewController.m in Sources */,
@@ -7057,7 +7029,6 @@
 				7121197020AC24F60087E05B /* ToutiaoVideoViewController.swift in Sources */,
 				DFFA80C421AEC84D009B1999 /* BaseTabBarViewController.swift in Sources */,
 				7741F0BC1D6D380800EED332 /* README.md in Sources */,
-				71ECE04E2092128E00495467 /* WXUserGroupCell.m in Sources */,
 				713EE2C020AD9B060085B65D /* DZDealListViewController.swift in Sources */,
 				BF58BA3020EDE837002CB4EE /* FreedomToolSwift.swift in Sources */,
 				71ECE0222092121F00495467 /* WXShakeSettingViewController.m in Sources */,
@@ -7083,7 +7054,6 @@
 				713EE2CA20AD9B6C0085B65D /* TaobaoMiniViewController.swift in Sources */,
 				7121192A20ABC4EE0087E05B /* EnergyNewsDetailViewController.swift in Sources */,
 				713EE2AE20AD8FAB0085B65D /* TaobaoNavigationViewController.swift in Sources */,
-				71ECE04C2092128E00495467 /* WXGroupQRCodeViewController.m in Sources */,
 				7115A5EE20AAFBBA000D0B96 /* MyDatabaseTabBarController.swift in Sources */,
 				7115A5A920AAA191000D0B96 /* FreedomBooksViewController.swift in Sources */,
 				7121193E20ABC58A0087E05B /* EnergyContactUSViewController.swift in Sources */,
@@ -7103,7 +7073,6 @@
 				BFEF19C32101E990003DCAC1 /* OcCallCpp.mm in Sources */,
 				7115A5F620AAFC40000D0B96 /* MyDatabaseEditViewController.swift in Sources */,
 				BFC6D94720E4AC3B00F17378 /* SinaEmotion.swift in Sources */,
-				776460701D68437F00ACCCAC /* WXDBManager.m in Sources */,
 				DFB5FF5E21CA2F3E0057C922 /* WXNavigationController.swift in Sources */,
 				BF5B9B791F8E678900BD885E /* FriendViewController.swift in Sources */,
 				71ECE0212092121F00495467 /* WXGameViewController.m in Sources */,
@@ -7116,6 +7085,7 @@
 				713EE2EE20AD9CD90085B65D /* KugouLocalMusicViewController.swift in Sources */,
 				71517B1C2094803300B40538 /* JSONObject.swift in Sources */,
 				BF58BB4F20EF1945002CB4EE /* RCDChangePasswordViewController.m in Sources */,
+				DF6B520E21CB25B100460949 /* WXChatDetailViewController.swift in Sources */,
 				BFEF19A42101E821003DCAC1 /* ioapi.c in Sources */,
 				DF846C8D21BE55FD002D9CA2 /* NSObject+Mirror.m in Sources */,
 				7121195020AC0C000087E05B /* JuhePublicViewController.swift in Sources */,
@@ -7145,8 +7115,8 @@
 				BF58BB6C20EF1945002CB4EE /* XPathQuery.m in Sources */,
 				DF7B407D21AC020A00E3D975 /* MenuPopView.swift in Sources */,
 				71ECE002209210BF00495467 /* WXPublicServerViewController.m in Sources */,
+				DF6B521A21CB25E100460949 /* WXChatBaseViewController.swift in Sources */,
 				BFEF19872101E821003DCAC1 /* JLLineChart.m in Sources */,
-				71ECE0452092128E00495467 /* WXImageExpressionDisplayView.m in Sources */,
 				DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */,
 				BF58BB3120EF1945002CB4EE /* RCDGroupAnnouncementViewController.m in Sources */,
 				7121194A20AC03800087E05B /* JuheNavigationController.swift in Sources */,
@@ -7164,7 +7134,6 @@
 				7121194620ABE3660087E05B /* MicroEnergyTabBarController.swift in Sources */,
 				BF58BB5220EF1945002CB4EE /* RCDPrivacyTableViewController.m in Sources */,
 				71267A582092E726006E1B96 /* BookReadMode.m in Sources */,
-				71ECE04A2092128E00495467 /* WXConversationViewController.m in Sources */,
 				BFEF199B2101E821003DCAC1 /* HYKLineAboveView.m in Sources */,
 				BF58BB2C20EF1945002CB4EE /* RCDPersonDetailViewController.m in Sources */,
 				7115A5BE20AAD32E000D0B96 /* PersonalEducationViewController.swift in Sources */,
@@ -7191,7 +7160,6 @@
 				BF58BB2A20EF1945002CB4EE /* RCDAddressBookViewController.m in Sources */,
 				713EE2C420AD9B1D0085B65D /* DZDiscoverController.swift in Sources */,
 				BF58BB2E20EF1945002CB4EE /* RCDSearchFriendViewController.m in Sources */,
-				71ECE0442092128E00495467 /* WXChatBaseViewController.m in Sources */,
 				BFAC49C520D3857700E5CB8D /* FirstViewController.swift in Sources */,
 				7121193020ABC5270087E05B /* EnergySuperHomeViewController.swift in Sources */,
 				BFEF199E2101E821003DCAC1 /* HYTimeLineView.m in Sources */,
@@ -7207,7 +7175,6 @@
 				71ECE001209210BF00495467 /* WXTagsViewController.m in Sources */,
 				713EE31420ADA0AF0085B65D /* IqiyiClassifyViewController.swift in Sources */,
 				DF7B408521AC020A00E3D975 /* DouyinMeViewController.swift in Sources */,
-				71ECE0462092128E00495467 /* WXChatViewController.m in Sources */,
 				BF58BA2520EDBFBC002CB4EE /* HTMLParser.m in Sources */,
 				DFF4AB9F21B7BFA400F03C71 /* XPopItemsView.swift in Sources */,
 				713EE2FA20AD9D490085B65D /* DetailWapViewController.swift in Sources */,
@@ -7231,6 +7198,7 @@
 				DFFA80C221AEC84D009B1999 /* BaseTableViewCell.swift in Sources */,
 				BF5B9B711F8E675100BD885E /* LoveViewController.swift in Sources */,
 				7121192E20ABC5060087E05B /* EnergyDetailViewController.swift in Sources */,
+				DF6B521E21CB25F700460949 /* WXConversationViewController.swift in Sources */,
 				713EE2B020AD8FDB0085B65D /* AlipayNavigationViewController.swift in Sources */,
 				DF6B51F821CA800D00460949 /* WXMenuViewController.swift in Sources */,
 				BFEF19952101E821003DCAC1 /* HYStockChartProfileModel.m in Sources */,
@@ -7238,11 +7206,13 @@
 				71ECE003209210BF00495467 /* WXNewFriendViewController.m in Sources */,
 				BFAC491920D23BD600E5CB8D /* DetailView.swift in Sources */,
 				713EE2E020AD9C120085B65D /* AlipayAddItemViewController.swift in Sources */,
+				DF6B520A21CB25A100460949 /* WXUserGroupCell.swift in Sources */,
 				BFEF19992101E821003DCAC1 /* HYKLineBelowView.m in Sources */,
 				7788AC631D7996E000376C95 /* E_ReaderViewController.m in Sources */,
 				DFFA80C921AEC84D009B1999 /* BaseScrollView.swift in Sources */,
 				71ECE01D2092121F00495467 /* WXMomentDetailViewController.m in Sources */,
 				7121196820AC24A70087E05B /* ToutiaoBaseViewController.swift in Sources */,
+				DF6B521821CB25D900460949 /* WXChatViewController.swift in Sources */,
 				7121195420AC0C170087E05B /* JuheAboutUSViewController.swift in Sources */,
 				BFC6D93720E4AAF800F17378 /* SinaNavigationController.swift in Sources */,
 				BF58BB1420EF1944002CB4EE /* KxMenu.m in Sources */,
