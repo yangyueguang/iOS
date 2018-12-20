@@ -1,16 +1,12 @@
 //
 //  WXExpressionPublicViewController.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/20.
-//  Copyright © 2018 薛超. All rights reserved.
-//
 
 import Foundation
 class WXExpressionPublicCell: UICollectionViewCell {
-    var group: TLEmojiGroup?
-    var imageView: UIImageView?
-    var titleLabel: UILabel?
+    var group: TLEmojiGroup
+    var imageView: UIImageView
+    var titleLabel: UILabel
 
     override init(frame: CGRect) {
         //if super.init(frame: frame)
@@ -25,34 +21,34 @@ class WXExpressionPublicCell: UICollectionViewCell {
 
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    func setGroup(_ group: TLEmojiGroup?) {
+    func setGroup(_ group: TLEmojiGroup) {
         self.group = group
-        titleLabel?.text = group?.groupName
-        let image = UIImage(named: group?.groupIconPath ?? "")
+        titleLabel.text = group.groupName
+        let image = UIImage(named: group.groupIconPath  "")
         if image != nil {
-            imageView?.image = image
+            imageView.image = image
         } else {
-            imageView?.sd_setImage(with: URL(string: group?.groupIconURL ?? ""), placeholderImage: FreedomTools(color: UIColor.lightGray))
+            imageView.sd_setImage(with: URL(string: group.groupIconURL  ""), placeholderImage: FreedomTools(color: UIColor.lightGray))
         }
     }
 
     // MARK: - Private Methods
     func p_addMasonry() {
-        imageView?.mas_makeConstraints({ make in
-            make?.left.and().top().and().right().mas_equalTo(self.contentView)
-            make?.height.mas_equalTo(self.imageView?.mas_width)
+        imageView.mas_makeConstraints({ make in
+            make.left.and().top().and().right().mas_equalTo(self.contentView)
+            make.height.mas_equalTo(self.imageView.mas_width)
         })
-        titleLabel?.mas_makeConstraints({ make in
-            make?.centerX.mas_equalTo(self.contentView)
-            make?.top.mas_equalTo(self.imageView?.mas_bottom).mas_offset(7.0)
-            make?.width.mas_lessThanOrEqualTo(self.contentView)
+        titleLabel.mas_makeConstraints({ make in
+            make.centerX.mas_equalTo(self.contentView)
+            make.top.mas_equalTo(self.imageView.mas_bottom).mas_offset(7.0)
+            make.width.mas_lessThanOrEqualTo(self.contentView)
         })
     }
-    var imageView: UIImageView? {
+    var imageView: UIImageView {
         if imageView == nil {
             imageView = UIImageView()
             imageView.isUserInteractionEnabled = false
@@ -64,7 +60,7 @@ class WXExpressionPublicCell: UICollectionViewCell {
         return imageView
     }
 
-    var titleLabel: UILabel? {
+    var titleLabel: UILabel {
         if titleLabel == nil {
             titleLabel = UILabel()
             titleLabel.textAlignment = .center
@@ -79,10 +75,10 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
     var kPageIndex: Int = 0
 
     var data: [AnyHashable] = []
-    var proxy: WXExpressionHelper?
-    var searchController: WXSearchController?
-    var searchVC: WXExpressionSearchViewController?
-    var collectionView: UICollectionView?
+    var proxy: WXExpressionHelper
+    var searchController: WXSearchController
+    var searchVC: WXExpressionSearchViewController
+    var collectionView: UICollectionView
 
     func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +118,7 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
     }
 
     // MARK: - Getter
-    var searchController: UISearchController? {
+    var searchController: UISearchController {
         if searchController == nil {
             searchController = WXSearchController(searchResultsController: searchVC)
             searchController.searchResultsUpdater = searchVC
@@ -131,34 +127,34 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
         }
         return searchController
     }
-    func searchVC() -> WXExpressionSearchViewController? {
+    func searchVC() -> WXExpressionSearchViewController {
         if searchVC == nil {
             searchVC = WXExpressionSearchViewController()
         }
         return searchVC
     }
 
-    func proxy() -> WXExpressionHelper? {
+    func proxy() -> WXExpressionHelper {
         if proxy == nil {
             proxy = WXExpressionHelper.shared()
         }
         return proxy
     }
 
-    func registerCell(for collectionView: UICollectionView?) {
-        collectionView?.register(WXExpressionPublicCell.self, forCellWithReuseIdentifier: "TLExpressionPublicCell")
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "EmptyCell")
+    func registerCell(for collectionView: UICollectionView) {
+        collectionView.register(WXExpressionPublicCell.self, forCellWithReuseIdentifier: "TLExpressionPublicCell")
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "EmptyCell")
     }
 
     // MARK: - Delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count == 0 ? 1 : data.count
+        return data.count == 0  1 : data.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row < data.count {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLExpressionPublicCell", for: indexPath) as? WXExpressionPublicCell
-            let emojiGroup = data[indexPath.row] as? TLEmojiGroup
-            cell?.group = emojiGroup
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLExpressionPublicCell", for: indexPath) as WXExpressionPublicCell
+            let emojiGroup = data[indexPath.row] as TLEmojiGroup
+            cell.group = emojiGroup
             return cell!
         }
         return collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCell", for: indexPath)
@@ -166,11 +162,11 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row < data.count {
-            let group = data[indexPath.row] as? TLEmojiGroup
+            let group = data[indexPath.row] as TLEmojiGroup
             let detailVC = WXExpressionDetailViewController()
             detailVC.group = group
-            parent?.hidesBottomBarWhenPushed = true
-            parent?.navigationController?.pushViewController(detailVC, animated: true)
+            parent.hidesBottomBarWhenPushed = true
+            parent.navigationController.pushViewController(detailVC, animated: true)
         }
         collectionView.deselectItem(at: indexPath, animated: false)
     }
@@ -182,14 +178,14 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return data.count == 0 ? 0 : 20
+        return data.count == 0  0 : 20
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return data.count == 0 ? 0 : 20
+        return data.count == 0  0 : 20
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return data.count == 0 ? UIEdgeInsetsMake(0, 0, 0, 0) : UIEdgeInsetsMake(20, 20, 20, 20)
+        return data.count == 0  UIEdgeInsetsMake(0, 0, 0, 0) : UIEdgeInsetsMake(20, 20, 20, 20)
     }
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
     func loadData(withLoadingView showLoadingView: Bool) {
@@ -202,9 +198,9 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
             SVProgressHUD.dismiss()
             kPageIndex += 1
             weakSelf.data = [AnyHashable]()
-            for group: TLEmojiGroup? in data as! [TLEmojiGroup?] {
+            for group: TLEmojiGroup in data as! [TLEmojiGroup] {
                 // 优先使用本地表情
-                let localEmojiGroup: TLEmojiGroup? = WXExpressionHelper.shared().emojiGroup(byID: group?.groupID)
+                let localEmojiGroup: TLEmojiGroup = WXExpressionHelper.shared().emojiGroup(byID: group.groupID)
                 if localEmojiGroup != nil {
                     if let aGroup = localEmojiGroup {
                         self.data.append(aGroup)
@@ -225,14 +221,14 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
         weak var weakSelf = self
         proxy.requestExpressionPublicList(byPageIndex: kPageIndex, success: { data in
             SVProgressHUD.dismiss()
-            if data?.count == 0 {
+            if data.count == 0 {
                 self.collectionView.mj_footer.endRefreshingWithNoMoreData()
             } else {
                 self.collectionView.mj_footer.endRefreshing()
                 kPageIndex += 1
-                for group: TLEmojiGroup? in data as? [TLEmojiGroup?] ?? [] {
+                for group: TLEmojiGroup in data as [TLEmojiGroup]  [] {
                     // 优先使用本地表情
-                    let localEmojiGroup: TLEmojiGroup? = WXExpressionHelper.shared().emojiGroup(byID: group?.groupID)
+                    let localEmojiGroup: TLEmojiGroup = WXExpressionHelper.shared().emojiGroup(byID: group.groupID)
                     if localEmojiGroup != nil {
                         if let aGroup = localEmojiGroup {
                             self.data.append(aGroup)

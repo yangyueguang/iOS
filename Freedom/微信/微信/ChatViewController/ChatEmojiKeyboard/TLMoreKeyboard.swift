@@ -1,17 +1,13 @@
 //
 //  TLMoreKeyboard.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/20.
-//  Copyright © 2018 薛超. All rights reserved.
-//
 
 import Foundation
 class TLMoreKeyboardItem: NSObject {
-    var type: TLMoreKeyboardItemType?
+    var type: TLMoreKeyboardItemType
     var title = ""
     var imagePath = ""
-    class func create(by type: TLMoreKeyboardItemType, title: String?, imagePath: String?) -> TLMoreKeyboardItem? {
+    class func create(by type: TLMoreKeyboardItemType, title: String, imagePath: String) -> TLMoreKeyboardItem {
         let item = TLMoreKeyboardItem()
         item.type = type
         item.title = title
@@ -21,16 +17,16 @@ class TLMoreKeyboardItem: NSObject {
 }
 
 @objc protocol WXMoreKeyboardDelegate: NSObjectProtocol {
-    @objc optional func moreKeyboard(_ keyboard: Any?, didSelectedFunctionItem funcItem: TLMoreKeyboardItem?)
+    @objc optional func moreKeyboard(_ keyboard: Any, didSelectedFunctionItem funcItem: TLMoreKeyboardItem)
 }
 
 class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
-    weak var keyboardDelegate: TLKeyboardDelegate?
-    weak var delegate: WXMoreKeyboardDelegate?
+    weak var keyboardDelegate: TLKeyboardDelegate
+    weak var delegate: WXMoreKeyboardDelegate
     var chatMoreKeyboardData: [AnyHashable] = []
-    var collectionView: UICollectionView?
-    var pageControl: UIPageControl?
-    class func keyboard() -> TLMoreKeyboard? {
+    var collectionView: UICollectionView
+    var pageControl: UIPageControl
+    class func keyboard() -> TLMoreKeyboard {
         // TODO: [Swiftify] ensure that the code below is executed only once (`dispatch_once()` is deprecated)
         {
             moreKB = TLMoreKeyboard()
@@ -48,25 +44,25 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
         registerCellClass()
 
     }
-    func show(in view: UIView?, withAnimation animation: Bool) {
+    func show(in view: UIView, withAnimation animation: Bool) {
         if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboardWillShow(_:))) {
             keyboardDelegate.chatKeyboardWillShow(self)
         }
-        view?.addSubview(self)
+        view.addSubview(self)
         mas_remakeConstraints({ make in
-            make?.left.and().right().mas_equalTo(view)
-            make?.height.mas_equalTo(215.0)
-            make?.bottom.mas_equalTo(view).mas_offset(215.0)
+            make.left.and().right().mas_equalTo(view)
+            make.height.mas_equalTo(215.0)
+            make.bottom.mas_equalTo(view).mas_offset(215.0)
         })
-        view?.layoutIfNeeded()
+        view.layoutIfNeeded()
         if animation {
             UIView.animate(withDuration: 0.3, animations: {
                 self.mas_updateConstraints({ make in
-                    make?.bottom.mas_equalTo(view)
+                    make.bottom.mas_equalTo(view)
                 })
-                view?.layoutIfNeeded()
+                view.layoutIfNeeded()
                 if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboard(_:didChangeHeight:))) {
-                    keyboardDelegate.chatKeyboard(self, didChangeHeight: (view?.frame.size.height ?? 0.0) - self.frame.origin.y)
+                    keyboardDelegate.chatKeyboard(self, didChangeHeight: (view.frame.size.height  0.0) - self.frame.origin.y)
                 }
             }) { finished in
                 if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboardDidShow(_:))) {
@@ -75,9 +71,9 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
             }
         } else {
             mas_updateConstraints({ make in
-                make?.bottom.mas_equalTo(view)
+                make.bottom.mas_equalTo(view)
             })
-            view?.layoutIfNeeded()
+            view.layoutIfNeeded()
             if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboardDidShow(_:))) {
                 keyboardDelegate.chatKeyboardDidShow(self)
             }
@@ -91,7 +87,7 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
         if animation {
             UIView.animate(withDuration: 0.3, animations: {
                 self.mas_updateConstraints({ make in
-                    make?.bottom.mas_equalTo(self.superview).mas_offset(215.0)
+                    make.bottom.mas_equalTo(self.superview).mas_offset(215.0)
                 })
                 self.superview.layoutIfNeeded()
                 if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboard(_:didChangeHeight:))) {
@@ -114,39 +110,39 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
         collectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: collectionView.frame.size.height), animated: false)
     }
 
-    func setChatMoreKeyboardData(_ chatMoreKeyboardData: [AnyHashable]?) {
+    func setChatMoreKeyboardData(_ chatMoreKeyboardData: [AnyHashable]) {
         var chatMoreKeyboardData = chatMoreKeyboardData
         self.chatMoreKeyboardData = chatMoreKeyboardData
         collectionView.reloadData()
-        let pageNumber: Int = (chatMoreKeyboardData?.count ?? 0) / 8 + ((chatMoreKeyboardData?.count ?? 0) % 8 == 0 ? 0 : 1)
+        let pageNumber: Int = (chatMoreKeyboardData.count  0) / 8 + ((chatMoreKeyboardData.count  0) % 8 == 0  0 : 1)
         pageControl.numberOfPages = pageNumber
     }
 
     // MARK: - Event Response -
-    func pageControlChanged(_ pageControl: UIPageControl?) {
-        collectionView.scrollRectToVisible(CGRect(x: collectionView.frame.size.width * CGFloat(pageControl?.currentPage ?? 0.0), y: 0, width: collectionView.frame.size.width, height: collectionView.frame.size.height), animated: true)
+    func pageControlChanged(_ pageControl: UIPageControl) {
+        collectionView.scrollRectToVisible(CGRect(x: collectionView.frame.size.width * CGFloat(pageControl.currentPage  0.0), y: 0, width: collectionView.frame.size.width, height: collectionView.frame.size.height), animated: true)
     }
     func p_addMasonry() {
         collectionView.mas_makeConstraints({ make in
-            make?.top.mas_equalTo(self).mas_offset(15)
-            make?.left.and().right().mas_equalTo(self)
-            make?.height.mas_equalTo((215.0 * 0.85 - 15))
+            make.top.mas_equalTo(self).mas_offset(15)
+            make.left.and().right().mas_equalTo(self)
+            make.height.mas_equalTo((215.0 * 0.85 - 15))
         })
         pageControl.mas_makeConstraints({ make in
-            make?.left.and().right().mas_equalTo(self)
-            make?.top.mas_equalTo(self.collectionView.mas_bottom)
-            make?.bottom.mas_equalTo(self).mas_offset(-2)
+            make.left.and().right().mas_equalTo(self)
+            make.top.mas_equalTo(self.collectionView.mas_bottom)
+            make.bottom.mas_equalTo(self).mas_offset(-2)
         })
     }
     func draw(_ rect: CGRect) {
         super.draw(rect)
         let context = UIGraphicsGetCurrentContext()
-        context?.setLineWidth(0.5)
-        context?.setStrokeColor(UIColor.gray.cgColor)
-        context?.beginPath()
-        context?.move(to: CGPoint(x: 0, y: 0))
-        context?.addLine(to: CGPoint(x: APPW, y: 0))
-        context?.strokePath()
+        context.setLineWidth(0.5)
+        context.setStrokeColor(UIColor.gray.cgColor)
+        context.beginPath()
+        context.move(to: CGPoint(x: 0, y: 0))
+        context.addLine(to: CGPoint(x: APPW, y: 0))
+        context.strokePath()
     }
     var collectionView: UICollectionView! {
         if collectionView == nil {
@@ -171,7 +167,7 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
         }
         return collectionView
     }
-    func pageControl() -> UIPageControl? {
+    func pageControl() -> UIPageControl {
         if pageControl == nil {
             pageControl = UIPageControl()
             pageControl.center = CGPoint(x: center.x, y: pageControl.center.y)
@@ -188,16 +184,16 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLMoreKeyboardCell", for: indexPath) as? TLMoreKeyboardCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLMoreKeyboardCell", for: indexPath) as TLMoreKeyboardCell
         let index: Int = indexPath.section * 8 + indexPath.row
         let tIndex = p_transformIndex(index) // 矩阵坐标转置
         if tIndex >= chatMoreKeyboardData.count {
-            cell?.item = nil
+            cell.item = nil
         } else {
-            cell?.item = chatMoreKeyboardData[tIndex]
+            cell.item = chatMoreKeyboardData[tIndex]
         }
         weak var weakSelf = self
-        cell?.clickBlock = { sItem in
+        cell.clickBlock = { sItem in
             if self.delegate && self.delegate.responds(to: #selector(self.moreKeyboard(_:didSelectedFunctionItem:))) {
                 self.delegate.moreKeyboard(weakSelf, didSelectedFunctionItem: sItem)
             }
@@ -206,7 +202,7 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
     }
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return chatMoreKeyboardData.count / 8 + (chatMoreKeyboardData.count % 8 == 0 ? 0 : 1)
+        return chatMoreKeyboardData.count / 8 + (chatMoreKeyboardData.count % 8 == 0  0 : 1)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -232,10 +228,10 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
 }
 //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
 class TLMoreKeyboardCell: UICollectionViewCell {
-    var item: TLMoreKeyboardItem?
-    var clickBlock: ((_ item: TLMoreKeyboardItem?) -> Void)?
-    private var iconButton: UIButton?
-    private var titleLabel: UILabel?
+    var item: TLMoreKeyboardItem
+    var clickBlock: ((_ item: TLMoreKeyboardItem) -> Void)
+    private var iconButton: UIButton
+    private var titleLabel: UILabel
 
     override init(frame: CGRect) {
         //if super.init(frame: frame)
@@ -250,41 +246,41 @@ class TLMoreKeyboardCell: UICollectionViewCell {
 
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    func setItem(_ item: TLMoreKeyboardItem?) {
+    func setItem(_ item: TLMoreKeyboardItem) {
         self.item = item
         if item == nil {
-            titleLabel?.isHidden = true
+            titleLabel.isHidden = true
             iconButton.hidden = true
             isUserInteractionEnabled = false
             return
         }
         isUserInteractionEnabled = true
-        titleLabel?.isHidden = false
+        titleLabel.isHidden = false
         iconButton.hidden = false
-        titleLabel?.text = item?.title
-        iconButton.setImage(UIImage(named: item?.imagePath ?? ""), for: .normal)
+        titleLabel.text = item.title
+        iconButton.setImage(UIImage(named: item.imagePath  ""), for: .normal)
     }
 
     // MARK: - Event Response -
-    func iconButtonDown(_ sender: UIButton?) {
+    func iconButtonDown(_ sender: UIButton) {
         clickBlock(item)
     }
     func p_addMasonry() {
-        iconButton()?.mas_makeConstraints({ make in
-            make?.top.mas_equalTo(self.contentView)
-            make?.centerX.mas_equalTo(self.contentView)
-            make?.width.mas_equalTo(self.contentView)
-            make?.height.mas_equalTo(self.iconButton()?.mas_width)
+        iconButton().mas_makeConstraints({ make in
+            make.top.mas_equalTo(self.contentView)
+            make.centerX.mas_equalTo(self.contentView)
+            make.width.mas_equalTo(self.contentView)
+            make.height.mas_equalTo(self.iconButton().mas_width)
         })
-        titleLabel?.mas_makeConstraints({ make in
-            make?.centerX.mas_equalTo(self.contentView)
-            make?.bottom.mas_equalTo(self.contentView)
+        titleLabel.mas_makeConstraints({ make in
+            make.centerX.mas_equalTo(self.contentView)
+            make.bottom.mas_equalTo(self.contentView)
         })
     }
-    func iconButton() -> UIButton? {
+    func iconButton() -> UIButton {
         if iconButton == nil {
             iconButton = UIButton()
             iconButton.layer.masksToBounds = true
@@ -297,7 +293,7 @@ class TLMoreKeyboardCell: UICollectionViewCell {
         return iconButton
     }
 
-    var titleLabel: UILabel? {
+    var titleLabel: UILabel {
         if titleLabel == nil {
             titleLabel = UILabel()
             titleLabel.font = UIFont.systemFont(ofSize: 12.0)

@@ -8,15 +8,15 @@
 
 import Foundation
 protocol WXInfoButtonCellDelegate: NSObjectProtocol {
-    func infoButtonCellClicked(_ info: WXInfo?)
+    func infoButtonCellClicked(_ info: WXInfo)
 }
 
 class WXInfoButtonCell: WXTableViewCell {
-    weak var delegate: WXInfoButtonCellDelegate?
-    var info: WXInfo?
-    private var button: UIButton?
+    weak var delegate: WXInfoButtonCellDelegate
+    var info: WXInfo
+    private var button: UIButton
 
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         //if super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         backgroundColor = UIColor.clear
@@ -30,39 +30,39 @@ class WXInfoButtonCell: WXTableViewCell {
         p_addMasonry()
 
     }
-    func setInfo(_ info: WXInfo?) {
+    func setInfo(_ info: WXInfo) {
         self.info = info
-        button.setTitle(info?.title, for: .normal)
-        button.backgroundColor = info?.buttonColor
-        if let aColor = info?.buttonHLColor {
+        button.setTitle(info.title, for: .normal)
+        button.backgroundColor = info.buttonColor
+        if let aColor = info.buttonHLColor {
             button.setBackgroundImage(FreedomTools(color: aColor), for: .highlighted)
         }
-        button.setTitleColor(info?.titleColor, for: .normal)
-        button.layer.borderColor = info?.buttonBorderColor.cgColor
+        button.setTitleColor(info.titleColor, for: .normal)
+        button.layer.borderColor = info.buttonBorderColor.cgColor
     }
 
     // MARK: - Event Response -
-    func cellButtonDown(_ sender: UIButton?) {
+    func cellButtonDown(_ sender: UIButton) {
         if delegate && delegate.responds(to: #selector(self.infoButtonCellClicked(_:))) {
             delegate.infoButtonCellClicked(info)
         }
     }
     func p_addMasonry() {
-        button()?.mas_makeConstraints({ make in
-            make?.centerX.and.top.mas_equalTo(self.contentView)
-            make?.width.mas_equalTo(self.contentView).multipliedBy(0.92)
-            make?.height.mas_equalTo(self.contentView).multipliedBy(0.78)
+        button().mas_makeConstraints({ make in
+            make.centerX.and.top.mas_equalTo(self.contentView)
+            make.width.mas_equalTo(self.contentView).multipliedBy(0.92)
+            make.height.mas_equalTo(self.contentView).multipliedBy(0.78)
         })
     }
 
     // MARK: - Getter -
-    func button() -> UIButton? {
+    func button() -> UIButton {
         if button == nil {
             button = UIButton()
             button.layer.masksToBounds = true
             button.layer.cornerRadius = 4.0
             button.layer.borderWidth = 1
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
+            button.titleLabel.font = UIFont.systemFont(ofSize: 16.0)
             button.addTarget(self, action: #selector(self.cellButtonDown(_:)), for: .touchUpInside)
         }
         return button
@@ -74,10 +74,10 @@ class WXInfoButtonCell: WXTableViewCell {
 }
 
 class WXInfoCell: WXTableViewCell {
-    var info: WXInfo?
-    private var subTitleLabel: UILabel?
+    var info: WXInfo
+    private var subTitleLabel: UILabel
 
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         //if super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         textLabel.font = UIFont.systemFont(ofSize: 15.0)
@@ -87,23 +87,23 @@ class WXInfoCell: WXTableViewCell {
         p_addMasonry()
 
     }
-    func setInfo(_ info: WXInfo?) {
+    func setInfo(_ info: WXInfo) {
         self.info = info
-        textLabel?.text = info?.title
-        subTitleLabel.text = info?.subTitle
-        accessoryType = info?.showDisclosureIndicator != nil ? .disclosureIndicator : .none
-        selectionStyle = info?.disableHighlight != nil ? .none : .default
+        textLabel.text = info.title
+        subTitleLabel.text = info.subTitle
+        accessoryType = info.showDisclosureIndicator != nil  .disclosureIndicator : .none
+        selectionStyle = info.disableHighlight != nil  .none : .default
     }
 
     // MARK: - Private Methods -
     func p_addMasonry() {
         subTitleLabel.mas_makeConstraints({ make in
-            make?.centerY.mas_equalTo(self.contentView)
-            make?.left.mas_equalTo(self.contentView).mas_offset(APPW * 0.28)
-            make?.right.mas_lessThanOrEqualTo(self.contentView)
+            make.centerY.mas_equalTo(self.contentView)
+            make.left.mas_equalTo(self.contentView).mas_offset(APPW * 0.28)
+            make.right.mas_lessThanOrEqualTo(self.contentView)
         })
     }
-    func subTitleLabel() -> UILabel? {
+    func subTitleLabel() -> UILabel {
         if subTitleLabel == nil {
             subTitleLabel = UILabel()
             subTitleLabel.font = UIFont.systemFont(ofSize: 15.0)
@@ -115,7 +115,7 @@ class WXInfoCell: WXTableViewCell {
 }
 
 class WXInfoHeaderFooterView: UITableViewHeaderFooterView {
-    init(reuseIdentifier: String?) {
+    init(reuseIdentifier: String) {
         super.init(reuseIdentifier: reuseIdentifier)
 
         contentView.backgroundColor = UIColor.lightGray
@@ -157,35 +157,35 @@ class WXInfoViewController: UITableViewController, WXInfoButtonCellDelegate {
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let group = data[indexPath.section]
-        let info = group[indexPath.row] as? WXInfo
-        var cell: Any?
-        if info?.type == TLInfoTypeButton {
+        let info = group[indexPath.row] as WXInfo
+        var cell: Any
+        if info.type == TLInfoTypeButton {
             cell = tableView.dequeueReusableCell(withIdentifier: "TLInfoButtonCell")
-            cell?.delegate = self
+            cell.delegate = self
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "TLInfoCell")
         }
-        cell?.info = info
+        cell.info = info
 
-        if indexPath.row == 0 && info?.type != TLInfoTypeButton {
-            cell?.topLineStyle = TLCellLineStyleFill
+        if indexPath.row == 0 && info.type != TLInfoTypeButton {
+            cell.topLineStyle = TLCellLineStyleFill
         } else {
-            cell?.topLineStyle = TLCellLineStyleNone
+            cell.topLineStyle = TLCellLineStyleNone
         }
-        if info?.type == TLInfoTypeButton {
-            cell?.bottomLineStyle = TLCellLineStyleNone
+        if info.type == TLInfoTypeButton {
+            cell.bottomLineStyle = TLCellLineStyleNone
         } else if indexPath.row == group.count - 1 {
-            cell?.bottomLineStyle = TLCellLineStyleFill
+            cell.bottomLineStyle = TLCellLineStyleFill
         } else {
-            cell?.bottomLineStyle = TLCellLineStyleDefault
+            cell.bottomLineStyle = TLCellLineStyleDefault
         }
         return cell as! UITableViewCell
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
         return tableView.dequeueReusableHeaderFooterView(withIdentifier: "TLInfoHeaderFooterView")
     }
 
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView {
         return tableView.dequeueReusableHeaderFooterView(withIdentifier: "TLInfoHeaderFooterView")
     }
 
@@ -202,16 +202,16 @@ class WXInfoViewController: UITableViewController, WXInfoButtonCellDelegate {
         return 15.0
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let info = data[indexPath.section][indexPath.row] as? WXInfo
-        if info?.type == TLInfoTypeButton {
+        let info = data[indexPath.section][indexPath.row] as WXInfo
+        if info.type == TLInfoTypeButton {
             return 50.0
         }
         return 44.0
     }
 
     //MARK: TLInfoButtonCellDelegate
-    func infoButtonCellClicked(_ info: WXInfo?) {
-        if let aTitle = info?.title {
+    func infoButtonCellClicked(_ info: WXInfo) {
+        if let aTitle = info.title {
             showAlerWithtitle("子类未处理按钮点击事件", message: "Title: \(aTitle)", style: UIAlertController.Style.alert, ac1: {
                 return UIAlertAction(title: "取消", style: .cancel, handler: { action in
                 })

@@ -1,44 +1,40 @@
 //
 //  WXExpressionViewController.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/20.
-//  Copyright © 2018 薛超. All rights reserved.
-//
 
 import Foundation
 class WXExpressionViewController: WXBaseViewController {
-    var segmentedControl: UISegmentedControl?
-    var expChosenVC: WXExpressionChosenViewController?
-    var expPublicVC: WXExpressionPublicViewController?
+    var segmentedControl: UISegmentedControl
+    var expChosenVC: WXExpressionChosenViewController
+    var expPublicVC: WXExpressionPublicViewController
 
 
     func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
-        navigationItem?.titleView = segmentedControl
+        navigationItem.titleView = segmentedControl
         view.addSubview(expChosenVC.view)
         addChild(expChosenVC)
         addChild(expPublicVC)
 
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "nav_setting"), style: .plain, target: self, action: #selector(self.rightBarButtonDown))
-        navigationItem?.rightBarButtonItem = rightBarButton
+        navigationItem.rightBarButtonItem = rightBarButton
 
-        if navigationController?.topViewController == self {
+        if navigationController.topViewController == self {
             let dismissBarButton = UIBarButtonItem(title: "取消", style: UIBarButtonItem.Style.plain, actionBlick: {
                 self.dismiss(animated: true)
             })
-            navigationItem?.leftBarButtonItem = dismissBarButton
+            navigationItem.leftBarButtonItem = dismissBarButton
         }
     }
     func rightBarButtonDown() {
         let myExpressionVC = WXMyExpressionViewController()
         hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(myExpressionVC, animated: true)
+        navigationController.pushViewController(myExpressionVC, animated: true)
     }
 
-    func segmentedControlChanged(_ segmentedControl: UISegmentedControl?) {
-        if segmentedControl?.selectedSegmentIndex == 0 {
+    func segmentedControlChanged(_ segmentedControl: UISegmentedControl) {
+        if segmentedControl.selectedSegmentIndex == 0 {
             transition(from: expPublicVC, to: expChosenVC, duration: 0.5, options: .curveEaseInOut, animations: {
 
             }) { finished in
@@ -54,7 +50,7 @@ class WXExpressionViewController: WXBaseViewController {
     }
 
 
-    func segmentedControl() -> UISegmentedControl? {
+    func segmentedControl() -> UISegmentedControl {
         if segmentedControl == nil {
             segmentedControl = UISegmentedControl(items: ["精选表情", "网络表情"])
             segmentedControl.selectedSegmentIndex = 0
@@ -63,14 +59,14 @@ class WXExpressionViewController: WXBaseViewController {
         return segmentedControl
     }
 
-    func expChosenVC() -> WXExpressionChosenViewController? {
+    func expChosenVC() -> WXExpressionChosenViewController {
         if expChosenVC == nil {
             expChosenVC = WXExpressionChosenViewController()
         }
         return expChosenVC
     }
 
-    func expPublicVC() -> WXExpressionPublicViewController? {
+    func expPublicVC() -> WXExpressionPublicViewController {
         if expPublicVC == nil {
             expPublicVC = WXExpressionPublicViewController()
         }

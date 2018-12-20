@@ -10,34 +10,34 @@ import Foundation
 class WXSearchController: UISearchController {
     var showVoiceButton = false
 
-    override init(searchResultsController: UIViewController?) {
+    override init(searchResultsController: UIViewController) {
         //if super.init(searchResultsController: searchResultsController)
 
         searchBar.frame = CGRect(x: 0, y: 0, width: APPW, height: CGFloat(TopHeight))
         searchBar.backgroundImage = FreedomTools(color: UIColor.lightGray)
         searchBar.barTintColor = UIColor.lightGray
         searchBar.tintColor = UIColor.green
-        let tf = searchBar.subviews.first?.subviews.last as? UITextField
-        tf?.layer.masksToBounds = true
-        tf?.layer.borderWidth = 1
-        tf?.layer.borderColor = UIColor.gray.cgColor
-        tf?.layer.cornerRadius = 5.0
+        let tf = searchBar.subviews.first.subviews.last as UITextField
+        tf.layer.masksToBounds = true
+        tf.layer.borderWidth = 1
+        tf.layer.borderColor = UIColor.gray.cgColor
+        tf.layer.cornerRadius = 5.0
 
-        for view: UIView? in searchBar.subviews[0].subviews {
+        for view: UIView in searchBar.subviews[0].subviews {
             if (view is NSClassFromString("UISearchBarBackground")) {
                 let bg = UIView()
                 bg.backgroundColor = UIColor.lightGray
-                view?.addSubview(bg)
+                view.addSubview(bg)
                 bg.mas_makeConstraints({ make in
-                    make?.edges.mas_equalTo(0)
+                    make.edges.mas_equalTo(0)
                 })
 
                 let line = UIView()
                 line.backgroundColor = UIColor.gray
-                view?.addSubview(line)
+                view.addSubview(line)
                 line.mas_makeConstraints({ make in
-                    make?.left.and().right().and().bottom().mas_equalTo(0)
-                    make?.height.mas_equalTo(1)
+                    make.left.and().right().and().bottom().mas_equalTo(0)
+                    make.height.mas_equalTo(1)
                 })
                 break
             }

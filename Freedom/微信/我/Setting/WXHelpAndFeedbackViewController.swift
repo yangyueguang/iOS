@@ -1,10 +1,6 @@
 //
 //  WXHelpAndFeedbackViewController.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/20.
-//  Copyright © 2018 薛超. All rights reserved.
-//
 
 import Foundation
 class WXHelpAndFeedbackViewController: WXWebViewController {
@@ -16,6 +12,6 @@ class WXHelpAndFeedbackViewController: WXWebViewController {
     }
 
     // MARK: - Event Response -
-    @objc func rightBarButtonDown(_ sender: UIBarButtonItem?) {
+    @objc func rightBarButtonDown(_ sender: UIBarButtonItem) {
     }
 }

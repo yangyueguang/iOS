@@ -1,30 +1,26 @@
 //
 //  WXUserGroupCell.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/20.
-//  Copyright © 2018 薛超. All rights reserved.
-//
 
 import Foundation
 protocol WechatUserGroupCellDelegate: NSObjectProtocol {
-    func userGroupCellDidSelect(_ user: WXUser?)
+    func userGroupCellDidSelect(_ user: WXUser)
     func userGroupCellAddUserButtonDown()
 }
 
 class WXUserGroupCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
-    private var collectionView: UICollectionView?
+    private var collectionView: UICollectionView
 
-    weak var delegate: WechatUserGroupCellDelegate?
+    weak var delegate: WechatUserGroupCellDelegate
     var users: [AnyHashable] = []
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         //if super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         selectionStyle = .none
         if let aView = collectionView {
             contentView.addSubview(aView)
         }
-        collectionView?.register(WXUserGroupItemCell.self, forCellWithReuseIdentifier: "TLUserGroupItemCell")
+        collectionView.register(WXUserGroupItemCell.self, forCellWithReuseIdentifier: "TLUserGroupItemCell")
 
         p_addMasonry()
 
@@ -34,13 +30,13 @@ class WXUserGroupCell: UITableViewCell, UICollectionViewDataSource, UICollection
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLUserGroupItemCell", for: indexPath) as? WXUserGroupItemCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLUserGroupItemCell", for: indexPath) as WXUserGroupItemCell
         if indexPath.row < users.count {
-            cell?.user = users[indexPath.row]
+            cell.user = users[indexPath.row]
         } else {
-            cell?.user = nil
+            cell.user = nil
         }
-        cell?.clickBlock = { user in
+        cell.clickBlock = { user in
             if user != nil && delegate && delegate.responds(to: #selector(self.userGroupCellDidSelectUser(_:))) {
                 delegate.userGroupCellDidSelect(user)
             } else {
@@ -51,7 +47,7 @@ class WXUserGroupCell: UITableViewCell, UICollectionViewDataSource, UICollection
     }
     func p_addMasonry() {
         collectionView.mas_makeConstraints({ make in
-            make?.edges.mas_equalTo(self.contentView)
+            make.edges.mas_equalTo(self.contentView)
         })
     }
 
@@ -81,10 +77,10 @@ class WXUserGroupCell: UITableViewCell, UICollectionViewDataSource, UICollection
 }
 //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
 class WXUserGroupItemCell: UICollectionViewCell {
-    var user: WXUser?
-    var clickBlock: ((_ user: WXUser?) -> Void)?
-    var avatarView: UIButton?
-    var usernameLabel: UILabel?
+    var user: WXUser
+    var clickBlock: ((_ user: WXUser) -> Void)
+    var avatarView: UIButton
+    var usernameLabel: UILabel
 
     override init(frame: CGRect) {
         //if super.init(frame: frame)
@@ -100,14 +96,14 @@ class WXUserGroupItemCell: UICollectionViewCell {
 
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    func setUser(_ user: WXUser?) {
+    func setUser(_ user: WXUser) {
         self.user = user
         if user != nil {
-            avatarView.sd_setImage(with: URL(string: user?.avatarURL ?? ""), for: UIControl.State.normal, placeholderImage: UIImage(named: PuserLogo))
-            usernameLabel.text = user?.showName
+            avatarView.sd_setImage(with: URL(string: user.avatarURL  ""), for: UIControl.State.normal, placeholderImage: UIImage(named: PuserLogo))
+            usernameLabel.text = user.showName
         } else {
             avatarView.setImage(UIImage(named: "chatdetail_add_member"), for: .normal)
             avatarView.setImage(UIImage(named: "chatdetail_add_memberHL"), for: .highlighted)
@@ -121,18 +117,18 @@ class WXUserGroupItemCell: UICollectionViewCell {
     }
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
     func p_addMasonry() {
-        avatarView()?.mas_makeConstraints({ make in
-            make?.top.and().left().and().right().mas_equalTo(self.contentView)
-            make?.height.mas_equalTo(self.avatarView()?.mas_width)
+        avatarView().mas_makeConstraints({ make in
+            make.top.and().left().and().right().mas_equalTo(self.contentView)
+            make.height.mas_equalTo(self.avatarView().mas_width)
         })
         usernameLabel.mas_makeConstraints({ make in
-            make?.centerX.and.bottom.mas_equalTo(self.contentView)
-            make?.left.and().right().mas_lessThanOrEqualTo(self.contentView)
+            make.centerX.and.bottom.mas_equalTo(self.contentView)
+            make.left.and().right().mas_lessThanOrEqualTo(self.contentView)
         })
     }
 
     // MARK: - Getter -
-    func avatarView() -> UIButton? {
+    func avatarView() -> UIButton {
         if avatarView == nil {
             avatarView = UIButton()
             avatarView.layer.masksToBounds = true
@@ -141,7 +137,7 @@ class WXUserGroupItemCell: UICollectionViewCell {
         }
         return avatarView
     }
-    func usernameLabel() -> UILabel? {
+    func usernameLabel() -> UILabel {
         if usernameLabel == nil {
             usernameLabel = UILabel()
             usernameLabel.font = UIFont.systemFont(ofSize: 12.0)

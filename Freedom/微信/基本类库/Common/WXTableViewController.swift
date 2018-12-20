@@ -27,13 +27,13 @@ class WXTableViewController: UITableViewController {
     }
 
     deinit {
-        DLog("dealloc %@", navigationItem?.title)
+        DLog("dealloc %@", navigationItem.title)
     }
 
     // MARK: - Getter -
-    func analyzeTitle() -> String? {
+    func analyzeTitle() -> String {
         if analyzeTitle == nil {
-            return navigationItem?.title
+            return navigationItem.title
         }
         return analyzeTitle
     }

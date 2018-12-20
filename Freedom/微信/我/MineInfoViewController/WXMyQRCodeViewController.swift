@@ -1,21 +1,17 @@
 //
 //  WXMyQRCodeViewController.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/20.
-//  Copyright © 2018 薛超. All rights reserved.
-//
 
 import Foundation
 class WXMyQRCodeViewController: WXBaseViewController {
-    var user: WXUser?
-    var qrCodeVC: WXQRCodeViewController?
+    var user: WXUser
+    var qrCodeVC: WXQRCodeViewController
 
     func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
         navigationItem.title = "我的二维码"
-        if let aView = qrCodeVC?.view {
+        if let aView = qrCodeVC.view {
             view.addSubview(aView)
         }
         if let aVC = qrCodeVC {
@@ -25,10 +21,10 @@ class WXMyQRCodeViewController: WXBaseViewController {
         navigationItem.rightBarButtonItem = rightBarButtonItem
         self.user = WXUserHelper.shared().user
     }
-    func rightBarButtonDown(_ sender: UIBarButtonItem?) {
-        var ac: UIAlertAction?
-        var vc: UIViewController?
-        for viewController: UIViewController? in navigationController?.viewControllers ?? [] {
+    func rightBarButtonDown(_ sender: UIBarButtonItem) {
+        var ac: UIAlertAction
+        var vc: UIViewController
+        for viewController: UIViewController in navigationController.viewControllers  [] {
             if (viewController is NSClassFromString("TLScanningViewController")) {
                 vc = viewController
             }
@@ -41,7 +37,7 @@ class WXMyQRCodeViewController: WXBaseViewController {
                 let scannerVC = WXScanningViewController()
                 scannerVC.disableFunctionBar = true
                 self.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(scannerVC, animated: true)
+                self.navigationController.pushViewController(scannerVC, animated: true)
             })
         }
         showAlerWithtitle(nil, message: nil, style: UIAlertController.Style.actionSheet, ac1: {
@@ -55,17 +51,17 @@ class WXMyQRCodeViewController: WXBaseViewController {
             return ac
         }, completion: nil)
     }
-    func setUser(_ user: WXUser?) {
+    func setUser(_ user: WXUser) {
         self.user = user
-        qrCodeVC()?.avatarURL = user?.avatarURL
-        qrCodeVC()?.username = self.user.showName
-        qrCodeVC()?.subTitle = self.user.detailInfo.location
-        qrCodeVC()?.qrCode = self.user.userID
-        qrCodeVC()?.introduction = "扫一扫上面的二维码图案，加我微信"
+        qrCodeVC().avatarURL = user.avatarURL
+        qrCodeVC().username = self.user.showName
+        qrCodeVC().subTitle = self.user.detailInfo.location
+        qrCodeVC().qrCode = self.user.userID
+        qrCodeVC().introduction = "扫一扫上面的二维码图案，加我微信"
     }
 
     // MARK: - Event Response
-    func qrCodeVC() -> WXQRCodeViewController? {
+    func qrCodeVC() -> WXQRCodeViewController {
         if qrCodeVC == nil {
             qrCodeVC = WXQRCodeViewController()
         }

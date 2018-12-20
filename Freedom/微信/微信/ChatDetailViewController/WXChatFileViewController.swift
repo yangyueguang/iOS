@@ -1,15 +1,11 @@
 //
 //  WXChatFileViewController.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/20.
-//  Copyright © 2018 薛超. All rights reserved.
-//
 
 import Foundation
 class WXChatFileCell: UICollectionViewCell {
-    var message: WXMessage?
-    private var imageView: UIImageView?
+    var message: WXMessage
+    private var imageView: UIImageView
 
     override init(frame: CGRect) {
         //if super.init(frame: frame)
@@ -21,33 +17,33 @@ class WXChatFileCell: UICollectionViewCell {
 
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    func setMessage(_ message: WXMessage?) {
+    func setMessage(_ message: WXMessage) {
         self.message = message
-        if message?.messageType == TLMessageTypeImage {
-            let me = message as? WXImageMessage
-            let imagePath = me?.content["path"]
-            let imageURL = me?.content["url"]
-            if (imagePath?.count ?? 0) > 0 {
+        if message.messageType == TLMessageTypeImage {
+            let me = message as WXImageMessage
+            let imagePath = me.content["path"]
+            let imageURL = me.content["url"]
+            if (imagePath.count  0) > 0 {
                 let imagePatha = FileManager.pathUserChatImage(imagePath)
-                imageView?.image = UIImage(named: imagePatha)
-            } else if (imageURL?.count ?? 0) > 0 {
-                imageView?.sd_setImage(with: URL(string: imageURL ?? ""), placeholderImage: UIImage(named: "userLogo"))
+                imageView.image = UIImage(named: imagePatha)
+            } else if (imageURL.count  0) > 0 {
+                imageView.sd_setImage(with: URL(string: imageURL  ""), placeholderImage: UIImage(named: "userLogo"))
             } else {
-                imageView?.image = nil
+                imageView.image = nil
             }
         }
     }
     func p_addMasonry() {
-        imageView?.mas_makeConstraints({ make in
-            make?.edges.mas_equalTo(self.contentView)
+        imageView.mas_makeConstraints({ make in
+            make.edges.mas_equalTo(self.contentView)
         })
     }
 
     // MARK: - Getter -
-    var imageView: UIImageView? {
+    var imageView: UIImageView {
         if imageView == nil {
             imageView = UIImageView()
         }
@@ -62,8 +58,8 @@ class WXChatFileCell: UICollectionViewCell {
 //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
 class WXChatFileHeaderView: UICollectionReusableView {
     var title = ""
-    var bgView: UIView?
-    var titleLabel: UILabel?
+    var bgView: UIView
+    var titleLabel: UILabel
 
     override init(frame: CGRect) {
         //if super.init(frame: frame)
@@ -79,27 +75,27 @@ class WXChatFileHeaderView: UICollectionReusableView {
 
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    func setTitle(_ title: String?) {
+    func setTitle(_ title: String) {
         self.title = title
-        titleLabel?.text = title
+        titleLabel.text = title
     }
 
     // MARK: - Private Methods -
     func p_addMasonry() {
-        bgView()?.mas_makeConstraints({ make in
-            make?.edges.mas_equalTo(self)
+        bgView().mas_makeConstraints({ make in
+            make.edges.mas_equalTo(self)
         })
-        titleLabel?.mas_makeConstraints({ make in
-            make?.edges.mas_equalTo(self).mas_offset(UIEdgeInsetsMake(0, 10, 0, 10))
+        titleLabel.mas_makeConstraints({ make in
+            make.edges.mas_equalTo(self).mas_offset(UIEdgeInsetsMake(0, 10, 0, 10))
         })
     }
 
     // MARK: - Getter -
-    func bgView() -> UIView? {
+    func bgView() -> UIView {
         if bgView == nil {
             bgView = UIView()
             bgView.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
@@ -107,7 +103,7 @@ class WXChatFileHeaderView: UICollectionReusableView {
         }
         return bgView
     }
-    var titleLabel: UILabel? {
+    var titleLabel: UILabel {
         if titleLabel == nil {
             titleLabel = UILabel()
             titleLabel.textColor = UIColor.white
@@ -123,13 +119,13 @@ class WXChatFileViewController: WXBaseViewController {
     var data: [AnyHashable] = []
     var mediaData: [AnyHashable] = []
     var browserData: [AnyHashable] = []
-    var collectionView: UICollectionView?
+    var collectionView: UICollectionView
     func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem?.title = "聊天文件"
+        navigationItem.title = "聊天文件"
         view.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
         let layout = UICollectionViewFlowLayout()
-        if Float(UIDevice.current.systemVersion) ?? 0.0 >= 9.0 {
+        if Float(UIDevice.current.systemVersion)  0.0 >= 9.0 {
             layout.sectionHeadersPinToVisibleBounds = true
         }
         layout.itemSize = CGSize(width: APPW / 4 * 0.98, height: APPW / 4 * 0.98)
@@ -151,18 +147,18 @@ class WXChatFileViewController: WXBaseViewController {
         let rightBarButton = UIBarButtonItem(title: "选择", style: UIBarButtonItem.Style.plain, actionBlick: {
 
         })
-        navigationItem?.rightBarButtonItem = rightBarButton
+        navigationItem.rightBarButtonItem = rightBarButton
         collectionView.register(WXChatFileHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "TLChatFileHeaderView")
         collectionView.register(WXChatFileCell.self, forCellWithReuseIdentifier: "TLChatFileCell")
     }
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    func setPartnerID(_ partnerID: String?) {
+    func setPartnerID(_ partnerID: String) {
         self.partnerID = partnerID
         weak var weakSelf = self
         WXMessageManager.sharedInstance().chatFiles(forPartnerID: partnerID, completed: { data in
             weakSelf.data.removeAll()
             weakSelf.mediaData = nil
-            if let aData = data as? [AnyHashable] {
+            if let aData = data as [AnyHashable] {
                 weakSelf.data.append(contentsOf: aData)
             }
             weakSelf.collectionView.reloadData()
@@ -171,33 +167,33 @@ class WXChatFileViewController: WXBaseViewController {
 
     // MARK: - Delegate -
     //MARK: UIcollectionViewDataSource
-    func numberOfSectionsIncollectionView(_ collectionView: UICollectionView?) -> Int {
+    func numberOfSectionsIncollectionView(_ collectionView: UICollectionView) -> Int {
         return data.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let temp = data?[section]
+        let temp = data[section]
         return temp.count
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let message = data[indexPath.section][indexPath.row] as? WXMessage
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TLChatFileHeaderView", for: indexPath) as? WXChatFileHeaderView
-        headerView?.title = message?.date.timeToNow()
+        let message = data[indexPath.section][indexPath.row] as WXMessage
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TLChatFileHeaderView", for: indexPath) as WXChatFileHeaderView
+        headerView.title = message.date.timeToNow()
         return headerView!
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let message = data[indexPath.section][indexPath.row] as? WXMessage
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLChatFileCell", for: indexPath) as? WXChatFileCell
-        cell?.message = message
+        let message = data[indexPath.section][indexPath.row] as WXMessage
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLChatFileCell", for: indexPath) as WXChatFileCell
+        cell.message = message
         return cell!
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let message = data[indexPath.section][indexPath.row] as? WXMessage
-        if message?.messageType == TLMessageTypeImage {
+        let message = data[indexPath.section][indexPath.row] as WXMessage
+        if message.messageType == TLMessageTypeImage {
             var index: Int = -1
             for i in 0..<mediaData.count {
-                if (message?.messageID == mediaData[i].messageID) {
+                if (message.messageID == mediaData[i].messageID) {
                     index = i
                     break
                 }
@@ -213,35 +209,35 @@ class WXChatFileViewController: WXBaseViewController {
     }
     func p_addMasonry() {
         collectionView.mas_makeConstraints({ make in
-            make?.left.and().right().and().top().mas_equalTo(self.view)
-            make?.bottom.mas_equalTo(self.view)
+            make.left.and().right().and().top().mas_equalTo(self.view)
+            make.bottom.mas_equalTo(self.view)
         })
     }
 
     // MARK: - Getter -
-    func data() -> [AnyHashable]? {
+    func data() -> [AnyHashable] {
         if data == nil {
             data = [AnyHashable]()
         }
         return data
     }
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    func mediaData() -> [AnyHashable]? {
+    func mediaData() -> [AnyHashable] {
         if mediaData == nil {
             mediaData = [AnyHashable]()
-            for array: [Any]? in data {
-                for message: WXMessage? in array as? [WXMessage?] ?? [] {
-                    if message?.messageType == TLMessageTypeImage {
+            for array: [Any] in data {
+                for message: WXMessage in array as [WXMessage]  [] {
+                    if message.messageType == TLMessageTypeImage {
                         if let aMessage = message {
                             mediaData.append(aMessage)
                         }
-                        var url: URL?
-                        let me = message as? WXImageMessage
-                        if me?.content["path"] != nil {
-                            let imagePath = FileManager.pathUserChatImage(me?.content["path"])
+                        var url: URL
+                        let me = message as WXImageMessage
+                        if me.content["path"] != nil {
+                            let imagePath = FileManager.pathUserChatImage(me.content["path"])
                             url = URL(fileURLWithPath: imagePath)
                         } else {
-                            url = URL(string: me?.content["url"] ?? "")
+                            url = URL(string: me.content["url"]  "")
                         }
                         let photo = MWPhoto(url: url)
                         browserData.append(photo)
@@ -252,18 +248,18 @@ class WXChatFileViewController: WXBaseViewController {
         return mediaData
     }
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    func browserData() -> [AnyHashable]? {
+    func browserData() -> [AnyHashable] {
         if browserData == nil {
             browserData = [AnyHashable]()
-            for message: WXMessage? in mediaData {
-                if message?.messageType == TLMessageTypeImage {
-                    var url: URL?
-                    let imagePath = message?.content["path"]
+            for message: WXMessage in mediaData {
+                if message.messageType == TLMessageTypeImage {
+                    var url: URL
+                    let imagePath = message.content["path"]
                     if imagePath != nil {
                         let imagePatha = FileManager.pathUserChatImage(imagePath)
                         url = URL(fileURLWithPath: imagePatha)
                     } else {
-                        url = URL(string: message?.content["url"] ?? "")
+                        url = URL(string: message.content["url"]  "")
                     }
                     let photo = MWPhoto(url: url)
                     browserData.append(photo)

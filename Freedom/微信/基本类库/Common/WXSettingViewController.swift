@@ -9,7 +9,7 @@
 import Foundation
 //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
 @objc protocol WXSettingSwitchCellDelegate: NSObjectProtocol {
-    @objc optional func settingSwitchCell(for settingItem: WXSettingItem?, didChangeStatus on: Bool)
+    @objc optional func settingSwitchCell(for settingItem: WXSettingItem, didChangeStatus on: Bool)
 }
 
 class WXSettingViewController: UITableViewController, WXSettingSwitchCellDelegate {
@@ -49,34 +49,34 @@ class WXSettingViewController: UITableViewController, WXSettingSwitchCellDelegat
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ((data[section]) as? [Any])?.count ?? 0
+        return ((data[section]) as [Any]).count  0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = data[indexPath.section][indexPath.row] as? WXSettingItem
-        let cell = tableView.dequeueReusableCell(withIdentifier: item?.cellClassName ?? "")
-        cell?.setItem(item)
-        if item?.type == TLSettingItemTypeSwitch {
-            cell?.setDelegate(self)
+        let item = data[indexPath.section][indexPath.row] as WXSettingItem
+        let cell = tableView.dequeueReusableCell(withIdentifier: item.cellClassName  "")
+        cell.setItem(item)
+        if item.type == TLSettingItemTypeSwitch {
+            cell.setDelegate(self)
         }
         return cell!
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let group: WXSettingGroup? = data[section]
-        if group?.headerTitle == nil {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
+        let group: WXSettingGroup = data[section]
+        if group.headerTitle == nil {
             return nil
         }
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TLSettingHeaderTitleView") as? WXSettingHeaderTitleView
-        view?.text = group?.headerTitle
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TLSettingHeaderTitleView") as WXSettingHeaderTitleView
+        view.text = group.headerTitle
         return view
     }
 
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let group: WXSettingGroup? = data[section]
-        if group?.footerTitle == nil {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView {
+        let group: WXSettingGroup = data[section]
+        if group.footerTitle == nil {
             return nil
         }
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TLSettingFooterTitleView") as? WechatSettingFooterTitleView
-        view?.text = group?.footerTitle
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TLSettingFooterTitleView") as WechatSettingFooterTitleView
+        view.text = group.footerTitle
         return view
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -88,26 +88,26 @@ class WXSettingViewController: UITableViewController, WXSettingSwitchCellDelegat
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let group: WXSettingGroup? = data[section]
-        return 0.5 + (group?.headerTitle == nil ? 0 : 5.0 + group?.headerHeight ?? 0.0)
+        let group: WXSettingGroup = data[section]
+        return 0.5 + (group.headerTitle == nil  0 : 5.0 + group.headerHeight  0.0)
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let group: WXSettingGroup? = data[section]
-        return 20.0 + (group?.footerTitle == nil ? 0 : 5.0 + group?.footerHeight ?? 0.0)
+        let group: WXSettingGroup = data[section]
+        return 20.0 + (group.footerTitle == nil  0 : 5.0 + group.footerHeight  0.0)
     }
 
 
-    func settingSwitchCell(for settingItem: WXSettingItem?, didChangeStatus on: Bool) {
-        if let aTitle = settingItem?.title {
-            SVProgressHUD.showError(withStatus: "Switch事件未被子类处理Title: \(aTitle)\nStatus: \(on ? "on" : "off")")
+    func settingSwitchCell(for settingItem: WXSettingItem, didChangeStatus on: Bool) {
+        if let aTitle = settingItem.title {
+            SVProgressHUD.showError(withStatus: "Switch事件未被子类处理Title: \(aTitle)\nStatus: \(on  "on" : "off")")
         }
     }
 
     // MARK: - Getter -
-    func analyzeTitle() -> String? {
+    func analyzeTitle() -> String {
         if analyzeTitle == nil {
-            return navigationItem?.title
+            return navigationItem.title
         }
         return analyzeTitle
     }
@@ -115,12 +115,12 @@ class WXSettingViewController: UITableViewController, WXSettingSwitchCellDelegat
 
 }
 class WechatSettingSwitchCell: UITableViewCell {
-    weak var delegate: WXSettingSwitchCellDelegate?
-    var item: WXSettingItem?
-    private var titleLabel: UILabel?
-    private var cellSwitch: UISwitch?
+    weak var delegate: WXSettingSwitchCellDelegate
+    var item: WXSettingItem
+    private var titleLabel: UILabel
+    private var cellSwitch: UISwitch
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         selectionStyle = .none
@@ -132,34 +132,34 @@ class WechatSettingSwitchCell: UITableViewCell {
 
     }
 
-    func setItem(_ item: WXSettingItem?) {
+    func setItem(_ item: WXSettingItem) {
         self.item = item
-        titleLabel?.text = item?.title
+        titleLabel.text = item.title
     }
 
     // MARK: - Event Response -
-    func switchChangeStatus(_ sender: UISwitch?) {
+    func switchChangeStatus(_ sender: UISwitch) {
         if delegate && delegate.responds(to: #selector(self.settingSwitchCell(forItem:didChangeStatus:))) {
-            delegate.settingSwitchCell(forItem: item, didChangeStatus: sender?.isOn)
+            delegate.settingSwitchCell(forItem: item, didChangeStatus: sender.isOn)
         }
     }
     func p_addMasonry() {
-        titleLabel?.mas_makeConstraints({ make in
-            make?.centerY.mas_equalTo(self.contentView)
-            make?.left.mas_equalTo(self.contentView).mas_offset(15)
-            make?.right.mas_lessThanOrEqualTo(self.contentView).mas_offset(-15)
+        titleLabel.mas_makeConstraints({ make in
+            make.centerY.mas_equalTo(self.contentView)
+            make.left.mas_equalTo(self.contentView).mas_offset(15)
+            make.right.mas_lessThanOrEqualTo(self.contentView).mas_offset(-15)
         })
     }
 
     // MARK: - Getter -
-    var titleLabel: UILabel? {
+    var titleLabel: UILabel {
         if titleLabel == nil {
             titleLabel = UILabel()
         }
         return titleLabel
     }
 
-    func cellSwitch() -> UISwitch? {
+    func cellSwitch() -> UISwitch {
         if cellSwitch == nil {
             cellSwitch = UISwitch()
             cellSwitch.addTarget(self, action: #selector(self.switchChangeStatus(_:)), for: .valueChanged)
@@ -170,28 +170,28 @@ class WechatSettingSwitchCell: UITableViewCell {
 }
 
 class WechatSettingButtonCell: UITableViewCell {
-    var item: WXSettingItem?
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    var item: WXSettingItem
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        textLabel?.textAlignment = .center
+        textLabel.textAlignment = .center
 
     }
 
-    func setItem(_ item: WXSettingItem?) {
+    func setItem(_ item: WXSettingItem) {
         self.item = item
-        textLabel?.text = item?.title
+        textLabel.text = item.title
     }
 
 }
 
 class WXSettingCell: UITableViewCell {
-    var item: WXSettingItem?
-    private var titleLabel: UILabel?
-    private var rightLabel: UILabel?
-    private var rightImageView: UIImageView?
+    var item: WXSettingItem
+    private var titleLabel: UILabel
+    private var rightLabel: UILabel
+    private var rightImageView: UIImageView
 
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         //if super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         if let aLabel = titleLabel {
@@ -207,62 +207,62 @@ class WXSettingCell: UITableViewCell {
 
     }
     func p_addMasonry() {
-        titleLabel?.setContentCompressionResistancePriority(UILayoutPriority(500), for: .horizontal)
-        titleLabel?.mas_makeConstraints({ make in
-            make?.centerY.mas_equalTo(self.contentView)
-            make?.left.mas_equalTo(self.contentView).mas_offset(15)
+        titleLabel.setContentCompressionResistancePriority(UILayoutPriority(500), for: .horizontal)
+        titleLabel.mas_makeConstraints({ make in
+            make.centerY.mas_equalTo(self.contentView)
+            make.left.mas_equalTo(self.contentView).mas_offset(15)
         })
 
         rightLabel.setContentCompressionResistancePriority(UILayoutPriority(200), for: .horizontal)
         rightLabel.mas_makeConstraints({ make in
-            make?.right.mas_equalTo(self.contentView)
-            make?.centerY.mas_equalTo(self.titleLabel)
-            make?.left.mas_greaterThanOrEqualTo(self.titleLabel?.mas_right).mas_offset(20)
+            make.right.mas_equalTo(self.contentView)
+            make.centerY.mas_equalTo(self.titleLabel)
+            make.left.mas_greaterThanOrEqualTo(self.titleLabel.mas_right).mas_offset(20)
         })
 
         rightImageView.mas_makeConstraints({ make in
-            make?.right.mas_equalTo(self.rightLabel.mas_left).mas_offset(-2)
-            make?.centerY.mas_equalTo(self.contentView)
+            make.right.mas_equalTo(self.rightLabel.mas_left).mas_offset(-2)
+            make.centerY.mas_equalTo(self.contentView)
         })
     }
 
-    func setItem(_ item: WXSettingItem?) {
+    func setItem(_ item: WXSettingItem) {
         self.item = item
-        titleLabel?.text = item?.title
-        rightLabel.text = item?.subTitle
-        if item?.rightImagePath != nil {
-            rightImageView.image = UIImage(named: item?.rightImagePath ?? "")
-        } else if item?.rightImageURL != nil {
-            rightImageView.sd_setImage(with: URL(string: item?.rightImageURL ?? ""), placeholderImage: UIImage(named: PuserLogo))
+        titleLabel.text = item.title
+        rightLabel.text = item.subTitle
+        if item.rightImagePath != nil {
+            rightImageView.image = UIImage(named: item.rightImagePath  "")
+        } else if item.rightImageURL != nil {
+            rightImageView.sd_setImage(with: URL(string: item.rightImageURL  ""), placeholderImage: UIImage(named: PuserLogo))
         } else {
             rightImageView.image = nil
         }
 
-        if item?.showDisclosureIndicator == false {
+        if item.showDisclosureIndicator == false {
             accessoryType = .none
             rightLabel.mas_updateConstraints({ make in
-                make?.right.mas_equalTo(self.contentView).mas_offset(-15.0)
+                make.right.mas_equalTo(self.contentView).mas_offset(-15.0)
             })
         } else {
             accessoryType = .disclosureIndicator
             rightLabel.mas_updateConstraints({ make in
-                make?.right.mas_equalTo(self.contentView)
+                make.right.mas_equalTo(self.contentView)
             })
         }
-        if item?.disableHighlight != nil {
+        if item.disableHighlight != nil {
             selectionStyle = .none
         } else {
             selectionStyle = .default
         }
     }
-    var titleLabel: UILabel? {
+    var titleLabel: UILabel {
         if titleLabel == nil {
             titleLabel = UILabel()
         }
         return titleLabel
     }
 
-    func rightLabel() -> UILabel? {
+    func rightLabel() -> UILabel {
         if rightLabel == nil {
             rightLabel = UILabel()
             rightLabel.textColor = UIColor.gray
@@ -271,7 +271,7 @@ class WXSettingCell: UITableViewCell {
         return rightLabel
     }
 
-    func rightImageView() -> UIImageView? {
+    func rightImageView() -> UIImageView {
         if rightImageView == nil {
             rightImageView = UIImageView()
         }
@@ -284,28 +284,28 @@ class WXSettingCell: UITableViewCell {
 }
 
 class WXSettingHeaderTitleView: UITableViewHeaderFooterView {
-    var titleLabel: UILabel?
+    var titleLabel: UILabel
     var text = ""
-    init(reuseIdentifier: String?) {
+    init(reuseIdentifier: String) {
         super.init(reuseIdentifier: reuseIdentifier)
 
         if let aLabel = titleLabel {
             contentView.addSubview(aLabel)
         }
-        titleLabel?.mas_makeConstraints({ make in
-            make?.left.mas_equalTo(self.contentView).mas_offset(15)
-            make?.right.mas_equalTo(self.contentView).mas_offset(-15)
-            make?.bottom.mas_equalTo(self.contentView).mas_offset(-5.0)
+        titleLabel.mas_makeConstraints({ make in
+            make.left.mas_equalTo(self.contentView).mas_offset(15)
+            make.right.mas_equalTo(self.contentView).mas_offset(-15)
+            make.bottom.mas_equalTo(self.contentView).mas_offset(-5.0)
         })
 
     }
 
-    func setText(_ text: String?) {
+    func setText(_ text: String) {
         self.text = text
-        titleLabel?.text = text
+        titleLabel.text = text
     }
 
-    var titleLabel: UILabel? {
+    var titleLabel: UILabel {
         if titleLabel == nil {
             titleLabel = UILabel()
             titleLabel.textColor = UIColor.gray
@@ -318,13 +318,13 @@ class WXSettingHeaderTitleView: UITableViewHeaderFooterView {
 }
 
 class WechatSettingFooterTitleView: WXSettingHeaderTitleView {
-    init(reuseIdentifier: String?) {
+    init(reuseIdentifier: String) {
         super.init(reuseIdentifier: reuseIdentifier)
 
-        titleLabel?.mas_remakeConstraints({ make in
-            make?.left.mas_equalTo(self.contentView).mas_offset(15)
-            make?.right.mas_equalTo(self.contentView).mas_offset(-15)
-            make?.top.mas_equalTo(self.contentView).mas_offset(5.0)
+        titleLabel.mas_remakeConstraints({ make in
+            make.left.mas_equalTo(self.contentView).mas_offset(15)
+            make.right.mas_equalTo(self.contentView).mas_offset(-15)
+            make.top.mas_equalTo(self.contentView).mas_offset(5.0)
         })
 
     }

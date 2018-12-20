@@ -1,10 +1,6 @@
 //
 //  WXChatViewController.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/20.
-//  Copyright © 2018 薛超. All rights reserved.
-//
 
 import Foundation
 extension UIImagePickerController {
@@ -50,11 +46,11 @@ class WXMoreKBHelper: NSObject {
     
 }
 class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    private var moreKBhelper: WXMoreKBHelper?
-    private var emojiKBHelper: WXUserHelper?
-    private var rightBarButton: UIBarButtonItem?
+    private var moreKBhelper: WXMoreKBHelper
+    private var emojiKBHelper: WXUserHelper
+    private var rightBarButton: UIBarButtonItem
 
-    class func sharedChatVC() -> WXChatViewController? {
+    class func sharedChatVC() -> WXChatViewController {
         // TODO: [Swiftify] ensure that the code below is executed only once (`dispatch_once()` is deprecated)
         {
             chatVC = WXChatViewController()
@@ -66,11 +62,11 @@ class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControl
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = rightBarButton
 
-        user = WXUserHelper.shared().user as? WXChatUserProtocol?
+        user = WXUserHelper.shared().user as WXChatUserProtocol
         moreKBhelper = WXMoreKBHelper()
-        setChatMoreKeyboardData(moreKBhelper?.chatMoreKeyboardData)
+        setChatMoreKeyboardData(moreKBhelper.chatMoreKeyboardData)
         emojiKBHelper = WXUserHelper.shared()
-        emojiKBHelper?.emojiGroupDataComplete({ emojiGroups in
+        emojiKBHelper.emojiGroupDataComplete({ emojiGroups in
             moreKBhelper = WXMoreKBHelper()
             self.chatMoreKeyboardData = moreKBhelper.chatMoreKeyboardData
             emojiKBHelper = WXUserHelper.shared()
@@ -90,43 +86,43 @@ class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControl
     }
 
     // MARK: Public Methods
-    func setPartner(_ partner: WXChatUserProtocol?) {
+    func setPartner(_ partner: WXChatUserProtocol) {
         super.setPartner(partner)
-        if partner?.chat_userType() == TLChatUserTypeUser {
+        if partner.chat_userType() == TLChatUserTypeUser {
             rightBarButton.image = UIImage(named: "nav_chat_single")
-        } else if partner?.chat_userType() == TLChatUserTypeGroup {
+        } else if partner.chat_userType() == TLChatUserTypeGroup {
             rightBarButton.image = UIImage(named: "nav_chat_multi")
         }
     }
-    @objc func rightBarButtonDown(_ sender: UINavigationBar?) {
+    @objc func rightBarButtonDown(_ sender: UINavigationBar) {
         if partner.chat_user() == TLChatUserTypeUser {
             let chatDetailVC = WXChatDetailViewController()
-            chatDetailVC.user = partner as? WXUser
+            chatDetailVC.user = partner as WXUser
             hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(chatDetailVC, animated: true)
+            navigationController.pushViewController(chatDetailVC, animated: true)
         } else if partner.chat_user() == TLChatUserTypeGroup {
             let chatGroupDetailVC = WXCGroupDetailViewController()
-            chatGroupDetailVC.group = partner as? WXGroup
+            chatGroupDetailVC.group = partner as WXGroup
             hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(chatGroupDetailVC, animated: true)
+            navigationController.pushViewController(chatGroupDetailVC, animated: true)
         }
     }
-    func rightBarButton() -> UIBarButtonItem? {
+    func rightBarButton() -> UIBarButtonItem {
         if rightBarButton == nil {
             rightBarButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
         }
         return rightBarButton
     }
-    func imagePickerController(_ picker: UIImagePickerController?, didFinishPicking image: UIImage?, editingInfo: [String : Any?]?) {
-        picker?.dismiss(animated: true) {
-            let image = editingInfo?[.originalImage] as? UIImage
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPicking image: UIImage, editingInfo: [String : Any]) {
+        picker.dismiss(animated: true) {
+            let image = editingInfo[.originalImage] as UIImage
             self.sendImageMessage(image)
         }
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker?.dismiss(animated: true) {
-            let image = info?[.originalImage] as? UIImage
+        picker.dismiss(animated: true) {
+            let image = info[.originalImage] as UIImage
             self.sendImageMessage(image)
         }
     }
@@ -135,10 +131,10 @@ class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControl
         picker.dismiss(animated: true)
     }
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    func moreKeyboard(_ keyboard: Any?, didSelectedFunctionItem funcItem: TLMoreKeyboardItem?) {
-        if funcItem?.type == TLMoreKeyboardItemTypeCamera || funcItem?.type == TLMoreKeyboardItemTypeImage {
+    func moreKeyboard(_ keyboard: Any, didSelectedFunctionItem funcItem: TLMoreKeyboardItem) {
+        if funcItem.type == TLMoreKeyboardItemTypeCamera || funcItem.type == TLMoreKeyboardItemTypeImage {
             let imagePickerController = UIImagePickerController()
-            if funcItem?.type == TLMoreKeyboardItemTypeCamera {
+            if funcItem.type == TLMoreKeyboardItemTypeCamera {
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     imagePickerController.sourceType = .camera
                 } else {
@@ -151,7 +147,7 @@ class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControl
             imagePickerController.delegate = self
             present(imagePickerController, animated: true)
         } else {
-            if let aTitle = funcItem?.title {
+            if let aTitle = funcItem.title {
                 SVProgressHUD.showInfo(withStatus: "选中”\(aTitle)“ 按钮")
             }
         }
@@ -169,24 +165,24 @@ class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControl
     }
 
     //MARK: WXChatViewControllerProxy
-    func didClickedUserAvatar(_ user: WXUser?) {
+    func didClickedUserAvatar(_ user: WXUser) {
         let detailVC = WXFriendDetailViewController()
         detailVC.user = user
         hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(detailVC, animated: true)
+        navigationController.pushViewController(detailVC, animated: true)
     }
 
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    func didClickedImageMessages(_ imageMessages: [Any]?, at index: Int) {
+    func didClickedImageMessages(_ imageMessages: [Any], at index: Int) {
         var data: [AnyHashable] = []
-        for message: WXMessage? in imageMessages as? [WXMessage?] ?? [] {
-            var url: URL?
-            let imagePath = message?.content["path"]
+        for message: WXMessage in imageMessages as [WXMessage]  [] {
+            var url: URL
+            let imagePath = message.content["path"]
             if imagePath != nil {
                 let imagePatha = FileManager.pathUserChatImage(imagePath)
                 url = URL(fileURLWithPath: imagePatha)
             } else {
-                url = URL(string: message?.content["url"] ?? "")
+                url = URL(string: message.content["url"]  "")
             }
 
             let photo = MWPhoto(url: url)

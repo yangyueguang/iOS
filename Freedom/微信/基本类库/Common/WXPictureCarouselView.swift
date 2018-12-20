@@ -8,24 +8,24 @@
 
 import Foundation
 protocol WXPictureCarouselProtocol: NSObjectProtocol {
-    func pictureURL() -> String?
+    func pictureURL() -> String
 }
 
 protocol WXPictureCarouselDelegate: NSObjectProtocol {
-    func pictureCarouselView(_ pictureCarouselView: WXPictureCarouselView?, didSelectItem model: WXPictureCarouselProtocol?)
+    func pictureCarouselView(_ pictureCarouselView: WXPictureCarouselView, didSelectItem model: WXPictureCarouselProtocol)
 }
 //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
 class WXPictureCarouselViewCell: UICollectionViewCell {
-    private var _model: WXPictureCarouselProtocol?
-    var model: WXPictureCarouselProtocol? {
+    private var _model: WXPictureCarouselProtocol
+    var model: WXPictureCarouselProtocol {
         get {
             return _model
         }
         set(model) {
-            imageView?.sd_setImage(with: URL(string: model?.pictureURL() ?? ""))
+            imageView.sd_setImage(with: URL(string: model.pictureURL()  ""))
         }
     }
-    private var imageView: UIImageView?
+    private var imageView: UIImageView
 
     override init(frame: CGRect) {
         //if super.init(frame: frame)
@@ -38,17 +38,17 @@ class WXPictureCarouselViewCell: UICollectionViewCell {
 
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     func p_addMasonry() {
-        imageView?.mas_makeConstraints({ make in
-            make?.edges.mas_equalTo(self.contentView)
+        imageView.mas_makeConstraints({ make in
+            make.edges.mas_equalTo(self.contentView)
         })
     }
 
     // MARK: -
-    var imageView: UIImageView? {
+    var imageView: UIImageView {
         if imageView == nil {
             imageView = UIImageView()
         }
@@ -57,10 +57,10 @@ class WXPictureCarouselViewCell: UICollectionViewCell {
 
 }
 class WXPictureCarouselView:  UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    private var timer: Timer?
-    private var collectionView: UICollectionView?
+    private var timer: Timer
+    private var collectionView: UICollectionView
     var data: [Any] = []
-    weak var delegate: WXPictureCarouselDelegate?
+    weak var delegate: WXPictureCarouselDelegate
     var timeInterval: TimeInterval = 0.0
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
     init(frame: CGRect) {
@@ -75,7 +75,7 @@ class WXPictureCarouselView:  UICollectionViewDelegate, UICollectionViewDataSour
 
     }
 
-    func setData(_ data: [Any]?) {
+    func setData(_ data: [Any]) {
         self.data = data
         collectionView.reloadData()
         DispatchQueue.main.async(execute: {
@@ -98,19 +98,19 @@ class WXPictureCarouselView:  UICollectionViewDelegate, UICollectionViewDataSour
 
     // MARK: -
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count == 0 ? 0 : data.count + 2
+        return data.count == 0  0 : data.count + 2
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let row: Int = indexPath.row == 0 ? data.count - 1 : (indexPath.row == data.count + 1 ? 0 : indexPath.row - 1)
-        let model: WXPictureCarouselProtocol? = data[row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLPictureCarouselViewCell", for: indexPath) as? WXPictureCarouselViewCell
-        cell?.model = model
+        let row: Int = indexPath.row == 0  data.count - 1 : (indexPath.row == data.count + 1  0 : indexPath.row - 1)
+        let model: WXPictureCarouselProtocol = data[row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLPictureCarouselViewCell", for: indexPath) as WXPictureCarouselViewCell
+        cell.model = model
         return cell!
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let row: Int = indexPath.row == 0 ? data.count - 1 : (indexPath.row == data.count - 1 ? 0 : indexPath.row - 1)
-        let model: WXPictureCarouselProtocol? = data[row]
+        let row: Int = indexPath.row == 0  data.count - 1 : (indexPath.row == data.count - 1  0 : indexPath.row - 1)
+        let model: WXPictureCarouselProtocol = data[row]
         if delegate && delegate.responds(to: #selector(self.pictureCarouselView(_:didSelectItem:))) {
             delegate.pictureCarouselView(self, didSelectItem: model)
         }
@@ -161,7 +161,7 @@ class WXPictureCarouselView:  UICollectionViewDelegate, UICollectionViewDataSour
     // MARK: -
     func p_addMasonry() {
         collectionView.mas_makeConstraints({ make in
-            make?.edges.mas_equalTo(self)
+            make.edges.mas_equalTo(self)
         })
     }
     var collectionView: UICollectionView! {

@@ -1,20 +1,16 @@
 //
 //  WXChatBaseViewController.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/20.
-//  Copyright © 2018 薛超. All rights reserved.
-//
 
 import Foundation
 //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
 class WXTextDisplayView: UIView {
-    var attrString: NSAttributedString?
+    var attrString: NSAttributedString
 
-    func show(in view: UIView?, withAttrText attrText: NSAttributedString?, animation: Bool) {
+    func show(in view: UIView, withAttrText attrText: NSAttributedString, animation: Bool) {
     }
 
-    var textView: UITextView?
+    var textView: UITextView
 
     override init(frame: CGRect) {
         //if super.init(frame: frame)
@@ -23,8 +19,8 @@ class WXTextDisplayView: UIView {
         if let aView = textView {
             addSubview(aView)
         }
-        textView?.mas_makeConstraints({ make in
-            make?.center.mas_equalTo(self)
+        textView.mas_makeConstraints({ make in
+            make.center.mas_equalTo(self)
         })
 
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(WXTextDisplayView.dismiss))
@@ -32,12 +28,12 @@ class WXTextDisplayView: UIView {
 
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    func show(in view: UIView?, withAttrText attrText: NSAttributedString?, animation: Bool) {
-        view?.addSubview(self)
-        self.frame = view?.bounds
+    func show(in view: UIView, withAttrText attrText: NSAttributedString, animation: Bool) {
+        view.addSubview(self)
+        self.frame = view.bounds
         self.attrString = attrText
         self.alpha = 0
         UIView.animate(withDuration: 0.1, animations: {
@@ -46,20 +42,20 @@ class WXTextDisplayView: UIView {
             //        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
         }
     }
-    func setAttrString(_ attrString: NSAttributedString?) {
+    func setAttrString(_ attrString: NSAttributedString) {
         self.attrString = attrString
-        var mutableAttrString: NSMutableAttributedString? = nil
+        var mutableAttrString: NSMutableAttributedString = nil
         if let aString = attrString {
             mutableAttrString = NSMutableAttributedString(attributedString: aString)
         }
-        mutableAttrString?.addAttribute(.font, value: UIFont.systemFont(ofSize: 25.0), range: NSRange(location: 0, length: attrString?.length ?? 0))
+        mutableAttrString.addAttribute(.font, value: UIFont.systemFont(ofSize: 25.0), range: NSRange(location: 0, length: attrString.length  0))
         if let aString = mutableAttrString {
             textView.attributedText = aString
         }
         var size = textView.sizeThatFits(CGSize(width: frame.size.width * 0.94, height: MAXFLOAT))
-        size.height = size.height > APPH ? APPH : size.height
+        size.height = size.height > APPH  APPH : size.height
         textView.mas_updateConstraints({ make in
-            make?.size.mas_equalTo(size)
+            make.size.mas_equalTo(size)
         })
     }
     func dismiss() {
@@ -90,11 +86,11 @@ class WXTextDisplayView: UIView {
 }
 
 class WXEmojiDisplayView: UIImageView {
-    var emoji: TLEmoji?
+    var emoji: TLEmoji
     var rect = CGRect.zero
-    private var imageView: UIImageView?
-    private var imageLabel: UILabel?
-    private var titleLabel: UILabel?
+    private var imageView: UIImageView
+    private var imageLabel: UILabel
+    private var titleLabel: UILabel
 
     init(frame: CGRect) {
         //if super.init(frame: CGRect(x: 0, y: 0, width: CGSize(width: 55, height: 100).width, height: CGSize(width: 55, height: 100).height))
@@ -112,41 +108,41 @@ class WXEmojiDisplayView: UIImageView {
         p_addMasonry()
 
     }
-    func display(_ emoji: TLEmoji?, at rect: CGRect) {
+    func display(_ emoji: TLEmoji, at rect: CGRect) {
         self.rect = rect
         setEmoji(emoji)
     }
 
-    func setEmoji(_ emoji: TLEmoji?) {
+    func setEmoji(_ emoji: TLEmoji) {
         self.emoji = emoji
-        if emoji?.type == TLEmojiTypeEmoji {
+        if emoji.type == TLEmojiTypeEmoji {
             imageLabel.hidden = false
-            imageView?.isHidden = true
-            titleLabel?.isHidden = true
-            imageLabel.text = emoji?.emojiName
-        } else if emoji?.type == TLEmojiTypeFace {
+            imageView.isHidden = true
+            titleLabel.isHidden = true
+            imageLabel.text = emoji.emojiName
+        } else if emoji.type == TLEmojiTypeFace {
             imageLabel.hidden = true
-            imageView?.isHidden = false
-            titleLabel?.isHidden = false
-            imageView?.image = UIImage(named: emoji?.emojiName ?? "")
-            titleLabel?.text = emoji?.emojiName.substring(with: NSRange(location: 1, length: emoji?.emojiName.length ?? 0 - 2))
+            imageView.isHidden = false
+            titleLabel.isHidden = false
+            imageView.image = UIImage(named: emoji.emojiName  "")
+            titleLabel.text = emoji.emojiName.substring(with: NSRange(location: 1, length: emoji.emojiName.length  0 - 2))
         }
     }
     func p_addMasonry() {
-        imageView?.mas_makeConstraints({ make in
-            make?.top.mas_equalTo(self).mas_offset(10)
-            make?.left.mas_equalTo(self).mas_offset(12)
-            make?.right.mas_equalTo(self).mas_equalTo(-12)
-            make?.height.mas_equalTo(self.imageView?.mas_width)
+        imageView.mas_makeConstraints({ make in
+            make.top.mas_equalTo(self).mas_offset(10)
+            make.left.mas_equalTo(self).mas_offset(12)
+            make.right.mas_equalTo(self).mas_equalTo(-12)
+            make.height.mas_equalTo(self.imageView.mas_width)
         })
-        titleLabel?.mas_makeConstraints({ make in
-            make?.top.mas_equalTo(self.imageView?.mas_bottom).mas_offset(5)
-            make?.centerX.mas_equalTo(self)
-            make?.width.mas_lessThanOrEqualTo(self)
+        titleLabel.mas_makeConstraints({ make in
+            make.top.mas_equalTo(self.imageView.mas_bottom).mas_offset(5)
+            make.centerX.mas_equalTo(self)
+            make.width.mas_lessThanOrEqualTo(self)
         })
         imageLabel.mas_makeConstraints({ make in
-            make?.width.and().height().and().centerX.mas_equalTo(self.imageView)
-            make?.top.mas_equalTo(self).mas_offset(12)
+            make.width.and().height().and().centerX.mas_equalTo(self.imageView)
+            make.top.mas_equalTo(self).mas_offset(12)
         })
     }
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
@@ -157,14 +153,14 @@ class WXEmojiDisplayView: UIImageView {
     // MARK: - Private Methods -
 
     // MARK: - Getter -
-    var imageView: UIImageView? {
+    var imageView: UIImageView {
         if imageView == nil {
             imageView = UIImageView()
         }
         return imageView
     }
 
-    var titleLabel: UILabel? {
+    var titleLabel: UILabel {
         if titleLabel == nil {
             titleLabel = UILabel()
             titleLabel.font = UIFont.systemFont(ofSize: 12.0)
@@ -173,7 +169,7 @@ class WXEmojiDisplayView: UIImageView {
         return titleLabel
     }
 
-    func imageLabel() -> UILabel? {
+    func imageLabel() -> UILabel {
         if imageLabel == nil {
             imageLabel = UILabel()
             imageLabel.textAlignment = .center
@@ -187,59 +183,59 @@ class WXEmojiDisplayView: UIImageView {
     
 }
 extension UIButton {
-    func setImage(_ image: UIImage?, imageHL: UIImage?) {
+    func setImage(_ image: UIImage, imageHL: UIImage) {
         setImage(image, for: .normal)
         setImage(imageHL, for: .highlighted)
     }
 
-    class func initBtn(withFrame frame: CGRect, target: Any?, method: Selector, title: String?, setimageName: String?, backImageName: String?) -> UIButton? {
+    class func initBtn(withFrame frame: CGRect, target: Any, method: Selector, title: String, setimageName: String, backImageName: String) -> UIButton {
         let btn = UIButton(type: .custom)
         btn.frame = frame
         btn.addTarget(target, action: method, for: .touchUpInside)
         btn.setTitle(title, for: .normal)
         btn.setTitleColor(UIColor.white, for: .normal)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
-        btn.setImage(UIImage(named: setimageName ?? ""), for: .normal)
-        btn.setBackgroundImage(UIImage(named: backImageName ?? ""), for: .normal)
+        btn.titleLabel.font = UIFont.systemFont(ofSize: 16.0)
+        btn.setImage(UIImage(named: setimageName  ""), for: .normal)
+        btn.setBackgroundImage(UIImage(named: backImageName  ""), for: .normal)
         return btn
     }
 }
 protocol WXChatBarDelegate: NSObjectProtocol {
     //chatBar状态改变
-    func chatBar(_ chatBar: WXChatBar?, changeStatusFrom fromStatus: TLChatBarStatus, to toStatus: TLChatBarStatus)
+    func chatBar(_ chatBar: WXChatBar, changeStatusFrom fromStatus: TLChatBarStatus, to toStatus: TLChatBarStatus)
     //输入框高度改变
-    func chatBar(_ chatBar: WXChatBar?, didChangeTextViewHeight height: CGFloat)
+    func chatBar(_ chatBar: WXChatBar, didChangeTextViewHeight height: CGFloat)
 }
 
 protocol WXChatBarDataDelegate: NSObjectProtocol {
     //发送文字
-    func chatBar(_ chatBar: WXChatBar?, sendText text: String?)
+    func chatBar(_ chatBar: WXChatBar, sendText text: String)
     // 录音控制
-    func chatBarRecording(_ chatBar: WXChatBar?)
-    func chatBarWillCancelRecording(_ chatBar: WXChatBar?)
-    func chatBarDidCancelRecording(_ chatBar: WXChatBar?)
-    func chatBarFinishedRecoding(_ chatBar: WXChatBar?)
+    func chatBarRecording(_ chatBar: WXChatBar)
+    func chatBarWillCancelRecording(_ chatBar: WXChatBar)
+    func chatBarDidCancelRecording(_ chatBar: WXChatBar)
+    func chatBarFinishedRecoding(_ chatBar: WXChatBar)
 }
 class WXChatBar: UIView ,UITextViewDelegate {
-    private var kVoiceImage: UIImage?
-    private var kVoiceImageHL: UIImage?
-    private var kEmojiImage: UIImage?
-    private var kEmojiImageHL: UIImage?
-    private var kMoreImage: UIImage?
-    private var kMoreImageHL: UIImage?
-    private var kKeyboardImage: UIImage?
-    private var kKeyboardImageHL: UIImage?
+    private var kVoiceImage: UIImage
+    private var kVoiceImageHL: UIImage
+    private var kEmojiImage: UIImage
+    private var kEmojiImageHL: UIImage
+    private var kMoreImage: UIImage
+    private var kMoreImageHL: UIImage
+    private var kKeyboardImage: UIImage
+    private var kKeyboardImageHL: UIImage
 
-    private var modeButton: UIButton?
-    private var voiceButton: UIButton?
-    private var textView: UITextView?
-    private var talkButton: UIButton?
-    private var emojiButton: UIButton?
-    private var moreButton: UIButton?
+    private var modeButton: UIButton
+    private var voiceButton: UIButton
+    private var textView: UITextView
+    private var talkButton: UIButton
+    private var emojiButton: UIButton
+    private var moreButton: UIButton
 
-    weak var delegate: WXChatBarDelegate?
-    weak var dataDelegate: WXChatBarDataDelegate?
-    var status: TLChatBarStatus?
+    weak var delegate: WXChatBarDelegate
+    weak var dataDelegate: WXChatBarDataDelegate
+    var status: TLChatBarStatus
     private(set) var curText = ""
     var activity = false
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
@@ -279,8 +275,8 @@ class WXChatBar: UIView ,UITextViewDelegate {
         textViewDidChange(textView)
     }
 
-    func addEmojiString(_ emojiString: String?) {
-        let str = "\(textView.text)\(emojiString ?? "")"
+    func addEmojiString(_ emojiString: String) {
+        let str = "\(textView.text)\(emojiString  "")"
         textView.text = str
         textViewDidChange(textView)
     }
@@ -355,12 +351,12 @@ class WXChatBar: UIView ,UITextViewDelegate {
     }
     func textViewDidChange(_ textView: UITextView) {
         var height: CGFloat = textView.sizeThatFits(CGSize(width: self.textView.frame.size.width, height: MAXFLOAT)).height
-        height = height > 36 ? height : 36
-        height = height <= 115 ? height : textView.frame.size.height
+        height = height > 36  height : 36
+        height = height <= 115  height : textView.frame.size.height
         if height != textView.frame.size.height {
             UIView.animate(withDuration: 0.2, animations: {
                 textView.mas_updateConstraints({ make in
-                    make?.height.mas_equalTo(height)
+                    make.height.mas_equalTo(height)
                 })
                 self.superview.layoutIfNeeded()
                 if delegate && delegate.responds(to: #selector(self.chatBar(_:didChangeTextViewHeight:))) {
@@ -471,57 +467,57 @@ class WXChatBar: UIView ,UITextViewDelegate {
             status = TLChatBarStatusMore
         }
     }
-    func talkButtonTouchDown(_ sender: UIButton?) {
+    func talkButtonTouchDown(_ sender: UIButton) {
         if dataDelegate && dataDelegate.responds(to: #selector(self.chatBarRecording(_:))) {
             dataDelegate.chatBarRecording(self)
         }
     }
 
-    func talkButtonTouchUp(inside sender: UIButton?) {
+    func talkButtonTouchUp(inside sender: UIButton) {
         if dataDelegate && dataDelegate.responds(to: #selector(self.chatBarFinishedRecoding(_:))) {
             dataDelegate.chatBarFinishedRecoding(self)
         }
     }
 
-    func talkButtonTouchCancel(_ sender: UIButton?) {
+    func talkButtonTouchCancel(_ sender: UIButton) {
         if dataDelegate && dataDelegate.responds(to: #selector(self.chatBarDidCancelRecording(_:))) {
             dataDelegate.chatBarDidCancelRecording(self)
         }
     }
     func p_addMasonry() {
         modeButton.mas_makeConstraints({ make in
-            make?.left.mas_equalTo(self)
-            make?.bottom.mas_equalTo(self).mas_offset(-4)
-            make?.width.mas_equalTo(0)
+            make.left.mas_equalTo(self)
+            make.bottom.mas_equalTo(self).mas_offset(-4)
+            make.width.mas_equalTo(0)
         })
 
         voiceButton.mas_makeConstraints({ make in
-            make?.bottom.mas_equalTo(self).mas_offset(-7)
-            make?.left.mas_equalTo(self.modeButton.mas_right).mas_offset(1)
-            make?.width.mas_equalTo(38)
+            make.bottom.mas_equalTo(self).mas_offset(-7)
+            make.left.mas_equalTo(self.modeButton.mas_right).mas_offset(1)
+            make.width.mas_equalTo(38)
         })
 
         textView.mas_makeConstraints({ make in
-            make?.top.mas_equalTo(self).mas_offset(7)
-            make?.bottom.mas_equalTo(self).mas_offset(-7)
-            make?.left.mas_equalTo(self.voiceButton.mas_right).mas_offset(4)
-            make?.right.mas_equalTo(self.emojiButton.mas_left).mas_offset(-4)
-            make?.height.mas_equalTo(36)
+            make.top.mas_equalTo(self).mas_offset(7)
+            make.bottom.mas_equalTo(self).mas_offset(-7)
+            make.left.mas_equalTo(self.voiceButton.mas_right).mas_offset(4)
+            make.right.mas_equalTo(self.emojiButton.mas_left).mas_offset(-4)
+            make.height.mas_equalTo(36)
         })
 
         talkButton.mas_makeConstraints({ make in
-            make?.center.mas_equalTo(self.textView)
-            make?.size.mas_equalTo(self.textView)
+            make.center.mas_equalTo(self.textView)
+            make.size.mas_equalTo(self.textView)
         })
 
         moreButton.mas_makeConstraints({ make in
-            make?.top.and().width().mas_equalTo(self.voiceButton)
-            make?.right.mas_equalTo(self).mas_offset(-1)
+            make.top.and().width().mas_equalTo(self.voiceButton)
+            make.right.mas_equalTo(self).mas_offset(-1)
         })
 
         emojiButton.mas_makeConstraints({ make in
-            make?.top.and().width().mas_equalTo(self.voiceButton)
-            make?.right.mas_equalTo(self.moreButton.mas_left)
+            make.top.and().width().mas_equalTo(self.voiceButton)
+            make.right.mas_equalTo(self.moreButton.mas_left)
         })
     }
     func p_initImage() {
@@ -538,14 +534,14 @@ class WXChatBar: UIView ,UITextViewDelegate {
     func draw(_ rect: CGRect) {
         super.draw(rect)
         let context = UIGraphicsGetCurrentContext()
-        context?.setLineWidth(0.5)
-        context?.setStrokeColor(UIColor.gray.cgColor)
-        context?.beginPath()
-        context?.move(to: CGPoint(x: 0, y: 0))
-        context?.addLine(to: CGPoint(x: APPW, y: 0))
-        context?.strokePath()
+        context.setLineWidth(0.5)
+        context.setStrokeColor(UIColor.gray.cgColor)
+        context.beginPath()
+        context.move(to: CGPoint(x: 0, y: 0))
+        context.addLine(to: CGPoint(x: APPW, y: 0))
+        context.strokePath()
     }
-    func modeButton() -> UIButton? {
+    func modeButton() -> UIButton {
         if modeButton == nil {
             modeButton = UIButton()
             modeButton.setImage(UIImage(named: "chat_toolbar_texttolist"), imageHL: UIImage(named: "chat_toolbar_texttolist_HL"))
@@ -554,7 +550,7 @@ class WXChatBar: UIView ,UITextViewDelegate {
         return modeButton
     }
 
-    func voiceButton() -> UIButton? {
+    func voiceButton() -> UIButton {
         if voiceButton == nil {
             voiceButton = UIButton()
             voiceButton.setImage(kVoiceImage, imageHL: kVoiceImageHL)
@@ -577,14 +573,14 @@ class WXChatBar: UIView ,UITextViewDelegate {
         }
         return textView
     }
-    func talkButton() -> UIButton? {
+    func talkButton() -> UIButton {
         if talkButton == nil {
             talkButton = UIButton()
             talkButton.setTitle("按住 说话", for: .normal)
             talkButton.setTitle("松开 结束", for: .highlighted)
             talkButton.setTitleColor(UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0), for: .normal)
             talkButton.setBackgroundImage(FreedomTools(color: UIColor(white: 0.0, alpha: 0.1)), for: .highlighted)
-            talkButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+            talkButton.titleLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
             talkButton.layer.masksToBounds = true
             talkButton.layer.cornerRadius = 4.0
             talkButton.layer.borderWidth = 1
@@ -597,7 +593,7 @@ class WXChatBar: UIView ,UITextViewDelegate {
         }
         return talkButton
     }
-    func emojiButton() -> UIButton? {
+    func emojiButton() -> UIButton {
         if emojiButton == nil {
             emojiButton = UIButton()
             emojiButton.setImage(kEmojiImage, imageHL: kEmojiImageHL)
@@ -606,7 +602,7 @@ class WXChatBar: UIView ,UITextViewDelegate {
         return emojiButton
     }
 
-    func moreButton() -> UIButton? {
+    func moreButton() -> UIButton {
         if moreButton == nil {
             moreButton = UIButton()
             moreButton.setImage(kMoreImage, imageHL: kMoreImageHL)
@@ -615,7 +611,7 @@ class WXChatBar: UIView ,UITextViewDelegate {
         return moreButton
     }
 
-    func curText() -> String? {
+    func curText() -> String {
         return textView.text
     }
 
@@ -626,32 +622,32 @@ class WXChatBar: UIView ,UITextViewDelegate {
 }
 
 protocol WXChatViewControllerProxy: NSObjectProtocol {
-    func didClickedUserAvatar(_ user: WXUser?)
-    func didClickedImageMessages(_ imageMessages: [Any]?, at index: Int)
+    func didClickedUserAvatar(_ user: WXUser)
+    func didClickedImageMessages(_ imageMessages: [Any], at index: Int)
 }
 //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
 //  FreedomBaseViewController.h
 
 class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy, WXMoreKeyboardDelegate, WXChatBarDelegate, TLKeyboardDelegate, TLEmojiKeyboardDelegate, WXChatBarDataDelegate, WXChatTableViewControllerDelegate {
-    var lastStatus: TLChatBarStatus?
-    var curStatus: TLChatBarStatus?
+    var lastStatus: TLChatBarStatus
+    var curStatus: TLChatBarStatus
 
     /// 用户信息
-    var user: WXChatUserProtocol?
+    var user: WXChatUserProtocol
     /// 聊天对象
-    var partner: WXChatUserProtocol?
+    var partner: WXChatUserProtocol
     /// 消息展示页面
-    var chatTableVC: WXChatTableViewController?
+    var chatTableVC: WXChatTableViewController
     /// 聊天输入栏
-    var chatBar: WXChatBar?
+    var chatBar: WXChatBar
     /// 更多键盘
-    var moreKeyboard: TLMoreKeyboard?
+    var moreKeyboard: TLMoreKeyboard
     /// 表情键盘
-    var emojiKeyboard: TLEmojiKeyboard?
+    var emojiKeyboard: TLEmojiKeyboard
     /// emoji展示view
-    var emojiDisplayView: WXEmojiDisplayView?
+    var emojiDisplayView: WXEmojiDisplayView
     /// 图片表情展示view
-    var imageExpressionDisplayView: WXImageExpressionDisplayView?
+    var imageExpressionDisplayView: WXImageExpressionDisplayView
     private var lastDateInterval: TimeInterval = 0
     private var msgAccumulate: Int = 0
     func viewDidLoad() {
@@ -677,28 +673,28 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
     }
 
     // MARK: - Public Methods -
-    func setPartner(_ partner: WXChatUserProtocol?) {
-        if self.partner && (self.partner.chat_userID() == partner?.chat_userID()) {
+    func setPartner(_ partner: WXChatUserProtocol) {
+        if self.partner && (self.partner.chat_userID() == partner.chat_userID()) {
             return
         }
         self.partner = partner
-        navigationItem?.title = self.partner.chat_username()
+        navigationItem.title = self.partner.chat_username()
         resetChatVC()
     }
 
-    func setChatMoreKeyboardData(_ moreKeyboardData: [AnyHashable]?) {
+    func setChatMoreKeyboardData(_ moreKeyboardData: [AnyHashable]) {
         var moreKeyboardData = moreKeyboardData
         moreKeyboard.setChatMoreKeyboardData(moreKeyboardData)
     }
-    func setChatEmojiKeyboardData(_ emojiKeyboardData: [AnyHashable]?) {
+    func setChatEmojiKeyboardData(_ emojiKeyboardData: [AnyHashable]) {
         var emojiKeyboardData = emojiKeyboardData
         emojiKeyboard.emojiGroupData = emojiKeyboardData
     }
 
     func resetChatVC() {
-        var chatViewBGImage = UserDefaults.standard.object(forKey: "CHAT_BG_" + (partner.chat_userID())) as? String
+        var chatViewBGImage = UserDefaults.standard.object(forKey: "CHAT_BG_" + (partner.chat_userID())) as String
         if chatViewBGImage == nil {
-            chatViewBGImage = UserDefaults.standard.object(forKey: "CHAT_BG_ALL") as? String
+            chatViewBGImage = UserDefaults.standard.object(forKey: "CHAT_BG_ALL") as String
             if chatViewBGImage == nil {
                 view.backgroundColor = UIColor(white: 0.5, alpha: 0.3)
             } else {
@@ -720,10 +716,10 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
     }
     //发送图片消息
 
-    func sendImageMessage(_ image: UIImage?) {
-        var imageData: Data? = nil
+    func sendImageMessage(_ image: UIImage) {
+        var imageData: Data = nil
         if let anImage = image {
-            imageData = UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) : anImage.jpegData(compressionQuality: 0.5)
+            imageData = UIImagePNGRepresentation(image)  UIImagePNGRepresentation(image) : anImage.jpegData(compressionQuality: 0.5)
         }
         let imageName = String(format: "%lf.jpg", Date().timeIntervalSince1970)
         let imagePath = FileManager.pathUserChatImage(imageName)
@@ -734,7 +730,7 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
         message.messageType = TLMessageTypeImage
         message.ownerTyper = TLMessageOwnerTypeSelf
         message.content["path"] = imageName
-        message.imageSize = image?.size
+        message.imageSize = image.size
         send(message)
         if partner.chat_user() == TLChatUserTypeUser {
             let message1 = WXImageMessage()
@@ -742,40 +738,40 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
             message1.messageType = TLMessageTypeImage
             message1.ownerTyper = TLMessageOwnerTypeFriend
             message1.content["path"] = imageName
-            message1.imageSize = image?.size
+            message1.imageSize = image.size
             send(message1)
         } else {
-            for user: WXChatUserProtocol? in partner.groupMembers() {
+            for user: WXChatUserProtocol in partner.groupMembers() {
                 let message1 = WXImageMessage()
-                message1.friendID = user?.chat_userID()
+                message1.friendID = user.chat_userID()
                 message1.fromUser = user
                 message1.messageType = TLMessageTypeImage
                 message1.ownerTyper = TLMessageOwnerTypeFriend
                 message1.content["path"] = imageName
-                message1.imageSize = image?.size
+                message1.imageSize = image.size
                 send(message1)
             }
         }
     }
     func p_addMasonry() {
-        chatTableVC()?.tableView.mas_makeConstraints({ make in
-            make?.top.and().left().and().right().mas_equalTo(self.view)
-            make?.bottom.mas_equalTo(self.chatBar.mas_top)
+        chatTableVC().tableView.mas_makeConstraints({ make in
+            make.top.and().left().and().right().mas_equalTo(self.view)
+            make.bottom.mas_equalTo(self.chatBar.mas_top)
         })
         chatBar.mas_makeConstraints({ make in
-            make?.left.and().right().and().bottom().mas_equalTo(self.view)
+            make.left.and().right().and().bottom().mas_equalTo(self.view)
         })
     }
 
     // MARK: - Getter -
-    func chatTableVC() -> WXChatTableViewController? {
+    func chatTableVC() -> WXChatTableViewController {
         if chatTableVC == nil {
             chatTableVC = WXChatTableViewController()
             chatTableVC.delegate = self
         }
         return chatTableVC
     }
-    func chatBar() -> WXChatBar? {
+    func chatBar() -> WXChatBar {
         if chatBar == nil {
             chatBar = WXChatBar()
             chatBar.delegate = self
@@ -784,7 +780,7 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
         return chatBar
     }
 
-    func emojiKeyboard() -> TLEmojiKeyboard? {
+    func emojiKeyboard() -> TLEmojiKeyboard {
         if emojiKeyboard == nil {
             emojiKeyboard = TLEmojiKeyboard()
             emojiKeyboard.keyboardDelegate = self
@@ -793,7 +789,7 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
         return emojiKeyboard
     }
 
-    func moreKeyboard() -> TLMoreKeyboard? {
+    func moreKeyboard() -> TLMoreKeyboard {
         if moreKeyboard == nil {
             moreKeyboard = TLMoreKeyboard()
             moreKeyboard.keyboardDelegate = self
@@ -801,20 +797,20 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
         }
         return moreKeyboard
     }
-    func emojiDisplayView() -> WXEmojiDisplayView? {
+    func emojiDisplayView() -> WXEmojiDisplayView {
         if emojiDisplayView == nil {
             emojiDisplayView = WXEmojiDisplayView()
         }
         return emojiDisplayView
     }
 
-    func imageExpressionDisplayView() -> WXImageExpressionDisplayView? {
+    func imageExpressionDisplayView() -> WXImageExpressionDisplayView {
         if imageExpressionDisplayView == nil {
             imageExpressionDisplayView = WXImageExpressionDisplayView()
         }
         return imageExpressionDisplayView
     }
-    func chatBar(_ chatBar: WXChatBar?, sendText text: String?) {
+    func chatBar(_ chatBar: WXChatBar, sendText text: String) {
         let message = WXTextMessage()
         message.fromUser = user
         message.messageType = TLMessageTypeText
@@ -829,9 +825,9 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
             message1.content["text"] = text
             send(message1)
         } else {
-            for user: WXChatUserProtocol? in partner.groupMembers() {
+            for user: WXChatUserProtocol in partner.groupMembers() {
                 let message1 = WXTextMessage()
-                message1.friendID = user?.chat_userID()
+                message1.friendID = user.chat_userID()
                 message1.fromUser = user
                 message1.messageType = TLMessageTypeText
                 message1.ownerTyper = TLMessageOwnerTypeFriend
@@ -841,25 +837,25 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
         }
     }
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    func chatBarRecording(_ chatBar: WXChatBar?) {
+    func chatBarRecording(_ chatBar: WXChatBar) {
         DLog("rec...")
     }
 
-    func chatBarWillCancelRecording(_ chatBar: WXChatBar?) {
+    func chatBarWillCancelRecording(_ chatBar: WXChatBar) {
         DLog("will cancel")
     }
 
-    func chatBarDidCancelRecording(_ chatBar: WXChatBar?) {
+    func chatBarDidCancelRecording(_ chatBar: WXChatBar) {
         DLog("cancel")
     }
 
-    func chatBarFinishedRecoding(_ chatBar: WXChatBar?) {
+    func chatBarFinishedRecoding(_ chatBar: WXChatBar) {
         DLog("finished")
     }
 
     // MARK: - Public Methods -
-    func add(toShow message: WXMessage?) {
-        message?.showTime = p_needShowTime(message?.date)
+    func add(toShow message: WXMessage) {
+        message.showTime = p_needShowTime(message.date)
         chatTableVC.add(message)
         chatTableVC.scrollToBottom(withAnimation: true)
     }
@@ -871,27 +867,27 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
     }
     // chatView 获取历史记录
 
-    func chatTableViewController(_ chatTVC: WXChatTableViewController?, getRecordsFrom date: Date?, count: Int, completed: @escaping (Date?, [Any]?, Bool) -> Void) {
+    func chatTableViewController(_ chatTVC: WXChatTableViewController, getRecordsFrom date: Date, count: Int, completed: @escaping (Date, [Any], Bool) -> Void) {
         var count = count
         WXMessageManager.sharedInstance().messageRecord(forPartner: partner.chat_userID(), from: date, count: count, complete: { array, hasMore in
-            if (array?.count ?? 0) > 0 {
+            if (array.count  0) > 0 {
                 var count: Int = 0
                 var tm: TimeInterval = 0
-                for message: WXMessage? in array as? [WXMessage?] ?? [] {
+                for message: WXMessage in array as [WXMessage]  [] {
                     count += 1
-                    if count > 10 || tm == 0 || (message?.date.timeIntervalSince1970 ?? 0.0) - tm > 30 {
-                        tm = message?.date.timeIntervalSince1970 ?? 0.0
+                    if count > 10 || tm == 0 || (message.date.timeIntervalSince1970  0.0) - tm > 30 {
+                        tm = message.date.timeIntervalSince1970  0.0
                         count = 0
-                        message?.showTime = true
+                        message.showTime = true
                     }
-                    if message?.ownerTyper == TLMessageOwnerTypeSelf {
-                        message?.fromUser = self.user
+                    if message.ownerTyper == TLMessageOwnerTypeSelf {
+                        message.fromUser = self.user
                     } else {
                         if self.partner.chat_user() == TLChatUserTypeUser {
-                            message?.fromUser = self.partner
+                            message.fromUser = self.partner
                         } else if self.partner.chat_user() == TLChatUserTypeGroup {
                             if self.partner.responds(to: #selector(self.groupMember(byID:))) {
-                                message?.fromUser = self.partner.groupMember(byID: message?.friendID)
+                                message.fromUser = self.partner.groupMember(byID: message.friendID)
                             }
                         }
                     }
@@ -903,34 +899,34 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
     // chatView 点击事件
 
-    func chatTableViewControllerDidTouched(_ chatTVC: WXChatTableViewController?) {
+    func chatTableViewControllerDidTouched(_ chatTVC: WXChatTableViewController) {
         if chatBar.isFirstResponder {
             chatBar.resignFirstResponder()
         }
     }
 
-    func chatTableViewController(_ chatTVC: WXChatTableViewController?, delete message: WXMessage?) -> Bool {
-        return WXMessageManager.sharedInstance().deleteMessage(byMsgID: message?.messageID)
+    func chatTableViewController(_ chatTVC: WXChatTableViewController, delete message: WXMessage) -> Bool {
+        return WXMessageManager.sharedInstance().deleteMessage(byMsgID: message.messageID)
     }
 
-    func chatTableViewController(_ chatTVC: WXChatTableViewController?, didClickUserAvatar user: WXUser?) {
+    func chatTableViewController(_ chatTVC: WXChatTableViewController, didClickUserAvatar user: WXUser) {
         if responds(to: #selector(self.didClickedUserAvatar(_:))) {
             didClickedUserAvatar(user)
         }
     }
 
-    func chatTableViewController(_ chatTVC: WXChatTableViewController?, didDoubleClick message: WXMessage?) {
-        if message?.messageType == TLMessageTypeText {
+    func chatTableViewController(_ chatTVC: WXChatTableViewController, didDoubleClick message: WXMessage) {
+        if message.messageType == TLMessageTypeText {
             let displayView = WXTextDisplayView()
-            displayView.show(in: navigationController?.view, withAttrText: (message as? WXTextMessage)?.attrText(), animation: true)
+            displayView.show(in: navigationController.view, withAttrText: (message as WXTextMessage).attrText(), animation: true)
         }
     }
-    func chatTableViewController(_ chatTVC: WXChatTableViewController?, didClick message: WXMessage?) {
-        if message?.messageType == TLMessageTypeImage && responds(to: #selector(self.didClickedImageMessages(_:atIndex:))) {
+    func chatTableViewController(_ chatTVC: WXChatTableViewController, didClick message: WXMessage) {
+        if message.messageType == TLMessageTypeImage && responds(to: #selector(self.didClickedImageMessages(_:atIndex:))) {
             WXMessageManager.sharedInstance().chatImagesAndVideos(forPartnerID: partner.chat_userID(), completed: { imagesData in
                 var index: Int = -1
-                for i in 0..<(imagesData?.count ?? 0) {
-                    if (message?.messageID == imagesData?[i].messageID) {
+                for i in 0..<(imagesData.count  0) {
+                    if (message.messageID == imagesData[i].messageID) {
                         index = i
                         break
                     }
@@ -941,27 +937,27 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
             })
         }
     }
-    func p_needShowTime(_ date: Date?) -> Bool {
+    func p_needShowTime(_ date: Date) -> Bool {
         msgAccumulate += 1
-        if msgAccumulate > 10 || lastDateInterval == 0 || (date?.timeIntervalSince1970 ?? 0.0) - lastDateInterval > 30 {
-            lastDateInterval = date?.timeIntervalSince1970
+        if msgAccumulate > 10 || lastDateInterval == 0 || (date.timeIntervalSince1970  0.0) - lastDateInterval > 30 {
+            lastDateInterval = date.timeIntervalSince1970
             msgAccumulate = 0
             return true
         }
         return false
     }
-    func send(_ message: WXMessage?) {
-        message?.userID = WXUserHelper.shared().user.userID
+    func send(_ message: WXMessage) {
+        message.userID = WXUserHelper.shared().user.userID
         if partner.chat_user() == TLChatUserTypeUser {
-            message?.partnerType = TLPartnerTypeUser
-            message?.friendID = partner.chat_userID()
+            message.partnerType = TLPartnerTypeUser
+            message.friendID = partner.chat_userID()
         } else if partner.chat_user() == TLChatUserTypeGroup {
-            message?.partnerType = TLPartnerTypeGroup
-            message?.groupID = partner.chat_userID()
+            message.partnerType = TLPartnerTypeGroup
+            message.groupID = partner.chat_userID()
         }
         //    message.ownerTyper = TLMessageOwnerTypeSelf;
         //    message.fromUser = [WXUserHelper sharedHelper].user;
-        message?.date = Date()
+        message.date = Date()
 
         add(toShow: message) // 添加到列表
         WXMessageManager.sharedInstance().send(message, progress: { message, pregress in
@@ -972,9 +968,9 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
             DLog("send failure")
         })
     }
-    func emojiKeyboard(_ emojiKB: TLEmojiKeyboard?, didSelectedEmojiItem emoji: TLEmoji?) {
-        if emoji?.type == TLEmojiTypeEmoji || emoji?.type == TLEmojiTypeFace {
-            chatBar.addEmojiString(emoji?.emojiName)
+    func emojiKeyboard(_ emojiKB: TLEmojiKeyboard, didSelectedEmojiItem emoji: TLEmoji) {
+        if emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace {
+            chatBar.addEmojiString(emoji.emojiName)
         } else {
             let message = WXExpressionMessage()
             message.fromUser = user
@@ -990,9 +986,9 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
                 message1.emoji = emoji
                 send(message1)
             } else {
-                for user: WXChatUserProtocol? in partner.groupMembers() {
+                for user: WXChatUserProtocol in partner.groupMembers() {
                     let message1 = WXExpressionMessage()
-                    message1.friendID = user?.chat_userID()
+                    message1.friendID = user.chat_userID()
                     message1.fromUser = user
                     message1.messageType = TLMessageTypeExpression
                     message1.ownerTyper = TLMessageOwnerTypeFriend
@@ -1006,8 +1002,8 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
         chatBar.sendCurrentText()
     }
 
-    func emojiKeyboard(_ emojiKB: TLEmojiKeyboard?, didTouchEmojiItem emoji: TLEmoji?, at rect: CGRect) {
-        if emoji?.type == TLEmojiTypeEmoji || emoji?.type == TLEmojiTypeFace {
+    func emojiKeyboard(_ emojiKB: TLEmojiKeyboard, didTouchEmojiItem emoji: TLEmoji, at rect: CGRect) {
+        if emoji.type == TLEmojiTypeEmoji || emoji.type == TLEmojiTypeFace {
             if emojiDisplayView.superview == nil {
                 emojiKeyboard.addSubview(emojiDisplayView)
             }
@@ -1019,7 +1015,7 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
             imageExpressionDisplayView.display(emoji, at: rect)
         }
     }
-    func emojiKeyboardCancelTouchEmojiItem(_ emojiKB: TLEmojiKeyboard?) {
+    func emojiKeyboardCancelTouchEmojiItem(_ emojiKB: TLEmojiKeyboard) {
         if emojiDisplayView.superview != nil {
             emojiDisplayView.removeFromSuperview()
         } else if imageExpressionDisplayView.superview != nil {
@@ -1027,7 +1023,7 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
         }
     }
 
-    func emojiKeyboard(_ emojiKB: TLEmojiKeyboard?, selectedEmojiGroupType type: TLEmojiType) {
+    func emojiKeyboard(_ emojiKB: TLEmojiKeyboard, selectedEmojiGroupType type: TLEmojiType) {
         if type == TLEmojiTypeEmoji || type == TLEmojiTypeFace {
             chatBar.activity = true
         } else {
@@ -1036,36 +1032,36 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
     }
 
     func chatInputViewHasText() -> Bool {
-        return chatBar.curText.length == 0 ? false : true
+        return chatBar.curText.length == 0  false : true
     }
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    func keyboardWillHide(_ notification: Notification?) {
+    func keyboardWillHide(_ notification: Notification) {
         if curStatus == TLChatBarStatusEmoji || curStatus == TLChatBarStatusMore {
             return
         }
         chatBar.mas_updateConstraints({ make in
-            make?.bottom.mas_equalTo(self.view)
+            make.bottom.mas_equalTo(self.view)
         })
         view.layoutIfNeeded()
     }
 
-    func keyboardFrameWillChange(_ notification: Notification?) {
-        let keyboardFrame: CGRect? = notification?.userInfo[UIResponder.keyboardFrameEndUserInfoKey]?.cgRectValue
+    func keyboardFrameWillChange(_ notification: Notification) {
+        let keyboardFrame: CGRect = notification.userInfo[UIResponder.keyboardFrameEndUserInfoKey].cgRectValue
         if lastStatus == TLChatBarStatusMore || lastStatus == TLChatBarStatusEmoji {
-            if (keyboardFrame?.size.height ?? 0.0) <= 215.0 {
+            if (keyboardFrame.size.height  0.0) <= 215.0 {
                 return
             }
         } else if curStatus == TLChatBarStatusEmoji || curStatus == TLChatBarStatusMore {
             return
         }
         chatBar.mas_updateConstraints({ make in
-            make?.bottom.mas_equalTo(self.view).mas_offset(-(keyboardFrame?.size.height ?? 0.0))
+            make.bottom.mas_equalTo(self.view).mas_offset(-(keyboardFrame.size.height  0.0))
         })
         view.layoutIfNeeded()
         chatTableVC.scrollToBottom(withAnimation: false)
     }
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    func keyboardDidShow(_ notification: Notification?) {
+    func keyboardDidShow(_ notification: Notification) {
         if lastStatus == TLChatBarStatusMore {
             moreKeyboard.dismiss(withAnimation: false)
         } else if lastStatus == TLChatBarStatusEmoji {
@@ -1075,22 +1071,22 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
 
     // MARK: -
     //MARK: TLKeyboardDelegate
-    func chatKeyboard(_ keyboard: Any?, didChangeHeight height: CGFloat) {
+    func chatKeyboard(_ keyboard: Any, didChangeHeight height: CGFloat) {
         chatBar.mas_updateConstraints({ make in
-            make?.bottom.mas_equalTo(self.view).mas_offset(-height)
+            make.bottom.mas_equalTo(self.view).mas_offset(-height)
         })
         view.layoutIfNeeded()
         chatTableVC.scrollToBottom(withAnimation: false)
     }
 
-    func chatKeyboardDidShow(_ keyboard: Any?) {
+    func chatKeyboardDidShow(_ keyboard: Any) {
         if curStatus == TLChatBarStatusMore && lastStatus == TLChatBarStatusEmoji {
             emojiKeyboard.dismiss(withAnimation: false)
         } else if curStatus == TLChatBarStatusEmoji && lastStatus == TLChatBarStatusMore {
             moreKeyboard.dismiss(withAnimation: false)
         }
     }
-    func chatBar(_ chatBar: WXChatBar?, changeStatusFrom fromStatus: TLChatBarStatus, to toStatus: TLChatBarStatus) {
+    func chatBar(_ chatBar: WXChatBar, changeStatusFrom fromStatus: TLChatBarStatus, to toStatus: TLChatBarStatus) {
         if curStatus == toStatus {
             return
         }
@@ -1105,15 +1101,15 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
         } else if toStatus == TLChatBarStatusKeyboard {
             if fromStatus == TLChatBarStatusMore {
                 moreKeyboard.mas_remakeConstraints({ make in
-                    make?.top.mas_equalTo(self.chatBar.mas_bottom)
-                    make?.left.and().right().mas_equalTo(self.view)
-                    make?.height.mas_equalTo(215.0)
+                    make.top.mas_equalTo(self.chatBar.mas_bottom)
+                    make.left.and().right().mas_equalTo(self.view)
+                    make.height.mas_equalTo(215.0)
                 })
             } else if fromStatus == TLChatBarStatusEmoji {
                 emojiKeyboard.mas_remakeConstraints({ make in
-                    make?.top.mas_equalTo(self.chatBar.mas_bottom)
-                    make?.left.and().right().mas_equalTo(self.view)
-                    make?.height.mas_equalTo(215.0)
+                    make.top.mas_equalTo(self.chatBar.mas_bottom)
+                    make.left.and().right().mas_equalTo(self.view)
+                    make.height.mas_equalTo(215.0)
                 })
             }
         } else if toStatus == TLChatBarStatusVoice {
@@ -1136,7 +1132,7 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
             }
         }
     }
-    func chatBar(_ chatBar: WXChatBar?, didChangeTextViewHeight height: CGFloat) {
+    func chatBar(_ chatBar: WXChatBar, didChangeTextViewHeight height: CGFloat) {
         chatTableVC.scrollToBottom(withAnimation: false)
     }
 

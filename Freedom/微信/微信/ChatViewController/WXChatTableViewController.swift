@@ -1,10 +1,6 @@
 //
 //  WXChatTableViewController.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/20.
-//  Copyright © 2018 薛超. All rights reserved.
-//
 
 import Foundation
 let PAGE_MESSAGE_COUNT = 15
@@ -29,13 +25,13 @@ enum TLChatMenuItemType : Int {
 }
 
 class WXMessageBaseCell: UITableViewCell {
-    weak var delegate: WXMessageCellDelegate?
-    var timeLabel: UILabel?
-    var avatarButton: UIButton?
-    var usernameLabel: UILabel?
-    var messageBackgroundView: UIImageView?
-    var message: WXMessage?
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    weak var delegate: WXMessageCellDelegate
+    var timeLabel: UILabel
+    var avatarButton: UIButton
+    var usernameLabel: UILabel
+    var messageBackgroundView: UIImageView
+    var message: WXMessage
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         backgroundColor = UIColor.clear
@@ -47,89 +43,89 @@ class WXMessageBaseCell: UITableViewCell {
         p_addMasonry()
 
     }
-    func setMessage(_ message: WXMessage?) {
-        if self.message && (self.message.messageID == message?.messageID) {
+    func setMessage(_ message: WXMessage) {
+        if self.message && (self.message.messageID == message.messageID) {
             return
         }
-        if let aNow = message?.date.timeToNow {
+        if let aNow = message.date.timeToNow {
             timeLabel.text = "  \(aNow)  "
         }
-        usernameLabel.text = message?.fromUser.chat_username()
-        if message?.fromUser.chat_avatarPath().length ?? 0 > 0 {
-            let path = FileManager.pathUserAvatar(message?.fromUser.chat_avatarPath())
+        usernameLabel.text = message.fromUser.chat_username()
+        if message.fromUser.chat_avatarPath().length  0 > 0 {
+            let path = FileManager.pathUserAvatar(message.fromUser.chat_avatarPath())
             avatarButton.setImage(UIImage(named: path), for: .normal)
         } else {
-            avatarButton.sd_setImage(with: URL(string: message?.fromUser.chat_avatarURL() ?? ""), for: UIControl.State.normal)
+            avatarButton.sd_setImage(with: URL(string: message.fromUser.chat_avatarURL()  ""), for: UIControl.State.normal)
         }
 
         // 时间
-        if !self.message || self.message.showTime != message?.showTime {
+        if !self.message || self.message.showTime != message.showTime {
             timeLabel.mas_updateConstraints({ make in
-                make?.height.mas_equalTo(message?.showTime != nil ? TIMELABEL_HEIGHT : 0)
-                make?.top.mas_equalTo(self.contentView).mas_offset(message?.showTime != nil ? TIMELABEL_SPACE_Y : 0)
+                make.height.mas_equalTo(message.showTime != nil  TIMELABEL_HEIGHT : 0)
+                make.top.mas_equalTo(self.contentView).mas_offset(message.showTime != nil  TIMELABEL_SPACE_Y : 0)
             })
         }
 
-        if message == nil || self.message.ownerTyper != message?.ownerTyper {
+        if message == nil || self.message.ownerTyper != message.ownerTyper {
             // 头像
             avatarButton.mas_remakeConstraints({ make in
-                make?.width.and().height().mas_equalTo(AVATAR_WIDTH)
-                make?.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(AVATAR_SPACE_Y)
-                if message?.ownerTyper == TLMessageOwnerTypeSelf {
-                    make?.right.mas_equalTo(self.contentView).mas_offset(-AVATAR_SPACE_X)
+                make.width.and().height().mas_equalTo(AVATAR_WIDTH)
+                make.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(AVATAR_SPACE_Y)
+                if message.ownerTyper == TLMessageOwnerTypeSelf {
+                    make.right.mas_equalTo(self.contentView).mas_offset(-AVATAR_SPACE_X)
                 } else {
-                    make?.left.mas_equalTo(self.contentView).mas_offset(AVATAR_SPACE_X)
+                    make.left.mas_equalTo(self.contentView).mas_offset(AVATAR_SPACE_X)
                 }
             })
 
             // 用户名
             usernameLabel.mas_remakeConstraints({ make in
-                make?.top.mas_equalTo(self.avatarButton).mas_equalTo(-NAMELABEL_SPACE_Y)
-                if message?.ownerTyper == TLMessageOwnerTypeSelf {
-                    make?.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-NAMELABEL_SPACE_X)
+                make.top.mas_equalTo(self.avatarButton).mas_equalTo(-NAMELABEL_SPACE_Y)
+                if message.ownerTyper == TLMessageOwnerTypeSelf {
+                    make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-NAMELABEL_SPACE_X)
                 } else {
-                    make?.left.mas_equalTo(self.avatarButton.mas_right).mas_equalTo(NAMELABEL_SPACE_X)
+                    make.left.mas_equalTo(self.avatarButton.mas_right).mas_equalTo(NAMELABEL_SPACE_X)
                 }
             })
 
             // 背景
             messageBackgroundView.mas_remakeConstraints({ make in
-                message?.ownerTyper == TLMessageOwnerTypeSelf ? make?.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-MSGBG_SPACE_X) : make?.left.mas_equalTo(self.avatarButton.mas_right).mas_offset(MSGBG_SPACE_X)
-                make?.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(message?.showName != nil ? 0 : -MSGBG_SPACE_Y)
+                message.ownerTyper == TLMessageOwnerTypeSelf  make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-MSGBG_SPACE_X) : make.left.mas_equalTo(self.avatarButton.mas_right).mas_offset(MSGBG_SPACE_X)
+                make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(message.showName != nil  0 : -MSGBG_SPACE_Y)
             })
         }
 
-        usernameLabel.hidden = !message?.showName
+        usernameLabel.hidden = !message.showName
         usernameLabel.mas_updateConstraints({ make in
-            make?.height.mas_equalTo(message?.showName != nil ? NAMELABEL_HEIGHT : 0)
+            make.height.mas_equalTo(message.showName != nil  NAMELABEL_HEIGHT : 0)
         })
 
         self.message = message
     }
     func p_addMasonry() {
         timeLabel.mas_makeConstraints({ make in
-            make?.top.mas_equalTo(self.contentView).mas_offset(TIMELABEL_SPACE_Y)
-            make?.centerX.mas_equalTo(self.contentView)
+            make.top.mas_equalTo(self.contentView).mas_offset(TIMELABEL_SPACE_Y)
+            make.centerX.mas_equalTo(self.contentView)
         })
 
         usernameLabel.mas_makeConstraints({ make in
-            make?.top.mas_equalTo(self.avatarButton).mas_equalTo(-NAMELABEL_SPACE_Y)
-            make?.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-NAMELABEL_SPACE_X)
+            make.top.mas_equalTo(self.avatarButton).mas_equalTo(-NAMELABEL_SPACE_Y)
+            make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-NAMELABEL_SPACE_X)
         })
 
         // Default - self
         avatarButton.mas_makeConstraints({ make in
-            make?.right.mas_equalTo(self.contentView).mas_offset(-AVATAR_SPACE_X)
-            make?.width.and().height().mas_equalTo(AVATAR_WIDTH)
-            make?.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(AVATAR_SPACE_Y)
+            make.right.mas_equalTo(self.contentView).mas_offset(-AVATAR_SPACE_X)
+            make.width.and().height().mas_equalTo(AVATAR_WIDTH)
+            make.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(AVATAR_SPACE_Y)
         })
 
         messageBackgroundView.mas_remakeConstraints({ make in
-            make?.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-MSGBG_SPACE_X)
-            make?.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(-MSGBG_SPACE_Y)
+            make.right.mas_equalTo(self.avatarButton.mas_left).mas_offset(-MSGBG_SPACE_X)
+            make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(-MSGBG_SPACE_Y)
         })
     }
-    func avatarButtonDown(_ sender: UIButton?) {
+    func avatarButtonDown(_ sender: UIButton) {
         if delegate && delegate.responds(to: #selector(self.messageCellDidClickAvatar(forUser:))) {
             delegate.messageCellDidClickAvatar(forUser: message.fromUser)
         }
@@ -151,7 +147,7 @@ class WXMessageBaseCell: UITableViewCell {
     }
 
     // MARK: - Getter -
-    func timeLabel() -> UILabel? {
+    func timeLabel() -> UILabel {
         if timeLabel == nil {
             timeLabel = UILabel()
             timeLabel.font = UIFont.systemFont(ofSize: 12.0)
@@ -163,7 +159,7 @@ class WXMessageBaseCell: UITableViewCell {
         }
         return timeLabel
     }
-    func avatarButton() -> UIButton? {
+    func avatarButton() -> UIButton {
         if avatarButton == nil {
             avatarButton = UIButton()
             avatarButton.layer.masksToBounds = true
@@ -174,7 +170,7 @@ class WXMessageBaseCell: UITableViewCell {
         return avatarButton
     }
 
-    func usernameLabel() -> UILabel? {
+    func usernameLabel() -> UILabel {
         if usernameLabel == nil {
             usernameLabel = UILabel()
             usernameLabel.textColor = UIColor.gray
@@ -183,7 +179,7 @@ class WXMessageBaseCell: UITableViewCell {
         return usernameLabel
     }
 
-    func messageBackgroundView() -> UIImageView? {
+    func messageBackgroundView() -> UIImageView {
         if messageBackgroundView == nil {
             messageBackgroundView = UIImageView()
             messageBackgroundView.isUserInteractionEnabled = true
@@ -206,17 +202,17 @@ class WXMessageBaseCell: UITableViewCell {
 }
 //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
 class WXMessageImageView: UIImageView {
-    var backgroundImage: UIImage?
+    var backgroundImage: UIImage
 
     /*设置消息图片（规则：收到消息时，先下载缩略图到本地，再添加到列表显示，并自动下载大图）
      *
      *  @param imagePath    缩略图Path
      *  @param imageURL     高清图URL*/
-    func setThumbnailPath(_ imagePath: String?, highDefinitionImageURL imageURL: String?) {
+    func setThumbnailPath(_ imagePath: String, highDefinitionImageURL imageURL: String) {
     }
 
-    var maskLayer: CAShapeLayer?
-    var contentLayer: CALayer?
+    var maskLayer: CAShapeLayer
+    var contentLayer: CALayer
 
     override init(frame: CGRect) {
         //if super.init(frame: frame)
@@ -227,7 +223,7 @@ class WXMessageImageView: UIImageView {
 
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
@@ -237,24 +233,24 @@ class WXMessageImageView: UIImageView {
         contentLayer.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
     }
 
-    func setThumbnailPath(_ imagePath: String?, highDefinitionImageURL imageURL: String?) {
+    func setThumbnailPath(_ imagePath: String, highDefinitionImageURL imageURL: String) {
         if imagePath == nil {
             contentLayer.contents = nil
         } else {
-            contentLayer.contents = UIImage(named: imagePath)?.cgImage
+            contentLayer.contents = UIImage(named: imagePath).cgImage
         }
     }
 
-    var backgroundImage: UIImage? {
+    var backgroundImage: UIImage {
         get {
             return super.backgroundImage
         }
         set(backgroundImage) {
             self.backgroundImage = backgroundImage
-            maskLayer.contents = backgroundImage?.cgImage
+            maskLayer.contents = backgroundImage.cgImage
         }
     }
-    func maskLayer() -> CAShapeLayer? {
+    func maskLayer() -> CAShapeLayer {
         if maskLayer == nil {
             maskLayer = CAShapeLayer()
             maskLayer.contentsCenter = CGRect(x: 0.5, y: 0.6, width: 0.1, height: 0.1)
@@ -263,7 +259,7 @@ class WXMessageImageView: UIImageView {
         return maskLayer
     }
 
-    func contentLayer() -> CALayer? {
+    func contentLayer() -> CALayer {
         if contentLayer == nil {
             contentLayer = CALayer()
             contentLayer.mask = maskLayer()
@@ -277,7 +273,7 @@ class WXMessageImageView: UIImageView {
 }
 class WXTextMessage: WXMessage {
     //@property (nonatomic, strong) NSString *text;                       // 文字信息
-    var attrText: NSAttributedString?
+    var attrText: NSAttributedString
     // 格式化的文字信息（仅展示用）
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
     init() {
@@ -303,16 +299,16 @@ class WXTextMessage: WXMessage {
     //    _text = text;
     //    [self.content setObject:text forKey:@"text"];
     //}
-    func attrText() -> NSAttributedString? {
+    func attrText() -> NSAttributedString {
         if attrText == nil {
             attrText = NSAttributedString(string: content["text"])
         }
         return attrText
     }
-    func messageFrame() -> WXMessageFrame? {
+    func messageFrame() -> WXMessageFrame {
         if kMessageFrame == nil {
             kMessageFrame = WXMessageFrame()
-            kMessageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
+            kMessageFrame.height = 20 + (showTime  30 : 0) + (showName  15 : 0)
             if messageType == TLMessageTypeText {
                 kMessageFrame.height += 20
                 textLabel.attributedText = attrText
@@ -323,19 +319,19 @@ class WXTextMessage: WXMessage {
         return kMessageFrame
     }
 
-    func conversationContent() -> String? {
+    func conversationContent() -> String {
         return content["text"]
     }
 
-    func messageCopy() -> String? {
+    func messageCopy() -> String {
         return content["text"]
     }
 }
 
 class WXTextMessageCell: WXMessageBaseCell {
-    private var messageLabel: UILabel?
+    private var messageLabel: UILabel
 
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         //if super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         if let aLabel = messageLabel {
@@ -343,48 +339,48 @@ class WXTextMessageCell: WXMessageBaseCell {
         }
 
     }
-    func setMessage(_ message: WXTextMessage?) {
-        if self.message && (self.message.messageID == message?.messageID) {
+    func setMessage(_ message: WXTextMessage) {
+        if self.message && (self.message.messageID == message.messageID) {
             return
         }
-        let lastOwnType = self.message ? self.message.ownerTyper : -1 as? TLMessageOwnerType
+        let lastOwnType = self.message  self.message.ownerTyper : -1 as TLMessageOwnerType
         super.setMessage(message)
-        messageLabel.attributedText = message?.attrText()
+        messageLabel.attributedText = message.attrText()
 
         messageLabel.setContentCompressionResistancePriority(UILayoutPriority(500), for: .horizontal)
         messageBackgroundView.setContentCompressionResistancePriority(UILayoutPriority(100), for: .horizontal)
-        if lastOwnType != message?.ownerTyper {
-            if message?.ownerTyper == TLMessageOwnerTypeSelf {
+        if lastOwnType != message.ownerTyper {
+            if message.ownerTyper == TLMessageOwnerTypeSelf {
                 messageBackgroundView.image = UIImage(named: "message_sender_bg")
                 messageBackgroundView.highlightedImage = UIImage(named: "message_sender_bgHL")
 
                 messageLabel.mas_remakeConstraints({ make in
-                    make?.right.mas_equalTo(self.messageBackgroundView).mas_offset(-MSG_SPACE_RIGHT)
-                    make?.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP)
+                    make.right.mas_equalTo(self.messageBackgroundView).mas_offset(-MSG_SPACE_RIGHT)
+                    make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP)
                 })
                 messageBackgroundView.mas_updateConstraints({ make in
-                    make?.left.mas_equalTo(self.messageLabel).mas_offset(-MSG_SPACE_LEFT)
-                    make?.bottom.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_BTM)
+                    make.left.mas_equalTo(self.messageLabel).mas_offset(-MSG_SPACE_LEFT)
+                    make.bottom.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_BTM)
                 })
-            } else if message?.ownerTyper == TLMessageOwnerTypeFriend {
+            } else if message.ownerTyper == TLMessageOwnerTypeFriend {
                 messageBackgroundView.image = UIImage(named: "message_receiver_bg")
                 messageBackgroundView.highlightedImage = UIImage(named: "message_receiver_bgHL")
                 messageLabel.mas_remakeConstraints({ make in
-                    make?.left.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_LEFT)
-                    make?.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP)
+                    make.left.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_LEFT)
+                    make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP)
                 })
                 messageBackgroundView.mas_updateConstraints({ make in
-                    make?.right.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_RIGHT)
-                    make?.bottom.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_BTM)
+                    make.right.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_RIGHT)
+                    make.bottom.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_BTM)
                 })
             }
         }
 
         messageLabel.mas_updateConstraints({ make in
-            make?.size.mas_equalTo(message?.messageFrame.contentSize)
+            make.size.mas_equalTo(message.messageFrame.contentSize)
         })
     }
-    func messageLabel() -> UILabel? {
+    func messageLabel() -> UILabel {
         if messageLabel == nil {
             messageLabel = UILabel()
             var size = CGFloat(UserDefaults.standard.double(forKey: "CHAT_FONT_SIZE"))
@@ -404,9 +400,9 @@ class WXTextMessageCell: WXMessageBaseCell {
 }
 
 class WXImageMessageCell: WXMessageBaseCell {
-    private var msgImageView: WXMessageImageView?
+    private var msgImageView: WXMessageImageView
 
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         //if super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         if let aView = msgImageView {
@@ -414,14 +410,14 @@ class WXImageMessageCell: WXMessageBaseCell {
         }
 
     }
-    func setMessage(_ message: WXImageMessage?) {
+    func setMessage(_ message: WXImageMessage) {
         msgImageView.alpha = 1.0 // 取消长按效果
-        if self.message && (self.message.messageID == message?.messageID) {
+        if self.message && (self.message.messageID == message.messageID) {
             return
         }
-        let lastOwnType = self.message ? self.message.ownerTyper : -1 as? TLMessageOwnerType
+        let lastOwnType = self.message  self.message.ownerTyper : -1 as TLMessageOwnerType
         super.setMessage(message)
-        let imagePath = message?.content["path"]
+        let imagePath = message.content["path"]
         if imagePath != nil {
             let imagePatha = FileManager.pathUserChatImage(imagePath)
             msgImageView.setThumbnailPath(imagePatha, highDefinitionImageURL: imagePatha)
@@ -429,23 +425,23 @@ class WXImageMessageCell: WXMessageBaseCell {
             msgImageView.setThumbnailPath(nil, highDefinitionImageURL: imagePath)
         }
 
-        if lastOwnType != message?.ownerTyper {
-            if message?.ownerTyper == TLMessageOwnerTypeSelf {
+        if lastOwnType != message.ownerTyper {
+            if message.ownerTyper == TLMessageOwnerTypeSelf {
                 msgImageView.backgroundImage = UIImage(named: "message_sender_bg")
                 msgImageView.mas_remakeConstraints({ make in
-                    make?.top.mas_equalTo(self.messageBackgroundView)
-                    make?.right.mas_equalTo(self.messageBackgroundView)
+                    make.top.mas_equalTo(self.messageBackgroundView)
+                    make.right.mas_equalTo(self.messageBackgroundView)
                 })
-            } else if message?.ownerTyper == TLMessageOwnerTypeFriend {
+            } else if message.ownerTyper == TLMessageOwnerTypeFriend {
                 msgImageView.backgroundImage = UIImage(named: "message_receiver_bg")
                 msgImageView.mas_remakeConstraints({ make in
-                    make?.top.mas_equalTo(self.messageBackgroundView)
-                    make?.left.mas_equalTo(self.messageBackgroundView)
+                    make.top.mas_equalTo(self.messageBackgroundView)
+                    make.left.mas_equalTo(self.messageBackgroundView)
                 })
             }
         }
         msgImageView.mas_updateConstraints({ make in
-            make?.size.mas_equalTo(message?.messageFrame.contentSize)
+            make.size.mas_equalTo(message.messageFrame.contentSize)
         })
     }
     func tapMessageView() {
@@ -468,7 +464,7 @@ class WXImageMessageCell: WXMessageBaseCell {
             delegate.messageCellDoubleClick(message)
         }
     }
-    func msgImageView() -> WXMessageImageView? {
+    func msgImageView() -> WXMessageImageView {
         if msgImageView == nil {
             msgImageView = WXMessageImageView()
             msgImageView.isUserInteractionEnabled = true
@@ -491,33 +487,33 @@ class WXImageMessageCell: WXMessageBaseCell {
 }
 //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
 class WXExpressionMessage: WXMessage {
-    var emoji: TLEmoji?
+    var emoji: TLEmoji
     private(set) var path = ""
     private(set) var url = ""
     private(set) var emojiSize = CGSize.zero
-    func setEmoji(_ emoji: TLEmoji?) {
+    func setEmoji(_ emoji: TLEmoji) {
         self.emoji = emoji
-        content["groupID"] = emoji?.groupID
-        content["emojiID"] = emoji?.emojiID
-        let imageSize: CGSize? = UIImage(named: path() ?? "")?.size
-        content["w"] = Double(imageSize?.width ?? 0.0)
-        content["h"] = Double(imageSize?.height ?? 0.0)
+        content["groupID"] = emoji.groupID
+        content["emojiID"] = emoji.emojiID
+        let imageSize: CGSize = UIImage(named: path()  "").size
+        content["w"] = Double(imageSize.width  0.0)
+        content["h"] = Double(imageSize.height  0.0)
     }
 
-    func emoji() -> TLEmoji? {
+    func emoji() -> TLEmoji {
         if emoji == nil {
             emoji = TLEmoji()
-            emoji?.groupID = content["groupID"]
-            emoji?.emojiID = content["emojiID"]
+            emoji.groupID = content["groupID"]
+            emoji.emojiID = content["emojiID"]
         }
         return emoji
     }
 
-    func path() -> String? {
-        return emoji()?.emojiPath
+    func path() -> String {
+        return emoji().emojiPath
     }
-    func url() -> String? {
-        return "http://123.57.155.230:8080/ibiaoqing/admin/expre/download.do?pId=\(emoji.emojiID)"
+    func url() -> String {
+        return "http://123.57.155.230:8080/ibiaoqing/admin/expre/download.dopId=\(emoji.emojiID)"
     }
 
     func emojiSize() -> CGSize {
@@ -526,10 +522,10 @@ class WXExpressionMessage: WXMessage {
         return CGSize(width: width, height: height)
     }
 
-    func messageFrame() -> WXMessageFrame? {
+    func messageFrame() -> WXMessageFrame {
         if kMessageFrame == nil {
             kMessageFrame = WXMessageFrame()
-            kMessageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
+            kMessageFrame.height = 20 + (showTime  30 : 0) + (showName  15 : 0)
 
             kMessageFrame.height += 5
 
@@ -538,11 +534,11 @@ class WXExpressionMessage: WXMessage {
                 kMessageFrame.contentSize = CGSize(width: 80, height: 80)
             } else if emojiSize.width > emojiSize.height {
                 var height: CGFloat = APPW * 0.35 * emojiSize.height / emojiSize.width
-                height = height < APPW * 0.2 ? APPW * 0.2 : height
+                height = height < APPW * 0.2  APPW * 0.2 : height
                 kMessageFrame.contentSize = CGSize(width: APPW * 0.35, height: height)
             } else {
                 var width: CGFloat = APPW * 0.35 * emojiSize.width / emojiSize.height
-                width = width < APPW * 0.2 ? APPW * 0.2 : width
+                width = width < APPW * 0.2  APPW * 0.2 : width
                 kMessageFrame.contentSize = CGSize(width: width, height: APPW * 0.35)
             }
 
@@ -550,11 +546,11 @@ class WXExpressionMessage: WXMessage {
         }
         return kMessageFrame
     }
-    func conversationContent() -> String? {
+    func conversationContent() -> String {
         return "[表情]"
     }
 
-    func messageCopy() -> String? {
+    func messageCopy() -> String {
         return content.mj_JSONString()
     }
 
@@ -562,9 +558,9 @@ class WXExpressionMessage: WXMessage {
 }
 
 class WXExpressionMessageCell: WXMessageBaseCell {
-    private var msgImageView: UIImageView?
+    private var msgImageView: UIImageView
 
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         //if super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         if let aView = msgImageView {
@@ -572,36 +568,36 @@ class WXExpressionMessageCell: WXMessageBaseCell {
         }
 
     }
-    func setMessage(_ message: WXExpressionMessage?) {
+    func setMessage(_ message: WXExpressionMessage) {
         msgImageView.alpha = 1.0 // 取消长按效果
-        let lastOwnType = self.message ? self.message.ownerTyper : -1 as? TLMessageOwnerType
+        let lastOwnType = self.message  self.message.ownerTyper : -1 as TLMessageOwnerType
         super.setMessage(message)
 
-        let data = NSData(contentsOfFile: message?.path ?? "") as Data?
+        let data = NSData(contentsOfFile: message.path  "") as Data
         if data != nil {
-            msgImageView.image = UIImage(named: message?.path ?? "")
+            msgImageView.image = UIImage(named: message.path  "")
             msgImageView.image = UIImage.sd_animatedGIF(with: data)
         } else {
             // 表情组被删掉，先从缓存目录中查找，没有的话在下载并存入缓存目录
-            var MycachePath: String? = nil
-            if let anID = message?.emoji.emojiID {
-                MycachePath = FileManager.cache(forFile: "\(message?.emoji.groupID ?? 0)_\(anID).gif")
+            var MycachePath: String = nil
+            if let anID = message.emoji.emojiID {
+                MycachePath = FileManager.cache(forFile: "\(message.emoji.groupID  0)_\(anID).gif")
             }
-            let data = NSData(contentsOfFile: MycachePath ?? "") as Data?
+            let data = NSData(contentsOfFile: MycachePath  "") as Data
             if data != nil {
-                msgImageView.image = UIImage(named: MycachePath ?? "")
+                msgImageView.image = UIImage(named: MycachePath  "")
                 msgImageView.image = UIImage.sd_animatedGIF(with: data)
             } else {
                 weak var weakSelf = self
-                msgImageView.sd_setImage(with: URL(string: message?.url ?? ""), completed: { image, error, cacheType, imageURL in
-                    if (imageURL?.description() == (weakSelf.message as? WXExpressionMessage)?.url()) {
+                msgImageView.sd_setImage(with: URL(string: message.url  ""), completed: { image, error, cacheType, imageURL in
+                    if (imageURL.description() == (weakSelf.message as WXExpressionMessage).url()) {
                         DispatchQueue.global(qos: .default).async(execute: {
-                            var data: Data? = nil
+                            var data: Data = nil
                             if let anURL = imageURL {
                                 data = Data(contentsOf: anURL)
                             }
-                            data?.write(toFile: NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0], atomically: false) // 再写入到缓存中
-                            if (imageURL?.description() == (weakSelf.message as? WXExpressionMessage)?.url()) {
+                            data.write(toFile: NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0], atomically: false) // 再写入到缓存中
+                            if (imageURL.description() == (weakSelf.message as WXExpressionMessage).url()) {
                                 DispatchQueue.main.async(execute: {
                                     self.msgImageView.image = UIImage.sd_animatedGIF(withData: data)
                                 })
@@ -611,21 +607,21 @@ class WXExpressionMessageCell: WXMessageBaseCell {
                 })
             }
         }
-        if lastOwnType != message?.ownerTyper {
-            if message?.ownerTyper == TLMessageOwnerTypeSelf {
+        if lastOwnType != message.ownerTyper {
+            if message.ownerTyper == TLMessageOwnerTypeSelf {
                 msgImageView.mas_remakeConstraints({ make in
-                    make?.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(5)
-                    make?.right.mas_equalTo(self.messageBackgroundView).mas_offset(-10)
+                    make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(5)
+                    make.right.mas_equalTo(self.messageBackgroundView).mas_offset(-10)
                 })
-            } else if message?.ownerTyper == TLMessageOwnerTypeFriend {
+            } else if message.ownerTyper == TLMessageOwnerTypeFriend {
                 msgImageView.mas_remakeConstraints({ make in
-                    make?.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(5)
-                    make?.left.mas_equalTo(self.messageBackgroundView).mas_offset(10)
+                    make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(5)
+                    make.left.mas_equalTo(self.messageBackgroundView).mas_offset(10)
                 })
             }
         }
         msgImageView.mas_updateConstraints({ make in
-            make?.size.mas_equalTo(message?.messageFrame.contentSize)
+            make.size.mas_equalTo(message.messageFrame.contentSize)
         })
     }
     func longPressMsgBGView() {
@@ -641,7 +637,7 @@ class WXExpressionMessageCell: WXMessageBaseCell {
             delegate.messageCellDoubleClick(message)
         }
     }
-    func msgImageView() -> UIImageView? {
+    func msgImageView() -> UIImageView {
         if msgImageView == nil {
             msgImageView = UIImageView()
             msgImageView.isUserInteractionEnabled = true
@@ -664,17 +660,17 @@ class WXExpressionMessageCell: WXMessageBaseCell {
 
 class WXChatCellMenuView: UIView {
     private(set) var isShow = false
-    var messageType: TLMessageType?
-    var actionBlcok: (() -> Void)?
+    var messageType: TLMessageType
+    var actionBlcok: (() -> Void)
 
-    private var menuController: UIMenuController?
+    private var menuController: UIMenuController
 
-    static var menuView: WXChatCellMenuView? = {
+    static var menuView: WXChatCellMenuView = {
         var menuView = WXChatCellMenuView()
         return menuView
     }()
 
-    class func shared() -> WXChatCellMenuView? {
+    class func shared() -> WXChatCellMenuView {
         // `dispatch_once()` call was converted to a static variable initializer
         return menuView
     }
@@ -689,13 +685,13 @@ class WXChatCellMenuView: UIView {
         addGestureRecognizer(tapGR)
 
     }
-    func show(in view: UIView?, with messageType: TLMessageType, rect: CGRect, actionBlock: @escaping (TLChatMenuItemType) -> Void) {
+    func show(in view: UIView, with messageType: TLMessageType, rect: CGRect, actionBlock: @escaping (TLChatMenuItemType) -> Void) {
         if isShow {
             return
         }
         isShow = true
-        self.frame = view?.bounds
-        view?.addSubview(self)
+        self.frame = view.bounds
+        view.addSubview(self)
         self.actionBlcok = actionBlock
         self.messageType = messageType
 
@@ -730,19 +726,19 @@ class WXChatCellMenuView: UIView {
     }
 
     // MARK: - Event Response -
-    func copyButtonDown(_ sender: UIMenuController?) {
+    func copyButtonDown(_ sender: UIMenuController) {
         p_clickedMenuItemType(TLChatMenuItemTypeCopy)
     }
 
-    func transmitButtonDown(_ sender: UIMenuController?) {
+    func transmitButtonDown(_ sender: UIMenuController) {
         p_clickedMenuItemType(TLChatMenuItemTypeCopy)
     }
 
-    func collectButtonDown(_ sender: UIMenuController?) {
+    func collectButtonDown(_ sender: UIMenuController) {
         p_clickedMenuItemType(TLChatMenuItemTypeCopy)
     }
 
-    func deleteButtonDown(_ sender: UIMenuController?) {
+    func deleteButtonDown(_ sender: UIMenuController) {
         p_clickedMenuItemType(TLChatMenuItemTypeDelete)
     }
 
@@ -762,52 +758,52 @@ class WXChatCellMenuView: UIView {
 extension UITableView {
     func scrollToBottom(withAnimation animation: Bool) {
         var section: Int = 0
-        if dataSource != nil && dataSource?.responds(to: #selector(UITableViewDataSource.numberOfSections(in:))) ?? false {
-            section = (dataSource?.numberOfSections(in: self) ?? 0) - 1
+        if dataSource != nil && dataSource.responds(to: #selector(UITableViewDataSource.numberOfSections(in:)))  false {
+            section = (dataSource.numberOfSections(in: self)  0) - 1
         }
-        if dataSource?.responds(to: #selector(UITableViewDataSource.tableView(_:numberOfRowsInSection:))) ?? false {
-            let row: Int? = dataSource?.tableView(self, numberOfRowsInSection: section)
-            if (row ?? 0) > 0 {
-                scrollToRow(at: IndexPath(row: (row ?? 0) - 1, section: section), at: .bottom, animated: animation)
+        if dataSource.responds(to: #selector(UITableViewDataSource.tableView(_:numberOfRowsInSection:)))  false {
+            let row: Int = dataSource.tableView(self, numberOfRowsInSection: section)
+            if (row  0) > 0 {
+                scrollToRow(at: IndexPath(row: (row  0) - 1, section: section), at: .bottom, animated: animation)
             }
         }
     }
 }
 protocol WXMessageCellDelegate: NSObjectProtocol {
-    func messageCellDidClickAvatar(forUser user: WXChatUserProtocol?)
-    func messageCellTap(_ message: WXMessage?)
-    func messageCellLongPress(_ message: WXMessage?, rect: CGRect)
-    func messageCellDoubleClick(_ message: WXMessage?)
+    func messageCellDidClickAvatar(forUser user: WXChatUserProtocol)
+    func messageCellTap(_ message: WXMessage)
+    func messageCellLongPress(_ message: WXMessage, rect: CGRect)
+    func messageCellDoubleClick(_ message: WXMessage)
 }
 @objc protocol WXChatTableViewControllerDelegate: NSObjectProtocol {
     //聊天界面点击事件，用于收键盘
-    func chatTableViewControllerDidTouched(_ chatTVC: WXChatTableViewController?)
-    func chatTableViewController(_ chatTVC: WXChatTableViewController?, getRecordsFrom date: Date?, count: Int, completed: @escaping (Date?, [Any]?, Bool) -> Void)
+    func chatTableViewControllerDidTouched(_ chatTVC: WXChatTableViewController)
+    func chatTableViewController(_ chatTVC: WXChatTableViewController, getRecordsFrom date: Date, count: Int, completed: @escaping (Date, [Any], Bool) -> Void)
 
     /*消息长按删除
      *
      *  @return 删除是否成功*/
-    @objc optional func chatTableViewController(_ chatTVC: WXChatTableViewController?, delete message: WXMessage?) -> Bool
+    @objc optional func chatTableViewController(_ chatTVC: WXChatTableViewController, delete message: WXMessage) -> Bool
     //用户头像点击事件
-    @objc optional func chatTableViewController(_ chatTVC: WXChatTableViewController?, didClickUserAvatar user: WXUser?)
+    @objc optional func chatTableViewController(_ chatTVC: WXChatTableViewController, didClickUserAvatar user: WXUser)
     //Message点击事件
-    @objc optional func chatTableViewController(_ chatTVC: WXChatTableViewController?, didClick message: WXMessage?)
+    @objc optional func chatTableViewController(_ chatTVC: WXChatTableViewController, didClick message: WXMessage)
     //Message双击事件
-    @objc optional func chatTableViewController(_ chatTVC: WXChatTableViewController?, didDoubleClick message: WXMessage?)
+    @objc optional func chatTableViewController(_ chatTVC: WXChatTableViewController, didDoubleClick message: WXMessage)
 }
 class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
     func registerCellClass() {
     }
 
-    weak var delegate: WXChatTableViewControllerDelegate?
+    weak var delegate: WXChatTableViewControllerDelegate
     var data: [AnyHashable] = []
     /// 禁用下拉刷新
     var disablePullToRefresh = false
     /// 禁用长按菜单
     var disableLongPressMenu = false
-    private var refresHeader: MJRefreshNormalHeader?
+    private var refresHeader: MJRefreshNormalHeader
     /// 用户决定新消息是否显示时间
-    private var curDate: Date?
+    private var curDate: Date
 
     func viewDidLoad() {
         super.viewDidLoad()
@@ -848,15 +844,15 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
             }
         })
     }
-    func add(_ message: WXMessage?) {
+    func add(_ message: WXMessage) {
         if let aMessage = message {
             data.append(aMessage)
         }
         tableView.reloadData()
     }
 
-    func delete(_ message: WXMessage?) {
-        var index: Int? = nil
+    func delete(_ message: WXMessage) {
+        var index: Int = nil
         if let aMessage = message {
             index = data.index(of: aMessage)
         }
@@ -864,7 +860,7 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
             let ok = delegate.chatTableViewController(self, delete: message)
             if ok {
                 data.removeAll(where: { element in element == message })
-                tableView.deleteRows(at: [IndexPath(row: index ?? 0, section: 0)], with: .automatic)
+                tableView.deleteRows(at: [IndexPath(row: index  0, section: 0)], with: .automatic)
                 MobClick.event("e_delete_message")
             } else {
                 SVProgressHUD.showError(withStatus: "从数据库中删除消息失败。")
@@ -895,19 +891,19 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
     func p_try(toRefreshMoreRecord complete: @escaping (_ count: Int, _ hasMore: Bool) -> Void) {
         if delegate && delegate.responds(to: #selector(self.chatTableViewController(_:getRecordsFromDate:count:completed:))) {
             delegate.chatTableViewController(self, getRecordsFromDate: curDate, count: PAGE_MESSAGE_COUNT, completed: { date, array, hasMore in
-                if (array?.count ?? 0) > 0 && date?.isEqual(to: self.curDate) ?? false {
-                    self.curDate = array?[0].date()
+                if (array.count  0) > 0 && date.isEqual(to: self.curDate)  false {
+                    self.curDate = array[0].date()
                     if let anArray = array {
-                        for (objectIndex, insertionIndex) in NSIndexSet(indexesIn: NSRange(location: 0, length: array?.count ?? 0)).enumerated() { self.data.insert((anArray)[objectIndex], at: insertionIndex) }
+                        for (objectIndex, insertionIndex) in NSIndexSet(indexesIn: NSRange(location: 0, length: array.count  0)).enumerated() { self.data.insert((anArray)[objectIndex], at: insertionIndex) }
                     }
-                    complete(array?.count, hasMore)
+                    complete(array.count, hasMore)
                 } else {
                     complete(0, hasMore)
                 }
             })
         }
     }
-    func refresHeader() -> MJRefreshNormalHeader? {
+    func refresHeader() -> MJRefreshNormalHeader {
         if refresHeader == nil {
             refresHeader = MJRefreshNormalHeader(refreshingBlock: {
                 self.p_try(toRefreshMoreRecord: { count, hasMore in
@@ -939,21 +935,21 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
         return data.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message: WXMessage? = data[indexPath.row]
-        if message?.messageType == TLMessageTypeText {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TLTextMessageCell") as? WXTextMessageCell
-            cell?.message = message
-            cell?.delegate = self
+        let message: WXMessage = data[indexPath.row]
+        if message.messageType == TLMessageTypeText {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TLTextMessageCell") as WXTextMessageCell
+            cell.message = message
+            cell.delegate = self
             return cell!
-        } else if message?.messageType == TLMessageTypeImage {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TLImageMessageCell") as? WXImageMessageCell
-            cell?.message = message
-            cell?.delegate = self
+        } else if message.messageType == TLMessageTypeImage {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TLImageMessageCell") as WXImageMessageCell
+            cell.message = message
+            cell.delegate = self
             return cell!
-        } else if message?.messageType == TLMessageTypeExpression {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TLExpressionMessageCell") as? WXExpressionMessageCell
-            cell?.message = message
-            cell?.delegate = self
+        } else if message.messageType == TLMessageTypeExpression {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TLExpressionMessageCell") as WXExpressionMessageCell
+            cell.message = message
+            cell.delegate = self
             return cell!
         }
         return (tableView.dequeueReusableCell(withIdentifier: "EmptyCell"))!
@@ -964,28 +960,28 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
         if indexPath.row >= data.count {
             return 0.0
         }
-        let message: WXMessage? = data[indexPath.row]
-        return message?.messageFrame.height ?? 0.0
+        let message: WXMessage = data[indexPath.row]
+        return message.messageFrame.height  0.0
     }
 
     //MARK: TLMessageCellDelegate
-    func messageCellDidClickAvatar(for user: WXUser?) {
+    func messageCellDidClickAvatar(for user: WXUser) {
         if delegate && delegate.responds(to: #selector(self.chatTableViewController(_:didClickUserAvatar:))) {
             delegate.chatTableViewController(self, didClickUserAvatar: user)
         }
     }
 
-    func messageCellTap(_ message: WXMessage?) {
+    func messageCellTap(_ message: WXMessage) {
         if delegate && delegate.responds(to: #selector(self.chatTableViewController(_:didClickMessage:))) {
             delegate.chatTableViewController(self, didClick: message)
         }
     }
-    func messageCellLongPress(_ message: WXMessage?, rect: CGRect) {
-        var row: Int? = nil
+    func messageCellLongPress(_ message: WXMessage, rect: CGRect) {
+        var row: Int = nil
         if let aMessage = message {
             row = data.index(of: aMessage)
         }
-        let indexPath = IndexPath(row: row ?? 0, section: 0)
+        let indexPath = IndexPath(row: row  0, section: 0)
         if disableLongPressMenu {
             tableView.reloadRows(at: [indexPath], with: .none)
             return
@@ -997,10 +993,10 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
         let cellRect: CGRect = tableView.rectForRow(at: indexPath)
         rect.origin.y += cellRect.origin.y - tableView.contentOffset.y
         weak var weakSelf = self
-        WXChatCellMenuView.shared().show(in: navigationController?.view, withMessageType: message?.messageType, rect: rect, actionBlock: { type in
+        WXChatCellMenuView.shared().show(in: navigationController.view, withMessageType: message.messageType, rect: rect, actionBlock: { type in
             weakSelf.tableView.reloadRows(at: [indexPath], with: .none)
             if type == TLChatMenuItemTypeCopy {
-                let str = message?.messageCopy()
+                let str = message.messageCopy()
                 UIPasteboard.general.string = str
             } else if type == TLChatMenuItemTypeDelete {
                 self.showAlerWithtitle("是否删除该条消息", message: nil, style: UIAlertController.Style.actionSheet, ac1: {
@@ -1016,7 +1012,7 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
     }
     //双击Message Cell
 
-    func messageCellDoubleClick(_ message: WXMessage?) {
+    func messageCellDoubleClick(_ message: WXMessage) {
         if delegate && delegate.responds(to: #selector(self.chatTableViewController(_:didDoubleClickMessage:))) {
             delegate.chatTableViewController(self, didDoubleClick: message)
         }
@@ -1029,8 +1025,8 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
         }
     }
 
-    func p_delete(_ message: WXMessage?) {
-        var index: Int? = nil
+    func p_delete(_ message: WXMessage) {
+        var index: Int = nil
         if let aMessage = message {
             index = data.index(of: aMessage)
         }
@@ -1038,7 +1034,7 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
             let ok = delegate.chatTableViewController(self, delete: message)
             if ok {
                 data.removeAll(where: { element in element == message })
-                tableView.deleteRows(at: [IndexPath(row: index ?? 0, section: 0)], with: .automatic)
+                tableView.deleteRows(at: [IndexPath(row: index  0, section: 0)], with: .automatic)
                 MobClick.event("e_delete_message")
             } else {
                 SVProgressHUD.showError(withStatus: "从数据库中删除消息失败。")

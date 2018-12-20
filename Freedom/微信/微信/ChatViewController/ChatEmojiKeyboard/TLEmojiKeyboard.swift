@@ -1,31 +1,27 @@
 //
 //  TLEmojiKeyboard.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/20.
-//  Copyright © 2018 薛超. All rights reserved.
-//
 
 import Foundation
 //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
 @objc protocol TLKeyboardDelegate: NSObjectProtocol {
-    @objc optional func chatKeyboardWillShow(_ keyboard: Any?)
-    @objc optional func chatKeyboardDidShow(_ keyboard: Any?)
-    @objc optional func chatKeyboardWillDismiss(_ keyboard: Any?)
-    @objc optional func chatKeyboardDidDismiss(_ keyboard: Any?)
-    @objc optional func chatKeyboard(_ keyboard: Any?, didChangeHeight height: CGFloat)
+    @objc optional func chatKeyboardWillShow(_ keyboard: Any)
+    @objc optional func chatKeyboardDidShow(_ keyboard: Any)
+    @objc optional func chatKeyboardWillDismiss(_ keyboard: Any)
+    @objc optional func chatKeyboardDidDismiss(_ keyboard: Any)
+    @objc optional func chatKeyboard(_ keyboard: Any, didChangeHeight height: CGFloat)
 }
 
 @objc protocol TLEmojiKeyboardDelegate: NSObjectProtocol {
     func chatInputViewHasText() -> Bool
 
-    @objc optional func emojiKeyboard(_ emojiKB: TLEmojiKeyboard?, didTouchEmojiItem emoji: TLEmoji?, at rect: CGRect)
-    @objc optional func emojiKeyboardCancelTouchEmojiItem(_ emojiKB: TLEmojiKeyboard?)
-    @objc optional func emojiKeyboard(_ emojiKB: TLEmojiKeyboard?, didSelectedEmojiItem emoji: TLEmoji?)
+    @objc optional func emojiKeyboard(_ emojiKB: TLEmojiKeyboard, didTouchEmojiItem emoji: TLEmoji, at rect: CGRect)
+    @objc optional func emojiKeyboardCancelTouchEmojiItem(_ emojiKB: TLEmojiKeyboard)
+    @objc optional func emojiKeyboard(_ emojiKB: TLEmojiKeyboard, didSelectedEmojiItem emoji: TLEmoji)
     @objc optional func emojiKeyboardSendButtonDown()
     @objc optional func emojiKeyboardEmojiEditButtonDown()
     @objc optional func emojiKeyboardMyEmojiEditButtonDown()
-    @objc optional func emojiKeyboard(_ emojiKB: TLEmojiKeyboard?, selectedEmojiGroupType type: TLEmojiType)
+    @objc optional func emojiKeyboard(_ emojiKB: TLEmojiKeyboard, selectedEmojiGroupType type: TLEmojiType)
 }
 class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, TLEmojiGroupControlDelegate {
     var cellSize = CGSize.zero
@@ -33,17 +29,17 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     var footerReferenceSize = CGSize.zero
     var minimumLineSpacing: CGFloat = 0.0
     var minimumInteritemSpacing: CGFloat = 0.0
-    var sectionInsets: UIEdgeInsets?
+    var sectionInsets: UIEdgeInsets
 
     var emojiGroupData: [AnyHashable] = []
-    weak var delegate: TLEmojiKeyboardDelegate?
-    weak var keyboardDelegate: TLKeyboardDelegate?
-    var curGroup: TLEmojiGroup?
-    var collectionView: UICollectionView?
-    var pageControl: UIPageControl?
-    var groupControl: TLEmojiGroupControl?
+    weak var delegate: TLEmojiKeyboardDelegate
+    weak var keyboardDelegate: TLKeyboardDelegate
+    var curGroup: TLEmojiGroup
+    var collectionView: UICollectionView
+    var pageControl: UIPageControl
+    var groupControl: TLEmojiGroupControl
     //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    class func keyboard() -> TLEmojiKeyboard? {
+    class func keyboard() -> TLEmojiKeyboard {
         // TODO: [Swiftify] ensure that the code below is executed only once (`dispatch_once()` is deprecated)
         {
             emojiKB = TLEmojiKeyboard()
@@ -65,29 +61,29 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
 
     }
 
-    func setEmojiGroupData(_ emojiGroupData: [AnyHashable]?) {
+    func setEmojiGroupData(_ emojiGroupData: [AnyHashable]) {
         var emojiGroupData = emojiGroupData
         groupControl.setEmojiGroupData(emojiGroupData)
     }
-    func show(in view: UIView?, withAnimation animation: Bool) {
+    func show(in view: UIView, withAnimation animation: Bool) {
         if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboardWillShow(_:))) {
             keyboardDelegate.chatKeyboardWillShow(self)
         }
-        view?.addSubview(self)
+        view.addSubview(self)
         mas_remakeConstraints({ make in
-            make?.left.and().right().mas_equalTo(view)
-            make?.height.mas_equalTo(215.0)
-            make?.bottom.mas_equalTo(view).mas_offset(215.0)
+            make.left.and().right().mas_equalTo(view)
+            make.height.mas_equalTo(215.0)
+            make.bottom.mas_equalTo(view).mas_offset(215.0)
         })
-        view?.layoutIfNeeded()
+        view.layoutIfNeeded()
         if animation {
             UIView.animate(withDuration: 0.3, animations: {
                 self.mas_updateConstraints({ make in
-                    make?.bottom.mas_equalTo(view)
+                    make.bottom.mas_equalTo(view)
                 })
-                view?.layoutIfNeeded()
+                view.layoutIfNeeded()
                 if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboard(_:didChangeHeight:))) {
-                    keyboardDelegate.chatKeyboard(self, didChangeHeight: (view?.frame.size.height ?? 0.0) - self.frame.origin.y)
+                    keyboardDelegate.chatKeyboard(self, didChangeHeight: (view.frame.size.height  0.0) - self.frame.origin.y)
                 }
             }) { finished in
                 if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboardDidShow(_:))) {
@@ -96,9 +92,9 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
             }
         } else {
             mas_updateConstraints({ make in
-                make?.bottom.mas_equalTo(view)
+                make.bottom.mas_equalTo(view)
             })
-            view?.layoutIfNeeded()
+            view.layoutIfNeeded()
             if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboardDidShow(_:))) {
                 keyboardDelegate.chatKeyboardDidShow(self)
             }
@@ -115,7 +111,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         if animation {
             UIView.animate(withDuration: 0.3, animations: {
                 self.mas_updateConstraints({ make in
-                    make?.bottom.mas_equalTo(self.superview).mas_offset(215.0)
+                    make.bottom.mas_equalTo(self.superview).mas_offset(215.0)
                 })
                 self.superview.layoutIfNeeded()
                 if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboard(_:didChangeHeight:))) {
@@ -141,35 +137,35 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     }
 
     // MARK: - Event Response -
-    func pageControlChanged(_ pageControl: UIPageControl?) {
-        collectionView.scrollRectToVisible(CGRect(x: CGFloat(APPW * (pageControl?.currentPage ?? 0)), y: 0, width: APPW, height: 215), animated: true)
+    func pageControlChanged(_ pageControl: UIPageControl) {
+        collectionView.scrollRectToVisible(CGRect(x: CGFloat(APPW * (pageControl.currentPage  0)), y: 0, width: APPW, height: 215), animated: true)
     }
     func p_addMasonry() {
         collectionView.mas_makeConstraints({ make in
-            make?.top.mas_equalTo(self).mas_offset(10)
-            make?.left.and().right().mas_equalTo(self)
-            make?.height.mas_equalTo((215.0 * 0.75 - 10))
+            make.top.mas_equalTo(self).mas_offset(10)
+            make.left.and().right().mas_equalTo(self)
+            make.height.mas_equalTo((215.0 * 0.75 - 10))
         })
         pageControl.mas_makeConstraints({ make in
-            make?.left.and().right().mas_equalTo(self)
-            make?.bottom.mas_equalTo(self.groupControl.mas_top)
-            make?.height.mas_equalTo(215)
+            make.left.and().right().mas_equalTo(self)
+            make.bottom.mas_equalTo(self.groupControl.mas_top)
+            make.height.mas_equalTo(215)
         })
         groupControl.mas_makeConstraints({ make in
-            make?.left.and().right().and().bottom().mas_equalTo(self)
-            make?.height.mas_equalTo(215 * 0.17)
+            make.left.and().right().and().bottom().mas_equalTo(self)
+            make.height.mas_equalTo(215 * 0.17)
         })
     }
     func draw(_ rect: CGRect) {
         super.draw(rect)
         // 顶部直线
         let context = UIGraphicsGetCurrentContext()
-        context?.setLineWidth(0.5)
-        context?.setStrokeColor(UIColor.gray.cgColor)
-        context?.beginPath()
-        context?.move(to: CGPoint(x: 0, y: 0))
-        context?.addLine(to: CGPoint(x: APPW, y: 0))
-        context?.strokePath()
+        context.setLineWidth(0.5)
+        context.setStrokeColor(UIColor.gray.cgColor)
+        context.beginPath()
+        context.move(to: CGPoint(x: 0, y: 0))
+        context.addLine(to: CGPoint(x: APPW, y: 0))
+        context.strokePath()
     }
     var collectionView: UICollectionView! {
         if collectionView == nil {
@@ -186,7 +182,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         }
         return collectionView
     }
-    func pageControl() -> UIPageControl? {
+    func pageControl() -> UIPageControl {
         if pageControl == nil {
             pageControl = UIPageControl()
             pageControl.center = CGPoint(x: center.x, y: pageControl.center.y)
@@ -197,7 +193,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         return pageControl
     }
 
-    func groupControl() -> TLEmojiGroupControl? {
+    func groupControl() -> TLEmojiGroupControl {
         if groupControl == nil {
             groupControl = TLEmojiGroupControl()
             groupControl.delegate = self
@@ -239,7 +235,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let index: Int = indexPath.section * curGroup.pageItemCount + indexPath.row
-        var cell: TLEmojiBaseCell?
+        var cell: TLEmojiBaseCell
         if curGroup.type == TLEmojiTypeEmoji {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLEmojiItemCell", for: indexPath)
         } else if curGroup.type == TLEmojiTypeFace {
@@ -250,7 +246,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLEmojiImageItemCell", for: indexPath)
         }
         let tIndex = transformModelIndex(index) // 矩阵坐标转置
-        let emojiItem = curGroup.count > tIndex ? curGroup[tIndex] : nil as? TLEmoji
+        let emojiItem = curGroup.count > tIndex  curGroup[tIndex] : nil as TLEmoji
         cell.emojiItem = emojiItem
         return cell
     }
@@ -294,10 +290,10 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         let index: Int = indexPath.section * curGroup.pageItemCount + indexPath.row
         let tIndex = transformModelIndex(index) // 矩阵坐标转置
         if tIndex < curGroup.count {
-            let item = curGroup[tIndex] as? TLEmoji
+            let item = curGroup[tIndex] as TLEmoji
             if delegate && delegate.responds(to: #selector(self.emojiKeyboard(_:didSelectedEmojiItem:))) {
                 //FIXME: 表情类型
-                item?.type = curGroup.type
+                item.type = curGroup.type
                 delegate.emojiKeyboard(self, didSelectedEmojiItem: item)
             }
         }
@@ -338,11 +334,11 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
             groupControl.sendButtonStatus = TLGroupControlSendButtonStatusNone
         }
     }
-    func emojiGroupControl(_ emojiGroupControl: TLEmojiGroupControl?, didSelectedGroup group: TLEmojiGroup?) {
+    func emojiGroupControl(_ emojiGroupControl: TLEmojiGroupControl, didSelectedGroup group: TLEmojiGroup) {
         // 显示Group表情
         curGroup = group
         resetCollectionSize()
-        pageControl.numberOfPages = group?.pageNumber ?? 0
+        pageControl.numberOfPages = group.pageNumber  0
         pageControl.currentPage = 0
         collectionView.reloadData()
         collectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: collectionView.frame.size.height), animated: false)
@@ -350,22 +346,22 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         updateSendButtonStatus()
         // 更新chatBar的textView状态
         if delegate && delegate.responds(to: #selector(self.emojiKeyboard(_:selectedEmojiGroupType:))) {
-            delegate.emojiKeyboard(self, selectedEmojiGroupType: group?.type)
+            delegate.emojiKeyboard(self, selectedEmojiGroupType: group.type)
         }
     }
-    func emojiGroupControlEditMyEmojiButtonDown(_ emojiGroupControl: TLEmojiGroupControl?) {
+    func emojiGroupControlEditMyEmojiButtonDown(_ emojiGroupControl: TLEmojiGroupControl) {
         if delegate && delegate.responds(to: #selector(self.emojiKeyboardMyEmojiEditButtonDown)) {
             delegate.emojiKeyboardMyEmojiEditButtonDown()
         }
     }
 
-    func emojiGroupControlEditButtonDown(_ emojiGroupControl: TLEmojiGroupControl?) {
+    func emojiGroupControlEditButtonDown(_ emojiGroupControl: TLEmojiGroupControl) {
         if delegate && delegate.responds(to: #selector(self.emojiKeyboardEmojiEditButtonDown)) {
             delegate.emojiKeyboardEmojiEditButtonDown()
         }
     }
 
-    func emojiGroupControlSendButtonDown(_ emojiGroupControl: TLEmojiGroupControl?) {
+    func emojiGroupControlSendButtonDown(_ emojiGroupControl: TLEmojiGroupControl) {
         if delegate && delegate.responds(to: #selector(self.emojiKeyboardSendButtonDown)) {
             delegate.emojiKeyboardSendButtonDown()
         }
@@ -376,24 +372,24 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressAction(_:)))
         collectionView.addGestureRecognizer(longPressGR)
     }
-    func longPressAction(_ sender: UILongPressGestureRecognizer?) {
-        if sender?.state == .ended || sender?.state == .cancelled {
+    func longPressAction(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .ended || sender.state == .cancelled {
             // 长按停止
             lastCell = nil
             if delegate && delegate.responds(to: #selector(self.emojiKeyboardCancelTouchEmojiItem(_:))) {
                 delegate.emojiKeyboardCancelTouchEmojiItem(self)
             }
         } else {
-            let point: CGPoint? = sender?.location(in: collectionView)
+            let point: CGPoint = sender.location(in: collectionView)
 
             for cell: UICollectionViewCell in collectionView.visibleCells {
-                if cell.frame.origin.x - minimumLineSpacing / 2.0 <= (point?.x ?? 0.0) && cell.frame.origin.y - minimumInteritemSpacing / 2.0 <= (point?.y ?? 0.0) && cell.frame.origin.x + cell.frame.size.width + minimumLineSpacing / 2.0 >= (point?.x ?? 0.0) && cell.frame.origin.y + cell.frame.size.height + minimumInteritemSpacing / 2.0 >= (point?.y ?? 0.0) {
+                if cell.frame.origin.x - minimumLineSpacing / 2.0 <= (point.x  0.0) && cell.frame.origin.y - minimumInteritemSpacing / 2.0 <= (point.y  0.0) && cell.frame.origin.x + cell.frame.size.width + minimumLineSpacing / 2.0 >= (point.x  0.0) && cell.frame.origin.y + cell.frame.size.height + minimumInteritemSpacing / 2.0 >= (point.y  0.0) {
                     if lastCell == cell {
                         return
                     }
                     lastCell = cell
-                    let indexPath: IndexPath? = collectionView.indexPath(for: cell)
-                    let index: Int = (indexPath?.section ?? 0) * curGroup.pageItemCount + (indexPath?.row ?? 0)
+                    let indexPath: IndexPath = collectionView.indexPath(for: cell)
+                    let index: Int = (indexPath.section  0) * curGroup.pageItemCount + (indexPath.row  0)
                     let tIndex = transformModelIndex(index) // 矩阵坐标转置
                     if tIndex >= curGroup.count {
                         if delegate && delegate.responds(to: #selector(self.emojiKeyboardCancelTouchEmojiItem(_:))) {
@@ -401,7 +397,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
                         }
                         return
                     }
-                    let emoji = curGroup[tIndex] as? TLEmoji
+                    let emoji = curGroup[tIndex] as TLEmoji
                     if delegate && delegate.responds(to: #selector(self.emojiKeyboard(_:didTouchEmojiItem:atRect:))) {
                         emoji.type = curGroup.type
                         let rect: CGRect = cell.frame

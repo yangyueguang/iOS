@@ -1,24 +1,20 @@
 //
 //  WXBgSettingViewController.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/20.
-//  Copyright © 2018 薛超. All rights reserved.
-//
 
 import Foundation
 //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
 class WXChatBackgroundSelectViewController: WXBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func registerCell(for collectionView: UICollectionView?) {
+    func registerCell(for collectionView: UICollectionView) {
     }
 
     var data: [AnyHashable] = []
-    var collectionView: UICollectionView?
+    var collectionView: UICollectionView
 
     func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "选择背景图"
-        collectionView?.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
+        collectionView.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
         if let aView = collectionView {
             view.addSubview(aView)
         }
@@ -46,13 +42,13 @@ class WXChatBackgroundSelectViewController: WXBaseViewController, UICollectionVi
     }
     func p_addMasonry() {
         collectionView.mas_makeConstraints({ make in
-            make?.edges.mas_equalTo(self.view)
+            make.edges.mas_equalTo(self.view)
         })
     }
 
     // MARK: -
-    func registerCell(for collectionView: UICollectionView?) {
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "TLChatBackgroundSelectCell")
+    func registerCell(for collectionView: UICollectionView) {
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "TLChatBackgroundSelectCell")
     }
 
     // MARK: -
@@ -81,36 +77,36 @@ class WXBgSettingViewController: WXSettingViewController, UINavigationController
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         if data.count > 0 {
-            return partnerID.length > 0 ? data.count - 1 : data.count
+            return partnerID.length > 0  data.count - 1 : data.count
         }
         return 0
     }
 
-    func imagePickerController(_ picker: UIImagePickerController?, didFinishPicking image: UIImage?, editingInfo: [String : Any?]?) {
-        picker?.dismiss(animated: true) {
-            let image = editingInfo?[.originalImage] as? UIImage
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPicking image: UIImage, editingInfo: [String : Any]) {
+        picker.dismiss(animated: true) {
+            let image = editingInfo[.originalImage] as UIImage
             self.p_setChatBackgroundImage(image)
         }
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker?.dismiss(animated: true) {
-            let image = info?[.originalImage] as? UIImage
+        picker.dismiss(animated: true) {
+            let image = info[.originalImage] as UIImage
             self.p_setChatBackgroundImage(image)
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = data[indexPath.section][indexPath.row] as? WXSettingItem
-        if (item?.title == "选择背景图") {
+        let item = data[indexPath.section][indexPath.row] as WXSettingItem
+        if (item.title == "选择背景图") {
             let bgSelectVC = WXChatBackgroundSelectViewController()
             hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(bgSelectVC, animated: true)
-        } else if (item?.title == "从手机相册中选择") {
+            navigationController.pushViewController(bgSelectVC, animated: true)
+        } else if (item.title == "从手机相册中选择") {
             let imagePickerController = UIImagePickerController()
             imagePickerController.sourceType = .photoLibrary
             imagePickerController.delegate = self
             present(imagePickerController, animated: true)
-        } else if (item?.title == "拍一张") {
+        } else if (item.title == "拍一张") {
             let imagePickerController = UIImagePickerController()
             if !UIImagePickerController.isSourceTypeAvailable(.camera) {
                 SVProgressHUD.showError(withStatus: "相机初始化失败")
@@ -122,9 +118,9 @@ class WXBgSettingViewController: WXSettingViewController, UINavigationController
         } else if (item.title == "将背景应用到所有聊天场景") {
             showAlerWithtitle(nil, message: nil, style: UIAlertController.Style.actionSheet, ac1: {
                 return UIAlertAction(title: "将背景应用到所有聊天场景", style: .default, handler: { action in
-                    for key: String? in UserDefaults.standard.dictionaryRepresentation().keys {
-                        if key?.hasPrefix("CHAT_BG_") ?? false && !(key == "CHAT_BG_ALL") {
-                            UserDefaults.standard.removeObject(forKey: key ?? "")
+                    for key: String in UserDefaults.standard.dictionaryRepresentation().keys {
+                        if key.hasPrefix("CHAT_BG_")  false && !(key == "CHAT_BG_ALL") {
+                            UserDefaults.standard.removeObject(forKey: key  "")
                         }
                     }
                     WXChatViewController.sharedChatVC().resetChatVC()
@@ -144,11 +140,11 @@ class WXBgSettingViewController: WXSettingViewController, UINavigationController
         picker.dismiss(animated: true)
     }
 
-    func p_setChatBackgroundImage(_ image: UIImage?) {
+    func p_setChatBackgroundImage(_ image: UIImage) {
 
-        var imageData: Data? = nil
+        var imageData: Data = nil
         if let anImage = image {
-            imageData = UIImagePNGRepresentation(image) ? UIImagePNGRepresentation(image) : anImage.jpegData(compressionQuality: 1)
+            imageData = UIImagePNGRepresentation(image)  UIImagePNGRepresentation(image) : anImage.jpegData(compressionQuality: 1)
         }
         let imageName = String(format: "%lf.jpg", Date().timeIntervalSince1970)
         let imagePath = FileManager.pathUserChatBackgroundImage(imageName)
