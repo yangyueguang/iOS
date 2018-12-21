@@ -9,7 +9,6 @@
 import Foundation
 class WXMenuCell: UITableViewCell {
     var menuItem: WXMenuItem
-
     private var iconImageView: UIImageView
     private var titleLabel: UILabel
     private var midLabel: UILabel
@@ -17,7 +16,6 @@ class WXMenuCell: UITableViewCell {
     private var redPointView: UIView
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
         accessoryType = .disclosureIndicator
         contentView.addSubview(iconImageView)
         if let aLabel = titleLabel {
@@ -26,9 +24,7 @@ class WXMenuCell: UITableViewCell {
         contentView.addSubview(midLabel)
         contentView.addSubview(rightImageView)
         contentView.addSubview(redPointView)
-
         p_addMasonry()
-
     }
     var menuItem: NSMenuItem {
         get {
@@ -36,7 +32,7 @@ class WXMenuCell: UITableViewCell {
         }
         set(menuItem) {
             self.menuItem = menuItem
-            iconImageView.image = UIImage(named: menuItem.iconPath  "")
+            iconImageView.image = UIImage(named: menuItem.iconPath)
             titleLabel.text = menuItem.title
             midLabel.text = menuItem.subTitle
             if menuItem.rightIconURL == nil {
@@ -47,7 +43,7 @@ class WXMenuCell: UITableViewCell {
                 rightImageView.mas_updateConstraints({ make in
                     make.height.mas_equalTo(self.rightImageView.mas_height)
                 })
-                rightImageView.sd_setImage(with: URL(string: menuItem.rightIconURL  ""), placeholderImage: UIImage(named: PuserLogo))
+                rightImageView.sd_setImage(with: URL(string: menuItem.rightIconURL), placeholderImage: UIImage(named: PuserLogo))
             }
             redPointView.hidden = !menuItem.showRightRedPoint
         }
@@ -123,41 +119,30 @@ class WXMenuCell: UITableViewCell {
 
 class WXMenuViewController: UITableViewController {
     var data: [AnyHashable] = []
-    var analyzeTitle = ""
-    func loadView() {
+    override func loadView() {
         view = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))
         tableView = UITableView(frame: view.bounds, style: .grouped)
         tableView.backgroundColor = UIColor.lightGray
-        tableView.layoutMargins = UIEdgeInsetsMake(0, 15, 0, 0)
-        tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0)
+        tableView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         tableView.separatorColor = UIColor.gray
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 20))
     }
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(WXMenuCell.self, forCellReuseIdentifier: "TLMenuCell")
     }
 
-    func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        MobClick.beginLogPageView(analyzeTitle)
-    }
-
-    func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        MobClick.endLogPageView(analyzeTitle)
-    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return data.count
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let temp = data[section]
         return temp.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TLMenuCell") as WXMenuCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TLMenuCell") as! WXMenuCell
         let item = data[indexPath.section][indexPath.row] as WXMenuItem
         cell.menuItem = item
         return cell!
@@ -186,15 +171,4 @@ class WXMenuViewController: UITableViewController {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 5.0
     }
-
-    // MARK: - Getter -
-    // MARK: - Getter -
-    func analyzeTitle() -> String {
-        if analyzeTitle == nil {
-            return navigationItem.title
-        }
-        return analyzeTitle
-    }
-
-
 }

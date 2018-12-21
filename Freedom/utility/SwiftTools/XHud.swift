@@ -23,7 +23,7 @@ public final class XHud {
     }
     /// (只读) 返回 Hud 是否可见
     public static var isVisible: Bool { return XHudManager.sharedHUD.isVisible }
-    public static func show(_ style: XHudStyle, onView view: UIView? = nil) {
+    public static func show(_ style: XHudStyle = XHudStyle.vomProgress, onView view: UIView? = nil) {
         XHudManager.sharedHUD.contentView = contentView(with: style)
         XHudManager.sharedHUD.show(onView: view)
     }

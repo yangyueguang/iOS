@@ -8,125 +8,81 @@ enum TLEmojiGroupStatus : Int {
     case downloaded
     case downloading
 }
-
 class TLEmoji: NSObject {
-    var type: TLEmojiType
+    var type = TLEmojiType.emoji
     var groupID = ""
     var emojiID = ""
     var emojiName = ""
-    var emojiPath = ""
     var emojiURL = ""
     var size: CGFloat = 0.0
     class func replacedKeyFromPropertyName() -> [AnyHashable : Any] {
         return ["emojiID": "pId", "emojiURL": "Url", "emojiName": "credentialName", "emojiPath": "imageFile", "size": "size"]
     }
-
-    func emojiPath() -> String {
-        if _emojiPath == nil {
-            let groupPath = FileManager.pathExpression(forGroupID: groupID)
-            _emojiPath = "\(groupPath)\(emojiID)"
-        }
-        return _emojiPath
+    var emojiPath: String {
+        let groupPath = FileManager.pathExpression(forGroupID: groupID)
+        return "\(groupPath)\(emojiID)"
     }
 }
 
 class TLEmojiGroup: NSObject, WXPictureCarouselProtocol {
-    var type: TLEmojiType
+    var type = TLEmojiType.emoji
     /// 基本信息
     var groupID = ""
     var groupName = ""
-    var path = ""
-    var groupIconPath = ""
+    lazy var path = FileManager.pathExpression(forGroupID: self.groupID)
+    lazy var groupIconPath = "\(path)icon_\(groupID)"
     var groupIconURL = ""
-    /// Banner用
     var bannerID = ""
-    var bannerURL = ""
-    /// 总数
-    var count: Int = 0
-    /// 详细信息
+    var bannerURL = ""/// 总数
+    var count: Int = 0/// 详细信息
     var groupInfo = ""
     var groupDetailInfo = ""
     var date: Date
-    var status: TLEmojiGroupStatus
-    /// 作者
+    var status = TLEmojiGroupStatus.unDownload/// 作者
     var authName = ""
     var authID = ""
-    // MARK: - 本地信息
-    var data: [AnyHashable] = []
-// MARK: - 展示用
-/// 每页个数
-    var pageItemCount: Int = 0
-    /// 页数
-    var pageNumber: Int = 0
-    /// 行数
-    var rowNumber: Int = 0
-    /// 列数
+    var data: [AnyHashable] = []/// 每页个数
+    var pageItemCount: Int = 0/// 页数
+    var pageNumber: Int = 0/// 行数
+    var rowNumber: Int = 0/// 列数
     var colNumber: Int = 0
     class func replacedKeyFromPropertyName() -> [AnyHashable : Any] {
         return ["groupID": "eId", "groupIconURL": "coverUrl", "groupName": "eName", "groupInfo": "memo", "groupDetailInfo": "memo1", "count": "picCount", "bannerID": "aId", "bannerURL": "URL"]
     }
-
-    init() {
+    override init() {
         super.init()
-
-        self.type = TLEmojiTypeImageWithTitle
-
+        self.type = .imageWithTitle
     }
     func setType(_ type: TLEmojiType) {
         self.type = type
         switch type {
-        case TLEmojiTypeOther:
+        case .other:
             return
-        case TLEmojiTypeFace, TLEmojiTypeEmoji:
+        case .face, .emoji:
             rowNumber = 3
             colNumber = 7
-        case TLEmojiTypeImage, TLEmojiTypeFavorite, TLEmojiTypeImageWithTitle:
+        case .image, .favorite, .imageWithTitle:
             rowNumber = 2
             colNumber = 4
         default:
             break
         }
         pageItemCount = rowNumber * colNumber
-        pageNumber = count / pageItemCount + (count % pageItemCount == 0  0 : 1)
+        pageNumber = count / pageItemCount + (count % pageItemCount == 0 ? 0 : 1)
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func setData(_ data: [AnyHashable]) {
-        var data = data
         self.data = data
         count = data.count
         pageItemCount = rowNumber * colNumber
-        pageNumber = count / pageItemCount + (count % pageItemCount == 0  0 : 1)
+        pageNumber = count / pageItemCount + (count % pageItemCount == 0 ? 0 : 1)
     }
-
     func object(at index: Int) -> Any {
         return data[index]
     }
-
-    func path() -> String {
-        if path == nil && groupID != nil {
-            path = FileManager.pathExpression(for: groupID)
-        }
-        return path
-    }
-
-    func groupIconPath() -> String {
-        if groupIconPath == nil && path() != nil {
-            groupIconPath = "\(path()  "")icon_\(groupID)"
-        }
-        return groupIconPath
-    }
-
     func pictureURL() -> String {
         return bannerURL
     }
-
-
-
-
-
-
-
-    
 }
 enum TLGroupControlSendButtonStatus : Int {
     case gray
@@ -135,106 +91,75 @@ enum TLGroupControlSendButtonStatus : Int {
 }
 
 class TLEmojiBaseCell: UICollectionViewCell {
-    var emojiItem: TLEmoji
-    var bgView: UIImageView
-    //选中时的背景图片，默认nil
-    var highlightImage: UIImage
+    var emojiItem: TLEmoji = TLEmoji()
+    var bgView = UIImageView()
+    var highlightImage: UIImage?
     var showHighlightImage = false
 }
 
 class TLEmojiFaceItemCell: TLEmojiBaseCell {
-    private var imageView: UIImageView
-
-    init(frame: CGRect) {
-        //if super.init(frame: frame)
-
-        if let aView = imageView {
-            contentView.addSubview(aView)
+    private var imageView = UIImageView()
+    override var emojiItem: TLEmoji {
+        didSet {
+            imageView.image = emojiItem.emojiName.isEmpty ? nil : UIImage(named: emojiItem.emojiName)
         }
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        contentView.addSubview(imageView)
         p_addMasonry()
-
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-    func setEmojiItem(_ emojiItem: TLEmoji) {
-        super.setEmojiItem(emojiItem)
-        imageView.image = emojiItem.emojiName == nil  nil : UIImage(named: emojiItem.emojiName  "")
-    }
-
-    // MARK: - Private Methods -
     func p_addMasonry() {
         imageView.mas_makeConstraints({ make in
             make.edges.mas_equalTo(self)
         })
     }
-
-    var imageView: UIImageView {
-        if imageView == nil {
-            imageView = UIImageView()
-        }
-        return imageView
-    }
-    
 }
 
 class TLEmojiImageItemCell: TLEmojiBaseCell {
-    private var imageView: UIImageView
-
-    init(frame: CGRect) {
-        //if super.init(frame: frame)
-
-        if let aView = imageView {
-            contentView.addSubview(aView)
+    private var imageView = UIImageView()
+    override var emojiItem: TLEmoji {
+        didSet {
+            imageView.image = emojiItem.emojiPath == nil ? nil : UIImage(named: emojiItem.emojiPath)
         }
-        setHighlight(UIImage(named: "emoji_hl_background"))
-        p_addMasonry()
-
     }
-
-    func setEmojiItem(_ emojiItem: TLEmoji) {
-        super.setEmojiItem(emojiItem)
-        imageView.image = emojiItem.emojiPath == nil  nil : UIImage(named: emojiItem.emojiPath  "")
-    }
-    func p_addMasonry() {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        contentView.addSubview(imageView)
+        highlightImage = UIImage(named: "emoji_hl_background")
         imageView.mas_makeConstraints({ make in
             make.edges.mas_equalTo(self.contentView).mas_offset(UIEdgeInsetsMake(2, 2, 2, 2))
         })
     }
-
-    var imageView: UIImageView {
-        if imageView == nil {
-            imageView = UIImageView()
-        }
-        return imageView
-    }
-
-
-    
 }
 
 class TLEmojiImageTitleItemCell: TLEmojiBaseCell {
-    private var imageView: UIImageView
-    private var label: UILabel
+    private var imageView = UIImageView()
+    private lazy var label: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12.0)
+        label.textColor = UIColor.gray
+        label.textAlignment = .center
+        return label
+    }()
 
-    init(frame: CGRect) {
-        //if super.init(frame: frame)
-
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setHighlight(UIImage(named: "emoji_hl_background"))
-        if let aView = imageView {
-            contentView.addSubview(aView)
-        }
-        if let aLabel = label {
-            contentView.addSubview(aLabel)
-        }
+        contentView.addSubview(imageView)
+        contentView.addSubview(label)
         p_addMasonry()
 
     }
     func setEmojiItem(_ emojiItem: TLEmoji) {
         super.setEmojiItem(emojiItem)
-        imageView.image = emojiItem.emojiPath == nil  nil : UIImage(named: emojiItem.emojiPath  "")
+        imageView.image = emojiItem.emojiPath == nil ? nil : UIImage(named: emojiItem.emojiPath)
         label.text = emojiItem.emojiName
     }
-
-    // MARK: - Private Methods -
     func p_addMasonry() {
         bgView.mas_remakeConstraints({ make in
             make.left.and().right().and().top().mas_equalTo(self.contentView)
@@ -249,64 +174,35 @@ class TLEmojiImageTitleItemCell: TLEmojiBaseCell {
             make.left.and().right().and().bottom().mas_equalTo(self.contentView)
         })
     }
-    var imageView: UIImageView {
-        if imageView == nil {
-            imageView = UIImageView()
-        }
-        return imageView
-    }
-
-    func label() -> UILabel {
-        if label == nil {
-            label = UILabel()
-            label.font = UIFont.systemFont(ofSize: 12.0)
-            label.textColor = UIColor.gray
-            label.textAlignment = .center
-        }
-        return label
-    }
-
 }
 
 class TLEmojiItemCell: TLEmojiBaseCell {
-    private var label: UILabel
+    private lazy var label: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 25.0)
+        return label
+    }()
 
-    init(frame: CGRect) {
-        //if super.init(frame: frame)
-
-        if let aLabel = label {
-            contentView.addSubview(aLabel)
-        }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        bgView.layer.masksToBounds = true
+        bgView.layer.cornerRadius = 5.0
+        contentView.addSubview(label)
+        contentView.addSubview(bgView)
+        bgView.mas_makeConstraints({ make in
+            make.edges.mas_equalTo(self.contentView)
+        })
         p_addMasonry()
-
     }
 
     func setEmojiItem(_ emojiItem: TLEmoji) {
         super.setEmojiItem(emojiItem)
         label.text = emojiItem.emojiName
     }
-
-    // MARK: - Private Methods -
     func p_addMasonry() {
         label.mas_makeConstraints({ make in
             make.center.mas_equalTo(self)
         })
-    }
-    func label() -> UILabel {
-        if label == nil {
-            label = UILabel()
-            label.font = UIFont.systemFont(ofSize: 25.0)
-        }
-        return label
-    }
-    init(frame: CGRect) {
-        super.init(frame: frame)
-
-        contentView.addSubview(bgView)
-        bgView.mas_makeConstraints({ make in
-            make.edges.mas_equalTo(self.contentView)
-        })
-
     }
 
     func setShowHighlightImage(_ showHighlightImage: Bool) {
@@ -316,53 +212,32 @@ class TLEmojiItemCell: TLEmojiBaseCell {
             bgView.image = nil
         }
     }
-    func bgView() -> UIImageView {
-        if bgView == nil {
-            bgView = UIImageView()
-            bgView.layer.masksToBounds = true
-            bgView.layer.cornerRadius = 5.0
-        }
-        return bgView
-    }
-
-
-
-
-    
 }
 
 class TLEmojiGroupCell: UICollectionViewCell {
     var emojiGroup: TLEmojiGroup
-    private var groupIconView: UIImageView
+    private var groupIconView = UIImageView()
 
     init(frame: CGRect) {
-        //if super.init(frame: frame)
-
+        super.init(frame: frame)
         backgroundColor = UIColor.clear
         let selectedView = UIView()
         selectedView.backgroundColor = UIColor(245.0, 245.0, 247.0, 1.0)
         selectedBackgroundView = selectedView
-
-        if let aView = groupIconView {
-            contentView.addSubview(aView)
-        }
+        contentView.addSubview(groupIconView)
         p_addMasonry()
-
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func setEmojiGroup(_ emojiGroup: TLEmojiGroup) {
         self.emojiGroup = emojiGroup
-        groupIconView.image = UIImage(named: emojiGroup.groupIconPath  "")
+        groupIconView.image = UIImage(named: emojiGroup.groupIconPath)
     }
-
-    // MARK: - Private Methods -
     func p_addMasonry() {
         groupIconView.mas_makeConstraints({ make in
             make.center.mas_equalTo(self.contentView)
             make.width.and().height().mas_lessThanOrEqualTo(30)
         })
     }
-
     func draw(_ rect: CGRect) {
         super.draw(rect)
         let context = UIGraphicsGetCurrentContext()
@@ -373,16 +248,6 @@ class TLEmojiGroupCell: UICollectionViewCell {
         context.addLine(to: CGPoint(x: frame.size.width - 0.5, y: frame.size.height - 5))
         context.strokePath()
     }
-    func groupIconView() -> UIImageView {
-        if groupIconView == nil {
-            groupIconView = UIImageView()
-        }
-        return groupIconView
-    }
-
-
-
-    
 }
 protocol TLEmojiGroupControlDelegate: NSObjectProtocol {
     func emojiGroupControl(_ emojiGroupControl: TLEmojiGroupControl, didSelectedGroup group: TLEmojiGroup)
@@ -392,32 +257,50 @@ protocol TLEmojiGroupControlDelegate: NSObjectProtocol {
 }
 
 class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    var sendButtonStatus: TLGroupControlSendButtonStatus
-    var emojiGroupData: [AnyHashable] = []
-    weak var delegate: TLEmojiGroupControlDelegate
+    var sendButtonStatus = TLGroupControlSendButtonStatus.none
+    var emojiGroupData: [[TLEmojiGroup]] = []
+    weak var delegate: TLEmojiGroupControlDelegate?
+    private var curIndexPath = IndexPath(row: 0, section: 0)
+    private lazy var addButton : UIButton = {
+        let addButton = UIButton()
+        addButton.setImage(UIImage(named: "emojiKB_groupControl_add"), for: .normal)
+        addButton.addTarget(self, action: #selector(self.emojiAddButtonDown), for: .touchUpInside)
+        return addButton
+    }()
+    private var collectionView: UICollectionView =  {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = UIColor.clear
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.scrollsToTop = false
+        return collectionView
+    }()
 
-    private var curIndexPath: IndexPath
-    private var addButton: UIButton
-    private var collectionView: UICollectionView
-    private var sendButton: UIButton
+    private var sendButton:UIButton = {
+        let sendButton = UIButton()
+        sendButton.titleLabel.font = UIFont.systemFont(ofSize: 15.0)
+        sendButton.setTitle("发送", for: .normal)
+        sendButton.setTitleColor(UIColor.gray, for: .normal)
+        sendButton.backgroundColor = UIColor.clear
+        sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_gray"), for: .normal)
+        sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_gray"), for: .highlighted)
+        sendButton.addTarget(self, action: #selector(self.sendButtonDown), for: .touchUpInside)
+        return sendButton
+    }()
 
     init() {
-        //if super.init()
-
+        super.init()
         backgroundColor = UIColor.white
-        if let aButton = addButton {
-            addSubview(aButton)
-        }
-        if let aView = collectionView {
-            addSubview(aView)
-        }
-        if let aButton = sendButton {
-            addSubview(aButton)
-        }
+        addSubview(addButton)
+        addSubview(collectionView)
+        addSubview(sendButton)
         p_addMasonry()
-
         collectionView.register(TLEmojiGroupCell.self, forCellWithReuseIdentifier: "TLEmojiGroupCell")
-
     }
     func setSendButtonStatus(_ sendButtonStatus: TLGroupControlSendButtonStatus) {
         if self.sendButtonStatus != sendButtonStatus {
@@ -429,7 +312,6 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
                     self.layoutIfNeeded()
                 })
             }
-
             self.sendButtonStatus = sendButtonStatus
             if sendButtonStatus == TLGroupControlSendButtonStatusNone {
                 UIView.animate(withDuration: 1, animations: {
@@ -458,7 +340,7 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
         }
         self.emojiGroupData = emojiGroupData
         collectionView.reloadData()
-        if emojiGroupData != nil && (emojiGroupData.count  0) > 0 {
+        if emojiGroupData != nil && (emojiGroupData.count) > 0 {
             setCurIndexPath(IndexPath(row: 0, section: 0))
         }
     }
@@ -470,7 +352,7 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
         }
         self.curIndexPath = curIndexPath
         if delegate && delegate.responds(to: #selector(self.emojiGroupControl(_:didSelectedGroup:))) {
-            let group = (emojiGroupData[curIndexPath.section  0])[curIndexPath.row  0] as TLEmojiGroup
+            let group = (emojiGroupData[curIndexPath.section])[curIndexPath.row] as TLEmojiGroup
             delegate.emojiGroupControl(self, didSelectedGroup: group)
         }
     }
@@ -479,7 +361,7 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (emojiGroupData[section] as [Any]).count  0
+        return (emojiGroupData[section] as [Any]).count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -498,8 +380,6 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
         }
         return CGSize.zero
     }
-
-    //MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let group = emojiGroupData[indexPath.section][indexPath.row] as TLEmojiGroup
         if group.type == TLEmojiTypeOther {
@@ -535,7 +415,7 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
         }
     }
 
-    func draw(_ rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         super.draw(rect)
         let context = UIGraphicsGetCurrentContext()
         context.setLineWidth(0.5)
@@ -545,56 +425,10 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
         context.addLine(to: CGPoint(x: 46, y: frame.size.height - 5))
         context.strokePath()
     }
-
-    // MARK: - Event Response -
     func emojiAddButtonDown() {
-        if delegate && delegate.responds(to: #selector(self.emojiGroupControlEditButtonDown(_:))) {
-            delegate.emojiGroupControlEditButtonDown(self)
-        }
+        delegate?.emojiGroupControlEditButtonDown(self)
     }
     func sendButtonDown() {
-        if delegate && delegate.responds(to: #selector(self.emojiGroupControlSendButtonDown(_:))) {
-            delegate.emojiGroupControlSendButtonDown(self)
-        }
+        delegate?.emojiGroupControlSendButtonDown(self)
     }
-
-    // MARK: - Getter -
-    func addButton() -> UIButton {
-        if addButton == nil {
-            addButton = UIButton()
-            addButton.setImage(UIImage(named: "emojiKB_groupControl_add"), for: .normal)
-            addButton.addTarget(self, action: #selector(self.emojiAddButtonDown), for: .touchUpInside)
-        }
-        return addButton
-    }
-    var collectionView: UICollectionView! {
-        if collectionView == nil {
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            layout.minimumLineSpacing = 0
-            collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-            collectionView.backgroundColor = UIColor.clear
-            collectionView.dataSource = self
-            collectionView.delegate = self
-            collectionView.showsHorizontalScrollIndicator = false
-            collectionView.showsHorizontalScrollIndicator = false
-            collectionView.scrollsToTop = false
-        }
-        return collectionView
-    }
-    func sendButton() -> UIButton {
-        if sendButton == nil {
-            sendButton = UIButton()
-            sendButton.titleLabel.font = UIFont.systemFont(ofSize: 15.0)
-            sendButton.setTitle("  发送", for: .normal)
-            sendButton.setTitleColor(UIColor.gray, for: .normal)
-            sendButton.backgroundColor = UIColor.clear
-            sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_gray"), for: .normal)
-            sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_gray"), for: .highlighted)
-            sendButton.addTarget(self, action: #selector(self.sendButtonDown), for: .touchUpInside)
-        }
-        return sendButton
-    }
-
-    
 }

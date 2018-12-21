@@ -3,14 +3,14 @@
 //  Freedom
 
 import Foundation
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXMineInfoAvatarCell: UITableViewCell {
     var item: WXSettingItem
     var titleLabel: UILabel
     var avatarImageView: UIImageView
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         accessoryType = .disclosureIndicator
         if let aLabel = titleLabel {
@@ -30,9 +30,9 @@ class WXMineInfoAvatarCell: UITableViewCell {
         self.item = item
         titleLabel.text = item.title
         if item.rightImagePath != nil {
-            avatarImageView.image = UIImage(named: item.rightImagePath  "")
+            avatarImageView.image = UIImage(named: item.rightImagePath)
         } else if item.rightImageURL != nil {
-            avatarImageView.sd_setImage(with: URL(string: item.rightImageURL  ""), placeholderImage: UIImage(named: PuserLogo))
+            avatarImageView.sd_setImage(with: URL(string: item.rightImageURL), placeholderImage: UIImage(named: PuserLogo))
         } else {
             avatarImageView.image = nil
         }

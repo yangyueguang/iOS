@@ -8,7 +8,7 @@ import Foundation
     @objc optional func scannerViewController(_ scannerVC: WXScannerViewController, initFailed errorString: String)
     @objc optional func scannerViewController(_ scannerVC: WXScannerViewController, scanAnswer ansStr: String)
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXScannerView: UIView {
     var timer: Timer
 
@@ -21,7 +21,7 @@ class WXScannerView: UIView {
     var scannerLine: UIImageView
 
     override init(frame: CGRect) {
-        //if super.init(frame: frame)
+        super.init(frame: frame)
 
         clipsToBounds = true
         if let aView = bgView {
@@ -112,7 +112,7 @@ class WXScannerView: UIView {
             make.width.and().height().mas_lessThanOrEqualTo(self)
         })
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func stopScanner() {
         if timer {
             timer.invalidate()
@@ -171,7 +171,7 @@ class WXScannerView: UIView {
 
     
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXScannerBackgroundView: UIView {
     var topView: UIView
     var btmView: UIView
@@ -179,7 +179,7 @@ class WXScannerBackgroundView: UIView {
     var rightView: UIView
 
     override init(frame: CGRect) {
-        //if super.init(frame: frame)
+        super.init(frame: frame)
 
         if let aView = topView {
             addSubview(aView)
@@ -222,7 +222,7 @@ class WXScannerBackgroundView: UIView {
             make.bottom.mas_equalTo(self.btmView.mas_top)
         })
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func topView() -> UIView {
         if topView == nil {
             topView = UIView()
@@ -384,7 +384,7 @@ class WXScannerViewController: WXBaseViewController ,AVCaptureMetadataOutputObje
         return scannerSession.isRunning()
     }
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        if (metadataObjects.count  0) > 0 {
+        if (metadataObjects.count) > 0 {
             stopCodeReading()
             let obj = metadataObjects[0] as AVMetadataMachineReadableCodeObject
             if delegate && delegate.responds(to: #selector(self.scannerViewController(_:scanAnswer:))) {

@@ -7,7 +7,7 @@ class WXShakeHelper: NSObject {
     var shakeSettingData: [AnyHashable] = []
 
     override init() {
-        //if super.init()
+        super.init()
 
         shakeSettingData = [AnyHashable]()
         p_initTestData()

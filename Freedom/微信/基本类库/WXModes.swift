@@ -7,11 +7,11 @@
 //
 
 import Foundation
-func TLCreateSettingGroup(Header: Any, Footer: Any, Items: Any) {
-    WXSettingGroup.createGroup(withHeaderTitle: Header, footerTitle: Footer, items: Items)
+func TLCreateSettingGroup(_ Header: String?,_ Footer: String?, _ Items: [WXSettingItem]) -> WXSettingGroup {
+    return WXSettingGroup.createGroup(withHeaderTitle: Header ?? "", footerTitle: Footer ?? "", items: Items)
 }
 enum TLInfoType : Int {
-    case default
+    case defaultType
     case titleOnly
     case images
     case mutiRow
@@ -19,13 +19,13 @@ enum TLInfoType : Int {
     case other
 }
 
-enum TLSettingItemType : Int {
-    case defalut = 0
+public enum TLSettingItemType : Int {
+    case `default` = 0
     case titleButton
-    case switch
+    case switchBtn
     case other
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXMomentFrame: NSObject {
     var height: CGFloat = 0.0
     var heightDetail: CGFloat = 0.0
@@ -41,11 +41,11 @@ class WXMomentDetailFrame: NSObject {
 class WXMomentDetail: NSObject {
     var text = ""
     var images: [AnyHashable] = []
-    var detailFrame: WXMomentDetailFrame?
+    var detailFrame: WXMomentDetailFrame
     func heightText() -> CGFloat {
         if text.length > 0 {
             let textHeight: CGFloat = text.boundingRect(with: CGSize(width: APPW - 70.0, height: MAXFLOAT), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)], context: nil).size.height
-            //???: 浮点数会导致部分cell顶部多出来一条线，莫名其妙！！！
+            //: 浮点数会导致部分cell顶部多出来一条线，莫名其妙！！！
             return Double(Int(textHeight)) + 1.0
         }
         return 0.0
@@ -68,7 +68,7 @@ class WXMomentDetail: NSObject {
         }
         return height
     }
-    func detailFrame() -> WXMomentDetailFrame? {
+    func detailFrame() -> WXMomentDetailFrame {
         if detailFrame == nil {
             detailFrame = WXMomentDetailFrame()
             detailFrame.height = 0.0
@@ -87,11 +87,11 @@ class WXMomentExtensionFrame: NSObject {
     var heightLiked: CGFloat = 0.0
     var heightComments: CGFloat = 0.0
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXMomentExtension: NSObject {
     var likedFriends: [AnyHashable] = []
     var comments: [AnyHashable] = []
-    var extensionFrame: WXMomentExtensionFrame?
+    var extensionFrame: WXMomentExtensionFrame
     init() {
         super.init()
 
@@ -111,12 +111,12 @@ class WXMomentExtension: NSObject {
 
     func heightComments() -> CGFloat {
         var height: CGFloat = 0.0
-        for comment: WXMomentComment? in comments {
-            height += comment?.commentFrame.height ?? 0.0
+        for comment: WXMomentComment in comments {
+            height += comment.commentFrame.height
         }
         return height
     }
-    func extensionFrame() -> WXMomentExtensionFrame? {
+    func extensionFrame() -> WXMomentExtensionFrame {
         if extensionFrame == nil {
             extensionFrame = WXMomentExtensionFrame()
             extensionFrame.height = 0.0
@@ -134,11 +134,11 @@ class WXMomentExtension: NSObject {
 
 class WXMoment: NSObject {
     var momentID = ""
-    var user: WXUser?
-    var date: Date?
-    /*/ 详细内容 */    var detail: WXMomentDetail?
-    /*/ 附加（评论，赞） */    var `extension`: WXMomentExtension?
-    var momentFrame: WXMomentFrame? {
+    var user: WXUser
+    var date: Date
+    /*/ 详细内容 */    var detail: WXMomentDetail
+    /*/ 附加（评论，赞） */    var `extension`: WXMomentExtension
+    var momentFrame: WXMomentFrame {
         if _momentFrame == nil {
             _momentFrame = WXMomentFrame()
             _momentFrame.height = 76.0
@@ -150,7 +150,7 @@ class WXMoment: NSObject {
         return _momentFrame
     }
     init() {
-        //if super.init()
+        super.init()
 
         WXMoment.mj_setupObjectClass(inArray: {
             return ["user": "TLUser", "detail": "TLMomentDetail", "extension": "TLMomentExtension"]
@@ -164,10 +164,10 @@ class WXMomentCommentFrame: NSObject {
 }
 
 class WXMomentComment: NSObject {
-    var user: WXUser?
-    var toUser: WXUser?
+    var user: WXUser
+    var toUser: WXUser
     var content = ""
-    var commentFrame: WXMomentCommentFrame? {
+    var commentFrame: WXMomentCommentFrame {
         if commentFrame == nil {
             commentFrame = WXMomentCommentFrame()
             commentFrame.height = 35.0
@@ -188,17 +188,17 @@ class WXAddMenuHelper: NSObject {
     private var menuItemTypes: [Any] = []
 
     init() {
-        //if super.init()
+        super.init()
 
         menuItemTypes = ["0", "1", "2", "3"]
 
     }
 
-    func menuData() -> [AnyHashable]? {
+    func menuData() -> [AnyHashable] {
         if _menuData == nil {
             _menuData = [AnyHashable]()
-            for type: String in menuItemTypes as? [String] ?? [] {
-                let item: WXAddMenuItem? = p_getMenuItem(byType: Int(truncating: type) ?? 0)
+            for type: String in menuItemTypes as [String]  [] {
+                let item: WXAddMenuItem = p_getMenuItem(byType: Int(truncating: type))
                 if let anItem = item {
                     _menuData.append(anItem)
                 }
@@ -207,7 +207,7 @@ class WXAddMenuHelper: NSObject {
         return _menuData
     }
 
-    func p_getMenuItem(by type: TLAddMneuType) -> WXAddMenuItem? {
+    func p_getMenuItem(by type: TLAddMneuType) -> WXAddMenuItem {
         switch type {
         case TLAddMneuTypeGroupChat /* 群聊 */:
             return WXAddMenuItem.create(withType: TLAddMneuTypeGroupChat, title: "发起群聊", iconPath: "nav_menu_groupchat", className: "")
@@ -226,58 +226,30 @@ class WXAddMenuHelper: NSObject {
 }
 
 class WXInfo: NSObject {
-    var type: TLInfoType?
+    var type = TLInfoType.defaultType
     var title = ""
     var subTitle = ""
     var subImageArray: [AnyHashable] = []
-    var userInfo: Any?
-    var titleColor: UIColor?
-    var buttonColor: UIColor?
-    var buttonHLColor: UIColor?
-    var buttonBorderColor: UIColor?
+    var userInfo: Any
+    var titleColor = UIColor.black
+    var buttonColor = UIColor.green
+    var buttonHLColor = UIColor.green
+    var buttonBorderColor = UIColor.gray
     //是否显示箭头（默认YES）
     var showDisclosureIndicator = false
     //停用高亮（默认NO）
     var disableHighlight = false
-    class func createInfo(withTitle title: String?, subTitle: String?) -> WXInfo? {
+    class func createInfo(withTitle title: String, subTitle: String) -> WXInfo {
         let info = WXInfo()
         info.title = title
         info.subTitle = subTitle
         return info
     }
 
-    init() {
+    override init() {
         super.init()
-
         showDisclosureIndicator = true
 
-    }
-
-    func buttonColor() -> UIColor? {
-        if buttonColor == nil {
-            return UIColor.green
-        }
-        return buttonColor
-    }
-    func buttonHLColor() -> UIColor? {
-        if buttonHLColor == nil {
-            return buttonColor()
-        }
-        return buttonHLColor
-    }
-
-    func titleColor() -> UIColor? {
-        if titleColor == nil {
-            return UIColor.black
-        }
-        return titleColor
-    }
-
-    func buttonBorderColor() -> UIColor? {
-        if buttonBorderColor == nil {
-            return UIColor.gray
-        }
-        return buttonBorderColor
     }
 
 }
@@ -292,7 +264,7 @@ class WXMenuItem: NSObject {
     var rightIconURL = ""
     //是否显示红点
     var showRightRedPoint = false
-    class func createMenu(withIconPath iconPath: String?, title: String?) -> WXMenuItem? {
+    class func createMenu(withIconPath iconPath: String, title: String) -> WXMenuItem {
         let item = WXMenuItem()
         item.iconPath = iconPath
         item.title = title
@@ -300,49 +272,48 @@ class WXMenuItem: NSObject {
     }
 
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXSettingGroup: NSObject {
     //section头部标题
     var headerTitle = ""
     //section尾部说明
     var footerTitle = ""
     //setcion元素
-    var items: [AnyHashable] = []
+    var items: [WXSettingItem] = []
     private(set) var headerHeight: CGFloat = 0.0
     private(set) var footerHeight: CGFloat = 0.0
     private(set) var count: Int = 0
 
-    class func createGroup(withHeaderTitle headerTitle: String?, footerTitle: String?, items: [AnyHashable]?) -> WXSettingGroup? {
-        var items = items
+    class func createGroup(withHeaderTitle headerTitle: String, footerTitle: String, items: [WXSettingItem]) -> WXSettingGroup {
         let group = WXSettingGroup()
         group.headerTitle = headerTitle
         group.footerTitle = footerTitle
         group.items = items
         return group
     }
-    func object(at index: Int) -> Any {
+    func object(at index: Int) -> WXSettingItem {
         return items[index]
     }
 
-    func index(of obj: Any) -> Int {
-        return items.index(of: obj)
+    func index(of obj: WXSettingItem) -> Int {
+        return items.index(of: obj) ?? 0
     }
 
-    func remove(_ obj: Any) {
+    func remove(_ obj: WXSettingItem) {
         items.removeAll(where: { element in element == obj })
     }
 
     // MARK: - Setter
-    func setHeaderTitle(_ headerTitle: String?) {
+    func setHeaderTitle(_ headerTitle: String) {
         self.headerTitle = headerTitle
         headerHeight = getTextHeightOfText(headerTitle, font: UIFont.systemFont(ofSize: 14.0), width: APPW - 30)
     }
 
-    func setFooterTitle(_ footerTitle: String?) {
+    func setFooterTitle(_ footerTitle: String) {
         self.footerTitle = footerTitle
         footerHeight = getTextHeightOfText(footerTitle, font: UIFont.systemFont(ofSize: 14.0), width: APPW - 30)
     }
-    func getTextHeightOfText(_ text: String?, font: UIFont?, width: CGFloat) -> CGFloat {
+    func getTextHeightOfText(_ text: String, font: UIFont, width: CGFloat) -> CGFloat {
         if hLabel == nil {
             hLabel = UILabel(frame: UIScreen.main.bounds)
             hLabel.numberOfLines = 0
@@ -359,8 +330,8 @@ class WXSettingGroup: NSObject {
     }
 
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-class WXSettingItem: NSObject {
+
+public class WXSettingItem: NSObject {
     //主标题
     var title = ""
     //副标题
@@ -374,9 +345,9 @@ class WXSettingItem: NSObject {
     //停用高亮（默认NO）
     var disableHighlight = false
     //cell类型，默认default
-    var type: TLSettingItemType?
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    class func createItem(withTitle title: String?) -> WXSettingItem? {
+    var type = TLSettingItemType.defalut
+    
+    class func createItem(withTitle title: String) -> WXSettingItem {
         let item = WXSettingItem()
         item.title = title
         return item
@@ -389,9 +360,9 @@ class WXSettingItem: NSObject {
 
     }
 
-    func cellClassName() -> String? {
+    func cellClassName() -> String {
         switch type {
-        case TLSettingItemTypeDefalut:
+        case .default:
             return "TLSettingCell"
         case TLSettingItemTypeTitleButton:
             return "TLSettingButtonCell"
@@ -406,11 +377,11 @@ class WXSettingItem: NSObject {
 }
 
 class WXAddMenuItem: NSObject {
-    var type: TLAddMneuType?
+    var type: TLAddMneuType
     var title = ""
     var iconPath = ""
     var className = ""
-    class func create(with type: TLAddMneuType, title: String?, iconPath: String?, className: String?) -> WXAddMenuItem? {
+    class func create(with type: TLAddMneuType, title: String, iconPath: String, className: String) -> WXAddMenuItem {
         let item = WXAddMenuItem()
         item.type = type
         item.title = title

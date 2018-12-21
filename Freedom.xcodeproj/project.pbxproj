@@ -1134,6 +1134,8 @@
 		DF0E968421CBACFA009682CC /* WXShakeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E968321CBACFA009682CC /* WXShakeSettingViewController.swift */; };
 		DF0E968621CBAD07009682CC /* WXShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E968521CBAD07009682CC /* WXShakeViewController.swift */; };
 		DF0E968821CBAD13009682CC /* WXShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E968721CBAD13009682CC /* WXShoppingViewController.swift */; };
+		DF4C6FC821CC787700A54339 /* FoundationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C6FC721CC787700A54339 /* FoundationEnum.swift */; };
+		DF4C6FCA21CC790D00A54339 /* FoundationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */; };
 		DF6B51EE21CA6F5900460949 /* WXModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51ED21CA6F5900460949 /* WXModes.swift */; };
 		DF6B51F021CA6F6F00460949 /* WXExpressionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51EF21CA6F6F00460949 /* WXExpressionHelper.swift */; };
 		DF6B51F221CA6F7C00460949 /* WXMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51F121CA6F7C00460949 /* WXMessageManager.swift */; };
@@ -2139,7 +2141,6 @@
 		779939FA1E2F7B9C00866968 /* [麻将]@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[麻将]@2x.png"; sourceTree = "<group>"; };
 		779939FB1E2F7B9C00866968 /* [鼓掌]@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[鼓掌]@2x.png"; sourceTree = "<group>"; };
 		779939FC1E2F7B9C00866968 /* [龇牙]@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[龇牙]@2x.png"; sourceTree = "<group>"; };
-		779E70041E31AA5200216928 /* Foundation_enum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Foundation_enum.h; sourceTree = "<group>"; };
 		77BD14841D6E817A00DE5DB9 /* taobao01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = taobao01.jpg; sourceTree = "<group>"; };
 		77BD14851D6E817A00DE5DB9 /* taobao02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = taobao02.jpg; sourceTree = "<group>"; };
 		77BD14861D6E817A00DE5DB9 /* taobao03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = taobao03.jpg; sourceTree = "<group>"; };
@@ -2530,6 +2531,8 @@
 		DF0E968321CBACFA009682CC /* WXShakeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXShakeSettingViewController.swift; sourceTree = "<group>"; };
 		DF0E968521CBAD07009682CC /* WXShakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXShakeViewController.swift; sourceTree = "<group>"; };
 		DF0E968721CBAD13009682CC /* WXShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXShoppingViewController.swift; sourceTree = "<group>"; };
+		DF4C6FC721CC787700A54339 /* FoundationEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationEnum.swift; sourceTree = "<group>"; };
+		DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationAPI.swift; sourceTree = "<group>"; };
 		DF6B51ED21CA6F5900460949 /* WXModes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXModes.swift; sourceTree = "<group>"; };
 		DF6B51EF21CA6F6F00460949 /* WXExpressionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXExpressionHelper.swift; sourceTree = "<group>"; };
 		DF6B51F121CA6F7C00460949 /* WXMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXMessageManager.swift; sourceTree = "<group>"; };
@@ -3728,11 +3731,12 @@
 				71250EC72091C1DA0093B59B /* NSObject+Freedom.h */,
 				71250EC82091C1DA0093B59B /* NSObject+Freedom.m */,
 				713728CE20AE9FC500A3227A /* FoundationSwift.swift */,
+				DF4C6FC721CC787700A54339 /* FoundationEnum.swift */,
+				DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */,
 				BF58BA2F20EDE837002CB4EE /* FreedomToolSwift.swift */,
 				DFA5BF3521B6A74D00CB9223 /* User.swift */,
 				77CC4F3B1D90DF6200DD2EC8 /* Foundation.h */,
 				77CC4F361D90DCC700DD2EC8 /* Foundation_API.h */,
-				779E70041E31AA5200216928 /* Foundation_enum.h */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -7059,6 +7063,7 @@
 				BF58BB5220EF1945002CB4EE /* RCDPrivacyTableViewController.m in Sources */,
 				71267A582092E726006E1B96 /* BookReadMode.m in Sources */,
 				BFEF199B2101E821003DCAC1 /* HYKLineAboveView.m in Sources */,
+				DF4C6FCA21CC790D00A54339 /* FoundationAPI.swift in Sources */,
 				DF0E968021CBACEF009682CC /* WXScannerViewController.swift in Sources */,
 				BF58BB2C20EF1945002CB4EE /* RCDPersonDetailViewController.m in Sources */,
 				7115A5BE20AAD32E000D0B96 /* PersonalEducationViewController.swift in Sources */,
@@ -7147,6 +7152,7 @@
 				BF5B9B7B1F8E679300BD885E /* HealthViewController.swift in Sources */,
 				BFEF19A22101E821003DCAC1 /* unzip.c in Sources */,
 				BFC6D94320E4AC1800F17378 /* SinaDiscoverViewController.swift in Sources */,
+				DF4C6FC821CC787700A54339 /* FoundationEnum.swift in Sources */,
 				DFF4AB9D21B7B80000F03C71 /* XCardsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

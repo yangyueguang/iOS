@@ -3,7 +3,7 @@
 //  Freedom
 
 import Foundation
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXChatBackgroundSelectViewController: WXBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func registerCell(for collectionView: UICollectionView) {
     }
@@ -120,7 +120,7 @@ class WXBgSettingViewController: WXSettingViewController, UINavigationController
                 return UIAlertAction(title: "将背景应用到所有聊天场景", style: .default, handler: { action in
                     for key: String in UserDefaults.standard.dictionaryRepresentation().keys {
                         if key.hasPrefix("CHAT_BG_")  false && !(key == "CHAT_BG_ALL") {
-                            UserDefaults.standard.removeObject(forKey: key  "")
+                            UserDefaults.standard.removeObject(forKey: key)
                         }
                     }
                     WXChatViewController.sharedChatVC().resetChatVC()
@@ -135,7 +135,7 @@ class WXBgSettingViewController: WXSettingViewController, UINavigationController
     }
 
 
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }

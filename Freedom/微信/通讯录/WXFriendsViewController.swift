@@ -11,7 +11,7 @@ class WXFriendCell: WXTableViewCell {
     private var subTitleLabel: UILabel
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         leftSeparatorSpace = 10
 
@@ -31,14 +31,14 @@ class WXFriendCell: WXTableViewCell {
     func setUser(_ user: WXUser) {
         self.user = user
         if user.avatarPath != nil {
-            avatarImageView.image = UIImage(named: user.avatarPath  "")
+            avatarImageView.image = UIImage(named: user.avatarPath)
         } else {
-            avatarImageView.sd_setImage(with: URL(string: user.avatarURL  ""), placeholderImage: UIImage(named: PuserLogo))
+            avatarImageView.sd_setImage(with: URL(string: user.avatarURL), placeholderImage: UIImage(named: PuserLogo))
         }
 
         usernameLabel.text = user.showName
         subTitleLabel.text = user.detailInfo.remarkInfo
-        if user.detailInfo.remarkInfo.length  0 > 0 && subTitleLabel.isHidden() {
+        if user.detailInfo.remarkInfo.length > 0 && subTitleLabel.isHidden() {
             subTitleLabel.hidden = false
             usernameLabel.mas_updateConstraints({ make in
                 make.centerY.mas_equalTo(self.avatarImageView).mas_offset(-9.5)
@@ -69,7 +69,7 @@ class WXFriendCell: WXTableViewCell {
             make.right.mas_lessThanOrEqualTo(self.contentView).mas_offset(-20)
         })
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func avatarImageView() -> UIImageView {
         if avatarImageView == nil {
             avatarImageView = UIImageView()
@@ -102,7 +102,7 @@ class WXFriendHeaderView: UITableViewHeaderFooterView {
     private var titleLabel: UILabel
 
     init(reuseIdentifier: String) {
-        //if super.init(reuseIdentifier: reuseIdentifier)
+        super.init(reuseIdentifier: reuseIdentifier)
 
         let bgView = UIView()
         bgView.backgroundColor = UIColor.lightGray
@@ -225,7 +225,7 @@ class WXFriendsViewController: WXTableViewController ,UISearchBarDelegate {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let group = data[section] as WXUserGroup
-        return group.count  0
+        return group.count
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
@@ -243,11 +243,11 @@ class WXFriendsViewController: WXTableViewController ,UISearchBarDelegate {
         let user = group[indexPath.row] as WXUser
         cell.user = user
 
-        if indexPath.section == data.count - 1 && indexPath.row == group.count  0 - 1 {
+        if indexPath.section == data.count - 1 && indexPath.row == group.count - 1 {
             // 最后一个cell，底部全线
             cell.bottomLineStyle = TLCellLineStyleFill
         } else {
-            cell.bottomLineStyle = indexPath.row == group.count  0 - 1  TLCellLineStyleNone : TLCellLineStyleDefault
+            cell.bottomLineStyle = indexPath.row == group.count - 1  TLCellLineStyleNone : TLCellLineStyleDefault
         }
 
         return cell!

@@ -58,7 +58,7 @@ class WXChatDetailViewController: WXSettingViewController, WechatUserGroupCellDe
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 && indexPath.row == 0 {
             let count: Int = user  1 : 0
-            return CGFloat(((count + 1) / 4 + ((((count + 1) % 4) == 0)  0 : 1)) * 90 + 15)
+            return CGFloat(((count + 1) / 4 + ((((count + 1) % 4) == 0) ? 0 : 1)) * 90 + 15)
         }
         return super.tableView(tableView, heightForRowAt: indexPath)
     }

@@ -3,37 +3,27 @@
 //  Freedom
 
 import Foundation
+import WebKit
 class WXGameViewController: WXWebViewController {
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-        setUseMPageTitleAsNavTitle(false)
+        useMPageTitleAsNavTitle(false)
         setShowLoadingProgress(false)
-        setDisableBackButton(true)
-
+        disableBackButton(true)
         navigationItem.title = "游戏"
         setUrl("http://m.le890.com")
-
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "nav_setting"), style: .plain, target: self, action: #selector(WXGameViewController.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButton
-
-        SVProgressHUD.show(withStatus: "加载中")
+        XHud.show()
     }
-    func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if SVProgressHUD.isVisible() {
-            SVProgressHUD.dismiss()
-        }
+        XHud.hide()
     }
-
-    // MARK: - Delegate -
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if SVProgressHUD.isVisible() {
-            SVProgressHUD.dismiss()
-        }
+        XHud.hide()
         super.webView(webView, didFinish: navigation)
     }
-
-    // MARK: - Event Response
     func rightBarButtonDown(_ sender: UIBarButtonItem) {
     }
 

@@ -11,7 +11,7 @@ class WechatFriendDetailAlbumCell: WXTableViewCell {
     var imageViewsArray: [AnyHashable] = []
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         imageViewsArray = [AnyHashable]()
         textLabel.font = UIFont.systemFont(ofSize: 15.0)
@@ -25,9 +25,9 @@ class WechatFriendDetailAlbumCell: WXTableViewCell {
 
         let spaceY: CGFloat = 12
         var count = Int((APPW - APPW * 0.28 - 28) / (80 - spaceY * 2 + 3))
-        count = (arr.count  0) <= count  arr.count : count  0
+        count = (arr.count) <= count ? arr.count : count
         var spaceX = (APPW - APPW * 0.28 - 28 - CGFloat(count) * (80 - spaceY * 2)) / CGFloat(count)
-        spaceX = spaceX > 7  7 : spaceX
+        spaceX = spaceX > 7 ? 7 : spaceX
         for i in 0..<count {
             let imageURL = arr[i] as String
             var imageView: UIImageView
@@ -65,7 +65,7 @@ class WechatFriendDetailUserCell: WXTableViewCell {
     private var nikenameLabel: UILabel
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         selectionStyle = .none
         leftSeparatorSpace = 15.0
@@ -114,22 +114,22 @@ class WechatFriendDetailUserCell: WXTableViewCell {
         self.info = info
         let user: WXUser = info.userInfo
         if user.avatarPath != nil {
-            avatarView.setImage(UIImage(named: user.avatarPath  ""), for: .normal)
+            avatarView.setImage(UIImage(named: user.avatarPath), for: .normal)
         } else {
-            avatarView.sd_setImage(with: URL(string: user.avatarURL  ""), for: UIControl.State.normal, placeholderImage: UIImage(named: PuserLogo))
+            avatarView.sd_setImage(with: URL(string: user.avatarURL), for: UIControl.State.normal, placeholderImage: UIImage(named: PuserLogo))
         }
         shownameLabel.text = user.showName
-        if user.username.length  0 > 0 {
-            usernameLabel.text = "微信号：" + (user.username  "")
-            if user.nikeName.length  0 > 0 {
-                nikenameLabel.text = "昵称：" + (user.nikeName  "")
+        if user.username.length > 0 {
+            usernameLabel.text = "微信号：" + (user.username)
+            if user.nikeName.length > 0 {
+                nikenameLabel.text = "昵称：" + (user.nikeName)
             }
-        } else if user.nikeName.length  0 > 0 {
-            nikenameLabel.text = "昵称：" + (user.nikeName  "")
+        } else if user.nikeName.length > 0 {
+            nikenameLabel.text = "昵称：" + (user.nikeName)
         }
     }
 
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     @objc func avatarViewButtonDown(_ sender: UIButton) {
         if delegate && delegate.responds(to: #selector(self.friendDetailUserCellDidClickAvatar(_:))) {
             delegate.friendDetailUserCellDidClickAvatar(info)

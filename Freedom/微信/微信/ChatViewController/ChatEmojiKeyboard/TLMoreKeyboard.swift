@@ -62,7 +62,7 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
                 })
                 view.layoutIfNeeded()
                 if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboard(_:didChangeHeight:))) {
-                    keyboardDelegate.chatKeyboard(self, didChangeHeight: (view.frame.size.height  0.0) - self.frame.origin.y)
+                    keyboardDelegate.chatKeyboard(self, didChangeHeight: (view.frame.size.height) - self.frame.origin.y)
                 }
             }) { finished in
                 if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboardDidShow(_:))) {
@@ -114,13 +114,13 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
         var chatMoreKeyboardData = chatMoreKeyboardData
         self.chatMoreKeyboardData = chatMoreKeyboardData
         collectionView.reloadData()
-        let pageNumber: Int = (chatMoreKeyboardData.count  0) / 8 + ((chatMoreKeyboardData.count  0) % 8 == 0  0 : 1)
+        let pageNumber: Int = (chatMoreKeyboardData.count) / 8 + ((chatMoreKeyboardData.count) % 8 == 0 ? 0 : 1)
         pageControl.numberOfPages = pageNumber
     }
 
     // MARK: - Event Response -
     func pageControlChanged(_ pageControl: UIPageControl) {
-        collectionView.scrollRectToVisible(CGRect(x: collectionView.frame.size.width * CGFloat(pageControl.currentPage  0.0), y: 0, width: collectionView.frame.size.width, height: collectionView.frame.size.height), animated: true)
+        collectionView.scrollRectToVisible(CGRect(x: collectionView.frame.size.width * CGFloat(pageControl.currentPage), y: 0, width: collectionView.frame.size.width, height: collectionView.frame.size.height), animated: true)
     }
     func p_addMasonry() {
         collectionView.mas_makeConstraints({ make in
@@ -200,9 +200,9 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
         }
         return cell!
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return chatMoreKeyboardData.count / 8 + (chatMoreKeyboardData.count % 8 == 0  0 : 1)
+        return chatMoreKeyboardData.count / 8 + (chatMoreKeyboardData.count % 8 == 0 ? 0 : 1)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -226,7 +226,7 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
 
     
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class TLMoreKeyboardCell: UICollectionViewCell {
     var item: TLMoreKeyboardItem
     var clickBlock: ((_ item: TLMoreKeyboardItem) -> Void)
@@ -234,7 +234,7 @@ class TLMoreKeyboardCell: UICollectionViewCell {
     private var titleLabel: UILabel
 
     override init(frame: CGRect) {
-        //if super.init(frame: frame)
+        super.init(frame: frame)
 
         if let aButton = iconButton {
             contentView.addSubview(aButton)
@@ -261,7 +261,7 @@ class TLMoreKeyboardCell: UICollectionViewCell {
         titleLabel.isHidden = false
         iconButton.hidden = false
         titleLabel.text = item.title
-        iconButton.setImage(UIImage(named: item.imagePath  ""), for: .normal)
+        iconButton.setImage(UIImage(named: item.imagePath), for: .normal)
     }
 
     // MARK: - Event Response -

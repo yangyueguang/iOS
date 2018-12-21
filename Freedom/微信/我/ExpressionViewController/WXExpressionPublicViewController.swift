@@ -9,8 +9,7 @@ class WXExpressionPublicCell: UICollectionViewCell {
     var titleLabel: UILabel
 
     override init(frame: CGRect) {
-        //if super.init(frame: frame)
-
+        super.init(frame: frame)
         if let aView = imageView {
             contentView.addSubview(aView)
         }
@@ -24,15 +23,15 @@ class WXExpressionPublicCell: UICollectionViewCell {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func setGroup(_ group: TLEmojiGroup) {
         self.group = group
         titleLabel.text = group.groupName
-        let image = UIImage(named: group.groupIconPath  "")
+        let image = UIImage(named: group.groupIconPath)
         if image != nil {
             imageView.image = image
         } else {
-            imageView.sd_setImage(with: URL(string: group.groupIconURL  ""), placeholderImage: FreedomTools(color: UIColor.lightGray))
+            imageView.sd_setImage(with: URL(string: group.groupIconURL), placeholderImage: FreedomTools(color: UIColor.lightGray))
         }
     }
 
@@ -74,13 +73,13 @@ class WXExpressionPublicCell: UICollectionViewCell {
 class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     var kPageIndex: Int = 0
 
-    var data: [AnyHashable] = []
+    var data: [TLEmojiGroup] = []
     var proxy: WXExpressionHelper
     var searchController: WXSearchController
     var searchVC: WXExpressionSearchViewController
     var collectionView: UICollectionView
 
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
 
@@ -178,16 +177,16 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return data.count == 0  0 : 20
+        return data.count == 0 ? 0 : 20
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return data.count == 0  0 : 20
+        return data.count == 0 ? 0 : 20
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return data.count == 0  UIEdgeInsetsMake(0, 0, 0, 0) : UIEdgeInsetsMake(20, 20, 20, 20)
+        return data.count == 0 ? UIEdgeInsetsMake(0, 0, 0, 0) : UIEdgeInsetsMake(20, 20, 20, 20)
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func loadData(withLoadingView showLoadingView: Bool) {
         if showLoadingView {
             SVProgressHUD.show()
@@ -216,7 +215,7 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
             SVProgressHUD.dismiss()
         })
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func loadMoreData() {
         weak var weakSelf = self
         proxy.requestExpressionPublicList(byPageIndex: kPageIndex, success: { data in
@@ -226,7 +225,7 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
             } else {
                 self.collectionView.mj_footer.endRefreshing()
                 kPageIndex += 1
-                for group: TLEmojiGroup in data as [TLEmojiGroup]  [] {
+                for group: TLEmojiGroup in data as [TLEmojiGroup] {
                     // 优先使用本地表情
                     let localEmojiGroup: TLEmojiGroup = WXExpressionHelper.shared().emojiGroup(byID: group.groupID)
                     if localEmojiGroup != nil {

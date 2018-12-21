@@ -3,7 +3,7 @@
 //  Freedom
 
 import Foundation
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 protocol WXExpressionCellDelegate: NSObjectProtocol {
     func expressionCellDownloadButtonDown(_ group: TLEmojiGroup)
 }
@@ -18,7 +18,7 @@ class WXExpressionCell: WXTableViewCell {
     private var downloadButton: UIButton
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         if let aView = iconImageView {
             contentView.addSubview(aView)
@@ -41,11 +41,11 @@ class WXExpressionCell: WXTableViewCell {
     }
     func setGroup(_ group: TLEmojiGroup) {
         self.group = group
-        let image = UIImage(named: group.groupIconPath  "")
+        let image = UIImage(named: group.groupIconPath)
         if image != nil {
             iconImageView.image = image
         } else {
-            iconImageView.sd_setImage(with: URL(string: group.groupIconURL  ""))
+            iconImageView.sd_setImage(with: URL(string: group.groupIconURL))
         }
         titleLabel.text = group.groupName
         detailLabel.text = group.groupDetailInfo
@@ -165,7 +165,7 @@ class WXExpressionBannerCell: WXTableViewCell,WXPictureCarouselDelegate {
     private var picCarouselView: WXPictureCarouselView
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         setBottomLineStyle(TLCellLineStyleNone)
         selectionStyle = .none
@@ -294,7 +294,7 @@ class WXExpressionChosenViewController: WXTableViewController, WXExpressionCellD
 
         })
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func loadMoreData() {
         weak var weakSelf = self
         proxy.requestExpressionChosenList(byPageIndex: kPageIndex, success: { data in
@@ -393,8 +393,8 @@ class WXExpressionChosenViewController: WXTableViewController, WXExpressionCellD
                 if let aGroup = group {
                     index = self.data.index(of: aGroup)
                 }
-                if (index  0) < self.data.count {
-                    self.tableView.reloadRows(at: [IndexPath(row: index  0, section: 1)], with: .none)
+                if (index) < self.data.count {
+                    self.tableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .none)
                 }
                 let ok = WXExpressionHelper.shared().addExpressionGroup(group)
                 if !ok {
@@ -407,7 +407,7 @@ class WXExpressionChosenViewController: WXTableViewController, WXExpressionCellD
             })
         }, failure: { error in
             if let aName = group.groupName {
-                SVProgressHUD.showError(withStatus: "\"\(aName)\" 下载失败: \(error  "")")
+                SVProgressHUD.showError(withStatus: "\"\(aName)\" 下载失败: \(error)")
             }
         })
     }

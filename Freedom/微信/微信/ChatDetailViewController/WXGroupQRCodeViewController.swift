@@ -30,7 +30,7 @@ class WXGroupQRCodeViewController: WXBaseViewController {
         let date = Date()
         qrCodeVC.introduction = String(format: "该二维码7天内(%lu月%lu日前)有效，重新进入将更新", Int(date.ymdComponents.month), Int(date.ymdComponents.day))
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func rightBarButtonDown(_ sender: UIBarButtonItem) {
         showAlerWithtitle(nil, message: nil, style: UIAlertController.Style.actionSheet, ac1: {
             return UIAlertAction(title: "用邮件发送", style: .default, handler: { action in

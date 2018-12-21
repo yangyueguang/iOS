@@ -37,7 +37,7 @@ class WXBottleButton: UIButton {
 
     func setIconPath(_ iconPath: String) {
         self.iconPath = iconPath
-        iconImageView.image = UIImage(named: iconPath  "")
+        iconImageView.image = UIImage(named: iconPath)
     }
     func p_addMasonry() {
         iconImageView.mas_makeConstraints({ make in
@@ -168,7 +168,7 @@ class WXBottleViewController: WXBaseViewController {
             backgroundView = UIImageView(frame: view.bounds)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH"
-            let hour = Int(truncating: dateFormatter.string(from: Date()))  0
+            let hour = Int(truncating: dateFormatter.string(from: Date()))
             if hour >= 6 && hour <= 18 {
                 backgroundView.image = UIImage(named: "bottle_backgroud_day")
             } else {

@@ -3,7 +3,7 @@
 //  Freedom
 
 import Foundation
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXTagCell: WXTableViewCell {
     private var _title = ""
     var title: String {
@@ -11,14 +11,14 @@ class WXTagCell: WXTableViewCell {
             return _title
         }
         set(title) {
-            _title = title  ""
+            _title = title
             titleLabel.text = title
         }
     }
     var titleLabel: UILabel
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         leftSeparatorSpace = 15
         if let aLabel = titleLabel {
@@ -79,10 +79,10 @@ class WXTagsViewController: WXTableViewController {
         let group = data[indexPath.row] as WXUserGroup
         let cell = tableView.dequeueReusableCell(withIdentifier: "TLTagCell") as WXTagCell
         if let aName = group.groupName {
-            cell.title = String(format: "%@(%ld)", aName, Int(group.count  0))
+            cell.title = String(format: "%@(%ld)", aName, Int(group.count))
         }
-        cell.topLineStyle = (indexPath.row == 0  TLCellLineStyleFill : TLCellLineStyleNone)
-        cell.bottomLineStyle = (indexPath.row == data.count - 1  TLCellLineStyleFill : TLCellLineStyleDefault)
+        cell.topLineStyle = (indexPath.row == 0 ? TLCellLineStyleFill : TLCellLineStyleNone)
+        cell.bottomLineStyle = (indexPath.row == data.count - 1 ? TLCellLineStyleFill : TLCellLineStyleDefault)
         return cell!
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

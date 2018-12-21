@@ -113,7 +113,7 @@ extension FileManager {
         }
         return path + ("common.sqlite3")
     }
-    class func pathDBMessage() -> String? {
+    class func pathDBMessage() -> String {
         let path = "\(FileManager.documentsPath())/User/\("2829969299")/Chat/DB/"
         if !FileManager.default.fileExists(atPath: path) {
             try? FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)

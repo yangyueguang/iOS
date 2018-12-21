@@ -8,7 +8,7 @@ class WXChatFileCell: UICollectionViewCell {
     private var imageView: UIImageView
 
     override init(frame: CGRect) {
-        //if super.init(frame: frame)
+        super.init(frame: frame)
 
         if let aView = imageView {
             contentView.addSubview(aView)
@@ -26,11 +26,11 @@ class WXChatFileCell: UICollectionViewCell {
             let me = message as WXImageMessage
             let imagePath = me.content["path"]
             let imageURL = me.content["url"]
-            if (imagePath.count  0) > 0 {
+            if (imagePath.count) > 0 {
                 let imagePatha = FileManager.pathUserChatImage(imagePath)
                 imageView.image = UIImage(named: imagePatha)
-            } else if (imageURL.count  0) > 0 {
-                imageView.sd_setImage(with: URL(string: imageURL  ""), placeholderImage: UIImage(named: "userLogo"))
+            } else if (imageURL.count) > 0 {
+                imageView.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: "userLogo"))
             } else {
                 imageView.image = nil
             }
@@ -55,14 +55,14 @@ class WXChatFileCell: UICollectionViewCell {
 
     
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXChatFileHeaderView: UICollectionReusableView {
     var title = ""
     var bgView: UIView
     var titleLabel: UILabel
 
     override init(frame: CGRect) {
-        //if super.init(frame: frame)
+        super.init(frame: frame)
 
         backgroundColor = UIColor.clear
         if let aView = bgView {
@@ -78,7 +78,7 @@ class WXChatFileHeaderView: UICollectionReusableView {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func setTitle(_ title: String) {
         self.title = title
         titleLabel.text = title
@@ -125,7 +125,7 @@ class WXChatFileViewController: WXBaseViewController {
         navigationItem.title = "聊天文件"
         view.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
         let layout = UICollectionViewFlowLayout()
-        if Float(UIDevice.current.systemVersion)  0.0 >= 9.0 {
+        if Float(UIDevice.current.systemVersion) >= 9.0 {
             layout.sectionHeadersPinToVisibleBounds = true
         }
         layout.itemSize = CGSize(width: APPW / 4 * 0.98, height: APPW / 4 * 0.98)
@@ -151,7 +151,7 @@ class WXChatFileViewController: WXBaseViewController {
         collectionView.register(WXChatFileHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "TLChatFileHeaderView")
         collectionView.register(WXChatFileCell.self, forCellWithReuseIdentifier: "TLChatFileCell")
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func setPartnerID(_ partnerID: String) {
         self.partnerID = partnerID
         weak var weakSelf = self
@@ -221,7 +221,7 @@ class WXChatFileViewController: WXBaseViewController {
         }
         return data
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func mediaData() -> [AnyHashable] {
         if mediaData == nil {
             mediaData = [AnyHashable]()
@@ -237,7 +237,7 @@ class WXChatFileViewController: WXBaseViewController {
                             let imagePath = FileManager.pathUserChatImage(me.content["path"])
                             url = URL(fileURLWithPath: imagePath)
                         } else {
-                            url = URL(string: me.content["url"]  "")
+                            url = URL(string: me.content["url"])
                         }
                         let photo = MWPhoto(url: url)
                         browserData.append(photo)
@@ -247,7 +247,7 @@ class WXChatFileViewController: WXBaseViewController {
         }
         return mediaData
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func browserData() -> [AnyHashable] {
         if browserData == nil {
             browserData = [AnyHashable]()
@@ -259,7 +259,7 @@ class WXChatFileViewController: WXBaseViewController {
                         let imagePatha = FileManager.pathUserChatImage(imagePath)
                         url = URL(fileURLWithPath: imagePatha)
                     } else {
-                        url = URL(string: message.content["url"]  "")
+                        url = URL(string: message.content["url"])
                     }
                     let photo = MWPhoto(url: url)
                     browserData.append(photo)

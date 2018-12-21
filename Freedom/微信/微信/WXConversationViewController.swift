@@ -6,14 +6,14 @@ import Foundation
 protocol WXAddMenuViewDelegate: NSObjectProtocol {
     func addMenuView(_ addMenuView: WechatAddMenuView, didSelectedItem item: WXAddMenuItem)
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WechatAddMenuCell: WXTableViewCell {
     var item: WXAddMenuItem
     var iconImageView: UIImageView
     var titleLabel: UILabel
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         rightSeparatorSpace = 16
         backgroundColor = UIColor(71, 70, 73, 1.0)
@@ -33,7 +33,7 @@ class WechatAddMenuCell: WXTableViewCell {
     }
     func setItem(_ item: WXAddMenuItem) {
         self.item = item
-        iconImageView.image = UIImage(named: item.iconPath  "")
+        iconImageView.image = UIImage(named: item.iconPath)
         titleLabel.text = item.title
     }
 
@@ -74,7 +74,7 @@ class WechatAddMenuView: UIView, UITableViewDataSource, UITableViewDelegate {
         private var helper: WXAddMenuHelper
         private var tableView: UITableView
         private var data: [AnyHashable] = []
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     init() {
         super.init()
 
@@ -97,7 +97,7 @@ class WechatAddMenuView: UIView, UITableViewDataSource, UITableViewDelegate {
         let rect = CGRect(x: view.frame.size.width - 140 - 5, y: Int(TopHeight) + 20 + 10, width: 140, height: data.count * 45)
         tableView.frame = rect
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func isShow() -> Bool {
         return superview != nil
     }
@@ -122,7 +122,7 @@ class WechatAddMenuView: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = data[indexPath.row] as WXAddMenuItem
         let cell = tableView.dequeueReusableCell(withIdentifier: "TLAddMenuCell") as WechatAddMenuCell
@@ -207,11 +207,11 @@ class WechatConversationCell: WXTableViewCell {
     func setConversation(_ conversation: WXConversation) {
         self.conversation = conversation
 
-        if conversation.avatarPath.length  0 > 0 {
+        if conversation.avatarPath.length > 0 {
             let path = FileManager.pathUserAvatar(conversation.avatarPath)
             avatarImageView.image = UIImage(named: path)
-        } else if conversation.avatarURL.length  0 > 0 {
-            avatarImageView.sd_setImage(with: URL(string: conversation.avatarURL  ""), placeholderImage: UIImage(named: PuserLogo))
+        } else if conversation.avatarURL.length > 0 {
+            avatarImageView.sd_setImage(with: URL(string: conversation.avatarURL), placeholderImage: UIImage(named: PuserLogo))
         } else {
             avatarImageView.image = nil
         }
@@ -236,7 +236,7 @@ class WechatConversationCell: WXTableViewCell {
 
         self.conversation.isRead  markAsRead() : markAsUnread()
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func markAsUnread() {
         if conversation {
             switch conversation.clueType {
@@ -307,7 +307,7 @@ class WechatConversationCell: WXTableViewCell {
             make.width.and().height().mas_equalTo(10)
         })
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func avatarImageView() -> UIImageView {
         if avatarImageView == nil {
             avatarImageView = UIImageView()
@@ -333,7 +333,7 @@ class WechatConversationCell: WXTableViewCell {
         }
         return detailLabel
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func timeLabel() -> UILabel {
         if timeLabel == nil {
             timeLabel = UILabel()
@@ -375,7 +375,7 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
     private var scrollTopView: UIImageView
     private var searchController: WXSearchController
     private var addMenuView: WechatAddMenuView
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "微信"
@@ -401,7 +401,7 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
             addMenuView.dismiss()
         }
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func rightBarButtonDown(_ sender: UIBarButtonItem) {
         if addMenuView.isShow {
             addMenuView.dismiss()
@@ -414,7 +414,7 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
 
     // 网络情况改变
     func networkStatusChange(_ noti: Notification) {
-        let status = Int(noti.userInfo["AFNetworkingReachabilityNotificationStatusItem"]  0) as AFNetworkReachabilityStatus
+        let status = Int(noti.userInfo["AFNetworkingReachabilityNotificationStatusItem"]) as AFNetworkReachabilityStatus
         switch status {
         case AFNetworkReachabilityStatusReachableViaWiFi, AFNetworkReachabilityStatusReachableViaWWAN, AFNetworkReachabilityStatusUnknown:
             navigationItem.title = "微信"
@@ -436,7 +436,7 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "nav_add"), style: .done, target: self, action: #selector(self.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     var searchController: UISearchController {
         if searchController == nil {
             searchController = WXSearchController(searchResultsController: searchVC())
@@ -541,14 +541,14 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
         let conversation = data[indexPath.row] as WXConversation
         weak var weakSelf = self
         let delAction = UITableViewRowAction(style: .default, title: "删除", handler: { action, indexPath in
-            weakSelf.data.remove(at: indexPath.row  0)
+            weakSelf.data.remove(at: indexPath.row)
             let ok = WXMessageManager.sharedInstance().deleteConversation(byPartnerID: conversation.partnerID)
             if !ok {
                 SVProgressHUD.showError(withStatus: "从数据库中删除会话信息失败")
             }
             weakSelf.tableView.deleteRows(at: [indexPath], with: .automatic)
             if self.data.count > 0 && indexPath.row == self.data.count {
-                let lastIndexPath = IndexPath(row: (indexPath.row  0) - 1, section: indexPath.section  0)
+                let lastIndexPath = IndexPath(row: (indexPath.row) - 1, section: indexPath.section)
                 let cell = self.tableView.cellForRow(at: lastIndexPath) as WechatConversationCell
                 cell.bottomLineStyle = TLCellLineStyleFill
             }
@@ -584,8 +584,8 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
     // 选中了addMenu的某个菜单项
 
     func addMenuView(_ addMenuView: WechatAddMenuView, didSelectedItem item: WXAddMenuItem) {
-        if item.className.length  0 > 0 {
-            let vc = (NSClassFromString(item.className  ""))()
+        if item.className.length > 0 {
+            let vc = (NSClassFromString(item.className))()
             hidesBottomBarWhenPushed = true
             if let aVc = vc {
                 navigationController.pushViewController(aVc, animated: true)

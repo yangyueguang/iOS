@@ -17,7 +17,7 @@ class WXInfoButtonCell: WXTableViewCell {
     private var button: UIButton
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         backgroundColor = UIColor.clear
         selectionStyle = .none
@@ -78,7 +78,7 @@ class WXInfoCell: WXTableViewCell {
     private var subTitleLabel: UILabel
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         textLabel.font = UIFont.systemFont(ofSize: 15.0)
         if let aLabel = subTitleLabel {
@@ -154,7 +154,7 @@ class WXInfoViewController: UITableViewController, WXInfoButtonCellDelegate {
         let temp = data[section]
         return temp.count
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let group = data[indexPath.section]
         let info = group[indexPath.row] as WXInfo

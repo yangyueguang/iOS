@@ -3,7 +3,7 @@
 //  Freedom
 
 import Foundation
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXGroupSearchViewController: WXTableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     var groupData: [AnyHashable] = []
     private var data: [AnyHashable] = []
@@ -46,7 +46,7 @@ class WXGroupSearchViewController: WXTableViewController, UISearchResultsUpdatin
         let searchText = searchController.searchBar.text.lowercased()
         data.removeAll()
         for group: WXGroup in groupData {
-            if group.groupName.contains(searchText  "")  false || group.pinyin.contains(searchText  "")  false || group.pinyinInitial.contains(searchText  "")  false {
+            if group.groupName.contains(searchText)  false || group.pinyin.contains(searchText)  false || group.pinyinInitial.contains(searchText)  false {
                 if let aGroup = group {
                     data.append(aGroup)
                 }
@@ -64,7 +64,7 @@ class WXGroupCell: WXTableViewCell {
     private var usernameLabel: UILabel
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         leftSeparatorSpace = 10
 

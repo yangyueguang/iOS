@@ -7,7 +7,7 @@ class WXDiscoverHelper: NSObject {
     var discoverMenuData: [AnyHashable] = []
 
     override init() {
-        //if super.init()
+        super.init()
 
         discoverMenuData = [AnyHashable]()
         p_initTestData()

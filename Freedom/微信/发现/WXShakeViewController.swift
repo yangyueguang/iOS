@@ -38,12 +38,12 @@ class WXShakeButton: UIButton {
 
     func setIconPath(_ iconPath: String) {
         self.iconPath = iconPath
-        iconImageView.image = UIImage(named: iconPath  "")
+        iconImageView.image = UIImage(named: iconPath)
     }
 
     func setIconHLPath(_ iconHLPath: String) {
         self.iconHLPath = iconHLPath
-        iconImageView.highlightedImage = UIImage(named: iconHLPath  "")
+        iconImageView.highlightedImage = UIImage(named: iconHLPath)
     }
 
     func setSelected(_ selected: Bool) {

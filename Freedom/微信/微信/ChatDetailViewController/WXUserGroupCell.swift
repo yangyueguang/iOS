@@ -10,18 +10,15 @@ protocol WechatUserGroupCellDelegate: NSObjectProtocol {
 
 class WXUserGroupCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     private var collectionView: UICollectionView
-
     weak var delegate: WechatUserGroupCellDelegate
     var users: [AnyHashable] = []
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
-
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         if let aView = collectionView {
             contentView.addSubview(aView)
         }
         collectionView.register(WXUserGroupItemCell.self, forCellWithReuseIdentifier: "TLUserGroupItemCell")
-
         p_addMasonry()
 
     }
@@ -51,7 +48,6 @@ class WXUserGroupCell: UITableViewCell, UICollectionViewDataSource, UICollection
         })
     }
 
-    // MARK: - Getter -
     var collectionView: UICollectionView! {
         if collectionView == nil {
             let layout = UICollectionViewFlowLayout()
@@ -71,11 +67,8 @@ class WXUserGroupCell: UITableViewCell, UICollectionViewDataSource, UICollection
         }
         return collectionView
     }
-
-
-    
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXUserGroupItemCell: UICollectionViewCell {
     var user: WXUser
     var clickBlock: ((_ user: WXUser) -> Void)
@@ -83,26 +76,23 @@ class WXUserGroupItemCell: UICollectionViewCell {
     var usernameLabel: UILabel
 
     override init(frame: CGRect) {
-        //if super.init(frame: frame)
-
+        super.init(frame: frame)
         if let aView = avatarView {
             contentView.addSubview(aView)
         }
         if let aLabel = usernameLabel {
             contentView.addSubview(aLabel)
         }
-
         p_addMasonry()
 
     }
-
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     func setUser(_ user: WXUser) {
         self.user = user
         if user != nil {
-            avatarView.sd_setImage(with: URL(string: user.avatarURL  ""), for: UIControl.State.normal, placeholderImage: UIImage(named: PuserLogo))
+            avatarView.sd_setImage(with: URL(string: user.avatarURL), for: UIControl.State.normal, placeholderImage: UIImage(named: PuserLogo))
             usernameLabel.text = user.showName
         } else {
             avatarView.setImage(UIImage(named: "chatdetail_add_member"), for: .normal)
@@ -111,11 +101,10 @@ class WXUserGroupItemCell: UICollectionViewCell {
         }
     }
 
-    // MARK: - EventResponse -
     func avatarButtonDown() {
         clickBlock(user)
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
     func p_addMasonry() {
         avatarView().mas_makeConstraints({ make in
             make.top.and().left().and().right().mas_equalTo(self.contentView)
@@ -126,8 +115,6 @@ class WXUserGroupItemCell: UICollectionViewCell {
             make.left.and().right().mas_lessThanOrEqualTo(self.contentView)
         })
     }
-
-    // MARK: - Getter -
     func avatarView() -> UIButton {
         if avatarView == nil {
             avatarView = UIButton()

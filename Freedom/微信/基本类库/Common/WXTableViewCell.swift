@@ -55,7 +55,7 @@ class WXTableViewCell: UITableViewCell {
         context.setStrokeColor(UIColor.gray.cgColor)
         if topLineStyle != TLCellLineStyleNone {
             context.beginPath()
-            let startX: CGFloat = topLineStyle == TLCellLineStyleFill  0 : leftSeparatorSpace
+            let startX: CGFloat = topLineStyle == TLCellLineStyleFill ? 0 : leftSeparatorSpace
             let endX: CGFloat = frame.size.width - rightSeparatorSpace
             let y: CGFloat = 0
             context.move(to: CGPoint(x: startX, y: y))
@@ -64,7 +64,7 @@ class WXTableViewCell: UITableViewCell {
         }
         if bottomLineStyle != TLCellLineStyleNone {
             context.beginPath()
-            let startX: CGFloat = bottomLineStyle == TLCellLineStyleFill  0 : leftSeparatorSpace
+            let startX: CGFloat = bottomLineStyle == TLCellLineStyleFill ? 0 : leftSeparatorSpace
             let endX: CGFloat = frame.size.width - rightSeparatorSpace
             let y = frame.size.height
             context.move(to: CGPoint(x: startX, y: y))

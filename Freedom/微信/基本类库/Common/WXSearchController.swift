@@ -11,7 +11,7 @@ class WXSearchController: UISearchController {
     var showVoiceButton = false
 
     override init(searchResultsController: UIViewController) {
-        //if super.init(searchResultsController: searchResultsController)
+        super.init(searchResultsController: searchResultsController)
 
         searchBar.frame = CGRect(x: 0, y: 0, width: APPW, height: CGFloat(TopHeight))
         searchBar.backgroundImage = FreedomTools(color: UIColor.lightGray)

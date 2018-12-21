@@ -17,7 +17,7 @@ class WXPublicServerViewController: WXTableViewController, UISearchBarDelegate {
 
         tableView.tableHeaderView = searchController.searchBar
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func rightBarButtonDown(_ sender: UIBarButtonItem) {
     }
 

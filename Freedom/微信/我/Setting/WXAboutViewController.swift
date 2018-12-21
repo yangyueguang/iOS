@@ -3,12 +3,12 @@
 //  Freedom
 
 import Foundation
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXAboutHelper: NSObject {
     var abouSettingtData: [AnyHashable] = []
 
     override init() {
-        //if super.init()
+        super.init()
 
         abouSettingtData = [AnyHashable]()
         p_initTestData()
@@ -25,7 +25,7 @@ class WXAboutHelper: NSObject {
         abouSettingtData.append(contentsOf: [group1])
     }
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXAboutHeaderView: UITableViewHeaderFooterView {
     var title = ""
     var imagePath = ""
@@ -33,7 +33,7 @@ class WXAboutHeaderView: UITableViewHeaderFooterView {
     var titleLabel: UILabel
 
     override init(reuseIdentifier: String) {
-        //if super.init(reuseIdentifier: reuseIdentifier)
+        super.init(reuseIdentifier: reuseIdentifier)
 
         if let aView = imageView {
             contentView.addSubview(aView)
@@ -48,7 +48,7 @@ class WXAboutHeaderView: UITableViewHeaderFooterView {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func setTitle(_ title: String) {
         self.title = title
         titleLabel.text = title
@@ -56,7 +56,7 @@ class WXAboutHeaderView: UITableViewHeaderFooterView {
 
     func setImagePath(_ imagePath: String) {
         self.imagePath = imagePath
-        imageView.image = UIImage(named: imagePath  "")
+        imageView.image = UIImage(named: imagePath)
     }
 
     func p_addMasonry() {
@@ -72,7 +72,7 @@ class WXAboutHeaderView: UITableViewHeaderFooterView {
             make.height.mas_equalTo(25)
         })
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     var imageView: UIImageView {
         if imageView == nil {
             imageView = UIImageView()
@@ -91,7 +91,7 @@ class WXAboutHeaderView: UITableViewHeaderFooterView {
     }
 
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXAboutViewController: WXSettingViewController {
     var helper: WXAboutHelper
     var cmpLabel: UILabel
@@ -125,14 +125,14 @@ class WXAboutViewController: WXSettingViewController {
             headerView.imagePath = "AppLogo"
             let shortVersion = Bundle.main.infoDictionary["CFBundleShortVersionString"] as String
             let buildID = Bundle.main.infoDictionary["CFBundleVersion"] as String
-            let version = "\(shortVersion  "") (\(buildID  ""))"
+            let version = "\(shortVersion) (\(buildID))"
             headerView.title = "微信 TLChat \(version)"
             return headerView
         }
         return nil
     }
 
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     //MARK: UITableViewDelegate
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

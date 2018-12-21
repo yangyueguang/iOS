@@ -6,14 +6,11 @@ import Foundation
 class WXCGroupDetailViewController: WXSettingViewController, WechatUserGroupCellDelegate {
     var group: WXGroup
     var helper: WXMessageManager
-
     func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "聊天详情"
-
         helper = WXMessageManager.sharedInstance()
         data = helper.chatDetailData(byGroupInfo: group)
-
         tableView.register(WXUserGroupCell.self, forCellReuseIdentifier: "TLUserGroupCell")
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,27 +56,20 @@ class WXCGroupDetailViewController: WXSettingViewController, WechatUserGroupCell
         }
         self.tableView.deselectRow(at: indexPath, animated: false)
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 && indexPath.row == 0 {
             let count = group.count
-            return CGFloat(((count + 1) / 4 + ((((count + 1) % 4) == 0)  0 : 1)) * 90 + 15)
+            return CGFloat(((count + 1) / 4 + ((((count + 1) % 4) == 0) ? 0 : 1)) * 90 + 15)
         }
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
-
-    //MARK: TLUserGroupCellDelegate
     func userGroupCellDidSelect(_ user: WXUser) {
         let detailVC = WXFriendDetailViewController()
         detailVC.user = user
         hidesBottomBarWhenPushed = true
         navigationController.pushViewController(detailVC, animated: true)
     }
-
     func userGroupCellAddUserButtonDown() {
         SVProgressHUD.showInfo(withStatus: "添加讨论组成员")
     }
-
-
-
-    
 }

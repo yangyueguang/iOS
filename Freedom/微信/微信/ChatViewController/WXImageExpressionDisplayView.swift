@@ -4,23 +4,43 @@
 
 import Foundation
 class WXImageExpressionDisplayView: UIView {
-    var emoji: TLEmoji
+    var emoji: TLEmoji {
+        didSet {
+            curID = emoji.emojiID
+            if data = try Data(contentsOf: URL(fileURLWithPath: emoji.emojiPath)) {
+                imageView.image = UIImage.sd_animatedGIF(with: data)
+            } else {
+                var urlString = "http://123.57.155.230:8080/ibiaoqing/admin/expre/download.dopId=\(emoji.emojiID)"
+                imageView.sd_setImage(with: URL(string: emoji.emojiURL), completed: { image, error, cacheType, imageURL in
+                    if urlString.contains(self.curID) {
+                        DispatchQueue.global(qos: .default).async(execute: {
+                            var data = try Data(contentsOf: URL(string: urlString))
+                            DispatchQueue.main.async(execute: {
+                                self.imageView.image = UIImage.sd_animatedGIF(with: data)
+                            })
+                        })
+                    }
+                })
+            }
+        }
+    }
     var rect = CGRect.zero
-    var bgLeftView: UIImageView
-    var bgCenterView: UIImageView
-    var bgRightView: UIImageView
-    var imageView: UIImageView
-    init(frame: CGRect) {
+    var bgLeftView = UIImageView(image: UIImage(named: "emojiKB_bigTips_left"))
+    var bgCenterView = UIImageView(image: UIImage(named: "emojiKB_bigTips_middle"))
+    var bgRightView = UIImageView(image: UIImage(named: "emojiKB_bigTips_right"))
+    var imageView = UIImageView()
+    private var curID = ""
+    override init(frame: CGRect) {
         super.init(frame: CGRect(x: 0, y: 0, width: 150, height: 162))
-
         addSubview(bgLeftView)
         addSubview(bgCenterView)
         addSubview(bgRightView)
-        if let aView = imageView {
-            addSubview(aView)
-        }
+        addSubview(imageView)
         p_addMasonry()
+    }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     func display(_ emoji: TLEmoji, at rect: CGRect) {
@@ -28,40 +48,8 @@ class WXImageExpressionDisplayView: UIView {
         self.emoji = emoji
     }
 
-    private var curID = ""
-    func setEmoji(_ emoji: TLEmoji) {
-        if self.emoji == emoji {
-            return
-        }
-        self.emoji = emoji
-        curID = emoji.emojiID
-        let data = NSData(contentsOfFile: emoji.emojiPath  "") as Data
-        if data != nil {
-            imageView.image = UIImage.sd_animatedGIF(with: data)
-        } else {
-            var urlString: String = nil
-            if let anID = emoji.emojiID {
-                urlString = "http://123.57.155.230:8080/ibiaoqing/admin/expre/download.dopId=\(anID)"
-            }
-            imageView.sd_setImage(with: URL(string: emoji.emojiURL  ""), completed: { image, error, cacheType, imageURL in
-                if urlString.contains(curID)  false {
-                    DispatchQueue.global(qos: .default).async(execute: {
-                        var data: Data = nil
-                        if let aString = URL(string: urlString  "") {
-                            data = Data(contentsOf: aString)
-                        }
-                        if urlString.contains(curID) {
-                            DispatchQueue.main.async(execute: {
-                                self.imageView.image = UIImage.sd_animatedGIF(with: data)
-                            })
-                        }
-                    })
-                }
-            })
-        }
-    }
     func setRect(_ rect: CGRect) {
-        let frame: CGRect = self.frame
+        var frame: CGRect = self.frame
         frame.origin.y = rect.origin.y - self.frame.size.height + 13
         self.frame = frame
         let w: CGFloat = 150 - 25
@@ -85,7 +73,7 @@ class WXImageExpressionDisplayView: UIView {
             })
         }
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func p_addMasonry() {
         bgLeftView.mas_makeConstraints({ make in
             make.top.and().left().and().bottom().mas_equalTo(self)
@@ -107,37 +95,4 @@ class WXImageExpressionDisplayView: UIView {
             make.height.mas_equalTo(self.imageView.mas_width)
         })
     }
-
-
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    var imageView: UIImageView {
-        if imageView == nil {
-            imageView = UIImageView()
-        }
-        return imageView
-    }
-
-    func bgLeftView() -> UIImageView {
-        if bgLeftView == nil {
-            bgLeftView = UIImageView(image: UIImage(named: "emojiKB_bigTips_left"))
-        }
-        return bgLeftView
-    }
-
-    func bgCenterView() -> UIImageView {
-        if bgCenterView == nil {
-            bgCenterView = UIImageView(image: UIImage(named: "emojiKB_bigTips_middle"))
-        }
-        return bgCenterView
-    }
-
-    func bgRightView() -> UIImageView {
-        if bgRightView == nil {
-            bgRightView = UIImageView(image: UIImage(named: "emojiKB_bigTips_right"))
-        }
-        return bgRightView
-    }
-
-
-    
 }

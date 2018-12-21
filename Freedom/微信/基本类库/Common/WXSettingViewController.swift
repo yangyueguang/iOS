@@ -7,25 +7,24 @@
 //
 
 import Foundation
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 @objc protocol WXSettingSwitchCellDelegate: NSObjectProtocol {
     @objc optional func settingSwitchCell(for settingItem: WXSettingItem, didChangeStatus on: Bool)
 }
 
 class WXSettingViewController: UITableViewController, WXSettingSwitchCellDelegate {
     var data: [AnyHashable] = []
-    var analyzeTitle = ""
-    func loadView() {
+    override func loadView() {
         view = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))
         tableView = UITableView(frame: view.bounds, style: .grouped)
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 15.0))
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 12.0))
         tableView.backgroundColor = UIColor.lightGray
-        tableView.layoutMargins = UIEdgeInsetsMake(0, 15, 0, 0)
-        tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0)
+        tableView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         tableView.separatorColor = UIColor.gray
     }
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(WXSettingHeaderTitleView.self, forHeaderFooterViewReuseIdentifier: "TLSettingHeaderTitleView")
@@ -34,26 +33,17 @@ class WXSettingViewController: UITableViewController, WXSettingSwitchCellDelegat
         tableView.register(WechatSettingButtonCell.self, forCellReuseIdentifier: "TLSettingButtonCell")
         tableView.register(WechatSettingSwitchCell.self, forCellReuseIdentifier: "TLSettingSwitchCell")
     }
-    func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        MobClick.beginLogPageView(analyzeTitle)
-    }
-
-    func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        MobClick.endLogPageView(analyzeTitle)
-    }
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return data.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ((data[section]) as [Any]).count  0
+        return ((data[section]) as [Any]).count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = data[indexPath.section][indexPath.row] as WXSettingItem
-        let cell = tableView.dequeueReusableCell(withIdentifier: item.cellClassName  "")
+        let cell = tableView.dequeueReusableCell(withIdentifier: item.cellClassName)
         cell.setItem(item)
         if item.type == TLSettingItemTypeSwitch {
             cell.setDelegate(self)
@@ -79,22 +69,22 @@ class WXSettingViewController: UITableViewController, WXSettingSwitchCellDelegat
         view.text = group.footerTitle
         return view
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44.0
     }
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let group: WXSettingGroup = data[section]
-        return 0.5 + (group.headerTitle == nil  0 : 5.0 + group.headerHeight  0.0)
+        return 0.5 + (group.headerTitle == nil ? 0 : 5.0 + group.headerHeight)
     }
 
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         let group: WXSettingGroup = data[section]
-        return 20.0 + (group.footerTitle == nil  0 : 5.0 + group.footerHeight  0.0)
+        return 20.0 + (group.footerTitle == nil ? 0 : 5.0 + group.footerHeight)
     }
 
 
@@ -104,22 +94,13 @@ class WXSettingViewController: UITableViewController, WXSettingSwitchCellDelegat
         }
     }
 
-    // MARK: - Getter -
-    func analyzeTitle() -> String {
-        if analyzeTitle == nil {
-            return navigationItem.title
-        }
-        return analyzeTitle
-    }
-
-
 }
 class WechatSettingSwitchCell: UITableViewCell {
     weak var delegate: WXSettingSwitchCellDelegate
     var item: WXSettingItem
     private var titleLabel: UILabel
     private var cellSwitch: UISwitch
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -131,7 +112,11 @@ class WechatSettingSwitchCell: UITableViewCell {
         p_addMasonry()
 
     }
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func setItem(_ item: WXSettingItem) {
         self.item = item
         titleLabel.text = item.title
@@ -192,7 +177,7 @@ class WXSettingCell: UITableViewCell {
     private var rightImageView: UIImageView
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         if let aLabel = titleLabel {
             contentView.addSubview(aLabel)
@@ -205,6 +190,10 @@ class WXSettingCell: UITableViewCell {
         }
         p_addMasonry()
 
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     func p_addMasonry() {
         titleLabel.setContentCompressionResistancePriority(UILayoutPriority(500), for: .horizontal)
@@ -231,9 +220,9 @@ class WXSettingCell: UITableViewCell {
         titleLabel.text = item.title
         rightLabel.text = item.subTitle
         if item.rightImagePath != nil {
-            rightImageView.image = UIImage(named: item.rightImagePath  "")
+            rightImageView.image = UIImage(named: item.rightImagePath)
         } else if item.rightImageURL != nil {
-            rightImageView.sd_setImage(with: URL(string: item.rightImageURL  ""), placeholderImage: UIImage(named: PuserLogo))
+            rightImageView.sd_setImage(with: URL(string: item.rightImageURL), placeholderImage: UIImage(named: PuserLogo))
         } else {
             rightImageView.image = nil
         }

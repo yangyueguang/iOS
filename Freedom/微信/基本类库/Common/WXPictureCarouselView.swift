@@ -14,7 +14,7 @@ protocol WXPictureCarouselProtocol: NSObjectProtocol {
 protocol WXPictureCarouselDelegate: NSObjectProtocol {
     func pictureCarouselView(_ pictureCarouselView: WXPictureCarouselView, didSelectItem model: WXPictureCarouselProtocol)
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXPictureCarouselViewCell: UICollectionViewCell {
     private var _model: WXPictureCarouselProtocol
     var model: WXPictureCarouselProtocol {
@@ -22,13 +22,13 @@ class WXPictureCarouselViewCell: UICollectionViewCell {
             return _model
         }
         set(model) {
-            imageView.sd_setImage(with: URL(string: model.pictureURL()  ""))
+            imageView.sd_setImage(with: URL(string: model.pictureURL()))
         }
     }
     private var imageView: UIImageView
 
     override init(frame: CGRect) {
-        //if super.init(frame: frame)
+        super.init(frame: frame)
 
         if let aView = imageView {
             contentView.addSubview(aView)
@@ -62,7 +62,7 @@ class WXPictureCarouselView:  UICollectionViewDelegate, UICollectionViewDataSour
     var data: [Any] = []
     weak var delegate: WXPictureCarouselDelegate
     var timeInterval: TimeInterval = 0.0
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -98,18 +98,18 @@ class WXPictureCarouselView:  UICollectionViewDelegate, UICollectionViewDataSour
 
     // MARK: -
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count == 0  0 : data.count + 2
+        return data.count == 0 ? 0 : data.count + 2
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let row: Int = indexPath.row == 0  data.count - 1 : (indexPath.row == data.count + 1  0 : indexPath.row - 1)
+        let row: Int = indexPath.row == 0  data.count - 1 : (indexPath.row == data.count + 1 ? 0 : indexPath.row - 1)
         let model: WXPictureCarouselProtocol = data[row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLPictureCarouselViewCell", for: indexPath) as WXPictureCarouselViewCell
         cell.model = model
         return cell!
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let row: Int = indexPath.row == 0  data.count - 1 : (indexPath.row == data.count - 1  0 : indexPath.row - 1)
+        let row: Int = indexPath.row == 0  data.count - 1 : (indexPath.row == data.count - 1 ? 0 : indexPath.row - 1)
         let model: WXPictureCarouselProtocol = data[row]
         if delegate && delegate.responds(to: #selector(self.pictureCarouselView(_:didSelectItem:))) {
             delegate.pictureCarouselView(self, didSelectItem: model)

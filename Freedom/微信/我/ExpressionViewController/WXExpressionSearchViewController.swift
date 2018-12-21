@@ -59,8 +59,8 @@ class WXExpressionSearchViewController: WXTableViewController, UISearchResultsUp
                 if let aGroup = group {
                     index = self.data.index(of: aGroup)
                 }
-                if (index  0) < self.data.count {
-                    self.tableView.reloadRows(at: [IndexPath(row: index  0, section: 0)], with: .none)
+                if (index) < self.data.count {
+                    self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
                 }
                 let ok = WXExpressionHelper.shared().addExpressionGroup(group)
                 if !ok {
@@ -73,18 +73,18 @@ class WXExpressionSearchViewController: WXTableViewController, UISearchResultsUp
             })
         }, failure: { error in
             if let aName = group.groupName {
-                SVProgressHUD.showError(withStatus: "\"\(aName)\" 下载失败: \(error  "")")
+                SVProgressHUD.showError(withStatus: "\"\(aName)\" 下载失败: \(error)")
             }
         })
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let keyword = searchBar.text
-        if (keyword.count  0) > 0 {
+        if (keyword.count) > 0 {
             SVProgressHUD.show()
             proxy().requestExpressionSearch(byKeyword: keyword, success: { data in
                 self.data = data

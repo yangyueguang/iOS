@@ -49,7 +49,7 @@ let SQL_CREATE_GROUP_MEMBERS_TABLE = "CREATE TABLE IF NOT EXISTS %@(uid TEXT,gid
 let SQL_UPDATE_GROUP_MEMBER = "REPLACE INTO %@ ( uid, gid, fid, username, nikename, avatar, remark, ext1, ext2, ext3, ext4, ext5) VALUES ( , , , , , , , , , , , )"
 let SQL_SELECT_GROUP_MEMBERS = "SELECT * FROM %@ WHERE uid = %@"
 let SQL_DELETE_GROUP_MEMBER = "DELETE FROM %@ WHERE uid = '%@' and gid = '%@' and fid = '%@'"
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 //  TLDBManager.h
 
 class WXDBManager: NSObject {
@@ -57,7 +57,7 @@ class WXDBManager: NSObject {
     var commonQueue: FMDatabaseQueue
     //与IM相关的DB队列
     var messageQueue: FMDatabaseQueue
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     class var sharedInstance: CXCallDirectoryManager {
 
 
@@ -87,7 +87,7 @@ class WXDBManager: NSObject {
 class WXDBBaseStore: NSObject {
     /// 数据库操作队列(从TLDBManager中获取，默认使用commonQueue)
     weak var dbQueue: FMDatabaseQueue
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     init() {
         super.init()
 
@@ -114,7 +114,7 @@ class WXDBBaseStore: NSObject {
         }
         return ok
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func excuteSQL(_ sqlString: String, withDicParameter dicParameter: [AnyHashable : Any]) -> Bool {
         var ok = false
         if dbQueue {
@@ -142,7 +142,7 @@ class WXDBBaseStore: NSObject {
     func excuteQuerySQL(_ sqlStr: String, resultBlock: @escaping (_ rsSet: FMResultSet) -> Void) {
         if dbQueue {
             dbQueue.inDatabase({ db in
-                let retSet: FMResultSet = db.execute(sqlStr  "")
+                let retSet: FMResultSet = db.execute(sqlStr)
                 //if resultBlock
 
                 resultBlock(retSet)
@@ -181,14 +181,14 @@ class WXDBMessageStore: WXDBBaseStore {
         var fid = ""
         var subfid: String
         if message.partnerType == TLPartnerTypeUser {
-            fid = message.friendID  ""
+            fid = message.friendID
         } else {
-            fid = message.groupID  ""
-            subfid = message.friendID  ""
+            fid = message.groupID
+            subfid = message.friendID
         }
 
         let sqlString = String(format: SQL_ADD_MESSAGE, MESSAGE_TABLE_NAME)
-        let arrPara = [message.messageID, message.userID, fid, (subfid), String(format: "%lf", message.date.timeIntervalSince1970  0.0), message.partnerType  0, message.ownerTyper  0, message.messageType  0, message.content.mj_JSONString(), message.sendState  0, message.readState  0, "", "", "", "", ""]
+        let arrPara = [message.messageID, message.userID, fid, (subfid), String(format: "%lf", message.date.timeIntervalSince1970), message.partnerType, message.ownerTyper, message.messageType, message.content.mj_JSONString(), message.sendState, message.readState, "", "", "", "", ""]
         let ok = excuteSQL(sqlString, withArrParameter: arrPara)
         return ok
     }
@@ -196,10 +196,10 @@ class WXDBMessageStore: WXDBBaseStore {
     //  The converted code is limited to 1 KB.
     //  Please Sign Up (Free!) to remove this limitation.
     //
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func messages(byUserID userID: String, partnerID: String, from date: Date, count: Int, complete: @escaping ([Any], Bool) -> Void) {
         var data: [AnyHashable] = []
-        let sqlString = String(format: SQL_SELECT_MESSAGES_PAGE, MESSAGE_TABLE_NAME, userID  "", partnerID  "", String(format: "%lf", date.timeIntervalSince1970  0.0), count + 1)
+        let sqlString = String(format: SQL_SELECT_MESSAGES_PAGE, MESSAGE_TABLE_NAME, userID, partnerID, String(format: "%lf", date.timeIntervalSince1970), count + 1)
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
                 let message: WXMessage = self.p_createDBMessage(by: retSet)
@@ -219,7 +219,7 @@ class WXDBMessageStore: WXDBBaseStore {
     }
     func chatFiles(byUserID userID: String, partnerID: String) -> [Any] {
         var data: [AnyHashable] = []
-        let sqlString = String(format: SQL_SELECT_CHAT_FILES, MESSAGE_TABLE_NAME, userID  "", partnerID  "")
+        let sqlString = String(format: SQL_SELECT_CHAT_FILES, MESSAGE_TABLE_NAME, userID, partnerID)
 
         var lastDate = Date()
         var array: [AnyHashable] = []
@@ -255,7 +255,7 @@ class WXDBMessageStore: WXDBBaseStore {
 
     func chatImagesAndVideos(byUserID userID: String, partnerID: String) -> [Any] {
         var data: [AnyHashable] = []
-        let sqlString = String(format: SQL_SELECT_CHAT_MEDIA, MESSAGE_TABLE_NAME, userID  "", partnerID  "")
+        let sqlString = String(format: SQL_SELECT_CHAT_MEDIA, MESSAGE_TABLE_NAME, userID, partnerID)
 
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
@@ -269,7 +269,7 @@ class WXDBMessageStore: WXDBBaseStore {
         return data
     }
     func lastMessage(byUserID userID: String, partnerID: String) -> WXMessage {
-        let sqlString = String(format: SQL_SELECT_LAST_MESSAGE, MESSAGE_TABLE_NAME, MESSAGE_TABLE_NAME, userID  "", partnerID  "")
+        let sqlString = String(format: SQL_SELECT_LAST_MESSAGE, MESSAGE_TABLE_NAME, MESSAGE_TABLE_NAME, userID, partnerID)
         var message: WXMessage
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
@@ -281,18 +281,18 @@ class WXDBMessageStore: WXDBBaseStore {
     }
 
     func deleteMessage(byMessageID messageID: String) -> Bool {
-        let sqlString = String(format: SQL_DELETE_MESSAGE, MESSAGE_TABLE_NAME, messageID  "")
+        let sqlString = String(format: SQL_DELETE_MESSAGE, MESSAGE_TABLE_NAME, messageID)
         let ok = excuteSQL(sqlString, nil)
         return ok
     }
     func deleteMessages(byUserID userID: String, partnerID: String) -> Bool {
-        let sqlString = String(format: SQL_DELETE_FRIEND_MESSAGES, MESSAGE_TABLE_NAME, userID  "", partnerID  "")
+        let sqlString = String(format: SQL_DELETE_FRIEND_MESSAGES, MESSAGE_TABLE_NAME, userID, partnerID)
         let ok = excuteSQL(sqlString, nil)
         return ok
     }
 
     func deleteMessages(byUserID userID: String) -> Bool {
-        let sqlString = String(format: SQL_DELETE_USER_MESSAGES, MESSAGE_TABLE_NAME, userID  "")
+        let sqlString = String(format: SQL_DELETE_USER_MESSAGES, MESSAGE_TABLE_NAME, userID)
         let ok = excuteSQL(sqlString, nil)
         return ok
     }
@@ -310,7 +310,7 @@ class WXDBMessageStore: WXDBBaseStore {
             message.groupID = retSet.string(forColumn: "subfid")
         }
         let dateString = retSet.string(forColumn: "date")
-        message.date = Date(timeIntervalSince1970: TimeInterval(Double(dateString  "")  0.0))
+        message.date = Date(timeIntervalSince1970: TimeInterval(Double(dateString)  0.0))
         message.ownerTyper = retSet.int(forColumn: "own_type")
         if let aColumn = retSet.int(forColumn: "msg_type") {
             message.messageType = aColumn
@@ -330,7 +330,7 @@ class WXDBConversationStore: WXDBBaseStore {
     private var messageStore: WXDBMessageStore
 
     init() {
-        //if super.init()
+        super.init()
 
         dbQueue = WXDBManager.sharedInstance().messageQueue
         let ok: Bool = createTable()
@@ -347,13 +347,13 @@ class WXDBConversationStore: WXDBBaseStore {
     func addConversation(byUid uid: String, fid: String, type: Int, date: Date) -> Bool {
         let unreadCount: Int = unreadMessage(byUid: uid, fid: fid) + 1
         let sqlString = String(format: SQL_ADD_CONV, CONV_TABLE_NAME)
-        let arrPara = [uid, fid, type, String(format: "%lf", date.timeIntervalSince1970  0.0), unreadCount, "", "", "", "", ""]
+        let arrPara = [uid, fid, type, String(format: "%lf", date.timeIntervalSince1970), unreadCount, "", "", "", "", ""]
         let ok = excuteSQL(sqlString, withArrParameter: arrPara)
         return ok
     }
     func conversations(byUid uid: String) -> [Any] {
         var data: [AnyHashable] = []
-        let sqlString = String(format: SQL_SELECT_CONVS, CONV_TABLE_NAME, uid  "")
+        let sqlString = String(format: SQL_SELECT_CONVS, CONV_TABLE_NAME, uid)
 
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
@@ -361,7 +361,7 @@ class WXDBConversationStore: WXDBBaseStore {
                 conversation.partnerID = retSet.string(forColumn: "fid")
                 conversation.convType = retSet.int(forColumn: "conv_type")
                 let dateString = retSet.string(forColumn: "date")
-                conversation.date = Date(timeIntervalSince1970: TimeInterval(Double(dateString  "")  0.0))
+                conversation.date = Date(timeIntervalSince1970: TimeInterval(Double(dateString)))
                 conversation.unreadCount = retSet.int(forColumn: "unread_count")
                 data.append(conversation)
             }
@@ -379,7 +379,7 @@ class WXDBConversationStore: WXDBBaseStore {
 
         return data
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     //更新会话状态（已读）
 
     func updateConversation(byUid uid: String, fid: String) {
@@ -388,7 +388,7 @@ class WXDBConversationStore: WXDBBaseStore {
     //查询所有会话
     func unreadMessage(byUid uid: String, fid: String) -> Int {
         var unreadCount: Int = 0
-        let sqlString = String(format: SQL_SELECT_CONV_UNREAD, CONV_TABLE_NAME, uid  "", fid  "")
+        let sqlString = String(format: SQL_SELECT_CONV_UNREAD, CONV_TABLE_NAME, uid, fid)
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             if retSet.next() != nil {
                 unreadCount = retSet.int(forColumn: "unread_count")  0
@@ -400,7 +400,7 @@ class WXDBConversationStore: WXDBBaseStore {
 
     //删除单条会话
     func deleteConversation(byUid uid: String, fid: String) -> Bool {
-        let sqlString = String(format: SQL_DELETE_CONV, CONV_TABLE_NAME, uid  "", fid  "")
+        let sqlString = String(format: SQL_DELETE_CONV, CONV_TABLE_NAME, uid, fid)
         let ok = excuteSQL(sqlString, nil)
         return ok
     }
@@ -408,7 +408,7 @@ class WXDBConversationStore: WXDBBaseStore {
     //删除用户的所有会话
 
     func deleteConversations(byUid uid: String) -> Bool {
-        let sqlString = String(format: SQL_DELETE_ALL_CONVS, CONV_TABLE_NAME, uid  "")
+        let sqlString = String(format: SQL_DELETE_ALL_CONVS, CONV_TABLE_NAME, uid)
         let ok = excuteSQL(sqlString, nil)
         return ok
     }
@@ -450,7 +450,7 @@ class WXDBExpressionStore: WXDBBaseStore {
     func addExpressionGroup(_ group: TLEmojiGroup, forUid uid: String) -> Bool {
         // 添加表情包
         let sqlString = String(format: SQL_ADD_EXP_GROUP, EXP_GROUP_TABLE_NAME)
-        let arr = [uid, group.groupID, group.type  0, (group.groupName), (group.groupInfo), (group.groupDetailInfo), group.count  0, (group.authID), (group.authName), String(format: "%lf", group.date.timeIntervalSince1970  0.0), "", "", "", "", ""]
+        let arr = [uid, group.groupID, group.type, (group.groupName), (group.groupInfo), (group.groupDetailInfo), group.count, (group.authID), (group.authName), String(format: "%lf", group.date.timeIntervalSince1970), "", "", "", "", ""]
         var ok = excuteSQL(sqlString, withArrParameter: arr)
         if !ok {
             return false
@@ -461,7 +461,7 @@ class WXDBExpressionStore: WXDBBaseStore {
     }
     func expressionGroups(byUid uid: String) -> [Any] {
         var data: [AnyHashable] = []
-        let sqlString = String(format: SQL_SELECT_EXP_GROUP, EXP_GROUP_TABLE_NAME, uid  "")
+        let sqlString = String(format: SQL_SELECT_EXP_GROUP, EXP_GROUP_TABLE_NAME, uid)
 
         // 读取表情包信息
         excuteQuerySQL(sqlString, resultBlock: { retSet in
@@ -489,15 +489,15 @@ class WXDBExpressionStore: WXDBBaseStore {
         return data
     }
     func deleteExpressionGroup(byID gid: String, forUid uid: String) -> Bool {
-        let sqlString = String(format: SQL_DELETE_EXP_GROUP, EXP_GROUP_TABLE_NAME, uid  "", gid  "")
+        let sqlString = String(format: SQL_DELETE_EXP_GROUP, EXP_GROUP_TABLE_NAME, uid, gid)
         return excuteSQL(sqlString, nil)
     }
 
     func countOfUserWhoHasExpressionGroup(_ gid: String) -> Int {
-        let sqlString = String(format: SQL_SELECT_COUNT_EXP_GROUP_USERS, EXP_GROUP_TABLE_NAME, gid  "")
+        let sqlString = String(format: SQL_SELECT_COUNT_EXP_GROUP_USERS, EXP_GROUP_TABLE_NAME, gid)
         var count: Int = 0
         dbQueue.inDatabase({ db in
-            count = db.int(forQuery: sqlString)  0
+            count = db.int(forQuery: sqlString)
         })
         return count
     }
@@ -516,7 +516,7 @@ class WXDBExpressionStore: WXDBBaseStore {
     }
     func expressions(forGroupID groupID: String) -> [AnyHashable] {
         var data: [AnyHashable] = []
-        let sqlString = String(format: SQL_SELECT_EXPS, EXPS_TABLE_NAME, groupID  "")
+        let sqlString = String(format: SQL_SELECT_EXPS, EXPS_TABLE_NAME, groupID)
 
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
@@ -558,7 +558,7 @@ class WXDBFriendStore: WXDBBaseStore {
         let ok = excuteSQL(sqlString, withArrParameter: arrPara)
         return ok
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func updateFriendsData(_ friendData: [Any], forUid uid: String) -> Bool {
         let oldData = friendsData(byUid: uid)
         if oldData.count > 0 {
@@ -590,7 +590,7 @@ class WXDBFriendStore: WXDBBaseStore {
     }
     func friendsData(byUid uid: String) -> [AnyHashable] {
         var data: [AnyHashable] = []
-        let sqlString = String(format: SQL_SELECT_FRIENDS, FRIENDS_TABLE_NAME, uid  "")
+        let sqlString = String(format: SQL_SELECT_FRIENDS, FRIENDS_TABLE_NAME, uid)
 
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
@@ -609,7 +609,7 @@ class WXDBFriendStore: WXDBBaseStore {
     }
 
     func deleteFriend(byFid fid: String, forUid uid: String) -> Bool {
-        let sqlString = String(format: SQL_DELETE_FRIEND, FRIENDS_TABLE_NAME, uid  "", fid  "")
+        let sqlString = String(format: SQL_DELETE_FRIEND, FRIENDS_TABLE_NAME, uid, fid)
         let ok = excuteSQL(sqlString, nil)
         return ok
     }
@@ -649,7 +649,7 @@ class WXDBGroupStore: WXDBBaseStore {
         }
         return ok
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func updateGroupsData(_ groupData: [Any], forUid uid: String) -> Bool {
         let oldData = groupsData(byUid: uid)
         if oldData.count > 0 {
@@ -682,7 +682,7 @@ class WXDBGroupStore: WXDBBaseStore {
     }
     func groupsData(byUid uid: String) -> [AnyHashable] {
         var data: [AnyHashable] = []
-        let sqlString = String(format: SQL_SELECT_GROUPS, GROUPS_TABLE_NAME, uid  "")
+        let sqlString = String(format: SQL_SELECT_GROUPS, GROUPS_TABLE_NAME, uid)
 
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
@@ -702,7 +702,7 @@ class WXDBGroupStore: WXDBBaseStore {
         return data
     }
     func deleteGroup(byGid gid: String, forUid uid: String) -> Bool {
-        let sqlString = String(format: SQL_DELETE_GROUP, GROUPS_TABLE_NAME, uid  "", gid  "")
+        let sqlString = String(format: SQL_DELETE_GROUP, GROUPS_TABLE_NAME, uid, gid)
         let ok = excuteSQL(sqlString, nil)
         return ok
     }
@@ -714,7 +714,7 @@ class WXDBGroupStore: WXDBBaseStore {
         let ok = excuteSQL(sqlString, withArrParameter: arrPara)
         return ok
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func addGroupMembers(_ users: [Any], forUid uid: String, andGid gid: String) -> Bool {
         let oldData = groupMembers(forUid: uid, andGid: gid)
         if oldData.count > 0 {
@@ -744,7 +744,7 @@ class WXDBGroupStore: WXDBBaseStore {
     }
     func groupMembers(forUid uid: String, andGid gid: String) -> [AnyHashable] {
         var data: [AnyHashable] = []
-        let sqlString = String(format: SQL_SELECT_GROUP_MEMBERS, GROUP_MEMBER_TABLE_NAMGE, uid  "")
+        let sqlString = String(format: SQL_SELECT_GROUP_MEMBERS, GROUP_MEMBER_TABLE_NAMGE, uid)
 
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
@@ -762,7 +762,7 @@ class WXDBGroupStore: WXDBBaseStore {
         return data
     }
     func deleteGroupMember(forUid uid: String, gid: String, andFid fid: String) -> Bool {
-        let sqlString = String(format: SQL_DELETE_GROUP_MEMBER, GROUP_MEMBER_TABLE_NAMGE, uid  "", gid  "", fid  "")
+        let sqlString = String(format: SQL_DELETE_GROUP_MEMBER, GROUP_MEMBER_TABLE_NAMGE, uid, gid, fid)
         let ok = excuteSQL(sqlString, nil)
         return ok
     }

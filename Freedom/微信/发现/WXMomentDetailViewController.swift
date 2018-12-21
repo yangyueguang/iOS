@@ -13,7 +13,7 @@ protocol WXMomentDetailViewDelegate: WXMomentMultiImageViewDelegate {
 
 protocol WXMomentViewDelegate: WXMomentDetailViewDelegate {
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 enum TLMomentViewButtonType : Int {
     case avatar
     case userName
@@ -28,7 +28,7 @@ class WXMomentExtensionView: UIView, UITableViewDelegate, UITableViewDataSource 
     private var tableView: UITableView
 
     init(frame: CGRect) {
-        //if super.init(frame: frame)
+        super.init(frame: frame)
 
         backgroundColor = UIColor.clear
         if let aView = tableView {
@@ -48,7 +48,7 @@ class WXMomentExtensionView: UIView, UITableViewDelegate, UITableViewDataSource 
         _extension = `extension`
         tableView.reloadData()
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func draw(_ rect: CGRect) {
         let startX: CGFloat = 20
         let startY: CGFloat = 0
@@ -118,7 +118,7 @@ class WXMomentExtensionView: UIView, UITableViewDelegate, UITableViewDataSource 
             return extension.extensionFrame.heightLiked
         } else {
             let comment = extension.comments[indexPath.row] as WXMomentComment
-            return comment.commentFrame.height  0.0
+            return comment.commentFrame.height
         }
         return 0.0
     }
@@ -135,7 +135,7 @@ class WXMomentExtensionLikedCell: WXTableViewCell {
     var likedFriends: [Any] = []
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         backgroundColor = UIColor.clear
         selectionStyle = .none
@@ -147,7 +147,7 @@ class WXMomentExtensionCommentCell: WXTableViewCell {
     var comment: WXMomentComment
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         backgroundColor = UIColor.clear
         setBottomLineStyle(TLCellLineStyleNone)
@@ -168,7 +168,7 @@ class WXMomentBaseView: UIView {
     private var extensionView: WXMomentExtensionView
 
     init(frame: CGRect) {
-        //if super.init(frame: frame)
+        super.init(frame: frame)
 
         if let aView = avatarView {
             addSubview(aView)
@@ -195,10 +195,10 @@ class WXMomentBaseView: UIView {
         p_addMasonry()
 
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func setMoment(_ moment: WXMoment) {
         self.moment = moment
-        avatarView.sd_setImage(with: URL(string: moment.user.avatarURL  ""), for: UIControl.State.normal)
+        avatarView.sd_setImage(with: URL(string: moment.user.avatarURL), for: UIControl.State.normal)
         usernameView.setTitle(moment.user.showName, for: .normal)
         dateLabel.text = "1小时前"
         originLabel.text = "微博"
@@ -303,7 +303,7 @@ class WXMomentBaseView: UIView {
         }
         return dateLabel
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func originLabel() -> UILabel {
         if originLabel == nil {
             originLabel = UILabel()
@@ -360,7 +360,7 @@ class WXMomentMultiImageView: UIView {
 
         var x: CGFloat = 0
         var y: CGFloat = 0
-        for i in 0..<(images.count  0) {
+        for i in 0..<(images.count) {
             var imageView: UIButton
             if i < imageViews.count {
                 imageView = imageViews[i]
@@ -392,7 +392,7 @@ class WXMomentMultiImageView: UIView {
 
 
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXMomentDetailBaseView: UIView {
     weak var delegate: WXMomentDetailViewDelegate
     var detail: WXMomentDetail
@@ -402,7 +402,7 @@ class WXMomentDetailTextView: WXMomentDetailBaseView {
     var titleLabel: UILabel
 
     override init(frame: CGRect) {
-        //if super.init(frame: frame)
+        super.init(frame: frame)
 
         if let aLabel = titleLabel {
             addSubview(aLabel)
@@ -436,12 +436,12 @@ class WXMomentDetailTextView: WXMomentDetailBaseView {
     }
 
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXMomentDetailImagesView: WXMomentDetailTextView {
     var multiImageView: WXMomentMultiImageView
 
     init(frame: CGRect) {
-        //if super.init(frame: frame)
+        super.init(frame: frame)
 
         if let aView = multiImageView {
             addSubview(aView)
@@ -457,7 +457,7 @@ class WXMomentDetailImagesView: WXMomentDetailTextView {
     func setDetail(_ detail: WXMomentDetail) {
         super.detail = detail
         multiImageView.images = detail.images
-        let offset: CGFloat = detail.images.count  0 > 0  (detail.text.length  0 > 0  7.0 : 3.0) : 0.0
+        let offset: CGFloat = detail.images.count > 0  (detail.text.length > 0 ? 7.0 : 3.0) : 0.0
         multiImageView.mas_updateConstraints({ make in
             make.top.mas_equalTo(self.titleLabel.mas_bottom).mas_offset(offset)
         })
@@ -481,7 +481,7 @@ class WXMomentImageView: WXMomentBaseView {
     private var detailView: WXMomentDetailImagesView
 
     init(frame: CGRect) {
-        //if super.init(frame: frame)
+        super.init(frame: frame)
 
         if let aView = detailView {
             detailContainerView.addSubview(aView)
@@ -519,7 +519,7 @@ class WXMomentDetailViewController: WXBaseViewController ,WXMomentViewDelegate {
 
     var moment: WXMoment
     init() {
-        //if super.init()
+        super.init()
 
         navigationItem.title = "详情"
         view.backgroundColor = UIColor.white
@@ -544,7 +544,7 @@ class WXMomentDetailViewController: WXBaseViewController ,WXMomentViewDelegate {
     func momentViewClickImage(_ images: [Any], at index: Int) {
         var data = [AnyHashable](repeating: 0, count: images.count  0)
         for imageUrl: String in images as [String]  [] {
-            let photo = MWPhoto(url: URL(string: imageUrl  ""))
+            let photo = MWPhoto(url: URL(string: imageUrl))
             data.append(photo)
         }
         let browser = MWPhotoBrowser(photos: data)

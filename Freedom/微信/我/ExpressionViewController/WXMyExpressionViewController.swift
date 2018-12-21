@@ -13,7 +13,7 @@ class WXMyExpressionCell: UITableViewCell {
     var iconView: UIImageView
     var titleLabel: UILabel
     var delButton: UIButton
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -29,7 +29,7 @@ class WXMyExpressionCell: UITableViewCell {
 
     func setGroup(_ group: TLEmojiGroup) {
         self.group = group
-        iconView.image = UIImage(named: group.groupIconPath  "")
+        iconView.image = UIImage(named: group.groupIconPath)
         titleLabel.text = group.groupName
     }
 
@@ -131,7 +131,7 @@ class WXMyExpressionViewController: WXSettingViewController, WXMyExpressionCellD
             let canDeleteFile = !helper.didExpressionGroupAlways(inUsed: group.groupID)
             if canDeleteFile {
                 var error: Error
-                ok = try FileManager.default.removeItem(atPath: group.path  "")  false
+                ok = try FileManager.default.removeItem(atPath: group.path)  false
                 if !ok {
                     DLog("删除表情文件失败\n路径:%@\n原因:%@", group.path, error.description())
                 }

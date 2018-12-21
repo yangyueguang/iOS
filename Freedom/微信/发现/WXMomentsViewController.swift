@@ -6,7 +6,7 @@ import Foundation
 class WXMomentsProxy: NSObject {
     func testData() -> [Any] {
         let path = Bundle.main.path(forResource: "Moments", ofType: "json")
-        let jsonData = NSData(contentsOfFile: path  "") as Data
+        let jsonData = NSData(contentsOfFile: path) as Data
         var jsonArray: [Any] = nil
         if let aData = jsonData {
             jsonArray = try JSONSerialization.jsonObject(with: aData, options: .allowFragments) as [Any]
@@ -20,8 +20,7 @@ class WXMomentBaseCell: WXTableViewCell {
     var moment: WXMoment
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
-
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setBottomLineStyle(TLCellLineStyleFill)
         selectionStyle = .none
 
@@ -30,8 +29,8 @@ class WXMomentBaseCell: WXTableViewCell {
 class WXMomentImagesCell: WXMomentBaseCell {
     var momentView: WXMomentImageView
 
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         if let aView = momentView {
             contentView.addSubview(aView)
@@ -60,7 +59,7 @@ class WXMomentImagesCell: WXMomentBaseCell {
     }
 
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXMomentHeaderCell: WXTableViewCell {
     var user: WXUser
     var backgroundWall: UIButton
@@ -68,10 +67,10 @@ class WXMomentHeaderCell: WXTableViewCell {
     var usernameLabel: UILabel
     var mottoLabel: UILabel
 
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        setBottomLineStyle(TLCellLineStyleNone)
+        setBottomLineStyle(.none)
         selectionStyle = .none
         if let aWall = backgroundWall {
             contentView.addSubview(aWall)
@@ -91,9 +90,9 @@ class WXMomentHeaderCell: WXTableViewCell {
     }
     func setUser(_ user: WXUser) {
         self.user = user
-        backgroundWall.sd_setImage(with: URL(string: user.detailInfo.momentsWallURL  ""), for: UIControl.State.normal)
-        backgroundWall.sd_setImage(with: URL(string: user.detailInfo.momentsWallURL  ""), for: UIControl.State.highlighted)
-        avatarView.sd_setImage(with: URL(string: user.avatarURL  ""), for: UIControl.State.normal, placeholderImage: UIImage(named: PuserLogo))
+        backgroundWall.sd_setImage(with: URL(string: user.detailInfo.momentsWallURL), for: UIControl.State.normal)
+        backgroundWall.sd_setImage(with: URL(string: user.detailInfo.momentsWallURL), for: UIControl.State.highlighted)
+        avatarView.sd_setImage(with: URL(string: user.avatarURL), for: UIControl.State.normal, placeholderImage: UIImage(named: PuserLogo))
         usernameLabel.text = user.nikeName
         mottoLabel.text = user.detailInfo.motto
     }
@@ -208,7 +207,7 @@ class WXMomentsViewController: WXTableViewController, WXMomentViewDelegate {
 
         let moment = data[indexPath.row - 1] as WXMoment
         var cell: Any
-        if moment.detail.text.length  0 > 0 || moment.detail.images.count  0 > 0 {
+        if moment.detail.text.length > 0 || moment.detail.images.count > 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: "TLMomentImagesCell")
         }
 
@@ -220,7 +219,7 @@ class WXMomentsViewController: WXTableViewController, WXMomentViewDelegate {
         }
         return cell as! UITableViewCell
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count + 1
     }
@@ -245,9 +244,9 @@ class WXMomentsViewController: WXTableViewController, WXMomentViewDelegate {
         tableView.deselectRow(at: indexPath, animated: false)
     }
     func momentViewClickImage(_ images: [Any], at index: Int) {
-        var data = [AnyHashable](repeating: 0, count: images.count  0)
+        var data = [AnyHashable](repeating: 0, count: images.count)
         for imageUrl: String in images as [String]  [] {
-            let photo = MWPhoto(url: URL(string: imageUrl  ""))
+            let photo = MWPhoto(url: URL(string: imageUrl))
             data.append(photo)
         }
         let browser = MWPhotoBrowser(photos: data)

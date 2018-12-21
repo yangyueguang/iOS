@@ -10,14 +10,14 @@ class WXAccountAndSafetyHelper: NSObject {
     private var data: [AnyHashable] = []
 
     override init() {
-        //if super.init()
+        super.init()
 
         data = [AnyHashable]()
 
     }
     func mineAccountAndSafetyData(byUserInfo userInfo: WXUser) -> [AnyHashable] {
         let username = WXSettingItem.createItem(withTitle: ("微信号"))
-        if userInfo.username.length  0 > 0 {
+        if userInfo.username.length > 0 {
             username.subTitle = userInfo.username
             username.showDisclosureIndicator = false
             username.disableHighlight = true
@@ -27,11 +27,11 @@ class WXAccountAndSafetyHelper: NSObject {
         let group1: WXSettingGroup = TLCreateSettingGroup(nil, nil, [username])
 
         let qqNumber = WXSettingItem.createItem(withTitle: ("QQ号"))
-        qqNumber.subTitle = userInfo.detailInfo.qqNumber.length  0 > 0  userInfo.detailInfo.qqNumber : "未绑定"
+        qqNumber.subTitle = userInfo.detailInfo.qqNumber.length > 0  userInfo.detailInfo.qqNumber : "未绑定"
         let phoneNumber = WXSettingItem.createItem(withTitle: ("手机号"))
-        phoneNumber.subTitle = phoneNumber.subTitle.length > 0  userInfo.detailInfo.phoneNumber : "未绑定"
+        phoneNumber.subTitle = phoneNumber.subTitle.length > 0 ? userInfo.detailInfo.phoneNumber : "未绑定"
         let email = WXSettingItem.createItem(withTitle: ("邮箱地址"))
-        email.subTitle = userInfo.detailInfo.email.length  0 > 0  userInfo.detailInfo.email : "未绑定"
+        email.subTitle = userInfo.detailInfo.email.length > 0 ? userInfo.detailInfo.email : "未绑定"
         let group2: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([qqNumber, phoneNumber, email]))
 
         let voiceLock = WXSettingItem.createItem(withTitle: ("声音锁"))
@@ -53,7 +53,7 @@ class WXAccountAndSafetyHelper: NSObject {
 
 
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXAccountAndSafetyViewController: WXSettingViewController {
     var helper: WXAccountAndSafetyHelper
 

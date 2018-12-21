@@ -7,31 +7,88 @@
 //
 
 import Foundation
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-class WXQRCodeViewController: WXBaseViewController {
-    /// 信息页面元素 —— 头像URL (若为nil，会尝试根据Path设置)
-    var avatarURL = ""
-    /// 信息页面元素 —— 头像Path
-    var avatarPath = ""
-    /// 信息页面元素 —— 用户名
-    var username = ""
-    /// 信息页面元素 —— 副标题（如地址）
-    var subTitle = ""
-    /// 信息页面元素 —— 底部说明
-    var introduction = ""
-    /// 信息页面元素 —— 二维码字符串
-    var qrCode = ""
+class WXQRCodeViewController: WXBaseViewController {/// 信息页面元素 —— 头像URL (若为nil，会尝试根据Path设置)
+    var avatarURL = "" {
+        didSet {
+            avatarImageView.sd_setImage(with: URL(string: avatarURL), placeholderImage: UIImage(named: PuserLogo))
+        }
+    }/// 信息页面元素 —— 头像Path
+    var avatarPath = "" {
+        didSet {
+            avatarImageView.image = avatarPath.count > 0 ? UIImage(named: avatarPath) : nil
+        }
+    }/// 信息页面元素 —— 用户名
+    var username = "" {
+        didSet {
+            usernameLabel.text = username
+        }
+    }/// 信息页面元素 —— 副标题（如地址）
+    var subTitle = "" {
+        didSet {
+            subTitleLabel.text = subTitle
+            if !subTitle.isEmpty {
+//                usernameLabel.mas_remakeConstraints({ make in
+//                    make.top.mas_equalTo(self.avatarImageView).mas_offset(8)
+//                    make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(10)
+//                    make.right.mas_lessThanOrEqualTo(self.whiteBGView).mas_offset(-20)
+//                })
+            }
+        }
+    }/// 信息页面元素 —— 底部说明
+    var introduction = "" {
+        didSet {
+            introductionLabel.text = introduction
+        }
+    }/// 信息页面元素 —— 二维码字符串
+    var qrCode = "" {
+        didSet {
+            WXQRCodeViewController.createQRCodeImage(for: qrCode, ans: { ansImage in
+                self.qrCodeImageView.image = ansImage
+            })
+        }
+    }
+    private lazy var whiteBGView: UIView = {
+        let whiteBGView = UIView()
+        whiteBGView.backgroundColor = UIColor.white
+        whiteBGView.layer.masksToBounds = true
+        whiteBGView.layer.cornerRadius = 2.0
+        whiteBGView.layer.borderWidth = 1
+        whiteBGView.layer.borderColor = UIColor.black.cgColor
+        return whiteBGView
+    }()
+    private lazy var avatarImageView: UIImageView = {
+        let avatarImageView = UIImageView()
+        avatarImageView.layer.masksToBounds = true
+        avatarImageView.layer.cornerRadius = 3.0
+        avatarImageView.layer.borderWidth = 1
+        avatarImageView.layer.borderColor = UIColor.gray.cgColor
+        return avatarImageView
+    }()
+    private lazy var usernameLabel: UILabel = {
+        let usernameLabel = UILabel()
+        usernameLabel.font = UIFont.boldSystemFont(ofSize: 18.0)
+        usernameLabel.numberOfLines = 3
+        return usernameLabel
+    }()
+    private lazy var subTitleLabel: UILabel = {
+        let subTitleLabel = UILabel()
+        subTitleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        subTitleLabel.textColor = UIColor.gray
+        return subTitleLabel
+    }()
+    private lazy var qrCodeImageView: UIImageView = {
+        let qrCodeImageView = UIImageView()
+        qrCodeImageView.backgroundColor = UIColor(white: 0.1, alpha: 0.1)
+        return qrCodeImageView
+    }()
+    private var introductionLabel: UILabel = {
+        let introductionLabel = UILabel()
+        introductionLabel.textColor = UIColor.gray
+        introductionLabel.font = UIFont.systemFont(ofSize: 11.0)
+        return introductionLabel
+    }()
 
-    private var whiteBGView: UIView
-    private var avatarImageView: UIImageView
-    private var usernameLabel: UILabel
-    private var subTitleLabel: UILabel
-    private var qrCodeImageView: UIImageView
-    private var introductionLabel: UILabel
-    /*根据str创建二维码
-     *
-     *  @param str 字符串
-     *  @param ans 创建完成的回调（异步）*/
+
     class func createQRCodeImage(for str: String, ans: @escaping (UIImage) -> Void) {
         DispatchQueue.global(qos: .default).async(execute: {
             let stringData: Data = str.data(using: .utf8)
@@ -65,15 +122,14 @@ class WXQRCodeViewController: WXBaseViewController {
             })
         })
     }
-    func viewDidLoad() {
+    override func viewDidLoad() {
         view.addSubview(whiteBGView)
         whiteBGView.addSubview(avatarImageView)
         whiteBGView.addSubview(usernameLabel)
         whiteBGView.addSubview(subTitleLabel)
         whiteBGView.addSubview(qrCodeImageView)
         whiteBGView.addSubview(introductionLabel)
-
-        p_addMasonry()
+//        p_addMasonry()
     }
     func captureScreenshot(from view: UIView, rect: CGRect, finished: @escaping (_ avatarPath: String) -> Void) {
         DispatchQueue.global(qos: .default).async(execute: {
@@ -111,146 +167,41 @@ class WXQRCodeViewController: WXBaseViewController {
 
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error, contextInfo: UnsafeMutableRawPointer) {
         if error != nil {
-            if let aDescription = error.description() {
-                SVProgressHUD.showError(withStatus: "保存图片到系统相册失败\n\(aDescription)")
-            }
+            noticeError("保存图片到系统相册失败\n\(error.description())")
         } else {
-            SVProgressHUD.showSuccess(withStatus: "已保存到系统相册")
+            noticeSuccess("已保存到系统相册")
         }
     }
+//    func p_addMasonry() {
+//        whiteBGView.mas_makeConstraints({ make in
+//            make.centerX.mas_equalTo(self.view)
+//            make.centerY.mas_equalTo(self.view).mas_offset(Int(TopHeight) / 2)
+//            make.width.mas_equalTo(self.view).multipliedBy(0.85)
+//            make.bottom.mas_equalTo(self.introductionLabel.mas_bottom).mas_offset(15)
+//        })
+//        avatarImageView.mas_makeConstraints({ make in
+//            make.left.and().top().mas_equalTo(self.whiteBGView).mas_offset(20)
+//            make.width.and().height().mas_equalTo(68)
+//        })
+//        usernameLabel.mas_makeConstraints({ make in
+//            make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(10)
+//            make.centerY.mas_equalTo(self.avatarImageView)
+//            make.right.mas_lessThanOrEqualTo(self.whiteBGView).mas_offset(-20)
+//        })
+//        subTitleLabel.mas_makeConstraints({ make in
+//            make.left.mas_equalTo(self.usernameLabel)
+//            make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(10)
+//        })
+//        qrCodeImageView.mas_makeConstraints({ make in
+//            make.top.mas_equalTo(self.avatarImageView.mas_bottom).mas_offset(15)
+//            make.left.mas_equalTo(self.avatarImageView)
+//            make.right.mas_equalTo(self.whiteBGView).mas_offset(-20)
+//            make.height.mas_equalTo(self.qrCodeImageView.mas_width)
+//        })
+//        introductionLabel.mas_makeConstraints({ make in
+//            make.centerX.mas_equalTo(self.whiteBGView)
+//            make.top.mas_equalTo(self.qrCodeImageView.mas_bottom).mas_offset(15)
+//        })
+//    }
 
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    func setAvatarURL(_ avatarURL: String) {
-        self.avatarURL = avatarURL
-        avatarImageView.sd_setImage(with: URL(string: avatarURL  ""), placeholderImage: UIImage(named: PuserLogo))
-    }
-
-    func setAvatarPath(_ avatarPath: String) {
-        self.avatarPath = avatarPath
-        avatarImageView.image = (avatarPath.count  0) > 0  UIImage(named: avatarPath  "") : nil
-    }
-
-    func setUsername(_ username: String) {
-        self.username = username
-        usernameLabel.text = username
-    }
-
-    func setSubTitle(_ subTitle: String) {
-        self.subTitle = subTitle
-        subTitleLabel.text = subTitle
-        if subTitle != nil {
-            usernameLabel.mas_remakeConstraints({ make in
-                make.top.mas_equalTo(self.avatarImageView).mas_offset(8)
-                make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(10)
-                make.right.mas_lessThanOrEqualTo(self.whiteBGView).mas_offset(-20)
-            })
-        }
-    }
-    func p_addMasonry() {
-        whiteBGView.mas_makeConstraints({ make in
-            make.centerX.mas_equalTo(self.view)
-            make.centerY.mas_equalTo(self.view).mas_offset(Int(TopHeight) / 2)
-            make.width.mas_equalTo(self.view).multipliedBy(0.85)
-            make.bottom.mas_equalTo(self.introductionLabel.mas_bottom).mas_offset(15)
-        })
-        avatarImageView.mas_makeConstraints({ make in
-            make.left.and().top().mas_equalTo(self.whiteBGView).mas_offset(20)
-            make.width.and().height().mas_equalTo(68)
-        })
-        usernameLabel.mas_makeConstraints({ make in
-            make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(10)
-            make.centerY.mas_equalTo(self.avatarImageView)
-            make.right.mas_lessThanOrEqualTo(self.whiteBGView).mas_offset(-20)
-        })
-        subTitleLabel.mas_makeConstraints({ make in
-            make.left.mas_equalTo(self.usernameLabel)
-            make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(10)
-        })
-        qrCodeImageView.mas_makeConstraints({ make in
-            make.top.mas_equalTo(self.avatarImageView.mas_bottom).mas_offset(15)
-            make.left.mas_equalTo(self.avatarImageView)
-            make.right.mas_equalTo(self.whiteBGView).mas_offset(-20)
-            make.height.mas_equalTo(self.qrCodeImageView.mas_width)
-        })
-        introductionLabel.mas_makeConstraints({ make in
-            make.centerX.mas_equalTo(self.whiteBGView)
-            make.top.mas_equalTo(self.qrCodeImageView.mas_bottom).mas_offset(15)
-        })
-    }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    func setIntroduction(_ introduction: String) {
-        self.introduction = introduction
-        introductionLabel.text = introduction
-    }
-
-    func setQrCode(_ qrCode: String) {
-        self.qrCode = qrCode
-        WXQRCodeViewController.createQRCodeImage(for: qrCode, ans: { ansImage in
-            self.qrCodeImageView.image = ansImage
-        })
-    }
-
-    // MARK: - Private Methods -
-
-    // MARK: - Getter -
-    func whiteBGView() -> UIView {
-        if whiteBGView == nil {
-            whiteBGView = UIView()
-            whiteBGView.backgroundColor = UIColor.white
-            whiteBGView.layer.masksToBounds = true
-            whiteBGView.layer.cornerRadius = 2.0
-            whiteBGView.layer.borderWidth = 1
-            whiteBGView.layer.borderColor = UIColor.black.cgColor
-        }
-        return whiteBGView
-    }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
-    func avatarImageView() -> UIImageView {
-        if avatarImageView == nil {
-            avatarImageView = UIImageView()
-            avatarImageView.layer.masksToBounds = true
-            avatarImageView.layer.cornerRadius = 3.0
-            avatarImageView.layer.borderWidth = 1
-            avatarImageView.layer.borderColor = UIColor.gray.cgColor
-        }
-        return avatarImageView
-    }
-
-    func usernameLabel() -> UILabel {
-        if usernameLabel == nil {
-            usernameLabel = UILabel()
-            usernameLabel.font = UIFont.boldSystemFont(ofSize: 18.0)
-            usernameLabel.numberOfLines = 3
-        }
-        return usernameLabel
-    }
-
-    func subTitleLabel() -> UILabel {
-        if subTitleLabel == nil {
-            subTitleLabel = UILabel()
-            subTitleLabel.font = UIFont.systemFont(ofSize: 12.0)
-            subTitleLabel.textColor = UIColor.gray
-        }
-        return subTitleLabel
-    }
-    func qrCodeImageView() -> UIImageView {
-        if qrCodeImageView == nil {
-            qrCodeImageView = UIImageView()
-            qrCodeImageView.backgroundColor = UIColor(white: 0.1, alpha: 0.1)
-        }
-        return qrCodeImageView
-    }
-
-    func introductionLabel() -> UILabel {
-        if introductionLabel == nil {
-            introductionLabel = UILabel()
-            introductionLabel.textColor = UIColor.gray
-            introductionLabel.font = UIFont.systemFont(ofSize: 11.0)
-        }
-        return introductionLabel
-    }
-
-
-
-    
 }

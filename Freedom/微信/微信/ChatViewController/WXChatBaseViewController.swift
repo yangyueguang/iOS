@@ -3,7 +3,7 @@
 //  Freedom
 
 import Foundation
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXTextDisplayView: UIView {
     var attrString: NSAttributedString
 
@@ -13,7 +13,7 @@ class WXTextDisplayView: UIView {
     var textView: UITextView
 
     override init(frame: CGRect) {
-        //if super.init(frame: frame)
+        super.init(frame: frame)
 
         backgroundColor = UIColor.white
         if let aView = textView {
@@ -48,12 +48,12 @@ class WXTextDisplayView: UIView {
         if let aString = attrString {
             mutableAttrString = NSMutableAttributedString(attributedString: aString)
         }
-        mutableAttrString.addAttribute(.font, value: UIFont.systemFont(ofSize: 25.0), range: NSRange(location: 0, length: attrString.length  0))
+        mutableAttrString.addAttribute(.font, value: UIFont.systemFont(ofSize: 25.0), range: NSRange(location: 0, length: attrString.length))
         if let aString = mutableAttrString {
             textView.attributedText = aString
         }
         var size = textView.sizeThatFits(CGSize(width: frame.size.width * 0.94, height: MAXFLOAT))
-        size.height = size.height > APPH  APPH : size.height
+        size.height = size.height > APPH ? APPH : size.height
         textView.mas_updateConstraints({ make in
             make.size.mas_equalTo(size)
         })
@@ -93,7 +93,7 @@ class WXEmojiDisplayView: UIImageView {
     private var titleLabel: UILabel
 
     init(frame: CGRect) {
-        //if super.init(frame: CGRect(x: 0, y: 0, width: CGSize(width: 55, height: 100).width, height: CGSize(width: 55, height: 100).height))
+        super.init(frame: CGRect(x: 0, y: 0, width: CGSize(width: 55, height: 100).width, height: CGSize(width: 55, height: 100).height))
 
         setImage(UIImage(named: "emojiKB_tips"))
         if let aLabel = imageLabel {
@@ -124,8 +124,8 @@ class WXEmojiDisplayView: UIImageView {
             imageLabel.hidden = true
             imageView.isHidden = false
             titleLabel.isHidden = false
-            imageView.image = UIImage(named: emoji.emojiName  "")
-            titleLabel.text = emoji.emojiName.substring(with: NSRange(location: 1, length: emoji.emojiName.length  0 - 2))
+            imageView.image = UIImage(named: emoji.emojiName)
+            titleLabel.text = emoji.emojiName.substring(with: NSRange(location: 1, length: emoji.emojiName.length - 2))
         }
     }
     func p_addMasonry() {
@@ -145,7 +145,7 @@ class WXEmojiDisplayView: UIImageView {
             make.top.mas_equalTo(self).mas_offset(12)
         })
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func setRect(_ rect: CGRect) {
         center = CGPoint(x: rect.origin.x + rect.size.width / 2, y: rect.origin.y + rect.size.height - frame.size.height + 15.0 + frame.size.height / 2)
     }
@@ -195,8 +195,8 @@ extension UIButton {
         btn.setTitle(title, for: .normal)
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.titleLabel.font = UIFont.systemFont(ofSize: 16.0)
-        btn.setImage(UIImage(named: setimageName  ""), for: .normal)
-        btn.setBackgroundImage(UIImage(named: backImageName  ""), for: .normal)
+        btn.setImage(UIImage(named: setimageName), for: .normal)
+        btn.setBackgroundImage(UIImage(named: backImageName), for: .normal)
         return btn
     }
 }
@@ -238,7 +238,7 @@ class WXChatBar: UIView ,UITextViewDelegate {
     var status: TLChatBarStatus
     private(set) var curText = ""
     var activity = false
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     init() {
         super.init()
 
@@ -263,7 +263,7 @@ class WXChatBar: UIView ,UITextViewDelegate {
         setNeedsDisplay()
     }
 
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func sendCurrentText() {
         if textView.text.count > 0 {
             // send Text
@@ -276,7 +276,7 @@ class WXChatBar: UIView ,UITextViewDelegate {
     }
 
     func addEmojiString(_ emojiString: String) {
-        let str = "\(textView.text)\(emojiString  "")"
+        let str = "\(textView.text)\(emojiString)"
         textView.text = str
         textViewDidChange(textView)
     }
@@ -323,7 +323,7 @@ class WXChatBar: UIView ,UITextViewDelegate {
         }
         return true
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if (text == "\n") {
             sendCurrentText()
@@ -625,7 +625,7 @@ protocol WXChatViewControllerProxy: NSObjectProtocol {
     func didClickedUserAvatar(_ user: WXUser)
     func didClickedImageMessages(_ imageMessages: [Any], at index: Int)
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 //  FreedomBaseViewController.h
 
 class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy, WXMoreKeyboardDelegate, WXChatBarDelegate, TLKeyboardDelegate, TLEmojiKeyboardDelegate, WXChatBarDataDelegate, WXChatTableViewControllerDelegate {
@@ -836,7 +836,7 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
             }
         }
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func chatBarRecording(_ chatBar: WXChatBar) {
         DLog("rec...")
     }
@@ -870,13 +870,13 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
     func chatTableViewController(_ chatTVC: WXChatTableViewController, getRecordsFrom date: Date, count: Int, completed: @escaping (Date, [Any], Bool) -> Void) {
         var count = count
         WXMessageManager.sharedInstance().messageRecord(forPartner: partner.chat_userID(), from: date, count: count, complete: { array, hasMore in
-            if (array.count  0) > 0 {
+            if (array.count) > 0 {
                 var count: Int = 0
                 var tm: TimeInterval = 0
                 for message: WXMessage in array as [WXMessage]  [] {
                     count += 1
-                    if count > 10 || tm == 0 || (message.date.timeIntervalSince1970  0.0) - tm > 30 {
-                        tm = message.date.timeIntervalSince1970  0.0
+                    if count > 10 || tm == 0 || (message.date.timeIntervalSince1970) - tm > 30 {
+                        tm = message.date.timeIntervalSince1970
                         count = 0
                         message.showTime = true
                     }
@@ -896,7 +896,7 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
             completed(date, array, hasMore)
         })
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     // chatView 点击事件
 
     func chatTableViewControllerDidTouched(_ chatTVC: WXChatTableViewController) {
@@ -925,7 +925,7 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
         if message.messageType == TLMessageTypeImage && responds(to: #selector(self.didClickedImageMessages(_:atIndex:))) {
             WXMessageManager.sharedInstance().chatImagesAndVideos(forPartnerID: partner.chat_userID(), completed: { imagesData in
                 var index: Int = -1
-                for i in 0..<(imagesData.count  0) {
+                for i in 0..<(imagesData.count) {
                     if (message.messageID == imagesData[i].messageID) {
                         index = i
                         break
@@ -939,7 +939,7 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
     }
     func p_needShowTime(_ date: Date) -> Bool {
         msgAccumulate += 1
-        if msgAccumulate > 10 || lastDateInterval == 0 || (date.timeIntervalSince1970  0.0) - lastDateInterval > 30 {
+        if msgAccumulate > 10 || lastDateInterval == 0 || (date.timeIntervalSince1970) - lastDateInterval > 30 {
             lastDateInterval = date.timeIntervalSince1970
             msgAccumulate = 0
             return true
@@ -1034,7 +1034,7 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
     func chatInputViewHasText() -> Bool {
         return chatBar.curText.length == 0  false : true
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func keyboardWillHide(_ notification: Notification) {
         if curStatus == TLChatBarStatusEmoji || curStatus == TLChatBarStatusMore {
             return
@@ -1048,19 +1048,19 @@ class WXChatBaseViewController: WXBaseViewController, WXChatViewControllerProxy,
     func keyboardFrameWillChange(_ notification: Notification) {
         let keyboardFrame: CGRect = notification.userInfo[UIResponder.keyboardFrameEndUserInfoKey].cgRectValue
         if lastStatus == TLChatBarStatusMore || lastStatus == TLChatBarStatusEmoji {
-            if (keyboardFrame.size.height  0.0) <= 215.0 {
+            if (keyboardFrame.size.height) <= 215.0 {
                 return
             }
         } else if curStatus == TLChatBarStatusEmoji || curStatus == TLChatBarStatusMore {
             return
         }
         chatBar.mas_updateConstraints({ make in
-            make.bottom.mas_equalTo(self.view).mas_offset(-(keyboardFrame.size.height  0.0))
+            make.bottom.mas_equalTo(self.view).mas_offset(-(keyboardFrame.size.height))
         })
         view.layoutIfNeeded()
         chatTableVC.scrollToBottom(withAnimation: false)
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func keyboardDidShow(_ notification: Notification) {
         if lastStatus == TLChatBarStatusMore {
             moreKeyboard.dismiss(withAnimation: false)

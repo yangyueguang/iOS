@@ -3,7 +3,7 @@
 //  Freedom
 
 import Foundation
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXScannerButton: UIButton {
     var title = ""
     var iconPath = ""
@@ -14,7 +14,7 @@ class WXScannerButton: UIButton {
     var textLabel: UILabel
 
     init(type: TLScannerType, title: String, iconPath: String, iconHLPath: String) {
-        //if super.init()
+        super.init()
 
         if let aView = iconImageView {
             addSubview(aView)
@@ -24,16 +24,16 @@ class WXScannerButton: UIButton {
         }
         p_addMasonry()
         self.type = type
-        self.title = title  ""
-        self.iconPath = iconPath  ""
-        self.iconHLPath = iconHLPath  ""
+        self.title = title
+        self.iconPath = iconPath
+        self.iconHLPath = iconHLPath
 
     }
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func setTitle(_ title: String) {
         self.title = title
         textLabel.text = title
@@ -41,12 +41,12 @@ class WXScannerButton: UIButton {
 
     func setIconPath(_ iconPath: String) {
         self.iconPath = iconPath
-        iconImageView.image = UIImage(named: iconPath  "")
+        iconImageView.image = UIImage(named: iconPath)
     }
 
     func setIconHLPath(_ iconHLPath: String) {
         self.iconHLPath = iconHLPath
-        iconImageView.highlightedImage = UIImage(named: iconHLPath  "")
+        iconImageView.highlightedImage = UIImage(named: iconHLPath)
     }
 
     func setSelected(_ selected: Bool) {

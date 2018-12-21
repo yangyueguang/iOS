@@ -8,8 +8,6 @@
 
 import Foundation
 class WXTableViewController: UITableViewController {
-    var analyzeTitle = ""
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.lightGray
@@ -19,23 +17,8 @@ class WXTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.separatorStyle = .none
-        MobClick.beginLogPageView(analyzeTitle)
     }
-    func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        MobClick.endLogPageView(analyzeTitle())
     }
-
-    deinit {
-        DLog("dealloc %@", navigationItem.title)
-    }
-
-    // MARK: - Getter -
-    func analyzeTitle() -> String {
-        if analyzeTitle == nil {
-            return navigationItem.title
-        }
-        return analyzeTitle
-    }
-
 }

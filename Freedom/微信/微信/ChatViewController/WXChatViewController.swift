@@ -20,7 +20,7 @@ class WXMoreKBHelper: NSObject {
     var chatMoreKeyboardData: [AnyHashable] = []
 
     override init() {
-        //if super.init()
+        super.init()
 
         chatMoreKeyboardData = [AnyHashable]()
         p_initTestData()
@@ -130,7 +130,7 @@ class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControl
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func moreKeyboard(_ keyboard: Any, didSelectedFunctionItem funcItem: TLMoreKeyboardItem) {
         if funcItem.type == TLMoreKeyboardItemTypeCamera || funcItem.type == TLMoreKeyboardItemTypeImage {
             let imagePickerController = UIImagePickerController()
@@ -172,7 +172,7 @@ class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControl
         navigationController.pushViewController(detailVC, animated: true)
     }
 
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func didClickedImageMessages(_ imageMessages: [Any], at index: Int) {
         var data: [AnyHashable] = []
         for message: WXMessage in imageMessages as [WXMessage]  [] {
@@ -182,7 +182,7 @@ class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControl
                 let imagePatha = FileManager.pathUserChatImage(imagePath)
                 url = URL(fileURLWithPath: imagePatha)
             } else {
-                url = URL(string: message.content["url"]  "")
+                url = URL(string: message.content["url"])
             }
 
             let photo = MWPhoto(url: url)

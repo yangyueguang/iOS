@@ -3,7 +3,7 @@
 //  Freedom
 
 import Foundation
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WechatContactCell: WXTableViewCell {
     var contact: WechatContact
     var avatarImageView: UIImageView
@@ -12,7 +12,7 @@ class WechatContactCell: WXTableViewCell {
     var rightButton: UIButton
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         leftSeparatorSpace = 10
 
@@ -38,7 +38,7 @@ class WechatContactCell: WXTableViewCell {
             let path = FileManager.pathContactsAvatar(contact.avatarPath)
             avatarImageView.image = UIImage(named: path)
         } else {
-            avatarImageView.sd_setImage(with: URL(string: contact.avatarURL  ""), placeholderImage: UIImage(named: PuserLogo))
+            avatarImageView.sd_setImage(with: URL(string: contact.avatarURL), placeholderImage: UIImage(named: PuserLogo))
         }
 
         usernameLabel.text = contact.name
@@ -166,7 +166,7 @@ class WXContactsSearchViewController: WXTableViewController, UISearchResultsUpda
         let searchText = searchController.searchBar.text.lowercased()
         data.removeAll()
         for contact: WechatContact in contactsData {
-            if contact.name.contains(searchText  "")  false || contact.pinyin.contains(searchText  "")  false || contact.pinyinInitial.contains(searchText  "")  false {
+            if contact.name.contains(searchText)  false || contact.pinyin.contains(searchText)  false || contact.pinyinInitial.contains(searchText)  false {
                 if let aContact = contact {
                     data.append(aContact)
                 }
@@ -213,7 +213,7 @@ class WXContactsViewController: WXTableViewController, UISearchBarDelegate {
             SVProgressHUD.showError(withStatus: "未成功获取到通讯录信息")
         })
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if SVProgressHUD.isVisible() {
@@ -251,7 +251,7 @@ class WXContactsViewController: WXTableViewController, UISearchBarDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let group = data[section] as WXUserGroup
-        return group.count  0
+        return group.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let contact = data[indexPath.section][indexPath.row] as WechatContact
@@ -272,7 +272,7 @@ class WXContactsViewController: WXTableViewController, UISearchBarDelegate {
         view.title = group.groupName
         return view
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func sectionIndexTitles(for tableView: UITableView) -> [String] {
         return headers
     }

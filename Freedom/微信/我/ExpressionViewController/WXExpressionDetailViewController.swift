@@ -33,8 +33,8 @@ class WXExpressionDetailCell: UICollectionViewCell {
     }
     func setGroup(_ group: TLEmojiGroup) {
         self.group = group
-        if group.bannerURL.length  0 > 0 {
-            bannerView.sd_setImage(with: URL(string: group.bannerURL  ""))
+        if group.bannerURL.length > 0 {
+            bannerView.sd_setImage(with: URL(string: group.bannerURL))
             bannerView.mas_updateConstraints({ make in
                 make.height.mas_equalTo((APPW * 0.45))
             })
@@ -151,18 +151,12 @@ class WXExpressionDetailCell: UICollectionViewCell {
     // MARK: - Class Methods
     class func cellHeight(forModel group: TLEmojiGroup) -> CGFloat {
         let detailHeight: CGFloat = group.groupDetailInfo.boundingRect(with: CGSize(width: APPW - 30, height: MAXFLOAT), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13.0)], context: nil).size.height
-        let bannerHeight: CGFloat = group.bannerURL.length  0 > 0  (APPW * 0.45) : 0
-        let height: CGFloat = 105.0 + (detailHeight  0.0) + bannerHeight
+        let bannerHeight: CGFloat = group.bannerURL.length > 0 ? (APPW * 0.45) : 0
+        let height: CGFloat = 105.0 + (detailHeight) + bannerHeight
         return height
     }
-
-
-
-
-
-    
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 class WXExpressionItemCell: UICollectionViewCell {
     private var _emoji: TLEmoji
     var emoji: TLEmoji {
@@ -171,18 +165,18 @@ class WXExpressionItemCell: UICollectionViewCell {
         }
         set(emoji) {
             _emoji = emoji
-            let image = UIImage(named: emoji.emojiPath  "")
+            let image = UIImage(named: emoji.emojiPath)
             if image != nil {
                 imageView.image = image
             } else {
-                imageView.sd_setImage(with: URL(string: emoji.emojiURL  ""))
+                imageView.sd_setImage(with: URL(string: emoji.emojiURL))
             }
         }
     }
     var imageView: UIImageView
 
     override init(frame: CGRect) {
-        //if super.init(frame: frame)
+        super.init(frame: frame)
 
         if let aView = imageView {
             contentView.addSubview(aView)
@@ -243,7 +237,7 @@ class WXExpressionDetailViewController: WXBaseViewController, UICollectionViewDe
         tapGR.addTarget(self, action: #selector(self.didTap5TimesScreen(_:)))
         collectionView.addGestureRecognizer(tapGR)
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -296,9 +290,9 @@ class WXExpressionDetailViewController: WXBaseViewController, UICollectionViewDe
         } else {
             let point: CGPoint = sender.location(in: collectionView)
             for cell: UICollectionViewCell in collectionView.visibleCells {
-                if cell.frame.origin.x <= (point.x  0.0) && cell.frame.origin.y <= (point.y  0.0) && cell.frame.origin.x + cell.frame.size.width >= (point.x  0.0) && cell.frame.origin.y + cell.frame.size.height >= (point.y  0.0) {
+                if cell.frame.origin.x <= (point.x) && cell.frame.origin.y <= (point.y) && cell.frame.origin.x + cell.frame.size.width >= (point.x) && cell.frame.origin.y + cell.frame.size.height >= (point.y) {
                     let indexPath: IndexPath = collectionView.indexPath(for: cell)
-                    let emoji = group[indexPath.row  0] as TLEmoji
+                    let emoji = group[indexPath.row] as TLEmoji
                     let rect: CGRect = cell.frame
                     rect.origin.y -= collectionView.contentOffset.y + 13
                     emojiDisplayView.removeFromSuperview()
@@ -312,9 +306,9 @@ class WXExpressionDetailViewController: WXBaseViewController, UICollectionViewDe
     func didTap5TimesScreen(_ sender: UITapGestureRecognizer) {
         let point: CGPoint = sender.location(in: collectionView)
         for cell: UICollectionViewCell in collectionView.visibleCells {
-            if cell.frame.origin.x <= (point.x  0.0) && cell.frame.origin.y <= (point.y  0.0) && cell.frame.origin.x + cell.frame.size.width >= (point.x  0.0) && cell.frame.origin.y + cell.frame.size.height >= (point.y  0.0) {
+            if cell.frame.origin.x <= (point.x) && cell.frame.origin.y <= (point.y) && cell.frame.origin.x + cell.frame.size.width >= (point.x) && cell.frame.origin.y + cell.frame.size.height >= (point.y) {
                 let indexPath: IndexPath = collectionView.indexPath(for: cell)
-                let emoji = group[indexPath.row  0] as TLEmoji
+                let emoji = group[indexPath.row] as TLEmoji
                 SVProgressHUD.show(withStatus: "正在将表情保存到系统相册")
                 var urlString: String = nil
                 if let anID = emoji.emojiID {
@@ -381,14 +375,14 @@ class WXExpressionDetailViewController: WXBaseViewController, UICollectionViewDe
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return section == 0  0 : 15
+        return section == 0 ? 0 : 15
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return section == 0  0 : 15
+        return section == 0 ? 0 : 15
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return section == 0  .zero : UIEdgeInsetsMake(20, 20, 20, 20)
+        return section == 0 ? .zero : UIEdgeInsetsMake(20, 20, 20, 20)
     }
     func expressionDetailCellDownloadButtonDown(_ group: TLEmojiGroup) {
         WXExpressionHelper.shared().downloadExpressions(withGroupInfo: group, progress: { progress in
@@ -406,7 +400,7 @@ class WXExpressionDetailViewController: WXBaseViewController, UICollectionViewDe
             group.status = TLEmojiGroupStatusUnDownload
             self.collectionView.reloadData()
             if let aName = group.groupName {
-                SVProgressHUD.showError(withStatus: "\"\(aName)\" 下载失败: \(error  "")")
+                SVProgressHUD.showError(withStatus: "\"\(aName)\" 下载失败: \(error)")
             }
         })
     }

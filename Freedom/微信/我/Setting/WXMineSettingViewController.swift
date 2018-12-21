@@ -8,7 +8,7 @@ class WXSettingHelper: NSObject {
     var mineSettingData: [AnyHashable] = []
 
     override init() {
-        //if super.init()
+        super.init()
 
         mineSettingData = [AnyHashable]()
         p_initTestData()

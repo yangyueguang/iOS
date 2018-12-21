@@ -18,7 +18,7 @@ class TabBarView: UIView, AVAudioPlayerDelegate {
     lazy var avPlayer: AVAudioPlayer = {//标签
         let av = try? AVAudioPlayer(contentsOf: assetUrl!)
         av?.volume = 1// 音量 0-1
-        av?.pan = 0// 音域  -1一边能听到  0两个耳机都能听到
+        av?.pan = 0// 音域  -1一边能听到两个耳机都能听到
         av?.enableRate = true// 允许设置速率
         av?.rate = 1// 设置速率
         let a = av!.duration

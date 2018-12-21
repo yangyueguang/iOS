@@ -10,7 +10,7 @@ class WXChatFontSettingView: UIView {
     var maxFontLabel: UILabel
     var standardFontLabel: UILabel
     var slider: UISlider
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -30,8 +30,8 @@ class WXChatFontSettingView: UIView {
 
     // MARK: - Event Response -
     func sliderValueChanged(_ sender: UISlider) {
-        var value = Int(sender.value  0)
-        value = ((sender.value  0.0) - Float(value)) > 0.5  value + 1 : value
+        var value = Int(sender.value)
+        value = ((sender.value) - Float(value)) > 0.5  value + 1 : value
         if value == Int(curFontSize) {
             return
         }
@@ -40,7 +40,7 @@ class WXChatFontSettingView: UIView {
             fontSizeChangeTo(value)
         }
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func p_addMasonry() {
         miniFontLabel.mas_makeConstraints({ make in
             make.left.mas_equalTo(self.slider.mas_left)
@@ -64,7 +64,7 @@ class WXChatFontSettingView: UIView {
             make.height.mas_equalTo(40)
         })
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func miniFontLabel() -> UILabel {
         if miniFontLabel == nil {
             miniFontLabel = UILabel()
@@ -158,7 +158,7 @@ class WXChatFontViewController: WXBaseViewController {
         let path = FileManager.pathUserAvatar("AppIcon")
         if !FileManager.default.isExecutableFile(atPath: path) {
             let iconPath = Bundle.main.infoDictionary.value(forKeyPath: "CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles").last as String
-            let image = UIImage(named: iconPath  "")
+            let image = UIImage(named: iconPath)
             var data: Data = nil
             if let anImage = image {
                 data = UIImagePNGRepresentation(image)  UIImagePNGRepresentation(image) : anImage.jpegData(compressionQuality: 1)

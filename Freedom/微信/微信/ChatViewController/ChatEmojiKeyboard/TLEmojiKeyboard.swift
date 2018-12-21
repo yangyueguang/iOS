@@ -3,7 +3,7 @@
 //  Freedom
 
 import Foundation
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 @objc protocol TLKeyboardDelegate: NSObjectProtocol {
     @objc optional func chatKeyboardWillShow(_ keyboard: Any)
     @objc optional func chatKeyboardDidShow(_ keyboard: Any)
@@ -38,7 +38,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     var collectionView: UICollectionView
     var pageControl: UIPageControl
     var groupControl: TLEmojiGroupControl
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     class func keyboard() -> TLEmojiKeyboard {
         // TODO: [Swiftify] ensure that the code below is executed only once (`dispatch_once()` is deprecated)
         {
@@ -83,7 +83,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
                 })
                 view.layoutIfNeeded()
                 if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboard(_:didChangeHeight:))) {
-                    keyboardDelegate.chatKeyboard(self, didChangeHeight: (view.frame.size.height  0.0) - self.frame.origin.y)
+                    keyboardDelegate.chatKeyboard(self, didChangeHeight: (view.frame.size.height) - self.frame.origin.y)
                 }
             }) { finished in
                 if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboardDidShow(_:))) {
@@ -138,7 +138,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
 
     // MARK: - Event Response -
     func pageControlChanged(_ pageControl: UIPageControl) {
-        collectionView.scrollRectToVisible(CGRect(x: CGFloat(APPW * (pageControl.currentPage  0)), y: 0, width: APPW, height: 215), animated: true)
+        collectionView.scrollRectToVisible(CGRect(x: CGFloat(APPW * (pageControl.currentPage)), y: 0, width: APPW, height: 215), animated: true)
     }
     func p_addMasonry() {
         collectionView.mas_makeConstraints({ make in
@@ -338,7 +338,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         // 显示Group表情
         curGroup = group
         resetCollectionSize()
-        pageControl.numberOfPages = group.pageNumber  0
+        pageControl.numberOfPages = group.pageNumber
         pageControl.currentPage = 0
         collectionView.reloadData()
         collectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: collectionView.frame.size.height), animated: false)
@@ -383,13 +383,13 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
             let point: CGPoint = sender.location(in: collectionView)
 
             for cell: UICollectionViewCell in collectionView.visibleCells {
-                if cell.frame.origin.x - minimumLineSpacing / 2.0 <= (point.x  0.0) && cell.frame.origin.y - minimumInteritemSpacing / 2.0 <= (point.y  0.0) && cell.frame.origin.x + cell.frame.size.width + minimumLineSpacing / 2.0 >= (point.x  0.0) && cell.frame.origin.y + cell.frame.size.height + minimumInteritemSpacing / 2.0 >= (point.y  0.0) {
+                if cell.frame.origin.x - minimumLineSpacing / 2.0 <= (point.x ) && cell.frame.origin.y - minimumInteritemSpacing / 2.0 <= (point.y) && cell.frame.origin.x + cell.frame.size.width + minimumLineSpacing / 2.0 >= (point.x) && cell.frame.origin.y + cell.frame.size.height + minimumInteritemSpacing / 2.0 >= (point.y) {
                     if lastCell == cell {
                         return
                     }
                     lastCell = cell
                     let indexPath: IndexPath = collectionView.indexPath(for: cell)
-                    let index: Int = (indexPath.section  0) * curGroup.pageItemCount + (indexPath.row  0)
+                    let index: Int = (indexPath.section) * curGroup.pageItemCount + (indexPath.row)
                     let tIndex = transformModelIndex(index) // 矩阵坐标转置
                     if tIndex >= curGroup.count {
                         if delegate && delegate.responds(to: #selector(self.emojiKeyboardCancelTouchEmojiItem(_:))) {

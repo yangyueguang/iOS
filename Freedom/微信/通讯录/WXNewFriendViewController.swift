@@ -6,7 +6,7 @@ import Foundation
 protocol WXAddThirdPartFriendCellDelegate: NSObjectProtocol {
     func addThirdPartFriendCellDidSelectedType(_ thirdPartFriendType: String)
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+
 private let TLThirdPartFriendTypeContacts = "1"
 private let TLThirdPartFriendTypeQQ = "2"
 private let TLThirdPartFriendTypeGoogle = "3"
@@ -19,7 +19,7 @@ class WXAddThirdPartFriendCell: WXTableViewCell {
     private var google: WXAddThirdPartFriendItem
 
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        //if super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         selectionStyle = .none
         setBottomLineStyle(TLCellLineStyleFill)
@@ -39,7 +39,7 @@ class WXAddThirdPartFriendCell: WXTableViewCell {
         }
         for i in 0..<(thridPartItems.count  0) {
             let keyStr = thridPartItems[i] as String
-            let item = itemsDic[keyStr  ""] as WXAddThirdPartFriendItem
+            let item = itemsDic[keyStr] as WXAddThirdPartFriendItem
             if let anItem = item {
                 contentView.addSubview(anItem)
             }
@@ -151,7 +151,7 @@ class WXAddThirdPartFriendItem: UIButton {
     init(imagePath: String, andTitle title: String) {
         super.init(frame: CGRect.zero)
 
-        iconImageView.image = UIImage(named: imagePath  "")
+        iconImageView.image = UIImage(named: imagePath)
         textLabel.text = title
         addSubview(iconImageView)
         if let aLabel = textLabel {
@@ -211,7 +211,7 @@ class WXNewFriendViewController: WXTableViewController, UISearchBarDelegate, WXA
         }
         return searchVC
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func registerCellClass() {
         tableView.register(WXAddThirdPartFriendCell.self, forCellReuseIdentifier: "TLAddThirdPartFriendCell")
     }
@@ -238,7 +238,7 @@ class WXNewFriendViewController: WXTableViewController, UISearchBarDelegate, WXA
         }
         return nil
     }
-    //  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     }
