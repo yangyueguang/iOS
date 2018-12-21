@@ -168,9 +168,7 @@ class IqiyiImageCardView: UIView {
     }
     @objc func onTapImageCard(_ sender: UITapGestureRecognizer?) {
         Dlog(video)
-        if (delegate?.responds(to: Selector(("didSelectImageCard:video:"))))! {
-            delegate?.didSelectImageCard(self, video: video)
-        }
+        delegate?.didSelectImageCard(self, video: video)
     }
 }
 class IqiyiHomeBoxCell: UITableViewCell,IqiyiImageCardViewDelegate {
@@ -241,9 +239,7 @@ class IqiyiHomeBoxCell: UITableViewCell,IqiyiImageCardViewDelegate {
         cardView4.video = video4
     }
     func didSelectImageCard(_ imageCard: IqiyiImageCardView?, video: IqiyiVideosModel?) {
-        if (delegate?.responds(to: #selector(IqiyiViewController.didSelectHomeBox(_:))))! {
-            delegate?.didSelectHomeBox(video)
-        }
+        delegate?.didSelectHomeBox(video)
     }
         
 }

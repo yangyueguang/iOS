@@ -8,8 +8,8 @@ class WXImageExpressionDisplayView: UIView {
     var emoji: TLEmoji {
         didSet {
             curID = emoji.emojiID
-            if data = try Data(contentsOf: URL(fileURLWithPath: emoji.emojiPath)) {
-                imageView.image = UIImage.sd_animatedGIF(with: data)
+            if let dda = try Data(contentsOf: URL(fileURLWithPath: emoji.emojiPath)) {
+                imageView.image = UIImage.sd_animatedGIF(with: dda)
             } else {
                 var urlString = "http://123.57.155.230:8080/ibiaoqing/admin/expre/download.dopId=\(emoji.emojiID)"
                 imageView.sd_setImage(with: URL(string: emoji.emojiURL), completed: { image, error, cacheType, imageURL in
@@ -19,7 +19,7 @@ class WXImageExpressionDisplayView: UIView {
                             DispatchQueue.main.async(execute: {
                                 self.imageView.image = UIImage.sd_animatedGIF(with: data)
                             })
-                        })
+                            } as! @convention(block) () -> Void)
                     }
                 })
             }

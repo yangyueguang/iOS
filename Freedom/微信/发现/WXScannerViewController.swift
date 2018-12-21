@@ -10,43 +10,35 @@ import Foundation
 }
 
 class WXScannerView: UIView {
-    var timer: Timer
-
+    var timer: Timer?
     var hiddenScannerIndicator = false
-    var bgView: UIView
-    var topLeftView: UIImageView
-    var topRightView: UIImageView
-    var btmLeftView: UIImageView
-    var btmRightView: UIImageView
-    var scannerLine: UIImageView
-
+    lazy var bgView: UIView = {
+        bgView = UIView()
+        bgView.backgroundColor = UIColor.clear
+        bgView.layer.masksToBounds = true
+        bgView.layer.borderWidth = 1
+        bgView.layer.borderColor = UIColor.white.cgColor
+        return bgView
+    }()
+    var topLeftView = UIImageView(image: UIImage(named: "scanner_top_left"))
+    var topRightView = UIImageView(image: UIImage(named: "scanner_top_right"))
+    var btmLeftView = UIImageView(image: UIImage(named: "scanner_bottom_left"))
+    var btmRightView = UIImageView(image: UIImage(named: "scanner_bottom_right"))
+    var scannerLine = UIImageView(image: UIImage(named: "scanner_line"))
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        scannerLine.frame = CGRect.zero
         clipsToBounds = true
-        if let aView = bgView {
-            addSubview(aView)
-        }
-        if let aView = topLeftView {
-            addSubview(aView)
-        }
-        if let aView = topRightView {
-            addSubview(aView)
-        }
-        if let aView = btmLeftView {
-            addSubview(aView)
-        }
-        if let aView = btmRightView {
-            addSubview(aView)
-        }
-        if let aLine = scannerLine {
-            addSubview(aLine)
-        }
-        p_addMasonry()
-
+        addSubview(aView)
+        addSubview(topLeftView)
+        addSubview(topRightView)
+        addSubview(btmLeftView)
+        addSubview(btmRightView)
+        addSubview(scannerLine)
+//        p_addMasonry()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     func startScanner() {
@@ -74,7 +66,6 @@ class WXScannerView: UIView {
         if hiddenScannerIndicator == self.hiddenScannerIndicator {
             return
         }
-
         if hiddenScannerIndicator {
             let rec: CGRect = scannerLine.frame
             rec.origin.y = 0
@@ -91,183 +82,123 @@ class WXScannerView: UIView {
             })
         }
     }
-    func p_addMasonry() {
-        bgView.mas_makeConstraints({ make in
-            make.edges.mas_equalTo(self)
-        })
-        topLeftView.mas_makeConstraints({ make in
-            make.left.and().top().mas_equalTo(self)
-            make.width.and().height().mas_lessThanOrEqualTo(self)
-        })
-        topRightView.mas_makeConstraints({ make in
-            make.right.and().top().mas_equalTo(self)
-            make.width.and().height().mas_lessThanOrEqualTo(self)
-        })
-        btmLeftView.mas_makeConstraints({ make in
-            make.left.and().bottom().mas_equalTo(self)
-            make.width.and().height().mas_lessThanOrEqualTo(self)
-        })
-        btmRightView.mas_makeConstraints({ make in
-            make.right.and().bottom().mas_equalTo(self)
-            make.width.and().height().mas_lessThanOrEqualTo(self)
-        })
-    }
-    
+//    func p_addMasonry() {
+//        bgView.mas_makeConstraints({ make in
+//            make.edges.mas_equalTo(self)
+//        })
+//        topLeftView.mas_makeConstraints({ make in
+//            make.left.and().top().mas_equalTo(self)
+//            make.width.and().height().mas_lessThanOrEqualTo(self)
+//        })
+//        topRightView.mas_makeConstraints({ make in
+//            make.right.and().top().mas_equalTo(self)
+//            make.width.and().height().mas_lessThanOrEqualTo(self)
+//        })
+//        btmLeftView.mas_makeConstraints({ make in
+//            make.left.and().bottom().mas_equalTo(self)
+//            make.width.and().height().mas_lessThanOrEqualTo(self)
+//        })
+//        btmRightView.mas_makeConstraints({ make in
+//            make.right.and().bottom().mas_equalTo(self)
+//            make.width.and().height().mas_lessThanOrEqualTo(self)
+//        })
+//    }
+
     func stopScanner() {
-        if timer {
-            timer.invalidate()
-            timer = nil
-        }
+        timer?.invalidate()
     }
-
-    func bgView() -> UIView {
-        if bgView == nil {
-            bgView = UIView()
-            bgView.backgroundColor = UIColor.clear
-            bgView.layer.masksToBounds = true
-            bgView.layer.borderWidth = 1
-            bgView.layer.borderColor = UIColor.white.cgColor
-        }
-        return bgView
-    }
-
-    func topLeftView() -> UIImageView {
-        if topLeftView == nil {
-            topLeftView = UIImageView(image: UIImage(named: "scanner_top_left"))
-        }
-        return topLeftView
-    }
-
-    func topRightView() -> UIImageView {
-        if topRightView == nil {
-            topRightView = UIImageView(image: UIImage(named: "scanner_top_right"))
-        }
-        return topRightView
-    }
-
-    func btmLeftView() -> UIImageView {
-        if btmLeftView == nil {
-            btmLeftView = UIImageView(image: UIImage(named: "scanner_bottom_left"))
-        }
-        return btmLeftView
-    }
-
-    func btmRightView() -> UIImageView {
-        if btmRightView == nil {
-            btmRightView = UIImageView(image: UIImage(named: "scanner_bottom_right"))
-        }
-        return btmRightView
-    }
-
-    func scannerLine() -> UIImageView {
-        if scannerLine == nil {
-            scannerLine = UIImageView(image: UIImage(named: "scanner_line"))
-            scannerLine.frame = CGRect.zero
-        }
-        return scannerLine
-    }
-
-
-
-    
 }
 
 class WXScannerBackgroundView: UIView {
-    var topView: UIView
-    var btmView: UIView
-    var leftView: UIView
-    var rightView: UIView
-
+    var topView = UIView()
+    var btmView = UIView()
+    var leftView = UIView()
+    var rightView = UIView()
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        if let aView = topView {
-            addSubview(aView)
-        }
-        if let aView = btmView {
-            addSubview(aView)
-        }
-        if let aView = leftView {
-            addSubview(aView)
-        }
-        if let aView = rightView {
-            addSubview(aView)
-        }
-
+        addSubview(topView)
+        addSubview(btmView)
+        addSubview(leftView)
+        addSubview(rightView)
+        topView.backgroundColor = UIColor(71, 70, 73, 1.0)
+        btmView.backgroundColor = UIColor(71, 70, 73, 1.0)
+        leftView.backgroundColor = UIColor(71, 70, 73, 1.0)
+        rightView.backgroundColor = UIColor(71, 70, 73, 1.0)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    func addMasonry(withContain containView: UIView) {
-        let scannerView: UIView = containView
-        topView.mas_makeConstraints({ make in
-            make.top.and().left().and().right().mas_equalTo(self)
-            make.bottom.mas_equalTo(scannerView.mas_top)
-        })
-        btmView.mas_makeConstraints({ make in
-            make.left.and().right().and().bottom().mas_equalTo(self)
-            make.top.mas_equalTo(scannerView.mas_bottom)
-        })
-        leftView.mas_makeConstraints({ make in
-            make.left.mas_equalTo(self)
-            make.right.mas_equalTo(scannerView.mas_left)
-            make.top.mas_equalTo(self.topView.mas_bottom)
-            make.bottom.mas_equalTo(self.btmView.mas_top)
-        })
-        rightView.mas_makeConstraints({ make in
-            make.left.mas_equalTo(scannerView.mas_right)
-            make.right.mas_equalTo(self)
-            make.top.mas_equalTo(self.topView.mas_bottom)
-            make.bottom.mas_equalTo(self.btmView.mas_top)
-        })
-    }
-    
-    func topView() -> UIView {
-        if topView == nil {
-            topView = UIView()
-            topView.backgroundColor = UIColor(71, 70, 73, 1.0)
-        }
-        return topView
-    }
-
-    func btmView() -> UIView {
-        if btmView == nil {
-            btmView = UIView()
-            btmView.backgroundColor = UIColor(71, 70, 73, 1.0)
-        }
-        return btmView
-    }
-
-    var leftView: UIView {
-        if leftView == nil {
-            leftView = UIView()
-            leftView.backgroundColor = UIColor(71, 70, 73, 1.0)
-        }
-        return leftView
-    }
-
-    var rightView: UIView {
-        if rightView == nil {
-            rightView = UIView()
-            rightView.backgroundColor = UIColor(71, 70, 73, 1.0)
-        }
-        return rightView
-    }
-
-
-
+//    func addMasonry(withContain containView: UIView) {
+//        let scannerView: UIView = containView
+//        topView.mas_makeConstraints({ make in
+//            make.top.and().left().and().right().mas_equalTo(self)
+//            make.bottom.mas_equalTo(scannerView.mas_top)
+//        })
+//        btmView.mas_makeConstraints({ make in
+//            make.left.and().right().and().bottom().mas_equalTo(self)
+//            make.top.mas_equalTo(scannerView.mas_bottom)
+//        })
+//        leftView.mas_makeConstraints({ make in
+//            make.left.mas_equalTo(self)
+//            make.right.mas_equalTo(scannerView.mas_left)
+//            make.top.mas_equalTo(self.topView.mas_bottom)
+//            make.bottom.mas_equalTo(self.btmView.mas_top)
+//        })
+//        rightView.mas_makeConstraints({ make in
+//            make.left.mas_equalTo(scannerView.mas_right)
+//            make.right.mas_equalTo(self)
+//            make.top.mas_equalTo(self.topView.mas_bottom)
+//            make.bottom.mas_equalTo(self.btmView.mas_top)
+//        })
+//    }
 }
 
 class WXScannerViewController: WXBaseViewController ,AVCaptureMetadataOutputObjectsDelegate {
-    private var introudctionLabel: UILabel
-    private var scannerView: WXScannerView
-    private var scannerBGView: WXScannerBackgroundView
-    private var scannerSession: AVCaptureSession
-    private var videoPreviewLayer: AVCaptureVideoPreviewLayer
-    var scannerType: TLScannerType
-    weak var delegate: WXScannerDelegate
-    private(set) var isRunning = false
+    private var scannerView = WXScannerView()
+    private var scannerBGView = WXScannerBackgroundView()
+    private lazy var scannerSession: AVCaptureSession = {
+        let session = AVCaptureSession()
+        let device = AVCaptureDevice.default(for: .video)
+        var error: Error = nil
+        var input: AVCaptureDeviceInput = nil
+        if let aDevice = device {
+            input = try AVCaptureDeviceInput(device: aDevice)
+        }
+        if error != nil { return nil }
+        let output = AVCaptureMetadataOutput()
+        output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+        if session.canSetSessionPreset(.hd1920x1080) {
+            session.sessionPreset = .hd1920x1080
+        } else if session.canSetSessionPreset(.hd1280x720) {
+            session.sessionPreset = .hd1280x720
+        } else {
+            session.sessionPreset = .photo
+        }
+        if session.canAdd(input) { session.add(input) }
+        if session.canAdd(output) { session.add(output) }
+        output.metadataObjectTypes = [.ean13, .ean8, .code128, .qr]
+        return session
+    }()
+    private lazy var videoPreviewLayer: AVCaptureVideoPreviewLayer = {
+        let videoPreviewLayer = AVCaptureVideoPreviewLayer(session: scannerSession)
+        videoPreviewLayer.videoGravity = .resizeAspectFill
+        videoPreviewLayer.frame = view.layer.bounds
+        return videoPreviewLayer
+    }()
+    private lazy var introudctionLabel: UILabel = {
+        let introudctionLabel = UILabel()
+        introudctionLabel.backgroundColor = UIColor.clear
+        introudctionLabel.textAlignment = .center
+        introudctionLabel.font = UIFont.systemFont(ofSize: 12.0)
+        introudctionLabel.textColor = UIColor.white
+        return introudctionLabel
+    }()
+    var scannerType = TLScannerType.qr
+    weak var delegate: WXScannerDelegate?
+    private var isRunning: Bool {
+        return scannerSession.isRunning()
+    }
     class func scannerQRCode(from image: UIImage, ans: @escaping (_ ansStr: String) -> Void) {
         DispatchQueue.global(qos: .default).async(execute: {
             var imageData: Data = nil
@@ -284,11 +215,9 @@ class WXScannerViewController: WXBaseViewController ,AVCaptureMetadataOutputObje
                 var features: [CIFeature] = nil
                 features = detector.features(in: ciImage)
                 if features.count != nil {
-                    for feature: CIFeature in features  [] {
-                        if (feature is CIQRCodeFeature) {
-                            ansStr = (feature as CIQRCodeFeature).messageString
-                            break
-                        }
+                    for feature: CIFeature in features where feature is CIQRCodeFeature {
+                        ansStr = (feature as CIQRCodeFeature).messageString
+                        break
                     }
                 }
             }
@@ -297,28 +226,22 @@ class WXScannerViewController: WXBaseViewController ,AVCaptureMetadataOutputObje
             })
         })
     }
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
-
         view.addSubview(introudctionLabel)
         view.addSubview(scannerView)
         view.addSubview(scannerBGView)
         view.layer.insertSublayer(videoPreviewLayer, at: 0)
-
         p_addMasonry()
     }
 
-    func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if scannerSession {
-            if delegate && delegate.responds(to: #selector(self.scannerViewControllerInitSuccess(_:))) {
-                delegate.scannerViewControllerInitSuccess(self)
-            }
+            delegate?.scannerViewControllerInitSuccess(self)
         } else {
-            if delegate && delegate.responds(to: #selector(self.scannerViewController(_:initFailed:))) {
-                delegate.scannerViewController(self, initFailed: "相机初始化失败")
-            }
+            delegate?.scannerViewController(self, initFailed: "相机初始化失败")
         }
     }
     func setScannerType(_ scannerType: TLScannerType) {
@@ -333,20 +256,20 @@ class WXScannerViewController: WXBaseViewController ,AVCaptureMetadataOutputObje
             introudctionLabel.text = "将二维码/条码放入框内，即可自动扫描"
             height = APPW * 0.7
             width = height
-        } else if scannerType == TLScannerTypeCover {
+        } else if scannerType == .cover {
             introudctionLabel.text = "将书、CD、电影海报放入框内，即可自动扫描"
             height = APPW * 0.85
             width = height
-        } else if scannerType == TLScannerTypeStreet {
+        } else if scannerType == .street {
             introudctionLabel.text = "扫一下周围环境，寻找附近街景"
             height = APPW * 0.85
             width = height
-        } else if scannerType == TLScannerTypeTranslate {
+        } else if scannerType == .translate {
             width = APPW * 0.7
             height = 55
             introudctionLabel.text = "将英文单词放入框内"
         }
-        scannerView.hiddenScannerIndicator = scannerType == TLScannerTypeTranslate
+        scannerView.hiddenScannerIndicator = scannerType == .translate
         UIView.animate(withDuration: 0.3, animations: {
             self.scannerView.mas_updateConstraints({ make in
                 make.width.mas_equalTo(width)
@@ -354,7 +277,6 @@ class WXScannerViewController: WXBaseViewController ,AVCaptureMetadataOutputObje
             })
             self.view.layoutIfNeeded()
         })
-
         // rect值范围0-1，基准点在右上角
         let rect = CGRect(x: scannerView.frame.origin.y / APPH, y: scannerView.frame.origin.x / APPW, width: scannerView.frame.size.height / APPH, height: scannerView.frame.size.width / APPW)
         scannerSession.outputs[0].rectOfInterest = rect
@@ -368,115 +290,34 @@ class WXScannerViewController: WXBaseViewController ,AVCaptureMetadataOutputObje
             stopCodeReading()
         }
     }
-
-    // MARK: - Public Methods -
     func startCodeReading() {
         scannerView.startScanner()
         scannerSession.startRunning()
     }
-
     func stopCodeReading() {
         scannerView.stopScanner()
         scannerSession.stopRunning()
-    }
-
-    func isRunning() -> Bool {
-        return scannerSession.isRunning()
     }
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if (metadataObjects.count) > 0 {
             stopCodeReading()
             let obj = metadataObjects[0] as AVMetadataMachineReadableCodeObject
-            if delegate && delegate.responds(to: #selector(self.scannerViewController(_:scanAnswer:))) {
-                delegate.scannerViewController(self, scanAnswer: obj.stringValue)
-            }
+            delegate?.scannerViewController(self, scanAnswer: obj.stringValue)
         }
     }
-    func p_addMasonry() {
-        scannerView.mas_makeConstraints({ make in
-            make.centerX.mas_equalTo(self.view)
-            make.centerY.mas_equalTo(self.view).mas_offset(-55)
-            make.width.and().height().mas_equalTo(0)
-        })
-
-        scannerBGView.mas_makeConstraints({ make in
-            make.edges.mas_equalTo(self.view)
-        })
-
-        scannerBGView.addMasonry(withContainView: scannerView)
-
-        introudctionLabel.mas_makeConstraints({ make in
-            make.left.and().width().mas_equalTo(self.view)
-            make.top.mas_equalTo(self.scannerView.mas_bottom).mas_offset(30)
-        })
-    }
-    func scannerSession() -> AVCaptureSession {
-        if scannerSession == nil {
-            let device = AVCaptureDevice.default(for: .video)
-
-            var error: Error = nil
-            var input: AVCaptureDeviceInput = nil
-            if let aDevice = device {
-                input = try AVCaptureDeviceInput(device: aDevice)
-            }
-            if error != nil {
-                // 没有摄像头
-                return nil
-            }
-            let output = AVCaptureMetadataOutput()
-            output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            let session = AVCaptureSession()
-            if session.canSetSessionPreset(.hd1920x1080) {
-                session.sessionPreset = .hd1920x1080
-            } else if session.canSetSessionPreset(.hd1280x720) {
-                session.sessionPreset = .hd1280x720
-            } else {
-                session.sessionPreset = .photo
-            }
-            if session.canAdd(input) {
-                session.add(input)
-            }
-            if session.canAdd(output) {
-                session.add(output)
-            }
-            output.metadataObjectTypes = [.ean13, .ean8, .code128, .qr]
-
-            scannerSession = session
-        }
-        return scannerSession
-    }
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer {
-        if videoPreviewLayer == nil {
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: scannerSession)
-            videoPreviewLayer.videoGravity = .resizeAspectFill
-            videoPreviewLayer.frame = view.layer.bounds
-        }
-        return videoPreviewLayer
-    }
-
-    func introudctionLabel() -> UILabel {
-        if introudctionLabel == nil {
-            introudctionLabel = UILabel()
-            introudctionLabel.backgroundColor = UIColor.clear
-            introudctionLabel.textAlignment = .center
-            introudctionLabel.font = UIFont.systemFont(ofSize: 12.0)
-            introudctionLabel.textColor = UIColor.white
-        }
-        return introudctionLabel
-    }
-
-    func scannerView() -> WXScannerView {
-        if scannerView == nil {
-            scannerView = WXScannerView()
-        }
-        return scannerView
-    }
-
-    func scannerBGView() -> WXScannerBackgroundView {
-        if scannerBGView == nil {
-            scannerBGView = WXScannerBackgroundView()
-        }
-        return scannerBGView
-    }
-
+//    func p_addMasonry() {
+//        scannerView.mas_makeConstraints({ make in
+//            make.centerX.mas_equalTo(self.view)
+//            make.centerY.mas_equalTo(self.view).mas_offset(-55)
+//            make.width.and().height().mas_equalTo(0)
+//        })
+//        scannerBGView.mas_makeConstraints({ make in
+//            make.edges.mas_equalTo(self.view)
+//        })
+//        scannerBGView.addMasonry(withContainView: scannerView)
+//        introudctionLabel.mas_makeConstraints({ make in
+//            make.left.and().width().mas_equalTo(self.view)
+//            make.top.mas_equalTo(self.scannerView.mas_bottom).mas_offset(30)
+//        })
+//    }
 }

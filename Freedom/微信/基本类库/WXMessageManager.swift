@@ -7,7 +7,6 @@ enum TLPartnerType : Int {
     case user // 用户
     case group // 群聊
 }
-
 //消息拥有者
 enum TLMessageOwnerType : Int {
     case unknown // 未知的消息拥有者
@@ -15,50 +14,42 @@ enum TLMessageOwnerType : Int {
     case own // 自己发送的消息
     case friend // 接收到的他人消息
 }
-
 //消息发送状态
 enum TLMessageSendState : Int {
     case success // 消息发送成功
     case fail // 消息发送失败
 }
-
 //消息读取状态
 enum TLMessageReadState : Int {
     case unRead // 消息未读
     case readed // 消息已读
 }
-
+protocol WXMessageProtocol: NSObjectProtocol {
+    func messageCopy() -> String
+    func conversationContent() -> String
+}
+protocol WXMessageManagerConvVCDelegate: NSObjectProtocol {
+    func updateConversationData()
+}
 class WXConversation: NSObject {
-    //会话类型（个人，讨论组，企业号）
-    var convType = TLConversationType.personal
-    //消息提醒类型
-    var remindType = TLMessageRemindType.normal
-    //用户ID
-    var partnerID = ""
-    //用户名
-    var partnerName = ""
-    //头像地址（网络）
-    var avatarURL = ""
-    //头像地址（本地）
-    var avatarPath = ""
-    //时间
-    var date: Date
-    //消息展示内容
-    var content = ""
-    //提示红点类型
-    private(set) var clueType = TLClueType.none
+    var convType = TLConversationType.personal//会话类型（个人，讨论组，企业号）
+    var remindType = TLMessageRemindType.normal//消息提醒类型
+    var partnerID = ""//用户ID
+    var partnerName = ""//用户名
+    var avatarURL = ""//头像地址（网络）
+    var avatarPath = ""//头像地址（本地）
+    var date: Date//时间
+    var content = ""//消息展示内容
+    private(set) var clueType = TLClueType.none//提示红点类型
     private(set) var isRead = false
-    //未读数量
-    var unreadCount: Int = 0
-
-
+    var unreadCount: Int = 0//未读数
     func setConvType(_ convType: TLConversationType) {
         self.convType = convType
         switch convType {
-        case TLConversationTypePersonal, TLConversationTypeGroup:
-            clueType = TLClueTypePointWithNumber
-        case TLConversationTypePublic, TLConversationTypeServerGroup:
-            clueType = TLClueTypePoint
+        case .personal, .group:
+            clueType = .pointWithNumber
+        case .public, .serverGroup:
+            clueType = .point
         default:
             break
         }
@@ -66,31 +57,20 @@ class WXConversation: NSObject {
     func isRead() -> Bool {
         return unreadCount == 0
     }
-
     func updateUserInfo(_ user: WXUser) {
-        partnerName = user.showName
+        partnerName = user.showName()
         avatarPath = user.avatarPath
         avatarURL = user.avatarURL
     }
-
     func updateGroupInfo(_ group: WXGroup) {
         partnerName = group.groupName
         avatarPath = group.groupAvatarPath
     }
-
-
-    
 }
-protocol WXMessageProtocol: NSObjectProtocol {
-    func messageCopy() -> String
-    func conversationContent() -> String
-}
-
 class WXMessageFrame: NSObject {
     var height: CGFloat = 0.0
     var contentSize = CGSize.zero
 }
-
 class WXMessage: NSObject, WXMessageProtocol {
     var kMessageFrame: WXMessageFrame?
     var messageID = ""
@@ -141,10 +121,9 @@ class WXImageMessage: WXMessage {
             return CGSize(width: width, height: height)
         }
     }
-    func messageFrame() -> WXMessageFrame {
-        if kMessageFrame == nil {
-            kMessageFrame = WXMessageFrame()
-            kMessageFrame?.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
+    override lazy var kMessageFrame: WXMessageFrame? = {
+            let kMessageFrame = WXMessageFrame()
+            kMessageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
             let imageSize: CGSize = self.imageSize
             if imageSize.equalTo(CGSize.zero) {
                 kMessageFrame.contentSize = CGSize(width: 100, height: 100)
@@ -158,69 +137,44 @@ class WXImageMessage: WXMessage {
                 kMessageFrame.contentSize = CGSize(width: width, height: APPW * 0.45)
             }
             kMessageFrame.height += kMessageFrame.contentSize.height
-        }
-        return kMessageFrame
-    }
-    func conversationContent() -> String {
+            return kMessageFrame
+        }()
+    override func conversationContent() -> String {
         return "[图片]"
     }
-    func messageCopy() -> String {
+    override func messageCopy() -> String {
         return content.jsonString()
     }
 }
 
-protocol WXMessageManagerConvVCDelegate: NSObjectProtocol {
-    func updateConversationData()
-}
-
 class WXMessageManager: NSObject {
-    var messageDelegate: Any
-    weak var conversationDelegate: WXMessageManagerConvVCDelegate
-    private(set) var userID = ""
-    var messageStore: WXDBMessageStore
-    var conversationStore: WXDBConversationStore
-
+    static let shared = WXMessageManager()
+    var messageDelegate: Any?
+    weak var conversationDelegate: WXMessageManagerConvVCDelegate?
+    private var userID: String {
+        return WXUserHelper.shared.user.userID
+    }
+    var messageStore = WXDBMessageStore()
+    var conversationStore = WXDBConversationStore()
     func send(_ message: WXMessage, progress: @escaping (WXMessage, CGFloat) -> Void, success: @escaping (WXMessage) -> Void, failure: @escaping (WXMessage) -> Void) {
-        var ok = messageStore().add(message)
-        if !(ok  false) {
-            DLog("存储Message到DB失败")
+        var ok = messageStore.add(message)
+        if !(ok) {
+            Dlog("存储Message到DB失败")
         } else {
-            // 存储到conversation
             ok = addConversation(by: message)
-            if !(ok  false) {
-                DLog("存储Conversation到DB失败")
+            if !(ok) {
+                Dlog("存储Conversation到DB失败")
             }
         }
     }
-
-    // MARK: - Getter -
-    func messageStore() -> WXDBMessageStore {
-        if messageStore == nil {
-            messageStore = WXDBMessageStore()
-        }
-        return messageStore
-    }
-    func conversationStore() -> WXDBConversationStore {
-        if conversationStore == nil {
-            conversationStore = WXDBConversationStore()
-        }
-        return conversationStore
-    }
-
-    func userID() -> String {
-        return WXUserHelper.shared().user.userID()
-    }
-
     func addConversation(by message: WXMessage) -> Bool {
         var partnerID = message.friendID
         var type: Int = 0
-        if message.partnerType == TLPartnerTypeGroup {
+        if message.partnerType == .group {
             partnerID = message.groupID
             type = 1
         }
-        let ok = conversationStore().addConversation(byUid: message.userID(), fid: partnerID, type: type, date: message.date)
-
-        return ok  false
+        return conversationStore.addConversation(byUid: message.userID, fid: partnerID, type: type, date: message.date)
     }
     func conversationRecord(_ complete: @escaping ([Any]) -> Void) {
         let data = conversationStore.conversations(byUid: userID)
@@ -245,7 +199,7 @@ class WXMessageManager: NSObject {
         completed(data)
     }
 
-    func chatImagesAndVideos(forPartnerID partnerID: String, completed: @escaping ([Any]) -> Void) {
+    func chatImagesAndVideos(forPartnerID partnerID: String, completed: @escaping ([WXMessage]) -> Void) {
         let data = messageStore.chatImagesAndVideos(byUserID: userID, partnerID: partnerID)
         completed(data)
     }
@@ -257,14 +211,14 @@ class WXMessageManager: NSObject {
     func deleteMessages(byPartnerID partnerID: String) -> Bool {
         let ok = messageStore.deleteMessages(byUserID: userID, partnerID: partnerID)
         if ok {
-            WXChatViewController.sharedChatVC().resetChatVC()
+            WXChatViewController.shared.resetChatVC()
         }
         return ok
     }
     func deleteAllMessages() -> Bool {
         var ok = messageStore.deleteMessages(byUserID: userID)
         if ok {
-            WXChatViewController.sharedChatVC().resetChatVC()
+            WXChatViewController.shared.resetChatVC()
             ok = conversationStore.deleteConversations(byUid: userID)
         }
         return ok
@@ -275,86 +229,69 @@ class WXMessageManager: NSObject {
         //    HOST_URL = @"http://121.42.29.15:8000/";        // 远程线上服务器
         let urlString = HOST_URL + ("client/getClientInitInfo/")
         AFHTTPSessionManager().post(urlString, parameters: nil, progress: nil, success: { task, responseObject in
-            DLog("OK")
+            Dlog("OK")
         }, failure: { task, error in
-            DLog("OK")
+            Dlog("OK")
         })
     }
-    func chatDetailData(byUserInfo userInfo: WXUser) -> [AnyHashable] {
+    func chatDetailData(byUserInfo userInfo: WXUser) -> [WXSettingGroup] {
         let users = WXSettingItem.createItem(withTitle: "users")
-        users.type = TLSettingItemTypeOther
+        users.type = .other
         let group1: WXSettingGroup = TLCreateSettingGroup(nil, nil, [users])
-
         let top = WXSettingItem.createItem(withTitle: ("置顶聊天"))
-        top.type = TLSettingItemTypeSwitch
+        top.type = .swithBtn
         let screen = WXSettingItem.createItem(withTitle: ("消息免打扰"))
-        screen.type = TLSettingItemTypeSwitch
+        screen.type = .swithBtn
         let group2: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([top, screen]))
-
         let chatFile = WXSettingItem.createItem(withTitle: ("聊天文件"))
         let group3: WXSettingGroup = TLCreateSettingGroup(nil, nil, [chatFile])
-
         let chatBG = WXSettingItem.createItem(withTitle: ("设置当前聊天背景"))
         let chatHistory = WXSettingItem.createItem(withTitle: ("查找聊天内容"))
         let group4: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([chatBG, chatHistory]))
         let clear = WXSettingItem.createItem(withTitle: ("清空聊天记录"))
         clear.showDisclosureIndicator = false
         let group5: WXSettingGroup = TLCreateSettingGroup(nil, nil, [clear])
-
         let report = WXSettingItem.createItem(withTitle: ("举报"))
         let group6: WXSettingGroup = TLCreateSettingGroup(nil, nil, [report])
-
-        var data: [AnyHashable] = []
-        data.append(contentsOf: [group1, group2, group3, group4, group5, group6])
-        return data
+        return [group1, group2, group3, group4, group5, group6]
     }
 
-    func chatDetailData(byGroupInfo groupInfo: WXGroup) -> [AnyHashable] {
+    func chatDetailData(byGroupInfo groupInfo: WXGroup) -> [WXSettingGroup] {
         let users = WXSettingItem.createItem(withTitle: ("users"))
-        users.type = TLSettingItemTypeOther
+        users.type = .other
         let allUsers = WXSettingItem.createItem(withTitle: (String(format: "全部群成员(%ld)", Int(groupInfo.count))))
         let group1: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([users, allUsers]))
-
         let groupName = WXSettingItem.createItem(withTitle: ("群聊名称"))
         groupName.subTitle = groupInfo.groupName
         let groupQR = WXSettingItem.createItem(withTitle: ("群二维码"))
         groupQR.rightImagePath = PQRCode
         let groupPost = WXSettingItem.createItem(withTitle: ("群公告"))
-        if groupInfo.post.length > 0 {
+        if groupInfo.post.count > 0 {
             groupPost.subTitle = groupInfo.post
         } else {
             groupPost.subTitle = "未设置"
         }
         let group2: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([groupName, groupQR, groupPost]))
         let screen = WXSettingItem.createItem(withTitle: ("消息免打扰"))
-        screen.type = TLSettingItemTypeSwitch
+        screen.type = .swithBtn
         let top = WXSettingItem.createItem(withTitle: ("置顶聊天"))
-        top.type = TLSettingItemTypeSwitch
+        top.type = .swithBtn
         let save = WXSettingItem.createItem(withTitle: ("保存到通讯录"))
-        save.type = TLSettingItemTypeSwitch
+        save.type = .swithBtn
         let group3: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([screen, top, save]))
-
         let myNikeName = WXSettingItem.createItem(withTitle: ("我在本群的昵称"))
         myNikeName.subTitle = groupInfo.myNikeName
         let showOtherNikeName = WXSettingItem.createItem(withTitle: ("显示群成员昵称"))
-        showOtherNikeName.type = TLSettingItemTypeSwitch
+        showOtherNikeName.type = .swithBtn
         let group4: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([myNikeName, showOtherNikeName]))
-
         let chatFile = WXSettingItem.createItem(withTitle: ("聊天文件"))
         let chatHistory = WXSettingItem.createItem(withTitle: ("查找聊天内容"))
         let chatBG = WXSettingItem.createItem(withTitle: ("设置当前聊天背景"))
         let report = WXSettingItem.createItem(withTitle: ("举报"))
         let group5: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([chatFile, chatHistory, chatBG, report]))
-
         let clear = WXSettingItem.createItem(withTitle: ("清空聊天记录"))
         clear.showDisclosureIndicator = false
         let group6: WXSettingGroup = TLCreateSettingGroup(nil, nil, [clear])
-
-        var data: [AnyHashable] = []
-        data.append(contentsOf: [group1, group2, group3, group4, group5, group6])
-        return data
+        return [group1, group2, group3, group4, group5, group6]
     }
-
-
-    
 }

@@ -94,9 +94,7 @@ class WXExpressionCell: WXTableViewCell {
         if group.status == TLEmojiGroupStatusUnDownload {
             group.status = TLEmojiGroupStatusDownloading
             self.group = group
-            if delegate && delegate.responds(to: #selector(self.expressionCellDownloadButtonDown(_:))) {
-                delegate.expressionCellDownloadButtonDown(group)
-            }
+            delegate?.expressionCellDownloadButtonDown(group)
         }
     }
 
@@ -182,9 +180,7 @@ class WXExpressionBannerCell: WXTableViewCell,WXPictureCarouselDelegate {
         picCarouselView.data = data
     }
     func pictureCarouselView(_ pictureCarouselView: WXPictureCarouselView, didSelectItem model: WXPictureCarouselProtocol) {
-        if delegate && delegate.responds(to: #selector(self.expressionBannerCellDidSelectBanner(_:))) {
-            delegate.expressionBannerCellDidSelectBanner(model)
-        }
+        delegate?.expressionBannerCellDidSelectBanner(model)
     }
 
     // MARK: -

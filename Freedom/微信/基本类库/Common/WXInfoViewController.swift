@@ -43,9 +43,7 @@ class WXInfoButtonCell: WXTableViewCell {
 
     // MARK: - Event Response -
     func cellButtonDown(_ sender: UIButton) {
-        if delegate && delegate.responds(to: #selector(self.infoButtonCellClicked(_:))) {
-            delegate.infoButtonCellClicked(info)
-        }
+        delegate?.infoButtonCellClicked(info)
     }
     func p_addMasonry() {
         button().mas_makeConstraints({ make in

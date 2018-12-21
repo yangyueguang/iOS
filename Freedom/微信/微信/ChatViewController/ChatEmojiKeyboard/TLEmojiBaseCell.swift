@@ -1,7 +1,7 @@
 //
 //  TLEmojiBaseCell.swift
 //  Freedom
-
+import SnapKit
 import Foundation
 enum TLEmojiGroupStatus : Int {
     case unDownload
@@ -41,7 +41,7 @@ class TLEmojiGroup: NSObject, WXPictureCarouselProtocol {
     var status = TLEmojiGroupStatus.unDownload/// 作者
     var authName = ""
     var authID = ""
-    var data: [AnyHashable] = []/// 每页个数
+    var data: [TLEmoji] = []/// 每页个数
     var pageItemCount: Int = 0/// 页数
     var pageNumber: Int = 0/// 行数
     var rowNumber: Int = 0/// 列数
@@ -71,13 +71,13 @@ class TLEmojiGroup: NSObject, WXPictureCarouselProtocol {
         pageNumber = count / pageItemCount + (count % pageItemCount == 0 ? 0 : 1)
     }
     
-    func setData(_ data: [AnyHashable]) {
+    func setData(_ data: [TLEmoji]) {
         self.data = data
         count = data.count
         pageItemCount = rowNumber * colNumber
         pageNumber = count / pageItemCount + (count % pageItemCount == 0 ? 0 : 1)
     }
-    func object(at index: Int) -> Any {
+    func object(at index: Int) -> TLEmoji {
         return data[index]
     }
     func pictureURL() -> String {
@@ -107,16 +107,12 @@ class TLEmojiFaceItemCell: TLEmojiBaseCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imageView)
-        p_addMasonry()
+        imageView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    func p_addMasonry() {
-        imageView.mas_makeConstraints({ make in
-            make.edges.mas_equalTo(self)
-        })
     }
 }
 
@@ -131,14 +127,23 @@ class TLEmojiImageItemCell: TLEmojiBaseCell {
         super.init(frame: frame)
         contentView.addSubview(imageView)
         highlightImage = UIImage(named: "emoji_hl_background")
-        imageView.mas_makeConstraints({ make in
-            make.edges.mas_equalTo(self.contentView).mas_offset(UIEdgeInsetsMake(2, 2, 2, 2))
-        })
+        imageView.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.contentView).offset(UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2) as! ConstraintOffsetTarget)
+        }
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
 class TLEmojiImageTitleItemCell: TLEmojiBaseCell {
     private var imageView = UIImageView()
+    override var emojiItem: TLEmoji {
+        didSet {
+            imageView.image = emojiItem.emojiPath.isEmpty ? nil : UIImage(named: emojiItem.emojiPath)
+            label.text = emojiItem.emojiName
+        }
+    }
     private lazy var label: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12.0)
@@ -149,31 +154,28 @@ class TLEmojiImageTitleItemCell: TLEmojiBaseCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setHighlight(UIImage(named: "emoji_hl_background"))
+        highlightImage = UIImage(named: "emoji_hl_background")
         contentView.addSubview(imageView)
         contentView.addSubview(label)
-        p_addMasonry()
-
+//        p_addMasonry()
     }
-    func setEmojiItem(_ emojiItem: TLEmoji) {
-        super.setEmojiItem(emojiItem)
-        imageView.image = emojiItem.emojiPath == nil ? nil : UIImage(named: emojiItem.emojiPath)
-        label.text = emojiItem.emojiName
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    func p_addMasonry() {
-        bgView.mas_remakeConstraints({ make in
-            make.left.and().right().and().top().mas_equalTo(self.contentView)
-            make.height.mas_equalTo(self.bgView.mas_width)
-        })
-        imageView.mas_makeConstraints({ make in
-            make.left.and().top().mas_equalTo(self.contentView).mas_offset(3)
-            make.right.mas_equalTo(self.contentView).mas_offset(-3)
-            make.height.mas_equalTo(self.imageView.mas_width)
-        })
-        label.mas_makeConstraints({ make in
-            make.left.and().right().and().bottom().mas_equalTo(self.contentView)
-        })
-    }
+//    func p_addMasonry() {
+//        bgView.mas_remakeConstraints({ make in
+//            make.left.and().right().and().top().mas_equalTo(self.contentView)
+//            make.height.mas_equalTo(self.bgView.mas_width)
+//        })
+//        imageView.mas_makeConstraints({ make in
+//            make.left.and().top().mas_equalTo(self.contentView).mas_offset(3)
+//            make.right.mas_equalTo(self.contentView).mas_offset(-3)
+//            make.height.mas_equalTo(self.imageView.mas_width)
+//        })
+//        label.mas_makeConstraints({ make in
+//            make.left.and().right().and().bottom().mas_equalTo(self.contentView)
+//        })
+//    }
 }
 
 class TLEmojiItemCell: TLEmojiBaseCell {
@@ -182,35 +184,35 @@ class TLEmojiItemCell: TLEmojiBaseCell {
         label.font = UIFont.systemFont(ofSize: 25.0)
         return label
     }()
-
+    override var emojiItem: TLEmoji {
+        didSet {
+            label.text = emojiItem.emojiName
+        }
+    }
+    override var showHighlightImage: Bool {
+        didSet {
+            if showHighlightImage {
+                bgView.image = highlightImage
+            } else {
+                bgView.image = nil
+            }
+        }
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         bgView.layer.masksToBounds = true
         bgView.layer.cornerRadius = 5.0
         contentView.addSubview(label)
         contentView.addSubview(bgView)
-        bgView.mas_makeConstraints({ make in
-            make.edges.mas_equalTo(self.contentView)
-        })
-        p_addMasonry()
-    }
-
-    func setEmojiItem(_ emojiItem: TLEmoji) {
-        super.setEmojiItem(emojiItem)
-        label.text = emojiItem.emojiName
-    }
-    func p_addMasonry() {
-        label.mas_makeConstraints({ make in
-            make.center.mas_equalTo(self)
-        })
-    }
-
-    func setShowHighlightImage(_ showHighlightImage: Bool) {
-        if showHighlightImage {
-            bgView.image = highlightImage
-        } else {
-            bgView.image = nil
+        bgView.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.contentView)
         }
+        label.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -228,10 +230,10 @@ class TLEmojiGroupCell: UICollectionViewCell {
         selectedView.backgroundColor = UIColor(245.0, 245.0, 247.0, 1.0)
         selectedBackgroundView = selectedView
         contentView.addSubview(groupIconView)
-//        groupIconView.mas_makeConstraints({ make in
-//            make.center.mas_equalTo(self.contentView)
-//            make.width.and().height().mas_lessThanOrEqualTo(30)
-//        })
+        groupIconView.snp.makeConstraints { (make) in
+            make.center.equalTo(self.contentView)
+            make.width.height.lessThanOrEqualTo(30)
+        }
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -255,12 +257,39 @@ protocol TLEmojiGroupControlDelegate: NSObjectProtocol {
 }
 
 class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    var sendButtonStatus = TLGroupControlSendButtonStatus.none
+    var sendButtonStatus = TLGroupControlSendButtonStatus.none {
+        didSet {
+            if sendButtonStatus == .none {
+                UIView.animate(withDuration: 1, animations: {
+                    self.sendButton.snp.updateConstraints({ (make) in
+                        make.right.equalToSuperview()
+                    })
+                    self.layoutIfNeeded()
+                })
+            }
+            if sendButtonStatus == .none {
+                UIView.animate(withDuration: 1, animations: {
+                    self.sendButton.snp.updateConstraints({ (make) in
+                        make.right.equalToSuperview().offset(60)
+                    })
+                    self.layoutIfNeeded()
+                })
+            } else if sendButtonStatus == .blue {
+                sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_blue"), for: .normal)
+                sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_blueHL"), for: .highlighted)
+                sendButton.setTitleColor(UIColor.white, for: .normal)
+            } else if sendButtonStatus == .gray {
+                sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_gray"), for: .normal)
+                sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_gray"), for: .highlighted)
+                sendButton.setTitleColor(UIColor.gray, for: .normal)
+            }
+        }
+    }
     var emojiGroupData: [[TLEmojiGroup]] = [] {
         didSet {
             collectionView.reloadData()
             if emojiGroupData.count > 0 {
-                setCurIndexPath(IndexPath(row: 0, section: 0))
+                self.curIndexPath = IndexPath(row: 0, section: 0)
             }
         }
     }
@@ -268,10 +297,6 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
     private var curIndexPath = IndexPath(row: 0, section: 0) {
         didSet {
             collectionView.selectItem(at: curIndexPath, animated: false, scrollPosition: [])
-            if self.curIndexPath && self.curIndexPath.section == curIndexPath.section && self.curIndexPath.row == curIndexPath.row {
-                return
-            }
-            self.curIndexPath = curIndexPath
             let group = (emojiGroupData[curIndexPath.section])[curIndexPath.row] as TLEmojiGroup
             delegate?.emojiGroupControl(self, didSelectedGroup: group)
         }
@@ -298,7 +323,7 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
 
     private lazy var sendButton:UIButton = {
         let sendButton = UIButton()
-        sendButton.titleLabel.font = UIFont.systemFont(ofSize: 15.0)
+        sendButton.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
         sendButton.setTitle("发送", for: .normal)
         sendButton.setTitleColor(UIColor.gray, for: .normal)
         sendButton.backgroundColor = UIColor.clear
@@ -307,9 +332,8 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
         sendButton.addTarget(self, action: #selector(self.sendButtonDown), for: .touchUpInside)
         return sendButton
     }()
-
-    init() {
-        super.init()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         backgroundColor = UIColor.white
         addSubview(addButton)
         addSubview(collectionView)
@@ -317,35 +341,11 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
 //        p_addMasonry()
         collectionView.register(TLEmojiGroupCell.self, forCellWithReuseIdentifier: "TLEmojiGroupCell")
     }
-    func setSendButtonStatus(_ sendButtonStatus: TLGroupControlSendButtonStatus) {
-        if self.sendButtonStatus != sendButtonStatus {
-            if self.sendButtonStatus == TLGroupControlSendButtonStatusNone {
-                UIView.animate(withDuration: 1, animations: {
-                    self.sendButton.mas_updateConstraints({ make in
-                        make.right.mas_equalTo(self)
-                    })
-                    self.layoutIfNeeded()
-                })
-            }
-            self.sendButtonStatus = sendButtonStatus
-            if sendButtonStatus == TLGroupControlSendButtonStatusNone {
-                UIView.animate(withDuration: 1, animations: {
-                    self.sendButton.mas_updateConstraints({ make in
-                        make.right.mas_equalTo(self).mas_offset(60)
-                    })
-                    self.layoutIfNeeded()
-                })
-            } else if sendButtonStatus == TLGroupControlSendButtonStatusBlue {
-                sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_blue"), for: .normal)
-                sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_blueHL"), for: .highlighted)
-                sendButton.setTitleColor(UIColor.white, for: .normal)
-            } else if sendButtonStatus == TLGroupControlSendButtonStatusGray {
-                sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_gray"), for: .normal)
-                sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_gray"), for: .highlighted)
-                sendButton.setTitleColor(UIColor.gray, for: .normal)
-            }
-        }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return emojiGroupData.count
     }
@@ -414,7 +414,7 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
     @objc func emojiAddButtonDown() {
         delegate?.emojiGroupControlEditButtonDown(self)
     }
-    func sendButtonDown() {
+    @objc func sendButtonDown() {
         delegate?.emojiGroupControlSendButtonDown(self)
     }
 }

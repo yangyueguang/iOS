@@ -124,9 +124,7 @@ class WechatSettingSwitchCell: UITableViewCell {
 
     // MARK: - Event Response -
     func switchChangeStatus(_ sender: UISwitch) {
-        if delegate && delegate.responds(to: #selector(self.settingSwitchCell(forItem:didChangeStatus:))) {
-            delegate.settingSwitchCell(forItem: item, didChangeStatus: sender.isOn)
-        }
+        delegate?.settingSwitchCell(forItem: item, didChangeStatus: sender.isOn)
     }
     func p_addMasonry() {
         titleLabel.mas_makeConstraints({ make in

@@ -66,9 +66,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         groupControl.setEmojiGroupData(emojiGroupData)
     }
     func show(in view: UIView, withAnimation animation: Bool) {
-        if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboardWillShow(_:))) {
-            keyboardDelegate.chatKeyboardWillShow(self)
-        }
+        keyboardDelegate?.chatKeyboardWillShow(self)
         view.addSubview(self)
         mas_remakeConstraints({ make in
             make.left.and().right().mas_equalTo(view)
@@ -82,52 +80,36 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
                     make.bottom.mas_equalTo(view)
                 })
                 view.layoutIfNeeded()
-                if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboard(_:didChangeHeight:))) {
-                    keyboardDelegate.chatKeyboard(self, didChangeHeight: (view.frame.size.height) - self.frame.origin.y)
-                }
+                keyboardDelegate?.chatKeyboard(self, didChangeHeight: (view.frame.size.height) - self.frame.origin.y)
             }) { finished in
-                if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboardDidShow(_:))) {
-                    keyboardDelegate.chatKeyboardDidShow(self)
-                }
+                keyboardDelegate?.chatKeyboardDidShow(self)
             }
         } else {
             mas_updateConstraints({ make in
                 make.bottom.mas_equalTo(view)
             })
             view.layoutIfNeeded()
-            if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboardDidShow(_:))) {
-                keyboardDelegate.chatKeyboardDidShow(self)
-            }
+            keyboardDelegate?.chatKeyboardDidShow(self)
         }
         updateSendButtonStatus()
-        if delegate && delegate.responds(to: #selector(self.emojiKeyboard(_:selectedEmojiGroupType:))) {
-            delegate.emojiKeyboard(self, selectedEmojiGroupType: curGroup.type)
-        }
+        delegate?.emojiKeyboard(self, selectedEmojiGroupType: curGroup.type)
     }
     func dismiss(withAnimation animation: Bool) {
-        if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboardWillDismiss(_:))) {
-            keyboardDelegate.chatKeyboardWillDismiss(self)
-        }
+        keyboardDelegate?.chatKeyboardWillDismiss(self)
         if animation {
             UIView.animate(withDuration: 0.3, animations: {
                 self.mas_updateConstraints({ make in
                     make.bottom.mas_equalTo(self.superview).mas_offset(215.0)
                 })
                 self.superview.layoutIfNeeded()
-                if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboard(_:didChangeHeight:))) {
-                    keyboardDelegate.chatKeyboard(self, didChangeHeight: self.superview.frame.size.height - self.frame.origin.y)
-                }
+                keyboardDelegate?.chatKeyboard(self, didChangeHeight: self.superview.frame.size.height - self.frame.origin.y)
             }) { finished in
                 self.removeFromSuperview()
-                if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboardDidDismiss(_:))) {
-                    keyboardDelegate.chatKeyboardDidDismiss(self)
-                }
+                keyboardDelegate?.chatKeyboardDidDismiss(self)
             }
         } else {
             removeFromSuperview()
-            if keyboardDelegate && keyboardDelegate.responds(to: #selector(self.chatKeyboardDidDismiss(_:))) {
-                keyboardDelegate.chatKeyboardDidDismiss(self)
-            }
+            keyboardDelegate?.chatKeyboardDidDismiss(self)
         }
     }
     func reset() {
@@ -159,7 +141,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     func draw(_ rect: CGRect) {
         super.draw(rect)
         // 顶部直线
-        let context = UIGraphicsGetCurrentContext()
+        guard let context = UIGraphicsGetCurrentContext() else { return }
         context.setLineWidth(0.5)
         context.setStrokeColor(UIColor.gray.cgColor)
         context.beginPath()
@@ -291,11 +273,9 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         let tIndex = transformModelIndex(index) // 矩阵坐标转置
         if tIndex < curGroup.count {
             let item = curGroup[tIndex] as TLEmoji
-            if delegate && delegate.responds(to: #selector(self.emojiKeyboard(_:didSelectedEmojiItem:))) {
-                //FIXME: 表情类型
-                item.type = curGroup.type
-                delegate.emojiKeyboard(self, didSelectedEmojiItem: item)
-            }
+            //FIXME: 表情类型
+            item.type = curGroup.type
+            delegate?.emojiKeyboard(self, didSelectedEmojiItem: item)
         }
         updateSendButtonStatus()
     }
@@ -345,26 +325,18 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         // 更新发送按钮状态
         updateSendButtonStatus()
         // 更新chatBar的textView状态
-        if delegate && delegate.responds(to: #selector(self.emojiKeyboard(_:selectedEmojiGroupType:))) {
-            delegate.emojiKeyboard(self, selectedEmojiGroupType: group.type)
-        }
+        delegate?.emojiKeyboard(self, selectedEmojiGroupType: group.type)
     }
     func emojiGroupControlEditMyEmojiButtonDown(_ emojiGroupControl: TLEmojiGroupControl) {
-        if delegate && delegate.responds(to: #selector(self.emojiKeyboardMyEmojiEditButtonDown)) {
-            delegate.emojiKeyboardMyEmojiEditButtonDown()
-        }
+        delegate?.emojiKeyboardMyEmojiEditButtonDown()
     }
 
     func emojiGroupControlEditButtonDown(_ emojiGroupControl: TLEmojiGroupControl) {
-        if delegate && delegate.responds(to: #selector(self.emojiKeyboardEmojiEditButtonDown)) {
-            delegate.emojiKeyboardEmojiEditButtonDown()
-        }
+        delegate?.emojiKeyboardEmojiEditButtonDown()
     }
 
     func emojiGroupControlSendButtonDown(_ emojiGroupControl: TLEmojiGroupControl) {
-        if delegate && delegate.responds(to: #selector(self.emojiKeyboardSendButtonDown)) {
-            delegate.emojiKeyboardSendButtonDown()
-        }
+        delegate?.emojiKeyboardSendButtonDown()
         // 更新发送按钮状态
         updateSendButtonStatus()
     }
@@ -376,9 +348,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         if sender.state == .ended || sender.state == .cancelled {
             // 长按停止
             lastCell = nil
-            if delegate && delegate.responds(to: #selector(self.emojiKeyboardCancelTouchEmojiItem(_:))) {
-                delegate.emojiKeyboardCancelTouchEmojiItem(self)
-            }
+            delegate?.emojiKeyboardCancelTouchEmojiItem(self)
         } else {
             let point: CGPoint = sender.location(in: collectionView)
 
@@ -409,9 +379,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
             }
 
             lastCell = nil
-            if delegate && delegate.responds(to: #selector(self.emojiKeyboardCancelTouchEmojiItem(_:))) {
-                delegate.emojiKeyboardCancelTouchEmojiItem(self)
-            }
+            delegate?.emojiKeyboardCancelTouchEmojiItem(self)
         }
     }
 

@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 class WXTabBarController: UITabBarController {
+    static let shared = WXTabBarController()
     private var childVCArray: [UIViewController] = []
     func setupChildController(_ vc: UIViewController, image: UIImage, shImage: UIImage, title: String) {
         vc.tabBarItem.image = image.withRenderingMode(.alwaysOriginal)

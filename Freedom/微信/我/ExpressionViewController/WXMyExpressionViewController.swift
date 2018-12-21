@@ -35,9 +35,7 @@ class WXMyExpressionCell: UITableViewCell {
 
     // MARK: - Event Response -
     func delButtonDown() {
-        if delegate && delegate.responds(to: #selector(self.myExpressionCellDeleteButtonDown(_:))) {
-            delegate.myExpressionCellDeleteButtonDown(group)
-        }
+        delegate?.myExpressionCellDeleteButtonDown(group)
     }
     func p_addMasonry() {
         iconView.mas_makeConstraints({ make in

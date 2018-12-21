@@ -1,7 +1,8 @@
 //
 //  WXChatViewController.swift
 //  Freedom
-
+import XExtension
+import SnapKit
 import Foundation
 extension UIImagePickerController {
     override func viewDidLoad() {
@@ -11,27 +12,19 @@ extension UIImagePickerController {
         view.backgroundColor = UIColor.lightGray
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17.5)]
     }
-
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
 }
 class WXMoreKBHelper: NSObject {
-    var chatMoreKeyboardData: [AnyHashable] = []
-
+    var chatMoreKeyboardData: [TLMoreKeyboardItem] = []
     override init() {
         super.init()
-
-        chatMoreKeyboardData = [AnyHashable]()
-        p_initTestData()
-
-    }
-    func p_initTestData() {
-        let imageItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypeImage, title: "照片", imagePath: "moreKB_image")
-        let cameraItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypeCamera, title: "拍摄", imagePath: "moreKB_video")
-        let videoItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypeVideo, title: "小视频", imagePath: "moreKB_sight")
-        let videoCallItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypeVideoCall, title: "视频聊天", imagePath: "moreKB_video_call")
-        let walletItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypeWallet, title: "红包", imagePath: "moreKB_wallet")
+        let imageItem = TLMoreKeyboardItem.create(byType: .image, title: "照片", imagePath: "moreKB_image")
+        let cameraItem = TLMoreKeyboardItem.create(byType: .camera, title: "拍摄", imagePath: "moreKB_video")
+        let videoItem = TLMoreKeyboardItem.create(byType: .video, title: "小视频", imagePath: "moreKB_sight")
+        let videoCallItem = TLMoreKeyboardItem.create(byType: .videoCell, title: "视频聊天", imagePath: "moreKB_video_call")
+        let walletItem = TLMoreKeyboardItem.create(byType: .wallet, title: "红包", imagePath: "moreKB_wallet")
         let transferItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypeTransfer, title: "转账", imagePath: "moreKB_pay")
         let positionItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypePosition, title: "位置", imagePath: "moreKB_location")
         let favoriteItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypeFavorite, title: "收藏", imagePath: "moreKB_favorite")
@@ -40,28 +33,15 @@ class WXMoreKBHelper: NSObject {
         let cardsItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypeCards, title: "卡券", imagePath: "moreKB_wallet")
         chatMoreKeyboardData.append(contentsOf: [imageItem, cameraItem, videoItem, videoCallItem, walletItem, transferItem, positionItem, favoriteItem, businessCardItem, voiceItem, cardsItem])
     }
-
-
-
-    
 }
 class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    static let shared = WXChatViewController()
     private var moreKBhelper: WXMoreKBHelper
     private var emojiKBHelper: WXUserHelper
     private var rightBarButton: UIBarButtonItem
-
-    class func sharedChatVC() -> WXChatViewController {
-        // TODO: [Swiftify] ensure that the code below is executed only once (`dispatch_once()` is deprecated)
-        {
-            chatVC = WXChatViewController()
-        }
-        return chatVC
-    }
-
     func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = rightBarButton
-
         user = WXUserHelper.shared().user as WXChatUserProtocol
         moreKBhelper = WXMoreKBHelper()
         setChatMoreKeyboardData(moreKBhelper.chatMoreKeyboardData)
@@ -75,17 +55,6 @@ class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControl
             })
         }
     }
-    func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        MobClick.beginLogPageView("ChatVC")
-    }
-
-    func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        MobClick.endLogPageView("ChatVC")
-    }
-
-    // MARK: Public Methods
     func setPartner(_ partner: WXChatUserProtocol) {
         super.setPartner(partner)
         if partner.chat_userType() == TLChatUserTypeUser {
@@ -119,26 +88,24 @@ class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControl
             self.sendImageMessage(image)
         }
     }
-
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true) {
             let image = info[.originalImage] as UIImage
             self.sendImageMessage(image)
         }
     }
-
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
     
     func moreKeyboard(_ keyboard: Any, didSelectedFunctionItem funcItem: TLMoreKeyboardItem) {
-        if funcItem.type == TLMoreKeyboardItemTypeCamera || funcItem.type == TLMoreKeyboardItemTypeImage {
+        if funcItem.type == .camera || funcItem.type == .image {
             let imagePickerController = UIImagePickerController()
-            if funcItem.type == TLMoreKeyboardItemTypeCamera {
+            if funcItem.type == .camera {
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     imagePickerController.sourceType = .camera
                 } else {
-                    SVProgressHUD.showError(withStatus: "相机初始化失败")
+//                    self.noticeError("相机初始化失败")
                     return
                 }
             } else {
@@ -147,9 +114,7 @@ class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControl
             imagePickerController.delegate = self
             present(imagePickerController, animated: true)
         } else {
-            if let aTitle = funcItem.title {
-                SVProgressHUD.showInfo(withStatus: "选中”\(aTitle)“ 按钮")
-            }
+//            self.noticeInfo("选中”\(funcItem.title)“ 按钮")
         }
     }
     func emojiKeyboardEmojiEditButtonDown() {
@@ -163,19 +128,15 @@ class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControl
         let navC = WXNavigationController(rootViewController: myExpressionVC)
         present(navC, animated: true)
     }
-
-    //MARK: WXChatViewControllerProxy
     func didClickedUserAvatar(_ user: WXUser) {
         let detailVC = WXFriendDetailViewController()
         detailVC.user = user
         hidesBottomBarWhenPushed = true
         navigationController.pushViewController(detailVC, animated: true)
     }
-
-    
-    func didClickedImageMessages(_ imageMessages: [Any], at index: Int) {
-        var data: [AnyHashable] = []
-        for message: WXMessage in imageMessages as [WXMessage]  [] {
+    func didClickedImageMessages(_ imageMessages: [WXMessage], at index: Int) {
+        var data: [MWPhoto] = []
+        for message: WXMessage in imageMessages {
             var url: URL
             let imagePath = message.content["path"]
             if imagePath != nil {
@@ -184,7 +145,6 @@ class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControl
             } else {
                 url = URL(string: message.content["url"])
             }
-
             let photo = MWPhoto(url: url)
             data.append(photo)
         }
@@ -194,6 +154,4 @@ class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControl
         let broserNavC = WXNavigationController(rootViewController: browser)
         present(broserNavC, animated: false)
     }
-
-    
 }

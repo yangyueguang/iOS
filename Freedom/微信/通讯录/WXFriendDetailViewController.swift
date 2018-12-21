@@ -7,214 +7,149 @@ protocol WXFriendDetailUserCellDelegate: NSObjectProtocol {
     func friendDetailUserCellDidClickAvatar(_ info: WXInfo)
 }
 class WechatFriendDetailAlbumCell: WXTableViewCell {
-    var info: WXInfo
-    var imageViewsArray: [AnyHashable] = []
-
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
+    var info: WXInfo {
+        didSet {
+            textLabel.text = info.title
+            let arr = info.userInfo
+            let spaceY: CGFloat = 12
+            var count = Int((APPW - APPW * 0.28 - 28) / (80 - spaceY * 2 + 3))
+            count = (arr.count) <= count ? arr.count : count
+            var spaceX = (APPW - APPW * 0.28 - 28 - CGFloat(count) * (80 - spaceY * 2)) / CGFloat(count)
+            spaceX = spaceX > 7 ? 7 : spaceX
+            for i in 0..<count {
+                let imageURL = arr[i] as String
+                var imageView: UIImageView
+                if imageViewsArray.count <= i {
+                    imageView = UIImageView()
+                    imageViewsArray.append(imageView)
+                } else {
+                    imageView = imageViewsArray[i]
+                }
+                contentView.addSubview(imageView)
+                imageView.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: PuserLogo))
+                imageView.mas_makeConstraints({ make in
+                    make.top.mas_equalTo(self.contentView).mas_offset(spaceY)
+                    make.bottom.mas_equalTo(self.contentView).mas_offset(-spaceY)
+                    make.width.mas_equalTo(imageView.mas_height)
+                    if i == 0 {
+                        make.left.mas_equalTo(APPW * 0.28)
+                    } else {
+                        make.left.mas_equalTo((self.imageViewsArray[i - 1]).mas_right()).mas_offset(spaceX)
+                    }
+                })
+            }
+        }
+    }
+    var imageViewsArray: [UIImageView] = []
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-        imageViewsArray = [AnyHashable]()
         textLabel.font = UIFont.systemFont(ofSize: 15.0)
         accessoryType = .disclosureIndicator
-
     }
-    func setInfo(_ info: WXInfo) {
-        self.info = info
-        textLabel.text = info.title
-        let arr = info.userInfo
-
-        let spaceY: CGFloat = 12
-        var count = Int((APPW - APPW * 0.28 - 28) / (80 - spaceY * 2 + 3))
-        count = (arr.count) <= count ? arr.count : count
-        var spaceX = (APPW - APPW * 0.28 - 28 - CGFloat(count) * (80 - spaceY * 2)) / CGFloat(count)
-        spaceX = spaceX > 7 ? 7 : spaceX
-        for i in 0..<count {
-            let imageURL = arr[i] as String
-            var imageView: UIImageView
-            if imageViewsArray.count <= i {
-                imageView = UIImageView()
-                if let aView = imageView {
-                    imageViewsArray.append(aView)
-                }
-            } else {
-                imageView = imageViewsArray[i]
-            }
-            contentView.addSubview(imageView)
-            imageView.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: PuserLogo))
-            imageView.mas_makeConstraints({ make in
-                make.top.mas_equalTo(self.contentView).mas_offset(spaceY)
-                make.bottom.mas_equalTo(self.contentView).mas_offset(-spaceY)
-                make.width.mas_equalTo(imageView.mas_height)
-                if i == 0 {
-                    make.left.mas_equalTo(APPW * 0.28)
-                } else {
-                    make.left.mas_equalTo((self.imageViewsArray[i - 1]).mas_right()).mas_offset(spaceX)
-                }
-            })
-        }
-    }
-
-
 }
 class WechatFriendDetailUserCell: WXTableViewCell {
-    weak var delegate: WXFriendDetailUserCellDelegate
-    var info: WXInfo
-    private var avatarView: UIButton
-    private var shownameLabel: UILabel
-    private var usernameLabel: UILabel
-    private var nikenameLabel: UILabel
-
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-        selectionStyle = .none
-        leftSeparatorSpace = 15.0
-
-        if let aView = avatarView {
-            contentView.addSubview(aView)
-        }
-        if let aLabel = shownameLabel {
-            contentView.addSubview(aLabel)
-        }
-        if let aLabel = usernameLabel {
-            contentView.addSubview(aLabel)
-        }
-        if let aLabel = nikenameLabel {
-            contentView.addSubview(aLabel)
-        }
-
-        addMasonry()
-
-    }
-    func addMasonry() {
-        avatarView.mas_makeConstraints({ make in
-            make.left.mas_equalTo(14)
-            make.top.mas_equalTo(12)
-            make.bottom.mas_equalTo(-12)
-            make.width.mas_equalTo(self.avatarView.mas_height)
-        })
-
-        shownameLabel.setContentCompressionResistancePriority(UILayoutPriority(100), for: .horizontal)
-        shownameLabel.mas_makeConstraints({ make in
-            make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(12)
-            make.top.mas_equalTo(self.avatarView.mas_top).mas_offset(3)
-        })
-
-        usernameLabel.mas_makeConstraints({ make in
-            make.left.mas_equalTo(self.shownameLabel)
-            make.top.mas_equalTo(self.shownameLabel.mas_bottom).mas_offset(5)
-        })
-
-        nikenameLabel.mas_makeConstraints({ make in
-            make.left.mas_equalTo(self.shownameLabel)
-            make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(3)
-        })
-    }
-    func setInfo(_ info: WXInfo) {
-        self.info = info
-        let user: WXUser = info.userInfo
-        if user.avatarPath != nil {
-            avatarView.setImage(UIImage(named: user.avatarPath), for: .normal)
-        } else {
-            avatarView.sd_setImage(with: URL(string: user.avatarURL), for: UIControl.State.normal, placeholderImage: UIImage(named: PuserLogo))
-        }
-        shownameLabel.text = user.showName
-        if user.username.length > 0 {
-            usernameLabel.text = "微信号：" + (user.username)
-            if user.nikeName.length > 0 {
+    weak var delegate: WXFriendDetailUserCellDelegate?
+    var info: WXInfo {
+        didSet {
+            let user: WXUser = info.userInfo
+            if !user.avatarPath.isEmpty {
+                avatarView.setImage(UIImage(named: user.avatarPath), for: .normal)
+            } else {
+                avatarView.sd_setImage(with: URL(string: user.avatarURL), for: UIControl.State.normal, placeholderImage: UIImage(named: PuserLogo))
+            }
+            shownameLabel.text = user.showName
+            if user.username.count > 0 {
+                usernameLabel.text = "微信号：" + (user.username)
+                if user.nikeName.count > 0 {
+                    nikenameLabel.text = "昵称：" + (user.nikeName)
+                }
+            } else if user.nikeName.count > 0 {
                 nikenameLabel.text = "昵称：" + (user.nikeName)
             }
-        } else if user.nikeName.length > 0 {
-            nikenameLabel.text = "昵称：" + (user.nikeName)
         }
     }
-
-    
-    @objc func avatarViewButtonDown(_ sender: UIButton) {
-        if delegate && delegate.responds(to: #selector(self.friendDetailUserCellDidClickAvatar(_:))) {
-            delegate.friendDetailUserCellDidClickAvatar(info)
-        }
-    }
-
-    // MARK: - Getter
-    func avatarView() -> UIButton {
-        if avatarView == nil {
-            avatarView = UIButton()
-            avatarView.layer.masksToBounds = true
-            avatarView.layer.cornerRadius = 5.0
-            avatarView.addTarget(self, action: #selector(self.avatarViewButtonDown(_:)), for: .touchUpInside)
-        }
+    private lazy var avatarView: UIButton = {
+        let avatarView = UIButton()
+        avatarView.layer.masksToBounds = true
+        avatarView.layer.cornerRadius = 5.0
+        avatarView.addTarget(self, action: #selector(self.avatarViewButtonDown(_:)), for: .touchUpInside)
         return avatarView
+    }()
+    private var shownameLabel = UILabel()
+    private var usernameLabel = UILabel()
+    private var nikenameLabel = UILabel()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        shownameLabel.font = UIFont.systemFont(ofSize: 17.0)
+        usernameLabel.font = UIFont.systemFont(ofSize: 14.0)
+        usernameLabel.textColor = UIColor.gray
+        nikenameLabel.textColor = UIColor.gray
+        nikenameLabel.font = UIFont.systemFont(ofSize: 14.0)
+        selectionStyle = .none
+        leftSeparatorSpace = 15.0
+        contentView.addSubview(avatarView)
+        contentView.addSubview(shownameLabel)
+        contentView.addSubview(usernameLabel)
+        contentView.addSubview(nikenameLabel)
+//        addMasonry()
     }
-
-    func shownameLabel() -> UILabel {
-        if shownameLabel == nil {
-            shownameLabel = UILabel()
-            shownameLabel.font = UIFont.systemFont(ofSize: 17.0)
-        }
-        return shownameLabel
+//    func addMasonry() {
+//        avatarView.mas_makeConstraints({ make in
+//            make.left.mas_equalTo(14)
+//            make.top.mas_equalTo(12)
+//            make.bottom.mas_equalTo(-12)
+//            make.width.mas_equalTo(self.avatarView.mas_height)
+//        })
+//        shownameLabel.setContentCompressionResistancePriority(UILayoutPriority(100), for: .horizontal)
+//        shownameLabel.mas_makeConstraints({ make in
+//            make.left.mas_equalTo(self.avatarView.mas_right).mas_offset(12)
+//            make.top.mas_equalTo(self.avatarView.mas_top).mas_offset(3)
+//        })
+//        usernameLabel.mas_makeConstraints({ make in
+//            make.left.mas_equalTo(self.shownameLabel)
+//            make.top.mas_equalTo(self.shownameLabel.mas_bottom).mas_offset(5)
+//        })
+//        nikenameLabel.mas_makeConstraints({ make in
+//            make.left.mas_equalTo(self.shownameLabel)
+//            make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(3)
+//        })
+//    }
+    @objc func avatarViewButtonDown(_ sender: UIButton) {
+        delegate?.friendDetailUserCellDidClickAvatar(info)
     }
-    func usernameLabel() -> UILabel {
-        if usernameLabel == nil {
-            usernameLabel = UILabel()
-            usernameLabel.font = UIFont.systemFont(ofSize: 14.0)
-            usernameLabel.textColor = UIColor.gray
-        }
-        return usernameLabel
-    }
-
-    func nikenameLabel() -> UILabel {
-        if nikenameLabel == nil {
-            nikenameLabel = UILabel()
-            nikenameLabel.textColor = UIColor.gray
-            nikenameLabel.font = UIFont.systemFont(ofSize: 14.0)
-        }
-        return nikenameLabel
-    }
-
 
 }
 class WechatFriendDetailSettingViewController: WXSettingViewController {
-    var user: WXUser
-
+    var user: WXUser?
     func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "资料设置"
-
-        data = WXFriendHelper.shared().friendDetailSettingArray(byUserInfo: user)
+        data = WXFriendHelper.shared.friendDetailSettingArray(byUserInfo: user)
     }
 }
 class WXFriendDetailViewController: WXInfoViewController, WXFriendDetailUserCellDelegate {
-    func registerCellClass() {
+    var user: WXUser {
+        didSet {
+            let array = WXFriendHelper.shared.friendDetailArray(byUserInfo: self.user)
+            data = array
+            tableView.reloadData()
+        }
     }
-
-    var user: WXUser
     func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "详细资料"
-
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "nav_more"), style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButton
-        registerCellClass()
+
+        tableView.register(WechatFriendDetailUserCell.self, forCellReuseIdentifier: "TLFriendDetailUserCell")
+        tableView.register(WechatFriendDetailAlbumCell.self, forCellReuseIdentifier: "TLFriendDetailAlbumCell")
     }
 
-    func setUser(_ user: WXUser) {
-        self.user = user
-        let array = WXFriendHelper.shared().friendDetailArray(byUserInfo: self.user)
-        data = array
-        tableView.reloadData()
-    }
     func rightBarButtonDown(_ sender: UIBarButtonItem) {
         let detailSetiingVC = WechatFriendDetailSettingViewController()
         detailSetiingVC.user = user
         hidesBottomBarWhenPushed = true
         navigationController.pushViewController(detailSetiingVC, animated: true)
-    }
-
-    // MARK: - Private Methods -
-    func registerCellClass() {
-        tableView.register(WechatFriendDetailUserCell.self, forCellReuseIdentifier: "TLFriendDetailUserCell")
-        tableView.register(WechatFriendDetailAlbumCell.self, forCellReuseIdentifier: "TLFriendDetailAlbumCell")
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let info = data[indexPath.section][indexPath.row] as WXInfo
@@ -236,7 +171,7 @@ class WXFriendDetailViewController: WXInfoViewController, WXFriendDetailUserCell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let info = data[indexPath.section][indexPath.row] as WXInfo
-        if info.type == TLInfoTypeOther {
+        if info.type == .oter {
             if indexPath.section == 0 {
                 return 90
             }
@@ -290,6 +225,4 @@ class WXFriendDetailViewController: WXInfoViewController, WXFriendDetailUserCell
         let broserNavC = WXNavigationController(rootViewController: browser)
         present(broserNavC, animated: false)
     }
-
-    
 }

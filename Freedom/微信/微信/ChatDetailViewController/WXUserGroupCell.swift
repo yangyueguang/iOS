@@ -34,8 +34,8 @@ class WXUserGroupCell: UITableViewCell, UICollectionViewDataSource, UICollection
             cell.user = nil
         }
         cell.clickBlock = { user in
-            if user != nil && delegate && delegate.responds(to: #selector(self.userGroupCellDidSelectUser(_:))) {
-                delegate.userGroupCellDidSelect(user)
+            if user != nil && delegate != nil {
+                delegate?.userGroupCellDidSelect(user)
             } else {
                 delegate.userGroupCellAddUserButtonDown()
             }

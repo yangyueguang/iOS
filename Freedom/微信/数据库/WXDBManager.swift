@@ -253,8 +253,8 @@ class WXDBMessageStore: WXDBBaseStore {
         return (components1.year == components2.year) && (components1.month == components2.month) && (components1.day == components2.day)
     }
 
-    func chatImagesAndVideos(byUserID userID: String, partnerID: String) -> [Any] {
-        var data: [AnyHashable] = []
+    func chatImagesAndVideos(byUserID userID: String, partnerID: String) -> [WXMessage] {
+        var data: [WXMessage] = []
         let sqlString = String(format: SQL_SELECT_CHAT_MEDIA, MESSAGE_TABLE_NAME, userID, partnerID)
 
         excuteQuerySQL(sqlString, resultBlock: { retSet in
@@ -456,11 +456,11 @@ class WXDBExpressionStore: WXDBBaseStore {
             return false
         }
         // 添加表情包里的所有表情
-        ok = addExpressions(group.data, toGroupID: group.groupID)
+        ok = addExpressions(group.data as! [TLEmoji], toGroupID: group.groupID)
         return ok
     }
-    func expressionGroups(byUid uid: String) -> [Any] {
-        var data: [AnyHashable] = []
+    func expressionGroups(byUid uid: String) -> [TLEmoji] {
+        var data: [TLEmoji] = []
         let sqlString = String(format: SQL_SELECT_EXP_GROUP, EXP_GROUP_TABLE_NAME, uid)
 
         // 读取表情包信息
@@ -482,7 +482,7 @@ class WXDBExpressionStore: WXDBBaseStore {
         })
 
         // 读取表情包的所有表情信息
-        for group: TLEmojiGroup in data as [TLEmojiGroup]  [] {
+        for group: TLEmojiGroup in data as [TLEmojiGroup] {
             group.data = expressions(forGroupID: group.groupID)
         }
 
@@ -501,10 +501,9 @@ class WXDBExpressionStore: WXDBBaseStore {
         })
         return count
     }
-
     // MARK: - 表情
-    func addExpressions(_ expressions: [Any], toGroupID groupID: String) -> Bool {
-        for emoji: TLEmoji in expressions as [TLEmoji]  [] {
+    func addExpressions(_ expressions: [TLEmoji], toGroupID groupID: String) -> Bool {
+        for emoji: TLEmoji in expressions {
             let sqlString = String(format: SQL_ADD_EXP, EXPS_TABLE_NAME)
             let arr = [groupID, emoji.emojiID, (emoji.emojiName), "", "", "", "", ""]
             let ok = excuteSQL(sqlString, withArrParameter: arr)
@@ -514,7 +513,7 @@ class WXDBExpressionStore: WXDBBaseStore {
         }
         return true
     }
-    func expressions(forGroupID groupID: String) -> [AnyHashable] {
+    func expressions(forGroupID groupID: String) -> [TLEmoji] {
         var data: [AnyHashable] = []
         let sqlString = String(format: SQL_SELECT_EXPS, EXPS_TABLE_NAME, groupID)
 
@@ -528,22 +527,17 @@ class WXDBExpressionStore: WXDBBaseStore {
             }
             retSet.close()
         })
-
         return data
     }
-
-
-
 }
 
 class WXDBFriendStore: WXDBBaseStore {
     init() {
         super.init()
-
         dbQueue = WXDBManager.sharedInstance().commonQueue
         let ok: Bool = createTable()
         if !ok {
-            DLog("DB: 好友表创建失败")
+            Dlog("DB: 好友表创建失败")
         }
 
     }
@@ -559,36 +553,31 @@ class WXDBFriendStore: WXDBBaseStore {
         return ok
     }
     
-    func updateFriendsData(_ friendData: [Any], forUid uid: String) -> Bool {
+    func updateFriendsData(_ friendData: [WXUser], forUid uid: String) -> Bool {
         let oldData = friendsData(byUid: uid)
         if oldData.count > 0 {
-            // 建立新数据的hash表，用于删除数据库中的过时数据
             var newDataHash: [AnyHashable : Any] = [:]
-            for user: WXUser in friendData as [WXUser]  [] {
-                if let anID = user.userID {
-                    newDataHash[anID] = "YES"
-                }
+            for user: WXUser in friendData {
+                newDataHash[user.userID] = "YES"
             }
-            for user: WXUser in oldData as [WXUser]  [] {
+            for user: WXUser in oldData {
                 if newDataHash[user.userID] == nil {
                     let ok = deleteFriend(byFid: user.userID, forUid: uid)
                     if !ok {
-                        DLog("DBError: 删除过期好友失败")
+                        Dlog("DBError: 删除过期好友失败")
                     }
                 }
             }
         }
-
-        for user: WXUser in friendData as [WXUser]  [] {
+        for user: WXUser in friendData {
             let ok = addFriend(user, forUid: uid)
             if !ok {
                 return ok
             }
         }
-
         return true
     }
-    func friendsData(byUid uid: String) -> [AnyHashable] {
+    func friendsData(byUid uid: String) -> [WXUser] {
         var data: [AnyHashable] = []
         let sqlString = String(format: SQL_SELECT_FRIENDS, FRIENDS_TABLE_NAME, uid)
 

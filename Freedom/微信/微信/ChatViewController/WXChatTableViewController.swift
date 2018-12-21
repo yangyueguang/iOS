@@ -24,6 +24,29 @@ enum TLChatMenuItemType: Int {
     case delete
 }
 
+extension UITableView {
+    func scrollToBottom(withAnimation animation: Bool) {
+        var section = (dataSource?.numberOfSections(in: self) ?? 1) - 1
+        let row: Int = dataSource?.tableView(self, numberOfRowsInSection: section) ?? 0
+        if (row) > 0 {
+            scrollToRow(at: IndexPath(row: (row) - 1, section: section), at: .bottom, animated: animation)
+        }
+    }
+}
+protocol WXMessageCellDelegate: NSObjectProtocol {
+    func messageCellDidClickAvatar(forUser user: WXChatUserProtocol)
+    func messageCellTap(_ message: WXMessage)
+    func messageCellLongPress(_ message: WXMessage, rect: CGRect)
+    func messageCellDoubleClick(_ message: WXMessage)
+}
+protocol WXChatTableViewControllerDelegate: NSObjectProtocol {
+    func chatTableViewControllerDidTouched(_ chatTVC: WXChatTableViewController)
+    func chatTableViewController(_ chatTVC: WXChatTableViewController, getRecordsFrom date: Date, count: Int, completed: @escaping (Date, [Any], Bool) -> Void)
+    func chatTableViewController(_ chatTVC: WXChatTableViewController, delete message: WXMessage) -> Bool
+    func chatTableViewController(_ chatTVC: WXChatTableViewController, didClickUserAvatar user: WXUser)
+    func chatTableViewController(_ chatTVC: WXChatTableViewController, didClick message: WXMessage)
+    func chatTableViewController(_ chatTVC: WXChatTableViewController, didDoubleClick message: WXMessage)
+}
 class WXMessageBaseCell: UITableViewCell {
     weak var delegate: WXMessageCellDelegate?
     lazy var timeLabel: UILabel = {
@@ -349,24 +372,18 @@ class WXImageMessageCell: WXMessageBaseCell {
         })
     }
     func tapMessageView() {
-        if delegate && delegate.responds(to: #selector(self.messageCellTap(_:))) {
-            delegate.messageCellTap(message)
-        }
+        delegate?.messageCellTap(message)
     }
 
     func longPressMsgBGView() {
         msgImageView.alpha = 0.7 // 比较low的选中效果
-        if delegate && delegate.responds(to: #selector(self.messageCellLongPress(_:rect:))) {
-            let rect: CGRect = msgImageView.frame
-            rect.size.height -= 10 // 北京图片底部空白区域
-            delegate.messageCellLongPress(message, rect: rect)
-        }
+        let rect: CGRect = msgImageView.frame
+        rect.size.height -= 10 // 北京图片底部空白区域
+        delegate?.messageCellLongPress(message, rect: rect)
     }
 
     func doubleTabpMsgBGView() {
-        if delegate && delegate.responds(to: #selector(self.messageCellDoubleClick(_:))) {
-            delegate.messageCellDoubleClick(message)
-        }
+        delegate?.messageCellDoubleClick(message)
     }
     func msgImageView() -> WXMessageImageView {
         if msgImageView == nil {
@@ -425,10 +442,8 @@ class WXExpressionMessage: WXMessage {
             return CGSize(width: CGFloat(content["w"]), height: CGFloat(content["h"]))
         }
     }
-
-    func messageFrame() -> WXMessageFrame {
-        if kMessageFrame == nil {
-            kMessageFrame = WXMessageFrame()
+    override lazy var kMessageFrame: WXMessageFrame? = {
+            let kMessageFrame = WXMessageFrame()
             kMessageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
             kMessageFrame.height += 5
             let emojiSize: CGSize = self.emojiSize
@@ -443,11 +458,9 @@ class WXExpressionMessage: WXMessage {
                 width = width < APPW * 0.2 ? APPW * 0.2 : width
                 kMessageFrame.contentSize = CGSize(width: width, height: APPW * 0.35)
             }
-
             kMessageFrame.height += kMessageFrame.contentSize.height
-        }
-        return kMessageFrame
-    }
+            return kMessageFrame
+    }()
     override func conversationContent() -> String {
         return "[表情]"
     }
@@ -534,7 +547,15 @@ class WXExpressionMessageCell: WXMessageBaseCell {
 class WXChatCellMenuView: UIView {
     static let shared = WXChatCellMenuView()
     private(set) var isShow = false
-    var messageType = TLMessageType.text
+    var messageType = TLMessageType.text {
+        didSet {
+            let copy = UIMenuItem(title: "复制", action: #selector(self.copyButtonDown(_:)))
+            let transmit = UIMenuItem(title: "转发", action: #selector(self.transmitButtonDown(_:)))
+            let collect = UIMenuItem(title: "收藏", action: #selector(self.collectButtonDown(_:)))
+            let del = UIMenuItem(title: "删除", action: #selector(self.deleteButtonDown(_:)))
+            menuController.menuItems = [copy, transmit, collect, del]
+        }
+    }
     var actionBlcok: (() -> Void)?
     private var menuController: UIMenuController
     static var menuView = WXChatCellMenuView()
@@ -556,18 +577,7 @@ class WXChatCellMenuView: UIView {
         becomeFirstResponder()
         menuController.setMenuVisible(true, animated: true)
     }
-    var messageType: natural_t {
-        get {
-            return super.messageType
-        }
-        set(messageType) {
-            let copy = UIMenuItem(title: "复制", action: #selector(self.copyButtonDown(_:)))
-            let transmit = UIMenuItem(title: "转发", action: #selector(self.transmitButtonDown(_:)))
-            let collect = UIMenuItem(title: "收藏", action: #selector(self.collectButtonDown(_:)))
-            let del = UIMenuItem(title: "删除", action: #selector(self.deleteButtonDown(_:)))
-            menuController.menuItems = [copy, transmit, collect, del]
-        }
-    }
+
 
     func dismiss() {
         isShow = false
@@ -593,43 +603,21 @@ class WXChatCellMenuView: UIView {
     func p_clickedMenuItemType(_ type: TLChatMenuItemType) {
         isShow = false
         removeFromSuperview()
-        if actionBlcok {
-            actionBlcok(type)
-        }
+        actionBlcok?(type)
     }
-}
-extension UITableView {
-    func scrollToBottom(withAnimation animation: Bool) {
-        var section = (dataSource?.numberOfSections(in: self) ?? 1) - 1
-            let row: Int = dataSource?.tableView(self, numberOfRowsInSection: section) ?? 0
-            if (row) > 0 {
-                scrollToRow(at: IndexPath(row: (row) - 1, section: section), at: .bottom, animated: animation)
-            }
-    }
-}
-protocol WXMessageCellDelegate: NSObjectProtocol {
-    func messageCellDidClickAvatar(forUser user: WXChatUserProtocol)
-    func messageCellTap(_ message: WXMessage)
-    func messageCellLongPress(_ message: WXMessage, rect: CGRect)
-    func messageCellDoubleClick(_ message: WXMessage)
-}
-@objc protocol WXChatTableViewControllerDelegate: NSObjectProtocol {
-    //聊天界面点击事件，用于收键盘
-    func chatTableViewControllerDidTouched(_ chatTVC: WXChatTableViewController)
-    func chatTableViewController(_ chatTVC: WXChatTableViewController, getRecordsFrom date: Date, count: Int, completed: @escaping (Date, [Any], Bool) -> Void)
-    //消息长按删除
-    @objc optional func chatTableViewController(_ chatTVC: WXChatTableViewController, delete message: WXMessage) -> Bool
-    //用户头像点击事件
-    @objc optional func chatTableViewController(_ chatTVC: WXChatTableViewController, didClickUserAvatar user: WXUser)
-    //Message点击事件
-    @objc optional func chatTableViewController(_ chatTVC: WXChatTableViewController, didClick message: WXMessage)
-    //Message双击事件
-    @objc optional func chatTableViewController(_ chatTVC: WXChatTableViewController, didDoubleClick message: WXMessage)
 }
 class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
     weak var delegate: WXChatTableViewControllerDelegate?
     var data: [WXMessage] = []/// 禁用下拉刷新
-    var disablePullToRefresh = false/// 禁用长按菜单
+    var disablePullToRefresh = false {
+        didSet {
+            if disablePullToRefresh {
+                tableView.setMj_header(nil)
+            } else {
+                tableView.setMj_header(refresHeader)
+            }
+        }
+    }
     var disableLongPressMenu = false/// 用户决定新消息是否显示时间
     private var curDate = Date()
     private lazy var refresHeader: MJRefreshNormalHeader = {
@@ -650,7 +638,7 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
         return refresHeader
     }()
 
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.clear
@@ -663,7 +651,7 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
         tableView.addGestureRecognizer(tap)
     }
     
-    func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if WXChatCellMenuView.shared().isShow() {
             WXChatCellMenuView.shared().dismiss()
@@ -705,33 +693,22 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
         tableView.scrollToBottom(withAnimation: animation)
     }
 
-    func setDisablePullToRefresh(_ disablePullToRefresh: Bool) {
-        if disablePullToRefresh {
-            tableView.setMj_header(nil)
-        } else {
-            tableView.setMj_header(refresHeader)
-        }
-    }
     func didTouchTableView() {
-        if delegate && delegate.responds(to: #selector(self.chatTableViewControllerDidTouched(_:))) {
-            delegate.chatTableViewControllerDidTouched(self)
-        }
+        delegate?.chatTableViewControllerDidTouched(self)
     }
     //获取聊天历史记录
     func p_try(toRefreshMoreRecord complete: @escaping (_ count: Int, _ hasMore: Bool) -> Void) {
-        if delegate && delegate.responds(to: #selector(self.chatTableViewController(_:getRecordsFromDate:count:completed:))) {
-            delegate.chatTableViewController(self, getRecordsFromDate: curDate, count: PAGE_MESSAGE_COUNT, completed: { date, array, hasMore in
-                if (array.count) > 0 && date.isEqual(to: self.curDate) {
-                    self.curDate = array[0].date()
-                    if let anArray = array {
-                        for (objectIndex, insertionIndex) in NSIndexSet(indexesIn: NSRange(location: 0, length: array.count)).enumerated() { self.data.insert((anArray)[objectIndex], at: insertionIndex) }
-                    }
-                    complete(array.count, hasMore)
-                } else {
-                    complete(0, hasMore)
+        delegate?.chatTableViewController(self, getRecordsFromDate: curDate, count: PAGE_MESSAGE_COUNT, completed: { date, array, hasMore in
+            if (array.count) > 0 && date.isEqual(to: self.curDate) {
+                self.curDate = array[0].date()
+                if let anArray = array {
+                    for (objectIndex, insertionIndex) in NSIndexSet(indexesIn: NSRange(location: 0, length: array.count)).enumerated() { self.data.insert((anArray)[objectIndex], at: insertionIndex) }
                 }
-            })
-        }
+                complete(array.count, hasMore)
+            } else {
+                complete(0, hasMore)
+            }
+        })
     }
 
     func registerCellClass() {
@@ -805,22 +782,20 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
             }
         })
     }
-    //双击Message Cell
     func messageCellDoubleClick(_ message: WXMessage) {
         delegate?.chatTableViewController(self, didDoubleClick: message)
     }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         delegate?.chatTableViewControllerDidTouched(self)
     }
     func p_delete(_ message: WXMessage) {
-        var index = data.index(of: message)
+        var index = data.index(of: message) ?? 0
         let ok = delegate?.chatTableViewController(self, delete: message) ?? false
         if ok {
             data.removeAll(where: { element in element == message })
             tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-            MobClick.event("e_delete_message")
         } else {
-            SVProgressHUD.showError(withStatus: "从数据库中删除消息失败。")
+            noticeError("从数据库中删除消息失败。")
         }
     }
 }

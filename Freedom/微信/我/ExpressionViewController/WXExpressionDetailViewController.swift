@@ -105,9 +105,7 @@ class WXExpressionDetailCell: UICollectionViewCell {
     }
     func downloadButtonDown(_ sender: UIButton) {
         sender.setTitle("下载中", for: .normal)
-        if delegate && delegate.responds(to: #selector(self.expressionDetailCellDownloadButtonDown(_:))) {
-            delegate.expressionDetailCellDownloadButtonDown(group)
-        }
+        delegate?.expressionDetailCellDownloadButtonDown(group)
     }
 
     // MARK: - Getter

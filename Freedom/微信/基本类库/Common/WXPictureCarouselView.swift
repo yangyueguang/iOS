@@ -111,9 +111,7 @@ class WXPictureCarouselView:  UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let row: Int = indexPath.row == 0  data.count - 1 : (indexPath.row == data.count - 1 ? 0 : indexPath.row - 1)
         let model: WXPictureCarouselProtocol = data[row]
-        if delegate && delegate.responds(to: #selector(self.pictureCarouselView(_:didSelectItem:))) {
-            delegate.pictureCarouselView(self, didSelectItem: model)
-        }
+        delegate?.pictureCarouselView(self, didSelectItem: model)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

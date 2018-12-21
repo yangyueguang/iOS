@@ -6,11 +6,7 @@ import Foundation
 class WXTagCell: WXTableViewCell {
     var titleLabel = UILabel()
     var title: String = "" {
-        get {
-            return _title
-        }
-        set(title) {
-            _title = title
+        didSet {
             titleLabel.text = title
         }
     }
@@ -27,8 +23,7 @@ class WXTagCell: WXTableViewCell {
     }
 }
 class WXTagsViewController: WXTableViewController {
-    var data: [AnyHashable] = []
-
+    var data: [WXUserGroup] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "标签"
@@ -38,35 +33,30 @@ class WXTagsViewController: WXTableViewController {
         navigationItem.rightBarButtonItem = rightBarButton
         data = WXFriendHelper.shared.tagsData
     }
-
-    // MARK: - Event Response -
     @objc func rightBarButtonDown(_ sender: UIBarButtonItem) {
     }
     func registerCellClass() {
         tableView.register(WXTagCell.self, forCellReuseIdentifier: "TLTagCell")
     }
-
-    // MARK: - Delegate -
-    //MARK: UITableViewDataSource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let group = data[indexPath.row] as WXUserGroup
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TLTagCell") as WXTagCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let group = data[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TLTagCell") as! WXTagCell
         if let aName = group.groupName {
             cell.title = String(format: "%@(%ld)", aName, Int(group.count))
         }
-        cell.topLineStyle = (indexPath.row == 0 ? TLCellLineStyleFill : TLCellLineStyleNone)
-        cell.bottomLineStyle = (indexPath.row == data.count - 1 ? TLCellLineStyleFill : TLCellLineStyleDefault)
+        cell.topLineStyle = (indexPath.row == 0 ? TLCellLineStyle : TLCellLineStyleNone)
+        cell.bottomLineStyle = (indexPath.row == data.count - 1 ? TLCellLineStyle : TLCellLineStyleDefault)
         return cell!
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55.0
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     }
 

@@ -1,127 +1,120 @@
 //
 //  WXScanningViewController.swift
 //  Freedom
-
+import SnapKit
 import Foundation
-
 class WXScannerButton: UIButton {
-    var title = ""
-    var iconPath = ""
-    var iconHLPath = ""
+    var title = "" {
+        didSet {
+            textLabel.text = title
+        }
+    }
+    var iconPath: String {
+        didSet {
+            iconImageView.image = UIImage(named: iconPath)
+        }
+    }
+    var iconHLPath = "" {
+        didSet {
+            iconImageView.highlightedImage = UIImage(named: iconHLPath)
+        }
+    }
     var type: TLScannerType
     var msgNumber: Int = 0
-    var iconImageView: UIImageView
-    var textLabel: UILabel
-
+    var iconImageView = UIImageView()
+    lazy var textLabel: UILabel = {
+        let textLabel = UILabel()
+        textLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textLabel.textAlignment = .center
+        textLabel.textColor = UIColor.white
+        textLabel.highlightedTextColor = UIColor.green
+        return textLabel
+    }()
+    override var isSelected: Bool {
+        didSet {
+            iconImageView.isHighlighted = isSelected
+            textLabel.isHighlighted = isSelected
+        }
+    }
     init(type: TLScannerType, title: String, iconPath: String, iconHLPath: String) {
         super.init()
-
-        if let aView = iconImageView {
-            addSubview(aView)
-        }
-        if let aLabel = textLabel {
-            addSubview(aLabel)
-        }
-        p_addMasonry()
+        addSubview(iconImageView)
+        addSubview(textLabel)
         self.type = type
         self.title = title
         self.iconPath = iconPath
         self.iconHLPath = iconHLPath
-
+//        p_addMasonry()
     }
-
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    func setTitle(_ title: String) {
-        self.title = title
-        textLabel.text = title
-    }
-
-    func setIconPath(_ iconPath: String) {
-        self.iconPath = iconPath
-        iconImageView.image = UIImage(named: iconPath)
-    }
-
-    func setIconHLPath(_ iconHLPath: String) {
-        self.iconHLPath = iconHLPath
-        iconImageView.highlightedImage = UIImage(named: iconHLPath)
-    }
-
-    func setSelected(_ selected: Bool) {
-        super.setSelected(selected)
-        iconImageView.highlighted = selected
-        textLabel.isHighlighted = selected
-    }
-
-    // MARK: - Private Methods -
-    func p_addMasonry() {
-        iconImageView.mas_makeConstraints({ make in
-            make.top.and().left().and().right().mas_equalTo(self)
-            make.height.mas_equalTo(self.iconImageView.mas_width)
-        })
-        textLabel.mas_makeConstraints({ make in
-            make.left.and().right().mas_equalTo(self)
-            make.bottom.mas_equalTo(self)
-        })
-    }
-    func iconImageView() -> UIImageView {
-        if iconImageView == nil {
-            iconImageView = UIImageView()
-        }
-        return iconImageView
-    }
-
-    var textLabel: UILabel {
-        if textLabel == nil {
-            textLabel = UILabel()
-            textLabel.font = UIFont.systemFont(ofSize: 12.0)
-            textLabel.textAlignment = .center
-            textLabel.textColor = UIColor.white
-            textLabel.highlightedTextColor = UIColor.green
-        }
-        return textLabel
-    }
+//    func p_addMasonry() {
+//        iconImageView.mas_makeConstraints({ make in
+//            make.top.and().left().and().right().mas_equalTo(self)
+//            make.height.mas_equalTo(self.iconImageView.mas_width)
+//        })
+//        textLabel.mas_makeConstraints({ make in
+//            make.left.and().right().mas_equalTo(self)
+//            make.bottom.mas_equalTo(self)
+//        })
+//    }
 }
 class WXScanningViewController: WXBaseViewController, WXScannerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     //禁用底部工具栏（默认NO，若开启，将只支持扫码）
-    var disableFunctionBar = false
-    var curType: TLScannerType
-    var scanVC: WXScannerViewController
-    var albumBarButton: UIBarButtonItem
-    var myQRButton: UIButton
-    var bottomView: UIView
-    var qrButton: WXScannerButton
-    var coverButton: WXScannerButton
-    var streetButton: WXScannerButton
-    var translateButton: WXScannerButton
-
-    func viewDidLoad() {
+    var disableFunctionBar = false {
+        didSet {
+            bottomView.isHidden = disableFunctionBar
+        }
+    }
+    var curType = TLScannerType.qr
+    var scanVC = WXScannerViewController()
+    var albumBarButton = UIBarButtonItem(title: "相册", style: .plain, target: self, action: #selector(self.albumBarButtonDown(_:)))
+    lazy var myQRButton: UIButton = {
+        let myQRButton = UIButton()
+        myQRButton.setTitle("我的二维码", for: .normal)
+        myQRButton.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
+        myQRButton.setTitleColor(UIColor.green, for: .normal)
+        myQRButton.addTarget(self, action: #selector(self.myQRButtonDown), for: .touchUpInside)
+        myQRButton.isHidden = true
+        return myQRButton
+    }()
+    lazy var bottomView: UIView =  {
+        let blackView = UIView()
+        blackView.backgroundColor = UIColor.black
+        blackView.alpha = 0.5
+        let bottomView = UIView()
+        bottomView.addSubview(blackView)
+        blackView.snp.makeConstraints({ (make) in
+            make.edges.equalTo(bottomView)
+        })
+        return bottomView
+    }()
+    var qrButton = WXScannerButton(type: .qr, title: "扫码", iconPath: "u_scanQRCode", iconHLPath: "u_scanQRCodeHL")
+    var coverButton = WXScannerButton(type: .cover, title: "封面", iconPath: "scan_book", iconHLPath: "scan_book_HL")
+    var streetButton = WXScannerButton(type: .street, title: "街景", iconPath: "scan_street", iconHLPath: "scan_street_HL")
+    var translateButton = WXScannerButton(type: .translate, title: "翻译", iconPath: "scan_word", iconHLPath: "scan_word_HL")
+    override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
-
         view.addSubview(scanVC.view)
-        addChild(scanVC)
         view.addSubview(bottomView)
         view.addSubview(myQRButton)
-
         bottomView.addSubview(qrButton)
         bottomView.addSubview(coverButton)
         bottomView.addSubview(streetButton)
         bottomView.addSubview(translateButton)
-
-        p_addMasonry()
-    }
-
-    func setDisableFunctionBar(_ disableFunctionBar: Bool) {
-        self.disableFunctionBar = disableFunctionBar
-        bottomView.hidden = disableFunctionBar
+        addChild(scanVC)
+        scanVC.delegate = self
+        qrButton.addTarget(self, action: #selector(self.scannerButtonDown(_:)), for: .touchUpInside)
+        coverButton.addTarget(self, action: #selector(self.scannerButtonDown(_:)), for: .touchUpInside)
+        streetButton.addTarget(self, action: #selector(self.scannerButtonDown(_:)), for: .touchUpInside)
+        translateButton.addTarget(self, action: #selector(self.scannerButtonDown(_:)), for: .touchUpInside)
+//        p_addMasonry()
     }
     func scannerViewControllerInitSuccess(_ scannerVC: WXScannerViewController) {
         scannerButtonDown(qrButton) // 初始化
     }
-
     func scannerViewController(_ scannerVC: WXScannerViewController, initFailed errorString: String) {
         SVProgressHUD.showError(withStatus: errorString)
         let alvc = UIAlertController(title: "错误", message: errorString, preferredStyle: .alert)
@@ -136,7 +129,7 @@ class WXScanningViewController: WXBaseViewController, WXScannerDelegate, UINavig
         p_analysisQRAnswer(ansStr)
     }
     func scannerButtonDown(_ sender: WXScannerButton) {
-        if sender.isSelected != nil {
+        if !sender.isSelected {
             if !scanVC.isRunning() {
                 scanVC.startCodeReading()
             }
@@ -147,18 +140,18 @@ class WXScanningViewController: WXBaseViewController, WXScannerDelegate, UINavig
         coverButton.selected = coverButton.type == sender.type
         streetButton.selected = streetButton.type == sender.type
         translateButton.selected = translateButton.type == sender.type
-        if sender.type == TLScannerTypeQR {
+        if sender.type == .qr {
             navigationItem.rightBarButtonItem = albumBarButton
-            myQRButton.hidden = false
+            myQRButton.isHidden = false
             navigationItem.title = "二维码/条码"
         } else {
             navigationItem.rightBarButtonItem = nil
-            myQRButton.hidden = true
-            if sender.type == TLScannerTypeCover {
+            myQRButton.isHidden = true
+            if sender.type == .cover {
                 navigationItem.title = "封面"
-            } else if sender.type == TLScannerTypeStreet {
+            } else if sender.type == .street {
                 navigationItem.title = "街景"
-            } else if sender.type == TLScannerTypeTranslate {
+            } else if sender.type == .translate {
                 navigationItem.title = "翻译"
             }
         }
@@ -167,7 +160,7 @@ class WXScanningViewController: WXBaseViewController, WXScannerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPicking image: UIImage, editingInfo: [String : Any]) {
         picker.dismiss(animated: true) {
             let image = editingInfo[.originalImage] as UIImage
-            SVProgressHUD.show(withStatus: "扫描中，请稍候")
+            noticeInfo("扫描中，请稍候")
             WXScannerViewController.scannerQRCode(from: image, ans: { ansStr in
                 SVProgressHUD.dismiss()
                 if ansStr == nil {
@@ -186,9 +179,9 @@ class WXScanningViewController: WXBaseViewController, WXScannerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true) {
             let image = info[.originalImage] as UIImage
-            SVProgressHUD.show(withStatus: "扫描中，请稍候")
+            XHud.show(XHudStyle.withDetail(message:"扫描中，请稍候"))
             WXScannerViewController.scannerQRCode(from: image, ans: { ansStr in
-                SVProgressHUD.dismiss()
+                XHud.hide()
                 if ansStr == nil {
                     let alvc = UIAlertController(title: "扫描失败", message: "请换张图片，或换个设备重试~", preferredStyle: .alert)
                     let a = UIAlertAction(title: "确定", style: .default, handler: { action in
@@ -214,7 +207,7 @@ class WXScanningViewController: WXBaseViewController, WXScannerDelegate, UINavig
         present(imagePickerController, animated: true)
     }
 
-    func myQRButtonDown() {
+    @objc func myQRButtonDown() {
         let myQRCodeVC = WXMyQRCodeViewController()
         hidesBottomBarWhenPushed = true
         navigationController.pushViewController(myQRCodeVC, animated: true)
@@ -239,109 +232,35 @@ class WXScanningViewController: WXBaseViewController, WXScannerDelegate, UINavig
             present(alvc, animated: true)
         }
     }
-    func p_addMasonry() {
-        bottomView.mas_makeConstraints({ make in
-            make.left.and().right().and().bottom().mas_equalTo(self.view)
-            make.height.mas_equalTo(82)
-        })
-
-        // bottom
-        let widthButton: CGFloat = 35
-        let hightButton: CGFloat = 55
-        let space: CGFloat = (APPW - widthButton * 4) / 5
-        qrButton.mas_makeConstraints({ make in
-            make.centerY.mas_equalTo(self.bottomView)
-            make.left.mas_equalTo(self.bottomView).mas_offset(space)
-            make.width.mas_equalTo(widthButton)
-            make.height.mas_equalTo(hightButton)
-        })
-        coverButton.mas_makeConstraints({ make in
-            make.top.and().bottom().and().width().mas_equalTo(self.qrButton)
-            make.left.mas_equalTo(self.qrButton.mas_right).mas_offset(space)
-        })
-        streetButton.mas_makeConstraints({ make in
-            make.top.and().bottom().and().width().mas_equalTo(self.qrButton)
-            make.left.mas_equalTo(self.coverButton.mas_right).mas_offset(space)
-        })
-        translateButton.mas_makeConstraints({ make in
-            make.top.and().bottom().and().width().mas_equalTo(self.qrButton)
-            make.left.mas_equalTo(self.streetButton.mas_right).mas_offset(space)
-        })
-        myQRButton.mas_makeConstraints({ make in
-            make.centerX.mas_equalTo(self.view)
-            make.bottom.mas_equalTo(self.bottomView.mas_top).mas_offset(-40)
-        })
-    }
-    func scanVC() -> WXScannerViewController {
-        if scanVC == nil {
-            scanVC = WXScannerViewController()
-            scanVC.delegate = self
-        }
-        return scanVC
-    }
-
-    func bottomView() -> UIView {
-        if bottomView == nil {
-            let blackView = UIView()
-            blackView.backgroundColor = UIColor.black
-            blackView.alpha = 0.5
-            bottomView = UIView()
-            bottomView.addSubview(blackView)
-            blackView.mas_makeConstraints({ make in
-                make.edges.mas_equalTo(bottomView)
-            })
-        }
-        return bottomView
-    }
-    func qrButton() -> WXScannerButton {
-        if qrButton == nil {
-            qrButton = WXScannerButton(type: TLScannerTypeQR, title: "扫码", iconPath: "u_scanQRCode", iconHLPath: "u_scanQRCodeHL")
-            qrButton.addTarget(self, action: #selector(self.scannerButtonDown(_:)), for: .touchUpInside)
-        }
-        return qrButton
-    }
-
-    func coverButton() -> WXScannerButton {
-        if coverButton == nil {
-            coverButton = WXScannerButton(type: TLScannerTypeCover, title: "封面", iconPath: "scan_book", iconHLPath: "scan_book_HL")
-            coverButton.addTarget(self, action: #selector(self.scannerButtonDown(_:)), for: .touchUpInside)
-        }
-        return coverButton
-    }
-    func streetButton() -> WXScannerButton {
-        if streetButton == nil {
-            streetButton = WXScannerButton(type: TLScannerTypeStreet, title: "街景", iconPath: "scan_street", iconHLPath: "scan_street_HL")
-            streetButton.addTarget(self, action: #selector(self.scannerButtonDown(_:)), for: .touchUpInside)
-        }
-        return streetButton
-    }
-    func translateButton() -> WXScannerButton {
-        if translateButton == nil {
-            translateButton = WXScannerButton(type: TLScannerTypeTranslate, title: "翻译", iconPath: "scan_word", iconHLPath: "scan_word_HL")
-            translateButton.addTarget(self, action: #selector(self.scannerButtonDown(_:)), for: .touchUpInside)
-        }
-        return translateButton
-    }
-
-    func albumBarButton() -> UIBarButtonItem {
-        if albumBarButton == nil {
-            albumBarButton = UIBarButtonItem(title: "相册", style: .plain, target: self, action: #selector(self.albumBarButtonDown(_:)))
-        }
-        return albumBarButton
-    }
-
-    func myQRButton() -> UIButton {
-        if myQRButton == nil {
-            myQRButton = UIButton()
-            myQRButton.setTitle("我的二维码", for: .normal)
-            myQRButton.titleLabel.font = UIFont.systemFont(ofSize: 15.0)
-            myQRButton.setTitleColor(UIColor.green, for: .normal)
-            myQRButton.addTarget(self, action: #selector(self.myQRButtonDown), for: .touchUpInside)
-            myQRButton.hidden = true
-        }
-        return myQRButton
-    }
-
-
-    
+//    func p_addMasonry() {
+//        bottomView.mas_makeConstraints({ make in
+//            make.left.and().right().and().bottom().mas_equalTo(self.view)
+//            make.height.mas_equalTo(82)
+//        })
+//        let widthButton: CGFloat = 35
+//        let hightButton: CGFloat = 55
+//        let space: CGFloat = (APPW - widthButton * 4) / 5
+//        qrButton.mas_makeConstraints({ make in
+//            make.centerY.mas_equalTo(self.bottomView)
+//            make.left.mas_equalTo(self.bottomView).mas_offset(space)
+//            make.width.mas_equalTo(widthButton)
+//            make.height.mas_equalTo(hightButton)
+//        })
+//        coverButton.mas_makeConstraints({ make in
+//            make.top.and().bottom().and().width().mas_equalTo(self.qrButton)
+//            make.left.mas_equalTo(self.qrButton.mas_right).mas_offset(space)
+//        })
+//        streetButton.mas_makeConstraints({ make in
+//            make.top.and().bottom().and().width().mas_equalTo(self.qrButton)
+//            make.left.mas_equalTo(self.coverButton.mas_right).mas_offset(space)
+//        })
+//        translateButton.mas_makeConstraints({ make in
+//            make.top.and().bottom().and().width().mas_equalTo(self.qrButton)
+//            make.left.mas_equalTo(self.streetButton.mas_right).mas_offset(space)
+//        })
+//        myQRButton.mas_makeConstraints({ make in
+//            make.centerX.mas_equalTo(self.view)
+//            make.bottom.mas_equalTo(self.bottomView.mas_top).mas_offset(-40)
+//        })
+//    }
 }

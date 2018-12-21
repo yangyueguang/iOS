@@ -7,18 +7,24 @@
 //
 
 import Foundation
-
 enum TLChatUserType : Int {
     case user = 0
     case group
 }
-
 enum TLContactStatus : Int {
     case stranger
     case friend
     case wait
 }
-
+protocol WXChatUserProtocol: NSObjectProtocol {
+    var chat_userID: String { get }
+    var chat_username: String { get }
+    var chat_avatarURL: String { get }
+    var chat_avatarPath: String { get }
+    var chat_userType: Int { get }
+    func groupMember(byID userID: String) -> Any
+    func groupMembers() -> [WXUser]
+}
 class WechatContact: NSObject {
     var name = ""
     var avatarPath = ""
@@ -29,15 +35,6 @@ class WechatContact: NSObject {
     var email = ""
     lazy var pinyin = self.name.pinyin()
     lazy var pinyinInitial = self.name.pinyin()
-}
-protocol WXChatUserProtocol: NSObjectProtocol {
-    var chat_userID: String { get }
-    var chat_username: String { get }
-    var chat_avatarURL: String { get }
-    var chat_avatarPath: String { get }
-    var chat_userType: Int { get }
-    func groupMember(byID userID: String) -> Any
-    func groupMembers() -> [WXUser]
 }
 
 class WXUserSetting: NSObject {
@@ -72,72 +69,47 @@ class WXUserChatSetting: NSObject {
 }
 class WXUser: NSObject, WXChatUserProtocol {
     var userID = ""
-    /*/ 用户名 */    var username = ""
-    /*/ 昵称 */    var nikeName = ""
-    /*/ 头像URL */    var avatarURL = ""
-    /*/ 头像Path */    var avatarPath = ""
-    /*/ 备注名 */    var remarkName = ""
-    /// 界面显示名称
-    private(set) var showName = ""
-    // MARK: - 其他
-    var detailInfo: WXUserDetail
+    var username = "" {
+        didSet {
+            if remarkName.count == 0 && nikeName.count == 0 && self.username.count > 0 {
+                pinyin = username.pinyin()
+                pinyinInitial = username.pinyin()
+            }
+        }
+    }
+    var nikeName = "" {
+        didSet {
+            if remarkName.count == 0 && self.nikeName.count > 0 {
+                pinyin = nikeName.pinyin()
+                pinyinInitial = nikeName.pinyin()
+            }
+        }
+    }
+    var avatarURL = ""
+    var avatarPath = ""
+    var remarkName = "" {
+        didSet {
+            if self.remarkName.count > 0 {
+                pinyin = remarkName.pinyin()
+                pinyinInitial = remarkName.pinyin()
+            }
+        }
+    }
+    private var showName = ""
+    var detailInfo = WXUserDetail()
     var userSetting: WXUserSetting
     var chatSetting: WXUserChatSetting
-    // MARK: - 列表用
-    //拼音来源：备注 > 昵称 > 用户名
     var pinyin = ""
     var pinyinInitial = ""
-    init() {
+    override init() {
         super.init()
-
         WXUser.mj_setupObjectClass(inArray: {
             return ["detailInfo": "TLUserDetail", "userSetting": "TLUserSetting", "chatSetting": "TLUserChatSetting"]
         })
-
-    }
-
-    func setUsername(_ username: String) {
-        if (username == self.username) {
-            return
-        }
-        self.username = username
-        if remarkName.length == 0 && nikeName.length == 0 && self.username.length > 0 {
-            pinyin = username.pinyin
-            pinyinInitial = username.pinyin
-        }
-    }
-    func setNikeName(_ nikeName: String) {
-        if (nikeName == self.nikeName) {
-            return
-        }
-        self.nikeName = nikeName
-        if remarkName.length == 0 && self.nikeName.length > 0 {
-            pinyin = nikeName.pinyin
-            pinyinInitial = nikeName.pinyin
-        }
-    }
-
-    func setRemarkName(_ remarkName: String) {
-        if (remarkName == self.remarkName) {
-            return
-        }
-        self.remarkName = remarkName
-        if self.remarkName.length > 0 {
-            pinyin = remarkName.pinyin
-            pinyinInitial = remarkName.pinyin
-        }
     }
     func showName() -> String {
-        return remarkName.length > 0  remarkName : (nikeName.length > 0  nikeName : username)
+        return remarkName.count > 0 ? remarkName : (nikeName.count > 0 nikeName : username)
     }
-
-    func detailInfo() -> WXUserDetail {
-        if detailInfo == nil {
-            detailInfo = WXUserDetail()
-        }
-        return detailInfo
-    }
-
     func chat_userID() -> String {
         return userID
     }
@@ -152,51 +124,37 @@ class WXUser: NSObject, WXChatUserProtocol {
     func chat_avatarPath() -> String {
         return avatarPath
     }
-
     func chat_userType() -> Int {
-        return Int(TLChatUserTypeUser)
+        return Int(TLChatUserType.user)
     }
-
-
-    
 }
 
 class WXGroup: NSObject, WXChatUserProtocol {
-    //讨论组名称
     var groupName = ""
     var groupAvatarPath = groupID + (".png")
-    //讨论组ID
     var groupID = ""
-    //讨论组成员
     var users: [WXUser] = []
-    //群公告
     var post = ""
-    //我的群昵称
-    var myNikeName = WXUserHelper.shared().user.showName
+    var myNikeName = WXUserHelper.shared).user.showName
     var pinyin = groupName.pinyin()
     var pinyinInitial = groupName.pinyin()
     private(set) var count: Int = 0
     var showNameInChat = false
-
     override init() {
         super.init()
 //        [WXGroup mj_setupObjectClassInArray:^NSDictionary *{
 //            return @{ @"users" : @"WXUser" };
 //        }];
     }
-
     func count() -> Int {
         return users.count()
     }
-
     func add(_ anObject: WXUser) {
         users.append(anObject)
     }
-
     func object(at index: Int) -> WXUser {
         return users[index]
     }
-    
     func member(byUserID uid: String) -> WXUser {
         for user: WXUser in users {
             if (user.userID == uid) {
@@ -205,12 +163,11 @@ class WXGroup: NSObject, WXChatUserProtocol {
         }
         return nil
     }
-
     var groupName: INSpeakableString {
         if groupName == nil || groupName.length == 0 {
             for user: WXUser in users {
-                if user.showName.length > 0 {
-                    if groupName == nil || groupName.length <= 0 {
+                if user.showName.count > 0 {
+                    if groupName == nil || groupName.count <= 0 {
                         groupName = user.showName
                     } else {
                         if let aName = user.showName {
@@ -222,123 +179,76 @@ class WXGroup: NSObject, WXChatUserProtocol {
         }
         return groupName
     }
-
-
-    func chat_userID() -> String {
+    var chat_userID: String {
         return groupID
     }
-
-    func chat_username() -> String {
+    var chat_username: String {
         return groupName
     }
-
-    func chat_avatarURL() -> String {
+    var chat_avatarURL: String {
         return ""
     }
-
-    func chat_avatarPath() -> String {
+    var chat_avatarPath: String {
         return groupAvatarPath
     }
-
-    func chat_userType() -> Int {
+    var chat_userType: Int {
         return Int(TLChatUserTypeGroup)
     }
-
     func groupMember(byID userID: String) -> WXUser {
         return member(byUserID: userID)
     }
-
     func groupMembers() -> [WXUser] {
         return users
     }
 }
-
-
 class WXUserGroup: NSObject {
     var groupName = ""
     var users: [WXUser] = []
-    private(set) var count: Int = 0
-    
+    private var count: Int {
+        return users.count
+    }
     init(groupName: String, users: [WXUser]) {
-        var users = users
         super.init()
-
         self.groupName = groupName
-        self.users() = users
-
+        self.users = users
     }
-
-    required init(coder decoder: NSCoder) {
-        groupName = decoder.decodeObject(forKey: "name") as INSpeakableString
-        users() = decoder.decodeObject(forKey: "users") as [AnyHashable]
-    }
-
-    func encode(with encoder: NSCoder) {
-        encoder.encode(groupName, forKey: "name")
-        encoder.encode(users(), forKey: "users")
-    }
-
-    func count() -> Int {
-        return users.count()
-    }
-
     func add(_ anObject: WXUser) {
         users.append(anObject)
     }
-
     func object(at index: Int) -> WXUser {
         return users[index]
     }
-
 }
 
 class WXFriendHelper: NSObject {
     static let shared = WXFriendHelper()
-    /// 好友列表默认项
     var defaultGroup: WXUserGroup
-    /// 好友数据(原始)
     var friendsData: [WXUser] = []
-    /// 格式化的好友数据（二维数组，列表用）
     var data: [WXUserGroup] = []
-    /// 格式化好友数据的分组标题
     var sectionHeaders: [String] = []
-    ///  好友数量
     private(set) var friendCount: Int = 0
     var dataChangedBlock: ((_ friends: [AnyHashable], _ headers: [AnyHashable], _ friendCount: Int) -> Void)
-    /// 群数据
     var groupsData: [WXGroup] = []
-    /// 标签数据
     var tagsData: [WXUserGroup] = []
     private var friendStore = WXDBFriendStore()
-    private var groupStore: WXDBGroupStore
-
+    private var groupStore = WXDBGroupStore()
     override init() {
         super.init()
-        // 初始化好友数据
-        friendsData = friendStore.friendsData(byUid: WXUserHelper.shared().user.userID)
+        friendsData = friendStore.friendsData(byUid: WXUserHelper.shared.user.userID)
         data = [defaultGroup]
         sectionHeaders = [UITableView.indexSearch]
-        // 初始化群数据
-        groupsData = groupStore.groupsData(byUid: WXUserHelper.shared().user.userID)
-        // 初始化标签数据
+        groupsData = groupStore.groupsData(byUid: WXUserHelper.shared.user.userID)
         p_initTestData()
-
     }
-
     func getFriendInfo(byUserID userID: String) -> WXUser? {
-        for user: WXUser in friendsData {
-            if (user.userID == userID) {
-                return user
-            }
+        for user in friendsData where user.userID == userID {
+            return user
         }
         return nil
     }
-
     func getGroupInfo(byGroupID groupID: String) -> WXGroup? {
-        for group: WXGroup in groupsData {
-            if (group.groupID == groupID) {
-                return group
-            }
+        for group in groupsData where group.groupID == groupID {
+            return group
         }
         return nil
     }
@@ -363,17 +273,14 @@ class WXFriendHelper: NSObject {
             }
             return .orderedSame
         })
-
-        // 2、分组
         var ansData = [defaultGroup]
         var ansSectionHeaders = [UITableView.indexSearch]
-        var tagsDic: [AnyHashable : Any] = [:]
+        var tagsDic: [String : Any] = [:]
         var lastC = "1"
         var curGroup: WXUserGroup
         let othGroup = WXUserGroup()
         othGroup.groupName = "#"
-        for user: WXUser in serializeArray as [WXUser]  [] {
-            // 获取拼音失败
+        for user in serializeArray {
             if user.pinyin == nil || user.pinyin.length == 0 {
                 othGroup.append(user)
                 continue
@@ -381,7 +288,6 @@ class WXFriendHelper: NSObject {
 
             let c = toupper(user.pinyin[user.pinyin.index(user.pinyin.startIndex, offsetBy: 0)])
             if !isalpha(c) {
-                // #组
                 othGroup.append(user)
             } else if c != lastC {
                 if curGroup && curGroup.count > 0 {
@@ -393,16 +299,10 @@ class WXFriendHelper: NSObject {
                 lastC = c
                 curGroup = WXUserGroup()
                 curGroup.groupName = "\(c)"
-                if let anUser = user {
-                    curGroup.append(anUser)
-                }
+                curGroup.append(user)
             } else {
-                if let anUser = user {
-                    curGroup.append(anUser)
-                }
+                curGroup.append(user)
             }
-
-            // TAGs
             if user.detailInfo.tags.count > 0 {
                 for tag: String in (user.detailInfo.tags)! {
                     var group = tagsDic[tag] as WXUserGroup
@@ -410,9 +310,7 @@ class WXFriendHelper: NSObject {
                         group = WXUserGroup()
                         group.groupName = tag
                         tagsDic[tag] = group
-                        if let aGroup = group {
-                            tagsData.append(aGroup)
-                        }
+                        tagsData.append(group)
                     }
                     group.users.append(user)
                 }
@@ -420,15 +318,11 @@ class WXFriendHelper: NSObject {
         }
         if curGroup && curGroup.count > 0 {
             ansData.append(curGroup)
-            if let aName = curGroup.groupName {
-                ansSectionHeaders.append(aName)
-            }
+            ansSectionHeaders.append(curGroup.groupName)
         }
         if othGroup.count > 0 {
             ansData.append(othGroup)
-            if let aName = othGroup.groupName {
-                ansSectionHeaders.append(aName)
-            }
+            ansSectionHeaders.append(othGroup.groupName)
         }
 
         data.removeAll()
@@ -442,7 +336,6 @@ class WXFriendHelper: NSObject {
         }
     }
     func p_initTestData() {
-        // 好友数据
         var path = Bundle.main.path(forResource: "FriendList", ofType: "json")
         var jsonData = NSData(contentsOfFile: path) as Data
         var jsonArray: [Any] = nil
@@ -460,8 +353,6 @@ class WXFriendHelper: NSObject {
         DispatchQueue.global(qos: .default).async(execute: {
             self.p_resetFriendData()
         })
-
-        // 群数据
         path = Bundle.main.path(forResource: "FriendGroupList", ofType: "json")
         jsonData = NSData(contentsOfFile: path)
         jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
@@ -472,7 +363,6 @@ class WXFriendHelper: NSObject {
         if !ok {
             Dlog("保存群数据到数据库失败!")
         }
-        // 生成Group Icon
         for group: WXGroup in groupsData {
             createGroupAvatar(group, finished: nil)
         }
@@ -485,8 +375,8 @@ class WXFriendHelper: NSObject {
             let space3: CGFloat = (viewWidth - width * 3) / 4 // 三张图时的边距（图与图之间的边距）
             let space2: CGFloat = (viewWidth - width * 2 + space3) / 2 // 两张图时的边距
             let space1: CGFloat = (viewWidth - width) / 2 // 一张图时的边距
-            var y: CGFloat = (usersCount) > 6  space3 : ((usersCount) > 3  space2 : space1)
-            var x: CGFloat = (usersCount) % 3 == 0 ? space3 : ((usersCount) % 3 == 2  space2 : space1)
+            var y: CGFloat = (usersCount) > 6 ? space3 : ((usersCount) > 3 ? space2 : space1)
+            var x: CGFloat = (usersCount) % 3 == 0 ? space3 : ((usersCount) % 3 == 2 ? space2 : space1)
             let view = UIView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: viewWidth))
             view.backgroundColor = UIColor(white: 0.8, alpha: 0.6)
             let count: Int = 0 // 下载完成图片计数器
@@ -507,19 +397,13 @@ class WXFriendHelper: NSObject {
                         UIGraphicsEndImageContext()
                         let imageRef = image.cgImage
                         let imageRefRect = imageRef.cropping(to: CGRect(x: 0, y: 0, width: view.frame.size.width * 2, height: view.frame.size.height * 2)) as CGImage
-                        var ansImage: UIImage = nil
-                        if let aRect = imageRefRect {
-                            ansImage = UIImage(cgImage: aRect)
-                        }
+                        var ansImage = UIImage(cgImage: imageRefRect)
                         let imageViewData: Data = UIImagePNGRepresentation(ansImage)
                         let savedImagePath = FileManager.pathUserAvatar(group.groupAvatarPath)
                         imageViewData.write(toFile: savedImagePath, atomically: true)
                         CGImageRelease(imageRefRect)
                         DispatchQueue.main.async(execute: {
-                            //if finished
-
                             finished(group.groupID)
-
                         })
                     }
                 }
@@ -564,45 +448,25 @@ class WXFriendHelper: NSObject {
         return friendsData.count
     }
 
-    func friendStore() -> WXDBFriendStore {
-        if friendStore == nil {
-            friendStore = WXDBFriendStore()
-        }
-        return friendStore
-    }
-
-    func groupStore() -> WXDBGroupStore {
-        if groupStore == nil {
-            groupStore = WXDBGroupStore()
-        }
-        return groupStore
-    }
-
     func tlCreateInfo(_ t: String, st: String) -> WXInfo {
         return WXInfo.createInfo(withTitle: t, subTitle: st)
     }
-    func friendDetailArray(byUserInfo userInfo: WXUser) -> [AnyHashable] {
+    func friendDetailArray(byUserInfo userInfo: WXUser) -> [[WXInfo]] {
         var data: [[WXInfo]] = []
         var arr: [WXInfo] = []
-
-        // 1
         let user: WXInfo = tlCreateInfo("个人", nil)
-        user.type = TLInfoTypeOther
+        user.type = .other
         user.userInfo = userInfo
-        if let anUser = user {
-            arr.append(anUser)
-        }
+        arr.append(user)
         data.append(arr)
-
-        // 2
-        arr = [AnyHashable]()
+        arr = []
         if userInfo.detailInfo.phoneNumber.count > 0 {
             let tel: WXInfo = tlCreateInfo("电话号码", userInfo.detailInfo.phoneNumber)
             tel.showDisclosureIndicator = false
             arr.append(tel)
         }
         if userInfo.detailInfo.tags.count == 0 {
-            let remark: WXInfo = tlCreateInfo("设置备注和标签", nil
+            let remark: WXInfo = tlCreateInfo("设置备注和标签", nil)
             arr.insert(remark, at: 0)
         } else {
             let str = userInfo.detailInfo.tags.joined(separator: ",")
@@ -610,9 +474,7 @@ class WXFriendHelper: NSObject {
             arr.append(remark)
         }
         data.append(arr)
-        arr = [AnyHashable]()
-
-        // 3
+        arr = []
         if userInfo.detailInfo.location.length > 0 {
             let location: WXInfo = tlCreateInfo("地区", userInfo.detailInfo.location)
             location.showDisclosureIndicator = false
@@ -628,55 +490,46 @@ class WXFriendHelper: NSObject {
         let more: WXInfo = tlCreateInfo("更多", nil)
         arr.append(more)
         data.append(arr)
-        arr = [AnyHashable]()
-
-        // 4
+        arr = []
         let sendMsg: WXInfo = tlCreateInfo("发消息", nil)
         sendMsg.type = TLInfoTypeButton
         sendMsg.titleColor = UIColor.white
         sendMsg.buttonBorderColor = UIColor.gray
-        if let aMsg = sendMsg {
-            arr.append(aMsg)
-        }
+        arr.append(sendMsg)
         if !(userInfo.userID == WXUserHelper.shared().user.userID) {
             let video: WXInfo = tlCreateInfo("视频聊天", nil)
-            video.type = TLInfoTypeButton
+            video.type = .button
             video.buttonBorderColor = UIColor.gray
             video.buttonColor = UIColor.white
-            if let aVideo = video {
-                arr.append(aVideo)
-            }
+            arr.append(video)
         }
         data.append(arr)
-
         return data
     }
-    func friendDetailSettingArray(byUserInfo userInfo: WXUser) -> [AnyHashable] {
+    func friendDetailSettingArray(byUserInfo userInfo: WXUser) -> [WXSettingGroup] {
         let remark = WXSettingItem.createItem(withTitle: ("设置备注及标签"))
-        if userInfo.remarkName.length > 0 {
+        if userInfo.remarkName.count > 0 {
             remark.subTitle = userInfo.remarkName
         }
         let group1: WXSettingGroup = TLCreateSettingGroup(nil, nil, [remark])
         let recommand = WXSettingItem.createItem(withTitle: ("把他推荐给朋友"))
         let group2: WXSettingGroup = TLCreateSettingGroup(nil, nil, [recommand])
         let starFriend = WXSettingItem.createItem(withTitle: ("设为星标朋友"))
-        starFriend.type = TLSettingItemTypeSwitch
+        starFriend.type = .swtchBtn
         let group3: WXSettingGroup = TLCreateSettingGroup(nil, nil, [starFriend])
         let prohibit = WXSettingItem.createItem(withTitle: ("不让他看我的朋友圈"))
-        prohibit.type = TLSettingItemTypeSwitch
+        prohibit.type = .swtchBtn
         let dismiss = WXSettingItem.createItem(withTitle: ("不看他的朋友圈"))
-        dismiss.type = TLSettingItemTypeSwitch
+        dismiss.type = .swtchBtn
         let group4: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([prohibit, dismiss]))
         let blackList = WXSettingItem.createItem(withTitle: ("加入黑名单"))
-        blackList.type = TLSettingItemTypeSwitch
+        blackList.type = .swtchBtn
         let report = WXSettingItem.createItem(withTitle: ("举报"))
         let group5: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([blackList, report]))
         return [group1, group2, group3, group4, group5]
     }
     class func gotNextEvent(withWechatContacts data: [AnyHashable], success: @escaping (_ data: [Any], _ formatData: [Any], _ headers: [Any]) -> Void) {
-        var data = data
-        // 4、排序
-        let serializeArray = (data as NSArray).sortedArray(comparator: { obj1, obj2 in
+        let serializeArray = data.sortedArray(comparator: { obj1, obj2 in
             var i: Int
             let strA = (obj1 as WechatContact).pinyin
             let strB = (obj2 as WechatContact).pinyin
@@ -696,14 +549,13 @@ class WXFriendHelper: NSObject {
             }
             return .orderedSame
         })
-        // 5、分组
-        data = [AnyHashable]()
+        data: [TLEmojiGroup] = []
         var headers = [UITableView.indexSearch]
         var lastC = "1"
         var curGroup: WXUserGroup
         let othGroup = WXUserGroup()
         othGroup.groupName = "#"
-        for contact: WechatContact in serializeArray as [WechatContact]  [] {
+        for contact: WechatContact in serializeArray {
             // 获取拼音失败
             if contact.pinyin == nil || contact.pinyin.length == 0 {
                 if let aContact = contact {
@@ -714,44 +566,30 @@ class WXFriendHelper: NSObject {
             let c = toupper(contact.pinyin[contact.pinyin.index(contact.pinyin.startIndex, offsetBy: 0)])
             if !isalpha(c) {
                 // #组
-                if let aContact = contact {
-                    othGroup.append(aContact)
-                }
+                othGroup.append(contact)
             } else if c != lastC {
                 if curGroup && curGroup.count > 0 {
                     data.append(curGroup)
-                    if let aName = curGroup.groupName {
-                        headers.append(aName)
-                    }
+                    headers.append(curGroup.groupName)
                     lastC = c
                     curGroup = WXUserGroup()
                     curGroup.groupName = "\(c)"
-                    if let aContact = contact {
-                        curGroup.append(aContact)
-                    }
+                    curGroup.append(contact)
                 } else {
-                    if let aContact = contact {
-                        curGroup.append(aContact)
-                    }
+                    curGroup.append(contact)
                 }
             }
             if curGroup && curGroup.count > 0 {
                 data.append(curGroup)
-                if let aName = curGroup.groupName {
-                    headers.append(aName)
-                }
+                headers.append(curGroup.groupName)
             }
             if othGroup.count > 0 {
                 data.append(othGroup)
-                if let aName = othGroup.groupName {
-                    headers.append(aName)
-                }
+                headers.append(othGroup.groupName)
             }
-            // 6、数据返回
             DispatchQueue.main.async(execute: {
                 success(serializeArray, data, headers)
             })
-            // 7、存入本地缓存
             var dic: [StringLiteralConvertible : Any] = nil
             if let aData = data, let aHeaders = headers {
                 dic = ["data": serializeArray, "formatData": aData, "headers": aHeaders]
@@ -759,7 +597,7 @@ class WXFriendHelper: NSObject {
             let path = FileManager.pathContactsData()
             if let aDic = dic {
                 if !NSKeyedArchiver.archiveRootObject(aDic, toFile: path) {
-                    DLog("缓存联系人数据失败")
+                    Dlog("缓存联系人数据失败")
                 }
             }
         }
@@ -777,28 +615,18 @@ class WXFriendHelper: NSObject {
                     success(data, formatData, headers)
                 })
             }
-            // 1.获取授权状态
             let status: CNAuthorizationStatus = CNContactStore.authorizationStatus(for: .contacts)
-            // 2.判断授权状态,如果不是已经授权,则直接返回
             if status != .authorized {
                 return
             }
-            // 3.创建通信录对象
             let contactStore = CNContactStore()
-            // 4.创建获取通信录的请求对象
-            // 4.1.拿到所有打算获取的属性对应的key
             let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey]
-            // 4.2.创建CNContactFetchRequest对象
             let request = CNContactFetchRequest(keysToFetch: keys)
-            // 5.遍历所有的联系人
-            // 3、格式转换
             var data: [WechatContact] = []
             try contactStore.enumerateContacts(with: request, usingBlock: { _,_ in
                 let con = WechatContact()
-                // 1.获取联系人的姓名
                 let lastname = contact.familyName
                 let firstname = contact.givenName
-                // 2.获取联系人的电话号码
                 let phoneNums = contact.phoneNumbers
                 for labeledValue: CNLabeledValue in phoneNums {
                     let phoneLabel = labeledValue.label
@@ -808,11 +636,9 @@ class WXFriendHelper: NSObject {
                     con.tel = phoneValue
                 }
                 let emails = contact.emailAddresses as [CNLabeledValue<String>]
-                for labeldValue: CNLabeledValue in emails  [] {
+                for labeldValue: CNLabeledValue in emails {
                     let email = labeldValue.label
-                    if let aValue = labeldValue.value {
-                        con.email = "\(email)\(aValue)"
-                    }
+                    con.email = "\(email)\(labeldValue.value)"
                 }
                 con.name = "\(lastname) \(firstname)"
                 con.recordID = contact.identifier
@@ -824,31 +650,14 @@ class WXFriendHelper: NSObject {
                 if stop {
                     self.gotNextEvent(withWechatContacts: data, success: success)
                 }
-
             })
         }
     }
-    
-
-    
 }
 class WXUserHelper: NSObject {
-    var user: WXUser
-
-    private var systemEmojiGroups: [AnyHashable] = []
-    private var complete: (([AnyHashable]) -> Void)
-
-    class func shared() -> WXUserHelper {
-        // TODO: [Swiftify] ensure that the code below is executed only once (`dispatch_once()` is deprecated)
-        {
-            helper = WXUserHelper()
-        }
-        return helper
-    }
-    init() {
-        super.init()
-
-        user = WXUser()
+    static let shared = WXUserHelper()
+    lazy var user: WXUser = {
+        let user = WXUser()
         user.userID = "这是我的二维码：2829969299 \n没错，我爱你。" //我的二维码数据
         user.avatarURL = "https://p1.ssl.qhmsg.com/dm/110_110_100/t01fffa4efd00af1898.jpg"
         user.nikeName = "Super"
@@ -859,50 +668,41 @@ class WXUserHelper: NSObject {
         user.detailInfo.sex = "男"
         user.detailInfo.motto = "失败与挫折相伴，成功与掌声共存!"
         user.detailInfo.momentsWallURL = "https://p1.ssl.qhmsg.com/dm/110_110_100/t01fffa4efd00af1898.jpg"
-
+        return user
+    }()
+    private lazy var systemEmojiGroups: [TLEmojiGroup] = {
+        let editGroup = TLEmojiGroup()
+        editGroup.type = .other
+        editGroup.groupIconPath = "emojiKB_settingBtn"
+        return [editGroup]
+    }()
+    private var complete: (([TLEmojiGroup]) -> Void)
+    init() {
+        super.init()
     }
     func updateEmojiGroupData() {
-        if user.userID && complete {
+        if !user.userID.isEmpty && complete {
             emojiGroupDataComplete(complete)
         }
     }
-    func emojiGroupDataComplete(_ complete: @escaping ([AnyHashable]) -> Void) {
+    func emojiGroupDataComplete(_ complete: @escaping ([TLEmojiGroup]) -> Void) {
         self.complete = complete
         DispatchQueue.global(qos: .default).async(execute: {
-            var emojiGroupData: [AnyHashable] = []
-
-            // 默认表情包
-            let defaultEmojiGroups = [WXExpressionHelper.shared().defaultFaceGroup, WXExpressionHelper.shared().defaultSystemEmojiGroup]
+            var emojiGroupData: [TLEmojiGroup] = []
+            let defaultEmojiGroups = [WXExpressionHelper.shared.defaultFaceGroup, WXExpressionHelper.shared.defaultSystemEmojiGroup]
             emojiGroupData.append(defaultEmojiGroups)
-
-            // 用户收藏的表情包
-            let preferEmojiGroup: TLEmojiGroup = WXExpressionHelper.shared().userPreferEmojiGroup
+            let preferEmojiGroup: TLEmojiGroup = WXExpressionHelper.shared.userPreferEmojiGroup
             if preferEmojiGroup != nil && preferEmojiGroup.count > 0 {
                 emojiGroupData.append([preferEmojiGroup])
             }
-
-            // 用户的表情包
-            let userGroups = WXExpressionHelper.shared().userEmojiGroups
+            let userGroups = WXExpressionHelper.shared.userEmojiGroups
             if userGroups.count > 0 {
                 emojiGroupData.append(userGroups)
             }
-            // 系统设置
             emojiGroupData.append(self.systemEmojiGroups)
             DispatchQueue.main.async(execute: {
                 complete(emojiGroupData)
             })
         })
     }
-
-    func systemEmojiGroups() -> [AnyHashable] {
-        if systemEmojiGroups == nil {
-            let editGroup = TLEmojiGroup()
-            editGroup.type = TLEmojiTypeOther
-            editGroup.groupIconPath = "emojiKB_settingBtn"
-            systemEmojiGroups = [editGroup]
-        }
-        return systemEmojiGroups
-    }
-
-    
 }
