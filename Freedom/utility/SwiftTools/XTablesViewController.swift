@@ -33,7 +33,7 @@ class UNTestTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         return cell!
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        superScoll?.scrollViewDidScroll(scrollView)
+        superScoll?.scrollViewDidScroll!(scrollView)
     }
 }
 class XTablesViewController: UIViewController, UIScrollViewDelegate {
