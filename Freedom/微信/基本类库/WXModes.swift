@@ -1,10 +1,6 @@
 //
 //  WXModes.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/19.
-//  Copyright © 2018 薛超. All rights reserved.
-//
 
 import Foundation
 func TLCreateSettingGroup(_ Header: String?,_ Footer: String?, _ Items: [WXSettingItem]) -> WXSettingGroup {
@@ -136,27 +132,23 @@ class WXMoment: NSObject {
     var momentID = ""
     var user: WXUser
     var date: Date
-    /*/ 详细内容 */    var detail: WXMomentDetail
-    /*/ 附加（评论，赞） */    var `extension`: WXMomentExtension
-    var momentFrame: WXMomentFrame {
-        if _momentFrame == nil {
-            _momentFrame = WXMomentFrame()
-            _momentFrame.height = 76.0
-            _momentFrame.heightDetail = detail.detailFrame.height
-            _momentFrame.height += _momentFrame.heightDetail // 正文高度
-            _momentFrame.heightExtension = extension.extensionFrame.height
-            _momentFrame.height += _momentFrame.heightExtension // 拓展高度
-        }
+    var detail: WXMomentDetail
+    var `extension`: WXMomentExtension
+    lazy var momentFrame: WXMomentFrame = {
+        let _momentFrame = WXMomentFrame()
+        _momentFrame.height = 76.0
+        _momentFrame.heightDetail = detail.detailFrame.height
+        _momentFrame.height += WXMomentFrame.heightDetail // 正文高度
+        _momentFrame.heightExtension = self.extension.extensionFrame.height
+        _momentFrame.height += _momentFrame.heightExtension // 拓展高度
         return _momentFrame
-    }
+    }()
     init() {
         super.init()
-
         WXMoment.mj_setupObjectClass(inArray: {
             return ["user": "TLUser", "detail": "TLMomentDetail", "extension": "TLMomentExtension"]
         })
     }
-
 }
 
 class WXMomentCommentFrame: NSObject {
@@ -175,54 +167,38 @@ class WXMomentComment: NSObject {
     }
     init() {
         super.init()
-
         WXMomentComment.mj_setupObjectClass(inArray: {
             return ["user": "TLUser", "toUser": "TLUser"]
         })
-
     }
-
 }
 class WXAddMenuHelper: NSObject {
-    var menuData: [AnyHashable] = []
-    private var menuItemTypes: [Any] = []
-
+    private var menuItemTypes: [String] = ["0", "1", "2", "3"]
+    lazy var menuData: [WXAddMenuItem] = {
+        for type: String in menuItemTypes as [String] {
+            var menuData: [WXAddMenuItem] = []
+            let item: WXAddMenuItem = p_getMenuItem(byType: Int(truncating: type))
+            menuData.append(item)
+        }
+        return
+    }()
     init() {
         super.init()
-
-        menuItemTypes = ["0", "1", "2", "3"]
-
     }
-
-    func menuData() -> [AnyHashable] {
-        if _menuData == nil {
-            _menuData = [AnyHashable]()
-            for type: String in menuItemTypes as [String]  [] {
-                let item: WXAddMenuItem = p_getMenuItem(byType: Int(truncating: type))
-                if let anItem = item {
-                    _menuData.append(anItem)
-                }
-            }
-        }
-        return _menuData
-    }
-
     func p_getMenuItem(by type: TLAddMneuType) -> WXAddMenuItem {
         switch type {
-        case TLAddMneuTypeGroupChat /* 群聊 */:
+        case .groupChat:
             return WXAddMenuItem.create(withType: TLAddMneuTypeGroupChat, title: "发起群聊", iconPath: "nav_menu_groupchat", className: "")
-        case TLAddMneuTypeAddFriend /* 添加好友 */:
+        case .addFriend:
             return WXAddMenuItem.create(withType: TLAddMneuTypeAddFriend, title: "添加朋友", iconPath: "nav_menu_addfriend", className: "TLAddFriendViewController")
-        case TLAddMneuTypeWallet /* 收付款 */:
+        case .wallet:
             return WXAddMenuItem.create(withType: TLAddMneuTypeWallet, title: "收付款", iconPath: "nav_menu_wallet", className: "")
-        case TLAddMneuTypeScan /* 扫一扫 */:
+        case .scan:
             return WXAddMenuItem.create(withType: TLAddMneuTypeScan, title: "扫一扫", iconPath: "nav_menu_scan", className: "TLScanningViewController")
         default:
             break
         }
     }
-
-    
 }
 
 class WXInfo: NSObject {
@@ -236,7 +212,7 @@ class WXInfo: NSObject {
     var buttonHLColor = UIColor.green
     var buttonBorderColor = UIColor.gray
     //是否显示箭头（默认YES）
-    var showDisclosureIndicator = false
+    var showDisclosureIndicator = true
     //停用高亮（默认NO）
     var disableHighlight = false
     class func createInfo(withTitle title: String, subTitle: String) -> WXInfo {
@@ -245,45 +221,31 @@ class WXInfo: NSObject {
         info.subTitle = subTitle
         return info
     }
-
     override init() {
         super.init()
-        showDisclosureIndicator = true
-
     }
-
 }
 class WXMenuItem: NSObject {
-    //左侧图标路径
-    var iconPath = ""
-    //标题
-    var title = ""
-    //副标题/
-    var subTitle = ""
-    //副图片URL*/
-    var rightIconURL = ""
-    //是否显示红点
-    var showRightRedPoint = false
+    var iconPath = ""//左侧图标路径
+    var title = ""//标题
+    var subTitle = ""//副标题
+    var rightIconURL = ""//副图片URL
+    var showRightRedPoint = false//是否显示红点
     class func createMenu(withIconPath iconPath: String, title: String) -> WXMenuItem {
         let item = WXMenuItem()
         item.iconPath = iconPath
         item.title = title
         return item
     }
-
 }
 
 class WXSettingGroup: NSObject {
-    //section头部标题
     var headerTitle = ""
-    //section尾部说明
     var footerTitle = ""
-    //setcion元素
-    var items: [WXSettingItem] = []
+    var items: [WXSettingItem] = []//setcion元素
     private(set) var headerHeight: CGFloat = 0.0
     private(set) var footerHeight: CGFloat = 0.0
     private(set) var count: Int = 0
-
     class func createGroup(withHeaderTitle headerTitle: String, footerTitle: String, items: [WXSettingItem]) -> WXSettingGroup {
         let group = WXSettingGroup()
         group.headerTitle = headerTitle
@@ -302,13 +264,10 @@ class WXSettingGroup: NSObject {
     func remove(_ obj: WXSettingItem) {
         items.removeAll(where: { element in element == obj })
     }
-
-    // MARK: - Setter
     func setHeaderTitle(_ headerTitle: String) {
         self.headerTitle = headerTitle
         headerHeight = getTextHeightOfText(headerTitle, font: UIFont.systemFont(ofSize: 14.0), width: APPW - 30)
     }
-
     func setFooterTitle(_ footerTitle: String) {
         self.footerTitle = footerTitle
         footerHeight = getTextHeightOfText(footerTitle, font: UIFont.systemFont(ofSize: 14.0), width: APPW - 30)
@@ -323,57 +282,37 @@ class WXSettingGroup: NSObject {
         hLabel.text = text
         return hLabel.sizeThatFits(CGSize(width: width, height: MAXFLOAT)).height
     }
-
-    // MARK: - Getter
     func count() -> Int {
         return items.count()
     }
-
 }
 
 public class WXSettingItem: NSObject {
-    //主标题
     var title = ""
-    //副标题
     var subTitle = ""
-    //右图片(本地)
     var rightImagePath = ""
-    //右图片(网络)
     var rightImageURL = ""
-    //是否显示箭头（默认YES）
-    var showDisclosureIndicator = false
-    //停用高亮（默认NO）
+    var showDisclosureIndicator = true
     var disableHighlight = false
-    //cell类型，默认default
     var type = TLSettingItemType.defalut
-    
     class func createItem(withTitle title: String) -> WXSettingItem {
         let item = WXSettingItem()
         item.title = title
         return item
     }
-
     init() {
         super.init()
-
-        showDisclosureIndicator = true
-
     }
 
     func cellClassName() -> String {
         switch type {
-        case .default:
-            return "TLSettingCell"
-        case TLSettingItemTypeTitleButton:
-            return "TLSettingButtonCell"
-        case TLSettingItemTypeSwitch:
-            return "TLSettingSwitchCell"
-        default:
-            break
+        case .default:return "TLSettingCell"
+        case TLSettingItemTypeTitleButton:return "TLSettingButtonCell"
+        case TLSettingItemTypeSwitch:return "TLSettingSwitchCell"
+        default:break
         }
-        return nil
+        return ""
     }
-
 }
 
 class WXAddMenuItem: NSObject {
@@ -389,5 +328,4 @@ class WXAddMenuItem: NSObject {
         item.className = className
         return item
     }
-
 }

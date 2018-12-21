@@ -13,9 +13,9 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// 是�
     var showLoadingProgress = true// 是否禁止历史记录，默认NO
     var disableBackButton = false
     var url = ""
-    var webView = WKWebView(frame: CGRect(x: 0, y: Int(TopHeight) + 20, width: APPW, height: Int(APPH - TopHeight) - 20))
+    lazy var webView = WKWebView(frame: CGRect(x: 0, y: Int(TopHeight) + 20, width: Int(APPW), height: Int(APPH - TopHeight) - 20))
     lazy var progressView: UIProgressView = {
-        let progressView = UIProgressView(frame: CGRect(x: 0, y: Int(TopHeight) + 20, width: APPW, height: 10.0))
+        let progressView = UIProgressView(frame: CGRect(x: 0, y: TopHeight + 20.0, width: APPW, height: 10.0))
         progressView.transform = CGAffineTransform(scaleX: 1.0, y: 2.0)
         progressView.progressTintColor = UIColor.green
         progressView.trackTintColor = UIColor.clear
@@ -24,16 +24,16 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// 是�
     lazy var backButtonItem = UIBarButtonItem(title: "返回", style: UIBarButtonItem.Style.done, actionBlick: {
         if self.webView.canGoBack {
             self.webView.goBack()
-            self.navigationItem.leftBarButtonItems = [self.backButtonItem, self.closeButtonItem]
+            self.navigationItem.leftBarButtonItems = [self.backButtonItem, self.closeButtonItem] as? [UIBarButtonItem]
         } else {
-            self.navigationController.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
     })
     lazy var closeButtonItem = UIBarButtonItem(title: "关闭") {
         self.navigationController?.popViewController(animated: true)
     }
     lazy var authLabel: UILabel = {
-            let authLabel = UILabel(frame: CGRect(x: 20, y: Int(TopHeight) + 20 + 13, width: APPW - 40, height: 0))
+        let authLabel = UILabel(frame: CGRect(x: 20, y: Int(TopHeight) + 20 + 13, width: Int(APPW - 40), height: 0))
             authLabel.font = UIFont.systemFont(ofSize: 12.0)
             authLabel.textAlignment = .center
             authLabel.textColor = UIColor.gray
@@ -46,9 +46,7 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// 是�
         webView.allowsBackForwardNavigationGestures = true
         webView.navigationDelegate = self
         view.addSubview(authLabel)
-        if let aView = webView {
-            view.addSubview(aView)
-        }
+        view.addSubview(webView)
         view.addSubview(progressView)
     }
 
@@ -57,11 +55,12 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// 是�
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
         webView.scrollView.backgroundColor = UIColor.clear
-        for vc: Any in webView.scrollView.subviews  [] {
-            let className = NSStringFromClass(vc.self.self)
-            if (className == "WKContentView") {
-                vc.backgroundColor = UIColor.white
-                break
+        for vc in webView.scrollView.subviews {
+            if let cls = object_getClass(vc) {
+                if (NSStringFromClass(cls) == "WKContentView") {
+                    vc.backgroundColor = UIColor.white
+                    break
+                }
             }
         }
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
@@ -75,8 +74,8 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// 是�
         if let anUrl = URL(string: url) {
             webView.load(URLRequest(url: anUrl))
         }
-        if !disableBackButton && (navigationItem.leftBarButtonItems.count) <= 2 {
-            navigationItem.leftBarButtonItems = [backButtonItem]
+        if !disableBackButton && (navigationItem.leftBarButtonItems?.count ?? 0) <= 2 {
+            navigationItem.leftBarButtonItems = [backButtonItem] as? [UIBarButtonItem]
         }
     }
 
@@ -94,7 +93,7 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// 是�
         }
     }
     func observeValue(forKeyPath keyPath: String, of object: Any, change: [NSKeyValueChangeKey : Any], context: UnsafeMutableRawPointer) {
-        if showLoadingProgress && (keyPath == "estimatedProgress") && (object as WKWebView) == webView {
+        if showLoadingProgress && (keyPath == "estimatedProgress") && (object as! WKWebView) == webView {
             progressView.alpha = 1.0
             progressView.setProgress(Float(webView.estimatedProgress), animated: true)
 
@@ -106,9 +105,9 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// 是�
                 }
             }
         } else if (keyPath == "backgroundColor") && (object as! UIScrollView) == webView.scrollView {
-            let color = change["new"] as UIColor
+            let color = change[NSKeyValueChangeKey.newKey] as! UIColor
             if !(color.cgColor == UIColor.clear.cgColor) {
-                (object as AnyObject).backgroundColor = UIColor.clear
+                (object as! UIView).backgroundColor = UIColor.clear
             }
         }
     }

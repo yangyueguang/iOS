@@ -3,10 +3,9 @@
 //  Freedom
 
 import Foundation
-
 class WXTagCell: WXTableViewCell {
-    private var _title = ""
-    var title: String {
+    var titleLabel = UILabel()
+    var title: String = "" {
         get {
             return _title
         }
@@ -15,51 +14,29 @@ class WXTagCell: WXTableViewCell {
             titleLabel.text = title
         }
     }
-    var titleLabel: UILabel
-
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
+        titleLabel.font = UIFont.systemFont(ofSize: 15.0)
         leftSeparatorSpace = 15
-        if let aLabel = titleLabel {
-            contentView.addSubview(aLabel)
-        }
-
-        p_addMasonry()
-
+        contentView.addSubview(titleLabel)
+//        titleLabel.mas_makeConstraints({ make in
+//            make.left.mas_equalTo(self.leftSeparatorSpace)
+//            make.right.mas_lessThanOrEqualTo(-self.leftSeparatorSpace)
+//            make.centerY.mas_equalTo(self.contentView)
+//        })
     }
-    func p_addMasonry() {
-        titleLabel.mas_makeConstraints({ make in
-            make.left.mas_equalTo(self.leftSeparatorSpace)
-            make.right.mas_lessThanOrEqualTo(-self.leftSeparatorSpace)
-            make.centerY.mas_equalTo(self.contentView)
-        })
-    }
-
-    // MARK: -
-    var titleLabel: UILabel {
-        if titleLabel == nil {
-            titleLabel = UILabel()
-            titleLabel.font = UIFont.systemFont(ofSize: 15.0)
-        }
-        return titleLabel
-    }
-
 }
 class WXTagsViewController: WXTableViewController {
     var data: [AnyHashable] = []
 
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "标签"
         view.backgroundColor = UIColor.white
-
         registerCellClass()
-
         let rightBarButton = UIBarButtonItem(title: "新建", style: .plain, target: self, action: #selector(WXTagsViewController.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButton
-
-        data = WXFriendHelper.shared().tagsData
+        data = WXFriendHelper.shared.tagsData
     }
 
     // MARK: - Event Response -

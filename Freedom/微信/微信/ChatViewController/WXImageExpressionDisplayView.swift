@@ -3,6 +3,7 @@
 //  Freedom
 
 import Foundation
+import SnapKit
 class WXImageExpressionDisplayView: UIView {
     var emoji: TLEmoji {
         didSet {
@@ -36,18 +37,15 @@ class WXImageExpressionDisplayView: UIView {
         addSubview(bgCenterView)
         addSubview(bgRightView)
         addSubview(imageView)
-        p_addMasonry()
+//        p_addMasonry()
     }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
     func display(_ emoji: TLEmoji, at rect: CGRect) {
         self.rect = rect
         self.emoji = emoji
     }
-
     func setRect(_ rect: CGRect) {
         var frame: CGRect = self.frame
         frame.origin.y = rect.origin.y - self.frame.size.height + 13
@@ -57,42 +55,42 @@ class WXImageExpressionDisplayView: UIView {
         if rect.origin.x + rect.size.width < self.frame.size.width {
             // 箭头在左边
             center = CGPoint(x: centerX + (150 - w / 4 - 25) / 2 - 16, y: center.y)
-            bgLeftView.mas_updateConstraints({ make in
-                make.width.mas_equalTo(w / 4)
-            })
+            bgLeftView.snp.updateConstraints { (make) in
+                make.width.equalTo(w / 4)
+            }
         } else if APPW - rect.origin.x < self.frame.size.width {
             // 箭头在右边
             center = CGPoint(x: centerX - (150 - w / 4 - 25) / 2 + 16, y: center.y)
-            bgLeftView.mas_updateConstraints({ make in
-                make.width.mas_equalTo(w / 4 * 3)
-            })
+            bgLeftView.snp.updateConstraints { (make) in
+                make.width.equalTo(w / 4 * 3)
+            }
         } else {
             center = CGPoint(x: centerX, y: center.y)
-            bgLeftView.mas_updateConstraints({ make in
-                make.width.mas_equalTo(w / 2)
-            })
+            bgLeftView.snp.updateConstraints { (make) in
+                make.width.equalTo(w / 2)
+            }
         }
     }
     
-    func p_addMasonry() {
-        bgLeftView.mas_makeConstraints({ make in
-            make.top.and().left().and().bottom().mas_equalTo(self)
-        })
-        bgCenterView.mas_makeConstraints({ make in
-            make.left.mas_equalTo(self.bgLeftView.mas_right)
-            make.top.and().bottom().mas_equalTo(self.bgLeftView)
-            make.width.mas_equalTo(25)
-        })
-        bgRightView.mas_makeConstraints({ make in
-            make.left.mas_equalTo(self.bgCenterView.mas_right)
-            make.top.and().bottom().mas_equalTo(self.bgLeftView)
-            make.right.mas_equalTo(self)
-        })
-        imageView.mas_makeConstraints({ make in
-            make.top.mas_equalTo(self).mas_offset(10)
-            make.left.mas_equalTo(self).mas_offset(10)
-            make.right.mas_equalTo(self).mas_offset(-10)
-            make.height.mas_equalTo(self.imageView.mas_width)
-        })
-    }
+//    func p_addMasonry() {
+//        bgLeftView.mas_makeConstraints({ make in
+//            make.top.and().left().and().bottom().mas_equalTo(self)
+//        })
+//        bgCenterView.mas_makeConstraints({ make in
+//            make.left.mas_equalTo(self.bgLeftView.mas_right)
+//            make.top.and().bottom().mas_equalTo(self.bgLeftView)
+//            make.width.mas_equalTo(25)
+//        })
+//        bgRightView.mas_makeConstraints({ make in
+//            make.left.mas_equalTo(self.bgCenterView.mas_right)
+//            make.top.and().bottom().mas_equalTo(self.bgLeftView)
+//            make.right.mas_equalTo(self)
+//        })
+//        imageView.mas_makeConstraints({ make in
+//            make.top.mas_equalTo(self).mas_offset(10)
+//            make.left.mas_equalTo(self).mas_offset(10)
+//            make.right.mas_equalTo(self).mas_offset(-10)
+//            make.height.mas_equalTo(self.imageView.mas_width)
+//        })
+//    }
 }

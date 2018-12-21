@@ -24,50 +24,11 @@ class WechatContact: NSObject {
     var avatarPath = ""
     var avatarURL = ""
     var tel = ""
-    var status: TLContactStatus
+    var status = TLContactStatus.friend
     var recordID: Int = 0
     var email = ""
-    var pinyin = ""
-    var pinyinInitial = ""
-    required init(coder decoder: NSCoder) {
-        name = decoder.decodeObject(forKey: "name")
-        avatarPath = decoder.decodeObject(forKey: "avatarPath")
-        avatarURL = decoder.decodeObject(forKey: "avatarURL")
-        tel = decoder.decodeObject(forKey: "tel")
-        status = decoder.decodeInteger(forKey: "status")
-        recordID = decoder.decodeCInt(forKey: "recordID")
-        email = decoder.decodeObject(forKey: "email")
-        pinyin = decoder.decodeObject(forKey: "pinyin")
-        pinyinInitial = decoder.decodeObject(forKey: "pinyinInitial")
-    }
-    func encode(with encoder: NSCoder) {
-        encoder.encode(name, forKey: "name")
-        encoder.encode(avatarPath, forKey: "avatarPath")
-        encoder.encode(avatarURL, forKey: "avatarURL")
-        encoder.encode(tel, forKey: "tel")
-        encoder.encode(status, forKey: "status")
-        encoder.encodeCInt(recordID, forKey: "recordID")
-        encoder.encode(email, forKey: "email")
-        encoder.encode(pinyin, forKey: "pinyin")
-        encoder.encode(pinyinInitial, forKey: "pinyinInitial")
-    }
-
-    func pinyin() -> String {
-        if pinyin == nil {
-            pinyin = name.pinyin()
-        }
-        return pinyin
-    }
-
-    func pinyinInitial() -> String {
-        if pinyinInitial == nil {
-            pinyinInitial = name.pinyin()
-        }
-        return pinyinInitial
-    }
-
-
-    
+    lazy var pinyin = self.name.pinyin()
+    lazy var pinyinInitial = self.name.pinyin()
 }
 protocol WXChatUserProtocol: NSObjectProtocol {
     var chat_userID: String { get }
@@ -75,9 +36,8 @@ protocol WXChatUserProtocol: NSObjectProtocol {
     var chat_avatarURL: String { get }
     var chat_avatarPath: String { get }
     var chat_userType: Int { get }
-
     func groupMember(byID userID: String) -> Any
-    func groupMembers() -> [Any]
+    func groupMembers() -> [WXUser]
 }
 
 class WXUserSetting: NSObject {
@@ -97,14 +57,10 @@ class WXUserDetail: NSObject {
     var email = ""
     var albumArray: [Any] = []
     var motto = ""
-    var momentsWallURL = ""
-    /// 备注信息
-    var remarkInfo = ""
-    /// 备注图片（本地地址）
-    var remarkImagePath = ""
-    /// 备注图片 (URL)
-    var remarkImageURL = ""
-    /// 标签
+    var momentsWallURL = ""/// 备注信息
+    var remarkInfo = ""/// 备注图片（本地地址）
+    var remarkImagePath = ""/// 备注图片 (URL)
+    var remarkImageURL = ""/// 标签
     var tags: [AnyHashable] = []
 }
 

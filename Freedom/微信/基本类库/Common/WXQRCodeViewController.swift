@@ -1,11 +1,6 @@
 //
 //  WXQRCodeViewController.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/19.
-//  Copyright © 2018 薛超. All rights reserved.
-//
-
 import Foundation
 class WXQRCodeViewController: WXBaseViewController {/// 信息页面元素 —— 头像URL (若为nil，会尝试根据Path设置)
     var avatarURL = "" {
@@ -91,35 +86,30 @@ class WXQRCodeViewController: WXBaseViewController {/// 信息页面元素 —�
 
     class func createQRCodeImage(for str: String, ans: @escaping (UIImage) -> Void) {
         DispatchQueue.global(qos: .default).async(execute: {
-            let stringData: Data = str.data(using: .utf8)
+            let stringData = str.data(using: .utf8)
             var qrFilter = CIFilter(name: "CIQRCodeGenerator")
-            qrFilter.setValue(stringData, forKey: "inputMessage")
-            qrFilter.setValue("M", forKey: "inputCorrectionLevel")
-            let image: CIImage = qrFilter.outputImage
+            qrFilter?.setValue(stringData, forKey: "inputMessage")
+            qrFilter?.setValue("M", forKey: "inputCorrectionLevel")
+            guard let image = qrFilter?.outputImage else { return }
             let size: CGFloat = 300.0
-
-            let extent: CGRect = image.extent.integral()
+            let extent = image.extent.integral
             let scale = min(size / extent.width, size / extent.height)
-
             let width = size_t(extent.width * scale)
             let height = size_t(extent.height * scale)
-
             let cs = CGColorSpaceCreateDeviceGray()
-            let bitmapRef = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 0, space: cs, bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue))
+            guard let bitmapRef = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 0, space: cs, bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue).rawValue) else { return }
             let context = CIContext(options: nil)
             let bitmapImage = context.createCGImage(image, from: extent)
-            CGContextSetInterpolationQuality(bitmapRef, CGInterpolationQuality.none)
-            bitmapRef.scaleBy(x: scale, y: scale)
-            bitmapRef.draw(in: bitmapImage, image: extent)
-
-            let scaledImage = bitmapRef.makeImage()
-            CGContextRelease(bitmapRef)
-            CGImageRelease(bitmapImage)
-
-            let ansImage = UIImage(cgImage: scaledImage)
-            DispatchQueue.main.async(execute: {
-                ans(ansImage)
-            })
+//            CGContextSetInterpolationQuality(bitmapRef, CGInterpolationQuality.none)
+//            bitmapRef.scaleBy(x: scale, y: scale)
+//            bitmapRef.draw(in: bitmapImage, image: extent)
+//            let scaledImage = bitmapRef.makeImage()
+//            CGContextRelease(bitmapRef)
+//            CGImageRelease(bitmapImage)
+//            let ansImage = UIImage(cgImage: scaledImage)
+//            DispatchQueue.main.async(execute: {
+//                ans(ansImage)
+//            })
         })
     }
     override func viewDidLoad() {
@@ -132,42 +122,38 @@ class WXQRCodeViewController: WXBaseViewController {/// 信息页面元素 —�
 //        p_addMasonry()
     }
     func captureScreenshot(from view: UIView, rect: CGRect, finished: @escaping (_ avatarPath: String) -> Void) {
-        DispatchQueue.global(qos: .default).async(execute: {
+        DispatchQueue.global(qos: .default).async {
             UIGraphicsBeginImageContextWithOptions(rect.size, _: false, _: 2.0)
             if let aContext = UIGraphicsGetCurrentContext() {
                 view.layer.render(in: aContext)
             }
-            let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+            let image = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-            let imageRef = image.cgImage
-            let imageRefRect = imageRef.cropping(to: CGRect(x: rect.origin.x * 2, y: rect.origin.y * 2, width: rect.size.width * 2, height: rect.size.height * 2)) as CGImage
-            var ansImage: UIImage = nil
-            if let aRect = imageRefRect {
-                ansImage = UIImage(cgImage: aRect)
-            }
-            let imageViewData: Data = UIImagePNGRepresentation(ansImage)
+            let imageRef = image?.cgImage
+            let imageRefRect = imageRef?.cropping(to: CGRect(x: rect.origin.x * 2, y: rect.origin.y * 2, width: rect.size.width * 2, height: rect.size.height * 2))
+            let ansImage = UIImage(cgImage: imageRefRect!)
+            let imageViewData = ansImage.pngData()
             let imageName = String(format: "%.0lf.png", Date().timeIntervalSince1970 * 10000)
             let savedImagePath = FileManager.pathScreenshotImage(imageName)
-            imageViewData.write(toFile: savedImagePath, atomically: true)
-            CGImageRelease(imageRefRect)
-            DispatchQueue.main.async(execute: {
+            try imageViewData?.write(to: URL(fileURLWithPath: savedImagePath), options: Data.WritingOptions.atomic)
+            DispatchQueue.main.async {
                 finished(imageName)
-            })
-        })
+            }
+        }
     }
 
     //将二维码信息页面保存到系统相册
     func saveQRCodeToSystemAlbum() {
-        captureScreenshot(fromView: whiteBGView, rect: whiteBGView.bounds, finished: { avatarPath in
+        captureScreenshot(from: whiteBGView, rect: whiteBGView.bounds, finished: { avatarPath in
             let path = FileManager.pathScreenshotImage(avatarPath)
             let image = UIImage(named: path)
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
         })
     }
 
-    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error, contextInfo: UnsafeMutableRawPointer) {
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeMutableRawPointer) {
         if error != nil {
-            noticeError("保存图片到系统相册失败\n\(error.description())")
+            noticeError("保存图片到系统相册失败\n\(String(describing: error?.localizedDescription))")
         } else {
             noticeSuccess("已保存到系统相册")
         }
