@@ -1,11 +1,11 @@
+////
+////  WXAddFriendViewController.swift
+////  Freedom
 //
-//  WXAddFriendViewController.swift
-//  Freedom
-
-import Foundation
-class WXAddFriendViewController: WXTableViewController {
-    func viewDidLoad() {
-        super.viewDidLoad()
-        navigationItem.title = "添加朋友"
-    }
-}
+//import Foundation
+//class WXAddFriendViewController: WXTableViewController {
+//    func viewDidLoad() {
+//        super.viewDidLoad()
+//        navigationItem.title = "添加朋友"
+//    }
+//}

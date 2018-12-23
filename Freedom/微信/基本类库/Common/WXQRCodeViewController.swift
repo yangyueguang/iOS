@@ -135,7 +135,7 @@ class WXQRCodeViewController: WXBaseViewController {/// 信息页面元素 —�
             let imageViewData = ansImage.pngData()
             let imageName = String(format: "%.0lf.png", Date().timeIntervalSince1970 * 10000)
             let savedImagePath = FileManager.pathScreenshotImage(imageName)
-            try imageViewData?.write(to: URL(fileURLWithPath: savedImagePath), options: Data.WritingOptions.atomic)
+            try! imageViewData?.write(to: URL(fileURLWithPath: savedImagePath), options: Data.WritingOptions.atomic)
             DispatchQueue.main.async {
                 finished(imageName)
             }
@@ -147,7 +147,7 @@ class WXQRCodeViewController: WXBaseViewController {/// 信息页面元素 —�
         captureScreenshot(from: whiteBGView, rect: whiteBGView.bounds, finished: { avatarPath in
             let path = FileManager.pathScreenshotImage(avatarPath)
             let image = UIImage(named: path)
-            UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+            UIImageWriteToSavedPhotosAlbum(image!, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
         })
     }
 

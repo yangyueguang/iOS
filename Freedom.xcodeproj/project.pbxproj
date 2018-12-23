@@ -1137,7 +1137,6 @@
 		DF4C6FC821CC787700A54339 /* FoundationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C6FC721CC787700A54339 /* FoundationEnum.swift */; };
 		DF4C6FCA21CC790D00A54339 /* FoundationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */; };
 		DF6B51EE21CA6F5900460949 /* WXModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51ED21CA6F5900460949 /* WXModes.swift */; };
-		DF6B51F021CA6F6F00460949 /* WXExpressionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51EF21CA6F6F00460949 /* WXExpressionHelper.swift */; };
 		DF6B51F221CA6F7C00460949 /* WXMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51F121CA6F7C00460949 /* WXMessageManager.swift */; };
 		DF6B51F421CA6F8900460949 /* WXUserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51F321CA6F8900460949 /* WXUserHelper.swift */; };
 		DF6B51F621CA800500460949 /* WXInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51F521CA800500460949 /* WXInfoViewController.swift */; };
@@ -2534,7 +2533,6 @@
 		DF4C6FC721CC787700A54339 /* FoundationEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationEnum.swift; sourceTree = "<group>"; };
 		DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationAPI.swift; sourceTree = "<group>"; };
 		DF6B51ED21CA6F5900460949 /* WXModes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXModes.swift; sourceTree = "<group>"; };
-		DF6B51EF21CA6F6F00460949 /* WXExpressionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXExpressionHelper.swift; sourceTree = "<group>"; };
 		DF6B51F121CA6F7C00460949 /* WXMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXMessageManager.swift; sourceTree = "<group>"; };
 		DF6B51F321CA6F8900460949 /* WXUserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXUserHelper.swift; sourceTree = "<group>"; };
 		DF6B51F521CA800500460949 /* WXInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXInfoViewController.swift; sourceTree = "<group>"; };
@@ -2820,8 +2818,8 @@
 		7745C1E11D6713CD002212DE /* 发现 */ = {
 			isa = PBXGroup;
 			children = (
-				DF0E967521CBACD4009682CC /* WXBottleViewController.swift */,
 				DF0E967721CBACDA009682CC /* WXDiscoverViewController.swift */,
+				DF0E967521CBACD4009682CC /* WXBottleViewController.swift */,
 				DF0E967921CBACDF009682CC /* WXGameViewController.swift */,
 				DF0E967B21CBACE5009682CC /* WXMomentDetailViewController.swift */,
 				DF0E967D21CBACEA009682CC /* WXMomentsViewController.swift */,
@@ -2841,7 +2839,6 @@
 				DFB5FF5521CA280A0057C922 /* WXExpanded.swift */,
 				DF6B51ED21CA6F5900460949 /* WXModes.swift */,
 				DF6B51F321CA6F8900460949 /* WXUserHelper.swift */,
-				DF6B51EF21CA6F6F00460949 /* WXExpressionHelper.swift */,
 				DF6B51F121CA6F7C00460949 /* WXMessageManager.swift */,
 				DFB5FF5B21CA2F1C0057C922 /* WXTabBarController.swift */,
 				DFB5FF5D21CA2F3E0057C922 /* WXNavigationController.swift */,
@@ -2853,11 +2850,11 @@
 		7745C1E31D6713CD002212DE /* 通讯录 */ = {
 			isa = PBXGroup;
 			children = (
+				DF0E966921CBAC9D009682CC /* WXFriendsViewController.swift */,
 				DF0E966121CBAC7D009682CC /* WXAddFriendViewController.swift */,
 				DF0E966321CBAC83009682CC /* WXContactsViewController.swift */,
 				DF0E966521CBAC89009682CC /* WXFriendDetailViewController.swift */,
 				DF0E966721CBAC8F009682CC /* WXFriendSearchViewController.swift */,
-				DF0E966921CBAC9D009682CC /* WXFriendsViewController.swift */,
 				DF0E966B21CBACA7009682CC /* WXGroupViewController.swift */,
 				DF0E966D21CBACAE009682CC /* WXNewFriendViewController.swift */,
 				DF0E966F21CBACB9009682CC /* WXPublicServerSearchViewController.swift */,
@@ -6885,7 +6882,6 @@
 				BFEF19CA2101E990003DCAC1 /* SumCFile.c in Sources */,
 				713EE2DE20AD9C070085B65D /* AlipayScanViewController.swift in Sources */,
 				713EE2D020AD9B8C0085B65D /* TaobaoMiniVideoViewController.swift in Sources */,
-				DF6B51F021CA6F6F00460949 /* WXExpressionHelper.swift in Sources */,
 				DF6B51F421CA6F8900460949 /* WXUserHelper.swift in Sources */,
 				DF7B408021AC020A00E3D975 /* DouyinHomeViewController.swift in Sources */,
 				BF5B9B811F8E67C000BD885E /* PowerViewController.swift in Sources */,

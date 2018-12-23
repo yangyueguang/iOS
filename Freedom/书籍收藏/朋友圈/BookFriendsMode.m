@@ -362,7 +362,7 @@ while (start < length){
     }
     return textlines;
 }
-- (void)manageGesture:(UIGestureRecognizer *)gesture gestureType:(GestureType)gestureType{
+- (void)manageGesture:(UIGestureRecognizer *)gesture gestureType:(int)gestureType{
 CGPoint point = [gesture locationInView:self];
 CGFloat w = CGRectGetWidth(self.frame);
     CGFloat y = 0;
@@ -393,7 +393,7 @@ if (isSelected == YES) {
     });
         return;
     }else{
-        if (gestureType == TapGesType) {
+        if (gestureType == 1) {
             if (_canClickAll == YES) {
                 [self clickAllContext];
             }
@@ -410,7 +410,7 @@ if (isSelected == YES) {
 #pragma mark - 长按自己
 - (void)longPressMyself:(UILongPressGestureRecognizer *)gesture{
     if (gesture.state == UIGestureRecognizerStateBegan) {
-        [self manageGesture:gesture gestureType:LongGesType];
+        [self manageGesture:gesture gestureType:2];
     }
 if (gesture.state == UIGestureRecognizerStateEnded) {
         [self removeLongClickArea];
@@ -418,7 +418,7 @@ if (gesture.state == UIGestureRecognizerStateEnded) {
 }
 #pragma mark -点击自己
 - (void)tapMyself:(UITapGestureRecognizer *)gesture{
-[self manageGesture:gesture gestureType:TapGesType];
+[self manageGesture:gesture gestureType:1];
 }
 - (BOOL)judgeIndexInSelectedRange:(CFIndex) index withWorkLine:(CTLineRef)workctLine{
 for (int i = 0; i < _attributedData.count; i ++) {

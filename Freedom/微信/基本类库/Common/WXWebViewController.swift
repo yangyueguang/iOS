@@ -1,11 +1,6 @@
 //
 //  WXWebViewController.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/19.
-//  Copyright © 2018 薛超. All rights reserved.
-//
-
 import Foundation
 import WebKit
 class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// 是否使用网页标题作为nav标题，默认YES
@@ -66,7 +61,7 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// 是�
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
         webView.scrollView.addObserver(self, forKeyPath: "backgroundColor", options: .new, context: nil)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         MobClick.beginLogPageView("WebVC")

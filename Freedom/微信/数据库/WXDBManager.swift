@@ -1,7 +1,7 @@
 //
 //  WXDBManager.swift
 //  Freedom
-
+import FMDB
 import Foundation
 let MESSAGE_TABLE_NAME = "message"
 let SQL_CREATE_MESSAGE_TABLE = "CREATE TABLE IF NOT EXISTS %@(msgid TEXT,uid TEXT,fid TEXT,subfid TEXT,date TEXT,partner_type INTEGER DEFAULT (0),own_type INTEGER DEFAULT (0),msg_type INTEGER DEFAULT (0),content TEXT,send_status INTEGER DEFAULT (0),received_status BOOLEAN DEFAULT (0),ext1 TEXT,ext2 TEXT,ext3 TEXT,ext4 TEXT,ext5 TEXT,PRIMARY KEY(uid, msgid, fid, subfid))"
@@ -50,166 +50,114 @@ let SQL_UPDATE_GROUP_MEMBER = "REPLACE INTO %@ ( uid, gid, fid, username, nikena
 let SQL_SELECT_GROUP_MEMBERS = "SELECT * FROM %@ WHERE uid = %@"
 let SQL_DELETE_GROUP_MEMBER = "DELETE FROM %@ WHERE uid = '%@' and gid = '%@' and fid = '%@'"
 
-//  TLDBManager.h
-
 class WXDBManager: NSObject {
-    //DB队列（除IM相关）
-    var commonQueue: FMDatabaseQueue
-    //与IM相关的DB队列
-    var messageQueue: FMDatabaseQueue
-    
-    class var sharedInstance: CXCallDirectoryManager {
-
-
-            let userID = WXUserHelper.shared().user.userID
-            manager = WXDBManager(userID: userID)
-
-        return manager
+    static let shared = WXDBManager(userID: WXUserHelper.shared.user.userID)
+    var commonQueue = FMDatabaseQueue(path: FileManager.pathDBCommon())
+    var messageQueue = FMDatabaseQueue(path: FileManager.pathDBMessage())
+    convenience init(userID: String) {
+        self.init()
     }
-
-    init(userID: String) {
+    override init() {
         super.init()
-
-        let commonQueuePath = FileManager.pathDBCommon()
-        commonQueue = FMDatabaseQueue(path: commonQueuePath)
-        let messageQueuePath = FileManager.pathDBMessage()
-        messageQueue = FMDatabaseQueue(path: messageQueuePath)
-
     }
-
-    convenience init() {
-        DLog("TLDBManager：请使用 initWithUserID: 方法初始化")
-        return nil
-    }
-
 }
 
 class WXDBBaseStore: NSObject {
     /// 数据库操作队列(从TLDBManager中获取，默认使用commonQueue)
-    weak var dbQueue: FMDatabaseQueue
-    
-    init() {
+    var dbQueue: FMDatabaseQueue? = WXDBManager.shared.commonQueue
+    override init() {
         super.init()
-
-        dbQueue = WXDBManager.sharedInstance().commonQueue
-
     }
 
     func createTable(_ tableName: String, withSQL sqlString: String) -> Bool {
         var ok = true
-        dbQueue.inDatabase({ db in
-            if db.tableExists(tableName) == nil {
-                ok = db.executeUpdate(sqlString, withArgumentsInArray: [])  false
+        dbQueue?.inDatabase({ db in
+            if !db.tableExists(tableName) {
+                ok = db.executeUpdate(sqlString, withArgumentsIn: [])
             }
         })
         return ok
     }
 
-    func excuteSQL(_ sqlString: String, withArrParameter arrParameter: [Any]) -> Bool {
+    func excuteSQL(_ sqlString: String, withArrParameter arrParameter: [Any]?) -> Bool {
         var ok = false
-        if dbQueue {
-            dbQueue.inDatabase({ db in
-                ok = db.executeUpdate(sqlString, withArgumentsInArray: arrParameter)  false
-            })
-        }
+        dbQueue?.inDatabase({ db in
+            ok = db.executeUpdate(sqlString, withArgumentsIn: arrParameter ?? [])
+        })
         return ok
     }
-    
-    func excuteSQL(_ sqlString: String, withDicParameter dicParameter: [AnyHashable : Any]) -> Bool {
+
+    func excuteSQL(_ sqlString: String, withDicParameter dicParameter: [AnyHashable : Any]?) -> Bool {
         var ok = false
-        if dbQueue {
-            dbQueue.inDatabase({ db in
-                ok = db.executeUpdate(sqlString, withParameterDictionary: dicParameter)  false
-            })
-        }
+        dbQueue?.inDatabase({ db in
+            ok = db.executeUpdate(sqlString, withParameterDictionary: dicParameter ?? [:])
+        })
         return ok
     }
 
     func excuteSQL(_ sqlString: String) -> Bool {
         var ok = false
-        if dbQueue {
-            var args: va_list
-            var p_args: va_list
-            p_args = args
-            va_start(args, sqlString)
-            dbQueue.inDatabase({ db in
-                ok = db.executeUpdate(sqlString, withVAList: p_args)  false
-            })
-            va_end(args)
-        }
+//        var args: va_list
+//        var p_args: va_list
+//        p_args = args
+//        va_start(args, sqlString)
+//        dbQueue.inDatabase({ db in
+//            ok = db.executeUpdate(sqlString, withVAList: p_args)
+//        })
+//        va_end(args)
         return ok
     }
     func excuteQuerySQL(_ sqlStr: String, resultBlock: @escaping (_ rsSet: FMResultSet) -> Void) {
-        if dbQueue {
-            dbQueue.inDatabase({ db in
-                let retSet: FMResultSet = db.execute(sqlStr)
-                //if resultBlock
-
-                resultBlock(retSet)
-
-            })
-        }
+        dbQueue?.inDatabase({ db in
+            let retSet: FMResultSet = db.executeQuery(sqlStr, withParameterDictionary: nil)!
+            resultBlock(retSet)
+        })
     }
 
-
-
-
-    
 }
 
 class WXDBMessageStore: WXDBBaseStore {
-    init() {
+    override init() {
         super.init()
-
-        dbQueue = WXDBManager.sharedInstance().messageQueue
+        dbQueue = WXDBManager.shared.messageQueue
         let ok: Bool = createTable()
         if !ok {
-            DLog("DB: 聊天记录表创建失败")
+            Dlog("DB: 聊天记录表创建失败")
         }
-
     }
 
     func createTable() -> Bool {
         let sqlString = String(format: SQL_CREATE_MESSAGE_TABLE, MESSAGE_TABLE_NAME)
         return createTable(MESSAGE_TABLE_NAME, withSQL: sqlString)
     }
-    func add(_ message: WXMessage) -> Bool {
-        if message == nil || message.messageID == nil || message.userID == nil || (message.friendID == nil && message.groupID == nil) {
+    func add(_ message: WXMessage?) -> Bool {
+        guard let message = message else {
             return false
         }
-
         var fid = ""
-        var subfid: String
-        if message.partnerType == TLPartnerTypeUser {
+        var subfid: String = ""
+        if message.partnerType == .user {
             fid = message.friendID
         } else {
             fid = message.groupID
             subfid = message.friendID
         }
-
         let sqlString = String(format: SQL_ADD_MESSAGE, MESSAGE_TABLE_NAME)
-        let arrPara = [message.messageID, message.userID, fid, (subfid), String(format: "%lf", message.date.timeIntervalSince1970), message.partnerType, message.ownerTyper, message.messageType, message.content.mj_JSONString(), message.sendState, message.readState, "", "", "", "", ""]
+        let arrPara = [message.messageID, message.userID, fid,subfid, String(format: "%lf", message.date.timeIntervalSince1970), message.partnerType, message.ownerTyper, message.messageType, message.content.jsonString(), message.sendState, message.readState, "", "", "", "", ""] as [Any]
         let ok = excuteSQL(sqlString, withArrParameter: arrPara)
         return ok
     }
 
-    //  The converted code is limited to 1 KB.
-    //  Please Sign Up (Free!) to remove this limitation.
-    //
-    
     func messages(byUserID userID: String, partnerID: String, from date: Date, count: Int, complete: @escaping ([Any], Bool) -> Void) {
         var data: [AnyHashable] = []
         let sqlString = String(format: SQL_SELECT_MESSAGES_PAGE, MESSAGE_TABLE_NAME, userID, partnerID, String(format: "%lf", date.timeIntervalSince1970), count + 1)
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
                 let message: WXMessage = self.p_createDBMessage(by: retSet)
-                if let aMessage = message {
-                    data.insert(aMessage, at: 0)
-                }
+                data.insert(message, at: 0)
             }
             retSet.close()
         })
-
         var hasMore = false
         if data.count == count + 1 {
             hasMore = true
@@ -217,23 +165,18 @@ class WXDBMessageStore: WXDBBaseStore {
         }
         complete(data, hasMore)
     }
-    func chatFiles(byUserID userID: String, partnerID: String) -> [Any] {
-        var data: [AnyHashable] = []
+    func chatFiles(byUserID userID: String, partnerID: String) -> [[WXMessage]] {
+        var data: [[WXMessage]] = []
         let sqlString = String(format: SQL_SELECT_CHAT_FILES, MESSAGE_TABLE_NAME, userID, partnerID)
-
         var lastDate = Date()
-        var array: [AnyHashable] = []
+        var array: [WXMessage] = []
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
                 let message: WXMessage = self.p_createDBMessage(by: retSet)
                 if self.isToday(message.date) {
-                    if let aMessage = message {
-                        array.append(aMessage)
-                    }
+                    array.append(message)
                 } else {
-                    if let aDate = message.date {
-                        lastDate = aDate
-                    }
+                    lastDate = message.date
                     if array.count > 0 {
                         data.append(array)
                     }
@@ -248,29 +191,26 @@ class WXDBMessageStore: WXDBBaseStore {
         return data
     }
     func isToday(_ date: Date) -> Bool {
-        let components1: DateComponents = date.ymdComponents()
-        let components2: DateComponents = Date().ymdComponents()
+        let components1: DateComponents = date.components
+        let components2: DateComponents = Date().components
         return (components1.year == components2.year) && (components1.month == components2.month) && (components1.day == components2.day)
     }
 
     func chatImagesAndVideos(byUserID userID: String, partnerID: String) -> [WXMessage] {
         var data: [WXMessage] = []
         let sqlString = String(format: SQL_SELECT_CHAT_MEDIA, MESSAGE_TABLE_NAME, userID, partnerID)
-
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
                 let message: WXMessage = self.p_createDBMessage(by: retSet)
-                if let aMessage = message {
-                    data.append(aMessage)
-                }
+                data.append(message)
             }
             retSet.close()
         })
         return data
     }
-    func lastMessage(byUserID userID: String, partnerID: String) -> WXMessage {
+    func lastMessage(byUserID userID: String, partnerID: String) -> WXMessage? {
         let sqlString = String(format: SQL_SELECT_LAST_MESSAGE, MESSAGE_TABLE_NAME, MESSAGE_TABLE_NAME, userID, partnerID)
-        var message: WXMessage
+        var message: WXMessage?
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
                 message = self.p_createDBMessage(by: retSet)
@@ -282,64 +222,55 @@ class WXDBMessageStore: WXDBBaseStore {
 
     func deleteMessage(byMessageID messageID: String) -> Bool {
         let sqlString = String(format: SQL_DELETE_MESSAGE, MESSAGE_TABLE_NAME, messageID)
-        let ok = excuteSQL(sqlString, nil)
+        let ok = excuteSQL(sqlString)
         return ok
     }
     func deleteMessages(byUserID userID: String, partnerID: String) -> Bool {
         let sqlString = String(format: SQL_DELETE_FRIEND_MESSAGES, MESSAGE_TABLE_NAME, userID, partnerID)
-        let ok = excuteSQL(sqlString, nil)
+        let ok = excuteSQL(sqlString)
         return ok
     }
 
     func deleteMessages(byUserID userID: String) -> Bool {
         let sqlString = String(format: SQL_DELETE_USER_MESSAGES, MESSAGE_TABLE_NAME, userID)
-        let ok = excuteSQL(sqlString, nil)
+        let ok = excuteSQL(sqlString)
         return ok
     }
     func p_createDBMessage(by retSet: FMResultSet) -> WXMessage {
-        let type: TLMessageType = retSet.int(forColumn: "msg_type")
+        let type: TLMessageType = TLMessageType(rawValue: Int(retSet.int(forColumn: "msg_type"))) ?? .other
         let message = WXMessage.createMessage(by: type)
-        message.messageID = retSet.string(forColumn: "msgid")
-        message.userID = retSet.string(forColumn: "uid")
-        message.partnerType = retSet.int(forColumn: "partner_type")
-        if message.partnerType == TLPartnerTypeGroup {
-            message.groupID = retSet.string(forColumn: "fid")
-            message.friendID = retSet.string(forColumn: "subfid")
+        message.messageID = retSet.string(forColumn: "msgid") ?? ""
+        message.userID = retSet.string(forColumn: "uid") ?? ""
+        message.partnerType = TLPartnerType(rawValue: Int(retSet.int(forColumn: "partner_type"))) ?? .group
+        if message.partnerType == .group {
+            message.groupID = retSet.string(forColumn: "fid") ?? ""
+            message.friendID = retSet.string(forColumn: "subfid") ?? ""
         } else {
-            message.friendID = retSet.string(forColumn: "fid")
-            message.groupID = retSet.string(forColumn: "subfid")
+            message.friendID = retSet.string(forColumn: "fid") ?? ""
+            message.groupID = retSet.string(forColumn: "subfid") ?? ""
         }
-        let dateString = retSet.string(forColumn: "date")
-        message.date = Date(timeIntervalSince1970: TimeInterval(Double(dateString)  0.0))
-        message.ownerTyper = retSet.int(forColumn: "own_type")
-        if let aColumn = retSet.int(forColumn: "msg_type") {
-            message.messageType = aColumn
-        }
+        let dateString = retSet.string(forColumn: "date") ?? ""
+        message.date = Date(timeIntervalSince1970: TimeInterval(Double(dateString) ?? 0))
+        message.ownerTyper = TLMessageOwnerType(rawValue: Int(retSet.int(forColumn: "own_type"))) ?? .own
+        message.messageType = TLMessageType(rawValue: Int(retSet.int(forColumn: "msg_type"))) ?? TLMessageType.other
         let content = retSet.string(forColumn: "content")
-        message.content = content.mj_JSONObject()
-        message.sendState = retSet.int(forColumn: "send_status")
-        message.readState = retSet.int(forColumn: "received_status")
+        message.content = content?.mj_JSONObject() as! [String : String]
+        message.sendState = TLMessageSendState(rawValue: Int(retSet.int(forColumn: "send_status"))) ?? .fail
+        message.readState = TLMessageReadState(rawValue: Int(retSet.int(forColumn: "received_status"))) ?? .readed
         return message
     }
-
-
-    
 }
 
 class WXDBConversationStore: WXDBBaseStore {
-    private var messageStore: WXDBMessageStore
-
-    init() {
+    private var messageStore = WXDBMessageStore()
+    override init() {
         super.init()
-
-        dbQueue = WXDBManager.sharedInstance().messageQueue
+        dbQueue = WXDBManager.shared.messageQueue
         let ok: Bool = createTable()
         if !ok {
-            DLog("DB: 聊天记录表创建失败")
+            Dlog("DB: 聊天记录表创建失败")
         }
-
     }
-
     func createTable() -> Bool {
         let sqlString = String(format: SQL_CREATE_CONV_TABLE, CONV_TABLE_NAME)
         return createTable(CONV_TABLE_NAME, withSQL: sqlString)
@@ -347,41 +278,35 @@ class WXDBConversationStore: WXDBBaseStore {
     func addConversation(byUid uid: String, fid: String, type: Int, date: Date) -> Bool {
         let unreadCount: Int = unreadMessage(byUid: uid, fid: fid) + 1
         let sqlString = String(format: SQL_ADD_CONV, CONV_TABLE_NAME)
-        let arrPara = [uid, fid, type, String(format: "%lf", date.timeIntervalSince1970), unreadCount, "", "", "", "", ""]
+        let arrPara = [uid, fid, type, String(format: "%lf", date.timeIntervalSince1970), unreadCount, "", "", "", "", ""] as [Any]
         let ok = excuteSQL(sqlString, withArrParameter: arrPara)
         return ok
     }
-    func conversations(byUid uid: String) -> [Any] {
-        var data: [AnyHashable] = []
+    func conversations(byUid uid: String) -> [WXConversation] {
+        var data: [WXConversation] = []
         let sqlString = String(format: SQL_SELECT_CONVS, CONV_TABLE_NAME, uid)
-
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
                 let conversation = WXConversation()
-                conversation.partnerID = retSet.string(forColumn: "fid")
-                conversation.convType = retSet.int(forColumn: "conv_type")
-                let dateString = retSet.string(forColumn: "date")
-                conversation.date = Date(timeIntervalSince1970: TimeInterval(Double(dateString)))
-                conversation.unreadCount = retSet.int(forColumn: "unread_count")
+                conversation.partnerID = retSet.string(forColumn: "fid") ?? ""
+                conversation.convType = TLConversationType(rawValue: Int(retSet.int(forColumn: "conv_type"))) ?? TLConversationType.group
+                let dateString = retSet.string(forColumn: "date") ?? ""
+                conversation.date = Date(timeIntervalSince1970: TimeInterval(Double(dateString) ?? 0))
+                conversation.unreadCount = Int(retSet.int(forColumn: "unread_count"))
                 data.append(conversation)
             }
             retSet.close()
         })
-
-        // 获取conv对应的msg
-        for conversation: WXConversation in data as [WXConversation]  [] {
-            let message: WXMessage = messageStore.lastMessage(byUserID: uid, partnerID: conversation.partnerID)
+        for conversation: WXConversation in data {
+            let message = messageStore.lastMessage(byUserID: uid, partnerID: conversation.partnerID)
             if message != nil {
-                conversation.content = message.conversationContent()
-                conversation.date = message.date
+                conversation.content = message?.conversationContent() ?? ""
+                conversation.date = message?.date ?? Date()
             }
         }
-
         return data
     }
-    
     //更新会话状态（已读）
-
     func updateConversation(byUid uid: String, fid: String) {
     }
 
@@ -391,50 +316,35 @@ class WXDBConversationStore: WXDBBaseStore {
         let sqlString = String(format: SQL_SELECT_CONV_UNREAD, CONV_TABLE_NAME, uid, fid)
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             if retSet.next() != nil {
-                unreadCount = retSet.int(forColumn: "unread_count")  0
+                unreadCount = Int(retSet.int(forColumn: "unread_count"))
             }
             retSet.close()
         })
         return unreadCount
     }
-
     //删除单条会话
     func deleteConversation(byUid uid: String, fid: String) -> Bool {
         let sqlString = String(format: SQL_DELETE_CONV, CONV_TABLE_NAME, uid, fid)
-        let ok = excuteSQL(sqlString, nil)
+        let ok = excuteSQL(sqlString)
         return ok
     }
-
     //删除用户的所有会话
-
     func deleteConversations(byUid uid: String) -> Bool {
         let sqlString = String(format: SQL_DELETE_ALL_CONVS, CONV_TABLE_NAME, uid)
-        let ok = excuteSQL(sqlString, nil)
+        let ok = excuteSQL(sqlString)
         return ok
     }
 
-    // MARK: - Getter -
-    func messageStore() -> WXDBMessageStore {
-        if messageStore == nil {
-            messageStore = WXDBMessageStore()
-        }
-        return messageStore
-    }
-
-    
-    
 }
 
 class WXDBExpressionStore: WXDBBaseStore {
-    init() {
+    override init() {
         super.init()
-
-        dbQueue = WXDBManager.sharedInstance().commonQueue
+        dbQueue = WXDBManager.shared.commonQueue
         let ok: Bool = createTable()
         if !ok {
-            DLog("DB: 聊天记录表创建失败")
+            Dlog("DB: 聊天记录表创建失败")
         }
-
     }
 
     func createTable() -> Bool {
@@ -450,7 +360,7 @@ class WXDBExpressionStore: WXDBBaseStore {
     func addExpressionGroup(_ group: TLEmojiGroup, forUid uid: String) -> Bool {
         // 添加表情包
         let sqlString = String(format: SQL_ADD_EXP_GROUP, EXP_GROUP_TABLE_NAME)
-        let arr = [uid, group.groupID, group.type, (group.groupName), (group.groupInfo), (group.groupDetailInfo), group.count, (group.authID), (group.authName), String(format: "%lf", group.date.timeIntervalSince1970), "", "", "", "", ""]
+        let arr = [uid, group.groupID, group.type, (group.groupName), (group.groupInfo), (group.groupDetailInfo), group.count, (group.authID), (group.authName), String(format: "%lf", group.date.timeIntervalSince1970), "", "", "", "", ""] as [Any]
         var ok = excuteSQL(sqlString, withArrParameter: arr)
         if !ok {
             return false
@@ -459,45 +369,43 @@ class WXDBExpressionStore: WXDBBaseStore {
         ok = addExpressions(group.data as! [TLEmoji], toGroupID: group.groupID)
         return ok
     }
-    func expressionGroups(byUid uid: String) -> [TLEmoji] {
-        var data: [TLEmoji] = []
+    func expressionGroups(byUid uid: String) -> [TLEmojiGroup] {
+        var data: [TLEmojiGroup] = []
         let sqlString = String(format: SQL_SELECT_EXP_GROUP, EXP_GROUP_TABLE_NAME, uid)
 
         // 读取表情包信息
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
                 let group = TLEmojiGroup()
-                group.groupID = retSet.string(forColumn: "gid")
-                group.type = retSet.int(forColumn: "type")
-                group.groupName = retSet.string(forColumn: "name")
-                group.groupInfo = retSet.string(forColumn: "desc")
-                group.groupDetailInfo = retSet.string(forColumn: "detail")
-                group.count = retSet.int(forColumn: "count")
-                group.authID = retSet.string(forColumn: "auth_id")
-                group.authName = retSet.string(forColumn: "auth_name")
-                group.status = TLEmojiGroupStatusDownloaded
+                group.groupID = retSet.string(forColumn: "gid") ?? ""
+                group.type = TLEmojiType(rawValue: Int(retSet.int(forColumn: "type"))) ?? TLEmojiType.emoji
+                group.groupName = retSet.string(forColumn: "name") ?? ""
+                group.groupInfo = retSet.string(forColumn: "desc") ?? ""
+                group.groupDetailInfo = retSet.string(forColumn: "detail") ?? ""
+                group.count = Int(retSet.int(forColumn: "count") ?? 0)
+                group.authID = retSet.string(forColumn: "auth_id") ?? ""
+                group.authName = retSet.string(forColumn: "auth_name") ?? ""
+                group.status = .downloaded
                 data.append(group)
             }
             retSet.close()
         })
-
         // 读取表情包的所有表情信息
-        for group: TLEmojiGroup in data as [TLEmojiGroup] {
+        for group: TLEmojiGroup in data {
             group.data = expressions(forGroupID: group.groupID)
         }
-
         return data
     }
     func deleteExpressionGroup(byID gid: String, forUid uid: String) -> Bool {
         let sqlString = String(format: SQL_DELETE_EXP_GROUP, EXP_GROUP_TABLE_NAME, uid, gid)
-        return excuteSQL(sqlString, nil)
+        return excuteSQL(sqlString)
     }
 
     func countOfUserWhoHasExpressionGroup(_ gid: String) -> Int {
         let sqlString = String(format: SQL_SELECT_COUNT_EXP_GROUP_USERS, EXP_GROUP_TABLE_NAME, gid)
         var count: Int = 0
-        dbQueue.inDatabase({ db in
-            count = db.int(forQuery: sqlString)
+        dbQueue?.inDatabase({ db in
+//            count = db.executeQuery(sqlString, withArgumentsIn: [])
         })
         return count
     }
@@ -514,15 +422,14 @@ class WXDBExpressionStore: WXDBBaseStore {
         return true
     }
     func expressions(forGroupID groupID: String) -> [TLEmoji] {
-        var data: [AnyHashable] = []
+        var data: [TLEmoji] = []
         let sqlString = String(format: SQL_SELECT_EXPS, EXPS_TABLE_NAME, groupID)
-
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
                 let emoji = TLEmoji()
-                emoji.groupID = retSet.string(forColumn: "gid")
-                emoji.emojiID = retSet.string(forColumn: "eid")
-                emoji.emojiName = retSet.string(forColumn: "name")
+                emoji.groupID = retSet.string(forColumn: "gid") ?? ""
+                emoji.emojiID = retSet.string(forColumn: "eid") ?? ""
+                emoji.emojiName = retSet.string(forColumn: "name") ?? ""
                 data.append(emoji)
             }
             retSet.close()
@@ -532,9 +439,9 @@ class WXDBExpressionStore: WXDBBaseStore {
 }
 
 class WXDBFriendStore: WXDBBaseStore {
-    init() {
+    override init() {
         super.init()
-        dbQueue = WXDBManager.sharedInstance().commonQueue
+        dbQueue = WXDBManager.shared.commonQueue
         let ok: Bool = createTable()
         if !ok {
             Dlog("DB: 好友表创建失败")
@@ -552,7 +459,7 @@ class WXDBFriendStore: WXDBBaseStore {
         let ok = excuteSQL(sqlString, withArrParameter: arrPara)
         return ok
     }
-    
+
     func updateFriendsData(_ friendData: [WXUser], forUid uid: String) -> Bool {
         let oldData = friendsData(byUid: uid)
         if oldData.count > 0 {
@@ -578,45 +485,38 @@ class WXDBFriendStore: WXDBBaseStore {
         return true
     }
     func friendsData(byUid uid: String) -> [WXUser] {
-        var data: [AnyHashable] = []
+        var data: [WXUser] = []
         let sqlString = String(format: SQL_SELECT_FRIENDS, FRIENDS_TABLE_NAME, uid)
-
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
                 let user = WXUser()
-                user.userID = retSet.string(forColumn: "uid")
-                user.username = retSet.string(forColumn: "username")
-                user.nikeName = retSet.string(forColumn: "nikename")
-                user.avatarURL = retSet.string(forColumn: "avatar")
-                user.remarkName = retSet.string(forColumn: "remark")
+                user.userID = retSet.string(forColumn: "uid") ?? ""
+                user.username = retSet.string(forColumn: "username") ?? ""
+                user.nikeName = retSet.string(forColumn: "nikename") ?? ""
+                user.avatarURL = retSet.string(forColumn: "avatar") ?? ""
+                user.remarkName = retSet.string(forColumn: "remark") ?? ""
                 data.append(user)
             }
             retSet.close()
         })
-
         return data
     }
 
     func deleteFriend(byFid fid: String, forUid uid: String) -> Bool {
         let sqlString = String(format: SQL_DELETE_FRIEND, FRIENDS_TABLE_NAME, uid, fid)
-        let ok = excuteSQL(sqlString, nil)
+        let ok = excuteSQL(sqlString)
         return ok
     }
-
-
-    
 }
 
 class WXDBGroupStore: WXDBBaseStore {
-    init() {
+    override init() {
         super.init()
-
-        dbQueue = WXDBManager.sharedInstance().commonQueue
+        dbQueue = WXDBManager.shared.commonQueue
         let ok: Bool = createTable()
         if !ok {
-            DLog("DB: 讨论组表创建失败")
+            Dlog("DB: 讨论组表创建失败")
         }
-
     }
 
     func createTable() -> Bool {
@@ -633,34 +533,29 @@ class WXDBGroupStore: WXDBBaseStore {
         let arrPara = [(uid), (group.groupID), (group.groupName), "", "", "", "", ""]
         var ok = excuteSQL(sqlString, withArrParameter: arrPara)
         if ok {
-            // 将通讯录成员插入数据库
             ok = addGroupMembers(group.users, forUid: uid, andGid: group.groupID)
         }
         return ok
     }
-    
-    func updateGroupsData(_ groupData: [Any], forUid uid: String) -> Bool {
+
+    func updateGroupsData(_ groupData: [WXGroup], forUid uid: String) -> Bool {
         let oldData = groupsData(byUid: uid)
         if oldData.count > 0 {
-            // 建立新数据的hash表，用于删除数据库中的过时数据
-            var newDataHash: [AnyHashable : Any] = [:]
-            for group: WXGroup in groupData as [WXGroup]  [] {
-                if let anID = group.groupID {
-                    newDataHash[anID] = "YES"
-                }
+            var newDataHash: [String : Any] = [:]
+            for group: WXGroup in groupData {
+                newDataHash[group.groupID] = "YES"
             }
-            for group: WXGroup in oldData as [WXGroup]  [] {
+            for group: WXGroup in oldData {
                 if newDataHash[group.groupID] == nil {
                     let ok = deleteGroup(byGid: group.groupID, forUid: uid)
                     if !ok {
-                        DLog("DBError: 删除过期讨论组失败！")
+                        Dlog("DBError: 删除过期讨论组失败！")
                     }
                 }
             }
         }
-
         // 将数据插入数据库
-        for group: WXGroup in groupData as [WXGroup]  [] {
+        for group: WXGroup in groupData {
             let ok = add(group, forUid: uid)
             if !ok {
                 return ok
@@ -669,30 +564,27 @@ class WXDBGroupStore: WXDBBaseStore {
 
         return true
     }
-    func groupsData(byUid uid: String) -> [AnyHashable] {
-        var data: [AnyHashable] = []
+    func groupsData(byUid uid: String) -> [WXGroup] {
+        var data: [WXGroup] = []
         let sqlString = String(format: SQL_SELECT_GROUPS, GROUPS_TABLE_NAME, uid)
-
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
                 let group = WXGroup()
-                group.groupID = retSet.string(forColumn: "gid")
-                group.groupName = retSet.string(forColumn: "name")
+                group.groupID = retSet.string(forColumn: "gid") ?? ""
+                group.groupName = retSet.string(forColumn: "name") ?? ""
                 data.append(group)
             }
             retSet.close()
         })
-
         // 获取讨论组成员
-        for group: WXGroup in data as [WXGroup]  [] {
+        for group: WXGroup in data {
             group.users = groupMembers(forUid: uid, andGid: group.groupID)
         }
-
         return data
     }
     func deleteGroup(byGid gid: String, forUid uid: String) -> Bool {
         let sqlString = String(format: SQL_DELETE_GROUP, GROUPS_TABLE_NAME, uid, gid)
-        let ok = excuteSQL(sqlString, nil)
+        let ok = excuteSQL(sqlString)
         return ok
     }
 
@@ -703,27 +595,25 @@ class WXDBGroupStore: WXDBBaseStore {
         let ok = excuteSQL(sqlString, withArrParameter: arrPara)
         return ok
     }
-    
-    func addGroupMembers(_ users: [Any], forUid uid: String, andGid gid: String) -> Bool {
+
+    func addGroupMembers(_ users: [WXUser], forUid uid: String, andGid gid: String) -> Bool {
         let oldData = groupMembers(forUid: uid, andGid: gid)
         if oldData.count > 0 {
             // 建立新数据的hash表，用于删除数据库中的过时数据
-            var newDataHash: [AnyHashable : Any] = [:]
-            for user: WXUser in users as [WXUser]  [] {
-                if let anID = user.userID {
-                    newDataHash[anID] = "YES"
-                }
+            var newDataHash: [String : Any] = [:]
+            for user: WXUser in users {
+                newDataHash[user.userID] = "YES"
             }
-            for user: WXUser in oldData as [WXUser]  [] {
+            for user: WXUser in oldData {
                 if newDataHash[user.userID] == nil {
                     let ok = deleteGroupMember(forUid: uid, gid: gid, andFid: user.userID)
                     if !ok {
-                        DLog("DBError: 删除过期好友失败")
+                        Dlog("DBError: 删除过期好友失败")
                     }
                 }
             }
         }
-        for user: WXUser in users as [WXUser]  [] {
+        for user: WXUser in users{
             let ok = addGroupMember(user, forUid: uid, andGid: gid)
             if !ok {
                 return false
@@ -731,31 +621,26 @@ class WXDBGroupStore: WXDBBaseStore {
         }
         return true
     }
-    func groupMembers(forUid uid: String, andGid gid: String) -> [AnyHashable] {
-        var data: [AnyHashable] = []
+    func groupMembers(forUid uid: String, andGid gid: String) -> [WXUser] {
+        var data: [WXUser] = []
         let sqlString = String(format: SQL_SELECT_GROUP_MEMBERS, GROUP_MEMBER_TABLE_NAMGE, uid)
-
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
                 let user = WXUser()
-                user.userID = retSet.string(forColumn: "uid")
-                user.username = retSet.string(forColumn: "username")
-                user.nikeName = retSet.string(forColumn: "nikename")
-                user.avatarURL = retSet.string(forColumn: "avatar")
-                user.remarkName = retSet.string(forColumn: "remark")
+                user.userID = retSet.string(forColumn: "uid") ?? ""
+                user.username = retSet.string(forColumn: "username") ?? ""
+                user.nikeName = retSet.string(forColumn: "nikename") ?? ""
+                user.avatarURL = retSet.string(forColumn: "avatar") ?? ""
+                user.remarkName = retSet.string(forColumn: "remark") ?? ""
                 data.append(user)
             }
             retSet.close()
         })
-
         return data
     }
     func deleteGroupMember(forUid uid: String, gid: String, andFid fid: String) -> Bool {
         let sqlString = String(format: SQL_DELETE_GROUP_MEMBER, GROUP_MEMBER_TABLE_NAMGE, uid, gid, fid)
-        let ok = excuteSQL(sqlString, nil)
+        let ok = excuteSQL(sqlString)
         return ok
     }
-
-
-    
 }

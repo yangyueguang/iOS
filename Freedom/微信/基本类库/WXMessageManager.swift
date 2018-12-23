@@ -38,10 +38,12 @@ class WXConversation: NSObject {
     var partnerName = ""//用户名
     var avatarURL = ""//头像地址（网络）
     var avatarPath = ""//头像地址（本地）
-    var date: Date//时间
+    var date: Date = Date()//时间
     var content = ""//消息展示内容
-    private(set) var clueType = TLClueType.none//提示红点类型
-    private(set) var isRead = false
+    private var clueType = TLClueType.none//提示红点类型
+    private var isRead: Bool {
+        return unreadCount == 0
+    }
     var unreadCount: Int = 0//未读数
     func setConvType(_ convType: TLConversationType) {
         self.convType = convType
@@ -54,11 +56,8 @@ class WXConversation: NSObject {
             break
         }
     }
-    func isRead() -> Bool {
-        return unreadCount == 0
-    }
     func updateUserInfo(_ user: WXUser) {
-        partnerName = user.showName()
+        partnerName = user.showName
         avatarPath = user.avatarPath
         avatarURL = user.avatarURL
     }
@@ -72,22 +71,22 @@ class WXMessageFrame: NSObject {
     var contentSize = CGSize.zero
 }
 class WXMessage: NSObject, WXMessageProtocol {
-    var kMessageFrame: WXMessageFrame?
+    var kMessageFrame = WXMessageFrame()
+    var fromUser: WXChatUserProtocol?
+    var messageFrame = WXMessageFrame()
     var messageID = ""
     var userID = ""
     var friendID = ""
     var groupID = ""
-    var date: Date
-    var fromUser: WXChatUserProtocol
+    var date = Date()
     var showTime = false
     var showName = false
-    var partnerType: TLPartnerType
-    var messageType: TLMessageType
-    var ownerTyper: TLMessageOwnerType
-    var readState: TLMessageReadState
-    var sendState: TLMessageSendState
+    var partnerType = TLPartnerType.user
+    var messageType = TLMessageType.text
+    var ownerTyper = TLMessageOwnerType.own
+    var readState = TLMessageReadState.unRead
+    var sendState = TLMessageSendState.success
     var content: [String : String] = [:]
-    var messageFrame: WXMessageFrame
     class func createMessage(by type: TLMessageType) -> WXMessage {
         if type == .text {
             return WXTextMessage()
@@ -109,38 +108,125 @@ class WXMessage: NSObject, WXMessageProtocol {
         return "子类未定义"
     }
 }
+class WXTextMessage: WXMessage {
+    let textLabel = UILabel()
+    lazy var attrText: NSAttributedString = NSAttributedString(string: content["text"] ?? "")
+    override init() {
+        super.init()
+        kMessageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
+        if messageType == .text {
+            kMessageFrame.height += 20
+            textLabel.attributedText = attrText
+            kMessageFrame.contentSize = textLabel.sizeThatFits(CGSize(width: APPW * 0.58, height: CGFloat(MAXFLOAT)))
+        }
+        kMessageFrame.height += kMessageFrame.contentSize.height
+
+        var size = CGFloat(UserDefaults.standard.double(forKey: "CHAT_FONT_SIZE"))
+        if size == 0 {
+            size = 16.0
+        }
+        textLabel.font = UIFont.systemFont(ofSize: size)
+        textLabel.numberOfLines = 0
+    }
+    override func conversationContent() -> String {
+        return content["text"] ?? ""
+    }
+    override func messageCopy() -> String {
+        return content["text"] ?? ""
+    }
+}
+
 class WXImageMessage: WXMessage {
-    var imageSize: CGSize = CGSize.zero {
-        set {
-            content["w"] = Double(imageSize.width)
-            content["h"] = Double(imageSize.height)
+    var imageSize: CGSize {
+        set (newValue){
+            content["w"] = "\(imageSize.width)"
+            content["h"] = "\(imageSize.height)"
         }
         get {
-            let width = CGFloat(Double(content["w"]))
-            let height = CGFloat(Double(content["h"]))
+            let width = CGFloat(Double(content["w"] ?? "") ?? 0)
+            let height = CGFloat(Double(content["h"] ?? "") ?? 0)
             return CGSize(width: width, height: height)
         }
     }
-    override lazy var kMessageFrame: WXMessageFrame? = {
-            let kMessageFrame = WXMessageFrame()
-            kMessageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
-            let imageSize: CGSize = self.imageSize
-            if imageSize.equalTo(CGSize.zero) {
-                kMessageFrame.contentSize = CGSize(width: 100, height: 100)
-            } else if imageSize.width > imageSize.height {
-                var height: CGFloat = APPW * 0.45 * imageSize.height / imageSize.width
-                height = height < APPW * 0.25 ? APPW * 0.25 : height
-                kMessageFrame.contentSize = CGSize(width: APPW * 0.45, height: height)
-            } else {
-                var width: CGFloat = APPW * 0.45 * imageSize.width / imageSize.height
-                width = width < APPW * 0.25 ? APPW * 0.25 : width
-                kMessageFrame.contentSize = CGSize(width: width, height: APPW * 0.45)
-            }
-            kMessageFrame.height += kMessageFrame.contentSize.height
-            return kMessageFrame
-        }()
+    override init() {
+        super.init()
+        kMessageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
+        let imageSize: CGSize = self.imageSize
+        if imageSize.equalTo(CGSize.zero) {
+            kMessageFrame.contentSize = CGSize(width: 100, height: 100)
+        } else if imageSize.width > imageSize.height {
+            var height: CGFloat = APPW * 0.45 * imageSize.height / imageSize.width
+            height = height < APPW * 0.25 ? APPW * 0.25 : height
+            kMessageFrame.contentSize = CGSize(width: APPW * 0.45, height: height)
+        } else {
+            var width: CGFloat = APPW * 0.45 * imageSize.width / imageSize.height
+            width = width < APPW * 0.25 ? APPW * 0.25 : width
+            kMessageFrame.contentSize = CGSize(width: width, height: APPW * 0.45)
+        }
+        kMessageFrame.height += kMessageFrame.contentSize.height
+
+    }
     override func conversationContent() -> String {
         return "[图片]"
+    }
+    override func messageCopy() -> String {
+        return content.jsonString()
+    }
+}
+
+class WXExpressionMessage: WXMessage {
+    var emoji: TLEmoji = TLEmoji() {
+        didSet {
+            content["groupID"] = emoji.groupID
+            content["emojiID"] = emoji.emojiID
+            let imageSize: CGSize = UIImage(named: self.path)?.size ?? CGSize.zero
+            content["w"] = "\(imageSize.width)"
+            content["h"] = "\(imageSize.height)"
+        }
+    }
+    var path: String {
+        set {
+//            emoji.emojiPath = path
+            print(path)
+        }
+        get {
+            return emoji.emojiPath
+        }
+    }
+    var url:String {
+        return "http://123.57.155.230:8080/ibiaoqing/admin/expre/download.dopId=\(emoji.emojiID)"
+    }
+    var emojiSize: CGSize {
+        set {
+            content["w"] = "\(newValue.width)"
+            content["h"] = "\(newValue.height)"
+        }
+        get {
+            return CGSize(width: CGFloat(Double(content["w"] ?? "") ?? 0), height: CGFloat(Double(content["h"] ?? "") ?? 0))
+        }
+    }
+    override init() {
+        super.init()
+        emoji.groupID = content["groupID"] ?? ""
+        emoji.emojiID = content["emojiID"] ?? ""
+        kMessageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
+        kMessageFrame.height += 5
+        let emojiSize: CGSize = CGSize.zero
+        if emojiSize.equalTo(CGSize.zero) {
+            kMessageFrame.contentSize = CGSize(width: 80, height: 80)
+        } else if emojiSize.width > emojiSize.height {
+            var height: CGFloat = APPW * 0.35 * emojiSize.height / emojiSize.width
+            height = height < APPW * 0.2 ? APPW * 0.2 : height
+            kMessageFrame.contentSize = CGSize(width: APPW * 0.35, height: height)
+        } else {
+            var width: CGFloat = APPW * 0.35 * emojiSize.width / emojiSize.height
+            width = width < APPW * 0.2 ? APPW * 0.2 : width
+            kMessageFrame.contentSize = CGSize(width: width, height: APPW * 0.35)
+        }
+        kMessageFrame.height += kMessageFrame.contentSize.height
+    }
+    override func conversationContent() -> String {
+        return "[表情]"
     }
     override func messageCopy() -> String {
         return content.jsonString()
@@ -211,15 +297,15 @@ class WXMessageManager: NSObject {
     func deleteMessages(byPartnerID partnerID: String) -> Bool {
         let ok = messageStore.deleteMessages(byUserID: userID, partnerID: partnerID)
         if ok {
-            WXChatViewController.shared.resetChatVC()
+//            WXChatViewController.shared.resetChatVC()
         }
         return ok
     }
     func deleteAllMessages() -> Bool {
         var ok = messageStore.deleteMessages(byUserID: userID)
         if ok {
-            WXChatViewController.shared.resetChatVC()
-            ok = conversationStore.deleteConversations(byUid: userID)
+//            WXChatViewController.shared.resetChatVC()
+//            ok = conversationStore.deleteConversations(byUid: userID)
         }
         return ok
     }
@@ -239,9 +325,9 @@ class WXMessageManager: NSObject {
         users.type = .other
         let group1: WXSettingGroup = TLCreateSettingGroup(nil, nil, [users])
         let top = WXSettingItem.createItem(withTitle: ("置顶聊天"))
-        top.type = .swithBtn
+        top.type = .switchBtn
         let screen = WXSettingItem.createItem(withTitle: ("消息免打扰"))
-        screen.type = .swithBtn
+        screen.type = .switchBtn
         let group2: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([top, screen]))
         let chatFile = WXSettingItem.createItem(withTitle: ("聊天文件"))
         let group3: WXSettingGroup = TLCreateSettingGroup(nil, nil, [chatFile])
@@ -273,16 +359,16 @@ class WXMessageManager: NSObject {
         }
         let group2: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([groupName, groupQR, groupPost]))
         let screen = WXSettingItem.createItem(withTitle: ("消息免打扰"))
-        screen.type = .swithBtn
+        screen.type = .switchBtn
         let top = WXSettingItem.createItem(withTitle: ("置顶聊天"))
-        top.type = .swithBtn
+        top.type = .switchBtn
         let save = WXSettingItem.createItem(withTitle: ("保存到通讯录"))
-        save.type = .swithBtn
+        save.type = .switchBtn
         let group3: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([screen, top, save]))
         let myNikeName = WXSettingItem.createItem(withTitle: ("我在本群的昵称"))
         myNikeName.subTitle = groupInfo.myNikeName
         let showOtherNikeName = WXSettingItem.createItem(withTitle: ("显示群成员昵称"))
-        showOtherNikeName.type = .swithBtn
+        showOtherNikeName.type = .switchBtn
         let group4: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([myNikeName, showOtherNikeName]))
         let chatFile = WXSettingItem.createItem(withTitle: ("聊天文件"))
         let chatHistory = WXSettingItem.createItem(withTitle: ("查找聊天内容"))
