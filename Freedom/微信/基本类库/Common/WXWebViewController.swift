@@ -5,9 +5,23 @@ import Foundation
 import WebKit
 class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// 是否使用网页标题作为nav标题，默认YES
     var useMPageTitleAsNavTitle = true/// 是否显示加载进度，默认YES
-    var showLoadingProgress = true// 是否禁止历史记录，默认NO
+    // 是否禁止历史记录，默认NO
+    var showLoadingProgress = true {
+        didSet {
+            progressView.isHidden = !showLoadingProgress
+        }
+    }
     var disableBackButton = false
-    var url = ""
+    var url = "" {
+        didSet {
+            if view.isFirstResponder {
+                progressView.progress = 0.0
+                if let anUrl = URL(string: self.url) {
+                    webView.load(URLRequest(url: anUrl))
+                }
+            }
+        }
+    }
     lazy var webView = WKWebView(frame: CGRect(x: 0, y: Int(TopHeight) + 20, width: Int(APPW), height: Int(APPH - TopHeight) - 20))
     lazy var progressView: UIProgressView = {
         let progressView = UIProgressView(frame: CGRect(x: 0, y: TopHeight + 20.0, width: APPW, height: 10.0))
@@ -73,25 +87,14 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// 是�
             navigationItem.leftBarButtonItems = [backButtonItem] as? [UIBarButtonItem]
         }
     }
-
     deinit {
         webView.removeObserver(self, forKeyPath: "estimatedProgress")
         webView.scrollView.removeObserver(self, forKeyPath: "backgroundColor")
-    }
-    func setUrl(_ url: String) {
-        self.url = url
-        if view.isFirstResponder {
-            progressView.progress = 0.0
-            if let anUrl = URL(string: self.url) {
-                webView.load(URLRequest(url: anUrl))
-            }
-        }
     }
     func observeValue(forKeyPath keyPath: String, of object: Any, change: [NSKeyValueChangeKey : Any], context: UnsafeMutableRawPointer) {
         if showLoadingProgress && (keyPath == "estimatedProgress") && (object as! WKWebView) == webView {
             progressView.alpha = 1.0
             progressView.setProgress(Float(webView.estimatedProgress), animated: true)
-
             if webView.estimatedProgress >= 1.0 {
                 UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseOut, animations: {
                     self.progressView.alpha = 0.0
@@ -106,11 +109,6 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// 是�
             }
         }
     }
-    func setShowLoadingProgress(_ showLoadingProgress: Bool) {
-        self.showLoadingProgress = showLoadingProgress
-        progressView.isHidden = !showLoadingProgress
-    }
-
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if useMPageTitleAsNavTitle {
             navigationItem.title = webView.title
@@ -120,5 +118,4 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// 是�
             authLabel.frame = rec
         }
     }
-
 }

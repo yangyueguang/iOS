@@ -148,8 +148,8 @@ class WXDBMessageStore: WXDBBaseStore {
         return ok
     }
 
-    func messages(byUserID userID: String, partnerID: String, from date: Date, count: Int, complete: @escaping ([Any], Bool) -> Void) {
-        var data: [AnyHashable] = []
+    func messages(byUserID userID: String, partnerID: String, from date: Date, count: Int, complete: @escaping ([WXMessage], Bool) -> Void) {
+        var data: [WXMessage] = []
         let sqlString = String(format: SQL_SELECT_MESSAGES_PAGE, MESSAGE_TABLE_NAME, userID, partnerID, String(format: "%lf", date.timeIntervalSince1970), count + 1)
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
@@ -196,12 +196,12 @@ class WXDBMessageStore: WXDBBaseStore {
         return (components1.year == components2.year) && (components1.month == components2.month) && (components1.day == components2.day)
     }
 
-    func chatImagesAndVideos(byUserID userID: String, partnerID: String) -> [WXMessage] {
-        var data: [WXMessage] = []
+    func chatImagesAndVideos(byUserID userID: String, partnerID: String) -> [WXImageMessage] {
+        var data: [WXImageMessage] = []
         let sqlString = String(format: SQL_SELECT_CHAT_MEDIA, MESSAGE_TABLE_NAME, userID, partnerID)
         excuteQuerySQL(sqlString, resultBlock: { retSet in
             while retSet.next() {
-                let message: WXMessage = self.p_createDBMessage(by: retSet)
+                let message: WXImageMessage = self.p_createDBMessage(by: retSet) as! WXImageMessage
                 data.append(message)
             }
             retSet.close()

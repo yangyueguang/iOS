@@ -274,7 +274,7 @@ class WXMessageManager: NSObject {
         return ok
     }
 
-    func messageRecord(forPartner partnerID: String, from date: Date, count: Int, complete: @escaping ([Any], Bool) -> Void) {
+    func messageRecord(forPartner partnerID: String, from date: Date, count: Int, complete: @escaping ([WXMessage], Bool) -> Void) {
         messageStore.messages(byUserID: userID, partnerID: partnerID, from: date, count: count, complete: { data, hasMore in
             complete(data, hasMore)
         })
@@ -284,7 +284,7 @@ class WXMessageManager: NSObject {
         completed(data)
     }
 
-    func chatImagesAndVideos(forPartnerID partnerID: String, completed: @escaping ([WXMessage]) -> Void) {
+    func chatImagesAndVideos(forPartnerID partnerID: String, completed: @escaping ([WXImageMessage]) -> Void) {
         let data = messageStore.chatImagesAndVideos(byUserID: userID, partnerID: partnerID)
         completed(data)
     }

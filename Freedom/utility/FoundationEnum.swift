@@ -82,7 +82,7 @@ enum TLAddMneuType : Int {
     case other
 }
 enum TLChatBarStatus : Int {
-    case `init`
+    case `default`
     case voice
     case emoji
     case more
