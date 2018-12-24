@@ -73,8 +73,7 @@ enum TLAddMneuType : Int {
     case scan
     case wallet
 }
-
-enum TLEmojiType : Int {
+@objc enum TLEmojiType : Int {
     case emoji
     case favorite
     case face

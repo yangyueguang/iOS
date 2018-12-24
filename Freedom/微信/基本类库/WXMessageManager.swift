@@ -32,7 +32,17 @@ protocol WXMessageManagerConvVCDelegate: NSObjectProtocol {
     func updateConversationData()
 }
 class WXConversation: NSObject {
-    var convType = TLConversationType.personal//会话类型（个人，讨论组，企业号）
+    //会话类型（个人，讨论组，企业号）
+    var convType = TLConversationType.personal {
+        didSet {
+            switch convType {
+            case .personal, .group:
+                clueType = .pointWithNumber
+            case .public, .serverGroup:
+                clueType = .point
+            }
+        }
+    }
     var remindType = TLMessageRemindType.normal//消息提醒类型
     var partnerID = ""//用户ID
     var partnerName = ""//用户名
@@ -40,22 +50,11 @@ class WXConversation: NSObject {
     var avatarPath = ""//头像地址（本地）
     var date: Date = Date()//时间
     var content = ""//消息展示内容
-    private var clueType = TLClueType.none//提示红点类型
-    private var isRead: Bool {
+    var clueType = TLClueType.none//提示红点类型
+    var isRead: Bool {
         return unreadCount == 0
     }
     var unreadCount: Int = 0//未读数
-    func setConvType(_ convType: TLConversationType) {
-        self.convType = convType
-        switch convType {
-        case .personal, .group:
-            clueType = .pointWithNumber
-        case .public, .serverGroup:
-            clueType = .point
-        default:
-            break
-        }
-    }
     func updateUserInfo(_ user: WXUser) {
         partnerName = user.showName
         avatarPath = user.avatarPath
@@ -262,7 +261,7 @@ class WXMessageManager: NSObject {
         }
         return conversationStore.addConversation(byUid: message.userID, fid: partnerID, type: type, date: message.date)
     }
-    func conversationRecord(_ complete: @escaping ([Any]) -> Void) {
+    func conversationRecord(_ complete: @escaping ([WXConversation]) -> Void) {
         let data = conversationStore.conversations(byUid: userID)
         complete(data)
     }

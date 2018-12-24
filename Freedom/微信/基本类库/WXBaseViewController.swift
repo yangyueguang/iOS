@@ -4,10 +4,8 @@
 //
 import UIKit
 
-class WXBaseViewController: UIViewController {
+class WXBaseViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-
 }

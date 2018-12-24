@@ -30,10 +30,10 @@ class WXFriendHelper: NSObject {
     var friendsData: [WXUser] = []
     var data: [WXUserGroup] = []
     var sectionHeaders: [String] = []
-    private var friendCount: Int {
+    var friendCount: Int {
         return friendsData.count
     }
-    var dataChangedBlock: ((_ friends: [AnyHashable], _ headers: [AnyHashable], _ friendCount: Int) -> Void)?
+    var dataChangedBlock: ((_ friends: [WXUserGroup], _ headers: [String], _ friendCount: Int) -> Void)?
     var groupsData: [WXGroup] = []
     var tagsData: [WXUserGroup] = []
     private var friendStore = WXDBFriendStore()
@@ -179,8 +179,8 @@ class WXFriendHelper: NSObject {
                         let image = UIGraphicsGetImageFromCurrentImageContext()!
                         UIGraphicsEndImageContext()
                         let imageRef = image.cgImage
-                        let imageRefRect = imageRef?.cropping(to: CGRect(x: 0, y: 0, width: view.frame.size.width * 2, height: view.frame.size.height * 2)) as! CGImage
-                        var ansImage = UIImage(cgImage: imageRefRect)
+                        let imageRefRect = imageRef?.cropping(to: CGRect(x: 0, y: 0, width: view.frame.size.width * 2, height: view.frame.size.height * 2))!
+                        let ansImage = UIImage(cgImage: imageRefRect!)
                         let imageViewData = ansImage.pngData()
                         let savedImagePath = FileManager.pathUserAvatar(group.groupAvatarPath)
                         try! imageViewData?.write(to: URL(fileURLWithPath: savedImagePath), options: Data.WritingOptions.atomic)
@@ -510,8 +510,8 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
         var data: [WXSettingGroup] = []
         var myEmojiGroups = store.expressionGroups(byUid: WXUserHelper.shared.user.userID)
         if (myEmojiGroups.count) > 0 {
-            //            let group1 = TLCreateSettingGroup("聊天面板中的表情", nil, myEmojiGroups)
-            //            data.append(group1)
+//            let group1 = TLCreateSettingGroup("聊天面板中的表情", nil, myEmojiGroups)
+//            data.append(group1)
         }
         let userEmojis = WXSettingItem.createItem(withTitle: "添加的表情")
         let buyedEmojis = WXSettingItem.createItem(withTitle: "购买的表情")
@@ -617,7 +617,7 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
             failure(error.localizedDescription)
         })
     }
-    func requestExpressionGroupDetail(byGroupID groupID: String, pageIndex: Int, success: @escaping (_ data: Any) -> Void, failure: @escaping (_ error: String) -> Void) {
+    func requestExpressionGroupDetail(byGroupID groupID: String, pageIndex: Int, success: @escaping (_ data: [TLEmoji]) -> Void, failure: @escaping (_ error: String) -> Void) {
         let urlString = String(format: IEXPRESSION_DETAIL_URL, pageIndex, groupID)
         AFHTTPSessionManager().post(urlString, parameters: nil, progress: nil, success: { task, responseObject in
             //            let respArray = responseObject.mj_JSONObject()

@@ -601,9 +601,6 @@ class TLEmojiGroup: NSObject, WXPictureCarouselProtocol {
     override init() {
         super.init()
     }
-    func object(at index: Int) -> TLEmoji {
-        return data[index]
-    }
     func pictureURL() -> String {
         return bannerURL
     }
