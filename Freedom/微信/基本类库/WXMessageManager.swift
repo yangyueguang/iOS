@@ -279,7 +279,7 @@ class WXMessageManager: NSObject {
             complete(data, hasMore)
         })
     }
-    func chatFiles(forPartnerID partnerID: String, completed: @escaping ([Any]) -> Void) {
+    func chatFiles(forPartnerID partnerID: String, completed: @escaping ([[WXMessage]]) -> Void) {
         let data = messageStore.chatFiles(byUserID: userID, partnerID: partnerID)
         completed(data)
     }

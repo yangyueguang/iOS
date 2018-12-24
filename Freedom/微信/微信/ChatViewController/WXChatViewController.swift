@@ -5,14 +5,14 @@
 //import SnapKit
 //import Foundation
 //extension UIImagePickerController {
-//    override func viewDidLoad() {
+//    override open func viewDidLoad() {
 //        super.viewDidLoad()
 //        navigationBar.barTintColor = UIColor(46.0, 49.0, 50.0, 1.0)
 //        navigationBar.tintColor = UIColor.white
 //        view.backgroundColor = UIColor.lightGray
 //        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17.5)]
 //    }
-//    override func viewWillDisappear(_ animated: Bool) {
+//    override open func viewWillDisappear(_ animated: Bool) {
 //        super.viewWillDisappear(animated)
 //    }
 //}
@@ -20,51 +20,47 @@
 //    var chatMoreKeyboardData: [TLMoreKeyboardItem] = []
 //    override init() {
 //        super.init()
-//        let imageItem = TLMoreKeyboardItem.create(byType: .image, title: "照片", imagePath: "moreKB_image")
-//        let cameraItem = TLMoreKeyboardItem.create(byType: .camera, title: "拍摄", imagePath: "moreKB_video")
-//        let videoItem = TLMoreKeyboardItem.create(byType: .video, title: "小视频", imagePath: "moreKB_sight")
-//        let videoCallItem = TLMoreKeyboardItem.create(byType: .videoCell, title: "视频聊天", imagePath: "moreKB_video_call")
-//        let walletItem = TLMoreKeyboardItem.create(byType: .wallet, title: "红包", imagePath: "moreKB_wallet")
-//        let transferItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypeTransfer, title: "转账", imagePath: "moreKB_pay")
-//        let positionItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypePosition, title: "位置", imagePath: "moreKB_location")
-//        let favoriteItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypeFavorite, title: "收藏", imagePath: "moreKB_favorite")
-//        let businessCardItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypeBusinessCard, title: "个人名片", imagePath: "moreKB_friendcard")
-//        let voiceItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypeVoice, title: "语音输入", imagePath: "moreKB_voice")
-//        let cardsItem = TLMoreKeyboardItem.create(byType: TLMoreKeyboardItemTypeCards, title: "卡券", imagePath: "moreKB_wallet")
+//        let imageItem = TLMoreKeyboardItem.create(by: .image, title: "照片", imagePath: "moreKB_image")
+//        let cameraItem = TLMoreKeyboardItem.create(by: .camera, title: "拍摄", imagePath: "moreKB_video")
+//        let videoItem = TLMoreKeyboardItem.create(by: .video, title: "小视频", imagePath: "moreKB_sight")
+//        let videoCallItem = TLMoreKeyboardItem.create(by: .videoCall, title: "视频聊天", imagePath: "moreKB_video_call")
+//        let walletItem = TLMoreKeyboardItem.create(by: .wallet, title: "红包", imagePath: "moreKB_wallet")
+//        let transferItem = TLMoreKeyboardItem.create(by: .transfer, title: "转账", imagePath: "moreKB_pay")
+//        let positionItem = TLMoreKeyboardItem.create(by: .position, title: "位置", imagePath: "moreKB_location")
+//        let favoriteItem = TLMoreKeyboardItem.create(by: .favorite, title: "收藏", imagePath: "moreKB_favorite")
+//        let businessCardItem = TLMoreKeyboardItem.create(by: .businessCard, title: "个人名片", imagePath: "moreKB_friendcard")
+//        let voiceItem = TLMoreKeyboardItem.create(by: .voice, title: "语音输入", imagePath: "moreKB_voice")
+//        let cardsItem = TLMoreKeyboardItem.create(by: .cards, title: "卡券", imagePath: "moreKB_wallet")
 //        chatMoreKeyboardData.append(contentsOf: [imageItem, cameraItem, videoItem, videoCallItem, walletItem, transferItem, positionItem, favoriteItem, businessCardItem, voiceItem, cardsItem])
 //    }
 //}
-//class WXChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//class WXChatViewController: WXChatBaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 //    static let shared = WXChatViewController()
-//    private var moreKBhelper: WXMoreKBHelper
-//    private var emojiKBHelper: WXUserHelper
-//    private var rightBarButton: UIBarButtonItem
-//    func viewDidLoad() {
+//    private var moreKBhelper = WXMoreKBHelper()
+//    private var emojiKBHelper = WXUserHelper.shared
+//    private lazy var rightBarButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
+//    override func viewDidLoad() {
 //        super.viewDidLoad()
 //        navigationItem.rightBarButtonItem = rightBarButton
-//        user = WXUserHelper.shared().user as WXChatUserProtocol
-//        moreKBhelper = WXMoreKBHelper()
+//        user = WXUserHelper.shared.user as WXChatUserProtocol
 //        setChatMoreKeyboardData(moreKBhelper.chatMoreKeyboardData)
-//        emojiKBHelper = WXUserHelper.shared()
 //        emojiKBHelper.emojiGroupDataComplete({ emojiGroups in
-//            moreKBhelper = WXMoreKBHelper()
 //            self.chatMoreKeyboardData = moreKBhelper.chatMoreKeyboardData
-//            emojiKBHelper = WXUserHelper.shared()
 //            emojiKBHelper.emojiGroupDataComplete({ emojiGroups in
 //                self.chatEmojiKeyboardData = emojiGroups
 //            })
-//        }
+//        })
 //    }
 //    func setPartner(_ partner: WXChatUserProtocol) {
 //        super.setPartner(partner)
-//        if partner.chat_userType() == TLChatUserTypeUser {
+//        if partner.chat_userType() == .user {
 //            rightBarButton.image = UIImage(named: "nav_chat_single")
-//        } else if partner.chat_userType() == TLChatUserTypeGroup {
+//        } else if partner.chat_userType() == .group {
 //            rightBarButton.image = UIImage(named: "nav_chat_multi")
 //        }
 //    }
 //    @objc func rightBarButtonDown(_ sender: UINavigationBar) {
-//        if partner.chat_user() == TLChatUserTypeUser {
+//        if partner.chat_user() == .user {
 //            let chatDetailVC = WXChatDetailViewController()
 //            chatDetailVC.user = partner as WXUser
 //            hidesBottomBarWhenPushed = true
@@ -76,12 +72,6 @@
 //            navigationController.pushViewController(chatGroupDetailVC, animated: true)
 //        }
 //    }
-//    func rightBarButton() -> UIBarButtonItem {
-//        if rightBarButton == nil {
-//            rightBarButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
-//        }
-//        return rightBarButton
-//    }
 //    func imagePickerController(_ picker: UIImagePickerController, didFinishPicking image: UIImage, editingInfo: [String : Any]) {
 //        picker.dismiss(animated: true) {
 //            let image = editingInfo[.originalImage] as UIImage
@@ -90,14 +80,14 @@
 //    }
 //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 //        picker.dismiss(animated: true) {
-//            let image = info[.originalImage] as UIImage
+//            let image = info[.originalImage] as! UIImage
 //            self.sendImageMessage(image)
 //        }
 //    }
 //    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 //        picker.dismiss(animated: true)
 //    }
-//    
+//
 //    func moreKeyboard(_ keyboard: Any, didSelectedFunctionItem funcItem: TLMoreKeyboardItem) {
 //        if funcItem.type == .camera || funcItem.type == .image {
 //            let imagePickerController = UIImagePickerController()
@@ -105,7 +95,7 @@
 //                if UIImagePickerController.isSourceTypeAvailable(.camera) {
 //                    imagePickerController.sourceType = .camera
 //                } else {
-////                    self.noticeError("相机初始化失败")
+//                    self.noticeError("相机初始化失败")
 //                    return
 //                }
 //            } else {
@@ -114,7 +104,7 @@
 //            imagePickerController.delegate = self
 //            present(imagePickerController, animated: true)
 //        } else {
-////            self.noticeInfo("选中”\(funcItem.title)“ 按钮")
+//            self.noticeInfo("选中”\(funcItem.title)“ 按钮")
 //        }
 //    }
 //    func emojiKeyboardEmojiEditButtonDown() {
@@ -137,21 +127,22 @@
 //    func didClickedImageMessages(_ imageMessages: [WXMessage], at index: Int) {
 //        var data: [MWPhoto] = []
 //        for message: WXMessage in imageMessages {
-//            var url: URL
+//            var url: URL?
 //            let imagePath = message.content["path"]
-//            if imagePath != nil {
+//            if let imagePath = imagePath {
 //                let imagePatha = FileManager.pathUserChatImage(imagePath)
 //                url = URL(fileURLWithPath: imagePatha)
 //            } else {
 //                url = URL(string: message.content["url"])
 //            }
 //            let photo = MWPhoto(url: url)
-//            data.append(photo)
+//            data.append(photo!)
 //        }
-//        let browser = MWPhotoBrowser(photos: data)
-//        browser.displayNavArrows = true
-//        browser.currentPhotoIndex = index
-//        let broserNavC = WXNavigationController(rootViewController: browser)
-//        present(broserNavC, animated: false)
+//        if let browser = MWPhotoBrowser(photos: data) {
+//            browser.displayNavArrows = true
+//            browser.currentPhotoIndex = index
+//            let broserNavC = WXNavigationController(rootViewController: browser)
+//            present(broserNavC, animated: false)
+//        }
 //    }
 //}
