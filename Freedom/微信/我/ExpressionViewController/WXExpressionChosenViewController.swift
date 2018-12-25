@@ -81,33 +81,34 @@ class WXExpressionCell: WXTableViewCell {
         contentView.addSubview(detailLabel)
         contentView.addSubview(tagView)
         contentView.addSubview(downloadButton)
+        p_addMasonry()
     }
-//    func p_addMasonry() {
-//        iconImageView.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(self.contentView).mas_offset(15)
-//            make.top.mas_equalTo(self.contentView).mas_offset(10)
-//            make.bottom.mas_equalTo(self.contentView).mas_offset(-10)
-//            make.width.mas_equalTo(self.iconImageView.mas_height)
-//        })
-//        titleLabel.mas_makeConstraints({ make in
-//            make.bottom.mas_equalTo(self.iconImageView.mas_centerY).mas_offset(-2.0)
-//            make.left.mas_equalTo(self.iconImageView.mas_right).mas_offset(13.0)
-//            make.right.mas_lessThanOrEqualTo(self.downloadButton.mas_left).mas_offset(-15)
-//        })
-//        detailLabel.mas_makeConstraints({ make in
-//            make.top.mas_equalTo(self.iconImageView.mas_centerY).mas_offset(5.0)
-//            make.left.mas_equalTo(self.titleLabel)
-//            make.right.mas_lessThanOrEqualTo(self.downloadButton.mas_left).mas_offset(-15)
-//        })
-//        tagView.mas_makeConstraints({ make in
-//            make.left.and().top().mas_equalTo(self.contentView)
-//        })
-//        downloadButton.mas_makeConstraints({ make in
-//            make.right.mas_equalTo(self.contentView).mas_offset(-15)
-//            make.centerY.mas_equalTo(self.contentView)
-//            make.size.mas_equalTo(CGSize(width: 60, height: 26))
-//        })
-//    }
+    func p_addMasonry() {
+        iconImageView.snp.makeConstraints { make in
+            make.left.equalTo(self.contentView).offset(15)
+            make.top.equalTo(self.contentView).offset(10)
+            make.bottom.equalTo(self.contentView).offset(-10)
+            make.width.equalTo(self.iconImageView.height)
+        }
+        titleLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(self.iconImageView.snp.centerY).offset(-2.0)
+            make.left.equalTo(self.iconImageView.right).offset(13.0)
+            make.right.lessThanOrEqualTo(self.downloadButton.snp.left).offset(-15)
+        }
+        detailLabel.snp.makeConstraints { make in
+            make.top.equalTo(self.iconImageView.snp.centerY).offset(5.0)
+            make.left.equalTo(self.titleLabel)
+            make.right.lessThanOrEqualTo(self.downloadButton.snp.left).offset(-15)
+        }
+        tagView.snp.makeConstraints { make in
+            make.left.top.equalToSuperview()
+        }
+        downloadButton.snp.makeConstraints { make in
+            make.right.equalTo(self.contentView).offset(-15)
+            make.centerY.equalTo(self.contentView)
+            make.size.equalTo(CGSize(width: 60, height: 26))
+        }
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

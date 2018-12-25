@@ -6,9 +6,7 @@
 //  Copyright © 2018 Super. All rights reserved.
 //
 import UIKit
-import ElasticTransitionObjC
 import XExtension
-import SVProgressHUD
 class LibraryCollectionViewCell: BaseCollectionViewCell {
     override func initUI() {
         super.initUI()
@@ -40,8 +38,11 @@ class LibraryCollectionViewController: BaseViewController,ElasticMenuTransitionD
         let backView = UIImageView(frame: CGRect(x: 0, y: 100, width: APPW, height: APPH - 100))
         backView.image = UIImage(named: "")
         collectionView?.backgroundView = backView
-        let ET = transitioningDelegate as? ElasticTransition
-        print("\ntransition.edge = \(HelperFunctions.type(toStringOf: (ET?.edge)!))\ntransition.transformType = \(String(describing: ET?.transformTypeToString()))\ntransition.sticky = \(String(describing:  ET?.sticky))\ntransition.showShadow = \(String(describing: ET?.showShadow))")
+        let tm = transitioningDelegate as! ElasticTransition
+        print( "transition.edge = .\(tm.edge)\n" +
+            "transition.transformType = .\(tm.transformType)\n" +
+            "transition.sticky = \(tm.sticky)\n" +
+            "transition.showShadow = \(tm.showShadow)")
         collectionView.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.identifier())
         collectionView.delegate = self
         collectionView.dataSource = self

@@ -37,21 +37,18 @@ class WXMyQRCodeViewController: WXBaseViewController {
             ac = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         } else {
             ac = UIAlertAction(title: "扫描二维码", style: .default, handler: { action in
-//                let scannerVC = WXScanningViewController()
-//                scannerVC.disableFunctionBar = true
-//                self.hidesBottomBarWhenPushed = true
-//                self.navigationController?.pushViewController(scannerVC, animated: true)
+                let scannerVC = WXScanningViewController()
+                scannerVC.disableFunctionBar = true
+                self.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(scannerVC, animated: true)
             })
         }
-        showAlerWithtitle(nil, message: nil, style: UIAlertController.Style.actionSheet, ac1: {
-            return UIAlertAction(title: "换个样式", style: .default, handler: { action in
-            })
-        }, ac2: {
-            return UIAlertAction(title: "保存图片", style: .default, handler: { action in
-                self.qrCodeVC.saveQRCodeToSystemAlbum()
-            })
-        }, ac3: {
-            return ac
-        }, completion: nil)
+        let alert = UIAlertController("", "", T1: "换个样式", T2: "保存图片", confirm1: {
+
+        }, confirm2: {
+            self.qrCodeVC.saveQRCodeToSystemAlbum()
+        })
+        alert.addAction(ac)
+        self.present(alert, animated: true, completion: nil)
     }
 }

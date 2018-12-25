@@ -3,9 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
-import SVProgressHUD
 import AFNetworking
-import SwiftyJSON
 import RxSwift
 import RxCocoa
 //FIXME:登录下面的切换视图
@@ -210,16 +208,16 @@ class FreedomBaseLoginViewController: BaseViewController,UITextFieldDelegate,RCI
         }else if(loginUserName.count != 11){
             alertMessage = "手机号不正确!"
         }else if loginPassword.count == 0 {
-            passWordT.shake()
+            passWordT.shakeAnimation()
             alertMessage = "密码不能为空!"
         }else if loginPassword.count < 6 || loginPassword.count > 11{
-            passWordT.shake()
+            passWordT.shakeAnimation()
             alertMessage = "请输入6-16位密码"
         }else if loginMessageCode.count == 0{
             alertMessage = "请输入验证码"
         }
         if alertMessage != nil {
-            SVProgressHUD.showError(withStatus: alertMessage)
+            self.noticeError(alertMessage ?? "")
 //            return false
             return true
         }
@@ -229,25 +227,25 @@ class FreedomBaseLoginViewController: BaseViewController,UITextFieldDelegate,RCI
     func getVerficationCode(_ isRegister:Bool) {
         loginPhone = phoneT.text!
         AFHttpTool.checkPhoneNumberAvailable("86", phoneNumber: loginPhone, success: { responseDict in
-            let response = JSON(responseDict!)
-            if response["code"].intValue == 200 {
-                let resultStatus = response["result"].intValue
-                if  resultStatus == 0  && isRegister{
-                    print("手机号已被注册")
-                    return
-                }else if resultStatus != 0 && !isRegister {
-                    print("手机号未被注册")
-                    return
-                }
-                AFHttpTool.getVerificationCode("86", phoneNumber: self.loginPhone, success: { resDict in
-                    let res = JSON(resDict!)
-                    if res["code"].intValue == 200 {
-                        self.countSecondsDown()
-                    }
-                }, failure: { err in
-                    print("\(err!)")
-                })
-            }
+//            let response = JSON(responseDict!)
+//            if response["code"].intValue == 200 {
+//                let resultStatus = response["result"].intValue
+//                if  resultStatus == 0  && isRegister{
+//                    print("手机号已被注册")
+//                    return
+//                }else if resultStatus != 0 && !isRegister {
+//                    print("手机号未被注册")
+//                    return
+//                }
+//                AFHttpTool.getVerificationCode("86", phoneNumber: self.loginPhone, success: { resDict in
+//                    let res = JSON(resDict!)
+//                    if res["code"].intValue == 200 {
+//                        self.countSecondsDown()
+//                    }
+//                }, failure: { err in
+//                    print("\(err!)")
+//                })
+//            }
         }, failure: { err in
             print("\(err!)")
         })
@@ -263,30 +261,28 @@ class FreedomBaseLoginViewController: BaseViewController,UITextFieldDelegate,RCI
         }
       //验证验证码是否有效
         AFHttpTool.verifyVerificationCode("86", phoneNumber: loginPhone, verificationCode: loginMessageCode, success: { response in
-            let results = JSON(response!)
-            let code = results["code"].intValue
-            if code == 200 {
-                let verificationToken = results["result"]["verification_token"].stringValue
-                //注册用户
-                AFHttpTool.register(withNickname: self.loginUserName, password: self.loginPassword, verficationToken: verificationToken, success: { responseDict in
-                    let res = JSON(responseDict!)
-                    let code = res["code"].intValue
-                    if code == 200 {
-                        print("注册成功")
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5 * Double(NSEC_PER_MSEC) / Double(NSEC_PER_SEC), execute: {
-                            self.navigationController?.popViewController(animated: true)
-                        })
-                    }
-                }, failure: { err in
-                    print("注册失败")
-                })
-            }
-            if code == 1000 {
-                print("验证码错误")
-            }
-            if code == 2000 {
-                print("验证码过期")
-            }
+//            let code = response["code"].intValue
+//            if code == 200 {
+//                let verificationToken = response["result"]["verification_token"].stringValue
+//                //注册用户
+//                AFHttpTool.register(withNickname: self.loginUserName, password: self.loginPassword, verficationToken: verificationToken, success: { responseDict in
+//                    let code = responseDict["code"].intValue
+//                    if code == 200 {
+//                        print("注册成功")
+//                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5 * Double(NSEC_PER_MSEC) / Double(NSEC_PER_SEC), execute: {
+//                            self.navigationController?.popViewController(animated: true)
+//                        })
+//                    }
+//                }, failure: { err in
+//                    print("注册失败")
+//                })
+//            }
+//            if code == 1000 {
+//                print("验证码错误")
+//            }
+//            if code == 2000 {
+//                print("验证码过期")
+//            }
         }, failure: { err in
             print("验证码无效")
         })
@@ -300,20 +296,20 @@ class FreedomBaseLoginViewController: BaseViewController,UITextFieldDelegate,RCI
             return
         }
         AFHttpTool.verifyVerificationCode("86", phoneNumber: loginPhone, verificationCode: loginMessageCode, success: { responseDict in
-            let response = JSON(responseDict!)
-            if response["code"].intValue == 200 {
-                let vToken = response["result"]["verification_token"].stringValue
-                AFHttpTool.resetPassword(loginPassword, vToken: vToken, success: { resDict in
-                    let res = JSON(resDict!)
-                    if res["code"].intValue == 200 {
-                        print("修改成功!")
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5 * Double(NSEC_PER_MSEC) / Double(NSEC_PER_SEC), execute: {
-                            self.navigationController?.popViewController(animated: true)
-                        })
-                    }
-                }, failure: { err in
-                })
-            }
+//            let response = JSON(responseDict!)
+//            if response["code"].intValue == 200 {
+//                let vToken = response["result"]["verification_token"].stringValue
+//                AFHttpTool.resetPassword(loginPassword, vToken: vToken, success: { resDict in
+//                    let res = JSON(resDict!)
+//                    if res["code"].intValue == 200 {
+//                        print("修改成功!")
+//                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5 * Double(NSEC_PER_MSEC) / Double(NSEC_PER_SEC), execute: {
+//                            self.navigationController?.popViewController(animated: true)
+//                        })
+//                    }
+//                }, failure: { err in
+//                })
+//            }
         }, failure: { err in
         })
     }
@@ -328,25 +324,25 @@ class FreedomBaseLoginViewController: BaseViewController,UITextFieldDelegate,RCI
         }
         retryTime?.invalidate()
         retryTime = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.retryConnectionFailed), userInfo: nil, repeats: false)
-        SVProgressHUD.show(withStatus: "登录中...")
+        XHud.show(.withDetail(message: "登录中..."))
         UserDefaults.standard.removeObject(forKey: "UserCookies")
         AFHttpTool.login(withPhone:loginUserName, password: loginPassword, region: "86", success: { responseDict in
-            let response = JSON(responseDict!)
-            if response["code"].intValue == 200 {
-                let token = response["result"]["token"].stringValue
-                let userId = response["result"]["id"].stringValue
-                self.loginRongCloud(self.loginUserName, userId: userId, token: token, password: self.loginPassword)
-            } else {
-                //关闭HUD
-                let _errCode = response["code"].intValue
-                print("NSError is \(_errCode)")
-                if _errCode == 1000 {
-                    SVProgressHUD.showError(withStatus: "手机号或密码错误！")
-                }
-                self.passWordT.shake()
-            }
+//            let response = JSON(responseDict!)
+//            if response["code"].intValue == 200 {
+//                let token = response["result"]["token"].stringValue
+//                let userId = response["result"]["id"].stringValue
+//                self.loginRongCloud(self.loginUserName, userId: userId, token: token, password: self.loginPassword)
+//            } else {
+//                //关闭HUD
+//                let _errCode = response["code"].intValue
+//                print("NSError is \(_errCode)")
+//                if _errCode == 1000 {
+//                    self.noticeError("手机号或密码错误！")
+//                }
+//                self.passWordT.shakeAnimation()
+//            }
         }, failure: { err in
-            SVProgressHUD.showError(withStatus: "登录失败，请检查网络。")
+            self.noticeError("登录失败，请检查网络。")
         })
     }
     @objc func retryConnectionFailed() {
@@ -367,10 +363,10 @@ class FreedomBaseLoginViewController: BaseViewController,UITextFieldDelegate,RCI
         }, error: { status in
             //关闭HUD
             print("RCConnectErrorCode is \(status.rawValue)")
-            self.passWordT.shake()
+            self.passWordT.shakeAnimation()
             DispatchQueue.main.async(execute: {
                 print("RCConnectErrorCode is \(status.rawValue)")
-                self.passWordT.shake()
+                self.passWordT.shakeAnimation()
                 //SDK会自动重连登录，这时候需要监听连接状态
                 RCIM.shared().connectionStatusDelegate = self
             })
@@ -379,10 +375,10 @@ class FreedomBaseLoginViewController: BaseViewController,UITextFieldDelegate,RCI
         }, tokenIncorrect: {
             print("IncorrectToken")
             AFHttpTool.getTokenSuccess({ responseDict in
-                let response = JSON(responseDict!)
-                let token = response["result"]["token"].stringValue
-                let userId = response["result"]["userId"].stringValue
-                self.loginRongCloud(userName, userId: userId, token: token, password: password)
+//                let response = JSON(responseDict!)
+//                let token = response["result"]["token"].stringValue
+//                let userId = response["result"]["userId"].stringValue
+//                self.loginRongCloud(userName, userId: userId, token: token, password: password)
             }, failure: { err in
                 DispatchQueue.main.async(execute: {
                     print("Token无效")
@@ -405,21 +401,21 @@ class FreedomBaseLoginViewController: BaseViewController,UITextFieldDelegate,RCI
             defaults.synchronize()
         })
         AFHttpTool.getUserInfo(userId, success: { response in
-            let jr = JSON(response!)
-            if Int(jr["code"].stringValue) == 200 {
-                let nickname = jr["result"]["nickname"].rawString()
-                let portraitUri = jr["result"]["portraitUri"].rawString()
-                let user = RCUserInfo(userId: userId, name: nickname, portrait: portraitUri)
-                if user!.portraitUri.count <= 0 {
-                    user?.portraitUri = FreedomTools.defaultUserPortrait(user)
-                }
-                RCDataBaseManager.shareInstance().insertUser(toDB: user)
-                RCIM.shared().refreshUserInfoCache(user, withUserId: userId)
-                RCIM.shared().currentUserInfo = user
-                defaults.set(user?.portraitUri, forKey:"userPortraitUri")
-                defaults.set(user?.name, forKey:"userNickName")
-                defaults.synchronize()
-            }
+//            let jr = JSON(response!)
+//            if Int(jr["code"].stringValue) == 200 {
+//                let nickname = jr["result"]["nickname"].rawString()
+//                let portraitUri = jr["result"]["portraitUri"].rawString()
+//                let user = RCUserInfo(userId: userId, name: nickname, portrait: portraitUri)
+//                if user!.portraitUri.count <= 0 {
+//                    user?.portraitUri = FreedomTools.defaultUserPortrait(user)
+//                }
+//                RCDataBaseManager.shareInstance().insertUser(toDB: user)
+//                RCIM.shared().refreshUserInfoCache(user, withUserId: userId)
+//                RCIM.shared().currentUserInfo = user
+//                defaults.set(user?.portraitUri, forKey:"userPortraitUri")
+//                defaults.set(user?.name, forKey:"userNickName")
+//                defaults.synchronize()
+//            }
         }, failure: { err in
         })
         //同步群组
@@ -439,21 +435,21 @@ class FreedomBaseLoginViewController: BaseViewController,UITextFieldDelegate,RCI
                 RCIM.shared().connectionStatusDelegate = (UIApplication.shared.delegate as? RCIMConnectionStatusDelegate?)!
                 self.loginSuccess(self.loginUserName, userId: self.loginUserId, token: self.loginToken, password: self.loginPassword)
             } else if status == RCConnectionStatus.ConnectionStatus_NETWORK_UNAVAILABLE {
-                SVProgressHUD.showError(withStatus: "当前网络不可用，请检查！")
+                self.noticeError("当前网络不可用，请检查！")
             } else if status == .ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT {
-                SVProgressHUD.showError(withStatus: "您的帐号在别的设备上登录，您被迫下线！")
+                self.noticeError("您的帐号在别的设备上登录，您被迫下线！")
             } else if status == .ConnectionStatus_TOKEN_INCORRECT {
                 print("Token无效")
-                SVProgressHUD.showError(withStatus: "无法连接到服务器！")
+                self.noticeError("无法连接到服务器！")
                 AFHttpTool.getTokenSuccess({ responseDict in
-                    let response = JSON(responseDict!)
-                    self.loginToken = response["result"]["token"].stringValue
-                    self.loginUserId = response["result"]["userId"].stringValue
-                    self.loginRongCloud(self.loginUserName, userId: self.loginUserId, token: self.loginToken, password: self.loginPassword)
+//                    let response = JSON(responseDict!)
+//                    self.loginToken = response["result"]["token"].stringValue
+//                    self.loginUserId = response["result"]["userId"].stringValue
+//                    self.loginRongCloud(self.loginUserName, userId: self.loginUserId, token: self.loginToken, password: self.loginPassword)
                 }, failure: { (error) in
                     DispatchQueue.main.async(execute: {
                         print("Token无效")
-                        SVProgressHUD.showError(withStatus: "无法连接到服务器！")
+                        self.noticeError("无法连接到服务器！")
                     })
                 })
             } else {

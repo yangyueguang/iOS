@@ -215,7 +215,7 @@
   }
 }
 - (void)AlertShow:(NSString *)content {
-    [SVProgressHUD showInfoWithStatus:content];
+    NSLog(content);
 }
 - (void) clickBackBtn {
   [self.navigationController popViewControllerAnimated:YES];

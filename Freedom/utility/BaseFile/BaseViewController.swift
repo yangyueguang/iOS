@@ -1,7 +1,6 @@
 
 import UIKit
 import XExtension
-import SVProgressHUD
 import Alamofire
 @objcMembers
 open class BaseViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {

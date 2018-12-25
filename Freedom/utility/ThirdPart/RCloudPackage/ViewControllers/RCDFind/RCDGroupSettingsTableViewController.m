@@ -354,7 +354,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                          [[RCDataBaseManager shareInstance]deleteGroupToDB:groupId];
                          [self.navigationController popToRootViewControllerAnimated:YES];
                      } else {
-                         [SVProgressHUD showErrorWithStatus:@"退出失败!"];
+                         NSLog(@"退出失败!");
                      }
                  });
              }];
@@ -375,7 +375,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                          [[RCDataBaseManager shareInstance] deleteGroupToDB:groupId];
                          [self.navigationController popToRootViewControllerAnimated:YES];
                      } else {
-                         [SVProgressHUD showErrorWithStatus:@"解散群组失败！"];
+                         NSLog(@"解散群组失败！");
                      }
                  });
              }];
@@ -424,13 +424,13 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
           if (result == NO) {
             //关闭HUD
             [hud hide:YES];
-              [SVProgressHUD showErrorWithStatus:@"上传头像失败"];
+              NSLog(@"上传头像失败");
           }
         }];
       }failure:^(NSError *err) {
         //关闭HUD
         [hud hide:YES];
-          [SVProgressHUD showErrorWithStatus:@"上传头像失败"];
+          NSLog(@"上传头像失败");
       }];
   dispatch_async(dispatch_get_main_queue(), ^{
     RCDBaseSettingTableViewCell *cell = (RCDBaseSettingTableViewCell *)[self.tableView viewWithTag:RCDGroupSettingsTableViewCellGroupPortraitTag];
@@ -480,7 +480,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     } completion:nil];
 }
 - (void)clearCacheAlertMessage:(NSString *)msg {
-    [SVProgressHUD showErrorWithStatus:msg];
+    NSLog(msg);
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -783,7 +783,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
   }
 }
 -(void)showAlert:(NSString *)alertContent{
-    [SVProgressHUD showInfoWithStatus:alertContent];
+    NSLog(alertContent);
 }
 //将创建者挪到第一的位置
 -(NSMutableArray *) moveCreator:(NSMutableArray *)GroupMemberList{

@@ -13,6 +13,7 @@
 //本文件为了切换appkey测试用的，请应用开发者忽略关于本文件的信息。
 #import <RongIMKit/RongIMKit.h>
 #import "RCDSearchDataManager.h"
+
 @interface RCDSearchResultModel : NSObject
 @property(nonatomic, assign) RCConversationType conversationType;
 @property(nonatomic, assign) RCDSearchType searchType;

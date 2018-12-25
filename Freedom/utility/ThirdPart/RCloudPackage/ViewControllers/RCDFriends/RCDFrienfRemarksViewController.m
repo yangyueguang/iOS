@@ -145,7 +145,7 @@ if ([remarksStr isEqualToString:self.friendInfo.displayName]) {
   
 }
 - (void) aletrInfo:(NSString *)infoStr{
-    [SVProgressHUD showInfoWithStatus:infoStr];
+    NSLog(infoStr);
 }
 //限制备注输入长度不能大于16
 -(void)textFieldEditChanged:(NSNotification *)obj{

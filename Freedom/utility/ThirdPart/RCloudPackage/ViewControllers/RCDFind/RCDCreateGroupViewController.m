@@ -244,7 +244,7 @@
   });
 }
 - (void)Alert:(NSString *)alertContent {
-    [SVProgressHUD showInfoWithStatus:alertContent];
+    NSLog(alertContent);
 }
 - (void)chosePortrait {
   [self moveView:deafultY];

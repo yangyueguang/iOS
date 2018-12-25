@@ -128,7 +128,7 @@
           [UserDefaults setObject:endTime forKey:[NSString stringWithFormat:@"endTime_%@",[RCIM sharedRCIM].currentUserInfo.userId]];
         }error:^(RCErrorCode status) {
           dispatch_async(dispatch_get_main_queue(), ^{
-              [SVProgressHUD showErrorWithStatus:@"设置失败"];
+              NSLog(@"设置失败");
           });
         }];
   }
@@ -266,7 +266,7 @@
     [[RCIMClient sharedRCIMClient] setNotificationQuietHours:startTimeStr spanMins:timeDif success:^{
         }error:^(RCErrorCode status) {
           dispatch_async(dispatch_get_main_queue(), ^{
-              [SVProgressHUD showErrorWithStatus:@"设置失败"];
+              NSLog(@"设置失败");
             blockSelf.swch.on = NO;
           });
         }];
@@ -275,7 +275,7 @@
     [[RCIMClient sharedRCIMClient] removeNotificationQuietHours:^{
     }error:^(RCErrorCode status) {
           dispatch_async(dispatch_get_main_queue(), ^{
-              [SVProgressHUD showErrorWithStatus:@"关闭失败"];
+              NSLog(@"关闭失败");
             blockSelf.swch.on = YES;
           });
         }];

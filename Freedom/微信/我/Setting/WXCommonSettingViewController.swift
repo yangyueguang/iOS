@@ -196,15 +196,13 @@ class WXCommonSettingViewController: WXSettingViewController {
             hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(myExpressionVC, animated: true)
         } else if (item.title == "清空聊天记录") {
-            showAlerWithtitle("将删除所有个人和群的聊天记录。", message: nil, style: UIAlertController.Style.actionSheet, ac1: {
-                return UIAlertAction(title: "清空聊天记录", style: .default, handler: { action in
-                    _ = WXMessageManager.shared.deleteAllMessages()
-                    WXChatViewController.shared.resetChatVC()
-                })
-            }, ac2: {
-                return UIAlertAction(title: "取消", style: .cancel, handler: { action in
-                })
-            }, ac3: nil, completion: nil)
+            let alert = UIAlertController("将删除所有个人和群的聊天记录。", "", T1: "清空聊天记录", T2: "取消", confirm1: {
+                _ = WXMessageManager.shared.deleteAllMessages()
+                WXChatViewController.shared.resetChatVC()
+            }, confirm2: {
+
+            })
+            self.present(alert, animated: true, completion: nil)
         }
         tableView.deselectRow(at: indexPath, animated: false)
     }

@@ -140,7 +140,8 @@ class WXChatFileViewController: WXBaseViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.alwaysBounceVertical = true
         view.addSubview(collectionView)
-        let rightBarButton = UIBarButtonItem(title: "选择", style: .plain, actionBlick: {
+        let rightBarButton = UIBarButtonItem(title: "选择", action: {
+            
         })
         navigationItem.rightBarButtonItem = rightBarButton
         collectionView.register(WXChatFileHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "TLChatFileHeaderView")

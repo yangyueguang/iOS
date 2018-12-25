@@ -119,7 +119,7 @@ class WXQRCodeViewController: WXBaseViewController {/// 信息页面元素 —�
         whiteBGView.addSubview(subTitleLabel)
         whiteBGView.addSubview(qrCodeImageView)
         whiteBGView.addSubview(introductionLabel)
-//        p_addMasonry()
+        p_addMasonry()
     }
     func captureScreenshot(from view: UIView, rect: CGRect, finished: @escaping (_ avatarPath: String) -> Void) {
         DispatchQueue.global(qos: .default).async {
@@ -158,36 +158,35 @@ class WXQRCodeViewController: WXBaseViewController {/// 信息页面元素 —�
             noticeSuccess("已保存到系统相册")
         }
     }
-//    func p_addMasonry() {
-//        whiteBGView.mas_makeConstraints({ make in
-//            make.centerX.mas_equalTo(self.view)
-//            make.centerY.mas_equalTo(self.view).mas_offset(Int(TopHeight) / 2)
-//            make.width.mas_equalTo(self.view).multipliedBy(0.85)
-//            make.bottom.mas_equalTo(self.introductionLabel.mas_bottom).mas_offset(15)
-//        })
-//        avatarImageView.mas_makeConstraints({ make in
-//            make.left.and().top().mas_equalTo(self.whiteBGView).mas_offset(20)
-//            make.width.and().height().mas_equalTo(68)
-//        })
-//        usernameLabel.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(10)
-//            make.centerY.mas_equalTo(self.avatarImageView)
-//            make.right.mas_lessThanOrEqualTo(self.whiteBGView).mas_offset(-20)
-//        })
-//        subTitleLabel.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(self.usernameLabel)
-//            make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(10)
-//        })
-//        qrCodeImageView.mas_makeConstraints({ make in
-//            make.top.mas_equalTo(self.avatarImageView.mas_bottom).mas_offset(15)
-//            make.left.mas_equalTo(self.avatarImageView)
-//            make.right.mas_equalTo(self.whiteBGView).mas_offset(-20)
-//            make.height.mas_equalTo(self.qrCodeImageView.mas_width)
-//        })
-//        introductionLabel.mas_makeConstraints({ make in
-//            make.centerX.mas_equalTo(self.whiteBGView)
-//            make.top.mas_equalTo(self.qrCodeImageView.mas_bottom).mas_offset(15)
-//        })
-//    }
-
+    func p_addMasonry() {
+        whiteBGView.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(TopHeight / 2)
+            make.width.equalToSuperview().multipliedBy(0.85)
+            make.bottom.equalTo(self.introductionLabel.snp.bottom).offset(15)
+        }
+        avatarImageView.snp.makeConstraints { (make) in
+            make.left.top.equalTo(self.whiteBGView).offset(20)
+            make.width.height.equalTo(86)
+        }
+        usernameLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.avatarImageView.snp.right).offset(10)
+            make.centerY.equalTo(self.avatarImageView)
+            make.right.lessThanOrEqualTo(self.whiteBGView).offset(-20)
+        }
+        subTitleLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.usernameLabel)
+            make.top.equalTo(self.usernameLabel.snp.bottom).offset(10)
+        }
+        qrCodeImageView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.avatarImageView.snp.bottom).offset(15)
+            make.left.equalTo(self.avatarImageView)
+            make.right.equalTo(self.whiteBGView).offset(-20)
+            make.height.equalTo(self.qrCodeImageView.snp.width)
+        }
+        introductionLabel.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.whiteBGView)
+            make.top.equalTo(self.qrCodeImageView.snp.bottom).offset(15)
+        }
+    }
 }

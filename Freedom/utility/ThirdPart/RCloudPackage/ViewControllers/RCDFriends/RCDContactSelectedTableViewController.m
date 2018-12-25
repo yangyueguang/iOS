@@ -345,7 +345,7 @@
            [self.navigationController popViewControllerAnimated:YES];
          } else {
            [hud hide:YES];
-             [SVProgressHUD showErrorWithStatus:@"添加成员失败"];
+             NSLog(@"添加成员失败");
              self.rightBtn.customView.userInteractionEnabled = YES;
          }
        }];
@@ -357,7 +357,7 @@
            [self.navigationController popViewControllerAnimated:YES];
          } else {
            [hud hide:YES];
-             [SVProgressHUD showErrorWithStatus:@"删除成员失败"];
+             NSLog(@"删除成员失败");
              self.rightBtn.customView.userInteractionEnabled = YES;
          }
        }];

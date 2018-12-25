@@ -8,6 +8,7 @@
 #import "RCDPrivacyTableViewController.h"
 #import "RCDBaseSettingTableViewCell.h"
 #import "RCDBlackListViewController.h"
+
 @interface RCDPrivacyTableViewController ()
 @end
 @implementation RCDPrivacyTableViewController

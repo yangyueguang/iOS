@@ -40,7 +40,7 @@ extension NetworkManager {
     }
     
     static func getRequest(urlPath:String, request:BaseRequest, success:@escaping HttpSuccess, failure:@escaping HttpFailure) {
-        let parameters = request.toJSON()
+        let parameters = request.toDict()
         sessionManager.request(BaseUrl + urlPath, method: HTTPMethod.get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
@@ -77,7 +77,7 @@ extension NetworkManager {
     }
     
     static func deleteRequest(urlPath:String, request:BaseRequest, success:@escaping HttpSuccess, failure:@escaping HttpFailure){
-        let parameters = request.toJSON()
+        let parameters = request.toDict()
         sessionManager.request(BaseUrl + urlPath, method: HTTPMethod.delete, parameters: parameters, encoding: URLEncoding.default, headers: nil)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
@@ -96,7 +96,7 @@ extension NetworkManager {
     }
     
     static func postRequest(urlPath:String, request:BaseRequest, success:@escaping HttpSuccess, failure:@escaping HttpFailure) {
-        let parameters = request.toJSON()
+        let parameters = request.toDict()
         sessionManager.request(BaseUrl + urlPath, method: HTTPMethod.post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
@@ -115,9 +115,9 @@ extension NetworkManager {
     }
     
     static func uploadRequest(urlPath:String, data:Data, request:BaseRequest, progress:@escaping UploadProgress, success:@escaping HttpSuccess, failure:@escaping HttpFailure) {
-        let parameters = request.toJSON()
+        let parameters = request.toDict()
         sessionManager.upload(multipartFormData: { multipartFormData in
-            for (key,value) in parameters! {
+            for (key,value) in parameters {
                 multipartFormData.append((value as! String).data(using: .utf8)!, withName: key)
             }
             multipartFormData.append(data, withName: "file", fileName: "file", mimeType: "multipart/form-data")

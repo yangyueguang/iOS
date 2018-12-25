@@ -156,8 +156,9 @@ class DZHomeController: DZBaseViewController,UICollectionViewDataSource,UICollec
         view.backgroundColor = UIColor.white
         let more = UIBarButtonItem(image: UIImage(named: "u_add_y"), style: .done, target: nil, action: nil)
         navigationItem.rightBarButtonItem = more
-        let map = UIBarButtonItem(title: "北京", style: .plain, actionBlick: {() -> Void in
-        })
+        let map = UIBarButtonItem(title: "北京") {
+            
+        }
         navigationItem.leftBarButtonItem = map
         let searchBar = UISearchBar()
         searchBar.placeholder = "输入商户名、地点"

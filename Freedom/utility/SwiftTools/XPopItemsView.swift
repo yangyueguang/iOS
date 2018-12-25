@@ -11,7 +11,6 @@
  }
 */
 import UIKit
-import Masonry
 import SnapKit
 import UIKit.UIGestureRecognizerSubclass
 typealias NetCompletBlock = ([BaseType]) -> Void

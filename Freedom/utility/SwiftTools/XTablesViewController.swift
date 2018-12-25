@@ -6,7 +6,6 @@
 //  Copyright © 2018 Super. All rights reserved.
 //
 import UIKit
-import Masonry
 import XExtension
 class UNTestTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     weak var superScoll: UIScrollViewDelegate?

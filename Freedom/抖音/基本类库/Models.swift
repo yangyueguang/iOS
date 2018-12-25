@@ -1,11 +1,6 @@
 //
 //  Models.swift
 //  Douyin
-//
-//  Created by Chao Xue 薛超 on 2018/11/26.
-//  Copyright © 2018 Qiao Shi. All rights reserved.
-//
-import HandyJSON
 import UIKit
 class WebPImage: UIImage {
     var imageData: Data?
@@ -40,18 +35,16 @@ class WebPFrame: NSObject {
     var width: CGFloat = 0.0
     var has_alpha: CGFloat = 0.0
 }
-class BaseModel:NSObject, HandyJSON {
+class BaseModel:NSObject {
     required override init() {
         super.init()
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 class DouYinUser: BaseModel {
-
     var weibo_name:String?
     var google_account:String?
     var special_lock:Int?
@@ -405,21 +398,18 @@ class Visitor: BaseModel {
     var avatar_large:PictureInfo?
 
     static func write(visitor:Visitor) {
-        let dic = visitor.toJSON()
+        let dic = visitor.toDict()
         let defaults = UserDefaults.standard
         defaults.set(dic, forKey: "visitor")
         defaults.synchronize()
     }
-
     static func read() ->Visitor {
         let defaults = UserDefaults.standard
         let dic = defaults.object(forKey: "visitor") as! [String:Any]
-        let visitor = Visitor.deserialize(from: dic)
-        return visitor!
+        let visitor = Visitor.parse(dic as NSDictionary)
+        return visitor
     }
-
     static func formatUDID(udid:String) -> String {
-
         if udid.count < 8 {
             return "************"
         }

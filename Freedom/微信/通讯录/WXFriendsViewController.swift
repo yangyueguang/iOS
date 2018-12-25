@@ -41,30 +41,30 @@ class WXFriendCell: WXTableViewCell {
         contentView.addSubview(avatarImageView)
         contentView.addSubview(usernameLabel)
         contentView.addSubview(subTitleLabel)
-//        p_addMasonry()
+        p_addMasonry()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    //    func p_addMasonry() {
-//        avatarImageView.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(10)
-//            make.top.mas_equalTo(9)
-//            make.bottom.mas_equalTo(-9 + 0.5)
-//            make.width.mas_equalTo(self.avatarImageView.mas_height)
-//        })
-//        usernameLabel.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(10)
-//            make.centerY.mas_equalTo(self.avatarImageView)
-//            make.right.mas_lessThanOrEqualTo(self.contentView).mas_offset(-20)
-//        })
-//        subTitleLabel.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(self.usernameLabel)
-//            make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(2)
-//            make.right.mas_lessThanOrEqualTo(self.contentView).mas_offset(-20)
-//        })
-//    }
+    func p_addMasonry() {
+        avatarImageView.snp.makeConstraints { (make) in
+            make.left.equalTo(10)
+            make.top.equalTo(9)
+            make.bottom.equalTo(-9 + 0.5)
+            make.width.equalTo(self.avatarImageView.snp.height)
+        }
+        usernameLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.avatarImageView.snp.right).offset(10)
+            make.centerY.equalTo(self.avatarImageView)
+            make.right.lessThanOrEqualToSuperview().offset(-20)
+        }
+        subTitleLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.usernameLabel)
+            make.top.equalTo(self.usernameLabel.snp.bottom).offset(2)
+            make.right.lessThanOrEqualToSuperview().offset(-20)
+        }
+    }
 }
 class WXFriendHeaderView: UITableViewHeaderFooterView {
     var title = "" {

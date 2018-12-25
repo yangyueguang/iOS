@@ -87,19 +87,17 @@ class WXBgSettingViewController: WXSettingViewController, UINavigationController
                 present(imagePickerController, animated: true)
             }
         } else if (item.title == "将背景应用到所有聊天场景") {
-            showAlerWithtitle(nil, message: nil, style: UIAlertController.Style.actionSheet, ac1: {
-                return UIAlertAction(title: "将背景应用到所有聊天场景", style: .default, handler: { action in
-                    for key: String in UserDefaults.standard.dictionaryRepresentation().keys {
-                        if key.hasPrefix("CHAT_BG_") && !(key == "CHAT_BG_ALL") {
-                            UserDefaults.standard.removeObject(forKey: key)
-                        }
+            let alert = UIAlertController("", "", T1: "将背景应用到所有聊天场景", T2: "取消", confirm1: {
+                for key: String in UserDefaults.standard.dictionaryRepresentation().keys {
+                    if key.hasPrefix("CHAT_BG_") && !(key == "CHAT_BG_ALL") {
+                        UserDefaults.standard.removeObject(forKey: key)
                     }
-                    WXChatViewController.shared.resetChatVC()
-                })
-            }, ac2: {
-                return UIAlertAction(title: "取消", style: .cancel, handler: { action in
-                })
-            }, ac3: nil, completion: nil)
+                }
+                WXChatViewController.shared.resetChatVC()
+            }, confirm2: {
+
+            })
+            self.present(alert, animated: true, completion: nil)
         }
         tableView.deselectRow(at: indexPath, animated: false)
     }

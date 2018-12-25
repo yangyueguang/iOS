@@ -4,6 +4,7 @@
 #import "E_SearchViewController.h"
 #import "BookReadMode.h"
 #import "BookSubViews.h"
+#import <MJRefresh/MJRefresh.h>
 @interface E_SearchViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>{
     UITextField    *_searchTextField;
     UITableView    *_searchResultView;

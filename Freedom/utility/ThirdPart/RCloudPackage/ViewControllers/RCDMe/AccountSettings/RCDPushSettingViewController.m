@@ -8,6 +8,7 @@
 #import "RCDPushSettingViewController.h"
 #import "RCDBaseSettingTableViewCell.h"
 #import <RongIMKit/RongIMKit.h>
+
 @interface RCDPushSettingViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource, RCDBaseSettingTableViewCellDelegate>
 @property (nonatomic, strong)UITableView *tableView;
 @property (nonatomic, strong)UIPickerView *pickerView;
@@ -218,7 +219,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 - (void)AlertMessage:(NSString *)message {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [SVProgressHUD showInfoWithStatus:message];
+        NSLog(message);
     });
 }
 @end

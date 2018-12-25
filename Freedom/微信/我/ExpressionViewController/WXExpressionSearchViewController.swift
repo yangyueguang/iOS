@@ -32,10 +32,10 @@ class WXExpressionSearchViewController: WXTableViewController, UISearchResultsUp
         let detailVC = WXExpressionDetailViewController()
         detailVC.group = group
         let navC = WXNavigationController(rootViewController: detailVC)
-        let closeButton = UIBarButtonItem(title: "关闭", style: UIBarButtonItem.Style.plain, actionBlick: {
+        let closeButton = UIBarButtonItem(title: "关闭") {
             navC.dismiss(animated: true) {
             }
-        })
+        }
         detailVC.navigationItem.leftBarButtonItem = closeButton
         present(navC, animated: true) {
         }

@@ -3,7 +3,6 @@
 //  Demo
 import UIKit
 import Alamofire
-import SwiftyJSON
 import AFNetworking
 typealias XP12Block = (String) -> SecIdentity?
 typealias XQueryStringSerializationBlock = (URLRequest, Any, NSErrorPointer) -> String

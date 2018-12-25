@@ -138,7 +138,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     userInfo.portraitUri = user.portraitUri;
     if ([userInfo.userId
          isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
-        [SVProgressHUD showErrorWithStatus:@"你不能添加自己到通讯录"];
+        NSLog(@"你不能添加自己到通讯录");
     } else if (user &&
                tableView == self.searchDisplayController.searchResultsTableView) {
       NSMutableArray *cacheList = [[NSMutableArray alloc]initWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];

@@ -237,7 +237,7 @@
       });
     }error:^(RCErrorCode nErrorCode, long messageId) {
        [self.hud hide:YES];
-       [SVProgressHUD showErrorWithStatus:@"群公告发送失败"];
+       NSLog(@"群公告发送失败");
    }];
 }
 //判断内容是否全部为空格  yes 全部为空格  no 不是

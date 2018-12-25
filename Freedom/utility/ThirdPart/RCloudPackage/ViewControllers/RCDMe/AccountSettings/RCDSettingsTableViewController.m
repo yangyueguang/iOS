@@ -182,7 +182,7 @@
       });
 }
 - (void)clearCacheSuccess {
-    [SVProgressHUD showSuccessWithStatus:@"缓存清理成功！"];
+    NSLog(@"缓存清理成功！");
 }
 //退出登录
 - (void)logout {

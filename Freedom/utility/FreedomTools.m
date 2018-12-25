@@ -5,6 +5,86 @@
 //
 #import "FreedomTools.h"
 #import <zlib.h>
+#import <objc/runtime.h>
+@implementation NSString(expanded)
+- (NSString *)pinyin{
+    NSMutableString *str = [self mutableCopy];
+    CFStringTransform((CFMutableStringRef)str, NULL, kCFStringTransformMandarinLatin, NO);
+    CFStringTransform((CFMutableStringRef)str, NULL, kCFStringTransformStripDiacritics, NO);
+    return [str stringByReplacingOccurrencesOfString:@" " withString:@""];
+}
+- (NSString*)pinyinFirstLetter {
+    NSString *pinyin = self.pinyin;
+    return [[pinyin capitalizedString]substringToIndex:1];
+}
+@end
+
+@implementation UIView (Freedom)
+- (UIImage *)imageFromView {
+    UIGraphicsBeginImageContext(self.frame.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [self.layer renderInContext:context];
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return theImage;
+}
+-(void)addSubviews:(UIView *)view,...{
+    [self addSubview:view];
+    va_list ap;
+    va_start(ap, view);
+    UIView *akey=va_arg(ap,id);
+    while (akey) {
+        [self addSubview:akey];
+        akey=va_arg(ap,id);
+    }
+    va_end(ap);
+}
+@end
+@implementation UIViewController (DismissKeyboard)
+-(void)showAlerWithtitle:(NSString*)t message:(NSString*)m style:(UIAlertControllerStyle)style ac1:(UIAlertAction* (^)(void))ac1 ac2:(UIAlertAction* (^)(void))ac2 ac3:(UIAlertAction* (^)(void))ac3 completion:(void(^)())completion{
+    UIAlertController *alvc = [UIAlertController alertControllerWithTitle:t message:m preferredStyle:style];
+    [alvc addAction:ac1()];
+    if(ac2){
+        [alvc addAction:ac2()];
+    }
+    if(ac3){
+        UIAlertAction *ac = ac3();
+        [alvc addAction:ac];
+        if(ac.style != UIAlertActionStyleCancel){
+            [alvc addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+        }
+    }
+    [self presentViewController:alvc animated:YES completion:completion];
+}
+@end
+
+char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
+@implementation UIBarButtonItem (expanded)
+- (id)initWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style actionBlick:(BarButtonActionBlock)actionBlock{
+    if (self = [self initWithTitle:title style:style target:nil action:nil]) {
+        [self setActionBlock:actionBlock];
+    }
+    return self;
+}
+- (void)performActionBlock {
+    dispatch_block_t block = self.actionBlock;
+    if (block)block();
+}
+- (BarButtonActionBlock)actionBlock {
+    return objc_getAssociatedObject(self, UIBarButtonItemActionBlock);
+}
+- (void)setActionBlock:(BarButtonActionBlock)actionBlock{
+    if (actionBlock != self.actionBlock) {
+        [self willChangeValueForKey:@"actionBlock"];
+        objc_setAssociatedObject(self,UIBarButtonItemActionBlock,
+                                 actionBlock,OBJC_ASSOCIATION_COPY);
+        [self setTarget:self];
+        [self setAction:@selector(performActionBlock)];
+        [self didChangeValueForKey:@"actionBlock"];
+    }
+}
+@end
+
 @implementation FreedomTools
 + (UIColor *)colorWithRGBHex:(UInt32)hex {
     int r = (hex >> 16) & 0xFF;

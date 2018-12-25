@@ -14,6 +14,7 @@
 #import "UIImageView+WebCache.h"
 #import <RongIMKit/RongIMKit.h>
 #import <UIKit/UIKit.h>
+
 @protocol HeadCollectionTouchDelegate <NSObject>
 - (void)onUserSelected:(RCUserInfo *)user atIndex:(NSUInteger)index;
 @optional

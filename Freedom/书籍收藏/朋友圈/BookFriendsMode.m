@@ -2,7 +2,6 @@
 //  BookFriendsMode.m
 #import "BookFriendsMode.h"
 #import <CoreText/CoreText.h>
-#import <BlocksKit/BlocksKit.h>
 @implementation WFHudView
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -194,7 +193,7 @@ if (typesetter != NULL) {
 NSArray *names = nil;
 NSArray *newRanges = nil;
     names = [self items:_oldString ForPattern:@"\\[em:(\\d+):\\]" captureGroupIndex:1];
-newRanges = [self offsetRangesInArray:itemIndexes By:[PlaceHolder length]];
+    newRanges = [self offsetRangesInArray:itemIndexes By:[@" " length]];
     _emotionNames = names;
     _attrEmotionString = [self createAttributedEmotionStringWithRanges:newRanges
                                             forString:_newString];
@@ -628,7 +627,7 @@ typeview = 1;
 NSString *matchString = [_favourArray componentsJoinedByString:@","];
     _showFavour = matchString;
     NSArray *itemIndexs = [YMTextData itemIndexesWithPattern:@"\\[em:(\\d+):\\]" inString:matchString];
-    NSString *newString = [self replaceCharacters:matchString AtIndexes:itemIndexs withString:PlaceHolder];
+    NSString *newString = [self replaceCharacters:matchString AtIndexes:itemIndexs withString:@" "];
     //存新的
     self.completionFavour = newString;
 [self matchString:newString fromView:typeview];
@@ -653,7 +652,7 @@ for (int i = 0; i < self.replyDataSource.count; i ++ ) {
             matchString = [NSString stringWithFormat:@"%@回复%@:%@",body.replyUser,body.repliedUser,body.replyInfo];
             }
         NSArray *itemIndexs = [YMTextData itemIndexesWithPattern:@"\\[em:(\\d+):\\]" inString:matchString];
-    NSString *newString = [self replaceCharacters:matchString AtIndexes:itemIndexs withString:PlaceHolder];
+    NSString *newString = [self replaceCharacters:matchString AtIndexes:itemIndexs withString:@" "];
         //存新的
         [self.completionReplySource addObject:newString];
         [self matchString:newString fromView:typeview];
@@ -755,7 +754,7 @@ typeview = 0;
 NSString *matchString =  _showShuoShuo;
 NSArray *itemIndexs = [YMTextData itemIndexesWithPattern:@"\\[em:(\\d+):\\]" inString:matchString];
 //用PlaceHolder 替换掉[em:02:]这些
-    NSString *newString = [self replaceCharacters:matchString AtIndexes:itemIndexs withString:PlaceHolder];
+    NSString *newString = [self replaceCharacters:matchString AtIndexes:itemIndexs withString:@" "];
     //存新的
     self.completionShuoshuo = newString;
 [self matchString:newString fromView:typeview];

@@ -3,7 +3,6 @@
 //  Freedom
 import UIKit
 import XExtension
-import SVProgressHUD
 class TitlesImageViewFull: UIView {
     var title: UILabel!
     var subtitle: UILabel!
@@ -516,7 +515,7 @@ class TaobaoHomeViewController: TaobaoBaseViewController,UICollectionViewDelegat
         if indexPath.section == 1 {
             return
         }
-        SVProgressHUD.showSuccess(withStatus: "你选择的是\(indexPath.section)，\(indexPath.row)")
+        noticeSuccess("你选择的是\(indexPath.section)，\(indexPath.row)")
         print("你选择的是\(indexPath.section)，\(indexPath.row)")
     }
 }

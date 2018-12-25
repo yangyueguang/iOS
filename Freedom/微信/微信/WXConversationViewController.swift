@@ -202,7 +202,7 @@ class WechatConversationCell: WXTableViewCell {
         contentView.addSubview(timeLabel)
         contentView.addSubview(remindImageView)
         contentView.addSubview(redPointView)
-//        p_addMasonry()
+        p_addMasonry()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -218,41 +218,41 @@ class WechatConversationCell: WXTableViewCell {
             }
         }
     }
-//    func p_addMasonry() {
-//        avatarImageView.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(10)
-//            make.top.mas_equalTo(9.5)
-//            make.bottom.mas_equalTo(-9.5)
-//            make.width.mas_equalTo(self.avatarImageView.mas_height)
-//        })
-//        usernameLabel.setContentCompressionResistancePriority(UILayoutPriority(100), for: .horizontal)
-//        usernameLabel.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(10)
-//            make.top.mas_equalTo(self.avatarImageView).mas_offset(2.0)
-//            make.right.mas_lessThanOrEqualTo(self.timeLabel.mas_left).mas_offset(-5)
-//        })
-//        detailLabel.setContentCompressionResistancePriority(UILayoutPriority(110), for: .horizontal)
-//        detailLabel.mas_makeConstraints({ make in
-//            make.bottom.mas_equalTo(self.avatarImageView).mas_offset(-2.0)
-//            make.left.mas_equalTo(self.usernameLabel)
-//            make.right.mas_lessThanOrEqualTo(self.remindImageView.mas_left)
-//        })
-//        timeLabel.setContentCompressionResistancePriority(UILayoutPriority(300), for: .horizontal)
-//        timeLabel.mas_makeConstraints({ make in
-//            make.top.mas_equalTo(self.usernameLabel)
-//            make.right.mas_equalTo(self.contentView).mas_offset(-10)
-//        })
-//        remindImageView.setContentCompressionResistancePriority(UILayoutPriority(310), for: .horizontal)
-//        remindImageView.mas_makeConstraints({ make in
-//            make.right.mas_equalTo(self.timeLabel)
-//            make.centerY.mas_equalTo(self.detailLabel)
-//        })
-//        redPointView.mas_makeConstraints({ make in
-//            make.centerX.mas_equalTo(self.avatarImageView.mas_right).mas_offset(-2)
-//            make.centerY.mas_equalTo(self.avatarImageView.mas_top).mas_offset(2)
-//            make.width.and().height().mas_equalTo(10)
-//        })
-//    }
+    func p_addMasonry() {
+        usernameLabel.setContentCompressionResistancePriority(UILayoutPriority(100), for: .horizontal)
+        detailLabel.setContentCompressionResistancePriority(UILayoutPriority(110), for: .horizontal)
+        timeLabel.setContentCompressionResistancePriority(UILayoutPriority(300), for: .horizontal)
+        remindImageView.setContentCompressionResistancePriority(UILayoutPriority(310), for: .horizontal)
+        avatarImageView.snp.makeConstraints { (make) in
+            make.left.equalTo(10)
+            make.top.equalTo(9.5)
+            make.bottom.equalTo(-9.5)
+            make.width.equalTo(self.avatarImageView.snp.height)
+        }
+        usernameLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.avatarImageView.snp.right).offset(10)
+            make.top.equalTo(self.avatarImageView).offset(2)
+            make.right.lessThanOrEqualTo(self.timeLabel.snp.left).offset(-5)
+        }
+        detailLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(self.avatarImageView).offset(-2)
+            make.left.equalTo(self.usernameLabel)
+            make.right.lessThanOrEqualTo(self.remindImageView.snp.left)
+        }
+        timeLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(self.usernameLabel)
+            make.right.equalTo(self.contentView).offset(-10)
+        }
+        remindImageView.snp.makeConstraints { (make) in
+            make.right.equalTo(self.timeLabel)
+            make.centerY.equalTo(self.detailLabel)
+        }
+        redPointView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.avatarImageView.snp.right).offset(-2)
+            make.centerY.equalTo(self.avatarImageView.snp.top).offset(2)
+            make.width.height.equalTo(10)
+        }
+    }
 }
 class WXConversationViewController: WXTableViewController, WXMessageManagerConvVCDelegate, UISearchBarDelegate, WXAddMenuViewDelegate {
 //    var searchVC = WXFriendSearchViewController()

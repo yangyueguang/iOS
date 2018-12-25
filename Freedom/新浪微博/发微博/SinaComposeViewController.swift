@@ -5,7 +5,6 @@
 //  Created by Super on 6/28/18.
 //  Copyright © 2018 薛超. All rights reserved.
 import UIKit
-import SVProgressHUD
 import AFNetworking
 class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
     var textView: SinaEmotionTextView = SinaEmotionTextView()/** 输入控件 */
@@ -159,9 +158,9 @@ class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate,UINav
             formData.appendPart(withFileData: imageData!, name: "pic", fileName: "test.jpg", mimeType: "image/jpeg")
         }, progress: { uploadProgress in
         }, success: { task, responseObject in
-            SVProgressHUD.showSuccess(withStatus: "发送成功")
+            self.noticeSuccess("发送成功")
         }, failure: { task, error in
-            SVProgressHUD.showError(withStatus: "发送失败")
+            self.noticeError("发送失败")
         })
     }
     /*发布没有图片的微博*/
@@ -170,9 +169,9 @@ class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate,UINav
         params["access_token"] = SinaAccount().access_token
         params["status"] = textView.fullText
         AFHTTPSessionManager().post("https://api.weibo.com/2/statuses/update.json", parameters: params, progress: nil, success: { task, responseObject in
-            SVProgressHUD.showSuccess(withStatus: "发送成功")
+            self.noticeSuccess("发送成功")
         }, failure: { task, error in
-            SVProgressHUD.showError(withStatus: "发送失败")
+            self.noticeError("发送失败")
         })
     }
     //发微博

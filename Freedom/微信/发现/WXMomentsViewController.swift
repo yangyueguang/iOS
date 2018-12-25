@@ -1,7 +1,6 @@
 //
 //  WXMomentsViewController.swift
 //  Freedom
-import MJExtension
 import SnapKit
 import MWPhotoBrowser
 import XExtension
@@ -11,7 +10,7 @@ class WXMomentsProxy: NSObject {
         let path = Bundle.main.path(forResource: "Moments", ofType: "json")
         let jsonData = try! Data(contentsOf: URL(fileURLWithPath: path ?? ""))
         let jsonArray = try! JSONSerialization.jsonObject(with: jsonData as Data, options: .allowFragments)
-        let arr = WXMoment.mj_objectArray(withKeyValuesArray: jsonArray)
+        let arr = WXMoment.parses([jsonArray])
         return arr as! [WXMoment]
     }
 }
@@ -86,31 +85,29 @@ class WXMomentHeaderCell: WXTableViewCell {
         contentView.addSubview(mottoLabel)
         backgroundWall.backgroundColor = UIColor.gray
         usernameLabel.textColor = UIColor.white
+        backgroundWall.snp.makeConstraints { (make) in
+            make.left.right.equalTo(self.contentView)
+            make.bottom.equalTo(self.mottoLabel.snp.top).offset(-65 / 3.0 - 8.0)
+            make.top.lessThanOrEqualTo(self.contentView.snp.top)
+        }
+        avatarView.snp.makeConstraints { (make) in
+            make.right.equalTo(self.contentView).offset(-20)
+            make.centerY.equalTo(self.backgroundWall.snp.bottom).offset(-65 / 6.0)
+            make.size.equalTo(CGSize(width: 65, height: 65))
+        }
+        usernameLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(self.backgroundWall).offset(-8)
+            make.right.equalTo(self.avatarView.snp.left).offset(-15)
+        }
+        mottoLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(self.contentView).offset(-8)
+            make.right.equalTo(self.avatarView)
+            make.width.lessThanOrEqualTo(APPW * 0.4)
+        }
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//    func p_addMasonry() {
-//        backgroundWall.mas_makeConstraints({ make in
-//            make.left.and().right().mas_equalTo(self.contentView)
-//            make.bottom.mas_equalTo(self.mottoLabel.mas_top).mas_offset(-65 / 3.0 - 8.0)
-//            make.top.mas_lessThanOrEqualTo(self.contentView.mas_top)
-//        })
-//        avatarView.mas_makeConstraints({ make in
-//            make.right.mas_equalTo(self.contentView).mas_offset(-20.0)
-//            make.centerY.mas_equalTo(self.backgroundWall.mas_bottom).mas_offset(-65 / 6.0)
-//            make.size.mas_equalTo(CGSize(width: 65, height: 65))
-//        })
-//        usernameLabel.mas_makeConstraints({ make in
-//            make.bottom.mas_equalTo(self.backgroundWall).mas_offset(-8.0)
-//            make.right.mas_equalTo(self.avatarView.mas_left).mas_offset(-15.0)
-//        })
-//        mottoLabel.mas_makeConstraints({ make in
-//            make.bottom.mas_equalTo(self.contentView).mas_offset(-8.0)
-//            make.right.mas_equalTo(self.avatarView)
-//            make.width.mas_lessThanOrEqualTo(APPW * 0.4)
-//        })
-//    }
 }
 class WXMomentsViewController: WXTableViewController, WXMomentViewDelegate {
     var data: [WXMoment] = []

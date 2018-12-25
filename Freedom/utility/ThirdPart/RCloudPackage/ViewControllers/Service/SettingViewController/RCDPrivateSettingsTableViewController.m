@@ -368,7 +368,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
       [[NSNotificationCenter defaultCenter] postNotificationName:@"ClearHistoryMsg" object:nil];
 }
 - (void)clearCacheAlertMessage:(NSString *)msg {
-    [SVProgressHUD showInfoWithStatus:msg];
+    NSLog(msg);
 }
 #pragma mark - 本类的私有方法
 - (void)startLoadView {

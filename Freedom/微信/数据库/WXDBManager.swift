@@ -2,6 +2,7 @@
 //  WXDBManager.swift
 //  Freedom
 import FMDB
+import XExtension
 import Foundation
 let MESSAGE_TABLE_NAME = "message"
 let SQL_CREATE_MESSAGE_TABLE = "CREATE TABLE IF NOT EXISTS %@(msgid TEXT,uid TEXT,fid TEXT,subfid TEXT,date TEXT,partner_type INTEGER DEFAULT (0),own_type INTEGER DEFAULT (0),msg_type INTEGER DEFAULT (0),content TEXT,send_status INTEGER DEFAULT (0),received_status BOOLEAN DEFAULT (0),ext1 TEXT,ext2 TEXT,ext3 TEXT,ext4 TEXT,ext5 TEXT,PRIMARY KEY(uid, msgid, fid, subfid))"
@@ -254,7 +255,7 @@ class WXDBMessageStore: WXDBBaseStore {
         message.ownerTyper = TLMessageOwnerType(rawValue: Int(retSet.int(forColumn: "own_type"))) ?? .own
         message.messageType = TLMessageType(rawValue: Int(retSet.int(forColumn: "msg_type"))) ?? TLMessageType.other
         let content = retSet.string(forColumn: "content")
-        message.content = content?.mj_JSONObject() as! [String : String]
+        message.content = content?.toDict() as! [String : String]
         message.sendState = TLMessageSendState(rawValue: Int(retSet.int(forColumn: "send_status"))) ?? .fail
         message.readState = TLMessageReadState(rawValue: Int(retSet.int(forColumn: "received_status"))) ?? .readed
         return message

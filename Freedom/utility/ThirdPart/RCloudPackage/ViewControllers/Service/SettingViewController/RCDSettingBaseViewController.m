@@ -7,6 +7,7 @@
 //
 #import "RCDSettingBaseViewController.h"
 #import <RongIMLib/RongIMLib.h>
+
 @interface RCDSettingBaseViewController ()
 @end
 @implementation RCDSettingBaseViewController

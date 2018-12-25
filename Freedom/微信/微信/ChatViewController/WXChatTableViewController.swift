@@ -636,14 +636,12 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
                 let str = message.messageCopy()
                 UIPasteboard.general.string = str
             } else if type == .delete {
-                self.showAlerWithtitle("是否删除该条消息", message: nil, style: UIAlertController.Style.actionSheet, ac1: {
-                    return UIAlertAction(title: "确定", style: .default, handler: { action in
-                        self.p_delete(message)
-                    })
-                }, ac2: {
-                    return UIAlertAction(title: "取消", style: .cancel, handler: { action in
-                    })
-                }, ac3: nil, completion: nil)
+                let alert = UIAlertController("是否删除该条消息", "", T1: "确定", T2: "取消", confirm1: {
+                    self.p_delete(message)
+                }, confirm2: {
+
+                })
+                self.present(alert, animated: true, completion: nil)
             }
         })
     }

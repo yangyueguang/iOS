@@ -5,7 +5,6 @@
 //  Created by Super on 6/28/18.
 //  Copyright © 2018 薛超. All rights reserved.
 import UIKit
-import SVProgressHUD
 import AFNetworking
 class SinaAccount: NSObject {
     var access_token = ""/**用于调用access_token，接口获取授权后的access token。*/
@@ -59,13 +58,13 @@ class SinaAuthController: SinaBaseViewController,UIWebViewDelegate {
         }
     }
     func webViewDidStartLoad(_ webView: UIWebView) {
-        SVProgressHUD.show(withStatus: "正在加载...")
+        XHud.show(.withDetail(message: "正在加载..."))
     }
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        SVProgressHUD.dismiss()
+        XHud.hide()
     }
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        SVProgressHUD.dismiss()
+        XHud.hide()
     }
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         let url = (request.url?.absoluteString)!
@@ -82,14 +81,14 @@ class SinaAuthController: SinaBaseViewController,UIWebViewDelegate {
     func accessToken(withCode code: String?) {
         let url = "https://api.weibo.com/oauth2/access_token"
         //拼接请求参数
-        var params = [AnyHashable: Any]()
+        var params = [String: Any]()
         params["client_id"] = "568898243"
         params["client_secret"] = "38a4f8204cc784f81f9f0daaf31e02e3"
         params["grant_type"] = "authorization_code"
         params["redirect_uri"] = "http://www.sharesdk.cn"
         params["code"] = code ?? ""
         AFHTTPSessionManager().post(url, parameters: params, progress: nil, success: { task, responseObject in
-            SVProgressHUD.dismiss()
+            XHud.hide()
             // 将返回的账号字典数据 --> 模型，存进沙盒
             let account = SinaAccount(dict: responseObject as! [AnyHashable : Any])
             //储存账号信息

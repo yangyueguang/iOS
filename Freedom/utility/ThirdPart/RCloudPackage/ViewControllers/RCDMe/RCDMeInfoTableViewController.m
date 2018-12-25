@@ -61,7 +61,7 @@
     }
     if ([errorMsg length] > 0) {
         [hud hide:YES];
-        [SVProgressHUD showErrorWithStatus:errorMsg];
+        NSLog(errorMsg);
     } else {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *userId = [defaults objectForKey:@"userId"];
@@ -77,7 +77,7 @@
            }
        }failure:^(NSError *err) {
            [hud hide:YES];
-           [SVProgressHUD showErrorWithStatus:@"修改失败，请检查输入的名称"];
+           NSLog(@"修改失败，请检查输入的名称");
        }];
     }
 }
@@ -350,13 +350,13 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
             if (result == NO) {
               //关闭HUD
               [hud hide:YES];
-                [SVProgressHUD showErrorWithStatus:@"上传头像失败"];
+                NSLog(@"上传头像失败");
             }
           }];
       }failure:^(NSError *err) {
         //关闭HUD
         [hud hide:YES];
-          [SVProgressHUD showErrorWithStatus:@"上传头像失败"];
+          NSLog(@"上传头像失败");
       }];
 }
 -(UIImage*)getSubImage:(UIImage *)originImage Rect:(CGRect)rect imageOrientation:(UIImageOrientation)imageOrientation{
@@ -383,7 +383,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
   BOOL isconnected = NO;
   RCNetworkStatus networkStatus = [[RCIMClient sharedRCIMClient] getCurrentNetworkStatus];
   if (networkStatus == 0) {
-      [SVProgressHUD showErrorWithStatus:@"当前网络不可用，请检查你的网络设置"];
+      NSLog(@"当前网络不可用，请检查你的网络设置");
     return isconnected;
   }
   return isconnected = YES;

@@ -104,10 +104,10 @@ class WXBottleViewController: WXBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         timer?.invalidate()
-        timer = Timer.bk_scheduledTimer(withTimeInterval: 2.0, block: { tm in
-            tm?.invalidate()
+        timer = Timer(timeInterval: 2.0, repeats: false, block: { (tm) in
+            tm.invalidate()
             self.p_setNavBarHidden(true)
-        }, repeats: false)
+        })
         tapGes = UITapGestureRecognizer(target: self, action: #selector(self.didTapView))
         view.addGestureRecognizer(tapGes!)
     }

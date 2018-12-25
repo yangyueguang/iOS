@@ -99,11 +99,11 @@ class WechatSettingSwitchCell: UITableViewCell {
         accessoryView = cellSwitch
         cellSwitch.addTarget(self, action: #selector(self.switchChangeStatus(_:)), for: .valueChanged)
         contentView.addSubview(titleLabel)
-//        titleLabel.mas_makeConstraints({ make in
-//            make.centerY.mas_equalTo(self.contentView)
-//            make.left.mas_equalTo(self.contentView).mas_offset(15)
-//            make.right.mas_lessThanOrEqualTo(self.contentView).mas_offset(-15)
-//        })
+        titleLabel.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(15)
+            make.right.lessThanOrEqualToSuperview().offset(-15)
+        }
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -168,28 +168,28 @@ class WXSettingCell: UITableViewCell {
         contentView.addSubview(rightImageView)
         rightLabel.textColor = UIColor.gray
         rightLabel.font = UIFont.systemFont(ofSize: 15.0)
-//        p_addMasonry()
+        p_addMasonry()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//    func p_addMasonry() {
-//        titleLabel.setContentCompressionResistancePriority(UILayoutPriority(500), for: .horizontal)
-//        titleLabel.mas_makeConstraints({ make in
-//            make.centerY.mas_equalTo(self.contentView)
-//            make.left.mas_equalTo(self.contentView).mas_offset(15)
-//        })
-//        rightLabel.setContentCompressionResistancePriority(UILayoutPriority(200), for: .horizontal)
-//        rightLabel.mas_makeConstraints({ make in
-//            make.right.mas_equalTo(self.contentView)
-//            make.centerY.mas_equalTo(self.titleLabel)
-//            make.left.mas_greaterThanOrEqualTo(self.titleLabel.mas_right).mas_offset(20)
-//        })
-//        rightImageView.mas_makeConstraints({ make in
-//            make.right.mas_equalTo(self.rightLabel.mas_left).mas_offset(-2)
-//            make.centerY.mas_equalTo(self.contentView)
-//        })
-//    }
+    func p_addMasonry() {
+        titleLabel.setContentCompressionResistancePriority(UILayoutPriority(500), for: .horizontal)
+        rightLabel.setContentCompressionResistancePriority(UILayoutPriority(200), for: .horizontal)
+        titleLabel.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(15)
+        }
+        rightLabel.snp.makeConstraints { (make) in
+            make.right.equalToSuperview()
+            make.centerY.equalTo(self.titleLabel)
+            make.left.greaterThanOrEqualTo(self.titleLabel.snp.right).offset(20)
+        }
+        rightImageView.snp.makeConstraints { (make) in
+            make.right.equalTo(self.rightLabel.snp.left).offset(-2)
+            make.centerY.equalToSuperview()
+        }
+    }
 }
 
 class WXSettingHeaderTitleView: UITableViewHeaderFooterView {

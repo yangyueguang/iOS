@@ -44,33 +44,33 @@ class WXMineHeaderCell: UITableViewCell {
         contentView.addSubview(nikenameLabel)
         contentView.addSubview(usernameLabel)
         contentView.addSubview(qrImageView)
-//        addMasonry()
+        addMasonry()
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-//    func addMasonry() {
-//        avatarImageView.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(14)
-//            make.top.mas_equalTo(12)
-//            make.bottom.mas_equalTo(-12)
-//            make.width.mas_equalTo(self.avatarImageView.mas_height)
-//        })
-//        nikenameLabel.setContentCompressionResistancePriority(UILayoutPriority(100), for: .horizontal)
-//        nikenameLabel.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(10)
-//            make.bottom.mas_equalTo(self.avatarImageView.mas_centerY).mas_offset(-3.5)
-//        })
-//        usernameLabel.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(self.nikenameLabel)
-//            make.top.mas_equalTo(self.avatarImageView.mas_centerY).mas_offset(5.0)
-//        })
-//        qrImageView.mas_makeConstraints({ make in
-//            make.centerY.mas_equalTo(self.contentView).mas_offset(-0.5)
-//            make.right.mas_equalTo(self.contentView)
-//            make.height.and().width().mas_equalTo(18)
-//        })
-//    }
+    func addMasonry() {
+        avatarImageView.snp.makeConstraints { make in
+            make.left.equalTo(14)
+            make.top.equalTo(12)
+            make.bottom.equalTo(-12)
+            make.width.equalTo(self.avatarImageView.height)
+        }
+        nikenameLabel.setContentCompressionResistancePriority(UILayoutPriority(100), for: .horizontal)
+        nikenameLabel.snp.makeConstraints { make in
+            make.left.equalTo(self.avatarImageView.right).offset(10)
+            make.bottom.equalTo(self.avatarImageView.snp.centerY).offset(-3.5)
+        }
+        usernameLabel.snp.makeConstraints { make in
+            make.left.equalTo(self.nikenameLabel)
+            make.top.equalTo(self.avatarImageView.snp.centerY).offset(5.0)
+        }
+        qrImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(self.contentView).offset(-0.5)
+            make.right.equalTo(self.contentView)
+            make.height.width.equalTo(18)
+        }
+    }
 }
 class WXMineHelper: NSObject {
     var mineMenuData: [[WXMenuItem]] = []

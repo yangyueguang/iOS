@@ -61,13 +61,13 @@ NSString *const RCDUpdateNameTableViewCellIdentifier = @"RCDUpdateNameTableViewC
 - (void)rightBarButtonItemClicked:(id)sender {
     //保存讨论组名称
     if (self.nameTextField.text.length == 0) {
-        [SVProgressHUD showErrorWithStatus:@"请输入讨论组名称!"];
+        NSLog(@"请输入讨论组名称!");
         return;
     }
     //讨论组名称不能包含空格
     NSRange range = [self.nameTextField.text rangeOfString:@" "];
     if (range.location != NSNotFound) {
-        [SVProgressHUD showErrorWithStatus:@"讨论组名称不能包含空格!"];
+        NSLog(@"讨论组名称不能包含空格!");
         return;
     }
     //回传值

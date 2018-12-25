@@ -88,7 +88,7 @@
     }];
 }
 - (void)Alert:(NSString *)alertContent {
-    [SVProgressHUD showInfoWithStatus:alertContent];
+    NSLog(alertContent);
 }
 #pragma mark - UITextField Delegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {

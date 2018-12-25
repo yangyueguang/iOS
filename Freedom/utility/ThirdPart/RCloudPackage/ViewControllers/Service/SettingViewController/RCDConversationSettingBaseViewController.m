@@ -152,7 +152,7 @@
     RCUserInfo *user = self.users[indexPath.row];
     if ([user.userId isEqualToString:[RCIMClient sharedRCIMClient].currentUserInfo.userId]) {
         NSString *mes = NSLocalizedStringFromTable(@"CanNotRemoveSelf",@"RongCloudKit", nil);
-        [SVProgressHUD showInfoWithStatus:mes];
+        NSLog(mes);
         return;
     }
     [self.users removeObjectAtIndex:indexPath.row];

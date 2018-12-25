@@ -55,36 +55,36 @@ class WechatContactCell: WXTableViewCell {
         contentView.addSubview(usernameLabel)
         contentView.addSubview(subTitleLabel)
         contentView.addSubview(rightButton)
-//        p_addMasonry()
+        p_addMasonry()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-//    func p_addMasonry() {
-//        avatarImageView.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(10)
-//            make.top.mas_equalTo(9.5)
-//            make.bottom.mas_equalTo(-9.5 + 0.5)
-//            make.width.mas_equalTo(self.avatarImageView.mas_height)
-//        })
-//        usernameLabel.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(self.avatarImageView.mas_right).mas_offset(10)
-//            make.top.mas_equalTo(self.avatarImageView).mas_offset(-1)
-//            make.right.mas_lessThanOrEqualTo(self.rightButton.mas_left).mas_offset(-10)
-//        })
-//        subTitleLabel.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(self.usernameLabel)
-//            make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(2)
-//            make.right.mas_lessThanOrEqualTo(self.rightButton.mas_left).mas_offset(-10)
-//        })
-//        rightButton.mas_makeConstraints({ make in
-//            make.right.mas_equalTo(self.contentView).mas_offset(-5)
-//            make.centerY.mas_equalTo(self.contentView)
-//            make.height.mas_equalTo(30)
-//            make.width.mas_greaterThanOrEqualTo(48)
-//        })
-//    }
+    func p_addMasonry() {
+        avatarImageView.snp.makeConstraints { (make) in
+            make.left.equalTo(10)
+            make.top.equalTo(9.5)
+            make.bottom.equalTo(-9)
+            make.width.equalTo(self.avatarImageView.snp.height)
+        }
+        usernameLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.avatarImageView.snp.right).offset(10)
+            make.top.equalTo(self.avatarImageView).offset(-1)
+            make.right.lessThanOrEqualTo(self.rightButton.snp.left).offset(-10)
+        }
+        subTitleLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.usernameLabel)
+            make.top.equalTo(self.usernameLabel.snp.bottom).offset(2)
+            make.right.lessThanOrEqualTo(self.rightButton.snp.left).offset(-10)
+        }
+        rightButton.snp.makeConstraints { (make) in
+            make.right.equalTo(self.contentView).offset(-5)
+            make.centerY.equalTo(self.contentView)
+            make.height.equalTo(30)
+            make.width.greaterThanOrEqualTo(48)
+        }
+    }
 }
 
 class WXContactsSearchViewController: WXTableViewController, UISearchResultsUpdating {

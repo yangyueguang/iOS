@@ -8,7 +8,7 @@
 * 4、熟练使用UIView、CoreAnimation、ImageView等动画和各种手势及特效优化APP产品。
 * 5、熟悉MVC、委托代理、单例、工厂方法和观察者模式等常用设计模式。
 * 6、熟练使用NSURLSession、 AFNetworking进行网络数据请求。
-* 7、熟练使用AFNetworking、MBProgressHUD、MJRefresh、SDWebImage等三方库。
+* 7、熟练使用AFNetworking、MBProgressHUD、MJRefresh等三方库。
 * 8、熟练掌握GCD、NSOperation、NSThread多线程编程技术。
 * 9、熟悉NSUserDefault、Plist和Json等数据持久化技术及网络数据的解析。
 * 10、了解地图定位、定制大头针、搜索、导航、地理编码与反编码等功能。

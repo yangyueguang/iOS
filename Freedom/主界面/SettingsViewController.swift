@@ -6,7 +6,6 @@
 //  Copyright © 2018 Super. All rights reserved.
 //
 import UIKit
-import ElasticTransitionObjC
 import XExtension
 import XCarryOn
 class SettingsViewController: BaseViewController ,ElasticMenuTransitionDelegate{
@@ -24,8 +23,11 @@ class SettingsViewController: BaseViewController ,ElasticMenuTransitionDelegate{
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
         view.addSubview(tableView)
-        let ET = transitioningDelegate as? ElasticTransition
-        print("\ntransition.edge = \(HelperFunctions.type(toStringOf: (ET?.edge)!))\ntransition.transformType = \(String(describing: ET?.transformTypeToString()))\ntransition.sticky = \(String(describing:  ET?.sticky))\ntransition.showShadow = \(String(describing: ET?.showShadow))")
+        let tm = transitioningDelegate as! ElasticTransition
+        print( "transition.edge = .\(tm.edge)\n" +
+            "transition.transformType = .\(tm.transformType)\n" +
+            "transition.sticky = \(tm.sticky)\n" +
+            "transition.showShadow = \(tm.showShadow)")
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

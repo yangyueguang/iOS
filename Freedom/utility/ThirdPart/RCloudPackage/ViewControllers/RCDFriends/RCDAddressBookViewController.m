@@ -183,7 +183,7 @@
       } else {
         dispatch_async(dispatch_get_main_queue(), ^{
           [hud hide:YES];
-            [SVProgressHUD showErrorWithStatus:@"添加失败"];
+            NSLog(@"添加失败");
         });
       }
     }];

@@ -148,15 +148,15 @@
     if (_targetUserInfo) {
       RCDUserInfo *friend = [[RCDataBaseManager shareInstance] getFriendInfo:_targetUserInfo.userId];
       if (friend && [friend.status isEqualToString:@"10"]) {
-          [SVProgressHUD showSuccessWithStatus:@"已发送好友邀请"];
+          NSLog(@"已发送好友邀请");
       } else {
           [RCDHTTPTOOL requestFriend:_targetUserInfo.userId complete:^(BOOL result) {
                 if (result) {
-                    [SVProgressHUD showSuccessWithStatus:@"请求已发送"];
+                    NSLog(@"请求已发送");
                     [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *result) {
                     }];
                 } else {
-                    [SVProgressHUD showErrorWithStatus:@"请求失败，请重试"];
+                    NSLog(@"请求失败，请重试");
                 }
             }];
       }

@@ -156,7 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     func addMyapps(){
         let myAppsPath = Bundle.main.path(forResource: "MyAPP", ofType: "plist")
         let myApps = NSArray(contentsOfFile: myAppsPath!)
-        let apps = XAPP.mj_objectArray(withKeyValuesArray: myApps) as! [XAPP]
+        let apps = XAPP.parses(myApps as! [Any]) as! [XAPP]
         self.myApps = apps;
         let appMan = AppManager.sharedInstance()
         var popoutModels = [PopoutModel]()
@@ -362,9 +362,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     }
     ///收到内存警告
     func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
-        let mgr = SDWebImageManager.shared()
-        mgr?.cancelAll()
-        mgr?.imageCache.clearMemory()
+//        SDWebImageManager.shared()?.imageCache.clearMemory()
     }
     ///结束
     deinit {
@@ -435,9 +433,6 @@ extension NSURLRequest {
  };
  [RLMRealmConfiguration setDefaultConfiguration:config];
  [RLMRealm defaultRealm];
- [SVProgressHUD setMinimumDismissTimeInterval:2];
- [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
- [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6]];
  }
 
  +(UIBackgroundTaskIdentifier)backgroundPlayerID:(UIBackgroundTaskIdentifier)backTaskId{

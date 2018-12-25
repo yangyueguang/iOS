@@ -162,9 +162,11 @@ class WXInfoViewController: UITableViewController, WXInfoButtonCellDelegate {
         return 44.0
     }
     func infoButtonCellClicked(_ info: WXInfo) {
-        showAlerWithtitle("子类未处理按钮点击事件", message: "Title: \(info.title)", style: UIAlertController.Style.alert, ac1: {
-            return UIAlertAction(title: "取消", style: .cancel, handler: { action in
-            })
-        }, ac2: nil, ac3: nil, completion: nil)
+        let alert = UIAlertController("子类未处理按钮点击事件", "", T1: "取消", T2: "", confirm1: {
+
+        }, confirm2: {
+
+        })
+        self.present(alert, animated: true, completion: nil)
     }
 }

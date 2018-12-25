@@ -2,6 +2,7 @@
 //  WFCoretext
 //  Created by Super on 14/10/28. 2 3 2 2 2 3 1 3 2 1
 #import "BookFriendsTableViewCell.h"
+
 @implementation BookFriendsTableViewCell{
     UIButton *foldBtn;
     YMTextData *tempDate;

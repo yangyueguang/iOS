@@ -25,17 +25,16 @@ class WXGroupQRCodeViewController: WXBaseViewController {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     func rightBarButtonDown(_ sender: UIBarButtonItem) {
-        showAlerWithtitle(nil, message: nil, style: UIAlertController.Style.actionSheet, ac1: {
-            return UIAlertAction(title: "用邮件发送", style: .default, handler: { action in
-                self.noticeError("正在开发")
-            })
-        }, ac2: {
-            return UIAlertAction(title: "保存图片", style: .default, handler: { action in
-                self.qrCodeVC.saveQRCodeToSystemAlbum()
-            })
-        }, ac3: {
-            return UIAlertAction(title: "取消", style: .cancel, handler: { _ in
-            })
-        }, completion: nil)
+        let alert = UIAlertController("", "", T1: "用邮件发送", T2: "保存图片", confirm1: {
+            self.noticeError("正在开发")
+        }) {
+            self.qrCodeVC.saveQRCodeToSystemAlbum()
+        }
+        let act = UIAlertAction(title: "取消", style: .cancel, handler: { _ in
+        })
+        alert.addAction(act)
+        self.present(alert, animated: true) {
+
+        }
     }
 }

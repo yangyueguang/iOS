@@ -233,7 +233,7 @@
 ///FIXME: RCIMConnectionStatusDelegate//网络状态变化
 - (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status {
     if (status == ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT) {
-        [SVProgressHUD showErrorWithStatus:@"您的帐号在别的设备上登录，"@"您被迫下线！"];
+        NSLog(@"您的帐号在别的设备上登录，"@"您被迫下线！");
         [self gotoLogin];
     } else if (status == ConnectionStatus_TOKEN_INCORRECT) {
         [AFHttpTool getTokenSuccess:^(id response) {
@@ -332,7 +332,7 @@
 }
 -(void)gotoLoginViewAndDisplayReasonInfo:(NSString *)reason{
     dispatch_async(dispatch_get_main_queue(), ^{
-        [SVProgressHUD showErrorWithStatus:reason];
+        NSLog(reason);
         [self gotoLogin];
     });
 }

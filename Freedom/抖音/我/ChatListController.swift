@@ -183,23 +183,22 @@ class ChatListController: DouyinBaseViewController {
     }
 
     @objc func receiveMessage(notification:Notification) {
-        let json = notification.object as! String
-        if let chat = GroupChat.deserialize(from: json) {
-            chat.cellHeight = ChatListController.cellHeight(chat: chat)
-            var shouldScrollToBottom = false
-            if (tableView?.visibleCells.count)! > 0 && (tableView?.indexPath(for: (tableView?.visibleCells.last)!)?.row ?? 0) == data.count - 1 {
-                shouldScrollToBottom = true
-            }
-            UIView.setAnimationsEnabled(false)
-            tableView?.beginUpdates()
-            data.append(chat)
-            tableView?.insertRows(at: [IndexPath.init(row: data.count - 1, section: 0)], with: .none)
-            tableView?.endUpdates()
-            UIView.setAnimationsEnabled(true)
-            
-            if shouldScrollToBottom {
-                scrollToBottom()
-            }
+        let json = notification.object as! NSDictionary
+        let chat = GroupChat.parse(json)
+        chat.cellHeight = ChatListController.cellHeight(chat: chat)
+        var shouldScrollToBottom = false
+        if (tableView?.visibleCells.count)! > 0 && (tableView?.indexPath(for: (tableView?.visibleCells.last)!)?.row ?? 0) == data.count - 1 {
+            shouldScrollToBottom = true
+        }
+        UIView.setAnimationsEnabled(false)
+        tableView?.beginUpdates()
+        data.append(chat)
+        tableView?.insertRows(at: [IndexPath.init(row: data.count - 1, section: 0)], with: .none)
+        tableView?.endUpdates()
+        UIView.setAnimationsEnabled(true)
+
+        if shouldScrollToBottom {
+            scrollToBottom()
         }
     }
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

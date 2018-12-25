@@ -42,8 +42,8 @@ class VisitorRequest: BaseRequest {
         let request = VisitorRequest.init()
         request.udid = UDID
         NetworkManager.postRequest(urlPath: CREATE_VISITOR_BY_UDID_URL, request: request, success: { data in
-            let response = VisitorResponse.deserialize(from: data as? [String:Any])
-            success(response!)
+            let response = VisitorResponse.parse(data as! NSDictionary)
+            success(response)
         }, failure: { error in
             failure(error)
         })
@@ -59,8 +59,8 @@ class UserRequest: BaseRequest {
         let request = UserRequest.init()
         request.uid = uid
         NetworkManager.getRequest(urlPath: FIND_USER_BY_UID_URL, request: request, success: { data in
-            let response = UserResponse.deserialize(from: data as? [String:Any])
-            success(response?.data ?? User.init())
+            let response = UserResponse.parse(data as! NSDictionary)
+            success(response.data ?? User.init())
         }, failure: { error in
             failure(error)
         })
@@ -80,9 +80,8 @@ class AwemeListRequest: BaseRequest {
         request.page = page
         request.size = size
         NetworkManager.getRequest(urlPath: FIND_AWEME_POST_BY_PAGE_URL, request: request, success: { data in
-            if let response = AwemeListResponse.deserialize(from: data as? [String:Any]) {
-                success(response)
-            }
+            let response = AwemeListResponse.parse(data as! NSDictionary)
+            success(response)
         }, failure: { error in
             failure(error)
         })
@@ -94,9 +93,8 @@ class AwemeListRequest: BaseRequest {
         request.page = page
         request.size = size
         NetworkManager.getRequest(urlPath: FIND_AWEME_FAVORITE_BY_PAGE_URL, request: request, success: { data in
-            if let response = AwemeListResponse.deserialize(from: data as? [String:Any]) {
-                success(response)
-            }
+            let response = AwemeListResponse.parse(data as! NSDictionary)
+            success(response)
         }) { error in
             failure(error)
         }
@@ -114,8 +112,8 @@ class GroupChatListRequest: BaseRequest {
         request.page = page
         request.size = size
         NetworkManager.getRequest(urlPath: FIND_GROUP_CHAT_BY_PAGE_URL, request: request, success: { data in
-            let response = GroupChatListResponse.deserialize(from: data as? [String:Any])
-            success(response!)
+            let response = GroupChatListResponse.parse(data as! NSDictionary)
+            success(response)
         }, failure: { error in
             failure(error)
         })
@@ -133,8 +131,8 @@ class PostGroupChatTextRequest: BaseRequest {
         request.udid = UDID
         request.text = text
         NetworkManager.postRequest(urlPath: POST_GROUP_CHAT_TEXT_URL, request: request, success: { data in
-            let response = GroupChatResponse.deserialize(from: data as? [String:Any])
-            success(response!)
+            let response = GroupChatResponse.parse(data as! NSDictionary)
+            success(response)
         }, failure: { error in
             failure(error)
         })
@@ -152,8 +150,8 @@ class PostGroupChatImageRequest: BaseRequest {
         NetworkManager.uploadRequest(urlPath: POST_GROUP_CHAT_IMAGE_URL, data: data, request: request, progress: { percent in
             progress(percent)
         }, success: { data in
-            let response = GroupChatResponse.deserialize(from: data as? [String:Any])
-            success(response!)
+            let response = GroupChatResponse.parse(data as! NSDictionary)
+            success(response)
         }, failure: { error in
             failure(error)
         })
@@ -171,8 +169,8 @@ class DeleteGroupChatRequest: BaseRequest {
         request.id = id
         request.udid = UDID
         NetworkManager.deleteRequest(urlPath: DELETE_GROUP_CHAT_BY_ID_URL, request: request, success: { data in
-            let response = BaseResponse.deserialize(from: data as? [String:Any])
-            success(response!)
+            let response = BaseResponse.parse(data as! NSDictionary)
+            success(response)
         }, failure: { error in
             failure(error)
         })
@@ -192,8 +190,8 @@ class CommentListRequest: BaseRequest {
         request.size = size
         request.aweme_id = aweme_id
         NetworkManager.getRequest(urlPath: FIND_COMMENT_BY_PAGE_URL, request: request, success: { data in
-            let response = CommentListResponse.deserialize(from: data as? [String:Any])
-            success(response!)
+            let response = CommentListResponse.parse(data as! NSDictionary)
+            success(response)
         }, failure: { error in
             failure(error)
         })
@@ -206,16 +204,14 @@ class PostCommentRequest: BaseRequest {
     var aweme_id:String?
     var text:String?
     var udid:String?
-
-
     static func postCommentText(aweme_id:String, text:String, success:@escaping HttpSuccess, failure:@escaping HttpFailure) {
         let request = PostCommentRequest.init()
         request.aweme_id = aweme_id
         request.text = text
         request.udid = UDID
         NetworkManager.postRequest(urlPath: POST_COMMENT_URL, request: request, success: { data in
-            let response = CommentResponse.deserialize(from: data as? [String:Any])
-            success(response!)
+            let response = CommentResponse.parse(data as! NSDictionary)
+            success(response)
         }, failure: { error in
             failure(error)
         })
@@ -233,8 +229,8 @@ class DeleteCommentRequest: BaseRequest {
         request.cid = cid
         request.udid = UDID
         NetworkManager.deleteRequest(urlPath: DELETE_COMMENT_BY_ID_URL, request: request, success: { data in
-            let response = BaseResponse.deserialize(from: data as? [String:Any])
-            success(response!)
+            let response = BaseResponse.parse(data as! NSDictionary)
+            success(response)
         }, failure: { error in
             failure(error)
         })

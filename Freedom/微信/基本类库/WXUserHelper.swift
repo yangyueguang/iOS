@@ -2,7 +2,6 @@
 //  WXUserHelper.swift
 //  Freedom
 import Foundation
-import MJExtension
 import Contacts
 import XExtension
 class WXFriendHelper: NSObject {
@@ -124,7 +123,7 @@ class WXFriendHelper: NSObject {
         if let aData = jsonData {
             jsonArray = [try! JSONSerialization.jsonObject(with: aData as Data, options: JSONSerialization.ReadingOptions.allowFragments)]
         }
-        var arr = WXUser.mj_objectArray(withKeyValuesArray: jsonArray)! as! [WXUser]
+        var arr = WXUser.parses(jsonArray) as! [WXUser]
         friendsData.removeAll()
         friendsData.append(contentsOf: arr)
         // 更新好友数据到数据库
@@ -138,7 +137,7 @@ class WXFriendHelper: NSObject {
         path = Bundle.main.path(forResource: "FriendGroupList", ofType: "json")
         jsonData = try! NSData(contentsOfFile: path ?? "")
         jsonArray = [try! JSONSerialization.jsonObject(with: jsonData! as Data, options: .allowFragments)]
-        var arr1 = WXGroup.mj_objectArray(withKeyValuesArray: jsonArray) as! [WXGroup]
+        var arr1 = WXGroup.parses(jsonArray) as! [WXGroup]
         groupsData.removeAll()
         groupsData.append(contentsOf: arr1)
         ok = groupStore.updateGroupsData(groupsData, forUid: WXUserHelper.shared.user.userID)

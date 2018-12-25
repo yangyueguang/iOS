@@ -91,7 +91,6 @@
 		7121197220AC25000087E05B /* ToutiaoAttentionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121197120AC25000087E05B /* ToutiaoAttentionViewController.swift */; };
 		7121197420AC250D0087E05B /* ToutiaoMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121197320AC250D0087E05B /* ToutiaoMeViewController.swift */; };
 		71250EC62091C0F20093B59B /* FreedomTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 71250EC52091C0F20093B59B /* FreedomTools.m */; };
-		71250EC92091C1DA0093B59B /* NSObject+Freedom.m in Sources */ = {isa = PBXBuildFile; fileRef = 71250EC82091C1DA0093B59B /* NSObject+Freedom.m */; };
 		71267A512092DC7B006E1B96 /* BookFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71267A4D2092DC79006E1B96 /* BookFriendsViewController.m */; };
 		71267A522092DC7B006E1B96 /* BookFriendsMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 71267A502092DC7A006E1B96 /* BookFriendsMode.m */; };
 		71267A552092DC93006E1B96 /* BookFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71267A542092DC92006E1B96 /* BookFriendsTableViewCell.m */; };
@@ -158,7 +157,6 @@
 		713EE31220ADA0A40085B65D /* IqiyiMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EE31120ADA0A40085B65D /* IqiyiMineViewController.swift */; };
 		713EE31420ADA0AF0085B65D /* IqiyiClassifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EE31320ADA0AF0085B65D /* IqiyiClassifyViewController.swift */; };
 		713EE31620ADA0BA0085B65D /* IqiyiWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EE31520ADA0BA0085B65D /* IqiyiWebViewController.swift */; };
-		71517B1C2094803300B40538 /* JSONObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71517B1B2094803300B40538 /* JSONObject.swift */; };
 		7165A3C920A58D77001C60D6 /* emoticonkeyboardbutton_sd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7165A3B220A58D64001C60D6 /* emoticonkeyboardbutton_sd.png */; };
 		7165A3CE20A58D77001C60D6 /* compose_slogan.png in Resources */ = {isa = PBXBuildFile; fileRef = 7165A3B720A58D68001C60D6 /* compose_slogan.png */; };
 		7165A3D020A58D77001C60D6 /* emoticon_keyboard_magnifier.png in Resources */ = {isa = PBXBuildFile; fileRef = 7165A3B920A58D6A001C60D6 /* emoticon_keyboard_magnifier.png */; };
@@ -905,6 +903,7 @@
 		77FD03D51E25F17C00E5099E /* taobaomini3.png in Resources */ = {isa = PBXBuildFile; fileRef = 77FD03D01E25F17C00E5099E /* taobaomini3.png */; };
 		77FD03D61E25F17C00E5099E /* taobaomini4.png in Resources */ = {isa = PBXBuildFile; fileRef = 77FD03D11E25F17C00E5099E /* taobaomini4.png */; };
 		77FD03D71E25F17C00E5099E /* taobaomini5.png in Resources */ = {isa = PBXBuildFile; fileRef = 77FD03D21E25F17C00E5099E /* taobaomini5.png */; };
+		7D8CF81131D44340D2F57DED /* Pods_Freedom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E406CAF72A1293138277033C /* Pods_Freedom.framework */; };
 		BF0E8AFB20DB9BE700150476 /* FreedomItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF0E8AFA20DB9BE700150476 /* FreedomItems.plist */; };
 		BF0E8B0420DCAB4200150476 /* app.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF0E8B0220DCAB3F00150476 /* app.plist */; };
 		BF0E8B0520DCAB4200150476 /* systemSetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF0E8B0320DCAB4100150476 /* systemSetting.plist */; };
@@ -1071,33 +1070,6 @@
 		BFC6D96B20E5D3D400F17378 /* 走在冷风中.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFC6D96920E5D3D300F17378 /* 走在冷风中.mp3 */; };
 		BFC6D96C20E5D3D400F17378 /* 来自天堂的魔鬼.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFC6D96A20E5D3D400F17378 /* 来自天堂的魔鬼.mp3 */; };
 		BFEF193E2101E6E2003DCAC1 /* AAChartView.html in Resources */ = {isa = PBXBuildFile; fileRef = BFEF193D2101E6E2003DCAC1 /* AAChartView.html */; };
-		BFEF19872101E821003DCAC1 /* JLLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19412101E820003DCAC1 /* JLLineChart.m */; };
-		BFEF19882101E821003DCAC1 /* RRStockChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19432101E820003DCAC1 /* RRStockChartView.m */; };
-		BFEF19892101E821003DCAC1 /* HYStockChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19442101E820003DCAC1 /* HYStockChartViewController.m */; };
-		BFEF198A2101E821003DCAC1 /* StockNewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19462101E820003DCAC1 /* StockNewsController.m */; };
-		BFEF198B2101E821003DCAC1 /* StockInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19482101E820003DCAC1 /* StockInfoDetailViewController.m */; };
-		BFEF198C2101E821003DCAC1 /* HYStockChartTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF194D2101E820003DCAC1 /* HYStockChartTool.m */; };
-		BFEF198D2101E821003DCAC1 /* DaylyKLine.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFEF19502101E820003DCAC1 /* DaylyKLine.plist */; };
-		BFEF198E2101E821003DCAC1 /* WeeklyKLine.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFEF19512101E820003DCAC1 /* WeeklyKLine.plist */; };
-		BFEF198F2101E821003DCAC1 /* MonthlyKLine.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFEF19522101E820003DCAC1 /* MonthlyKLine.plist */; };
-		BFEF19902101E821003DCAC1 /* FiveDaysLine.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFEF19542101E820003DCAC1 /* FiveDaysLine.plist */; };
-		BFEF19912101E821003DCAC1 /* HYStockChartConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19552101E820003DCAC1 /* HYStockChartConstant.m */; };
-		BFEF19922101E821003DCAC1 /* TimeLine.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFEF19562101E820003DCAC1 /* TimeLine.plist */; };
-		BFEF19932101E821003DCAC1 /* StockCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19572101E820003DCAC1 /* StockCategory.m */; };
-		BFEF19942101E821003DCAC1 /* StockDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19592101E820003DCAC1 /* StockDetailHeaderView.m */; };
-		BFEF19952101E821003DCAC1 /* HYStockChartProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF195E2101E820003DCAC1 /* HYStockChartProfileModel.m */; };
-		BFEF19962101E821003DCAC1 /* FiveRange_TradeDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19602101E820003DCAC1 /* FiveRange_TradeDetailTableView.m */; };
-		BFEF19972101E821003DCAC1 /* HYStockChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19622101E820003DCAC1 /* HYStockChartView.m */; };
-		BFEF19982101E821003DCAC1 /* KLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19662101E820003DCAC1 /* KLineModel.m */; };
-		BFEF19992101E821003DCAC1 /* HYKLineBelowView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19672101E820003DCAC1 /* HYKLineBelowView.m */; };
-		BFEF199A2101E821003DCAC1 /* HYKLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19682101E820003DCAC1 /* HYKLineView.m */; };
-		BFEF199B2101E821003DCAC1 /* HYKLineAboveView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF196D2101E820003DCAC1 /* HYKLineAboveView.m */; };
-		BFEF199C2101E821003DCAC1 /* HYTimeLineBelowView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19722101E820003DCAC1 /* HYTimeLineBelowView.m */; };
-		BFEF199D2101E821003DCAC1 /* TimeLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19732101E820003DCAC1 /* TimeLineModel.m */; };
-		BFEF199E2101E821003DCAC1 /* HYTimeLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19742101E820003DCAC1 /* HYTimeLineView.m */; };
-		BFEF199F2101E821003DCAC1 /* HYTimeLineAboveView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19752101E820003DCAC1 /* HYTimeLineAboveView.m */; };
-		BFEF19A02101E821003DCAC1 /* StockChartTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19772101E820003DCAC1 /* StockChartTitleView.m */; };
-		BFEF19A12101E821003DCAC1 /* StockDetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19792101E820003DCAC1 /* StockDetailTopView.m */; };
 		BFEF19A22101E821003DCAC1 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = BFEF197C2101E820003DCAC1 /* unzip.c */; };
 		BFEF19A32101E821003DCAC1 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = BFEF197D2101E820003DCAC1 /* zip.c */; };
 		BFEF19A42101E821003DCAC1 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = BFEF197E2101E821003DCAC1 /* ioapi.c */; };
@@ -1113,7 +1085,22 @@
 		BFEF19CA2101E990003DCAC1 /* SumCFile.c in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19BF2101E98E003DCAC1 /* SumCFile.c */; };
 		BFEF19CB2101E990003DCAC1 /* TSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19C02101E98E003DCAC1 /* TSViewController.m */; };
 		BFEF19CE2101F8DF003DCAC1 /* LanguageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF19CC2101F8DF003DCAC1 /* LanguageTableViewController.m */; };
-		CE7D3D02561A884A24654308 /* Pods_Freedom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60338462214883C1C05F8646 /* Pods_Freedom.framework */; };
+		DF0489DE21D2699B0030C30B /* SwiftWebViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489DD21D2699A0030C30B /* SwiftWebViewBridge.swift */; };
+		DF0489E121D26D120030C30B /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0489E021D26D120030C30B /* XMLDictionary.m */; };
+		DF0489E921D28B870030C30B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489E321D28B860030C30B /* Util.swift */; };
+		DF0489EA21D28B870030C30B /* ElasticTransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489E421D28B860030C30B /* ElasticTransitionPresentationController.swift */; };
+		DF0489EB21D28B870030C30B /* ElasticModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489E521D28B860030C30B /* ElasticModalViewController.swift */; };
+		DF0489EC21D28B870030C30B /* EdgePanTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489E621D28B860030C30B /* EdgePanTransition.swift */; };
+		DF0489ED21D28B870030C30B /* ElasticShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489E721D28B860030C30B /* ElasticShapeLayer.swift */; };
+		DF0489EE21D28B870030C30B /* ElasticTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489E821D28B860030C30B /* ElasticTransition.swift */; };
+		DF0489F721D28BA40030C30B /* NSObject+MotionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489F021D28BA40030C30B /* NSObject+MotionAnimation.swift */; };
+		DF0489F821D28BA40030C30B /* MotionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489F121D28BA40030C30B /* MotionAnimator.swift */; };
+		DF0489F921D28BA40030C30B /* SpringValueAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489F221D28BA40030C30B /* SpringValueAnimation.swift */; };
+		DF0489FA21D28BA40030C30B /* MotionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489F321D28BA40030C30B /* MotionAnimation.swift */; };
+		DF0489FB21D28BA40030C30B /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489F421D28BA40030C30B /* Types.swift */; };
+		DF0489FC21D28BA40030C30B /* MotionAnimationPropertyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489F521D28BA40030C30B /* MotionAnimationPropertyState.swift */; };
+		DF0489FD21D28BA40030C30B /* ValueAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489F621D28BA40030C30B /* ValueAnimation.swift */; };
+		DF048A0421D29A810030C30B /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0489FE21D29A800030C30B /* RESideMenu.m */; };
 		DF0E966221CBAC7D009682CC /* WXAddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E966121CBAC7D009682CC /* WXAddFriendViewController.swift */; };
 		DF0E966421CBAC83009682CC /* WXContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E966321CBAC83009682CC /* WXContactsViewController.swift */; };
 		DF0E966621CBAC89009682CC /* WXFriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E966521CBAC89009682CC /* WXFriendDetailViewController.swift */; };
@@ -1266,8 +1253,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02AF73C9BE55F816B9D738C7 /* Pods_MyFirstAPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFirstAPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		60338462214883C1C05F8646 /* Pods_Freedom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freedom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		640117F75915AD869477841F /* Pods-Freedom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freedom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Freedom/Pods-Freedom.release.xcconfig"; sourceTree = "<group>"; };
 		7115A5A620AA9FE3000D0B96 /* FreedomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomNavigationController.swift; sourceTree = "<group>"; };
 		7115A5A820AAA191000D0B96 /* FreedomBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomBooksViewController.swift; sourceTree = "<group>"; };
 		7115A5AA20AAA1C4000D0B96 /* FreedomBooksEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomBooksEditViewController.swift; sourceTree = "<group>"; };
@@ -1353,8 +1339,6 @@
 		7121197320AC250D0087E05B /* ToutiaoMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToutiaoMeViewController.swift; sourceTree = "<group>"; };
 		71250EC42091C0F20093B59B /* FreedomTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreedomTools.h; sourceTree = "<group>"; };
 		71250EC52091C0F20093B59B /* FreedomTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreedomTools.m; sourceTree = "<group>"; };
-		71250EC72091C1DA0093B59B /* NSObject+Freedom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Freedom.h"; sourceTree = "<group>"; };
-		71250EC82091C1DA0093B59B /* NSObject+Freedom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Freedom.m"; sourceTree = "<group>"; };
 		71267A4D2092DC79006E1B96 /* BookFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookFriendsViewController.m; sourceTree = "<group>"; };
 		71267A4E2092DC7A006E1B96 /* BookFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookFriendsViewController.h; sourceTree = "<group>"; };
 		71267A4F2092DC7A006E1B96 /* BookFriendsMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookFriendsMode.h; sourceTree = "<group>"; };
@@ -1426,7 +1410,6 @@
 		713EE31120ADA0A40085B65D /* IqiyiMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IqiyiMineViewController.swift; sourceTree = "<group>"; };
 		713EE31320ADA0AF0085B65D /* IqiyiClassifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IqiyiClassifyViewController.swift; sourceTree = "<group>"; };
 		713EE31520ADA0BA0085B65D /* IqiyiWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IqiyiWebViewController.swift; sourceTree = "<group>"; };
-		71517B1B2094803300B40538 /* JSONObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONObject.swift; sourceTree = "<group>"; };
 		7165A3B220A58D64001C60D6 /* emoticonkeyboardbutton_sd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emoticonkeyboardbutton_sd.png; sourceTree = "<group>"; };
 		7165A3B720A58D68001C60D6 /* compose_slogan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose_slogan.png; sourceTree = "<group>"; };
 		7165A3B920A58D6A001C60D6 /* emoticon_keyboard_magnifier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emoticon_keyboard_magnifier.png; sourceTree = "<group>"; };
@@ -2178,8 +2161,6 @@
 		77C329771E3068CA00DFEC89 /* morentu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = morentu.png; sourceTree = "<group>"; };
 		77C329781E3068CA00DFEC89 /* dingyue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dingyue.png; sourceTree = "<group>"; };
 		77C329791E3068CA00DFEC89 /* dingyue_sd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dingyue_sd.png; sourceTree = "<group>"; };
-		77CC4F361D90DCC700DD2EC8 /* Foundation_API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Foundation_API.h; sourceTree = "<group>"; };
-		77CC4F3B1D90DF6200DD2EC8 /* Foundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Foundation.h; sourceTree = "<group>"; };
 		77D460661D5C71DA0066B352 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		77DFEC6F1E20B9090003E192 /* logs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = logs; sourceTree = "<group>"; };
 		77F7A1021E23757D00F91403 /* qylogo_p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qylogo_p.png; sourceTree = "<group>"; };
@@ -2188,8 +2169,7 @@
 		77FD03D01E25F17C00E5099E /* taobaomini3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taobaomini3.png; sourceTree = "<group>"; };
 		77FD03D11E25F17C00E5099E /* taobaomini4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taobaomini4.png; sourceTree = "<group>"; };
 		77FD03D21E25F17C00E5099E /* taobaomini5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taobaomini5.png; sourceTree = "<group>"; };
-		7CABB42BD8BCF303E342C69E /* Pods-MyFirstAPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstAPP.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstAPP/Pods-MyFirstAPP.release.xcconfig"; sourceTree = "<group>"; };
-		B97D0F488B188B225A75FB33 /* Pods-Freedom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freedom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Freedom/Pods-Freedom.debug.xcconfig"; sourceTree = "<group>"; };
+		B72CF25E36A6EB54EE4A50A2 /* Pods-Freedom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freedom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Freedom/Pods-Freedom.debug.xcconfig"; sourceTree = "<group>"; };
 		BF0E8AFA20DB9BE700150476 /* FreedomItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FreedomItems.plist; sourceTree = "<group>"; };
 		BF0E8B0220DCAB3F00150476 /* app.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = app.plist; sourceTree = "<group>"; };
 		BF0E8B0320DCAB4100150476 /* systemSetting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = systemSetting.plist; sourceTree = "<group>"; };
@@ -2432,56 +2412,6 @@
 		BFC6D96920E5D3D300F17378 /* 走在冷风中.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "走在冷风中.mp3"; sourceTree = "<group>"; };
 		BFC6D96A20E5D3D400F17378 /* 来自天堂的魔鬼.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "来自天堂的魔鬼.mp3"; sourceTree = "<group>"; };
 		BFEF193D2101E6E2003DCAC1 /* AAChartView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AAChartView.html; sourceTree = "<group>"; };
-		BFEF19412101E820003DCAC1 /* JLLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLLineChart.m; sourceTree = "<group>"; };
-		BFEF19432101E820003DCAC1 /* RRStockChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRStockChartView.m; sourceTree = "<group>"; };
-		BFEF19442101E820003DCAC1 /* HYStockChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYStockChartViewController.m; sourceTree = "<group>"; };
-		BFEF19452101E820003DCAC1 /* StockInfoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockInfoDetailViewController.h; sourceTree = "<group>"; };
-		BFEF19462101E820003DCAC1 /* StockNewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockNewsController.m; sourceTree = "<group>"; };
-		BFEF19472101E820003DCAC1 /* RRStockChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRStockChartView.h; sourceTree = "<group>"; };
-		BFEF19482101E820003DCAC1 /* StockInfoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInfoDetailViewController.m; sourceTree = "<group>"; };
-		BFEF19492101E820003DCAC1 /* HYStockChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYStockChartViewController.h; sourceTree = "<group>"; };
-		BFEF194A2101E820003DCAC1 /* StockNewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockNewsController.h; sourceTree = "<group>"; };
-		BFEF194B2101E820003DCAC1 /* JLLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLLineChart.h; sourceTree = "<group>"; };
-		BFEF194D2101E820003DCAC1 /* HYStockChartTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYStockChartTool.m; sourceTree = "<group>"; };
-		BFEF194E2101E820003DCAC1 /* StockCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockCategory.h; sourceTree = "<group>"; };
-		BFEF194F2101E820003DCAC1 /* HYStockChartConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYStockChartConstant.h; sourceTree = "<group>"; };
-		BFEF19502101E820003DCAC1 /* DaylyKLine.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DaylyKLine.plist; sourceTree = "<group>"; };
-		BFEF19512101E820003DCAC1 /* WeeklyKLine.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = WeeklyKLine.plist; sourceTree = "<group>"; };
-		BFEF19522101E820003DCAC1 /* MonthlyKLine.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MonthlyKLine.plist; sourceTree = "<group>"; };
-		BFEF19532101E820003DCAC1 /* HYStockChartTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYStockChartTool.h; sourceTree = "<group>"; };
-		BFEF19542101E820003DCAC1 /* FiveDaysLine.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FiveDaysLine.plist; sourceTree = "<group>"; };
-		BFEF19552101E820003DCAC1 /* HYStockChartConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYStockChartConstant.m; sourceTree = "<group>"; };
-		BFEF19562101E820003DCAC1 /* TimeLine.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TimeLine.plist; sourceTree = "<group>"; };
-		BFEF19572101E820003DCAC1 /* StockCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockCategory.m; sourceTree = "<group>"; };
-		BFEF19592101E820003DCAC1 /* StockDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockDetailHeaderView.m; sourceTree = "<group>"; };
-		BFEF195A2101E820003DCAC1 /* StockChartTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockChartTitleView.h; sourceTree = "<group>"; };
-		BFEF195B2101E820003DCAC1 /* StockDetailTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockDetailTopView.h; sourceTree = "<group>"; };
-		BFEF195E2101E820003DCAC1 /* HYStockChartProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYStockChartProfileModel.m; sourceTree = "<group>"; };
-		BFEF195F2101E820003DCAC1 /* HYStockChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYStockChartView.h; sourceTree = "<group>"; };
-		BFEF19602101E820003DCAC1 /* FiveRange_TradeDetailTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiveRange_TradeDetailTableView.m; sourceTree = "<group>"; };
-		BFEF19612101E820003DCAC1 /* FiveRange_TradeDetailTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiveRange_TradeDetailTableView.h; sourceTree = "<group>"; };
-		BFEF19622101E820003DCAC1 /* HYStockChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYStockChartView.m; sourceTree = "<group>"; };
-		BFEF19632101E820003DCAC1 /* HYStockChartProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYStockChartProfileModel.h; sourceTree = "<group>"; };
-		BFEF19642101E820003DCAC1 /* HYStockChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYStockChart.h; sourceTree = "<group>"; };
-		BFEF19662101E820003DCAC1 /* KLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineModel.m; sourceTree = "<group>"; };
-		BFEF19672101E820003DCAC1 /* HYKLineBelowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYKLineBelowView.m; sourceTree = "<group>"; };
-		BFEF19682101E820003DCAC1 /* HYKLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYKLineView.m; sourceTree = "<group>"; };
-		BFEF19692101E820003DCAC1 /* HYKLineAboveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYKLineAboveView.h; sourceTree = "<group>"; };
-		BFEF196A2101E820003DCAC1 /* HYKLineBelowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYKLineBelowView.h; sourceTree = "<group>"; };
-		BFEF196B2101E820003DCAC1 /* KLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineModel.h; sourceTree = "<group>"; };
-		BFEF196C2101E820003DCAC1 /* HYKLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYKLineView.h; sourceTree = "<group>"; };
-		BFEF196D2101E820003DCAC1 /* HYKLineAboveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYKLineAboveView.m; sourceTree = "<group>"; };
-		BFEF196F2101E820003DCAC1 /* TimeLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineModel.h; sourceTree = "<group>"; };
-		BFEF19702101E820003DCAC1 /* HYTimeLineAboveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTimeLineAboveView.h; sourceTree = "<group>"; };
-		BFEF19712101E820003DCAC1 /* HYTimeLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTimeLineView.h; sourceTree = "<group>"; };
-		BFEF19722101E820003DCAC1 /* HYTimeLineBelowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTimeLineBelowView.m; sourceTree = "<group>"; };
-		BFEF19732101E820003DCAC1 /* TimeLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineModel.m; sourceTree = "<group>"; };
-		BFEF19742101E820003DCAC1 /* HYTimeLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTimeLineView.m; sourceTree = "<group>"; };
-		BFEF19752101E820003DCAC1 /* HYTimeLineAboveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTimeLineAboveView.m; sourceTree = "<group>"; };
-		BFEF19762101E820003DCAC1 /* HYTimeLineBelowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTimeLineBelowView.h; sourceTree = "<group>"; };
-		BFEF19772101E820003DCAC1 /* StockChartTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockChartTitleView.m; sourceTree = "<group>"; };
-		BFEF19782101E820003DCAC1 /* StockDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockDetailHeaderView.h; sourceTree = "<group>"; };
-		BFEF19792101E820003DCAC1 /* StockDetailTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockDetailTopView.m; sourceTree = "<group>"; };
 		BFEF197C2101E820003DCAC1 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
 		BFEF197D2101E820003DCAC1 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
 		BFEF197E2101E821003DCAC1 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
@@ -2509,7 +2439,24 @@
 		BFEF19C22101E98F003DCAC1 /* TSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSViewController.h; sourceTree = "<group>"; };
 		BFEF19CC2101F8DF003DCAC1 /* LanguageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageTableViewController.m; sourceTree = "<group>"; };
 		BFEF19CD2101F8DF003DCAC1 /* LanguageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageTableViewController.h; sourceTree = "<group>"; };
-		CF6599DF222DA1221C0BD6DC /* Pods-Freedom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freedom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Freedom/Pods-Freedom.release.xcconfig"; sourceTree = "<group>"; };
+		DF0489DD21D2699A0030C30B /* SwiftWebViewBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftWebViewBridge.swift; sourceTree = "<group>"; };
+		DF0489DF21D26D120030C30B /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
+		DF0489E021D26D120030C30B /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
+		DF0489E321D28B860030C30B /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		DF0489E421D28B860030C30B /* ElasticTransitionPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticTransitionPresentationController.swift; sourceTree = "<group>"; };
+		DF0489E521D28B860030C30B /* ElasticModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticModalViewController.swift; sourceTree = "<group>"; };
+		DF0489E621D28B860030C30B /* EdgePanTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgePanTransition.swift; sourceTree = "<group>"; };
+		DF0489E721D28B860030C30B /* ElasticShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticShapeLayer.swift; sourceTree = "<group>"; };
+		DF0489E821D28B860030C30B /* ElasticTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticTransition.swift; sourceTree = "<group>"; };
+		DF0489F021D28BA40030C30B /* NSObject+MotionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+MotionAnimation.swift"; sourceTree = "<group>"; };
+		DF0489F121D28BA40030C30B /* MotionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionAnimator.swift; sourceTree = "<group>"; };
+		DF0489F221D28BA40030C30B /* SpringValueAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringValueAnimation.swift; sourceTree = "<group>"; };
+		DF0489F321D28BA40030C30B /* MotionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionAnimation.swift; sourceTree = "<group>"; };
+		DF0489F421D28BA40030C30B /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		DF0489F521D28BA40030C30B /* MotionAnimationPropertyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionAnimationPropertyState.swift; sourceTree = "<group>"; };
+		DF0489F621D28BA40030C30B /* ValueAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueAnimation.swift; sourceTree = "<group>"; };
+		DF0489FE21D29A800030C30B /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		DF0489FF21D29A800030C30B /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
 		DF0E966121CBAC7D009682CC /* WXAddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXAddFriendViewController.swift; sourceTree = "<group>"; };
 		DF0E966321CBAC83009682CC /* WXContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXContactsViewController.swift; sourceTree = "<group>"; };
 		DF0E966521CBAC89009682CC /* WXFriendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXFriendDetailViewController.swift; sourceTree = "<group>"; };
@@ -2643,7 +2590,7 @@
 		DFFA80BF21AEC84C009B1999 /* BaseCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		DFFA80C021AEC84D009B1999 /* BaseScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScrollView.swift; sourceTree = "<group>"; };
 		DFFA80C121AEC84D009B1999 /* BaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
-		ECEF9FF4F388896C86BFA3B3 /* Pods-MyFirstAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFirstAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFirstAPP/Pods-MyFirstAPP.debug.xcconfig"; sourceTree = "<group>"; };
+		E406CAF72A1293138277033C /* Pods_Freedom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freedom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2651,6 +2598,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF58BA2920EDC079002CB4EE /* libxml2.tbd in Frameworks */,
 				BF58BB7F20EF1CF5002CB4EE /* CoreAudio.framework in Frameworks */,
 				BF58BB7D20EF1CED002CB4EE /* CoreVideo.framework in Frameworks */,
 				BF58BB7B20EF1C86002CB4EE /* PushKit.framework in Frameworks */,
@@ -2663,7 +2611,6 @@
 				BF58BB8920EF1D3F002CB4EE /* RongiFlyKit.framework in Frameworks */,
 				BF58BA2D20EDC5CC002CB4EE /* Photos.framework in Frameworks */,
 				77BE53731D2CB0930001AA09 /* AssetsLibrary.framework in Frameworks */,
-				BF58BA2920EDC079002CB4EE /* libxml2.tbd in Frameworks */,
 				BF58BB8C20EF1D3F002CB4EE /* iflyMSC.framework in Frameworks */,
 				774BFAE81D7672E2005CA603 /* CoreGraphics.framework in Frameworks */,
 				774BFAE61D7672CA005CA603 /* Accelerate.framework in Frameworks */,
@@ -2689,7 +2636,7 @@
 				77BE53571D2CAFDB0001AA09 /* CoreTelephony.framework in Frameworks */,
 				77BE53551D2CAFD20001AA09 /* QuartzCore.framework in Frameworks */,
 				77BE53531D2CAFC50001AA09 /* SystemConfiguration.framework in Frameworks */,
-				CE7D3D02561A884A24654308 /* Pods_Freedom.framework in Frameworks */,
+				7D8CF81131D44340D2F57DED /* Pods_Freedom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3645,8 +3592,8 @@
 				7759B6A71D0EA38000AE3A59 /* FreedomTests */,
 				7759B6B21D0EA38000AE3A59 /* FreedomUITests */,
 				7759B68C1D0EA37F00AE3A59 /* Products */,
-				B2CA82414ED87DDE517200CA /* Pods */,
 				FCCABADD517AF7901A18F7B1 /* Frameworks */,
+				A2C976B2FA119666ABE8BB12 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3725,15 +3672,11 @@
 				7759B6E81D0EA3E900AE3A59 /* BaseFile */,
 				71250EC42091C0F20093B59B /* FreedomTools.h */,
 				71250EC52091C0F20093B59B /* FreedomTools.m */,
-				71250EC72091C1DA0093B59B /* NSObject+Freedom.h */,
-				71250EC82091C1DA0093B59B /* NSObject+Freedom.m */,
 				713728CE20AE9FC500A3227A /* FoundationSwift.swift */,
 				DF4C6FC721CC787700A54339 /* FoundationEnum.swift */,
 				DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */,
 				BF58BA2F20EDE837002CB4EE /* FreedomToolSwift.swift */,
 				DFA5BF3521B6A74D00CB9223 /* User.swift */,
-				77CC4F3B1D90DF6200DD2EC8 /* Foundation.h */,
-				77CC4F361D90DCC700DD2EC8 /* Foundation_API.h */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -4034,9 +3977,9 @@
 		7772A7F11D64433500444973 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				DF0489E221D28B860030C30B /* ElasticTransition */,
 				BFEF19B32101E931003DCAC1 /* 混编文件 */,
 				BFEF197A2101E820003DCAC1 /* SSZipArchive */,
-				BFEF19402101E820003DCAC1 /* Stock */,
 				BFEF193D2101E6E2003DCAC1 /* AAChartView.html */,
 				BF58BA4D20EF1944002CB4EE /* RCloudPackage */,
 				71ECDFB22091EB4A00495467 /* JSPatch.framework */,
@@ -4961,13 +4904,11 @@
 			path = "淘宝详情页种类";
 			sourceTree = "<group>";
 		};
-		B2CA82414ED87DDE517200CA /* Pods */ = {
+		A2C976B2FA119666ABE8BB12 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				ECEF9FF4F388896C86BFA3B3 /* Pods-MyFirstAPP.debug.xcconfig */,
-				7CABB42BD8BCF303E342C69E /* Pods-MyFirstAPP.release.xcconfig */,
-				B97D0F488B188B225A75FB33 /* Pods-Freedom.debug.xcconfig */,
-				CF6599DF222DA1221C0BD6DC /* Pods-Freedom.release.xcconfig */,
+				B72CF25E36A6EB54EE4A50A2 /* Pods-Freedom.debug.xcconfig */,
+				640117F75915AD869477841F /* Pods-Freedom.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -5286,119 +5227,6 @@
 			path = WXData;
 			sourceTree = "<group>";
 		};
-		BFEF19402101E820003DCAC1 /* Stock */ = {
-			isa = PBXGroup;
-			children = (
-				BFEF194B2101E820003DCAC1 /* JLLineChart.h */,
-				BFEF19412101E820003DCAC1 /* JLLineChart.m */,
-				BFEF19422101E820003DCAC1 /* Controller */,
-				BFEF194C2101E820003DCAC1 /* Model */,
-				BFEF19582101E820003DCAC1 /* View */,
-			);
-			path = Stock;
-			sourceTree = "<group>";
-		};
-		BFEF19422101E820003DCAC1 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				BFEF19472101E820003DCAC1 /* RRStockChartView.h */,
-				BFEF19432101E820003DCAC1 /* RRStockChartView.m */,
-				BFEF19492101E820003DCAC1 /* HYStockChartViewController.h */,
-				BFEF19442101E820003DCAC1 /* HYStockChartViewController.m */,
-				BFEF194A2101E820003DCAC1 /* StockNewsController.h */,
-				BFEF19462101E820003DCAC1 /* StockNewsController.m */,
-				BFEF19452101E820003DCAC1 /* StockInfoDetailViewController.h */,
-				BFEF19482101E820003DCAC1 /* StockInfoDetailViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		BFEF194C2101E820003DCAC1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				BFEF19532101E820003DCAC1 /* HYStockChartTool.h */,
-				BFEF194D2101E820003DCAC1 /* HYStockChartTool.m */,
-				BFEF194E2101E820003DCAC1 /* StockCategory.h */,
-				BFEF19572101E820003DCAC1 /* StockCategory.m */,
-				BFEF194F2101E820003DCAC1 /* HYStockChartConstant.h */,
-				BFEF19552101E820003DCAC1 /* HYStockChartConstant.m */,
-				BFEF19502101E820003DCAC1 /* DaylyKLine.plist */,
-				BFEF19512101E820003DCAC1 /* WeeklyKLine.plist */,
-				BFEF19522101E820003DCAC1 /* MonthlyKLine.plist */,
-				BFEF19542101E820003DCAC1 /* FiveDaysLine.plist */,
-				BFEF19562101E820003DCAC1 /* TimeLine.plist */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		BFEF19582101E820003DCAC1 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				BFEF19782101E820003DCAC1 /* StockDetailHeaderView.h */,
-				BFEF19592101E820003DCAC1 /* StockDetailHeaderView.m */,
-				BFEF195A2101E820003DCAC1 /* StockChartTitleView.h */,
-				BFEF19772101E820003DCAC1 /* StockChartTitleView.m */,
-				BFEF195B2101E820003DCAC1 /* StockDetailTopView.h */,
-				BFEF19792101E820003DCAC1 /* StockDetailTopView.m */,
-				BFEF195C2101E820003DCAC1 /* HYStockChart */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		BFEF195C2101E820003DCAC1 /* HYStockChart */ = {
-			isa = PBXGroup;
-			children = (
-				BFEF19642101E820003DCAC1 /* HYStockChart.h */,
-				BFEF195D2101E820003DCAC1 /* StockChartView */,
-				BFEF19652101E820003DCAC1 /* KLine */,
-				BFEF196E2101E820003DCAC1 /* TimeLine */,
-			);
-			path = HYStockChart;
-			sourceTree = "<group>";
-		};
-		BFEF195D2101E820003DCAC1 /* StockChartView */ = {
-			isa = PBXGroup;
-			children = (
-				BFEF19632101E820003DCAC1 /* HYStockChartProfileModel.h */,
-				BFEF195E2101E820003DCAC1 /* HYStockChartProfileModel.m */,
-				BFEF195F2101E820003DCAC1 /* HYStockChartView.h */,
-				BFEF19622101E820003DCAC1 /* HYStockChartView.m */,
-				BFEF19612101E820003DCAC1 /* FiveRange_TradeDetailTableView.h */,
-				BFEF19602101E820003DCAC1 /* FiveRange_TradeDetailTableView.m */,
-			);
-			path = StockChartView;
-			sourceTree = "<group>";
-		};
-		BFEF19652101E820003DCAC1 /* KLine */ = {
-			isa = PBXGroup;
-			children = (
-				BFEF196B2101E820003DCAC1 /* KLineModel.h */,
-				BFEF19662101E820003DCAC1 /* KLineModel.m */,
-				BFEF196A2101E820003DCAC1 /* HYKLineBelowView.h */,
-				BFEF19672101E820003DCAC1 /* HYKLineBelowView.m */,
-				BFEF196C2101E820003DCAC1 /* HYKLineView.h */,
-				BFEF19682101E820003DCAC1 /* HYKLineView.m */,
-				BFEF19692101E820003DCAC1 /* HYKLineAboveView.h */,
-				BFEF196D2101E820003DCAC1 /* HYKLineAboveView.m */,
-			);
-			path = KLine;
-			sourceTree = "<group>";
-		};
-		BFEF196E2101E820003DCAC1 /* TimeLine */ = {
-			isa = PBXGroup;
-			children = (
-				BFEF19702101E820003DCAC1 /* HYTimeLineAboveView.h */,
-				BFEF19752101E820003DCAC1 /* HYTimeLineAboveView.m */,
-				BFEF19762101E820003DCAC1 /* HYTimeLineBelowView.h */,
-				BFEF19722101E820003DCAC1 /* HYTimeLineBelowView.m */,
-				BFEF196F2101E820003DCAC1 /* TimeLineModel.h */,
-				BFEF19732101E820003DCAC1 /* TimeLineModel.m */,
-				BFEF19712101E820003DCAC1 /* HYTimeLineView.h */,
-				BFEF19742101E820003DCAC1 /* HYTimeLineView.m */,
-			);
-			path = TimeLine;
-			sourceTree = "<group>";
-		};
 		BFEF197A2101E820003DCAC1 /* SSZipArchive */ = {
 			isa = PBXGroup;
 			children = (
@@ -5443,6 +5271,34 @@
 				BFEF19C02101E98E003DCAC1 /* TSViewController.m */,
 			);
 			path = "混编文件";
+			sourceTree = "<group>";
+		};
+		DF0489E221D28B860030C30B /* ElasticTransition */ = {
+			isa = PBXGroup;
+			children = (
+				DF0489EF21D28BA40030C30B /* MotionAnimation */,
+				DF0489E321D28B860030C30B /* Util.swift */,
+				DF0489E421D28B860030C30B /* ElasticTransitionPresentationController.swift */,
+				DF0489E521D28B860030C30B /* ElasticModalViewController.swift */,
+				DF0489E621D28B860030C30B /* EdgePanTransition.swift */,
+				DF0489E721D28B860030C30B /* ElasticShapeLayer.swift */,
+				DF0489E821D28B860030C30B /* ElasticTransition.swift */,
+			);
+			path = ElasticTransition;
+			sourceTree = "<group>";
+		};
+		DF0489EF21D28BA40030C30B /* MotionAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				DF0489F021D28BA40030C30B /* NSObject+MotionAnimation.swift */,
+				DF0489F121D28BA40030C30B /* MotionAnimator.swift */,
+				DF0489F221D28BA40030C30B /* SpringValueAnimation.swift */,
+				DF0489F321D28BA40030C30B /* MotionAnimation.swift */,
+				DF0489F421D28BA40030C30B /* Types.swift */,
+				DF0489F521D28BA40030C30B /* MotionAnimationPropertyState.swift */,
+				DF0489F621D28BA40030C30B /* ValueAnimation.swift */,
+			);
+			path = MotionAnimation;
 			sourceTree = "<group>";
 		};
 		DF7B3FB321ABEEC500E3D975 /* 抖音 */ = {
@@ -5538,6 +5394,8 @@
 		DFF4AB9621B773D700F03C71 /* OCFile */ = {
 			isa = PBXGroup;
 			children = (
+				DF0489FF21D29A800030C30B /* RESideMenu.h */,
+				DF0489FE21D29A800030C30B /* RESideMenu.m */,
 				DF846C8C21BE55FD002D9CA2 /* NSObject+Mirror.h */,
 				DF846C8B21BE55FD002D9CA2 /* NSObject+Mirror.m */,
 				BF0E8B0620DCB0B400150476 /* AppManager.h */,
@@ -5552,6 +5410,8 @@
 				BF4A80E72105CFC900D32FB0 /* GPAPolylineEncoding.m */,
 				BF58BA2220EDBFBC002CB4EE /* HTMLParser.h */,
 				BF58BA2120EDBFBC002CB4EE /* HTMLParser.m */,
+				DF0489DF21D26D120030C30B /* XMLDictionary.h */,
+				DF0489E021D26D120030C30B /* XMLDictionary.m */,
 				BF4A80EA2105CFCA00D32FB0 /* AudioStreamer.h */,
 				BF4A80E12105CFC600D32FB0 /* AudioStreamer.m */,
 			);
@@ -5561,6 +5421,7 @@
 		DFF4AB9721B794B200F03C71 /* SwiftTools */ = {
 			isa = PBXGroup;
 			children = (
+				DF0489DD21D2699A0030C30B /* SwiftWebViewBridge.swift */,
 				BF58B94920EB22C8002CB4EE /* XTablesViewController.swift */,
 				DFB5FFA321CA379C0057C922 /* XIBExtension.swift */,
 				DFC662C721C0E96600B41558 /* XHud.swift */,
@@ -5568,11 +5429,10 @@
 				DFB5FF4E21C9EAC30057C922 /* XAlertViewController.swift */,
 				DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */,
 				BF58BA3120EDF132002CB4EE /* SwiftNotice.swift */,
-				71517B1B2094803300B40538 /* JSONObject.swift */,
-				BFC6D93220E322D100F17378 /* XRadiaMenu.swift */,
 				BF58B95920ECFC0B002CB4EE /* BaseSearchBar.swift */,
 				BF58BA2020EDBFBB002CB4EE /* DownloadService.swift */,
 				BF4A80E22105CFC600D32FB0 /* XTip.swift */,
+				BFC6D93220E322D100F17378 /* XRadiaMenu.swift */,
 				BF4A80DF2105CE5E00D32FB0 /* BaseSearchBarView.swift */,
 				DFC433E821C3F74F003E1BCB /* XNetKit.swift */,
 				BF58BA1F20EDBFBB002CB4EE /* PreViewController.swift */,
@@ -5624,8 +5484,7 @@
 				77BE53561D2CAFDB0001AA09 /* CoreTelephony.framework */,
 				77BE53541D2CAFD20001AA09 /* QuartzCore.framework */,
 				77BE53521D2CAFC50001AA09 /* SystemConfiguration.framework */,
-				02AF73C9BE55F816B9D738C7 /* Pods_MyFirstAPP.framework */,
-				60338462214883C1C05F8646 /* Pods_Freedom.framework */,
+				E406CAF72A1293138277033C /* Pods_Freedom.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -5637,12 +5496,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7759B6B81D0EA38000AE3A59 /* Build configuration list for PBXNativeTarget "Freedom" */;
 			buildPhases = (
-				A53E273E080B8DA8D139609C /* [CP] Check Pods Manifest.lock */,
+				7167805F445E34AC3233E9BD /* [CP] Check Pods Manifest.lock */,
 				7759B6871D0EA37F00AE3A59 /* Sources */,
 				7759B6881D0EA37F00AE3A59 /* Frameworks */,
 				7759B6891D0EA37F00AE3A59 /* Resources */,
-				594D8475FD8B79805F499D8A /* [CP] Embed Pods Frameworks */,
-				07EE27754371AA31E3111A8C /* [CP] Copy Pods Resources */,
+				981D5F401A32DC38FC5614B9 /* [CP] Embed Pods Frameworks */,
+				B60ADA2B205B0F4114E06465 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -5806,7 +5665,6 @@
 				779939671E2F7B6600866968 /* lxh_zaokuangzheng.png in Resources */,
 				77FD03D41E25F17C00E5099E /* taobaomini2.png in Resources */,
 				7741F1261D6D50F900EED332 /* alipayMeZhima.png in Resources */,
-				BFEF198F2101E821003DCAC1 /* MonthlyKLine.plist in Resources */,
 				772E87C21D76BC15004EDF50 /* listen_game.png in Resources */,
 				7741F1141D6D50F900EED332 /* alipayHome1.png in Resources */,
 				77FD03D71E25F17C00E5099E /* taobaomini5.png in Resources */,
@@ -5939,7 +5797,6 @@
 				772E86311D76BC15004EDF50 /* ktv_listenwork_lbsrankhead1.png in Resources */,
 				BF58BB2420EF1944002CB4EE /* RongCloudKit.strings in Resources */,
 				7741F1361D6D50F900EED332 /* alipayHome20.png in Resources */,
-				BFEF19902101E821003DCAC1 /* FiveDaysLine.plist in Resources */,
 				779938CA1E2F7B6500866968 /* d_heng.png in Resources */,
 				BF7309DC20E0D98100FC3555 /* usuallyAPP.plist in Resources */,
 				77993A731E2F7B9D00866968 /* [转圈]@2x.png in Resources */,
@@ -6201,7 +6058,6 @@
 				772E84C81D76BC15004EDF50 /* fx_silver_box_normal.png in Resources */,
 				779939401E2F7B6600866968 /* lxh_leiliumanmian.gif in Resources */,
 				BFC6D96820E5C56700F17378 /* FaceEmoji.json in Resources */,
-				BFEF198E2101E821003DCAC1 /* WeeklyKLine.plist in Resources */,
 				7772A80E1D64648B00444973 /* zhifubaoIcon.png in Resources */,
 				77993A0B1E2F7B9C00866968 /* [勾引]@2x.png in Resources */,
 				772E84FD1D76BC15004EDF50 /* fx_weekStar_detail_icon_giftBg.png in Resources */,
@@ -6289,7 +6145,6 @@
 				77993A0C1E2F7B9C00866968 /* [发呆]@2x.png in Resources */,
 				772E862B1D76BC15004EDF50 /* ktv_listenwork_lbsrank1.png in Resources */,
 				77993A1D1E2F7B9C00866968 /* [大兵]@2x.png in Resources */,
-				BFEF198D2101E821003DCAC1 /* DaylyKLine.plist in Resources */,
 				772E86941D76BC15004EDF50 /* ktv_occupation_attorney.png in Resources */,
 				772E84CB1D76BC15004EDF50 /* fx_song_chart.png in Resources */,
 				779938EC1E2F7B6500866968 /* d_youhengheng.png in Resources */,
@@ -6495,7 +6350,6 @@
 				7799392A1E2F7B6500866968 /* lxh_haoaio.gif in Resources */,
 				77645FF11D68384600ACCCAC /* WX.storyboard in Resources */,
 				DF7B3FBC21ABEEC500E3D975 /* Emoticons.bundle in Resources */,
-				BFEF19922101E821003DCAC1 /* TimeLine.plist in Resources */,
 				77993A791E2F7B9D00866968 /* [闭嘴]@2x.png in Resources */,
 				7165A3C920A58D77001C60D6 /* emoticonkeyboardbutton_sd.png in Resources */,
 				772E862C1D76BC15004EDF50 /* ktv_listenwork_lbsrank2.png in Resources */,
@@ -6540,13 +6394,139 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07EE27754371AA31E3111A8C /* [CP] Copy Pods Resources */ = {
+		7167805F445E34AC3233E9BD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Freedom-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		981D5F401A32DC38FC5614B9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AAInfographics/AAInfographics.framework",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
+				"${BUILT_PRODUCTS_DIR}/AVOSCloudIM/AVOSCloudIM.framework",
+				"${BUILT_PRODUCTS_DIR}/AXIndicatorView/AXIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/AXNavigationBackItemInjection/AXNavigationBackItemInjection.framework",
+				"${BUILT_PRODUCTS_DIR}/AXPracticalHUD/AXPracticalHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/AXWebViewController/AXWebViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
+				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/LeanCloud/LeanCloud.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/MWPhotoBrowser/MWPhotoBrowser.framework",
+				"${BUILT_PRODUCTS_DIR}/MonkeyKing/MonkeyKing.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/NJKWebViewProgress/NJKWebViewProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SSKeychain/SSKeychain.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/StarWars/StarWars.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
+				"${BUILT_PRODUCTS_DIR}/XCarryOn/XCarryOn.framework",
+				"${BUILT_PRODUCTS_DIR}/XExtension/XExtension.framework",
+				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
+				"${BUILT_PRODUCTS_DIR}/iOS-Echarts/iOS_Echarts.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AAInfographics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloudIM.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXNavigationBackItemInjection.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXPracticalHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXWebViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LeanCloud.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MWPhotoBrowser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MonkeyKing.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NJKWebViewProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSKeychain.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StarWars.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCarryOn.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XExtension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOS_Echarts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B60ADA2B205B0F4114E06465 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Freedom/Pods-Freedom-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RongCloud.bundle",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/en.lproj",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/zh-Hans.lproj",
@@ -6558,9 +6538,28 @@
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/JrmfIMLib/jrmf.cer",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/AlipaySDK/AlipaySDK.bundle",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/JrmfIMLib/WalletResource.bundle",
+				"${PODS_ROOT}/ShareSDK2/Comment/Comment.bundle",
+				"${PODS_ROOT}/ShareSDK2/ShareSDK/Connection/InstapaperResource.bundle",
+				"${PODS_ROOT}/ShareSDK2/ShareSDK/Core/Resource.bundle",
+				"${PODS_ROOT}/ShareSDK2/ShareSDK/Core/zh-Hans.lproj",
+				"${PODS_ROOT}/ShareSDK2/ShareSDK/Core/en.lproj",
+				"${PODS_ROOT}/ShareSDK2/ShareSDK/Extend/googlePlusSDK/GooglePlus.bundle",
+				"${PODS_ROOT}/ShareSDK2/ShareSDK/Extend/Pinterest.embeddedframework/Resources/PinterestSDKResources.bundle",
+				"${PODS_ROOT}/ShareSDK2/ShareSDK/Extend/QQConnectSDK/TencentOpenApi_IOS_Bundle.bundle",
+				"${PODS_ROOT}/ShareSDK2/ShareSDK/Extend/RenRenSDK/RennSDK.bundle",
+				"${PODS_ROOT}/ShareSDK2/ShareSDK/Extend/SinaWeiboSDK/WeiboSDK.bundle",
+				"${PODS_ROOT}/ShareSDK2/ShareSDK/UI/ShareSDKFlatShareViewUI.bundle",
+				"${PODS_ROOT}/ShareSDK2/ShareSDK/UI/ShareSDKiPadDefaultShareViewUI.bundle",
+				"${PODS_ROOT}/ShareSDK2/ShareSDK/UI/ShareSDKiPadSimpleShareViewUI.bundle",
+				"${PODS_ROOT}/ShareSDK2/ShareSDK/UI/ShareSDKiPhoneDefaultShareViewUI.bundle",
+				"${PODS_ROOT}/ShareSDK2/ShareSDK/UI/ShareSDKiPhoneSimpleShareViewUI.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RongCloud.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
@@ -6570,152 +6569,23 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/jrmf.cer",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AlipaySDK.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WalletResource.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Comment.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/InstapaperResource.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Resource.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlus.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PinterestSDKResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TencentOpenApi_IOS_Bundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RennSDK.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WeiboSDK.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShareSDKFlatShareViewUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShareSDKiPadDefaultShareViewUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShareSDKiPadSimpleShareViewUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShareSDKiPhoneDefaultShareViewUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShareSDKiPhoneSimpleShareViewUI.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Freedom/Pods-Freedom-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		594D8475FD8B79805F499D8A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AAInfographics/AAInfographics.framework",
-				"${BUILT_PRODUCTS_DIR}/ACAlertController/ACAlertController.framework",
-				"${BUILT_PRODUCTS_DIR}/ACMediaFrame/ACMediaFrame.framework",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/AXIndicatorView/AXIndicatorView.framework",
-				"${BUILT_PRODUCTS_DIR}/AXNavigationBackItemInjection/AXNavigationBackItemInjection.framework",
-				"${BUILT_PRODUCTS_DIR}/AXPracticalHUD/AXPracticalHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/AXWebViewController/AXWebViewController.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
-				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
-				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
-				"${BUILT_PRODUCTS_DIR}/ElasticTransitionObjC/ElasticTransitionObjC.framework",
-				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
-				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
-				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/JSONModel/JSONModel.framework",
-				"${BUILT_PRODUCTS_DIR}/JSPatch/JSPatch.framework",
-				"${BUILT_PRODUCTS_DIR}/KissXML/KissXML.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
-				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
-				"${BUILT_PRODUCTS_DIR}/MWPhotoBrowser/MWPhotoBrowser.framework",
-				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/NJKWebViewProgress/NJKWebViewProgress.framework",
-				"${BUILT_PRODUCTS_DIR}/PPHelpMe/PPHelpMe.framework",
-				"${BUILT_PRODUCTS_DIR}/PPRevealSideViewController/PPRevealSideViewController.framework",
-				"${BUILT_PRODUCTS_DIR}/RESideMenu/RESideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SSKeychain/SSKeychain.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/ScottAlertController/ScottAlertController.framework",
-				"${BUILT_PRODUCTS_DIR}/SmartJSWebView/SmartJSWebView.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftWebViewBridge/SwiftWebViewBridge.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
-				"${BUILT_PRODUCTS_DIR}/UAProgressView/UAProgressView.framework",
-				"${BUILT_PRODUCTS_DIR}/XCarryOn/XCarryOn.framework",
-				"${BUILT_PRODUCTS_DIR}/XExtension/XExtension.framework",
-				"${BUILT_PRODUCTS_DIR}/XMLDictionary/XMLDictionary.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AAInfographics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ACAlertController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ACMediaFrame.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXIndicatorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXNavigationBackItemInjection.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXPracticalHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXWebViewController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlocksKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ElasticTransitionObjC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSPatch.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KissXML.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MWPhotoBrowser.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NJKWebViewProgress.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PPHelpMe.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PPRevealSideViewController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RESideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSKeychain.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScottAlertController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SmartJSWebView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftWebViewBridge.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UAProgressView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCarryOn.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XExtension.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XMLDictionary.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A53E273E080B8DA8D139609C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Freedom-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -6726,25 +6596,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF6B51FC21CA801E00460949 /* WXPictureCarouselView.swift in Sources */,
+				DF0489EC21D28B870030C30B /* EdgePanTransition.swift in Sources */,
 				7115A5CA20AAD376000D0B96 /* PersonalConsumerViewController.swift in Sources */,
 				BFAC49BF20D25EE700E5CB8D /* AppDelegate.swift in Sources */,
 				DF7B407121AC020A00E3D975 /* BaseRequest.swift in Sources */,
 				7121196420AC24790087E05B /* ToutiaoTabBarController.swift in Sources */,
 				BF58BB6920EF1945002CB4EE /* RCDHttpTool.m in Sources */,
 				713EE30E20ADA08F0085B65D /* IqiyiSubscribeViewController.swift in Sources */,
-				BFEF19882101E821003DCAC1 /* RRStockChartView.m in Sources */,
 				BF58BB5520EF1945002CB4EE /* RCDAboutRongCloudTableViewController.m in Sources */,
 				DFFA80C521AEC84D009B1999 /* BaseStaticView.swift in Sources */,
 				7115A5E420AAD9F0000D0B96 /* ResumeCallMeViewController.swift in Sources */,
-				BFEF19932101E821003DCAC1 /* StockCategory.m in Sources */,
 				BF58BB3F20EF1945002CB4EE /* RCDSearchViewController.m in Sources */,
 				DF6B522421CB262100460949 /* TLEmojiKeyboard.swift in Sources */,
 				BF58BB6320EF1945002CB4EE /* RCAnnotationView.m in Sources */,
+				DF0489E121D26D120030C30B /* XMLDictionary.m in Sources */,
 				DF6B520021CA802C00460949 /* WXSearchController.swift in Sources */,
 				BF58BB5620EF1945002CB4EE /* RCDChatListViewController.m in Sources */,
 				BFEF19A62101E821003DCAC1 /* SSZipArchive.m in Sources */,
 				713EE2AA20AD8F5C0085B65D /* KugouTabBarController.swift in Sources */,
 				DFB5FFA421CA379C0057C922 /* XIBExtension.swift in Sources */,
+				DF0489F821D28BA40030C30B /* MotionAnimator.swift in Sources */,
 				DF7B407B21AC020A00E3D975 /* Models.swift in Sources */,
 				BF58BB4C20EF1945002CB4EE /* RCDPushSettingViewController.m in Sources */,
 				DF6B523A21CB76FF00460949 /* WXExpressionChosenViewController.swift in Sources */,
@@ -6756,7 +6627,6 @@
 				7121194020ABC5940087E05B /* EnergyContactDetailViewController.swift in Sources */,
 				BF58BB3520EF1945002CB4EE /* RCDGroupViewController.m in Sources */,
 				DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */,
-				BFEF199C2101E821003DCAC1 /* HYTimeLineBelowView.m in Sources */,
 				DF6B521421CB25CA00460949 /* WXGroupQRCodeViewController.swift in Sources */,
 				BF58BB4E20EF1945002CB4EE /* RCDMessageNotifySettingTableViewController.m in Sources */,
 				7121196E20AC24EA0087E05B /* ToutiaoHomeDetailViewController.swift in Sources */,
@@ -6766,14 +6636,14 @@
 				DFC662C821C0E96600B41558 /* XHud.swift in Sources */,
 				BF4A80EE2105CFCC00D32FB0 /* AudioStreamer.m in Sources */,
 				713EE30A20ADA0790085B65D /* IqiyiDiscoverViewController.swift in Sources */,
+				DF0489E921D28B870030C30B /* Util.swift in Sources */,
 				713EE2D420AD9BA20085B65D /* TaobaoMiniTopicViewController.swift in Sources */,
 				BF58BB4820EF1945002CB4EE /* RCDSettingBaseViewController.m in Sources */,
-				BFEF19962101E821003DCAC1 /* FiveRange_TradeDetailTableView.m in Sources */,
 				713EE2E820AD9CB60085B65D /* KugouSingViewController.swift in Sources */,
 				BFC6D94520E4AC2200F17378 /* SinaMeViewController.swift in Sources */,
+				DF0489ED21D28B870030C30B /* ElasticShapeLayer.swift in Sources */,
 				DF7B407021AC020A00E3D975 /* PhotoView.swift in Sources */,
 				BF58BB3C20EF1945002CB4EE /* RCDSearchDataManager.m in Sources */,
-				BFEF19972101E821003DCAC1 /* HYStockChartView.m in Sources */,
 				7115A5D420AAD716000D0B96 /* ResumeTabBarController.swift in Sources */,
 				7121196220AC0C6E0087E05B /* JuheUserViewController.swift in Sources */,
 				DF7B406F21AC020A00E3D975 /* Constants.swift in Sources */,
@@ -6784,27 +6654,24 @@
 				7121194C20AC03BC0087E05B /* JuheBaseViewController.swift in Sources */,
 				BF0E8B0820DCB0B500150476 /* AppManager.m in Sources */,
 				7121197220AC25000087E05B /* ToutiaoAttentionViewController.swift in Sources */,
-				BFEF198A2101E821003DCAC1 /* StockNewsController.m in Sources */,
 				713EE2CC20AD9B760085B65D /* TaobaoMiniDynamicViewController.swift in Sources */,
 				7115A5C620AAD35E000D0B96 /* PersonalFoodViewController.swift in Sources */,
 				DF6B522221CB261A00460949 /* TLEmojiBaseCell.swift in Sources */,
 				DF6B520621CA804200460949 /* WXWebViewController.swift in Sources */,
-				71250EC92091C1DA0093B59B /* NSObject+Freedom.m in Sources */,
 				BFC6D94120E4AC0B00F17378 /* SinaComposeViewController.swift in Sources */,
 				7115A5CC20AAD382000D0B96 /* PersonalPhoneViewController.swift in Sources */,
 				DF6B51FE21CA802500460949 /* WXQRCodeViewController.swift in Sources */,
 				713EE31220ADA0A40085B65D /* IqiyiMineViewController.swift in Sources */,
 				DF7B408A21AC020A00E3D975 /* AwemeListCellViews.swift in Sources */,
 				BF58BB2620EF1945002CB4EE /* RCDPrivateSettingsTableViewController.m in Sources */,
+				DF0489FA21D28BA40030C30B /* MotionAnimation.swift in Sources */,
 				DF0E967421CBACC7009682CC /* WXTagsViewController.swift in Sources */,
 				7121196620AC24940087E05B /* ToutiaoNavigationViewController.swift in Sources */,
 				DF7B407221AC020A00E3D975 /* RefreshControl.swift in Sources */,
 				713EE2F020AD9CE50085B65D /* KugouMainViewController.swift in Sources */,
 				BF58BB6420EF1945002CB4EE /* RealTimeLocationViewController.m in Sources */,
-				BFEF19892101E821003DCAC1 /* HYStockChartViewController.m in Sources */,
 				7121194820AC03220087E05B /* JuheDataTabBarController.swift in Sources */,
 				DF6B523E21CB770B00460949 /* WXExpressionPublicViewController.swift in Sources */,
-				BFEF198C2101E821003DCAC1 /* HYStockChartTool.m in Sources */,
 				BFAC49C320D36A2700E5CB8D /* LibraryCollectionViewController.swift in Sources */,
 				DF0E968421CBACFA009682CC /* WXShakeSettingViewController.swift in Sources */,
 				7121195820AC0C2F0087E05B /* JuheAPIViewController.swift in Sources */,
@@ -6819,12 +6686,10 @@
 				713EE2D620AD9BAE0085B65D /* TaobaoCommunityViewController.swift in Sources */,
 				713EE2EA20AD9CC00085B65D /* KugouLookViewController.swift in Sources */,
 				BF58BA2420EDBFBC002CB4EE /* DownloadService.swift in Sources */,
-				BFEF199F2101E821003DCAC1 /* HYTimeLineAboveView.m in Sources */,
 				713EE2B820AD903F0085B65D /* AlipayBaseViewController.swift in Sources */,
 				BF5B9B601F8E63CF00BD885E /* SearchDownloadBookViewController.swift in Sources */,
 				DF6B522821CB76A300460949 /* WXAboutViewController.swift in Sources */,
 				7121191E20ABC46F0087E05B /* EnergyNavigationController.swift in Sources */,
-				BFEF199A2101E821003DCAC1 /* HYKLineView.m in Sources */,
 				DF0E967E21CBACEA009682CC /* WXMomentsViewController.swift in Sources */,
 				DF0E968621CBAD07009682CC /* WXShakeViewController.swift in Sources */,
 				7115A5DA20AAD9AA000D0B96 /* ResumeViewController.swift in Sources */,
@@ -6837,6 +6702,7 @@
 				7788AC311D7996B100376C95 /* E_Paging.mm in Sources */,
 				DFF4ABA121B7BFEC00F03C71 /* XExcellView.swift in Sources */,
 				BF5B9B751F8E676F00BD885E /* FamilyViewController.swift in Sources */,
+				DF0489FC21D28BA40030C30B /* MotionAnimationPropertyState.swift in Sources */,
 				7121192C20ABC4FB0087E05B /* EnergyHomeViewController.swift in Sources */,
 				7115A5E020AAD9D8000D0B96 /* ResumeBusinessCooperationVC.swift in Sources */,
 				713EE30220ADA0320085B65D /* IqiyiBaseViewController.swift in Sources */,
@@ -6846,14 +6712,13 @@
 				DF7B407321AC020A00E3D975 /* CircleProgress.swift in Sources */,
 				BF5B9B831F8E67CC00BD885E /* HappyViewController.swift in Sources */,
 				BFEF19A52101E821003DCAC1 /* mztools.c in Sources */,
-				BFEF19A02101E821003DCAC1 /* StockChartTitleView.m in Sources */,
 				7121194220ABDD4B0087E05B /* EnergyShopTabBarController.swift in Sources */,
 				DFB5FF5621CA280A0057C922 /* WXExpanded.swift in Sources */,
+				DF0489DE21D2699B0030C30B /* SwiftWebViewBridge.swift in Sources */,
 				DF6B520421CA803900460949 /* WXTableViewController.swift in Sources */,
 				DF6B523821CB76F800460949 /* WXPrivacySettingViewController.swift in Sources */,
 				BFAC491B20D2470F00E5CB8D /* BooksMainViewController.swift in Sources */,
 				7121195E20AC0C4F0087E05B /* JuheDetailQuestion.swift in Sources */,
-				BFEF198B2101E821003DCAC1 /* StockInfoDetailViewController.m in Sources */,
 				BFC6D93B20E4AB6D00F17378 /* SinaAuthController.swift in Sources */,
 				DF7B407821AC020A00E3D975 /* DouyinNavigationViewController.swift in Sources */,
 				71267A552092DC93006E1B96 /* BookFriendsTableViewCell.m in Sources */,
@@ -6870,6 +6735,7 @@
 				7121192220ABC4B80087E05B /* EnergySampleViewController.swift in Sources */,
 				BF58BB3D20EF1945002CB4EE /* RCDSearchMoreController.m in Sources */,
 				BF58BB6820EF1945002CB4EE /* RCDataBaseManager.m in Sources */,
+				DF0489FD21D28BA40030C30B /* ValueAnimation.swift in Sources */,
 				7115A5C820AAD36B000D0B96 /* PersonalFastGoodsViewController.swift in Sources */,
 				7121197420AC250D0087E05B /* ToutiaoMeViewController.swift in Sources */,
 				DF0E967A21CBACDF009682CC /* WXGameViewController.swift in Sources */,
@@ -6889,6 +6755,7 @@
 				DF0E966C21CBACA7009682CC /* WXGroupViewController.swift in Sources */,
 				BF5B9B671F8E66D900BD885E /* EconomicDevelopmentViewController.swift in Sources */,
 				DFF4AB9921B7969A00F03C71 /* XRefreshHeader.swift in Sources */,
+				DF0489EE21D28B870030C30B /* ElasticTransition.swift in Sources */,
 				DF7B407421AC020A00E3D975 /* WebPImageView.swift in Sources */,
 				DF6B524821CB772B00460949 /* WXMyQRCodeViewController.swift in Sources */,
 				713EE2E420AD9C2F0085B65D /* AlipayServiceTableViewController.swift in Sources */,
@@ -6923,11 +6790,11 @@
 				BF58BB2220EF1944002CB4EE /* RCWKRequestHandler.m in Sources */,
 				713EE2D820AD9BBA0085B65D /* TaobaoShopCarViewController.swift in Sources */,
 				7115A5AD20AAA1F1000D0B96 /* FreedomViewController.swift in Sources */,
+				DF0489EB21D28B870030C30B /* ElasticModalViewController.swift in Sources */,
 				BF5B9B6F1F8E674B00BD885E /* FreeViewController.swift in Sources */,
 				DF6B523021CB76DD00460949 /* WXCommonSettingViewController.swift in Sources */,
 				BF5B9B771F8E677F00BD885E /* RelativeViewController.swift in Sources */,
 				7115A5B620AAC314000D0B96 /* PersonalApplyNavigationController.swift in Sources */,
-				BFEF19912101E821003DCAC1 /* HYStockChartConstant.m in Sources */,
 				DF0E966821CBAC8F009682CC /* WXFriendSearchViewController.swift in Sources */,
 				DF6B521221CB25C300460949 /* WXChatFileViewController.swift in Sources */,
 				713EE2A820AD8F500085B65D /* AlipayTabBarController.swift in Sources */,
@@ -6939,11 +6806,13 @@
 				DFB5FF5C21CA2F1C0057C922 /* WXTabBarController.swift in Sources */,
 				DF7B407C21AC020A00E3D975 /* WebCacheManager.swift in Sources */,
 				7115A5E220AAD9E4000D0B96 /* ResumeTheorySystemViewController.swift in Sources */,
+				DF048A0421D29A810030C30B /* RESideMenu.m in Sources */,
 				DF6B522621CB70CD00460949 /* WXDBManager.swift in Sources */,
 				713EE2A620AD8F290085B65D /* TaobaoTabBarController.swift in Sources */,
 				BF5B9B691F8E671500BD885E /* ThinkDevelopmentViewController.swift in Sources */,
 				BF5B9B6B1F8E673C00BD885E /* PursuitViewController.swift in Sources */,
 				7115A5B420AAC2E3000D0B96 /* PersonalApplyTabBarController.swift in Sources */,
+				DF0489F921D28BA40030C30B /* SpringValueAnimation.swift in Sources */,
 				BF58BB2D20EF1945002CB4EE /* RCDContactSelectedTableViewController.m in Sources */,
 				7121197020AC24F60087E05B /* ToutiaoVideoViewController.swift in Sources */,
 				DFFA80C421AEC84D009B1999 /* BaseTabBarViewController.swift in Sources */,
@@ -6955,7 +6824,6 @@
 				BF4A80F72105CFE100D32FB0 /* CRCrypto.m in Sources */,
 				BF58BB3020EF1945002CB4EE /* RCDMainTabBarViewController.m in Sources */,
 				713EE2C820AD9B600085B65D /* TaobaoHomeViewController.swift in Sources */,
-				BFEF199D2101E821003DCAC1 /* TimeLineModel.m in Sources */,
 				DF7B407921AC020A00E3D975 /* LoadMoreControl.swift in Sources */,
 				DF7B408B21AC020A00E3D975 /* AVPlayerManager.swift in Sources */,
 				DF7B408821AC020A00E3D975 /* AwemeListCell.swift in Sources */,
@@ -6983,7 +6851,6 @@
 				DF7B407A21AC020A00E3D975 /* DouyinBaseViewController.swift in Sources */,
 				BF58BB6D20EF1945002CB4EE /* RCDShareViewController.m in Sources */,
 				713EE2CE20AD9B810085B65D /* TaobaoMiniNewViewController.swift in Sources */,
-				BFEF19982101E821003DCAC1 /* KLineModel.m in Sources */,
 				BF5B9B7D1F8E67A700BD885E /* HonorViewController.swift in Sources */,
 				BF4A80EF2105CFCC00D32FB0 /* XTip.swift in Sources */,
 				DF6B51EE21CA6F5900460949 /* WXModes.swift in Sources */,
@@ -7002,7 +6869,6 @@
 				BFC6D93F20E4ABFE00F17378 /* SinaMessageViewController.swift in Sources */,
 				DFA5BF3621B6A74D00CB9223 /* User.swift in Sources */,
 				713EE2EE20AD9CD90085B65D /* KugouLocalMusicViewController.swift in Sources */,
-				71517B1C2094803300B40538 /* JSONObject.swift in Sources */,
 				BF58BB4F20EF1945002CB4EE /* RCDChangePasswordViewController.m in Sources */,
 				DF6B520E21CB25B100460949 /* WXChatDetailViewController.swift in Sources */,
 				BFEF19A42101E821003DCAC1 /* ioapi.c in Sources */,
@@ -7038,7 +6904,6 @@
 				DF7B407D21AC020A00E3D975 /* MenuPopView.swift in Sources */,
 				DF6B521A21CB25E100460949 /* WXChatBaseViewController.swift in Sources */,
 				DF0E967021CBACB9009682CC /* WXPublicServerSearchViewController.swift in Sources */,
-				BFEF19872101E821003DCAC1 /* JLLineChart.m in Sources */,
 				DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */,
 				BF58BB3120EF1945002CB4EE /* RCDGroupAnnouncementViewController.m in Sources */,
 				7121194A20AC03800087E05B /* JuheNavigationController.swift in Sources */,
@@ -7058,13 +6923,13 @@
 				DF0E967621CBACD4009682CC /* WXBottleViewController.swift in Sources */,
 				BF58BB5220EF1945002CB4EE /* RCDPrivacyTableViewController.m in Sources */,
 				71267A582092E726006E1B96 /* BookReadMode.m in Sources */,
-				BFEF199B2101E821003DCAC1 /* HYKLineAboveView.m in Sources */,
 				DF4C6FCA21CC790D00A54339 /* FoundationAPI.swift in Sources */,
 				DF0E968021CBACEF009682CC /* WXScannerViewController.swift in Sources */,
 				BF58BB2C20EF1945002CB4EE /* RCDPersonDetailViewController.m in Sources */,
 				7115A5BE20AAD32E000D0B96 /* PersonalEducationViewController.swift in Sources */,
 				713EE2C220AD9B110085B65D /* DZDealDetailViewController.swift in Sources */,
 				713EE31020ADA0990085B65D /* IqiyiLoginViewController.swift in Sources */,
+				DF0489F721D28BA40030C30B /* NSObject+MotionAnimation.swift in Sources */,
 				BF93B91920F8B0C3007E4BFB /* FreedomLoginViewController.swift in Sources */,
 				7121195220AC0C0C0087E05B /* JuheMessageViewController.swift in Sources */,
 				BFEF19A32101E821003DCAC1 /* zip.c in Sources */,
@@ -7089,15 +6954,15 @@
 				BFAC49C520D3857700E5CB8D /* FirstViewController.swift in Sources */,
 				7121193020ABC5270087E05B /* EnergySuperHomeViewController.swift in Sources */,
 				DF6B524421CB771D00460949 /* WXMyExpressionViewController.swift in Sources */,
-				BFEF199E2101E821003DCAC1 /* HYTimeLineView.m in Sources */,
 				7121194E20AC0BF00087E05B /* JuheContectUSViewController.swift in Sources */,
+				DF0489FB21D28BA40030C30B /* Types.swift in Sources */,
 				BF58BB5920EF1945002CB4EE /* RCDServiceViewController.m in Sources */,
 				BF58BB2B20EF1945002CB4EE /* RCDFrienfRemarksViewController.m in Sources */,
 				7115A5C020AAD339000D0B96 /* PersonalSoftViewController.swift in Sources */,
 				7121195C20AC0C450087E05B /* JuheQuestionViewController.swift in Sources */,
 				BF5B9B621F8E641000BD885E /* PhilosophyViewController.swift in Sources */,
-				BFEF19942101E821003DCAC1 /* StockDetailHeaderView.m in Sources */,
 				BF58BB1520EF1944002CB4EE /* RCloudModel.m in Sources */,
+				DF0489EA21D28B870030C30B /* ElasticTransitionPresentationController.swift in Sources */,
 				BF58BB2520EF1944002CB4EE /* RCDChatRoomViewController.m in Sources */,
 				713EE31420ADA0AF0085B65D /* IqiyiClassifyViewController.swift in Sources */,
 				DF7B408521AC020A00E3D975 /* DouyinMeViewController.swift in Sources */,
@@ -7107,7 +6972,6 @@
 				713EE2BC20AD9AEC0085B65D /* DZHomeController.swift in Sources */,
 				DF7B408921AC020A00E3D975 /* AwemeListController.swift in Sources */,
 				BF4A80F22105CFCC00D32FB0 /* GPAPolylineEncoding.m in Sources */,
-				BFEF19A12101E821003DCAC1 /* StockDetailTopView.m in Sources */,
 				BF58BB6B20EF1945002CB4EE /* TFHppleElement.m in Sources */,
 				DF6B51F221CA6F7C00460949 /* WXMessageManager.swift in Sources */,
 				7121196C20AC24DF0087E05B /* ToutiaoHomeSampleViewController.swift in Sources */,
@@ -7128,13 +6992,11 @@
 				713EE2B020AD8FDB0085B65D /* AlipayNavigationViewController.swift in Sources */,
 				DF0E966621CBAC89009682CC /* WXFriendDetailViewController.swift in Sources */,
 				DF6B51F821CA800D00460949 /* WXMenuViewController.swift in Sources */,
-				BFEF19952101E821003DCAC1 /* HYStockChartProfileModel.m in Sources */,
 				7121196A20AC24D30087E05B /* ToutiaoViewController.swift in Sources */,
 				DF6B522A21CB76BD00460949 /* WXAccountAndSafetyViewController.swift in Sources */,
 				BFAC491920D23BD600E5CB8D /* DetailView.swift in Sources */,
 				713EE2E020AD9C120085B65D /* AlipayAddItemViewController.swift in Sources */,
 				DF6B520A21CB25A100460949 /* WXUserGroupCell.swift in Sources */,
-				BFEF19992101E821003DCAC1 /* HYKLineBelowView.m in Sources */,
 				7788AC631D7996E000376C95 /* E_ReaderViewController.m in Sources */,
 				DFFA80C921AEC84D009B1999 /* BaseScrollView.swift in Sources */,
 				DF6B524A21CB773100460949 /* WXMineViewController.swift in Sources */,
@@ -7294,7 +7156,7 @@
 		};
 		7759B6B91D0EA38000AE3A59 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B97D0F488B188B225A75FB33 /* Pods-Freedom.debug.xcconfig */;
+			baseConfigurationReference = B72CF25E36A6EB54EE4A50A2 /* Pods-Freedom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -7314,6 +7176,7 @@
 					"$(PROJECT_DIR)/Freedom/utility/ThirdPart/RCloudPackage/ifly",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Others/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "$(SRCROOT)/Freedom/Others/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -7334,7 +7197,7 @@
 		};
 		7759B6BA1D0EA38000AE3A59 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF6599DF222DA1221C0BD6DC /* Pods-Freedom.release.xcconfig */;
+			baseConfigurationReference = 640117F75915AD869477841F /* Pods-Freedom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -7354,6 +7217,7 @@
 					"$(PROJECT_DIR)/Freedom/utility/ThirdPart/RCloudPackage/ifly",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Others/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "$(SRCROOT)/Freedom/Others/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

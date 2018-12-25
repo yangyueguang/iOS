@@ -1,10 +1,5 @@
 PODS:
   - AAInfographics (2.0.4)
-  - ACAlertController (1.0.0)
-  - ACMediaFrame (2.0.5):
-    - ACAlertController (~> 1.0.0)
-    - MWPhotoBrowser (~> 2.1.2)
-    - TZImagePickerController
   - AFNetworking (3.2.1):
     - AFNetworking/NSURLSession (= 3.2.1)
     - AFNetworking/Reachability (= 3.2.1)
@@ -22,6 +17,16 @@ PODS:
     - AFNetworking/NSURLSession
   - Alamofire (4.8.0)
   - Aspects (1.4.1)
+  - AVOSCloud (11.4.7)
+  - AVOSCloudIM (11.4.7):
+    - AVOSCloud (= 11.4.7)
+    - AVOSCloudIM/_ARC (= 11.4.7)
+    - AVOSCloudIM/_NOARC (= 11.4.7)
+  - AVOSCloudIM/_ARC (11.4.7):
+    - AVOSCloud (= 11.4.7)
+    - AVOSCloudIM/_NOARC (= 11.4.7)
+  - AVOSCloudIM/_NOARC (11.4.7):
+    - AVOSCloud (= 11.4.7)
   - AXIndicatorView (0.1.1)
   - AXNavigationBackItemInjection (0.0.2)
   - AXPracticalHUD (2.1.4):
@@ -31,46 +36,37 @@ PODS:
     - AXNavigationBackItemInjection
     - AXPracticalHUD
     - NJKWebViewProgress
-  - BlocksKit (2.2.5):
-    - BlocksKit/All (= 2.2.5)
-  - BlocksKit/All (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-    - BlocksKit/MessageUI
-    - BlocksKit/UIKit
-  - BlocksKit/Core (2.2.5)
-  - BlocksKit/DynamicDelegate (2.2.5)
-  - BlocksKit/MessageUI (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-  - BlocksKit/UIKit (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
   - Bugly (2.5.0)
-  - CocoaAsyncSocket (7.6.3)
-  - CocoaLumberjack (3.4.2):
-    - CocoaLumberjack/Default (= 3.4.2)
-    - CocoaLumberjack/Extensions (= 3.4.2)
-  - CocoaLumberjack/Default (3.4.2)
-  - CocoaLumberjack/Extensions (3.4.2):
-    - CocoaLumberjack/Default
   - DACircularProgress (2.3.1)
-  - ElasticTransitionObjC (0.1)
-  - FLAnimatedImage (1.0.12)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - HandyJSON (4.2.1)
+  - GoogleMaps (2.7.0):
+    - GoogleMaps/Maps (= 2.7.0)
+  - GoogleMaps/Base (2.7.0)
+  - GoogleMaps/Maps (2.7.0):
+    - GoogleMaps/Base
+  - GooglePlaces (2.7.0):
+    - GoogleMaps/Base (= 2.7.0)
+  - iCarousel (1.8.3)
+  - iOS-Echarts (1.4.4)
   - IQKeyboardManagerSwift (6.2.0)
-  - JSONModel (1.8.0)
-  - JSPatch (1.1.3):
-    - JSPatch/Core (= 1.1.3)
-  - JSPatch/Core (1.1.3)
-  - KissXML (5.2.3)
-  - Masonry (1.1.0)
+  - Kingfisher (5.0.1)
+  - LeanCloud (15.0.0):
+    - LeanCloud/Foundation (= 15.0.0)
+    - LeanCloud/LocalStorage (= 15.0.0)
+    - LeanCloud/Storage (= 15.0.0)
+  - LeanCloud/Foundation (15.0.0)
+  - LeanCloud/LocalStorage (15.0.0):
+    - LeanCloud/Foundation
+  - LeanCloud/Storage (15.0.0):
+    - Alamofire (~> 4.8.0)
+    - LeanCloud/Foundation
+    - LeanCloud/LocalStorage
   - MBProgressHUD (0.9.2)
-  - MJExtension (3.0.15.1)
   - MJRefresh (3.1.15.7)
+  - MOBFoundation (3.2.0)
+  - MonkeyKing (1.12.1)
   - Moya (12.0.1):
     - Moya/Core (= 12.0.1)
   - Moya/Core (12.0.1):
@@ -91,9 +87,7 @@ PODS:
     - NJKWebViewProgress/ProgressView (= 0.2.3)
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
-  - PPHelpMe (1.0.2)
-  - PPRevealSideViewController (1.2.4):
-    - PPHelpMe
+  - pop (1.0.12)
   - ReactiveCocoa (8.0.2):
     - ReactiveSwift (~> 4.0)
   - ReactiveSwift (4.0.0):
@@ -103,7 +97,6 @@ PODS:
   - Realm/Headers (3.12.0)
   - RealmSwift (3.12.0):
     - Realm (= 3.12.0)
-  - RESideMenu (4.0.7)
   - Result (4.0.0)
   - RongCloudIM/CallKit (2.8.32):
     - RongCloudIM/CallLib
@@ -120,54 +113,146 @@ PODS:
     - RxSwift (~> 4.0)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
-  - ScottAlertController (0.1.0)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
-  - SmartJSWebView (1.1.3)
+  - ShareSDK2 (2.12.5):
+    - ShareSDK2/Core (= 2.12.5)
+  - ShareSDK2/Comment (2.12.5)
+  - ShareSDK2/Connection (2.12.5):
+    - ShareSDK2/Connection/AliPaySocial (= 2.12.5)
+    - ShareSDK2/Connection/Copy (= 2.12.5)
+    - ShareSDK2/Connection/DouBan (= 2.12.5)
+    - ShareSDK2/Connection/Dropbox (= 2.12.5)
+    - ShareSDK2/Connection/EverNote (= 2.12.5)
+    - ShareSDK2/Connection/Facebook (= 2.12.5)
+    - ShareSDK2/Connection/Flickr (= 2.12.5)
+    - ShareSDK2/Connection/GooglePlus (= 2.12.5)
+    - ShareSDK2/Connection/Instagram (= 2.12.5)
+    - ShareSDK2/Connection/Instapaper (= 2.12.5)
+    - ShareSDK2/Connection/KaiXin (= 2.12.5)
+    - ShareSDK2/Connection/KaKaoStory (= 2.12.5)
+    - ShareSDK2/Connection/KaKaoTalk (= 2.12.5)
+    - ShareSDK2/Connection/Line (= 2.12.5)
+    - ShareSDK2/Connection/LinkedIn (= 2.12.5)
+    - ShareSDK2/Connection/Mail (= 2.12.5)
+    - ShareSDK2/Connection/MingDao (= 2.12.5)
+    - ShareSDK2/Connection/Pinterest (= 2.12.5)
+    - ShareSDK2/Connection/Pocket (= 2.12.5)
+    - ShareSDK2/Connection/Print (= 2.12.5)
+    - ShareSDK2/Connection/QQ (= 2.12.5)
+    - ShareSDK2/Connection/QZone (= 2.12.5)
+    - ShareSDK2/Connection/RenRen (= 2.12.5)
+    - ShareSDK2/Connection/SinaWeibo (= 2.12.5)
+    - ShareSDK2/Connection/SMS (= 2.12.5)
+    - ShareSDK2/Connection/TencentWeibo (= 2.12.5)
+    - ShareSDK2/Connection/Tumblr (= 2.12.5)
+    - ShareSDK2/Connection/Twitter (= 2.12.5)
+    - ShareSDK2/Connection/VKontakte (= 2.12.5)
+    - ShareSDK2/Connection/WeChat (= 2.12.5)
+    - ShareSDK2/Connection/WhatsApp (= 2.12.5)
+    - ShareSDK2/Connection/YiXin (= 2.12.5)
+    - ShareSDK2/Connection/YouDaoNote (= 2.12.5)
+  - ShareSDK2/Connection/AliPaySocial (2.12.5):
+    - ShareSDK2/Extend/APSocialSDK
+  - ShareSDK2/Connection/Copy (2.12.5)
+  - ShareSDK2/Connection/DouBan (2.12.5)
+  - ShareSDK2/Connection/Dropbox (2.12.5)
+  - ShareSDK2/Connection/EverNote (2.12.5)
+  - ShareSDK2/Connection/Facebook (2.12.5)
+  - ShareSDK2/Connection/Flickr (2.12.5)
+  - ShareSDK2/Connection/GooglePlus (2.12.5):
+    - ShareSDK2/Extend/GooglePlusSDK
+  - ShareSDK2/Connection/Instagram (2.12.5)
+  - ShareSDK2/Connection/Instapaper (2.12.5)
+  - ShareSDK2/Connection/KaiXin (2.12.5)
+  - ShareSDK2/Connection/KaKaoStory (2.12.5)
+  - ShareSDK2/Connection/KaKaoTalk (2.12.5)
+  - ShareSDK2/Connection/Line (2.12.5)
+  - ShareSDK2/Connection/LinkedIn (2.12.5)
+  - ShareSDK2/Connection/Mail (2.12.5)
+  - ShareSDK2/Connection/MingDao (2.12.5)
+  - ShareSDK2/Connection/Pinterest (2.12.5):
+    - ShareSDK2/Extend/Pinterest.embeddedframework
+  - ShareSDK2/Connection/Pocket (2.12.5)
+  - ShareSDK2/Connection/Print (2.12.5)
+  - ShareSDK2/Connection/QQ (2.12.5):
+    - ShareSDK2/Extend/QQConnectSDK
+  - ShareSDK2/Connection/QZone (2.12.5):
+    - ShareSDK2/Extend/QQConnectSDK
+  - ShareSDK2/Connection/RenRen (2.12.5):
+    - ShareSDK2/Extend/RenRenSDK
+  - ShareSDK2/Connection/SinaWeibo (2.12.5):
+    - ShareSDK2/Extend/SinaWeiboSDK
+  - ShareSDK2/Connection/SMS (2.12.5)
+  - ShareSDK2/Connection/TencentWeibo (2.12.5)
+  - ShareSDK2/Connection/Tumblr (2.12.5)
+  - ShareSDK2/Connection/Twitter (2.12.5)
+  - ShareSDK2/Connection/VKontakte (2.12.5)
+  - ShareSDK2/Connection/WeChat (2.12.5):
+    - ShareSDK2/Extend/WeChatSDK
+  - ShareSDK2/Connection/WhatsApp (2.12.5)
+  - ShareSDK2/Connection/YiXin (2.12.5):
+    - ShareSDK2/Extend/YiXinSDK
+  - ShareSDK2/Connection/YouDaoNote (2.12.5)
+  - ShareSDK2/Core (2.12.5)
+  - ShareSDK2/Extend/APSocialSDK (2.12.5)
+  - ShareSDK2/Extend/GooglePlusSDK (2.12.5)
+  - ShareSDK2/Extend/Pinterest.embeddedframework (2.12.5)
+  - ShareSDK2/Extend/QQConnectSDK (2.12.5)
+  - ShareSDK2/Extend/RenRenSDK (2.12.5)
+  - ShareSDK2/Extend/SinaWeiboSDK (2.12.5)
+  - ShareSDK2/Extend/WeChatSDK (2.12.5)
+  - ShareSDK2/Extend/YiXinSDK (2.12.5)
+  - ShareSDK2/UI (2.12.5):
+    - ShareSDK2/UI/Flat (= 2.12.5)
+    - ShareSDK2/UI/iPadDefault (= 2.12.5)
+    - ShareSDK2/UI/iPadSimple (= 2.12.5)
+    - ShareSDK2/UI/iPhoneAppRecommend (= 2.12.5)
+    - ShareSDK2/UI/iPhoneDefault (= 2.12.5)
+    - ShareSDK2/UI/iPhoneSimple (= 2.12.5)
+  - ShareSDK2/UI/Flat (2.12.5)
+  - ShareSDK2/UI/iPadDefault (2.12.5)
+  - ShareSDK2/UI/iPadSimple (2.12.5)
+  - ShareSDK2/UI/iPhoneAppRecommend (2.12.5)
+  - ShareSDK2/UI/iPhoneDefault (2.12.5)
+  - ShareSDK2/UI/iPhoneSimple (2.12.5)
   - SnapKit (4.2.0)
   - SSKeychain (1.4.1)
   - Starscream (3.0.6)
-  - SVProgressHUD (2.2.5)
-  - SwiftWebViewBridge (0.3.0)
-  - SwiftyJSON (4.2.0)
+  - StarWars (2.0)
   - TZImagePickerController (3.1.5)
-  - UAProgressView (0.1.4)
   - UMengAnalytics (4.2.4)
   - XCarryOn (0.3.9)
   - XExtension (0.4.0)
-  - XMLDictionary (1.4.1)
 
 DEPENDENCIES:
   - AAInfographics
-  - ACMediaFrame
   - AFNetworking
   - Alamofire
+  - AVOSCloud
+  - AVOSCloudIM
   - AXWebViewController
-  - BlocksKit
   - Bugly
-  - CocoaAsyncSocket
-  - CocoaLumberjack
-  - ElasticTransitionObjC
-  - FLAnimatedImage
   - FMDB
-  - HandyJSON
+  - GoogleMaps
+  - GooglePlaces
+  - iCarousel
+  - iOS-Echarts
   - IQKeyboardManagerSwift
-  - JSONModel
-  - JSPatch
-  - KissXML
-  - Masonry
-  - MJExtension
+  - Kingfisher
+  - LeanCloud
   - MJRefresh
+  - MOBFoundation
+  - MonkeyKing
   - Moya
   - Moya/ReactiveSwift
   - Moya/RxSwift
   - MWPhotoBrowser
-  - PPRevealSideViewController
+  - pop
   - ReactiveCocoa
   - ReactiveSwift
   - RealmSwift
-  - RESideMenu
   - RongCloudIM/CallKit
   - RongCloudIM/CallLib
   - RongCloudIM/IMKit
@@ -175,141 +260,118 @@ DEPENDENCIES:
   - RongCloudIM/RedPacket
   - RxCocoa
   - RxSwift
-  - ScottAlertController
-  - SDWebImage
-  - SmartJSWebView
+  - ShareSDK2
+  - ShareSDK2/Comment
+  - ShareSDK2/Connection
+  - ShareSDK2/UI
   - SnapKit
   - SSKeychain
   - Starscream
-  - SVProgressHUD
-  - SwiftWebViewBridge
-  - SwiftyJSON
+  - StarWars
   - TZImagePickerController
-  - UAProgressView
   - UMengAnalytics
   - XCarryOn
   - XExtension
-  - XMLDictionary
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AAInfographics
-    - ACAlertController
-    - ACMediaFrame
     - AFNetworking
     - Alamofire
     - Aspects
+    - AVOSCloud
+    - AVOSCloudIM
     - AXIndicatorView
     - AXNavigationBackItemInjection
     - AXPracticalHUD
     - AXWebViewController
-    - BlocksKit
     - Bugly
-    - CocoaAsyncSocket
-    - CocoaLumberjack
     - DACircularProgress
-    - ElasticTransitionObjC
-    - FLAnimatedImage
     - FMDB
-    - HandyJSON
+    - GoogleMaps
+    - GooglePlaces
+    - iCarousel
+    - iOS-Echarts
     - IQKeyboardManagerSwift
-    - JSONModel
-    - JSPatch
-    - KissXML
-    - Masonry
+    - Kingfisher
+    - LeanCloud
     - MBProgressHUD
-    - MJExtension
     - MJRefresh
+    - MOBFoundation
+    - MonkeyKing
     - Moya
     - MWPhotoBrowser
     - NJKWebViewProgress
-    - PPHelpMe
-    - PPRevealSideViewController
+    - pop
     - ReactiveCocoa
     - ReactiveSwift
     - Realm
     - RealmSwift
-    - RESideMenu
     - Result
     - RongCloudIM
     - RxAtomic
     - RxCocoa
     - RxSwift
-    - ScottAlertController
     - SDWebImage
-    - SmartJSWebView
+    - ShareSDK2
     - SnapKit
     - SSKeychain
     - Starscream
-    - SVProgressHUD
-    - SwiftWebViewBridge
-    - SwiftyJSON
+    - StarWars
     - TZImagePickerController
-    - UAProgressView
     - UMengAnalytics
     - XCarryOn
     - XExtension
-    - XMLDictionary
 
 SPEC CHECKSUMS:
   AAInfographics: 10f87e06fc007a0adbb05de020e4a2fe3119f8de
-  ACAlertController: 10f0455c3e1691a6197b5cd0d96d6f9a03c82763
-  ACMediaFrame: 7b8e74e3fcb8d7cf46049bfe5756c6e556cca568
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
+  AVOSCloud: e1257f9a7c28e04ae8642d554a37654e8392d1b7
+  AVOSCloudIM: 5456179b251be8dead13eebabcbbfa6931cc4e1b
   AXIndicatorView: 566b490a2dd9781d4ffbcc9752be9b9cdc6e728e
   AXNavigationBackItemInjection: efe0446967f3cbcc85a9118decd1e145138912dd
   AXPracticalHUD: 821d170b31e050c426ef8754b07b4264a8b1d861
   AXWebViewController: 96566c473fce2806f4da696132b31777f5404c9f
-  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
-  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
-  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
-  ElasticTransitionObjC: 122ca894bec7006929dcc7e1386c085a78b07ac6
-  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
+  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
+  iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
+  iOS-Echarts: dbc7423d861e5eedee78906a39d205b5c4da9a13
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
-  JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
-  JSPatch: 02cfed591cb907bbfe80a346666e5a35fc2d349d
-  KissXML: 09f88ff8161fd058d67b70740b8b516687b52823
-  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  Kingfisher: 4f771421b9208185217550528a06fd48756cb7c2
+  LeanCloud: 62fe4e615494425081fd719c0d56fae130f764ea
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  MOBFoundation: ca11e6640e995875ff755faa56ea324eed260e70
+  MonkeyKing: 280cdc68eb39f8b899b17fdfe994a695f6fdc636
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
-  PPHelpMe: 243c40d2fad33ebdcc6b158c0db54893e0cc2d14
-  PPRevealSideViewController: eb2109c91688f34647dc8427d683f1d43ec012f9
+  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   ReactiveCocoa: fbd26e9ba60e98417ee47433e59465a98ed9da0f
   ReactiveSwift: a2bb9ace428a109e9c0209615645d9d286c8c433
   Realm: cdaef23c4ddb36ab1ddffed23f5a7f3332fc5585
   RealmSwift: 5576324033f0aa5ef1e0a839a3da2281dff47a7f
-  RESideMenu: f24c508404b49c667344c54aba7e590883533958
   Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
   RongCloudIM: 48bfc2fcb8d7cae8ce1e19cb5fb26d6d90616375
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
-  ScottAlertController: 2edee4ca00ee521777740d8e02ad550f7354f61d
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
-  SmartJSWebView: f300dcd3a3a71eefeaea9203e4f0d44427e8099f
+  ShareSDK2: c076a9ea57d9d87650130b8071f2bcf0f169cb94
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
-  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftWebViewBridge: 902b8e6945352c74aa5c0975c4dcd48f420f7d44
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  StarWars: 3c68dc5e9f1b6ca6d407b1d4218fd8a65c2eacfa
   TZImagePickerController: 6cc6e9c1a73bb8e62cfef98fd40af2d90634dcf5
-  UAProgressView: 6796f5aa05037fb2940521636163b9db40a6c534
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   XCarryOn: 5fc35e5080ae50c835d94f4976b4784a87978d71
   XExtension: 403513a797a2c2ddf5d7af9ab8c54b2efc4312ae
-  XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: 461b0bff8f3e03a497cf8adba230e23df993f398
+PODFILE CHECKSUM: c2007dc6e76ce8b16c303193f3e48a6543357c6d
 
 COCOAPODS: 1.5.3

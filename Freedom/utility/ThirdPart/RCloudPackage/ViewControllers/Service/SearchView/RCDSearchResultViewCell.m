@@ -28,12 +28,19 @@
         range = [[text lowercaseString] rangeOfString:[searchText lowercaseString]];
     }else if ([[text lowercaseString] containsString:twoStr]){
         range = [[text lowercaseString] rangeOfString:twoStr];
-    }else if( [[[text pinyin] lowercaseString] containsString:twoStr]){
-        NSString * str = [text pinyin];
+    }else if( [[[self pinyin:text] lowercaseString] containsString:twoStr]){
+        NSString * str = [self pinyin: text];
         range = [str rangeOfString:[searchText uppercaseString]];
     }
     return range;
 }
+- (NSString *)pinyin:(NSString*)str1 {
+    NSMutableString *str = [str1 mutableCopy];
+    CFStringTransform((CFMutableStringRef)str, NULL, kCFStringTransformMandarinLatin, NO);
+    CFStringTransform((CFMutableStringRef)str, NULL, kCFStringTransformStripDiacritics, NO);
+    return [str stringByReplacingOccurrencesOfString:@" " withString:@""];
+}
+
 - (NSString *)isBeyond:(NSString *)text range:(NSRange)range{
     NSString *string = nil;
     if (range.location + range.length < 16) {

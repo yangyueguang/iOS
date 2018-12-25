@@ -92,7 +92,7 @@ class SinaHomeViewController: SinaBaseViewController {
         params["access_token"] = account?.access_token
         params["since_id"] = 0
         AFHTTPSessionManager().get(url, parameters: params, progress: nil, success: { task, responseObject in
-            let newStatuses = SinaStatus.mj_objectArray(withKeyValuesArray: (responseObject! as! [String:Any])["statuses"]) as! [SinaStatus]
+            let newStatuses = SinaStatus.parses((responseObject! as! [String:Any])["statuses"] as! [Any]) as! [SinaStatus]
             self.list.append(contentsOf: newStatuses)
             self.tableView.reloadData()
             control?.endRefreshing()
@@ -108,7 +108,7 @@ class SinaHomeViewController: SinaBaseViewController {
         params["access_token"] = account?.access_token
         params["max_id"] = 0
         AFHTTPSessionManager().get("https://api.weibo.com/2/statuses/friends_timeline.json", parameters: params, progress: nil, success: { task, responseObject in
-            let newStatuses = SinaStatus.mj_objectArray(withKeyValuesArray: (responseObject! as! [String:Any])["statuses"]) as! [SinaStatus]
+            let newStatuses = SinaStatus.parses((responseObject! as! [String:Any])["statuses"] as! [Any]) as! [SinaStatus]
             self.list.append(contentsOf: newStatuses)
             self.tableView.reloadData()
             self.tableView.tableFooterView?.isHidden = true

@@ -53,14 +53,12 @@ class WXTabBarController: UITabBarController {
         Dlog("沙盒路径:\n\(FileManager.documentsPath())");
         if UserDefaults.standard.object(forKey: "IsFirstRunApp") == nil {
             UserDefaults.standard.set("NO", forKey: "IsFirstRunApp")
-            showAlerWithtitle("提示", message: "首次启动App，是否随机下载两组个性表情包，稍候也可在“我的”-“表情”中选择下载。", style: UIAlertController.Style.alert, ac1: {
-                return UIAlertAction(title: "确定", style: .default, handler: { action in
-                    self.p_downloadDefaultExpression()
-                })
-            }, ac2: {
-                return UIAlertAction(title: "取消", style: .cancel, handler: { action in
-                })
-            }, ac3: nil, completion: nil)
+            let alert = UIAlertController("提示", "首次启动App，是否随机下载两组个性表情包，稍候也可在“我的”-“表情”中选择下载。", T1: "确定", T2: "取消", confirm1: {
+                self.p_downloadDefaultExpression()
+            }, confirm2: {
+
+            })
+            self.present(alert, animated: true, completion: nil)
         }
     }
     func p_downloadDefaultExpression() {

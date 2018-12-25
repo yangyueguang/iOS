@@ -18,7 +18,6 @@
 #import "RCloudModel.h"
 #import "UIImageView+WebCache.h"
 #import <RongIMKit/RongIMKit.h>
-#import "RCloudModel.h"
 #import "RCDSearchViewController.h"
 #import <RongIMKit/RongIMKit.h>
 #define TabbarItemNums 4.0

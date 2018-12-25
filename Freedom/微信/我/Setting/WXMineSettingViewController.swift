@@ -64,13 +64,12 @@ class WXMineSettingViewController: WXSettingViewController {
             hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(aboutVC, animated: true)
         } else if (item.title == "退出登录") {
-            showAlerWithtitle("退出后不会删除任何历史数据，下次登录依然可以使用本账号。", message: nil, style: UIAlertController.Style.actionSheet, ac1: {
-                return UIAlertAction(title: "退出登录", style: .default, handler: { action in
-                })
-            }, ac2: {
-                return UIAlertAction(title: "取消", style: .cancel, handler: { action in
-                })
-            }, ac3: nil, completion: nil)
+            let alert = UIAlertController("退出后不会删除任何历史数据，下次登录依然可以使用本账号。", "", T1: "退出登录", T2: "取消", confirm1: {
+
+            }, confirm2: {
+
+            })
+            self.present(alert, animated: true, completion: nil)
         }
         super.tableView(tableView, didSelectRowAt: indexPath)
     }

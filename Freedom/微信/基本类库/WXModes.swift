@@ -3,7 +3,6 @@
 //  Freedom
 
 import Foundation
-import MJExtension
 import XExtension
 enum TLChatUserType : Int {
     case user = 0
@@ -118,9 +117,6 @@ class WXMomentExtension: NSObject {
     }()
     override init() {
         super.init()
-        WXMomentExtension.mj_setupObjectClass(inArray: {
-            return ["likedFriends": "TLUser", "comments": "TLMomentComment"]
-        })
     }
     func heightLiked() -> CGFloat {
         var height: CGFloat = 0.0

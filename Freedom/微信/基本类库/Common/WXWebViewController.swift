@@ -30,7 +30,7 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// 是�
         progressView.trackTintColor = UIColor.clear
         return progressView
     }()
-    lazy var backButtonItem = UIBarButtonItem(title: "返回", style: UIBarButtonItem.Style.done, actionBlick: {
+    lazy var backButtonItem = UIBarButtonItem(title: "返回", action: {
         if self.webView.canGoBack {
             self.webView.goBack()
             self.navigationItem.leftBarButtonItems = [self.backButtonItem, self.closeButtonItem] as? [UIBarButtonItem]

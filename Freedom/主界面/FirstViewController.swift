@@ -6,8 +6,6 @@
 //  Copyright © 2018 Super. All rights reserved.
 import UIKit
 import XExtension
-import SVProgressHUD
-import ElasticTransitionObjC
 class CollectionViewCell1:BaseCollectionViewCell {
     var view: UIView = UIView()
     override func initUI() {
@@ -151,12 +149,13 @@ class FirstViewController: BaseViewController,UICollectionViewDataSource, UIColl
         searchBar.delegate = self
         searchBar.placeholder = "搜索"
         searchBar.barTintColor = UIColor.gray
-        let leftNav = UIBarButtonItem(title: "设置", style: .done, actionBlick: {
+        let leftNav = UIBarButtonItem(title: "设置", action: {
             self.gotoSettingsView(nil)
         })
-        let rightNav = UIBarButtonItem(image: UIImage(named: "u_seting"), style: .done, target: nil, action: nil)
+        let rightNav = UIBarButtonItem(image: UIImage(named: "u_seting")) {
+            self.showSettingsView(nil)
+        }
         let navigationItem = UINavigationItem(title: "自由主义")
-        //    [firstNavigationBar pushNavigationItem:navigationBarTitle animated:YES];
         navigationItem.leftBarButtonItem = leftNav
         navigationItem.titleView = searchBar
         navigationItem.rightBarButtonItem = rightNav
@@ -192,25 +191,24 @@ class FirstViewController: BaseViewController,UICollectionViewDataSource, UIColl
     // MARK: 设置与收藏的跳转
     func gotoSettingsView(_ sender: UIButton?) {
         timer?.fireDate = Date.distantFuture
-        transition.edge = .LEFT;
-        transition.translation = CGPoint(x: 320, y: 15)
-        transition.dragPoint = CGPoint(x: 230, y: 170)
+        transition.edge = .left;
+        transition.startingPoint = CGPoint(x: 230, y: 170)
         performSegue(withIdentifier: "settings", sender: transition)
     }
     func gotoSettings(_ pan: UIPanGestureRecognizer?) {
         if pan?.state != .began {
-            transition.updateInteractiveTransition(with: pan)
+            _ = transition.updateInteractiveTransition(gestureRecognizer: pan!)
         } else {
-            transition.edge = Edge.LEFT
-            transition.startInteractiveTransition(from: self, segueIdentifier: "settings", gestureRecognizer: pan)
+            transition.edge = Edge.left
+            transition.startInteractiveTransition(self, segueIdentifier: "settings", gestureRecognizer: pan!)
         }
     }
     func gotoLibrary(_ pan: UIPanGestureRecognizer?) {
         if pan?.state == .began {
-            transition.edge = Edge.RIGHT
-            transition.startInteractiveTransition(from: self, segueIdentifier: "library", gestureRecognizer: pan)
+            transition.edge = Edge.right
+            transition.startInteractiveTransition(self, segueIdentifier: "library", gestureRecognizer: pan!)
         } else {
-            transition.updateInteractiveTransition(with: pan)
+            _ = transition.updateInteractiveTransition(gestureRecognizer: pan!)
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -264,6 +262,7 @@ class FirstViewController: BaseViewController,UICollectionViewDataSource, UIColl
         dialLayout?.invalidateLayout()
     }
     func showSettingsView(_ sender: UIButton?) {
+        transition.edge = .bottom
         var frame: CGRect = settingsView.frame
         if showingSettings {
             frame.origin.y = view.frame.size.height + 100

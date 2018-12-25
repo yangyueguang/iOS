@@ -9,6 +9,7 @@
 #import "MBProgressHUD.h"
 #import "RCDMessageNoDisturbSettingController.h"
 #import <RongIMKit/RongIMKit.h>
+
 @interface RCDMessageNotifySettingTableViewController ()
 @property(nonatomic, assign) BOOL isReceiveNotification;
 @end
@@ -107,7 +108,7 @@
        });
      }error:^(RCErrorCode status) {
        dispatch_async(dispatch_get_main_queue(), ^{
-           [SVProgressHUD showErrorWithStatus:@"设置失败"];
+           NSLog(@"设置失败");
          dispatch_async(dispatch_get_main_queue(), ^{
            self.isReceiveNotification = YES;
            [self.tableView reloadData];
@@ -124,7 +125,7 @@
        });
      }error:^(RCErrorCode status) {
        dispatch_async(dispatch_get_main_queue(), ^{
-           [SVProgressHUD showErrorWithStatus:@"取消失败"];
+           NSLog(@"取消失败");
          dispatch_async(dispatch_get_main_queue(), ^{
            self.isReceiveNotification = NO;
            [self.tableView reloadData];

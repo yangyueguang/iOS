@@ -8,7 +8,6 @@
 
 import UIKit
 import QuartzCore
-import Masonry
 import SnapKit
 import MJRefresh
 private let Color6 = UIColor(white: 0.25, alpha: 1)

@@ -62,7 +62,7 @@ class WXMyExpressionViewController: WXSettingViewController, WXMyExpressionCellD
         let rightBarButtonItem = UIBarButtonItem(title: "排序", style: .plain, target: self, action: #selector(WXMyExpressionViewController.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButtonItem
         if navigationController?.viewControllers.first == self {
-            let dismissBarButton = UIBarButtonItem(title: "取消", style: UIBarButtonItem.Style.plain, actionBlick: {
+            let dismissBarButton = UIBarButtonItem(title: "取消", action: {
                 self.dismiss(animated: true)
             })
             navigationItem.leftBarButtonItem = dismissBarButton

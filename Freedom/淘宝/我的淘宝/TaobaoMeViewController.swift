@@ -58,8 +58,9 @@ class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDelegate,
         title = "我的淘宝"
         navigationController?.navigationBar.tintColor = .red
         let image = UIImage(named: "Taobaomessage")?.withRenderingMode(.alwaysOriginal)
-        let `left` = UIBarButtonItem(title: "设置", style: .plain, actionBlick: {() -> Void in
-        })
+        let `left` = UIBarButtonItem(title: "设置") {
+            
+        }
         let right1 = UIBarButtonItem(image: UIImage(named: "TaobaoScanner"), style: .done, target: nil, action: nil)
         let right2 = UIBarButtonItem(image: image, style: .done, target: nil, action: nil)
         navigationItem.leftBarButtonItem = `left`

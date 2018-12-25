@@ -5,7 +5,6 @@ import UIKit
 import XExtension
 import MJRefresh
 import XCarryOn
-import MJExtension
 class IqiyiHomeModel: NSObject {
     var search_default_word_for_ipad = ""
     var boxes = [AnyHashable]()
@@ -228,10 +227,10 @@ class IqiyiHomeBoxCell: UITableViewCell,IqiyiImageCardViewDelegate {
     func setBoxes(_ boxes: IqiyiBoxesModel?) {
         titleLabel?.text = boxes?.title
         imageView?.sd_setImage(with: URL(string: boxes?.index_page_channel_icon ?? ""), placeholderImage: nil)
-        let video1 = IqiyiVideosModel.mj_object(withKeyValues: boxes?.videos[0])
-        let video2 = IqiyiVideosModel.mj_object(withKeyValues: boxes?.videos[1])
-        let video3 = IqiyiVideosModel.mj_object(withKeyValues: boxes?.videos[2])
-        let video4 = IqiyiVideosModel.mj_object(withKeyValues: boxes?.videos[3])
+        let video1 = IqiyiVideosModel.parse(boxes?.videos[0] as! NSDictionary)
+        let video2 = IqiyiVideosModel.parse(boxes?.videos[1] as! NSDictionary)
+        let video3 = IqiyiVideosModel.parse(boxes?.videos[2] as! NSDictionary)
+        let video4 = IqiyiVideosModel.parse(boxes?.videos[3] as! NSDictionary)
         //    [_cardView1 setVideo:video1];
         cardView1.video = video1
         cardView2.video = video2
@@ -290,12 +289,12 @@ class IqiyiHomeVideoBoxCell: UITableViewCell {
     func setBoxes(_ boxes: IqiyiBoxesModel?) {
         titleLabel.text = boxes?.title
         imageView?.sd_setImage(with: URL(string: boxes?.index_page_channel_icon ?? ""), placeholderImage: nil)
-        let video1 = IqiyiVideosModel.mj_object(withKeyValues: boxes?.videos[0])
-        let video2 = IqiyiVideosModel.mj_object(withKeyValues: boxes?.videos[1])
-        let video3 = IqiyiVideosModel.mj_object(withKeyValues: boxes?.videos[2])
-        let video4 = IqiyiVideosModel.mj_object(withKeyValues: boxes?.videos[3])
-        let video5 = IqiyiVideosModel.mj_object(withKeyValues: boxes?.videos[4])
-        let video6 = IqiyiVideosModel.mj_object(withKeyValues: boxes?.videos[5])
+        let video1 = IqiyiVideosModel.parse(boxes?.videos[0] as! NSDictionary)
+        let video2 = IqiyiVideosModel.parse(boxes?.videos[1] as! NSDictionary)
+        let video3 = IqiyiVideosModel.parse(boxes?.videos[2] as! NSDictionary)
+        let video4 = IqiyiVideosModel.parse(boxes?.videos[3] as! NSDictionary)
+        let video5 = IqiyiVideosModel.parse(boxes?.videos[4] as! NSDictionary)
+        let video6 = IqiyiVideosModel.parse(boxes?.videos[5] as! NSDictionary)
         cardView1.video = video1
         cardView2.video = video2
         cardView3.video = video3

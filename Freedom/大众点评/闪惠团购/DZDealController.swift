@@ -9,7 +9,8 @@ class DZDealController: DZBaseViewController {
     }
     func buildUI() {
         view.backgroundColor = UIColor.white
-        let map = UIBarButtonItem(title: "北京", style: .plain, actionBlick: {() -> Void in
+        let map = UIBarButtonItem(title: "北京", action: {
+
         })
         navigationItem.leftBarButtonItem = map
         navigationItem.title = "团购"

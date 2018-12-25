@@ -2,7 +2,6 @@
 //  WXPictureCarouselView.swift
 //  Freedom
 import SnapKit
-import BlocksKit
 import Foundation
 protocol WXPictureCarouselDelegate: NSObjectProtocol {
     func pictureCarouselView(_ pictureCarouselView: WXPictureCarouselView, didSelectItem model: WXPictureCarouselProtocol)
@@ -53,9 +52,9 @@ class WXPictureCarouselView:UIView, UICollectionViewDelegate, UICollectionViewDa
                 self.collectionView.setContentOffset(offset, animated: false)
 
                 if self.timer == nil && self.data.count > 1 {
-                    self.timer = Timer.bk_scheduledTimer(withTimeInterval: 2.0, block: { (tm) in
+                    self.timer = Timer(fire: Date(), interval: 2, repeats: true, block: { (tm) in
                         self.scrollToNextPage()
-                    }, repeats: true)
+                    })
                 }
             })
         }

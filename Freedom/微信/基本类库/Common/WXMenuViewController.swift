@@ -42,31 +42,30 @@ class WXMenuCell: UITableViewCell {
         redPointView.layer.masksToBounds = true
         redPointView.layer.cornerRadius = 8 / 2.0
         redPointView.isHidden = true
-//        iconImageView.mas_makeConstraints({ make in
-//            make.left.mas_equalTo(self.contentView).mas_offset(15.0)
-//            make.centerY.mas_equalTo(self.contentView)
-//            make.width.and().height().mas_equalTo(25.0)
-//        })
-//        titleLabel.mas_makeConstraints({ make in
-//            make.centerY.mas_equalTo(self.iconImageView)
-//            make.left.mas_equalTo(self.iconImageView.mas_right).mas_offset(15.0)
-//            make.right.mas_lessThanOrEqualTo(self.contentView).mas_offset(15.0)
-//        })
-//        rightImageView.mas_makeConstraints({ make in
-//            make.right.mas_equalTo(self.contentView)
-//            make.centerY.mas_equalTo(self.iconImageView)
-//            make.width.and().height().mas_equalTo(31)
-//        })
-//        midLabel.mas_makeConstraints({ make in
-//            make.left.mas_greaterThanOrEqualTo(self.titleLabel.mas_right).mas_offset(15)
-//            make.right.mas_equalTo(self.rightImageView.mas_left).mas_offset(-5)
-//            make.centerY.mas_equalTo(self.iconImageView)
-//        })
-//        redPointView.mas_makeConstraints({ make in
-//            make.centerX.mas_equalTo(self.rightImageView.mas_right).mas_offset(1)
-//            make.centerY.mas_equalTo(self.rightImageView.mas_top).mas_offset(1)
-//            make.width.and().height().mas_equalTo(8)
-//        })
+        iconImageView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(15)
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(25)
+        }
+        titleLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.iconImageView.snp.right).offset(15)
+            make.right.lessThanOrEqualTo(self.contentView).offset(15)
+        }
+        rightImageView.snp.makeConstraints { (make) in
+            make.right.equalToSuperview()
+            make.centerY.equalTo(self.iconImageView)
+            make.width.height.equalTo(31)
+        }
+        midLabel.snp.makeConstraints { (make) in
+            make.left.greaterThanOrEqualTo(self.titleLabel.snp.right).offset(15)
+            make.right.equalTo(self.rightImageView.snp.left).offset(-5)
+            make.centerY.equalTo(self.iconImageView)
+        }
+        redPointView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.rightImageView.snp.right).offset(1)
+            make.centerY.equalTo(self.rightImageView.snp.top).offset(1)
+            make.width.height.equalTo(8)
+        }
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

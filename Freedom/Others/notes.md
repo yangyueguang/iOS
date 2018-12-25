@@ -129,7 +129,6 @@ if (section == 1) {
 #
 #清理缓存：
 -(void)learbtnAction{
-[SVProgressHUD showWithStatus:ssssss(@"正在清理缓存", @"")];
 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
 NSFileManager* fileManager=[NSFileManager defaultManager];
@@ -141,9 +140,9 @@ for (NSString *strName in tempFileList) {
 NSString* fileAbsolutePath = [cacheDirectoryName stringByAppendingPathComponent:strName];
 BOOL blDele= [fileManager removeItemAtPath:fileAbsolutePath error:nil];
 if(blDele)DLog(@"删除:%d",blDele);
-else[SVProgressHUD showImage:nil status:@"您已经清理过了,暂无缓存文件!"];
 }
-dispatch_async(dispatch_get_main_queue(), ^{[SVProgressHUD showImage:nil status:ssssss(@"清理成功!", @"")];});
+dispatch_async(dispatch_get_main_queue(), ^{
+});
 });
 }
 #

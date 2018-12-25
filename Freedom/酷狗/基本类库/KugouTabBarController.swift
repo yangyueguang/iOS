@@ -3,7 +3,6 @@
 //  Freedom
 import UIKit
 import XExtension
-import RESideMenu
 import AVFoundation
 import MediaPlayer
 class TabBarView: UIView, AVAudioPlayerDelegate {

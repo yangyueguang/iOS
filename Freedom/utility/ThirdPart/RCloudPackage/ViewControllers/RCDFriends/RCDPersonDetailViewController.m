@@ -215,7 +215,7 @@
                  }error:^(RCErrorCode status) {
                      dispatch_async(dispatch_get_main_queue(), ^{
                          [hud hide:YES];
-                         [SVProgressHUD showErrorWithStatus:@"加入黑名单失败"];
+                         NSLog(@"加入黑名单失败");
                      });
                      weakSelf.inBlackList = NO;
                  }];
@@ -230,7 +230,7 @@
                  }error:^(RCErrorCode status) {
                      dispatch_async(dispatch_get_main_queue(), ^{
                          [hud hide:YES];
-                         [SVProgressHUD showErrorWithStatus:@"从黑名单移除失败"];
+                         NSLog(@"从黑名单移除失败");
                      });
                      weakSelf.inBlackList = YES;
                  }];
