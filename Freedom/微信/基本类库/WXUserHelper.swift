@@ -283,7 +283,7 @@ class WXFriendHelper: NSObject {
         let group5: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([blackList, report]))
         return [group1, group2, group3, group4, group5]
     }
-    class func gotNextEvent(withWechatContacts data: [WechatContact], success: @escaping (_ data: [Any], _ formatData: [Any], _ headers: [Any]) -> Void) {
+    class func gotNextEvent(withWechatContacts data: [WechatContact], success: @escaping (_ data: [WechatContact], _ formatData: [WXUserGroup], _ headers: [String]) -> Void) {
         let serializeArray:[WechatContact] = []//data.sorted(by: \.pinyin, ascending: true)
         var data: [TLEmojiGroup] = []
         var headers = [UITableView.indexSearch]
@@ -336,14 +336,14 @@ class WXFriendHelper: NSObject {
 //            }
 //        }
     }
-    class func trytoGetAllContacts(success: @escaping (_ data: [Any], _ formatData: [Any], _ headers: [Any]) -> Void, failed: @escaping () -> Void) {
+    class func trytoGetAllContacts(success: @escaping (_ data: [WechatContact], _ formatData: [WXUserGroup], _ headers: [String]) -> Void, failed: @escaping () -> Void) {
         DispatchQueue.global(qos: .default).async(execute: {
             // 3、加载缓存
             let path = FileManager.pathContactsData()
             let dic = NSKeyedUnarchiver.unarchiveObject(withFile: path) as! [AnyHashable : Any]
             let data = dic["data"] as! [WechatContact]
-            let formatData = dic["formatData"] as! [Any]
-            let headers = dic["headers"] as! [Any]
+            let formatData = dic["formatData"] as! [WXUserGroup]
+            let headers = dic["headers"] as! [String]
             DispatchQueue.main.async(execute: {
                 success(data, formatData, headers)
             })
@@ -553,7 +553,7 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
         success(group)
         }))
     }
-    func requestExpressionChosenList(byPageIndex pageIndex: Int, success: @escaping (_ data: Any) -> Void, failure: @escaping (_ error: String) -> Void) {
+    func requestExpressionChosenList(byPageIndex pageIndex: Int, success: @escaping (_ data: [TLEmojiGroup]) -> Void, failure: @escaping (_ error: String) -> Void) {
         let urlString = String(format: IEXPRESSION_NEW_URL, pageIndex)
         AFHTTPSessionManager().post(urlString, parameters: nil, progress: nil, success: { task, responseObject in
             //            let respArray = (responseObject as! NSArray).mj_JSONObject()!
@@ -569,7 +569,7 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
             failure(error.localizedDescription)
         })
     }
-    func requestExpressionChosenBannerSuccess(_ success: @escaping (Any) -> Void, failure: @escaping (String) -> Void) {
+    func requestExpressionChosenBannerSuccess(_ success: @escaping ([TLEmojiGroup]) -> Void, failure: @escaping (String) -> Void) {
         let urlString = IEXPRESSION_BANNER_URL
         AFHTTPSessionManager().post(urlString, parameters: nil, progress: nil, success: { task, responseObject in
             //            let respArray = responseObject.mj_JSONObject()
@@ -585,7 +585,7 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
             failure(error.localizedDescription)
         })
     }
-    func requestExpressionPublicList(byPageIndex pageIndex: Int, success: @escaping (_ data: Any) -> Void, failure: @escaping (_ error: String) -> Void) {
+    func requestExpressionPublicList(byPageIndex pageIndex: Int, success: @escaping (_ data: [TLEmojiGroup]) -> Void, failure: @escaping (_ error: String) -> Void) {
         let urlString = String(format: IEXPRESSION_PUBLIC_URL, pageIndex)
         AFHTTPSessionManager().post(urlString, parameters: nil, progress: nil, success: { task, responseObject in
             //            let respArray = responseObject.mj_JSONObject()
@@ -601,7 +601,7 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
             failure(error.localizedDescription)
         })
     }
-    func requestExpressionSearch(byKeyword keyword: String, success: @escaping (_ data: Any) -> Void, failure: @escaping (_ error: String) -> Void) {
+    func requestExpressionSearch(byKeyword keyword: String, success: @escaping (_ data: [TLEmojiGroup]) -> Void, failure: @escaping (_ error: String) -> Void) {
         let urlString = String(format: IEXPRESSION_SEARCH_URL, keyword)
         AFHTTPSessionManager().post(urlString, parameters: nil, progress: nil, success: { task, responseObject in
             //            let respArray = responseObject.mj_json()

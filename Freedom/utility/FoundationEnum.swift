@@ -15,7 +15,12 @@ enum TLClueType : Int {
     case point
     case pointWithNumber
 }
-
+//三方登陆类型
+enum TLThirdPartType: String {
+    case contacts = "1"
+    case QQ = "2"
+    case google = "3"
+}
 //会话类型
 enum TLConversationType : Int {
     case personal // 个人

@@ -21,7 +21,7 @@ class WechatAddMenuCell: WXTableViewCell {
         titleLabel.font = UIFont.systemFont(ofSize: 16.0)
         return titleLabel
     }()
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         rightSeparatorSpace = 16
         backgroundColor = UIColor(71, 70, 73, 1.0)
@@ -193,7 +193,7 @@ class WechatConversationCell: WXTableViewCell {
             markAsRead(self.conversation?.isRead ?? false)
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         leftSeparatorSpace = 10
         contentView.addSubview(avatarImageView)

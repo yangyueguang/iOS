@@ -27,7 +27,7 @@ class WXInfoButtonCell: WXTableViewCell {
         button.addTarget(self, action: #selector(self.cellButtonDown(_:)), for: .touchUpInside)
         return button
     }()
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = UIColor.clear
         selectionStyle = .none
@@ -59,7 +59,7 @@ class WXInfoCell: WXTableViewCell {
             selectionStyle = info.disableHighlight ? .none : .default
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         subTitleLabel.font = UIFont.systemFont(ofSize: 15.0)
         textLabel?.font = UIFont.systemFont(ofSize: 15.0)

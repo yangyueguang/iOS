@@ -57,7 +57,7 @@ class WXMomentDetailFrame: NSObject {
 
 class WXMomentDetail: NSObject {
     var text = ""
-    var images: [AnyHashable] = []
+    var images: [String] = []
     lazy var detailFrame: WXMomentDetailFrame = {
         let detailFrame = WXMomentDetailFrame()
         detailFrame.height = 0.0

@@ -34,7 +34,7 @@ class WXFriendCell: WXTableViewCell {
             }
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         leftSeparatorSpace = 10
         usernameLabel.font = UIFont.systemFont(ofSize: 17.0)
