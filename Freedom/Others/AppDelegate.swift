@@ -10,6 +10,7 @@ import AVFoundation
 import SDWebImage
 import Realm
 import UserNotifications
+import IQKeyboardManagerSwift
 //#import <ShareSDK/ShareSDK.h>
 //＝＝＝＝＝＝＝＝＝＝以下是各个平台SDK的头文件，根据需要继承的平台添加＝＝＝
 //腾讯开放平台（对应QQ和QQ空间）SDK头文件
@@ -36,8 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     var runloopRef: CFRunLoop?
     var audioTimer: Timer?
     var queue: DispatchQueue?
-
-
     let launchView: UIImageView = UIImageView()
     var apps = [XAPP]()
     var myApps = [XAPP]()
@@ -104,6 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         configRadialView()
     }
     func firstConfigAllAPPIds(){
+        IQKeyboardManager.shared.enable = true
         let userDefault = UserDefaults.standard
         let isNotFirst = false//userDefault.bool(forKey: "first")
         if !isNotFirst {
@@ -219,7 +219,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         
         firstInitUMeng()
 //        RCDMainTabBarViewController.shareInstance().firstInitRongCloud()
-        let backButtonImage = UIImage(named: "返回")?.withRenderingMode(.alwaysTemplate)
+        let backButtonImage = UIImage(named: "u_cell_left")?.withRenderingMode(.alwaysTemplate)
         UINavigationBar.appearance().backIndicatorImage = backButtonImage
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButtonImage
         if Float(UIDevice.current.systemVersion) ?? 0.0 >= 8.0 {

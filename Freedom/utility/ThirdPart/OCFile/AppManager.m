@@ -1,5 +1,6 @@
 //
 #import "AppManager.h"
+#import "NSObject+Mirror.h"
 @interface UIImage ()
 + (id)_iconForResourceProxy:(id)arg1 variant:(int)arg2 variantsScale:(float)arg3;
 + (id)_applicationIconImageForBundleIdentifier:(id)arg1 format:(int)arg2 scale:(double)arg3;
@@ -64,7 +65,7 @@
 - (instancetype)initWithiTunesDict:(NSDictionary*)iTune{
     self = [super init];
     if(self){
-        [self setValuesForKeysWithDictionary:iTune];
+        [self setAttributesWithDictionary:iTune];
         self.descrip = [iTune objectForKey:@"description"];
         NSString *iconStr = [self.artworkUrl60 stringByReplacingOccurrencesOfString:@"60x60bb.jpg" withString:@"128x128-75.png"];
         dispatch_async(dispatch_get_main_queue(), ^{
