@@ -156,6 +156,7 @@ static const char *getPropertyType(objc_property_t property) {
                 NSMutableArray *valueArray = [NSMutableArray array];
                 NSDictionary *objectClasses = [self objectClassesInArray];
                 if (objectClasses == nil) {
+                    [self setValue:aDictValue forKey:attributeName];
                     continue;
                 }
                 NSString *classString = [objectClasses objectForKey:aDictKey];
@@ -219,7 +220,8 @@ static const char *getPropertyType(objc_property_t property) {
                     [self performSelectorOnMainThread:setter withObject:[NSNull null] waitUntilDone:[NSThread isMainThread]];
                 }
             } else {
-                [self performSelectorOnMainThread:setter withObject:aDictValue waitUntilDone:[NSThread isMainThread]];
+                [self setValue:aDictValue forKey:attributeName];
+//                [self performSelectorOnMainThread:setter withObject:aDictValue waitUntilDone:[NSThread isMainThread]];
             }
         }
     }

@@ -156,8 +156,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     func addMyapps(){
         let myAppsPath = Bundle.main.path(forResource: "MyAPP", ofType: "plist")
         let myApps = NSArray(contentsOfFile: myAppsPath!)
-        let apps = XAPP.parses(myApps as! [Any]) as! [XAPP]
-        self.myApps = apps;
+        for (_ , dict) in myApps!.enumerated(){
+            let dict = dict as! NSDictionary
+            let model = XAPP.parse(dict)
+            model.isHiddenApp = dict["isHiddenApp"] as? Bool ?? true
+            model.trackId = dict["trackId"] as? String
+            model.trackName = dict["trackName"] as? String
+            model.scheme = dict["scheme"] as? String
+            self.myApps.append(model)
+        }
         let appMan = AppManager.sharedInstance()
         var popoutModels = [PopoutModel]()
         for xapp in self.myApps{
