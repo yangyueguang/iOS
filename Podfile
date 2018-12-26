@@ -10,11 +10,10 @@ target 'Freedom' do
 #pod 'UAProgressView'
 #pod 'FLAnimatedImage'
 pod 'FMDB'
-pod 'StarWars' #swift 3.0
 pod 'AXWebViewController'
 
 #Objective-C.frameworks
-pod 'HYBUnicodeReadable'
+#pod 'HYBUnicodeReadable'
 pod 'SSKeychain'  #https://github.com/Mingriweiji-github/sskeychain-master
 pod 'AFNetworking'
 pod 'MJRefresh'

@@ -105,7 +105,6 @@ PODS:
   - SnapKit (4.2.0)
   - SSKeychain (1.4.1)
   - Starscream (3.0.6)
-  - StarWars (2.0)
   - TZImagePickerController (3.1.5)
   - UMengAnalytics (4.2.4)
   - XCarryOn (0.3.9)
@@ -142,7 +141,6 @@ DEPENDENCIES:
   - SnapKit
   - SSKeychain
   - Starscream
-  - StarWars
   - TZImagePickerController
   - UMengAnalytics
   - XCarryOn
@@ -187,7 +185,6 @@ SPEC REPOS:
     - SnapKit
     - SSKeychain
     - Starscream
-    - StarWars
     - TZImagePickerController
     - UMengAnalytics
     - XCarryOn
@@ -231,12 +228,11 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
-  StarWars: 3c68dc5e9f1b6ca6d407b1d4218fd8a65c2eacfa
   TZImagePickerController: 6cc6e9c1a73bb8e62cfef98fd40af2d90634dcf5
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   XCarryOn: 5fc35e5080ae50c835d94f4976b4784a87978d71
   XExtension: 403513a797a2c2ddf5d7af9ab8c54b2efc4312ae
 
-PODFILE CHECKSUM: d3f9273e19ac47451017e38f8d7d8db6360bb548
+PODFILE CHECKSUM: 53734f984b9e4572cc88cfc8de2cc6a72edc6082
 
 COCOAPODS: 1.5.3
