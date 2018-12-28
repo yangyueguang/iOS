@@ -1204,11 +1204,15 @@
 		DF7B408A21AC020A00E3D975 /* AwemeListCellViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406D21AC020A00E3D975 /* AwemeListCellViews.swift */; };
 		DF7B408B21AC020A00E3D975 /* AVPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */; };
 		DF846C8D21BE55FD002D9CA2 /* NSObject+Mirror.m in Sources */ = {isa = PBXBuildFile; fileRef = DF846C8B21BE55FD002D9CA2 /* NSObject+Mirror.m */; };
+		DF8BBC9921D67F0600F0D1FD /* XAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BBC9421D67F0400F0D1FD /* XAlertViewController.swift */; };
+		DF8BBC9A21D67F0600F0D1FD /* CircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BBC9521D67F0400F0D1FD /* CircularSlider.swift */; };
+		DF8BBC9B21D67F0600F0D1FD /* XTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BBC9621D67F0500F0D1FD /* XTransitionAnimator.swift */; };
+		DF8BBC9C21D67F0600F0D1FD /* UIView+CircularAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BBC9721D67F0600F0D1FD /* UIView+CircularAnimation.swift */; };
+		DF8BBC9D21D67F0600F0D1FD /* AImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BBC9821D67F0600F0D1FD /* AImageView.swift */; };
 		DFA5BF3621B6A74D00CB9223 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5BF3521B6A74D00CB9223 /* User.swift */; };
 		DFA5D3AE21BA184F00339006 /* PlayLRCSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */; };
 		DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */; };
 		DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */; };
-		DFB5FF4F21C9EAC30057C922 /* XAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FF4E21C9EAC30057C922 /* XAlertViewController.swift */; };
 		DFB5FF5621CA280A0057C922 /* WXExpanded.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FF5521CA280A0057C922 /* WXExpanded.swift */; };
 		DFB5FF5C21CA2F1C0057C922 /* WXTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FF5B21CA2F1C0057C922 /* WXTabBarController.swift */; };
 		DFB5FF5E21CA2F3E0057C922 /* WXNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FF5D21CA2F3E0057C922 /* WXNavigationController.swift */; };
@@ -2561,11 +2565,15 @@
 		DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerManager.swift; sourceTree = "<group>"; };
 		DF846C8B21BE55FD002D9CA2 /* NSObject+Mirror.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Mirror.m"; sourceTree = "<group>"; };
 		DF846C8C21BE55FD002D9CA2 /* NSObject+Mirror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Mirror.h"; sourceTree = "<group>"; };
+		DF8BBC9421D67F0400F0D1FD /* XAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAlertViewController.swift; sourceTree = "<group>"; };
+		DF8BBC9521D67F0400F0D1FD /* CircularSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularSlider.swift; sourceTree = "<group>"; };
+		DF8BBC9621D67F0500F0D1FD /* XTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XTransitionAnimator.swift; sourceTree = "<group>"; };
+		DF8BBC9721D67F0600F0D1FD /* UIView+CircularAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+CircularAnimation.swift"; sourceTree = "<group>"; };
+		DF8BBC9821D67F0600F0D1FD /* AImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AImageView.swift; sourceTree = "<group>"; };
 		DFA5BF3521B6A74D00CB9223 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLRCSView.swift; sourceTree = "<group>"; };
 		DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBaseTableView.swift; sourceTree = "<group>"; };
 		DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRefreshControl.swift; sourceTree = "<group>"; };
-		DFB5FF4E21C9EAC30057C922 /* XAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAlertViewController.swift; sourceTree = "<group>"; };
 		DFB5FF5521CA280A0057C922 /* WXExpanded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXExpanded.swift; sourceTree = "<group>"; };
 		DFB5FF5B21CA2F1C0057C922 /* WXTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXTabBarController.swift; sourceTree = "<group>"; };
 		DFB5FF5D21CA2F3E0057C922 /* WXNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXNavigationController.swift; sourceTree = "<group>"; };
@@ -5421,12 +5429,16 @@
 		DFF4AB9721B794B200F03C71 /* SwiftTools */ = {
 			isa = PBXGroup;
 			children = (
+				DF8BBC9821D67F0600F0D1FD /* AImageView.swift */,
+				DF8BBC9521D67F0400F0D1FD /* CircularSlider.swift */,
+				DF8BBC9721D67F0600F0D1FD /* UIView+CircularAnimation.swift */,
+				DF8BBC9421D67F0400F0D1FD /* XAlertViewController.swift */,
+				DF8BBC9621D67F0500F0D1FD /* XTransitionAnimator.swift */,
 				DF0489DD21D2699A0030C30B /* SwiftWebViewBridge.swift */,
 				BF58B94920EB22C8002CB4EE /* XTablesViewController.swift */,
 				DFB5FFA321CA379C0057C922 /* XIBExtension.swift */,
 				DFC662C721C0E96600B41558 /* XHud.swift */,
 				DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */,
-				DFB5FF4E21C9EAC30057C922 /* XAlertViewController.swift */,
 				DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */,
 				BF58BA3120EDF132002CB4EE /* SwiftNotice.swift */,
 				BF58B95920ECFC0B002CB4EE /* BaseSearchBar.swift */,
@@ -6638,6 +6650,7 @@
 				BF58BB6420EF1945002CB4EE /* RealTimeLocationViewController.m in Sources */,
 				7121194820AC03220087E05B /* JuheDataTabBarController.swift in Sources */,
 				DF6B523E21CB770B00460949 /* WXExpressionPublicViewController.swift in Sources */,
+				DF8BBC9A21D67F0600F0D1FD /* CircularSlider.swift in Sources */,
 				BFAC49C320D36A2700E5CB8D /* LibraryCollectionViewController.swift in Sources */,
 				DF0E968421CBACFA009682CC /* WXShakeSettingViewController.swift in Sources */,
 				7121195820AC0C2F0087E05B /* JuheAPIViewController.swift in Sources */,
@@ -6667,6 +6680,7 @@
 				BF5B9B5E1F8E636E00BD885E /* EconomicsViewController.swift in Sources */,
 				7788AC311D7996B100376C95 /* E_Paging.mm in Sources */,
 				DFF4ABA121B7BFEC00F03C71 /* XExcellView.swift in Sources */,
+				DF8BBC9921D67F0600F0D1FD /* XAlertViewController.swift in Sources */,
 				BF5B9B751F8E676F00BD885E /* FamilyViewController.swift in Sources */,
 				DF0489FC21D28BA40030C30B /* MotionAnimationPropertyState.swift in Sources */,
 				7121192C20ABC4FB0087E05B /* EnergyHomeViewController.swift in Sources */,
@@ -6758,6 +6772,7 @@
 				7115A5AD20AAA1F1000D0B96 /* FreedomViewController.swift in Sources */,
 				DF0489EB21D28B870030C30B /* ElasticModalViewController.swift in Sources */,
 				BF5B9B6F1F8E674B00BD885E /* FreeViewController.swift in Sources */,
+				DF8BBC9B21D67F0600F0D1FD /* XTransitionAnimator.swift in Sources */,
 				DF6B523021CB76DD00460949 /* WXCommonSettingViewController.swift in Sources */,
 				BF5B9B771F8E677F00BD885E /* RelativeViewController.swift in Sources */,
 				7115A5B620AAC314000D0B96 /* PersonalApplyNavigationController.swift in Sources */,
@@ -6852,7 +6867,6 @@
 				7121193C20ABC57C0087E05B /* EnergyShopMeViewController.swift in Sources */,
 				BF58BB5820EF1945002CB4EE /* RCDSquareTableViewController.m in Sources */,
 				7121193220ABC5320087E05B /* EnergyShopViewController.swift in Sources */,
-				DFB5FF4F21C9EAC30057C922 /* XAlertViewController.swift in Sources */,
 				BF5B9B7F1F8E67B900BD885E /* WidomViewController.swift in Sources */,
 				713EE30820ADA06B0085B65D /* IqiyiWatchRecordViewController.swift in Sources */,
 				DF6B524021CB771100460949 /* WXExpressionSearchViewController.swift in Sources */,
@@ -6873,6 +6887,7 @@
 				DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */,
 				BF58BB3120EF1945002CB4EE /* RCDGroupAnnouncementViewController.m in Sources */,
 				7121194A20AC03800087E05B /* JuheNavigationController.swift in Sources */,
+				DF8BBC9C21D67F0600F0D1FD /* UIView+CircularAnimation.swift in Sources */,
 				7788AC661D7996E000376C95 /* E_WebViewControler.m in Sources */,
 				BF58BB4720EF1945002CB4EE /* RCDConversationSettingBaseViewController.m in Sources */,
 				713EE2E220AD9C240085B65D /* AlipayDiscoverTableViewController.swift in Sources */,
@@ -6923,6 +6938,7 @@
 				7121194E20AC0BF00087E05B /* JuheContectUSViewController.swift in Sources */,
 				DF0489FB21D28BA40030C30B /* Types.swift in Sources */,
 				BF58BB5920EF1945002CB4EE /* RCDServiceViewController.m in Sources */,
+				DF8BBC9D21D67F0600F0D1FD /* AImageView.swift in Sources */,
 				BF58BB2B20EF1945002CB4EE /* RCDFrienfRemarksViewController.m in Sources */,
 				7115A5C020AAD339000D0B96 /* PersonalSoftViewController.swift in Sources */,
 				7121195C20AC0C450087E05B /* JuheQuestionViewController.swift in Sources */,
