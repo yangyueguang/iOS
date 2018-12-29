@@ -77,6 +77,10 @@ class XAlertViewController: UIViewController ,UIViewControllerTransitioningDeleg
     }
     required public init(withAlert alertView: UIView, preferredStyle: XAlertStyle) {
         super.init(nibName: nil, bundle: nil)
+        providesPresentationContextTransitionStyle = true// 是否视图控制器定义它呈现视图控制器的过渡风格
+        definesPresentationContext = true
+        modalPresentationStyle = .custom
+        transitioningDelegate = self
         self.alertView = alertView
         self.alertStyle = preferredStyle
         backgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
@@ -86,10 +90,6 @@ class XAlertViewController: UIViewController ,UIViewControllerTransitioningDeleg
     }
     override func loadView() {
         super.loadView()
-        providesPresentationContextTransitionStyle = true// 是否视图控制器定义它呈现视图控制器的过渡风格
-        definesPresentationContext = true
-        modalPresentationStyle = .custom
-        transitioningDelegate = self
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +105,7 @@ class XAlertViewController: UIViewController ,UIViewControllerTransitioningDeleg
     private func addAlertViewControllerConstraints() {
         func addConstraint(_ item: UIView, attributes: [NSLayoutConstraint.Attribute], constant: CGFloat = 0) {
             for attr in attributes {
-                view.addConstraint(NSLayoutConstraint(item: item, attribute: attr, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: constant))
+                view.addConstraint(NSLayoutConstraint(item: item, attribute: attr, relatedBy: .equal, toItem: view, attribute: attr, multiplier: 1, constant: constant))
             }
         }
         func addAlertConstraint(_ attrbute: NSLayoutConstraint.Attribute, constant: CGFloat){

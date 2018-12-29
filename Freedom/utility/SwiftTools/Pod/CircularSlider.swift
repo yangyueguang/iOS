@@ -5,7 +5,7 @@ import UIKit
 struct Interval {
     var min: CGFloat = 0.0
     var max: CGFloat = 0.0
-    var rounds: Int = 0
+    var rounds: Int = 1
 }
 ///🔘按钮
 struct CircleRing {
@@ -24,7 +24,7 @@ open class CircularSlider: UIControl {
         return min(bounds.midX,bounds.midY)-max(lineWidth,(circleRadiu.ooWidth+circleRadiu.ocWidth))
     }
     ///🔘按钮
-    let circleRadiu = CircleRing()
+    var circleRadiu = CircleRing()
     //中心区域未选中内容填充色
     @IBInspectable open var fillColor: UIColor = .gray
     //中心区域选中内容填充色
@@ -97,7 +97,7 @@ open class CircularSlider: UIControl {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         drawCircularSlider(inContext: context)
         let valuesInterval = Interval(min: minValue, max: maxValue, rounds: numberOfRounds)
-        let angleInterval = Interval(min: circleMinValue, max: circleMaxValue, rounds: 0)
+        let angleInterval = Interval(min: circleMinValue, max: circleMaxValue, rounds: numberOfRounds)
         let endAngle = self.scaleValue(value, fromInterval: valuesInterval, toInterval: angleInterval) - CGFloat(Double.pi / 2)
         drawFilledArc(fromAngle: -CGFloat(Double.pi / 2), toAngle: endAngle, inContext: context)
         circleRadiu.ocColor.setFill()
@@ -125,13 +125,13 @@ open class CircularSlider: UIControl {
 
     private func newValue(from oldValue: CGFloat, touch touchPosition: CGPoint, start startPosition: CGPoint) -> CGFloat {
         let u = CGVector(dx: startPosition.x - bounds.midX, dy: startPosition.y - bounds.midY)
-        let v = CGVector(dx: touchPosition.x - touchPosition.x, dy: touchPosition.y - bounds.midY)
+        let v = CGVector(dx: touchPosition.x - bounds.midX, dy: touchPosition.y - bounds.midY)
         let dotProduct = u.dx * v.dx + u.dy * v.dy
         let determinant = v.dx * u.dy - u.dx * v.dy
         var angle = atan2(determinant, dotProduct)
         angle = (angle < 0) ? -angle : CGFloat(Double.pi * 2) - angle
         let interval = Interval(min: minValue, max: maxValue, rounds: numberOfRounds)
-        let angleInterval = Interval(min: circleMinValue, max: circleMaxValue, rounds: 0)
+        let angleInterval = Interval(min: circleMinValue, max: circleMaxValue, rounds: numberOfRounds)
         let alpha = self.scaleValue(oldValue, fromInterval: interval, toInterval: angleInterval)
         let halfValue = circleMaxValue/2
         let offset = alpha >= halfValue ? circleMaxValue - alpha : -alpha

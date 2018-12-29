@@ -5309,6 +5309,22 @@
 			path = MotionAnimation;
 			sourceTree = "<group>";
 		};
+		DF624A8A21D71DAC00A99B08 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				DF8BBC9821D67F0600F0D1FD /* AImageView.swift */,
+				DF8BBC9521D67F0400F0D1FD /* CircularSlider.swift */,
+				DF8BBC9421D67F0400F0D1FD /* XAlertViewController.swift */,
+				DF8BBC9621D67F0500F0D1FD /* XTransitionAnimator.swift */,
+				DF0489DD21D2699A0030C30B /* SwiftWebViewBridge.swift */,
+				DFB5FFA321CA379C0057C922 /* XIBExtension.swift */,
+				DFC662C721C0E96600B41558 /* XHud.swift */,
+				BF58BA3120EDF132002CB4EE /* SwiftNotice.swift */,
+				BF4A80E22105CFC600D32FB0 /* XTip.swift */,
+			);
+			path = Pod;
+			sourceTree = "<group>";
+		};
 		DF7B3FB321ABEEC500E3D975 /* 抖音 */ = {
 			isa = PBXGroup;
 			children = (
@@ -5429,21 +5445,13 @@
 		DFF4AB9721B794B200F03C71 /* SwiftTools */ = {
 			isa = PBXGroup;
 			children = (
-				DF8BBC9821D67F0600F0D1FD /* AImageView.swift */,
-				DF8BBC9521D67F0400F0D1FD /* CircularSlider.swift */,
+				DF624A8A21D71DAC00A99B08 /* Pod */,
 				DF8BBC9721D67F0600F0D1FD /* UIView+CircularAnimation.swift */,
-				DF8BBC9421D67F0400F0D1FD /* XAlertViewController.swift */,
-				DF8BBC9621D67F0500F0D1FD /* XTransitionAnimator.swift */,
-				DF0489DD21D2699A0030C30B /* SwiftWebViewBridge.swift */,
 				BF58B94920EB22C8002CB4EE /* XTablesViewController.swift */,
-				DFB5FFA321CA379C0057C922 /* XIBExtension.swift */,
-				DFC662C721C0E96600B41558 /* XHud.swift */,
 				DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */,
 				DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */,
-				BF58BA3120EDF132002CB4EE /* SwiftNotice.swift */,
 				BF58B95920ECFC0B002CB4EE /* BaseSearchBar.swift */,
 				BF58BA2020EDBFBB002CB4EE /* DownloadService.swift */,
-				BF4A80E22105CFC600D32FB0 /* XTip.swift */,
 				BFC6D93220E322D100F17378 /* XRadiaMenu.swift */,
 				BF4A80DF2105CE5E00D32FB0 /* BaseSearchBarView.swift */,
 				DFC433E821C3F74F003E1BCB /* XNetKit.swift */,
