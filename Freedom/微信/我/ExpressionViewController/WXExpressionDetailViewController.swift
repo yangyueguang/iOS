@@ -3,6 +3,7 @@
 //  Freedom
 
 import Foundation
+import XCarryOn
 protocol WXExpressionDetailCellDelegate: NSObjectProtocol {
     func expressionDetailCellDownloadButtonDown(_ group: TLEmojiGroup)
 }

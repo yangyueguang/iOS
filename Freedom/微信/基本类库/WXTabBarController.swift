@@ -4,6 +4,7 @@
 
 import UIKit
 import SnapKit
+import XCarryOn
 import XExtension
 class WXTabBarController: UITabBarController {
     static let shared = WXTabBarController()

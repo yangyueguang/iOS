@@ -4,6 +4,7 @@
 
 import Foundation
 import WebKit
+import XCarryOn
 class WXGameViewController: WXWebViewController {
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -2,6 +2,7 @@
 //  WXExpressionSearchViewController.swift
 //  Freedom
 import SnapKit
+import XCarryOn
 import XExtension
 import Foundation
 class WXExpressionSearchViewController: WXTableViewController, UISearchResultsUpdating, UISearchBarDelegate, WXExpressionCellDelegate {

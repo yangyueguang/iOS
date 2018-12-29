@@ -38,7 +38,7 @@ pod 'GooglePlaces'
 pod 'UMengAnalytics'
 pod 'AVOSCloud'
 pod 'AVOSCloudIM'
-pod 'LeanCloud'#Swift版AVO通讯
+#pod 'LeanCloud'#Swift版AVO通讯
 pod 'RongCloudIM/IMLib'
 pod 'RongCloudIM/IMKit'
 pod 'RongCloudIM/CallLib'

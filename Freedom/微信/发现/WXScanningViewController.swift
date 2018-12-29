@@ -3,6 +3,7 @@
 //  Freedom
 import SnapKit
 import Foundation
+import XCarryOn
 class WXScannerButton: UIButton {
     var title = "" {
         didSet {

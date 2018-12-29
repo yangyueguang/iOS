@@ -2,6 +2,7 @@
 //  WXContactsViewController.swift
 //  Freedom
 import SnapKit
+import XCarryOn
 import Foundation
 class WechatContactCell: WXTableViewCell {
     var avatarImageView = UIImageView()

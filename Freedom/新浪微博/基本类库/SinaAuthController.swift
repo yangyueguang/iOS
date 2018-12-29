@@ -5,6 +5,7 @@
 //  Created by Super on 6/28/18.
 //  Copyright © 2018 薛超. All rights reserved.
 import UIKit
+import XCarryOn
 import AFNetworking
 class SinaAccount: NSObject {
     var access_token = ""/**用于调用access_token，接口获取授权后的access token。*/
