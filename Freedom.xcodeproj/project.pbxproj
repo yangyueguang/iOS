@@ -1118,6 +1118,12 @@
 		DF0E968421CBACFA009682CC /* WXShakeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E968321CBACFA009682CC /* WXShakeSettingViewController.swift */; };
 		DF0E968621CBAD07009682CC /* WXShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E968521CBAD07009682CC /* WXShakeViewController.swift */; };
 		DF0E968821CBAD13009682CC /* WXShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E968721CBAD13009682CC /* WXShoppingViewController.swift */; };
+		DF29539D21D7A77F00E1C188 /* AXSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539121D7A77F00E1C188 /* AXSecurityPolicy.m */; };
+		DF29539E21D7A77F00E1C188 /* AXWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539721D7A77F00E1C188 /* AXWebViewControllerActivity.m */; };
+		DF29539F21D7A77F00E1C188 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539821D7A77F00E1C188 /* NJKWebViewProgressView.m */; };
+		DF2953A021D7A77F00E1C188 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539921D7A77F00E1C188 /* Aspects.m */; };
+		DF2953A121D7A77F00E1C188 /* AXWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DF29539B21D7A77F00E1C188 /* AXWebViewController.bundle */; };
+		DF2953A221D7A77F00E1C188 /* AXWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539C21D7A77F00E1C188 /* AXWebViewController.m */; };
 		DF4C6FC821CC787700A54339 /* FoundationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C6FC721CC787700A54339 /* FoundationEnum.swift */; };
 		DF4C6FCA21CC790D00A54339 /* FoundationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */; };
 		DF6B51EE21CA6F5900460949 /* WXModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51ED21CA6F5900460949 /* WXModes.swift */; };
@@ -2469,6 +2475,17 @@
 		DF0E968321CBACFA009682CC /* WXShakeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXShakeSettingViewController.swift; sourceTree = "<group>"; };
 		DF0E968521CBAD07009682CC /* WXShakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXShakeViewController.swift; sourceTree = "<group>"; };
 		DF0E968721CBAD13009682CC /* WXShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXShoppingViewController.swift; sourceTree = "<group>"; };
+		DF29539121D7A77F00E1C188 /* AXSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXSecurityPolicy.m; sourceTree = "<group>"; };
+		DF29539221D7A77F00E1C188 /* AXSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXSecurityPolicy.h; sourceTree = "<group>"; };
+		DF29539421D7A77F00E1C188 /* AXWebViewControllerActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXWebViewControllerActivity.h; sourceTree = "<group>"; };
+		DF29539521D7A77F00E1C188 /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
+		DF29539621D7A77F00E1C188 /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		DF29539721D7A77F00E1C188 /* AXWebViewControllerActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXWebViewControllerActivity.m; sourceTree = "<group>"; };
+		DF29539821D7A77F00E1C188 /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
+		DF29539921D7A77F00E1C188 /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
+		DF29539A21D7A77F00E1C188 /* AXWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXWebViewController.h; sourceTree = "<group>"; };
+		DF29539B21D7A77F00E1C188 /* AXWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AXWebViewController.bundle; sourceTree = "<group>"; };
+		DF29539C21D7A77F00E1C188 /* AXWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXWebViewController.m; sourceTree = "<group>"; };
 		DF4C6FC721CC787700A54339 /* FoundationEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationEnum.swift; sourceTree = "<group>"; };
 		DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationAPI.swift; sourceTree = "<group>"; };
 		DF6B51ED21CA6F5900460949 /* WXModes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXModes.swift; sourceTree = "<group>"; };
@@ -3967,6 +3984,7 @@
 		7772A7F11D64433500444973 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				DF29538F21D7A77F00E1C188 /* AXWebViewController */,
 				DF0489E221D28B860030C30B /* ElasticTransition */,
 				BFEF19B32101E931003DCAC1 /* 混编文件 */,
 				BFEF197A2101E820003DCAC1 /* SSZipArchive */,
@@ -5291,6 +5309,40 @@
 			path = MotionAnimation;
 			sourceTree = "<group>";
 		};
+		DF29538F21D7A77F00E1C188 /* AXWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DF29539021D7A77F00E1C188 /* Security */,
+				DF29539321D7A77F00E1C188 /* Activity */,
+				DF29539A21D7A77F00E1C188 /* AXWebViewController.h */,
+				DF29539B21D7A77F00E1C188 /* AXWebViewController.bundle */,
+				DF29539C21D7A77F00E1C188 /* AXWebViewController.m */,
+			);
+			path = AXWebViewController;
+			sourceTree = "<group>";
+		};
+		DF29539021D7A77F00E1C188 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				DF29539121D7A77F00E1C188 /* AXSecurityPolicy.m */,
+				DF29539221D7A77F00E1C188 /* AXSecurityPolicy.h */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		DF29539321D7A77F00E1C188 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				DF29539421D7A77F00E1C188 /* AXWebViewControllerActivity.h */,
+				DF29539721D7A77F00E1C188 /* AXWebViewControllerActivity.m */,
+				DF29539521D7A77F00E1C188 /* NJKWebViewProgressView.h */,
+				DF29539821D7A77F00E1C188 /* NJKWebViewProgressView.m */,
+				DF29539621D7A77F00E1C188 /* Aspects.h */,
+				DF29539921D7A77F00E1C188 /* Aspects.m */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
 		DF7B3FB321ABEEC500E3D975 /* 抖音 */ = {
 			isa = PBXGroup;
 			children = (
@@ -5686,6 +5738,7 @@
 				77993A681E2F7B9D00866968 /* [菜刀]@2x.png in Resources */,
 				772E86091D76BC15004EDF50 /* ktv_listenwork_activity_icon.png in Resources */,
 				779938C81E2F7B6500866968 /* d_hehe.png in Resources */,
+				DF2953A121D7A77F00E1C188 /* AXWebViewController.bundle in Resources */,
 				779939331E2F7B6500866968 /* lxh_holdzhu.png in Resources */,
 				77645FA71D68259900ACCCAC /* Shake_Line_Up.png in Resources */,
 				7799390D1E2F7B6500866968 /* o_lvsidai.png in Resources */,
@@ -6691,6 +6744,7 @@
 				DFF4AB9921B7969A00F03C71 /* XRefreshHeader.swift in Sources */,
 				DF0489EE21D28B870030C30B /* ElasticTransition.swift in Sources */,
 				DF7B407421AC020A00E3D975 /* WebPImageView.swift in Sources */,
+				DF29539E21D7A77F00E1C188 /* AXWebViewControllerActivity.m in Sources */,
 				DF6B524821CB772B00460949 /* WXMyQRCodeViewController.swift in Sources */,
 				713EE2E420AD9C2F0085B65D /* AlipayServiceTableViewController.swift in Sources */,
 				BF58BB2720EF1945002CB4EE /* RCDContactViewController.m in Sources */,
@@ -6714,6 +6768,7 @@
 				BF58BB3820EF1945002CB4EE /* RCDNavigationViewController.m in Sources */,
 				713EE2F620AD9D300085B65D /* DetailScrollViewController.swift in Sources */,
 				7788AC641D7996E000376C95 /* E_ScrollViewController.m in Sources */,
+				DF2953A021D7A77F00E1C188 /* Aspects.m in Sources */,
 				DF6B524621CB772500460949 /* WXMineInfoViewController.swift in Sources */,
 				77BFCC001E1F413C00C95B5E /* notes.md in Sources */,
 				7115A5D020AAD398000D0B96 /* PersonalCarViewController.swift in Sources */,
@@ -6905,6 +6960,7 @@
 				DF7B408921AC020A00E3D975 /* AwemeListController.swift in Sources */,
 				BF4A80F22105CFCC00D32FB0 /* GPAPolylineEncoding.m in Sources */,
 				BF58BB6B20EF1945002CB4EE /* TFHppleElement.m in Sources */,
+				DF2953A221D7A77F00E1C188 /* AXWebViewController.m in Sources */,
 				DF6B51F221CA6F7C00460949 /* WXMessageManager.swift in Sources */,
 				7121196C20AC24DF0087E05B /* ToutiaoHomeSampleViewController.swift in Sources */,
 				7115A5D620AAD73F000D0B96 /* ResumeNavigationController.swift in Sources */,
@@ -6913,6 +6969,7 @@
 				BF58BB3320EF1945002CB4EE /* RCDEditGroupNameViewController.m in Sources */,
 				BF58BA2320EDBFBC002CB4EE /* PreViewController.swift in Sources */,
 				DF7B408721AC020A00E3D975 /* DouyinMeViews.swift in Sources */,
+				DF29539D21D7A77F00E1C188 /* AXSecurityPolicy.m in Sources */,
 				71267A522092DC7B006E1B96 /* BookFriendsMode.m in Sources */,
 				7788AC621D7996E000376C95 /* E_CommentViewController.m in Sources */,
 				BF58BB4D20EF1945002CB4EE /* RCDMessageNoDisturbSettingController.m in Sources */,
@@ -6931,6 +6988,7 @@
 				DF6B520A21CB25A100460949 /* WXUserGroupCell.swift in Sources */,
 				7788AC631D7996E000376C95 /* E_ReaderViewController.m in Sources */,
 				DFFA80C921AEC84D009B1999 /* BaseScrollView.swift in Sources */,
+				DF29539F21D7A77F00E1C188 /* NJKWebViewProgressView.m in Sources */,
 				DF6B524A21CB773100460949 /* WXMineViewController.swift in Sources */,
 				7121196820AC24A70087E05B /* ToutiaoBaseViewController.swift in Sources */,
 				DF6B521821CB25D900460949 /* WXChatViewController.swift in Sources */,
