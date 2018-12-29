@@ -1209,6 +1209,12 @@
 		DF8BBC9B21D67F0600F0D1FD /* XTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BBC9621D67F0500F0D1FD /* XTransitionAnimator.swift */; };
 		DF8BBC9C21D67F0600F0D1FD /* UIView+CircularAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BBC9721D67F0600F0D1FD /* UIView+CircularAnimation.swift */; };
 		DF8BBC9D21D67F0600F0D1FD /* AImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BBC9821D67F0600F0D1FD /* AImageView.swift */; };
+		DF95CB7321D79E370049754A /* AXSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = DF95CB6721D79E370049754A /* AXSecurityPolicy.m */; };
+		DF95CB7421D79E370049754A /* AXWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DF95CB6D21D79E370049754A /* AXWebViewControllerActivity.m */; };
+		DF95CB7521D79E370049754A /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF95CB6E21D79E370049754A /* NJKWebViewProgressView.m */; };
+		DF95CB7621D79E370049754A /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = DF95CB6F21D79E370049754A /* Aspects.m */; };
+		DF95CB7721D79E370049754A /* AXWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DF95CB7121D79E370049754A /* AXWebViewController.bundle */; };
+		DF95CB7821D79E370049754A /* AXWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF95CB7221D79E370049754A /* AXWebViewController.m */; };
 		DFA5BF3621B6A74D00CB9223 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5BF3521B6A74D00CB9223 /* User.swift */; };
 		DFA5D3AE21BA184F00339006 /* PlayLRCSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */; };
 		DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */; };
@@ -2570,6 +2576,17 @@
 		DF8BBC9621D67F0500F0D1FD /* XTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XTransitionAnimator.swift; sourceTree = "<group>"; };
 		DF8BBC9721D67F0600F0D1FD /* UIView+CircularAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+CircularAnimation.swift"; sourceTree = "<group>"; };
 		DF8BBC9821D67F0600F0D1FD /* AImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AImageView.swift; sourceTree = "<group>"; };
+		DF95CB6721D79E370049754A /* AXSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXSecurityPolicy.m; sourceTree = "<group>"; };
+		DF95CB6821D79E370049754A /* AXSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXSecurityPolicy.h; sourceTree = "<group>"; };
+		DF95CB6A21D79E370049754A /* AXWebViewControllerActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXWebViewControllerActivity.h; sourceTree = "<group>"; };
+		DF95CB6B21D79E370049754A /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
+		DF95CB6C21D79E370049754A /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		DF95CB6D21D79E370049754A /* AXWebViewControllerActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXWebViewControllerActivity.m; sourceTree = "<group>"; };
+		DF95CB6E21D79E370049754A /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
+		DF95CB6F21D79E370049754A /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
+		DF95CB7021D79E370049754A /* AXWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXWebViewController.h; sourceTree = "<group>"; };
+		DF95CB7121D79E370049754A /* AXWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AXWebViewController.bundle; sourceTree = "<group>"; };
+		DF95CB7221D79E370049754A /* AXWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXWebViewController.m; sourceTree = "<group>"; };
 		DFA5BF3521B6A74D00CB9223 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLRCSView.swift; sourceTree = "<group>"; };
 		DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBaseTableView.swift; sourceTree = "<group>"; };
@@ -3985,6 +4002,7 @@
 		7772A7F11D64433500444973 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				DF95CB6521D79E370049754A /* AXWebViewController */,
 				DF0489E221D28B860030C30B /* ElasticTransition */,
 				BFEF19B32101E931003DCAC1 /* 混编文件 */,
 				BFEF197A2101E820003DCAC1 /* SSZipArchive */,
@@ -5415,6 +5433,40 @@
 			path = "我";
 			sourceTree = "<group>";
 		};
+		DF95CB6521D79E370049754A /* AXWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DF95CB6621D79E370049754A /* Security */,
+				DF95CB6921D79E370049754A /* Activity */,
+				DF95CB7021D79E370049754A /* AXWebViewController.h */,
+				DF95CB7121D79E370049754A /* AXWebViewController.bundle */,
+				DF95CB7221D79E370049754A /* AXWebViewController.m */,
+			);
+			path = AXWebViewController;
+			sourceTree = "<group>";
+		};
+		DF95CB6621D79E370049754A /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				DF95CB6721D79E370049754A /* AXSecurityPolicy.m */,
+				DF95CB6821D79E370049754A /* AXSecurityPolicy.h */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		DF95CB6921D79E370049754A /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				DF95CB6A21D79E370049754A /* AXWebViewControllerActivity.h */,
+				DF95CB6B21D79E370049754A /* NJKWebViewProgressView.h */,
+				DF95CB6C21D79E370049754A /* Aspects.h */,
+				DF95CB6D21D79E370049754A /* AXWebViewControllerActivity.m */,
+				DF95CB6E21D79E370049754A /* NJKWebViewProgressView.m */,
+				DF95CB6F21D79E370049754A /* Aspects.m */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
 		DFF4AB9621B773D700F03C71 /* OCFile */ = {
 			isa = PBXGroup;
 			children = (
@@ -5721,6 +5773,7 @@
 				77993A681E2F7B9D00866968 /* [菜刀]@2x.png in Resources */,
 				772E86091D76BC15004EDF50 /* ktv_listenwork_activity_icon.png in Resources */,
 				779938C81E2F7B6500866968 /* d_hehe.png in Resources */,
+				DF95CB7721D79E370049754A /* AXWebViewController.bundle in Resources */,
 				779939331E2F7B6500866968 /* lxh_holdzhu.png in Resources */,
 				77645FA71D68259900ACCCAC /* Shake_Line_Up.png in Resources */,
 				7799390D1E2F7B6500866968 /* o_lvsidai.png in Resources */,
@@ -6444,17 +6497,12 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AAInfographics/AAInfographics.framework",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloudIM/AVOSCloudIM.framework",
-				"${BUILT_PRODUCTS_DIR}/AXIndicatorView/AXIndicatorView.framework",
-				"${BUILT_PRODUCTS_DIR}/AXNavigationBackItemInjection/AXNavigationBackItemInjection.framework",
-				"${BUILT_PRODUCTS_DIR}/AXPracticalHUD/AXPracticalHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/AXWebViewController/AXWebViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
 				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
@@ -6464,7 +6512,6 @@
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/MWPhotoBrowser/MWPhotoBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/MonkeyKing/MonkeyKing.framework",
-				"${BUILT_PRODUCTS_DIR}/NJKWebViewProgress/NJKWebViewProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -6491,12 +6538,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloudIM.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXIndicatorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXNavigationBackItemInjection.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXPracticalHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXWebViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
@@ -6506,7 +6548,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MWPhotoBrowser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MonkeyKing.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NJKWebViewProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
@@ -6527,7 +6568,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B60ADA2B205B0F4114E06465 /* [CP] Copy Pods Resources */ = {
@@ -6538,7 +6579,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Freedom/Pods-Freedom-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Freedom/Pods-Freedom-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RongCloud.bundle",
@@ -6571,7 +6612,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Freedom/Pods-Freedom-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Freedom/Pods-Freedom-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -6596,6 +6637,7 @@
 				DF6B522421CB262100460949 /* TLEmojiKeyboard.swift in Sources */,
 				BF58BB6320EF1945002CB4EE /* RCAnnotationView.m in Sources */,
 				DF0489E121D26D120030C30B /* XMLDictionary.m in Sources */,
+				DF95CB7421D79E370049754A /* AXWebViewControllerActivity.m in Sources */,
 				DF6B520021CA802C00460949 /* WXSearchController.swift in Sources */,
 				BF58BB5620EF1945002CB4EE /* RCDChatListViewController.m in Sources */,
 				BFEF19A62101E821003DCAC1 /* SSZipArchive.m in Sources */,
@@ -6613,6 +6655,7 @@
 				7121194020ABC5940087E05B /* EnergyContactDetailViewController.swift in Sources */,
 				BF58BB3520EF1945002CB4EE /* RCDGroupViewController.m in Sources */,
 				DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */,
+				DF95CB7321D79E370049754A /* AXSecurityPolicy.m in Sources */,
 				DF6B521421CB25CA00460949 /* WXGroupQRCodeViewController.swift in Sources */,
 				BF58BB4E20EF1945002CB4EE /* RCDMessageNotifySettingTableViewController.m in Sources */,
 				7121196E20AC24EA0087E05B /* ToutiaoHomeDetailViewController.swift in Sources */,
@@ -6829,6 +6872,7 @@
 				BF58BB4320EF1945002CB4EE /* RCDPrivateSettingViewController.m in Sources */,
 				713EE2CA20AD9B6C0085B65D /* TaobaoMiniViewController.swift in Sources */,
 				7121192A20ABC4EE0087E05B /* EnergyNewsDetailViewController.swift in Sources */,
+				DF95CB7621D79E370049754A /* Aspects.m in Sources */,
 				713EE2AE20AD8FAB0085B65D /* TaobaoNavigationViewController.swift in Sources */,
 				7115A5EE20AAFBBA000D0B96 /* MyDatabaseTabBarController.swift in Sources */,
 				DF6B523421CB76EB00460949 /* WXMineSettingViewController.swift in Sources */,
@@ -6858,6 +6902,7 @@
 				BFC6D93F20E4ABFE00F17378 /* SinaMessageViewController.swift in Sources */,
 				DFA5BF3621B6A74D00CB9223 /* User.swift in Sources */,
 				713EE2EE20AD9CD90085B65D /* KugouLocalMusicViewController.swift in Sources */,
+				DF95CB7521D79E370049754A /* NJKWebViewProgressView.m in Sources */,
 				BF58BB4F20EF1945002CB4EE /* RCDChangePasswordViewController.m in Sources */,
 				DF6B520E21CB25B100460949 /* WXChatDetailViewController.swift in Sources */,
 				BFEF19A42101E821003DCAC1 /* ioapi.c in Sources */,
@@ -6913,6 +6958,7 @@
 				BF58BB5220EF1945002CB4EE /* RCDPrivacyTableViewController.m in Sources */,
 				71267A582092E726006E1B96 /* BookReadMode.m in Sources */,
 				DF4C6FCA21CC790D00A54339 /* FoundationAPI.swift in Sources */,
+				DF95CB7821D79E370049754A /* AXWebViewController.m in Sources */,
 				DF0E968021CBACEF009682CC /* WXScannerViewController.swift in Sources */,
 				BF58BB2C20EF1945002CB4EE /* RCDPersonDetailViewController.m in Sources */,
 				7115A5BE20AAD32E000D0B96 /* PersonalEducationViewController.swift in Sources */,

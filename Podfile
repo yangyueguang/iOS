@@ -1,17 +1,11 @@
 xcodeproj ‘Freedom’
 workspace ‘Freedom’
 platform:ios, '10.0'
-inhibit_all_warnings!  # ：屏蔽所有warnings
+inhibit_all_warnings!
 #source 'https://github.com/yangyueguang/MyCocoaPods.git'
 target 'Freedom' do
     use_frameworks!
-    #即将手写替代的
-#pod 'ScottAlertController'
-#pod 'UAProgressView'
-#pod 'FLAnimatedImage'
 pod 'FMDB'
-pod 'AXWebViewController'
-
 #Objective-C.frameworks
 #pod 'HYBUnicodeReadable'
 pod 'SSKeychain'  #https://github.com/Mingriweiji-github/sskeychain-master
