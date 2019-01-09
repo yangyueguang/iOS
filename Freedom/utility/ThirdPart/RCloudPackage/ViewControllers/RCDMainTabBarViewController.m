@@ -51,7 +51,7 @@
     RCIM *rc = [RCIM sharedRCIM];
     BOOL debugMode = NO;
     UIWindow *keywindow = [UIApplication sharedApplication].delegate.window;
-    //    debugMode = YES;
+    // debugMode = YES;
     // debugMode是为了动态切换导航server地址和文件server地址，公有云用户可以忽略
     if (debugMode) {
         //初始化融云SDK
@@ -63,7 +63,6 @@
             NSString *fileUrlver = [RCDSettingUserDefaults getRCFileServer];
             //设置导航server和文件server地址
             [[RCIMClient sharedRCIMClient ]setServerInfo:navServer fileServer:fileUrlver];
-            [self gotoLogin];
         }else{
             [self gotoLogin];
         }
@@ -73,7 +72,8 @@
         [RCDSettingUserDefaults setRCAppKey:rongCloudAPPKey];
         [rc initWithAppKey:rongCloudAPPKey];
     }
-    /* RedPacket_FTR  *///需要在info.plist加上您的红包的scheme，注意一定不能与其它应用重复//设置扩展Module的Url Scheme。
+    /* RedPacket_FTR  */
+    //需要在info.plist加上您的红包的scheme，注意一定不能与其它应用重复//设置扩展Module的Url Scheme。
     [rc setScheme:@"rongCloudRedPacket" forExtensionModule:@"JrmfPacketManager"];
     // 注册自定义测试消息
     [rc registerMessageType:[RCDTestMessage class]];
@@ -291,7 +291,10 @@
 }
 ///FIXME:其他私有方法
 - (void)gotoLogin{
-[UIApplication sharedApplication].delegate.window.rootViewController = [[RCDNavigationViewController alloc] initWithRootViewController:[[FreedomLoginViewController alloc] init]];
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    FreedomLoginViewController *loginVC = [story instantiateViewControllerWithIdentifier:@"LoginVC"];
+    RCDNavigationViewController *nav = [[RCDNavigationViewController alloc] initWithRootViewController:loginVC];
+    [UIApplication sharedApplication].delegate.window.rootViewController = nav;
 }
 - (void)loginSuccess:(NSString *)userName userId:(NSString *)userId token:(NSString *)token password:(NSString *)password {
     //保存默认用户

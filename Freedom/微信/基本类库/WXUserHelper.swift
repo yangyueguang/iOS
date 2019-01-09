@@ -403,7 +403,6 @@ class WXUserHelper: NSObject {
     private lazy var systemEmojiGroups: [TLEmojiGroup] = {
         let editGroup = TLEmojiGroup()
         editGroup.type = .other
-        editGroup.groupIconPath = "emojiKB_settingBtn"
         return [editGroup]
     }()
     private var complete: (([TLEmojiGroup]) -> Void)?
@@ -442,7 +441,6 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
     lazy var defaultFaceGroup: TLEmojiGroup = {
         let defaultFaceGroup = TLEmojiGroup()
         defaultFaceGroup.type = .face
-        defaultFaceGroup.groupIconPath = "emojiKB_group_face"
         let path = Bundle.main.path(forResource: "FaceEmoji", ofType: "json")
         let data = try? NSData(contentsOfFile: path ?? "")
         //        defaultFaceGroup.data = TLEmoji.parses(data) as! [TLEmoji]
@@ -451,7 +449,6 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
     lazy var defaultSystemEmojiGroup: TLEmojiGroup = {
         let defaultSystemEmojiGroup = TLEmojiGroup()
         defaultSystemEmojiGroup.type = .emoji
-        defaultSystemEmojiGroup.groupIconPath = "emojiKB_group_face"
         let path = Bundle.main.path(forResource: "SystemEmoji", ofType: "json")
         let data = try! NSData(contentsOfFile: path ?? "")
         //        defaultSystemEmojiGroup.data = TLEmoji.mj_objectArray(withKeyValuesArray: data)

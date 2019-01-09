@@ -1,6 +1,7 @@
 //
 //  WXMessageManager.swift
 //  Freedom
+import Realm
 import Foundation
 //消息所有者类型
 enum TLPartnerType : Int {
@@ -31,7 +32,7 @@ protocol WXMessageProtocol: NSObjectProtocol {
 protocol WXMessageManagerConvVCDelegate: NSObjectProtocol {
     func updateConversationData()
 }
-class WXConversation: NSObject {
+class WXConversation: RLMObject {
     //会话类型（个人，讨论组，企业号）
     var convType = TLConversationType.personal {
         didSet {
@@ -65,11 +66,11 @@ class WXConversation: NSObject {
         avatarPath = group.groupAvatarPath
     }
 }
-class WXMessageFrame: NSObject {
+class WXMessageFrame: RLMObject {
     var height: CGFloat = 0.0
     var contentSize = CGSize.zero
 }
-class WXMessage: NSObject, WXMessageProtocol {
+class WXMessage: RLMObject, WXMessageProtocol {
     var kMessageFrame = WXMessageFrame()
     var fromUser: WXChatUserProtocol?
     var messageFrame = WXMessageFrame()
@@ -109,7 +110,7 @@ class WXMessage: NSObject, WXMessageProtocol {
 }
 class WXTextMessage: WXMessage {
     let textLabel = UILabel()
-    lazy var attrText: NSAttributedString = NSAttributedString(string: content["text"] ?? "")
+    var attrText: NSAttributedString {return NSAttributedString(string: content["text"] ?? "")}
     override init() {
         super.init()
         kMessageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
@@ -232,7 +233,7 @@ class WXExpressionMessage: WXMessage {
     }
 }
 
-class WXMessageManager: NSObject {
+class WXMessageManager: RLMObject {
     static let shared = WXMessageManager()
     var messageDelegate: Any?
     weak var conversationDelegate: WXMessageManagerConvVCDelegate?

@@ -1208,6 +1208,7 @@
 		DF7B408B21AC020A00E3D975 /* AVPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */; };
 		DF846C8D21BE55FD002D9CA2 /* NSObject+Mirror.m in Sources */ = {isa = PBXBuildFile; fileRef = DF846C8B21BE55FD002D9CA2 /* NSObject+Mirror.m */; };
 		DF8BBC9C21D67F0600F0D1FD /* UIView+CircularAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BBC9721D67F0600F0D1FD /* UIView+CircularAnimation.swift */; };
+		DF8E5F5221E60E1D00F92CA6 /* RLMRealm+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8E5F5121E60E1D00F92CA6 /* RLMRealm+extension.swift */; };
 		DFA5BF3621B6A74D00CB9223 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5BF3521B6A74D00CB9223 /* User.swift */; };
 		DFA5D3AE21BA184F00339006 /* PlayLRCSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */; };
 		DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */; };
@@ -2571,6 +2572,7 @@
 		DF846C8B21BE55FD002D9CA2 /* NSObject+Mirror.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Mirror.m"; sourceTree = "<group>"; };
 		DF846C8C21BE55FD002D9CA2 /* NSObject+Mirror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Mirror.h"; sourceTree = "<group>"; };
 		DF8BBC9721D67F0600F0D1FD /* UIView+CircularAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+CircularAnimation.swift"; sourceTree = "<group>"; };
+		DF8E5F5121E60E1D00F92CA6 /* RLMRealm+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RLMRealm+extension.swift"; sourceTree = "<group>"; };
 		DFA5BF3521B6A74D00CB9223 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLRCSView.swift; sourceTree = "<group>"; };
 		DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBaseTableView.swift; sourceTree = "<group>"; };
@@ -5476,6 +5478,7 @@
 				DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */,
 				DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */,
 				DFF4AB9C21B7B80000F03C71 /* XCardsView.swift */,
+				DF8E5F5121E60E1D00F92CA6 /* RLMRealm+extension.swift */,
 				DFF4AB9E21B7BFA400F03C71 /* XPopItemsView.swift */,
 				DFF4ABB021B80A7500F03C71 /* XPopItemsView.xib */,
 				DFF4ABA021B7BFEC00F03C71 /* XExcellView.swift */,
@@ -6662,6 +6665,7 @@
 				DF6B523E21CB770B00460949 /* WXExpressionPublicViewController.swift in Sources */,
 				BFAC49C320D36A2700E5CB8D /* LibraryCollectionViewController.swift in Sources */,
 				DF0E968421CBACFA009682CC /* WXShakeSettingViewController.swift in Sources */,
+				DF8E5F5221E60E1D00F92CA6 /* RLMRealm+extension.swift in Sources */,
 				7121195820AC0C2F0087E05B /* JuheAPIViewController.swift in Sources */,
 				BF58BB3720EF1945002CB4EE /* RCDCreateGroupViewController.m in Sources */,
 				BF5B9B731F8E676500BD885E /* CareerViewController.swift in Sources */,

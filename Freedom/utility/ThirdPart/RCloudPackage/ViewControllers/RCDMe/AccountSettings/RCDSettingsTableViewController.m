@@ -195,7 +195,8 @@
   [defaults removeObjectForKey:@"isLogin"];
   [defaults synchronize];
   [[RCDataBaseManager shareInstance] closeDBForDisconnect];
-  FreedomLoginViewController *loginVC = [[FreedomLoginViewController alloc] init];
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    FreedomLoginViewController *loginVC = [story instantiateViewControllerWithIdentifier:@"LoginVC"];
   UINavigationController *navi =
       [[UINavigationController alloc] initWithRootViewController:loginVC];
   self.view.window.rootViewController = navi;

@@ -220,19 +220,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     func firstInit(){
         firstInitLaunching()
         firstConfigRealm()
-        DispatchQueue.global().async {
-            self.firstConfigAllAPPIds()
-        }
-        
         firstInitUMeng()
-//        RCDMainTabBarViewController.shareInstance().firstInitRongCloud()
         let backButtonImage = UIImage(named: "u_cell_left")?.withRenderingMode(.alwaysTemplate)
         UINavigationBar.appearance().backIndicatorImage = backButtonImage
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButtonImage
         if Float(UIDevice.current.systemVersion) ?? 0.0 >= 8.0 {
             UINavigationBar.appearance().isTranslucent = false
         }
-//        window?.rootViewController = RCDMainTabBarViewController()
+        DispatchQueue.global().async {
+            self.firstConfigAllAPPIds()
+        }
+        RCDMainTabBarViewController.shareInstance().firstInitRongCloud()
     }
     //FIXME:应用程序启动
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -244,7 +242,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         /*** 推送处理1*/
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]){ (granted, error) in
             if granted {
-                UIApplication.shared.registerForRemoteNotifications()
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
             }
         }
         //统计推送打开率1

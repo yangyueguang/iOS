@@ -1,7 +1,7 @@
 //
 //  WXModes.swift
 //  Freedom
-
+import Realm
 import Foundation
 import XExtension
 enum TLChatUserType : Int {
@@ -42,30 +42,22 @@ protocol WXChatUserProtocol: NSObjectProtocol {
     func groupMembers() -> [WXUser]
 }
 
-class WXMomentFrame: NSObject {
+class WXMomentFrame: RLMObject {
     var height: CGFloat = 0.0
     var heightDetail: CGFloat = 0.0
     var heightExtension: CGFloat = 0.0
 }
 
-class WXMomentDetailFrame: NSObject {
+class WXMomentDetailFrame: RLMObject {
     var height: CGFloat = 0.0
     var heightText: CGFloat = 0.0
     var heightImages: CGFloat = 0.0
 }
 
-class WXMomentDetail: NSObject {
+class WXMomentDetail: RLMObject {
     var text = ""
     var images: [String] = []
-    lazy var detailFrame: WXMomentDetailFrame = {
-        let detailFrame = WXMomentDetailFrame()
-        detailFrame.height = 0.0
-        detailFrame.heightText = heightText()
-        detailFrame.height += detailFrame.heightText
-        detailFrame.heightImages = heightImages()
-        detailFrame.height += detailFrame.heightImages
-        return detailFrame
-    }()
+    var detailFrame = WXMomentDetailFrame()
     func heightText() -> CGFloat {
         if text.count > 0 {
             let textHeight: CGFloat = text.boundingRect(with: CGSize(width: APPW - 70.0, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)], context: nil).size.height
@@ -92,19 +84,31 @@ class WXMomentDetail: NSObject {
         }
         return height
     }
+    override init() {
+        super.init()
+        detailFrame.height = 0.0
+        detailFrame.heightText = heightText()
+        detailFrame.height += detailFrame.heightText
+        detailFrame.heightImages = heightImages()
+        detailFrame.height += detailFrame.heightImages
+    }
 }
 
-class WXMomentExtensionFrame: NSObject {
+class WXMomentExtensionFrame: RLMObject {
     var height: CGFloat = 0.0
     var heightLiked: CGFloat = 0.0
     var heightComments: CGFloat = 0.0
 }
 
-class WXMomentExtension: NSObject {
+class WXMomentExtension: RLMObject {
     var likedFriends: [WXUser] = []
     var comments: [WXMomentComment] = []
-    lazy var extensionFrame: WXMomentExtensionFrame = {
-        let extensionFrame = WXMomentExtensionFrame()
+    var extensionFrame = WXMomentExtensionFrame()
+    override static func ignoredProperties() -> [String] {
+        return ["extensionFrame"]
+    }
+    override init() {
+        super.init()
         extensionFrame.height = 0.0
         if likedFriends.count > 0 || comments.count > 0 {
             extensionFrame.height += 5
@@ -113,10 +117,6 @@ class WXMomentExtension: NSObject {
         extensionFrame.height += extensionFrame.heightLiked
         extensionFrame.heightComments = heightComments()
         extensionFrame.height += extensionFrame.heightComments
-        return extensionFrame
-    }()
-    override init() {
-        super.init()
     }
     func heightLiked() -> CGFloat {
         var height: CGFloat = 0.0
@@ -135,31 +135,29 @@ class WXMomentExtension: NSObject {
     }
 }
 
-class WXMoment: NSObject {
+class WXMoment: RLMObject {
     var momentID = ""
     var user: WXUser?
     var date = Date()
     var detail: WXMomentDetail?
     var `extension` = WXMomentExtension()
-    lazy var momentFrame: WXMomentFrame = {
-        let _momentFrame = WXMomentFrame()
-        _momentFrame.height = 76.0
-        _momentFrame.heightDetail = detail?.detailFrame.height ?? 0
-        _momentFrame.height += _momentFrame.heightDetail // 正文高度
-        _momentFrame.heightExtension = self.extension.extensionFrame.height
-        _momentFrame.height += _momentFrame.heightExtension // 拓展高度
-        return _momentFrame
-    }()
+    var momentFrame: WXMomentFrame = WXMomentFrame()
     override init() {
         super.init()
+        momentFrame.height = 76.0
+        momentFrame.heightDetail = detail?.detailFrame.height ?? 0
+        momentFrame.height += momentFrame.heightDetail // 正文高度
+        momentFrame.heightExtension = self.extension.extensionFrame.height
+        momentFrame.height += momentFrame.heightExtension // 拓展高度
+
     }
 }
 
-class WXMomentCommentFrame: NSObject {
+class WXMomentCommentFrame: RLMObject {
     var height: CGFloat = 0.0
 }
 
-class WXMomentComment: NSObject {
+class WXMomentComment: RLMObject {
     var user: WXUser?
     var toUser: WXUser?
     var content = ""
@@ -198,7 +196,7 @@ class WXAddMenuHelper: NSObject {
     }
 }
 
-class WXInfo: NSObject {
+class WXInfo: RLMObject {
     var type = TLInfoType.defaultType
     var title = ""
     var subTitle = ""
@@ -222,7 +220,7 @@ class WXInfo: NSObject {
         super.init()
     }
 }
-class WXMenuItem: NSObject {
+class WXMenuItem: RLMObject {
     var iconPath = ""//左侧图标路径
     var title = ""//标题
     var subTitle = ""//副标题
@@ -236,7 +234,7 @@ class WXMenuItem: NSObject {
     }
 }
 
-class WXSettingGroup: NSObject {
+class WXSettingGroup: RLMObject {
     var headerTitle = ""
     var footerTitle = ""
     var items: [WXSettingItem] = []//setcion元素
@@ -281,7 +279,7 @@ class WXSettingGroup: NSObject {
     }
 }
 
-public class WXSettingItem: NSObject {
+public class WXSettingItem: RLMObject {
     var title = ""
     var subTitle = ""
     var rightImagePath = ""
@@ -309,7 +307,7 @@ public class WXSettingItem: NSObject {
     }
 }
 
-class WXAddMenuItem: NSObject {
+class WXAddMenuItem: RLMObject {
     var type = TLAddMneuType.groupChat
     var title = ""
     var iconPath = ""
@@ -324,7 +322,7 @@ class WXAddMenuItem: NSObject {
     }
 }
 
-class WechatContact: NSObject {
+class WechatContact: RLMObject {
     var name = ""
     var avatarPath = ""
     var avatarURL = ""
@@ -332,11 +330,11 @@ class WechatContact: NSObject {
     var status = TLContactStatus.friend
     var recordID: String = ""
     var email = ""
-    lazy var pinyin = self.name.pinyin()
-    lazy var pinyinInitial = self.name.pinyin()
+    var pinyin: String { return self.name.pinyin() }
+    var pinyinInitial: String { return self.name.pinyin() }
 }
 
-class WXUserSetting: NSObject {
+class WXUserSetting: RLMObject {
     var userID = ""
     var star = false
     var dismissTimeLine = false
@@ -344,7 +342,7 @@ class WXUserSetting: NSObject {
     var blackList = false
 }
 
-class WXUserDetail: NSObject {
+class WXUserDetail: RLMObject {
     var userID = ""
     var sex = ""
     var location = ""
@@ -360,14 +358,14 @@ class WXUserDetail: NSObject {
     var tags: [String] = []
 }
 
-class WXUserChatSetting: NSObject {
+class WXUserChatSetting: RLMObject {
     var userID = ""
     var top = false
     var noDisturb = false
     var chatBGPath = ""
 }
 
-class WXUser: NSObject, WXChatUserProtocol {
+class WXUser: RLMObject, WXChatUserProtocol {
     var userID = ""
     var avatarURL = ""
     var avatarPath = ""
@@ -430,7 +428,7 @@ class WXUser: NSObject, WXChatUserProtocol {
     }
 }
 
-class WXUserGroup: NSObject {
+class WXUserGroup: RLMObject {
     var groupName = ""
     var users: [WXUser] = []
     var count: Int {
@@ -451,14 +449,16 @@ class WXUserGroup: NSObject {
         return users[index]
     }
 }
-class WXGroup: NSObject, WXChatUserProtocol {
-    lazy var groupAvatarPath = self.groupID + ".png"
+class WXGroup: RLMObject, WXChatUserProtocol {
+    var groupAvatarPath: String {
+        return self.groupID + ".png"
+    }
     var groupID = ""
     var users: [WXUser] = []
     var post = ""
     var myNikeName = ""// WXUserHelper.shared.user.showName
-    lazy var pinyin = groupName.pinyin()
-    lazy var pinyinInitial = groupName.pinyin()
+    var pinyin: String {return groupName.pinyin()}
+    var pinyinInitial: String {return groupName.pinyin()}
     var showNameInChat = false
     var count: Int {
         return users.count
@@ -533,7 +533,7 @@ protocol WXPictureCarouselProtocol: NSObjectProtocol {
     func pictureURL() -> String
 }
 
-class TLEmoji: NSObject {
+class TLEmoji: RLMObject {
     var type = TLEmojiType.emoji
     var groupID = ""
     var emojiID = ""
@@ -549,11 +549,15 @@ class TLEmoji: NSObject {
     }
 }
 
-class TLEmojiGroup: NSObject, WXPictureCarouselProtocol {
+class TLEmojiGroup: RLMObject, WXPictureCarouselProtocol {
     var groupID = ""
     var groupName = ""
-    lazy var path = FileManager.pathExpression(forGroupID: self.groupID)
-    lazy var groupIconPath = "\(path)icon_\(groupID)"
+    var path: String {
+        return FileManager.pathExpression(forGroupID: self.groupID)
+    }
+    var groupIconPath: String {
+        return "\(path)icon_\(groupID)"
+    }
     var groupIconURL = ""
     var bannerID = ""
     var bannerURL = ""/// 总数
@@ -591,11 +595,13 @@ class TLEmojiGroup: NSObject, WXPictureCarouselProtocol {
             pageNumber = count / pageItemCount + (count % pageItemCount == 0 ? 0 : 1)
         }
     }
+
     class func replacedKeyFromPropertyName() -> [AnyHashable : Any] {
         return ["groupID": "eId", "groupIconURL": "coverUrl", "groupName": "eName", "groupInfo": "memo", "groupDetailInfo": "memo1", "count": "picCount", "bannerID": "aId", "bannerURL": "URL"]
     }
     override init() {
         super.init()
+
     }
     func pictureURL() -> String {
         return bannerURL
