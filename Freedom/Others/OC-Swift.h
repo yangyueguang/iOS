@@ -16,7 +16,6 @@
 #import "BookFriendsViewController.h"
 #import "PlayAudioViewController.h"
 #import "AppManager.h"
-//#import "FreedomTools.h"
 #import <UMMobClick/MobClick.h>
 #import <CommonCrypto/CommonDigest.h>
 #import "RESideMenu.h"

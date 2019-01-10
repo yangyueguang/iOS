@@ -4,28 +4,29 @@
 import Realm
 import XExtension
 import Foundation
-var realmWX: RLMRealm {
-    let path = "\(FileManager.documentsPath())/User/2829969299/Setting/DB/WX.realm"
-    if !FileManager.default.fileExists(atPath: path) {
-        try? FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
-    }
-    return RLMRealm(url: URL(fileURLWithPath: path))
-}
-
-class WXDBMessageStore: NSObject {
+class WXDBStore: NSObject {
+    static let shared = WXDBStore()
     override init() {
         super.init()
         try! realmWX.transaction {
             WXMessage.createOrUpdate(in: realmWX, withValue: WXMessage())
+            WXConversation.createOrUpdate(in: realmWX, withValue: WXConversation())
+            TLEmojiGroup.createOrUpdate(in: realmWX, withValue: TLEmojiGroup())
+            TLEmoji.createOrUpdate(in: realmWX, withValue: TLEmoji())
+            WXUser.createOrUpdate(in: realmWX, withValue: WXUser())
+            WXGroup.createOrUpdate(in: realmWX, withValue: WXGroup())
+            WXUserGroup.createOrUpdate(in: realmWX, withValue: WXUserGroup())
         }
     }
+}
+//WXDBMessageStore
+extension WXDBStore {
     func add(_ message: WXMessage?) {
         guard let message = message else { return }
         try! realmWX.transaction {
             realmWX.addOrUpdate(message)
         }
     }
-
     func messages(byUserID userID: String, partnerID: String, from date: Date, count: Int, complete: @escaping ([WXMessage], Bool) -> Void) {
         var data: [WXMessage] = []
         let pre = NSPredicate(format: "userID = %@ and friendID = %@ and date < %@ order by date desc LIMIT %ld", userID, partnerID, String(format: "%lf", date.timeIntervalSince1970), count + 1)
@@ -106,15 +107,8 @@ class WXDBMessageStore: NSObject {
         }
     }
 }
-
-class WXDBConversationStore: NSObject {
-    private var messageStore = WXDBMessageStore()
-    override init() {
-        super.init()
-        try! realmWX.transaction {
-            WXConversation.createOrUpdate(in: realmWX, withValue: WXConversation())
-        }
-    }
+//WXDBConversationStore
+extension WXDBStore {
     func addConversation(byUid uid: String, fid: String, type: Int, date: Date) {
         try! realmWX.transaction {
             let conversation = WXConversation()
@@ -132,7 +126,7 @@ class WXDBConversationStore: NSObject {
             let results = WXConversation.objects(in: realmWX, with: pre)
             for index in 0..<results.count {
                 let conversation = results.object(at: index) as! WXConversation
-                let message = messageStore.lastMessage(byUserID: uid, partnerID: conversation.partnerID)
+                let message = self.lastMessage(byUserID: uid, partnerID: conversation.partnerID)
                 if message != nil {
                     conversation.content = message?.conversationContent() ?? ""
                     conversation.date = message?.date ?? Date()
@@ -169,22 +163,15 @@ class WXDBConversationStore: NSObject {
         }
     }
 }
-
-class WXDBExpressionStore: NSObject {
-    override init() {
-        super.init()
-        try! realmWX.transaction {
-            TLEmojiGroup.createOrUpdate(in: realmWX, withValue: TLEmojiGroup())
-            TLEmoji.createOrUpdate(in: realmWX, withValue: TLEmoji())
-        }
-    }
+//WXDBExpressionStore
+extension WXDBStore {
     func addExpressionGroup(_ group: TLEmojiGroup, forUid uid: String) {
         // 添加表情包
         try! realmWX.transaction {
             realmWX.addOrUpdate(group)
         }
         // 添加表情包里的所有表情
-        addExpressions(group.data, toGroupID: group.groupID)
+        addExpressions(group.data.array(), toGroupID: group.groupID)
     }
     func expressionGroups(byUid uid: String) -> [TLEmojiGroup] {
         var data: [TLEmojiGroup] = []
@@ -194,7 +181,8 @@ class WXDBExpressionStore: NSObject {
             let results = TLEmojiGroup.objects(in: realmWX, with: pre)
             for index in 0..<results.count {
                 let group = results.object(at: index) as! TLEmojiGroup
-                group.data = expressions(forGroupID: group.groupID)
+                group.data.removeAll()
+                group.data.append(objectsIn: expressions(forGroupID: group.groupID))
                 data.append(group)
             }
         }
@@ -231,14 +219,8 @@ class WXDBExpressionStore: NSObject {
         return data
     }
 }
-
-class WXDBFriendStore: NSObject {
-    override init() {
-        super.init()
-        try! realmWX.transaction {
-            WXUser.createOrUpdate(in: realmWX, withValue: WXUser())
-        }
-    }
+//WXDBFriendStore
+extension WXDBStore {
     func addFriend(_ user: WXUser, forUid uid: String) {
         try! realmWX.transaction {
             realmWX.addOrUpdate(user)
@@ -282,15 +264,8 @@ class WXDBFriendStore: NSObject {
         }
     }
 }
-
-class WXDBGroupStore: NSObject {
-    override init() {
-        super.init()
-        try! realmWX.transaction {
-            WXGroup.createOrUpdate(in: realmWX, withValue: WXGroup())
-            WXUserGroup.createOrUpdate(in: realmWX, withValue: WXUserGroup())
-        }
-    }
+// WXDBGroupStore
+extension WXDBStore {
     func add(_ group: WXGroup, forUid uid: String) {
         try! realmWX.transaction {
             realmWX.addOrUpdate(group)
@@ -328,7 +303,8 @@ class WXDBGroupStore: NSObject {
         }
         // 获取讨论组成员
         for group: WXGroup in data {
-            group.users = groupMembers(forUid: uid, andGid: group.groupID)
+            group.users.removeAll()
+            group.users.append(objectsIn: groupMembers(forUid: uid, andGid: group.groupID))
         }
         return data
     }

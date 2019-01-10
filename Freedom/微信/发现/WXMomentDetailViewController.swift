@@ -82,7 +82,7 @@ class WXMomentExtensionView: UIView, UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && self.extension.likedFriends.count > 0 {// 点赞
             let cell = tableView.dequeueReusableCell(withIdentifier: "TLMomentExtensionLikedCell") as! WXMomentExtensionLikedCell
-            cell.likedFriends = self.extension.likedFriends
+            cell.likedFriends = self.extension.likedFriends.array()
             return cell
         } else { // 评论
             let comment = self.extension.comments[indexPath.row] as WXMomentComment
@@ -334,7 +334,7 @@ class WXMomentDetailImagesView: WXMomentDetailTextView {
     }
     override var detail: WXMomentDetail? {
         didSet {
-            multiImageView.images = detail?.images ?? []
+            multiImageView.images = detail?.images.array() ?? []
             let offset: CGFloat = detail?.images.count ?? 0 > 0 ? (detail?.text.count ?? 0 > 0 ? 7.0 : 3.0) : 0.0
             multiImageView.snp.updateConstraints { (make) in
                 make.top.equalTo(self.titleLabel.snp.bottom).offset(offset)

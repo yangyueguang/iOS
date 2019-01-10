@@ -2,6 +2,7 @@
 //  WXMessageManager.swift
 //  Freedom
 import Realm
+import RealmSwift
 import Foundation
 //消息所有者类型
 enum TLPartnerType : Int {
@@ -32,7 +33,20 @@ protocol WXMessageProtocol: NSObjectProtocol {
 protocol WXMessageManagerConvVCDelegate: NSObjectProtocol {
     func updateConversationData()
 }
+@objcMembers
 class WXConversation: RLMObject {
+    var remindType = TLMessageRemindType.normal//消息提醒类型
+    var partnerID = ""//用户ID
+    var partnerName = ""//用户名
+    var avatarURL = ""//头像地址（网络）
+    var avatarPath = ""//头像地址（本地）
+    var date: Date = Date()//时间
+    var content = ""//消息展示内容
+    var clueType = TLClueType.none//提示红点类型
+    var unreadCount: Int = 0//未读数
+    var isRead: Bool {
+        return unreadCount == 0
+    }
     //会话类型（个人，讨论组，企业号）
     var convType = TLConversationType.personal {
         didSet {
@@ -44,18 +58,9 @@ class WXConversation: RLMObject {
             }
         }
     }
-    var remindType = TLMessageRemindType.normal//消息提醒类型
-    var partnerID = ""//用户ID
-    var partnerName = ""//用户名
-    var avatarURL = ""//头像地址（网络）
-    var avatarPath = ""//头像地址（本地）
-    var date: Date = Date()//时间
-    var content = ""//消息展示内容
-    var clueType = TLClueType.none//提示红点类型
-    var isRead: Bool {
-        return unreadCount == 0
+    override static func primaryKey() -> String {
+        return "partnerID"
     }
-    var unreadCount: Int = 0//未读数
     func updateUserInfo(_ user: WXUser) {
         partnerName = user.showName
         avatarPath = user.avatarPath
@@ -66,14 +71,42 @@ class WXConversation: RLMObject {
         avatarPath = group.groupAvatarPath
     }
 }
+@objcMembers
 class WXMessageFrame: RLMObject {
-    var height: CGFloat = 0.0
-    var contentSize = CGSize.zero
+    var height: CGFloat = 0
+    var width: CGFloat = 0
+    var contentSize: CGSize {
+        set{
+            height = contentSize.height
+            width = contentSize.width
+        }
+        get{
+            return CGSize(width: width, height: height)
+        }
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return ["contentSize"]
+    }
 }
+@objcMembers
+class WXMessageContent: RLMObject {
+    var w: CGFloat = 0
+    var h: CGFloat = 0
+    var text = ""
+    var url = ""
+    var path = ""
+    var groupID = ""
+    var emojiID = ""
+    override static func ignoredProperties() -> [String] {
+        return ["w","h","text","url","path","groupID","emojiID"]
+    }
+}
+@objcMembers
 class WXMessage: RLMObject, WXMessageProtocol {
-    var kMessageFrame = WXMessageFrame()
+    var kMessageFrame: WXMessageFrame!
     var fromUser: WXChatUserProtocol?
-    var messageFrame = WXMessageFrame()
+    var messageFrame: WXMessageFrame!
     var messageID = ""
     var userID = ""
     var friendID = ""
@@ -86,7 +119,13 @@ class WXMessage: RLMObject, WXMessageProtocol {
     var ownerTyper = TLMessageOwnerType.own
     var readState = TLMessageReadState.unRead
     var sendState = TLMessageSendState.success
-    var content: [String : String] = [:]
+    var content: WXMessageContent!
+    override static func primaryKey() -> String {
+        return "messageID"
+    }
+    override static func ignoredProperties() -> [String] {
+        return ["content"]
+    }
     class func createMessage(by type: TLMessageType) -> WXMessage {
         if type == .text {
             return WXTextMessage()
@@ -99,6 +138,9 @@ class WXMessage: RLMObject, WXMessageProtocol {
     }
     override init() {
         super.init()
+        kMessageFrame = WXMessageFrame()
+        messageFrame = WXMessageFrame()
+        content = WXMessageContent()
         messageID = String(format: "%lld", Int64(Date().timeIntervalSince1970 * 10000))
     }
     func conversationContent() -> String {
@@ -110,7 +152,7 @@ class WXMessage: RLMObject, WXMessageProtocol {
 }
 class WXTextMessage: WXMessage {
     let textLabel = UILabel()
-    var attrText: NSAttributedString {return NSAttributedString(string: content["text"] ?? "")}
+    var attrText: NSAttributedString {return NSAttributedString(string: content.text)}
     override init() {
         super.init()
         kMessageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
@@ -129,22 +171,22 @@ class WXTextMessage: WXMessage {
         textLabel.numberOfLines = 0
     }
     override func conversationContent() -> String {
-        return content["text"] ?? ""
+        return content.text
     }
     override func messageCopy() -> String {
-        return content["text"] ?? ""
+        return content.text
     }
 }
 
 class WXImageMessage: WXMessage {
     var imageSize: CGSize {
         set (newValue){
-            content["w"] = "\(imageSize.width)"
-            content["h"] = "\(imageSize.height)"
+            content.w = imageSize.width
+            content.h = imageSize.height
         }
         get {
-            let width = CGFloat(Double(content["w"] ?? "") ?? 0)
-            let height = CGFloat(Double(content["h"] ?? "") ?? 0)
+            let width = content.w
+            let height = content.h
             return CGSize(width: width, height: height)
         }
     }
@@ -170,12 +212,12 @@ class WXImageMessage: WXMessage {
         return "[图片]"
     }
     override func messageCopy() -> String {
-        return content.jsonString()
+        return content.text
     }
 }
 
 class WXExpressionMessage: WXMessage {
-    var emoji: TLEmoji = TLEmoji() {
+    var emoji: TLEmoji! {
         didSet {
             content["groupID"] = emoji.groupID
             content["emojiID"] = emoji.emojiID
@@ -198,17 +240,18 @@ class WXExpressionMessage: WXMessage {
     }
     var emojiSize: CGSize {
         set {
-            content["w"] = "\(newValue.width)"
-            content["h"] = "\(newValue.height)"
+            content.w = newValue.width
+            content.h = newValue.height
         }
         get {
-            return CGSize(width: CGFloat(Double(content["w"] ?? "") ?? 0), height: CGFloat(Double(content["h"] ?? "") ?? 0))
+            return CGSize(width: content.w, height: content.h)
         }
     }
     override init() {
         super.init()
-        emoji.groupID = content["groupID"] ?? ""
-        emoji.emojiID = content["emojiID"] ?? ""
+        emoji = TLEmoji()
+        emoji.groupID = content.groupID
+        emoji.emojiID = content.emojiID
         kMessageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
         kMessageFrame.height += 5
         let emojiSize: CGSize = CGSize.zero
@@ -229,21 +272,19 @@ class WXExpressionMessage: WXMessage {
         return "[表情]"
     }
     override func messageCopy() -> String {
-        return content.jsonString()
+        return content.text
     }
 }
 
-class WXMessageManager: RLMObject {
+class WXMessageManager: NSObject {
     static let shared = WXMessageManager()
     var messageDelegate: Any?
     weak var conversationDelegate: WXMessageManagerConvVCDelegate?
     private var userID: String {
         return WXUserHelper.shared.user.userID
     }
-    var messageStore = WXDBMessageStore()
-    var conversationStore = WXDBConversationStore()
     func send(_ message: WXMessage, progress: @escaping (WXMessage, CGFloat) -> Void, success: @escaping (WXMessage) -> Void, failure: @escaping (WXMessage) -> Void) {
-        messageStore.add(message)
+        WXDBStore.shared.add(message)
         addConversation(by: message)
     }
     func addConversation(by message: WXMessage) {
@@ -253,45 +294,45 @@ class WXMessageManager: RLMObject {
             partnerID = message.groupID
             type = 1
         }
-        conversationStore.addConversation(byUid: message.userID, fid: partnerID, type: type, date: message.date)
+        WXDBStore.shared.addConversation(byUid: message.userID, fid: partnerID, type: type, date: message.date)
     }
     func conversationRecord(_ complete: @escaping ([WXConversation]) -> Void) {
-        let data = conversationStore.conversations(byUid: userID)
+        let data = WXDBStore.shared.conversations(byUid: userID)
         complete(data)
     }
 
     func deleteConversation(byPartnerID partnerID: String) {
         deleteMessages(byPartnerID: partnerID)
-        conversationStore.deleteConversation(byUid: userID, fid: partnerID)
+        WXDBStore.shared.deleteConversation(byUid: userID, fid: partnerID)
     }
 
     func messageRecord(forPartner partnerID: String, from date: Date, count: Int, complete: @escaping ([WXMessage], Bool) -> Void) {
-        messageStore.messages(byUserID: userID, partnerID: partnerID, from: date, count: count, complete: { data, hasMore in
+        WXDBStore.shared.messages(byUserID: userID, partnerID: partnerID, from: date, count: count, complete: { data, hasMore in
             complete(data, hasMore)
         })
     }
     func chatFiles(forPartnerID partnerID: String, completed: @escaping ([[WXMessage]]) -> Void) {
-        let data = messageStore.chatFiles(byUserID: userID, partnerID: partnerID)
+        let data = WXDBStore.shared.chatFiles(byUserID: userID, partnerID: partnerID)
         completed(data)
     }
 
     func chatImagesAndVideos(forPartnerID partnerID: String, completed: @escaping ([WXImageMessage]) -> Void) {
-        let data = messageStore.chatImagesAndVideos(byUserID: userID, partnerID: partnerID)
+        let data = WXDBStore.shared.chatImagesAndVideos(byUserID: userID, partnerID: partnerID)
         completed(data)
     }
 
     func deleteMessage(byMsgID msgID: String) {
-        messageStore.deleteMessage(byMessageID: msgID)
+        WXDBStore.shared.deleteMessage(byMessageID: msgID)
     }
 
     func deleteMessages(byPartnerID partnerID: String) {
-        messageStore.deleteMessages(byUserID: userID, partnerID: partnerID)
+        WXDBStore.shared.deleteMessages(byUserID: userID, partnerID: partnerID)
         WXChatViewController.shared.resetChatVC()
     }
     func deleteAllMessages() {
-        messageStore.deleteMessages(byUserID: userID)
+        WXDBStore.shared.deleteMessages(byUserID: userID)
         WXChatViewController.shared.resetChatVC()
-        conversationStore.deleteConversations(byUid: userID)
+        WXDBStore.shared.deleteConversations(byUid: userID)
     }
 
     func requestClientInitInfoSuccess(_ clientInitInfo: @escaping (Any) -> Void, failure error: @escaping (String) -> Void) {

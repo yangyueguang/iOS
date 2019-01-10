@@ -2,6 +2,7 @@
 //  WXModes.swift
 //  Freedom
 import Realm
+import RealmSwift
 import Foundation
 import XExtension
 enum TLChatUserType : Int {
@@ -41,23 +42,23 @@ protocol WXChatUserProtocol: NSObjectProtocol {
     func groupMember(byID userID: String) -> WXUser?
     func groupMembers() -> [WXUser]
 }
-
+@objcMembers
 class WXMomentFrame: RLMObject {
     var height: CGFloat = 0.0
     var heightDetail: CGFloat = 0.0
     var heightExtension: CGFloat = 0.0
 }
-
+@objcMembers
 class WXMomentDetailFrame: RLMObject {
     var height: CGFloat = 0.0
     var heightText: CGFloat = 0.0
     var heightImages: CGFloat = 0.0
 }
-
+@objcMembers
 class WXMomentDetail: RLMObject {
     var text = ""
-    var images: [String] = []
-    var detailFrame = WXMomentDetailFrame()
+    var images = List<String>()
+    var detailFrame: WXMomentDetailFrame!
     func heightText() -> CGFloat {
         if text.count > 0 {
             let textHeight: CGFloat = text.boundingRect(with: CGSize(width: APPW - 70.0, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)], context: nil).size.height
@@ -86,6 +87,7 @@ class WXMomentDetail: RLMObject {
     }
     override init() {
         super.init()
+        detailFrame = WXMomentDetailFrame()
         detailFrame.height = 0.0
         detailFrame.heightText = heightText()
         detailFrame.height += detailFrame.heightText
@@ -93,22 +95,23 @@ class WXMomentDetail: RLMObject {
         detailFrame.height += detailFrame.heightImages
     }
 }
-
+@objcMembers
 class WXMomentExtensionFrame: RLMObject {
     var height: CGFloat = 0.0
     var heightLiked: CGFloat = 0.0
     var heightComments: CGFloat = 0.0
 }
-
+@objcMembers
 class WXMomentExtension: RLMObject {
-    var likedFriends: [WXUser] = []
-    var comments: [WXMomentComment] = []
-    var extensionFrame = WXMomentExtensionFrame()
+    var likedFriends = List<WXUser>()
+    var comments = List<WXMomentComment>()
+    var extensionFrame: WXMomentExtensionFrame!
     override static func ignoredProperties() -> [String] {
         return ["extensionFrame"]
     }
     override init() {
         super.init()
+        extensionFrame = WXMomentExtensionFrame()
         extensionFrame.height = 0.0
         if likedFriends.count > 0 || comments.count > 0 {
             extensionFrame.height += 5
@@ -134,16 +137,18 @@ class WXMomentExtension: RLMObject {
         return height
     }
 }
-
+@objcMembers
 class WXMoment: RLMObject {
     var momentID = ""
     var user: WXUser?
     var date = Date()
     var detail: WXMomentDetail?
-    var `extension` = WXMomentExtension()
-    var momentFrame: WXMomentFrame = WXMomentFrame()
+    var `extension`: WXMomentExtension!
+    var momentFrame: WXMomentFrame!
     override init() {
         super.init()
+        self.extension = WXMomentExtension()
+        momentFrame = WXMomentFrame()
         momentFrame.height = 76.0
         momentFrame.heightDetail = detail?.detailFrame.height ?? 0
         momentFrame.height += momentFrame.heightDetail // 正文高度
@@ -152,18 +157,19 @@ class WXMoment: RLMObject {
 
     }
 }
-
+@objcMembers
 class WXMomentCommentFrame: RLMObject {
     var height: CGFloat = 0.0
 }
-
-class WXMomentComment: RLMObject {
+@objcMembers
+class WXMomentComment: RLMObject,RealmCollectionValue {
     var user: WXUser?
     var toUser: WXUser?
     var content = ""
-    var commentFrame = WXMomentCommentFrame()
+    var commentFrame: WXMomentCommentFrame!
     override init() {
         super.init()
+        commentFrame = WXMomentCommentFrame()
         commentFrame.height = 35.0
     }
 }
@@ -193,17 +199,17 @@ class WXAddMenuHelper: NSObject {
         }
     }
 }
-
+@objcMembers
 class WXInfo: RLMObject {
     var type = TLInfoType.defaultType
     var title = ""
     var subTitle = ""
-    var subImageArray: [AnyHashable] = []
-    var userInfo: Any?
-    var titleColor = UIColor.black
-    var buttonColor = UIColor.green
-    var buttonHLColor = UIColor.green
-    var buttonBorderColor = UIColor.gray
+    var subImageArray = List<String>()
+    var userInfo = List<String>()
+    var titleColor: UIColor { return UIColor.black}
+    var buttonColor: UIColor { return UIColor.green}
+    var buttonHLColor: UIColor { return UIColor.green}
+    var buttonBorderColor: UIColor { return UIColor.gray}
     //是否显示箭头（默认YES）
     var showDisclosureIndicator = true
     //停用高亮（默认NO）
@@ -217,7 +223,11 @@ class WXInfo: RLMObject {
     override init() {
         super.init()
     }
+    override static func ignoredProperties() -> [String] {
+        return ["userInfo"]
+    }
 }
+@objcMembers
 class WXMenuItem: RLMObject {
     var iconPath = ""//左侧图标路径
     var title = ""//标题
@@ -235,7 +245,7 @@ class WXMenuItem: RLMObject {
 class WXSettingGroup: RLMObject {
     var headerTitle = ""
     var footerTitle = ""
-    var items: [WXSettingItem] = []//setcion元素
+    var items = List<WXSettingItem>()//setcion元素
     private(set) var headerHeight: CGFloat = 0.0
     private(set) var footerHeight: CGFloat = 0.0
     private var count: Int {
@@ -245,7 +255,7 @@ class WXSettingGroup: RLMObject {
         let group = WXSettingGroup()
         group.headerTitle = headerTitle
         group.footerTitle = footerTitle
-        group.items = items
+        group.items.append(objectsIn: items)
         return group
     }
     func object(at index: Int) -> WXSettingItem {
@@ -257,7 +267,10 @@ class WXSettingGroup: RLMObject {
     }
 
     func remove(_ obj: WXSettingItem) {
-        items.removeAll(where: { element in element == obj })
+        var array = items.array()
+        items.removeAll()
+        array.removeAll(where: { element in element == obj })
+        items.append(objectsIn: array)
     }
     func setHeaderTitle(_ headerTitle: String) {
         self.headerTitle = headerTitle
@@ -276,8 +289,8 @@ class WXSettingGroup: RLMObject {
         return hLabel.sizeThatFits(CGSize(width: width, height: CGFloat(MAXFLOAT))).height
     }
 }
-
-public class WXSettingItem: RLMObject {
+@objcMembers
+public class WXSettingItem: RLMObject,RealmCollectionValue {
     var title = ""
     var subTitle = ""
     var rightImagePath = ""
@@ -304,8 +317,7 @@ public class WXSettingItem: RLMObject {
         return ""
     }
 }
-
-class WXAddMenuItem: RLMObject {
+class WXAddMenuItem: NSObject {
     var type = TLAddMneuType.groupChat
     var title = ""
     var iconPath = ""
@@ -319,7 +331,7 @@ class WXAddMenuItem: RLMObject {
         return item
     }
 }
-
+@objcMembers
 class WechatContact: RLMObject {
     var name = ""
     var avatarPath = ""
@@ -331,7 +343,7 @@ class WechatContact: RLMObject {
     var pinyin: String { return self.name.pinyin() }
     var pinyinInitial: String { return self.name.pinyin() }
 }
-
+@objcMembers
 class WXUserSetting: RLMObject {
     var userID = ""
     var star = false
@@ -339,7 +351,7 @@ class WXUserSetting: RLMObject {
     var prohibitTimeLine = false
     var blackList = false
 }
-
+@objcMembers
 class WXUserDetail: RLMObject {
     var userID = ""
     var sex = ""
@@ -347,32 +359,32 @@ class WXUserDetail: RLMObject {
     var phoneNumber = ""
     var qqNumber = ""
     var email = ""
-    var albumArray: [Any] = []
+    var albumArray = List<String>()
     var motto = ""
     var momentsWallURL = ""/// 备注信息
     var remarkInfo = ""/// 备注图片（本地地址）
     var remarkImagePath = ""/// 备注图片 (URL)
     var remarkImageURL = ""/// 标签
-    var tags: [String] = []
+    var tags = List<String>()
 }
-
+@objcMembers
 class WXUserChatSetting: RLMObject {
     var userID = ""
     var top = false
     var noDisturb = false
     var chatBGPath = ""
 }
-
-class WXUser: RLMObject, WXChatUserProtocol {
-    var userID = ""
-    var avatarURL = ""
-    var avatarPath = ""
-    var pinyin = ""
-    var pinyinInitial = ""
-    var detailInfo = WXUserDetail()
-    var userSetting = WXUserSetting()
-    var chatSetting = WXUserChatSetting()
-    var username = "" {
+@objcMembers
+class WXUser: RLMObject, WXChatUserProtocol, RealmCollectionValue {
+    var userID: String = ""
+    var avatarURL: String = ""
+    var avatarPath: String = ""
+    var pinyin: String = ""
+    var pinyinInitial: String = ""
+    var detailInfo: WXUserDetail!
+    var userSetting: WXUserSetting!
+    var chatSetting: WXUserChatSetting!
+    var username: String = "" {
         didSet {
             if remarkName.count == 0 && nikeName.count == 0 && self.username.count > 0 {
                 pinyin = username.pinyin()
@@ -380,7 +392,7 @@ class WXUser: RLMObject, WXChatUserProtocol {
             }
         }
     }
-    var nikeName = "" {
+    var nikeName: String = "" {
         didSet {
             if remarkName.count == 0 && self.nikeName.count > 0 {
                 pinyin = nikeName.pinyin()
@@ -388,7 +400,7 @@ class WXUser: RLMObject, WXChatUserProtocol {
             }
         }
     }
-    var remarkName = "" {
+    var remarkName: String = "" {
         didSet {
             if self.remarkName.count > 0 {
                 pinyin = remarkName.pinyin()
@@ -401,7 +413,20 @@ class WXUser: RLMObject, WXChatUserProtocol {
     }
     override init() {
         super.init()
+        detailInfo = WXUserDetail()
+        userSetting = WXUserSetting()
+        chatSetting = WXUserChatSetting()
     }
+    override static func primaryKey() -> String {
+        return "userID"
+    }
+    static func _rlmArray() -> RLMArray<AnyObject> {
+        return RLMArray(objectClassName: "WXUser")
+//        return RLMArray(objectType: RLMPropertyType.any, optional: false)
+    }
+//    static func _nilValue() -> Self {
+//        fatalError("unexpected NSNull for non-Optional type")
+//    }
     //FIXME: delegate
     var chat_userID: String {
         return userID
@@ -425,10 +450,10 @@ class WXUser: RLMObject, WXChatUserProtocol {
         return []
     }
 }
-
+@objcMembers
 class WXUserGroup: RLMObject {
     var groupName = ""
-    var users: [WXUser] = []
+    var users = List<WXUser>()
     var count: Int {
         return users.count
     }
@@ -438,7 +463,7 @@ class WXUserGroup: RLMObject {
     convenience init(groupName: String, users: [WXUser]) {
         self.init()
         self.groupName = groupName
-        self.users = users
+        self.users.append(objectsIn: users)
     }
     func add(_ anObject: WXUser) {
         users.append(anObject)
@@ -446,13 +471,17 @@ class WXUserGroup: RLMObject {
     func object(at index: Int) -> WXUser {
         return users[index]
     }
+    override static func primaryKey() -> String {
+        return "groupName"
+    }
 }
+@objcMembers
 class WXGroup: RLMObject, WXChatUserProtocol {
     var groupAvatarPath: String {
         return self.groupID + ".png"
     }
     var groupID = ""
-    var users: [WXUser] = []
+    var users = List<WXUser>()
     var post = ""
     var myNikeName = ""// WXUserHelper.shared.user.showName
     var pinyin: String {return groupName.pinyin()}
@@ -511,7 +540,11 @@ class WXGroup: RLMObject, WXChatUserProtocol {
         return member(byUserID: userID)
     }
     func groupMembers() -> [WXUser] {
-        return users
+        return users.array()
+    }
+
+    override static func primaryKey() -> String {
+        return "groupID"
     }
 }
 
@@ -530,8 +563,8 @@ enum TLEmojiGroupStatus : Int {
 protocol WXPictureCarouselProtocol: NSObjectProtocol {
     func pictureURL() -> String
 }
-
-class TLEmoji: RLMObject {
+@objcMembers
+class TLEmoji: RLMObject, RealmCollectionValue {
     var type = TLEmojiType.emoji
     var groupID = ""
     var emojiID = ""
@@ -545,8 +578,12 @@ class TLEmoji: RLMObject {
         let groupPath = FileManager.pathExpression(forGroupID: groupID)
         return "\(groupPath)\(emojiID)"
     }
-}
 
+    override static func primaryKey() -> String {
+        return "groupID"
+    }
+}
+@objcMembers
 class TLEmojiGroup: RLMObject, WXPictureCarouselProtocol {
     var groupID = ""
     var groupName = ""
@@ -570,7 +607,7 @@ class TLEmojiGroup: RLMObject, WXPictureCarouselProtocol {
     var pageNumber: Int = 0/// 行数
     var rowNumber: Int = 0/// 列数
     var colNumber: Int = 0
-    var data: [TLEmoji] = [] {
+    var data = List<TLEmoji>() {
         didSet {
             count = data.count
             pageItemCount = rowNumber * colNumber
@@ -593,7 +630,9 @@ class TLEmojiGroup: RLMObject, WXPictureCarouselProtocol {
             pageNumber = count / pageItemCount + (count % pageItemCount == 0 ? 0 : 1)
         }
     }
-
+    override static func primaryKey() -> String {
+        return "groupID"
+    }
     class func replacedKeyFromPropertyName() -> [AnyHashable : Any] {
         return ["groupID": "eId", "groupIconURL": "coverUrl", "groupName": "eName", "groupInfo": "memo", "groupDetailInfo": "memo1", "count": "picCount", "bannerID": "aId", "bannerURL": "URL"]
     }

@@ -44,7 +44,7 @@ class IqiyiRecommentModel: NSObject {
     var state = ""
     var cats = ""
     var username = ""
-    var tags = [AnyHashable]()
+    var tags = [String]()
     var img_hd = ""
     var itemCode = ""
     var total_down = ""

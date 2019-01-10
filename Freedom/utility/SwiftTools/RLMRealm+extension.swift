@@ -7,6 +7,54 @@
 //
 import Realm
 import Foundation
+import RealmSwift
+extension RLMArray {
+   @objc func array() -> [AnyObject] {
+        var items: [AnyObject] = []
+        for index in 0..<count {
+            items.append(object(at: index))
+        }
+        return items
+    }
+}
+extension RLMResults {
+    @objc func array() -> [AnyObject] {
+        var items: [AnyObject] = []
+        for index in 0..<count {
+            items.append(object(at: index))
+        }
+        return items
+    }
+}
+extension RealmCollection {
+    func array() -> [Self.Element] {
+        var items: [Self.Element] = []
+        for item in self {
+            items.append(item)
+        }
+        return items
+    }
+}
+extension List {
+//    func reset(_ array: [AnyObject]) {
+//        self.removeAll()
+//        self.append(objectsIn: array)
+//    }
+//    convenience init(normalArray: [RealmCollectionValue]) {
+//        self.init()
+//        for ele in normalArray {
+//            self.append(ele)
+//        }
+//    }
+}
+extension ListBase {
+//    func remove(_ obj: AnyObject) {
+//        let index = self.index(ofAccessibilityElement: obj)
+//    }
+//    convenience public init(normalArray: [AnyObject]) {
+//        self.init()
+//    }
+}
 extension RLMObject {
     func tes() {
         let re = CRResource()

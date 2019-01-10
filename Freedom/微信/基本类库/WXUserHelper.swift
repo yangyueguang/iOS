@@ -1,6 +1,7 @@
 //
 //  WXUserHelper.swift
 //  Freedom
+import RealmSwift
 import Foundation
 import Contacts
 import XExtension
@@ -35,14 +36,12 @@ class WXFriendHelper: NSObject {
     var dataChangedBlock: ((_ friends: [WXUserGroup], _ headers: [String], _ friendCount: Int) -> Void)?
     var groupsData: [WXGroup] = []
     var tagsData: [WXUserGroup] = []
-    private var friendStore = WXDBFriendStore()
-    private var groupStore = WXDBGroupStore()
     override init() {
         super.init()
-        friendsData = friendStore.friendsData(byUid: WXUserHelper.shared.user.userID)
+        friendsData = WXDBStore.shared.friendsData(byUid: WXUserHelper.shared.user.userID)
         data = [defaultGroup]
         sectionHeaders = [UITableView.indexSearch]
-        groupsData = groupStore.groupsData(byUid: WXUserHelper.shared.user.userID)
+        groupsData = WXDBStore.shared.groupsData(byUid: WXUserHelper.shared.user.userID)
         p_initTestData()
     }
     func getFriendInfo(byUserID userID: String) -> WXUser? {
@@ -123,11 +122,18 @@ class WXFriendHelper: NSObject {
         if let aData = jsonData {
             jsonArray = [try! JSONSerialization.jsonObject(with: aData as Data, options: JSONSerialization.ReadingOptions.allowFragments)]
         }
+        try! realmWX.transaction {
+            for dict in jsonArray {
+                WXUser.createOrUpdate(in: realmWX, withValue: dict)
+            }
+        }
+        var add = WXUser.allObjects().array()
         var arr = WXUser.parses(jsonArray) as! [WXUser]
         friendsData.removeAll()
         friendsData.append(contentsOf: arr)
         // 更新好友数据到数据库
-        friendStore.updateFriendsData(friendsData, forUid: WXUserHelper.shared.user.userID)
+
+        WXDBStore.shared.updateFriendsData(friendsData, forUid: WXUserHelper.shared.user.userID)
         DispatchQueue.global(qos: .default).async(execute: {
             self.p_resetFriendData()
         })
@@ -137,7 +143,7 @@ class WXFriendHelper: NSObject {
         var arr1 = WXGroup.parses(jsonArray) as! [WXGroup]
         groupsData.removeAll()
         groupsData.append(contentsOf: arr1)
-        groupStore.updateGroupsData(groupsData, forUid: WXUserHelper.shared.user.userID)
+        WXDBStore.shared.updateGroupsData(groupsData, forUid: WXUserHelper.shared.user.userID)
         for group: WXGroup in groupsData {
             createGroupAvatar(group, finished: { _ in
             })
@@ -206,7 +212,7 @@ class WXFriendHelper: NSObject {
         var arr: [WXInfo] = []
         let user: WXInfo = tlCreateInfo("个人", nil)
         user.type = .other
-        user.userInfo = userInfo
+//        user.userInfo = userInfo
         arr.append(user)
         data.append(arr)
         arr = []
@@ -241,14 +247,14 @@ class WXFriendHelper: NSObject {
         arr = []
         let sendMsg: WXInfo = tlCreateInfo("发消息", nil)
         sendMsg.type = .button
-        sendMsg.titleColor = UIColor.white
-        sendMsg.buttonBorderColor = UIColor.gray
+//        sendMsg.titleColor = UIColor.white
+//        sendMsg.buttonBorderColor = UIColor.gray
         arr.append(sendMsg)
         if !(userInfo.userID == WXUserHelper.shared.user.userID) {
             let video: WXInfo = tlCreateInfo("视频聊天", nil)
             video.type = .button
-            video.buttonBorderColor = UIColor.gray
-            video.buttonColor = UIColor.white
+//            video.buttonBorderColor = UIColor.gray
+//            video.buttonColor = UIColor.white
             arr.append(video)
         }
         data.append(arr)
@@ -432,6 +438,7 @@ class WXUserHelper: NSObject {
 //FIXME: 表情数据管理类
 class WXExpressionHelper: NSObject {/// 默认表情（Face）
     static let shared = WXExpressionHelper()
+    private var store = WXDBStore.shared
     lazy var defaultFaceGroup: TLEmojiGroup = {
         let defaultFaceGroup = TLEmojiGroup()
         defaultFaceGroup.type = .face
@@ -452,7 +459,6 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
         return store.expressionGroups(byUid: WXUserHelper.shared.user.userID)
     }
     var userPreferEmojiGroup = TLEmojiGroup()
-    private var store = WXDBExpressionStore()
     let IEXPRESSION_HOST_URL = "http://123.57.155.230:8080/ibiaoqing/admin/"
     var IEXPRESSION_NEW_URL:String {
         return IEXPRESSION_HOST_URL + ("expre/listBy.dopageNumber=%ld&status=Y&status1=B")

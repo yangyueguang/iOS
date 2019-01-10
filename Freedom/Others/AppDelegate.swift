@@ -91,8 +91,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         let appInfo = Bundle.main.infoDictionary
         let versionStr = (appInfo!["CFBundleVersion"] as! String).replacingOccurrences(of: ".", with: "")
         let version = UInt64(versionStr)
-        let config : RLMRealmConfiguration = RLMRealmConfiguration.default()
+        let config = RLMRealmConfiguration.default()
         config.schemaVersion = version!
+        config.fileURL = URL(fileURLWithPath: FileManager.documentsPath() + "freedom.realm")
         config.migrationBlock = {(migration:RLMMigration,oldSchemaVersion:UInt64) in
             if oldSchemaVersion < 1{
                 print("OK")
@@ -101,6 +102,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         RLMRealmConfiguration.setDefault(config)
         RLMRealm.default()
         configRadialView()
+    }
+    func firstConfigWXRealm() {
+        let path = "\(FileManager.documentsPath())/User/2829969299/"
+        if !FileManager.default.fileExists(atPath: path) {
+            try? FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+        }
+        let config = RLMRealmConfiguration.default()
+        config.fileURL = URL(fileURLWithPath: path + "WX.realm")
+        realmWX = try! RLMRealm(configuration: config)
     }
     func firstConfigAllAPPIds(){
         IQKeyboardManager.shared.enable = true
@@ -220,6 +230,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     func firstInit(){
         firstInitLaunching()
         firstConfigRealm()
+        firstConfigWXRealm()
         firstInitUMeng()
         let backButtonImage = UIImage(named: "u_cell_left")?.withRenderingMode(.alwaysTemplate)
         UINavigationBar.appearance().backIndicatorImage = backButtonImage

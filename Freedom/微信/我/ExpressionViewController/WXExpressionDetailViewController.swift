@@ -192,7 +192,8 @@ class WXExpressionDetailViewController: WXBaseViewController {
             kPageIndex = 1
             proxy.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: kPageIndex, success: { data in
                 XHud.hide()
-                self.group.data = data
+                self.group.data.removeAll()
+                self.group.data.append(objectsIn: data)
                 self.collectionView.reloadData()
             }, failure: { error in
                 XHud.hide()

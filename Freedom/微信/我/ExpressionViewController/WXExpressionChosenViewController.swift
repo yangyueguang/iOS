@@ -285,7 +285,8 @@ extension WXExpressionChosenViewController: WXExpressionCellDelegate, WXExpressi
     func expressionCellDownloadButtonDown(_ group: TLEmojiGroup) {
         group.status = .downloading
         proxy.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: 1, success: { data in
-            group.data = data
+            group.data.removeAll()
+            group.data.append(objectsIn:data)
             WXExpressionHelper.shared.downloadExpressions(withGroupInfo: group, progress: { progress in
             }, success: { group in
                 group.status = .downloaded

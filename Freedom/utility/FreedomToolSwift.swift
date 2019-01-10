@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 import Social
 import LocalAuthentication
+import RealmSwift
+import Realm
+public var realmWX: RLMRealm!
 public func Font(_ fontSize:CGFloat)->UIFont{
     return UIFont.systemFont(ofSize: fontSize)
 }

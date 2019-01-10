@@ -98,7 +98,11 @@ class WXMyExpressionViewController: WXSettingViewController, WXMyExpressionCellD
             try! FileManager.default.removeItem(atPath:  group.path)
         }
         var row = data[0].items.index(of: (group as! WXSettingItem)) ?? -1
-        data[0].items.removeAll(where: { element in element == group })
+        let tempItems = data[0].items
+        var tempArray = tempItems.array()
+        tempArray.removeAll(where: { element in element == group })
+        data[0].items.removeAll()
+        data[0].items.append(objectsIn: tempArray)
         let temp = data[0]
         if temp.items.count == 0 {
             data.remove(at: 0)

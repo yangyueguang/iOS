@@ -289,12 +289,12 @@ class WXImageMessageCell: WXMessageBaseCell {
         didSet {
             msgImageView.alpha = 1.0 // 取消长按效果
             let lastOwnType = self.message.ownerTyper
-            let imagePath = message.content["path"]
-            if let imagePath = imagePath {
+            let imagePath = message.content.path
+            if !imagePath.isEmpty {
                 let imagePatha = FileManager.pathUserChatImage(imagePath)
                 msgImageView.setThumbnailPath(imagePatha, highDefinitionImageURL: imagePatha)
             } else {
-                msgImageView.setThumbnailPath(nil, highDefinitionImageURL: imagePath ?? "")
+                msgImageView.setThumbnailPath(nil, highDefinitionImageURL: imagePath)
             }
 
             if lastOwnType != message.ownerTyper {

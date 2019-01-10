@@ -1,6 +1,7 @@
 //
 #import "AppManager.h"
 #import "NSObject+Mirror.h"
+#import <Realm/Realm.h>
 @interface UIImage ()
 + (id)_iconForResourceProxy:(id)arg1 variant:(int)arg2 variantsScale:(float)arg3;
 + (id)_applicationIconImageForBundleIdentifier:(id)arg1 format:(int)arg2 scale:(double)arg3;

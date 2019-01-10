@@ -75,7 +75,8 @@ class WXTabBarController: UITabBarController {
         group.groupDetailInfo = "婉转的骂人表情，慎用"
         proxy.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: 1, success: { data in
             XHud.hide()
-            group.data = data
+            group.data.removeAll()
+            group.data.append(objectsIn: data)
             WXExpressionHelper.shared.downloadExpressions(withGroupInfo: group, progress: { progress in
 
             }, success: { group in
@@ -102,7 +103,8 @@ class WXTabBarController: UITabBarController {
         group1.groupInfo = "王锡玄 萌娃 冷笑宝宝"
         group1.groupDetailInfo = "韩国萌娃，冷笑宝宝王锡玄表情包"
         proxy.requestExpressionGroupDetail(byGroupID: group1.groupID, pageIndex: 1, success: { data in
-            group1.data = data
+            group1.data.removeAll()
+            group1.data.append(objectsIn: data)
             WXExpressionHelper.shared.downloadExpressions(withGroupInfo: group1, progress: { progress in
             }, success: { group in
                 WXExpressionHelper.shared.addExpressionGroup(group)

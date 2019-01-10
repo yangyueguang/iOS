@@ -15,7 +15,7 @@ class WXCGroupDetailViewController: WXSettingViewController, WechatUserGroupCell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TLUserGroupCell") as! WXUserGroupCell
-            cell.users = group.users
+            cell.users = group.users.array()
             cell.delegate = self
             return cell
         }

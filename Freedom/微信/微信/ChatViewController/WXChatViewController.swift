@@ -129,12 +129,12 @@ class WXChatViewController: WXChatBaseViewController, UIImagePickerControllerDel
         var data: [MWPhoto] = []
         for message: WXImageMessage in imageMessages {
             var url: URL?
-            let imagePath = message.content["path"]
-            if let imagePath = imagePath {
+            let imagePath = message.content.path
+            if !imagePath.isEmpty {
                 let imagePatha = FileManager.pathUserChatImage(imagePath)
                 url = URL(fileURLWithPath: imagePatha)
             } else {
-                url = URL(string: message.content["url"] ?? "")
+                url = URL(string: message.content.url)
             }
             let photo = MWPhoto(url: url)
             data.append(photo!)

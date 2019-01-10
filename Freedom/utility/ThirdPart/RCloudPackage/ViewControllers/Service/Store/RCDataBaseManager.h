@@ -10,7 +10,6 @@
 #import <RongIMKit/RongIMKit.h>
 @interface RCDataBaseManager : NSObject
 + (RCDataBaseManager *)shareInstance;
-- (void)closeDBForDisconnect;
 //存储用户信息
 - (void)insertUserToDB:(RCUserInfo *)user;
 - (void)insertUserListToDB:(NSMutableArray *)userList complete:(void (^)(BOOL))result;

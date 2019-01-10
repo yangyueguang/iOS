@@ -49,12 +49,12 @@ PODS:
     - ReactiveSwift (~> 4.0)
   - ReactiveSwift (4.0.0):
     - Result (~> 4.0)
-  - Realm (3.13.0):
-    - Realm/Headers (= 3.13.0)
-  - Realm/Headers (3.13.0)
-  - RealmSwift (3.13.0):
-    - Realm (= 3.13.0)
-  - Result (4.0.0)
+  - Realm (3.13.1):
+    - Realm/Headers (= 3.13.1)
+  - Realm/Headers (3.13.1)
+  - RealmSwift (3.13.1):
+    - Realm (= 3.13.1)
+  - Result (4.1.0)
   - RongCloudIM/CallKit (2.8.32):
     - RongCloudIM/CallLib
     - RongCloudIM/IMKit
@@ -76,7 +76,7 @@ PODS:
   - SnapKit (4.2.0)
   - SSKeychain (1.4.1)
   - Starscream (3.0.6)
-  - TZImagePickerController (3.1.6)
+  - TZImagePickerController (3.1.7)
   - UMengAnalytics (4.2.4)
   - XCarryOn (0.4.2)
   - XExtension (0.4.1)
@@ -169,9 +169,9 @@ SPEC CHECKSUMS:
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   ReactiveCocoa: fbd26e9ba60e98417ee47433e59465a98ed9da0f
   ReactiveSwift: a2bb9ace428a109e9c0209615645d9d286c8c433
-  Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
-  RealmSwift: be5ebc7930e37cd3376b41cec7f21984528aaa16
-  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
+  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
+  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RongCloudIM: 48bfc2fcb8d7cae8ce1e19cb5fb26d6d90616375
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
@@ -180,7 +180,7 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
-  TZImagePickerController: 733aa6fd217f87c61656764f8e76b2137b6c8f47
+  TZImagePickerController: 3027e1e2029c830186c6a167c88c933b8556fdc7
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   XCarryOn: b85d095adbc80f335e44748473e18b2601af1849
   XExtension: e89913e4a63f76da05841e7300192af0153cdbfc

@@ -62,7 +62,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>0.6.7</string>
+	<string>0.6.9</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>com.google.gppconsent.2.3.0</string>
@@ -6480,7 +6480,7 @@
 		<string>tndmCE</string>
 		<string>livecamspro</string>
 		<string>fb120878094678054</string>
-		<string>omnifocus/add?name=&quot;&quot;</string>
+		<string>omnifocus/add?name=""</string>
 		<string>fb233368686677167</string>
 		<string>fb202621056442931</string>
 		<string>numerical</string>
@@ -8915,7 +8915,7 @@
 		<string>segavirtuafighter2</string>
 		<string>wangxin</string>
 		<string>fb213987028960</string>
-		<string>aisearchcommand?q=&quot;&quot;</string>
+		<string>aisearchcommand?q=""</string>
 		<string>ubi-uplay</string>
 		<string>app425080687</string>
 		<string>com.bigfishgames.ci2xmasiphonefull</string>

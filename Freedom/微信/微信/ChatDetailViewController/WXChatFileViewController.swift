@@ -8,13 +8,13 @@ class WXChatFileCell: UICollectionViewCell {
         didSet {
             if message.messageType == .image {
                 let me = message as! WXImageMessage
-                let imagePath = me.content["path"]
-                let imageURL = me.content["url"]
-                if let ipath = imagePath {
-                    let imagePatha = FileManager.pathUserChatImage(ipath)
+                let imagePath = me.content.path
+                let imageURL = me.content.url
+                if !imagePath.isEmpty {
+                    let imagePatha = FileManager.pathUserChatImage(imagePath)
                     imageView.image = UIImage(named: imagePatha)
-                } else if let iurl = imageURL {
-                    imageView.sd_setImage(with: URL(string: iurl), placeholderImage: UIImage(named: "userLogo"))
+                } else if !imageURL.isEmpty {
+                    imageView.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: "userLogo"))
                 } else {
                     imageView.image = nil
                 }
@@ -88,11 +88,12 @@ class WXChatFileViewController: WXBaseViewController {
                     mediaData.append(message)
                     var url: URL?
                     let me = message as! WXImageMessage
-                    if let path = me.content["path"] {
+                    let path = me.content.path
+                    if !path.isEmpty {
                         let imagePath = FileManager.pathUserChatImage(path)
                         url = URL(fileURLWithPath: imagePath)
                     } else {
-                        url = URL(string: me.content["url"] ?? "")
+                        url = URL(string: me.content.url)
                     }
                     let photo = MWPhoto(url: url)
                     browserData.append(photo!)
@@ -106,11 +107,12 @@ class WXChatFileViewController: WXBaseViewController {
         for message: WXMessage in mediaData {
             if message.messageType == .image {
                 var url: URL?
-                if let imagePath = message.content["path"] {
+                let imagePath = message.content.path
+                if !imagePath.isEmpty {
                     let imagePatha = FileManager.pathUserChatImage(imagePath)
                     url = URL(fileURLWithPath: imagePatha)
                 } else {
-                    url = URL(string: message.content["url"] ?? "")
+                    url = URL(string: message.content.url)
                 }
                 let photo = MWPhoto(url: url)
                 browserData.append(photo!)
