@@ -127,10 +127,7 @@ class WXFriendHelper: NSObject {
         friendsData.removeAll()
         friendsData.append(contentsOf: arr)
         // 更新好友数据到数据库
-        var ok = friendStore.updateFriendsData(friendsData, forUid: WXUserHelper.shared.user.userID)
-        if !ok {
-            Dlog("保存好友数据到数据库失败!")
-        }
+        friendStore.updateFriendsData(friendsData, forUid: WXUserHelper.shared.user.userID)
         DispatchQueue.global(qos: .default).async(execute: {
             self.p_resetFriendData()
         })
@@ -140,10 +137,7 @@ class WXFriendHelper: NSObject {
         var arr1 = WXGroup.parses(jsonArray) as! [WXGroup]
         groupsData.removeAll()
         groupsData.append(contentsOf: arr1)
-        ok = groupStore.updateGroupsData(groupsData, forUid: WXUserHelper.shared.user.userID)
-        if !ok {
-            Dlog("保存群数据到数据库失败!")
-        }
+        groupStore.updateGroupsData(groupsData, forUid: WXUserHelper.shared.user.userID)
         for group: WXGroup in groupsData {
             createGroupAvatar(group, finished: { _ in
             })
@@ -475,19 +469,13 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
     var IEXPRESSION_DETAIL_URL: String {
         return IEXPRESSION_HOST_URL + ("expre/getByeId.dopageNumber=%ld&eId=%@")
     }
-    func addExpressionGroup(_ emojiGroup: TLEmojiGroup) -> Bool {
-        let ok = store.addExpressionGroup(emojiGroup, forUid: WXUserHelper.shared.user.userID)
-        if ok {
-            WXUserHelper.shared.updateEmojiGroupData()
-        }
-        return ok
+    func addExpressionGroup(_ emojiGroup: TLEmojiGroup) {
+        store.addExpressionGroup(emojiGroup, forUid: WXUserHelper.shared.user.userID)
+        WXUserHelper.shared.updateEmojiGroupData()
     }
-    func deleteExpressionGroup(byID groupID: String) -> Bool {
-        let ok = store.deleteExpressionGroup(byID: groupID, forUid: WXUserHelper.shared.user.userID)
-        if ok {
-            WXUserHelper.shared.updateEmojiGroupData()
-        }
-        return ok
+    func deleteExpressionGroup(byID groupID: String) {
+        store.deleteExpressionGroup(byID: groupID, forUid: WXUserHelper.shared.user.userID)
+        WXUserHelper.shared.updateEmojiGroupData()
     }
     func didExpressionGroupAlways(inUsed groupID: String) -> Bool {
         let count = store.countOfUserWhoHasExpressionGroup(groupID)

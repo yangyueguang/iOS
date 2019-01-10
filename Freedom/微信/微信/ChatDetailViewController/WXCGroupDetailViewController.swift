@@ -22,37 +22,31 @@ class WXCGroupDetailViewController: WXSettingViewController, WechatUserGroupCell
         return super.tableView(tableView, cellForRowAt: indexPath)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let item = data[indexPath.section].items[indexPath.row]
-//        if (item.title == "群二维码") {
-//            let gorupQRCodeVC = WXGroupQRCodeViewController()
-//            gorupQRCodeVC.group = group
-//            hidesBottomBarWhenPushed = true
-//            navigationController.pushViewController(gorupQRCodeVC, animated: true)
-//        } else if (item.title == "设置当前聊天背景") {
-//            let chatBGSettingVC = WXBgSettingViewController()
-//            chatBGSettingVC.partnerID = group.groupID
-//            hidesBottomBarWhenPushed = true
-//            navigationController.pushViewController(chatBGSettingVC, animated: true)
-//        } else if (item.title == "聊天文件") {
-//            let chatFileVC = WXChatFileViewController()
-//            chatFileVC.partnerID = group.groupID
-//            hidesBottomBarWhenPushed = true
-//            navigationController.pushViewController(chatFileVC, animated: true)
-//        } else if (item.title == "清空聊天记录") {
-//            showAlerWithtitle(nil, message: nil, style: UIAlertController.Style.actionSheet, ac1: {
-//                return UIAlertAction(title: "清空聊天记录", style: .default, handler: { action in
-//                    let ok = WXMessageManager.shared.deleteMessages(byPartnerID: self.group.groupID)
-//                    if !ok {
-//                        noticeError("清空讨论组聊天记录失败")
-//                    } else {
-//                        WXChatViewController.shared.resetChatVC()
-//                    }
-//                })
-//            }, ac2: {
-//                return UIAlertAction(title: "取消", style: .cancel, handler: { action in
-//                })
-//            }, ac3: nil, completion: nil)
-//        }
+        let item = data[indexPath.section].items[indexPath.row]
+        if (item.title == "群二维码") {
+            let gorupQRCodeVC = WXGroupQRCodeViewController()
+            gorupQRCodeVC.group = group
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(gorupQRCodeVC, animated: true)
+        } else if (item.title == "设置当前聊天背景") {
+            let chatBGSettingVC = WXBgSettingViewController()
+            chatBGSettingVC.partnerID = group.groupID
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(chatBGSettingVC, animated: true)
+        } else if (item.title == "聊天文件") {
+            let chatFileVC = WXChatFileViewController()
+            chatFileVC.partnerID = group.groupID
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(chatFileVC, animated: true)
+        } else if (item.title == "清空聊天记录") {
+            let alertVC = UIAlertController("", "", T1: "清空聊天记录", T2: "取消", confirm1: {
+                let ok = WXMessageManager.shared.deleteMessages(byPartnerID: self.group.groupID)
+                WXChatViewController.shared.resetChatVC()
+            }, confirm2: {
+
+            })
+            self.present(alertVC, animated: true, completion: nil)
+        }
         self.tableView.deselectRow(at: indexPath, animated: false)
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -63,10 +57,10 @@ class WXCGroupDetailViewController: WXSettingViewController, WechatUserGroupCell
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
     func userGroupCellDidSelect(_ user: WXUser) {
-//        let detailVC = WXFriendDetailViewController()
-//        detailVC.user = user
-//        hidesBottomBarWhenPushed = true
-//        navigationController.pushViewController(detailVC, animated: true)
+        let detailVC = WXFriendDetailViewController()
+        detailVC.user = user
+        hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     func userGroupCellAddUserButtonDown() {
         noticeInfo("添加讨论组成员")

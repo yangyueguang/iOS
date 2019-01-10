@@ -290,10 +290,7 @@ extension WXExpressionDetailViewController: UICollectionViewDelegate, UICollecti
         }, success: { group in
             group.status = .downloaded
             self.collectionView.reloadData()
-            let ok = WXExpressionHelper.shared.addExpressionGroup(group)
-            if !ok {
-                self.noticeError("表情 \(group.groupName) 存储失败！")
-            }
+            WXExpressionHelper.shared.addExpressionGroup(group)
         }, failure: { group, error in
             group.status = .unDownload
             self.collectionView.reloadData()

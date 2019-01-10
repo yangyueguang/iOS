@@ -255,24 +255,24 @@ class WechatConversationCell: WXTableViewCell {
     }
 }
 class WXConversationViewController: WXTableViewController, WXMessageManagerConvVCDelegate, UISearchBarDelegate, WXAddMenuViewDelegate {
-//    var searchVC = WXFriendSearchViewController()
+    var searchVC = WXFriendSearchViewController()
     var data: [WXConversation] = []
     private var scrollTopView = UIImageView(image: UIImage(named: "conv_wechat_icon"))
     private var addMenuView = WechatAddMenuView()
-//    private var searchController: WXSearchController =  {
-//        let searchController = WXSearchController(searchResultsController: searchVC)
-//        searchController.searchResultsUpdater = searchVC
-//        searchController.searchBar.placeholder = "搜索"
-//        searchController.searchBar.delegate = self
-//        searchController.showVoiceButton = true
-//        return searchController
-//    }()
+    private lazy var searchController: WXSearchController =  {
+        let searchController = WXSearchController(searchResultsController: searchVC)
+        searchController.searchResultsUpdater = searchVC
+        searchController.searchBar.placeholder = "搜索"
+        searchController.searchBar.delegate = self
+        searchController.showVoiceButton = true
+        return searchController
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "微信"
         addMenuView.delegate = self
         tableView.backgroundColor = UIColor.white
-//        tableView.tableHeaderView = searchController.searchBar
+        tableView.tableHeaderView = searchController.searchBar
         tableView.addSubview(scrollTopView)
         scrollTopView.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.tableView)
@@ -345,7 +345,7 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-//        let chatVC = WXChatViewController.shared
+        let chatVC = WXChatViewController.shared
         let conversation = data[indexPath.row] as WXConversation
         if conversation.convType == .personal {
             let user = WXFriendHelper.shared.getFriendInfo(byUserID: conversation.partnerID)
@@ -353,17 +353,17 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
                 noticeError("您不存在此好友")
                 return
             }
-//            chatVC.partner = user
+            chatVC.partner = user
         } else if conversation.convType == .group {
             let group = WXFriendHelper.shared.getGroupInfo(byGroupID: conversation.partnerID)
             if group == nil {
                 noticeError("您不存在该讨论组")
                 return
             }
-//            chatVC.partner = group
+            chatVC.partner = group
         }
         hidesBottomBarWhenPushed = true
-//        navigationController.pushViewController(chatVC, animated: true)
+        navigationController?.pushViewController(chatVC, animated: true)
         hidesBottomBarWhenPushed = false
         (self.tableView.cellForRow(at: indexPath) as! WechatConversationCell).markAsRead(true)
     }
@@ -371,10 +371,7 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
         let conversation = data[indexPath.row]
         let delAction = UITableViewRowAction(style: .default, title: "删除", handler: { action, indexPath in
             self.data.remove(at: indexPath.row)
-            let ok = WXMessageManager.shared.deleteConversation(byPartnerID: conversation.partnerID)
-            if !ok {
-                self.noticeError("从数据库中删除会话信息失败")
-            }
+            WXMessageManager.shared.deleteConversation(byPartnerID: conversation.partnerID)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             if self.data.count > 0 && indexPath.row == self.data.count {
                 let lastIndexPath = IndexPath(row: (indexPath.row) - 1, section: indexPath.section)
@@ -391,7 +388,7 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
         return [delAction, moreAction]
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        searchVC.friendsData = WXFriendHelper.shared.friendsData
+        searchVC.friendsData = WXFriendHelper.shared.friendsData
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         tabBarController?.tabBar.isHidden = true
@@ -404,13 +401,11 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
         noticeInfo("语音搜索按钮")
     }
     func addMenuView(_ addMenuView: WechatAddMenuView, didSelectedItem item: WXAddMenuItem) {
-        if item.className.count > 0 {
-//            let vc = (NSClassFromString(item.className))()
-//            hidesBottomBarWhenPushed = true
-//            if let aVc = vc {
-//                navigationController.pushViewController(aVc, animated: true)
-//            }
-//            hidesBottomBarWhenPushed = false
+        if let cls = item.className {
+            let vc = cls.init()
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            hidesBottomBarWhenPushed = false
         } else {
             noticeError("\(item.title) 功能暂未实现")
         }

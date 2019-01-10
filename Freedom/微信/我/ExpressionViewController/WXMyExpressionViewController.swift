@@ -92,34 +92,30 @@ class WXMyExpressionViewController: WXSettingViewController, WXMyExpressionCellD
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
     func myExpressionCellDeleteButtonDown(_ group: TLEmojiGroup) {
-        let ok = helper.deleteExpressionGroup(byID: group.groupID)
-        if ok {
-            let canDeleteFile = !helper.didExpressionGroupAlways(inUsed: group.groupID)
-            if canDeleteFile {
-                try! FileManager.default.removeItem(atPath:  group.path)
-            }
-            var row = data[0].items.index(of: (group as! WXSettingItem)) ?? -1
-            data[0].items.removeAll(where: { element in element == group })
-            let temp = data[0]
-            if temp.items.count == 0 {
-                data.remove(at: 0)
-                tableView.deleteSections(NSIndexSet(index: 0) as IndexSet, with: .automatic)
-            } else {
-                tableView.deleteRows(at: [IndexPath(row: row, section: 0)], with: .none)
-            }
+        helper.deleteExpressionGroup(byID: group.groupID)
+        let canDeleteFile = !helper.didExpressionGroupAlways(inUsed: group.groupID)
+        if canDeleteFile {
+            try! FileManager.default.removeItem(atPath:  group.path)
+        }
+        var row = data[0].items.index(of: (group as! WXSettingItem)) ?? -1
+        data[0].items.removeAll(where: { element in element == group })
+        let temp = data[0]
+        if temp.items.count == 0 {
+            data.remove(at: 0)
+            tableView.deleteSections(NSIndexSet(index: 0) as IndexSet, with: .automatic)
         } else {
-            noticeError("表情包删除失败")
+            tableView.deleteRows(at: [IndexPath(row: row, section: 0)], with: .none)
         }
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let group: WXSettingGroup = data[indexPath.section]
         if !group.headerTitle.isEmpty {
             // 有标题的就是表情组
-//            let emojiGroup = group.items[indexPath.row] as! TLEmojiGroup
-//            let detailVC = WXExpressionDetailViewController()
-//            detailVC.group = emojiGroup
-//            hidesBottomBarWhenPushed = true
-//            navigationController?.pushViewController(detailVC, animated: true)
+            let emojiGroup = group.items[indexPath.row] as! TLEmojiGroup
+            let detailVC = WXExpressionDetailViewController()
+            detailVC.group = emojiGroup
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(detailVC, animated: true)
         }
         self.tableView.deselectRow(at: indexPath, animated: false)
     }

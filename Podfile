@@ -4,8 +4,7 @@ platform:ios, '10.0'
 inhibit_all_warnings!
 #source 'https://github.com/yangyueguang/MyCocoaPods.git'
 target 'Freedom' do
-    use_frameworks!
-pod 'FMDB'
+use_frameworks!
 #Objective-C.frameworks
 #pod 'HYBUnicodeReadable'
 pod 'SSKeychain'  #https://github.com/Mingriweiji-github/sskeychain-master

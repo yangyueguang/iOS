@@ -92,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         let versionStr = (appInfo!["CFBundleVersion"] as! String).replacingOccurrences(of: ".", with: "")
         let version = UInt64(versionStr)
         let config : RLMRealmConfiguration = RLMRealmConfiguration.default()
-        config.schemaVersion = version!;
+        config.schemaVersion = version!
         config.migrationBlock = {(migration:RLMMigration,oldSchemaVersion:UInt64) in
             if oldSchemaVersion < 1{
                 print("OK")

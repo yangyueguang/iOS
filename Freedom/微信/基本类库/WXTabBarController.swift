@@ -79,12 +79,8 @@ class WXTabBarController: UITabBarController {
             WXExpressionHelper.shared.downloadExpressions(withGroupInfo: group, progress: { progress in
 
             }, success: { group in
-                let ok = WXExpressionHelper.shared.addExpressionGroup(group)
-                if !ok {
-                    Dlog("表情存储失败！")
-                } else {
-                    successCount += 1
-                }
+                WXExpressionHelper.shared.addExpressionGroup(group)
+                successCount += 1
                 count += 1
                 if count == 2 {
                     self.noticeSuccess("成功下载\(successCount)组表情！")
@@ -109,12 +105,8 @@ class WXTabBarController: UITabBarController {
             group1.data = data
             WXExpressionHelper.shared.downloadExpressions(withGroupInfo: group1, progress: { progress in
             }, success: { group in
-                let ok = WXExpressionHelper.shared.addExpressionGroup(group)
-                if !ok {
-                    Dlog("表情存储失败！")
-                } else {
-                    successCount += 1
-                }
+                WXExpressionHelper.shared.addExpressionGroup(group)
+                successCount += 1
                 count += 1
                 if count == 2 {
                     self.noticeSuccess("成功下载\(successCount)组表情！")

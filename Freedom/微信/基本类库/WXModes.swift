@@ -183,15 +183,13 @@ class WXAddMenuHelper: NSObject {
     func p_getMenuItem(by type: TLAddMneuType) -> WXAddMenuItem {
         switch type {
         case .groupChat:
-            return WXAddMenuItem.create(with: .groupChat, title: "发起群聊", iconPath: "nav_menu_groupchat", className: "")
+            return WXAddMenuItem.create(with: .groupChat, title: "发起群聊", iconPath: "nav_menu_groupchat", className: nil)
         case .addFriend:
-            return WXAddMenuItem.create(with: .addFriend, title: "添加朋友", iconPath: "nav_menu_addfriend", className: "TLAddFriendViewController")
+            return WXAddMenuItem.create(with: .addFriend, title: "添加朋友", iconPath: "nav_menu_addfriend", className: WXAddFriendViewController.self)
         case .wallet:
-            return WXAddMenuItem.create(with: .wallet, title: "收付款", iconPath: "nav_menu_wallet", className: "")
+            return WXAddMenuItem.create(with: .wallet, title: "收付款", iconPath: "nav_menu_wallet", className: nil)
         case .scan:
-            return WXAddMenuItem.create(with: .scan, title: "扫一扫", iconPath: "nav_menu_scan", className: "TLScanningViewController")
-        default:
-            break
+            return WXAddMenuItem.create(with: .scan, title: "扫一扫", iconPath: "nav_menu_scan", className: WXScanningViewController.self)
         }
     }
 }
@@ -311,8 +309,8 @@ class WXAddMenuItem: RLMObject {
     var type = TLAddMneuType.groupChat
     var title = ""
     var iconPath = ""
-    var className = ""
-    class func create(with type: TLAddMneuType, title: String, iconPath: String, className: String) -> WXAddMenuItem {
+    var className: UIViewController.Type?
+    class func create(with type: TLAddMneuType, title: String, iconPath: String, className: UIViewController.Type?) -> WXAddMenuItem {
         let item = WXAddMenuItem()
         item.type = type
         item.title = title

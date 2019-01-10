@@ -243,36 +243,26 @@ class WXMessageManager: RLMObject {
     var messageStore = WXDBMessageStore()
     var conversationStore = WXDBConversationStore()
     func send(_ message: WXMessage, progress: @escaping (WXMessage, CGFloat) -> Void, success: @escaping (WXMessage) -> Void, failure: @escaping (WXMessage) -> Void) {
-        var ok = messageStore.add(message)
-        if !(ok) {
-            Dlog("存储Message到DB失败")
-        } else {
-            ok = addConversation(by: message)
-            if !(ok) {
-                Dlog("存储Conversation到DB失败")
-            }
-        }
+        messageStore.add(message)
+        addConversation(by: message)
     }
-    func addConversation(by message: WXMessage) -> Bool {
+    func addConversation(by message: WXMessage) {
         var partnerID = message.friendID
         var type: Int = 0
         if message.partnerType == .group {
             partnerID = message.groupID
             type = 1
         }
-        return conversationStore.addConversation(byUid: message.userID, fid: partnerID, type: type, date: message.date)
+        conversationStore.addConversation(byUid: message.userID, fid: partnerID, type: type, date: message.date)
     }
     func conversationRecord(_ complete: @escaping ([WXConversation]) -> Void) {
         let data = conversationStore.conversations(byUid: userID)
         complete(data)
     }
 
-    func deleteConversation(byPartnerID partnerID: String) -> Bool {
-        var ok = deleteMessages(byPartnerID: partnerID)
-        if ok {
-            ok = conversationStore.deleteConversation(byUid: userID, fid: partnerID)
-        }
-        return ok
+    func deleteConversation(byPartnerID partnerID: String) {
+        deleteMessages(byPartnerID: partnerID)
+        conversationStore.deleteConversation(byUid: userID, fid: partnerID)
     }
 
     func messageRecord(forPartner partnerID: String, from date: Date, count: Int, complete: @escaping ([WXMessage], Bool) -> Void) {
@@ -290,24 +280,18 @@ class WXMessageManager: RLMObject {
         completed(data)
     }
 
-    func deleteMessage(byMsgID msgID: String) -> Bool {
-        return messageStore.deleteMessage(byMessageID: msgID)
+    func deleteMessage(byMsgID msgID: String) {
+        messageStore.deleteMessage(byMessageID: msgID)
     }
 
-    func deleteMessages(byPartnerID partnerID: String) -> Bool {
-        let ok = messageStore.deleteMessages(byUserID: userID, partnerID: partnerID)
-        if ok {
-//            WXChatViewController.shared.resetChatVC()
-        }
-        return ok
+    func deleteMessages(byPartnerID partnerID: String) {
+        messageStore.deleteMessages(byUserID: userID, partnerID: partnerID)
+        WXChatViewController.shared.resetChatVC()
     }
-    func deleteAllMessages() -> Bool {
-        var ok = messageStore.deleteMessages(byUserID: userID)
-        if ok {
-//            WXChatViewController.shared.resetChatVC()
-//            ok = conversationStore.deleteConversations(byUid: userID)
-        }
-        return ok
+    func deleteAllMessages() {
+        messageStore.deleteMessages(byUserID: userID)
+        WXChatViewController.shared.resetChatVC()
+        conversationStore.deleteConversations(byUid: userID)
     }
 
     func requestClientInitInfoSuccess(_ clientInitInfo: @escaping (Any) -> Void, failure error: @escaping (String) -> Void) {

@@ -652,7 +652,8 @@ extension WXChatBaseViewController : WXChatTableViewControllerDelegate {
         }
     }
     func chatTableViewController(_ chatTVC: WXChatTableViewController, delete message: WXMessage) -> Bool {
-        return WXMessageManager.shared.deleteMessage(byMsgID: message.messageID)
+        WXMessageManager.shared.deleteMessage(byMsgID: message.messageID)
+        return true
     }
     func chatTableViewController(_ chatTVC: WXChatTableViewController, didClickUserAvatar user: WXUser) {
         didClickedUserAvatar(user)

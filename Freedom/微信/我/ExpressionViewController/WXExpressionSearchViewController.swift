@@ -53,10 +53,7 @@ class WXExpressionSearchViewController: WXTableViewController, UISearchResultsUp
                 if index < self.data.count {
                     self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
                 }
-                let ok = WXExpressionHelper.shared.addExpressionGroup(group)
-                if !ok {
-                    self.noticeError("表情 \(group.groupName) 存储失败！")
-                }
+                WXExpressionHelper.shared.addExpressionGroup(group)
             }, failure: { group, error in
 
             })

@@ -19,21 +19,16 @@ class WXDBMessageStore: NSObject {
             WXMessage.createOrUpdate(in: realmWX, withValue: WXMessage())
         }
     }
-    func add(_ message: WXMessage?) -> Bool {
-        guard let message = message else {
-            return false
-        }
+    func add(_ message: WXMessage?) {
+        guard let message = message else { return }
         try! realmWX.transaction {
             realmWX.addOrUpdate(message)
         }
-        return true
     }
 
     func messages(byUserID userID: String, partnerID: String, from date: Date, count: Int, complete: @escaping ([WXMessage], Bool) -> Void) {
         var data: [WXMessage] = []
-
         let pre = NSPredicate(format: "userID = %@ and friendID = %@ and date < %@ order by date desc LIMIT %ld", userID, partnerID, String(format: "%lf", date.timeIntervalSince1970), count + 1)
-
         try! realmWX.transaction {
             let results = WXMessage.objects(in: realmWX, with: pre)
             for index in 0..<results.count {
@@ -56,7 +51,7 @@ class WXDBMessageStore: NSObject {
             let results = WXMessage.objects(in: realmWX, with: pre)
             for index in 0..<results.count {
                 let message = results.object(at: index) as! WXMessage
-                if self.isToday(message.date) {
+                if message.date.isToday() {
                     array.append(message)
                 } else {
                     if array.count > 0 {
@@ -70,11 +65,6 @@ class WXDBMessageStore: NSObject {
             }
         }
         return data
-    }
-    func isToday(_ date: Date) -> Bool {
-        let components1: DateComponents = date.components
-        let components2: DateComponents = Date().components
-        return (components1.year == components2.year) && (components1.month == components2.month) && (components1.day == components2.day)
     }
 
     func chatImagesAndVideos(byUserID userID: String, partnerID: String) -> [WXImageMessage] {
@@ -94,29 +84,26 @@ class WXDBMessageStore: NSObject {
         return WXMessage.objects(in: realmWX, with: pre).lastObject() as? WXMessage
     }
 
-    func deleteMessage(byMessageID messageID: String) -> Bool {
+    func deleteMessage(byMessageID messageID: String) {
         try! realmWX.transaction {
             let results = WXMessage.objects(in: realmWX, with: NSPredicate(format: "messageID = %@", messageID))
             realmWX.deleteObjects(results)
         }
-        return true
     }
-    func deleteMessages(byUserID userID: String, partnerID: String) -> Bool {
+    func deleteMessages(byUserID userID: String, partnerID: String) {
         try! realmWX.transaction {
             let pre = NSPredicate(format: "userID = %@ and friendID = %@", userID, partnerID)
             let results = WXMessage.objects(in: realmWX, with: pre)
             realmWX.deleteObjects(results)
         }
-        return true
     }
 
-    func deleteMessages(byUserID userID: String) -> Bool {
+    func deleteMessages(byUserID userID: String) {
         try! realmWX.transaction {
             let predicate = NSPredicate(format: "userID = %@", userID)
             let results = WXMessage.objects(in: realmWX, with: predicate)
             realmWX.deleteObjects(results)
         }
-        return true
     }
 }
 
@@ -128,7 +115,7 @@ class WXDBConversationStore: NSObject {
             WXConversation.createOrUpdate(in: realmWX, withValue: WXConversation())
         }
     }
-    func addConversation(byUid uid: String, fid: String, type: Int, date: Date) -> Bool {
+    func addConversation(byUid uid: String, fid: String, type: Int, date: Date) {
         try! realmWX.transaction {
             let conversation = WXConversation()
             conversation.partnerID = fid
@@ -137,7 +124,6 @@ class WXDBConversationStore: NSObject {
             conversation.date = date
             realmWX.addOrUpdate(conversation)
         }
-        return true
     }
     func conversations(byUid uid: String) -> [WXConversation] {
         var data: [WXConversation] = []
@@ -167,24 +153,21 @@ class WXDBConversationStore: NSObject {
         return Int(WXConversation.objects(in: realmWX, with: pre).count)
     }
     //删除单条会话
-    func deleteConversation(byUid uid: String, fid: String) -> Bool {
+    func deleteConversation(byUid uid: String, fid: String) {
         try! realmWX.transaction {
             let pre = NSPredicate(format: "userID = %@ and friendID = %@", uid, fid)
             let results = WXConversation.objects(in: realmWX, with: pre)
             realmWX.deleteObjects(results)
         }
-        return true
     }
     //删除用户的所有会话
-    func deleteConversations(byUid uid: String) -> Bool {
+    func deleteConversations(byUid uid: String) {
         try! realmWX.transaction {
             let pre = NSPredicate(format: "partnerID = %@", uid)
             let results = WXConversation.objects(in: realmWX, with: pre)
             realmWX.deleteObjects(results)
         }
-        return true
     }
-
 }
 
 class WXDBExpressionStore: NSObject {
@@ -195,13 +178,13 @@ class WXDBExpressionStore: NSObject {
             TLEmoji.createOrUpdate(in: realmWX, withValue: TLEmoji())
         }
     }
-    func addExpressionGroup(_ group: TLEmojiGroup, forUid uid: String) -> Bool {
+    func addExpressionGroup(_ group: TLEmojiGroup, forUid uid: String) {
         // 添加表情包
         try! realmWX.transaction {
             realmWX.addOrUpdate(group)
         }
         // 添加表情包里的所有表情
-        return addExpressions(group.data, toGroupID: group.groupID)
+        addExpressions(group.data, toGroupID: group.groupID)
     }
     func expressionGroups(byUid uid: String) -> [TLEmojiGroup] {
         var data: [TLEmojiGroup] = []
@@ -217,13 +200,12 @@ class WXDBExpressionStore: NSObject {
         }
         return data
     }
-    func deleteExpressionGroup(byID gid: String, forUid uid: String) -> Bool {
+    func deleteExpressionGroup(byID gid: String, forUid uid: String) {
         try! realmWX.transaction {
             let pre = NSPredicate(format: "authID = %@ and groupID = %@", uid, gid)
             let results = TLEmojiGroup.objects(in: realmWX, with: pre)
             realmWX.deleteObjects(results)
         }
-        return true
     }
 
     func countOfUserWhoHasExpressionGroup(_ gid: String) -> Int {
@@ -231,12 +213,11 @@ class WXDBExpressionStore: NSObject {
         let results = TLEmojiGroup.objects(in: realmWX, with: pre)
         return Int(results.count)
     }
-    // MARK: - 表情
-    func addExpressions(_ expressions: [TLEmoji], toGroupID groupID: String) -> Bool {
+    // 表情
+    func addExpressions(_ expressions: [TLEmoji], toGroupID groupID: String) {
         try! realmWX.transaction {
             realmWX.addObjects(expressions as NSFastEnumeration)
         }
-        return true
     }
     func expressions(forGroupID groupID: String) -> [TLEmoji] {
         var data: [TLEmoji] = []
@@ -258,14 +239,13 @@ class WXDBFriendStore: NSObject {
             WXUser.createOrUpdate(in: realmWX, withValue: WXUser())
         }
     }
-    func addFriend(_ user: WXUser, forUid uid: String) -> Bool {
+    func addFriend(_ user: WXUser, forUid uid: String) {
         try! realmWX.transaction {
             realmWX.addOrUpdate(user)
         }
-        return true
     }
 
-    func updateFriendsData(_ friendData: [WXUser], forUid uid: String) -> Bool {
+    func updateFriendsData(_ friendData: [WXUser], forUid uid: String) {
         let oldData = friendsData(byUid: uid)
         if oldData.count > 0 {
             var newDataHash: [AnyHashable : Any] = [:]
@@ -274,20 +254,13 @@ class WXDBFriendStore: NSObject {
             }
             for user: WXUser in oldData {
                 if newDataHash[user.userID] == nil {
-                    let ok = deleteFriend(byFid: user.userID, forUid: uid)
-                    if !ok {
-                        Dlog("DBError: 删除过期好友失败")
-                    }
+                    deleteFriend(byFid: user.userID, forUid: uid)
                 }
             }
         }
         for user: WXUser in friendData {
-            let ok = addFriend(user, forUid: uid)
-            if !ok {
-                return ok
-            }
+            addFriend(user, forUid: uid)
         }
-        return true
     }
     func friendsData(byUid uid: String) -> [WXUser] {
         var data: [WXUser] = []
@@ -301,13 +274,12 @@ class WXDBFriendStore: NSObject {
         return data
     }
 
-    func deleteFriend(byFid fid: String, forUid uid: String) -> Bool {
+    func deleteFriend(byFid fid: String, forUid uid: String) {
         try! realmWX.transaction {
             let pre = NSPredicate(format: "userID = %@ and friendID = %@", uid, fid)
             let results = WXUser.objects(in: realmWX, with: pre)
             realmWX.deleteObjects(results)
         }
-        return true
     }
 }
 
@@ -319,14 +291,13 @@ class WXDBGroupStore: NSObject {
             WXUserGroup.createOrUpdate(in: realmWX, withValue: WXUserGroup())
         }
     }
-    func add(_ group: WXGroup, forUid uid: String) -> Bool {
+    func add(_ group: WXGroup, forUid uid: String) {
         try! realmWX.transaction {
             realmWX.addOrUpdate(group)
         }
-        return true
     }
 
-    func updateGroupsData(_ groupData: [WXGroup], forUid uid: String) -> Bool {
+    func updateGroupsData(_ groupData: [WXGroup], forUid uid: String) {
         let oldData = groupsData(byUid: uid)
         if oldData.count > 0 {
             var newDataHash: [String : Any] = [:]
@@ -335,22 +306,14 @@ class WXDBGroupStore: NSObject {
             }
             for group: WXGroup in oldData {
                 if newDataHash[group.groupID] == nil {
-                    let ok = deleteGroup(byGid: group.groupID, forUid: uid)
-                    if !ok {
-                        Dlog("DBError: 删除过期讨论组失败！")
-                    }
+                    deleteGroup(byGid: group.groupID, forUid: uid)
                 }
             }
         }
         // 将数据插入数据库
         for group: WXGroup in groupData {
-            let ok = add(group, forUid: uid)
-            if !ok {
-                return ok
-            }
+            add(group, forUid: uid)
         }
-
-        return true
     }
     func groupsData(byUid uid: String) -> [WXGroup] {
         var data: [WXGroup] = []
@@ -369,24 +332,22 @@ class WXDBGroupStore: NSObject {
         }
         return data
     }
-    func deleteGroup(byGid gid: String, forUid uid: String) -> Bool {
+    func deleteGroup(byGid gid: String, forUid uid: String) {
         try! realmWX.transaction {
             let pre = NSPredicate(format: "chat_userID = %@ and groupID = %@", uid, gid)
             let results = WXGroup.objects(in: realmWX, with: pre)
             realmWX.deleteObjects(results)
         }
-        return true
     }
 
-    // MARK: - Group Members
-    func addGroupMember(_ user: WXUser, forUid uid: String, andGid gid: String) -> Bool {
+    /// Group Members
+    func addGroupMember(_ user: WXUser, forUid uid: String, andGid gid: String) {
         try! realmWX.transaction {
             realmWX.addOrUpdate(user)
         }
-        return true
     }
 
-    func addGroupMembers(_ users: [WXUser], forUid uid: String, andGid gid: String) -> Bool {
+    func addGroupMembers(_ users: [WXUser], forUid uid: String, andGid gid: String) {
         let oldData = groupMembers(forUid: uid, andGid: gid)
         if oldData.count > 0 {
             // 建立新数据的hash表，用于删除数据库中的过时数据
@@ -396,20 +357,13 @@ class WXDBGroupStore: NSObject {
             }
             for user: WXUser in oldData {
                 if newDataHash[user.userID] == nil {
-                    let ok = deleteGroupMember(forUid: uid, gid: gid, andFid: user.userID)
-                    if !ok {
-                        Dlog("DBError: 删除过期好友失败")
-                    }
+                    deleteGroupMember(forUid: uid, gid: gid, andFid: user.userID)
                 }
             }
         }
         for user: WXUser in users{
-            let ok = addGroupMember(user, forUid: uid, andGid: gid)
-            if !ok {
-                return false
-            }
+            addGroupMember(user, forUid: uid, andGid: gid)
         }
-        return true
     }
     func groupMembers(forUid uid: String, andGid gid: String) -> [WXUser] {
         var data: [WXUser] = []
@@ -423,12 +377,11 @@ class WXDBGroupStore: NSObject {
         }
         return data
     }
-    func deleteGroupMember(forUid uid: String, gid: String, andFid fid: String) -> Bool {
+    func deleteGroupMember(forUid uid: String, gid: String, andFid fid: String) {
         try! realmWX.transaction {
             let pre = NSPredicate(format: "userID = %@ and groupID = %@ and friendID = %@", uid, gid, fid)
             let results = WXUser.objects(in: realmWX, with: pre)
             realmWX.deleteObjects(results)
         }
-        return true
     }
 }
