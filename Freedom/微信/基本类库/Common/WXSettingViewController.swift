@@ -34,11 +34,11 @@ class WXSettingViewController: UITableViewController, WXSettingSwitchCellDelegat
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data[section].items.count
+        return Int(data[section].items.count)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let group = data[indexPath.section]
-        let item = group.items[indexPath.row]
+        let item = group.items[UInt(indexPath.row)]
         let cell = tableView.dequeueReusableCell(withIdentifier: item.cellClassName()) as! WechatSettingSwitchCell
         cell.item = item
         if item.type == .switchBtn {

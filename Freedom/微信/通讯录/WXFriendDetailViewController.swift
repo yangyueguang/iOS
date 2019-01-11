@@ -157,7 +157,7 @@ class WXFriendDetailViewController: WXInfoViewController, WXFriendDetailUserCell
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let info = data[indexPath.section][indexPath.row] as WXInfo
-        if info.type == .other {
+        if info.type == TLInfoType.other.rawValue {
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TLFriendDetailUserCell") as! WechatFriendDetailUserCell
                 cell.delegate = self
@@ -175,7 +175,7 @@ class WXFriendDetailViewController: WXInfoViewController, WXFriendDetailUserCell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let info = data[indexPath.section][indexPath.row] as WXInfo
-        if info.type == .other {
+        if info.type == Int32(TLInfoType.other.rawValue) {
             if indexPath.section == 0 {
                 return 90
             }

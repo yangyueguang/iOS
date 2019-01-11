@@ -78,7 +78,7 @@ class WXFriendHeaderView: UITableViewHeaderFooterView {
         titleLabel.textColor = UIColor.gray
         return titleLabel
     }()
-    init(reuseIdentifier: String) {
+    override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         let bgView = UIView()
         bgView.backgroundColor = UIColor.lightGray
@@ -102,18 +102,18 @@ class WXFriendsViewController: WXTableViewController ,UISearchBarDelegate {
         footerLabel.textColor = UIColor.gray
         return footerLabel
     }()
-//    private lazy var searchController: WXSearchController = {
-//        let searchController = WXSearchController(searchResultsController: searchVC)
-//        searchController.searchResultsUpdater = searchVC
-//        searchController.searchBar.placeholder = "搜索"
-//        searchController.searchBar.delegate = self
-//        searchController.showVoiceButton = true
-//        return searchController
-//    }()
+    private lazy var searchController: WXSearchController = {
+        let searchController = WXSearchController(searchResultsController: searchVC)
+        searchController.searchResultsUpdater = searchVC
+        searchController.searchBar.placeholder = "搜索"
+        searchController.searchBar.delegate = self
+        searchController.showVoiceButton = true
+        return searchController
+    }()
     private var friendHelper = WXFriendHelper.shared
     var data: [WXUserGroup] = []
     var sectionHeaders: [String] = []
-//    var searchVC = WXFriendSearchViewController()
+    var searchVC = WXFriendSearchViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "通讯录"
@@ -134,16 +134,16 @@ class WXFriendsViewController: WXTableViewController ,UISearchBarDelegate {
         tableView.backgroundColor = UIColor.white
         tableView.sectionIndexBackgroundColor = UIColor.clear
         tableView.sectionIndexColor = UIColor(46.0, 49.0, 50.0, 1.0)
-//        tableView.tableHeaderView = searchController.searchBar
+        tableView.tableHeaderView = searchController.searchBar
         tableView.tableFooterView = footerLabel
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "nav_add_friend"), style: .done, target: self, action: #selector(self.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     @objc func rightBarButtonDown(_ sender: UIBarButtonItem) {
-//        let addFriendVC = WXAddFriendViewController()
-//        hidesBottomBarWhenPushed = true
-//        navigationController.pushViewController(addFriendVC, animated: true)
-//        hidesBottomBarWhenPushed = false
+        let addFriendVC = WXAddFriendViewController()
+        hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(addFriendVC, animated: true)
+        hidesBottomBarWhenPushed = false
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -165,8 +165,8 @@ class WXFriendsViewController: WXTableViewController ,UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TLFriendCell") as! WXFriendCell
         let group = data[indexPath.section] as WXUserGroup
-        let user = group.users[indexPath.row]
-        cell.user = user
+        let user = group.users[UInt(indexPath.row)]
+        cell.user = user as! WXUser
         if indexPath.section == data.count - 1 && indexPath.row == group.count - 1 {
             cell.bottomLineStyle = .fill
         } else {
@@ -191,42 +191,42 @@ class WXFriendsViewController: WXTableViewController ,UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 0 ? 0 : 22
     }
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let user = data[indexPath.section].users[indexPath.row]
-//        if indexPath.section == 0 {
-//            if (user.userID == "-1") {
-//                let newFriendVC = WXNewFriendViewController()
-//                hidesBottomBarWhenPushed = true
-//                navigationController.pushViewController(newFriendVC, animated: true)
-//                hidesBottomBarWhenPushed = false
-//            } else if (user.userID == "-2") {
-//                let groupVC = WXGroupViewController()
-//                hidesBottomBarWhenPushed = true
-//                navigationController.pushViewController(groupVC, animated: true)
-//                hidesBottomBarWhenPushed = false
-//            } else if (user.userID == "-3") {
-//                let tagsVC = WXTagsViewController()
-//                hidesBottomBarWhenPushed = true
-//                navigationController.pushViewController(tagsVC, animated: true)
-//                hidesBottomBarWhenPushed = false
-//            } else if (user.userID == "-4") {
-//                let publicServer = WXPublicServerViewController()
-//                hidesBottomBarWhenPushed = true
-//                navigationController.pushViewController(publicServer, animated: true)
-//                hidesBottomBarWhenPushed = false
-//            }
-//        } else {
-//            let detailVC = WXFriendDetailViewController()
-//            detailVC.user = user
-//            hidesBottomBarWhenPushed = true
-//            navigationController.pushViewController(detailVC, animated: true)
-//            hidesBottomBarWhenPushed = false
-//        }
-//        tableView.deselectRow(at: indexPath, animated: false)
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = data[indexPath.section].users[UInt(indexPath.row)]
+        if indexPath.section == 0 {
+            if (user.userID == "-1") {
+                let newFriendVC = WXNewFriendViewController()
+                hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(newFriendVC, animated: true)
+                hidesBottomBarWhenPushed = false
+            } else if (user.userID == "-2") {
+                let groupVC = WXGroupViewController()
+                hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(groupVC, animated: true)
+                hidesBottomBarWhenPushed = false
+            } else if (user.userID == "-3") {
+                let tagsVC = WXTagsViewController()
+                hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(tagsVC, animated: true)
+                hidesBottomBarWhenPushed = false
+            } else if (user.userID == "-4") {
+                let publicServer = WXPublicServerViewController()
+                hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(publicServer, animated: true)
+                hidesBottomBarWhenPushed = false
+            }
+        } else {
+            let detailVC = WXFriendDetailViewController()
+            detailVC.user = user as! WXUser
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(detailVC, animated: true)
+            hidesBottomBarWhenPushed = false
+        }
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        searchVC.friendsData = WXFriendHelper.shared.friendsData
-//        UIApplication.shared.statusBarStyle = .default
+        searchVC.friendsData = WXFriendHelper.shared.friendsData
+        UIApplication.shared.statusBarStyle = .default
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         tabBarController?.tabBar.isHidden = true

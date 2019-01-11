@@ -51,7 +51,7 @@ class WXShakeSettingViewController: WXSettingViewController, UINavigationControl
         picker.dismiss(animated: true)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = data[indexPath.section].items[indexPath.row]
+        let item = data[indexPath.section].items[UInt(indexPath.row)] 
         if (item.title == "使用默认背景图片") {
             UserDefaults.standard.removeObject(forKey: "Shake_Image_Path")
             noticeInfo("已恢复默认背景图")

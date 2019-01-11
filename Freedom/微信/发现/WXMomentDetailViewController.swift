@@ -76,16 +76,16 @@ class WXMomentExtensionView: UIView, UITableViewDelegate, UITableViewDataSource 
         if section == 0 && self.extension.likedFriends.count > 0 {
             return 1
         } else {
-            return self.extension.comments.count
+            return Int(self.extension.comments.count)
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && self.extension.likedFriends.count > 0 {// 点赞
             let cell = tableView.dequeueReusableCell(withIdentifier: "TLMomentExtensionLikedCell") as! WXMomentExtensionLikedCell
-            cell.likedFriends = self.extension.likedFriends.array()
+            cell.likedFriends = self.extension.likedFriends.array() as! [WXUser]
             return cell
         } else { // 评论
-            let comment = self.extension.comments[indexPath.row] as WXMomentComment
+            let comment = self.extension.comments[UInt(indexPath.row)]
             let cell = tableView.dequeueReusableCell(withIdentifier: "TLMomentExtensionCommentCell") as! WXMomentExtensionCommentCell
             cell.comment = comment
             return cell
@@ -95,7 +95,7 @@ class WXMomentExtensionView: UIView, UITableViewDelegate, UITableViewDataSource 
         if indexPath.section == 0 && self.extension.likedFriends.count > 0 {
             return self.extension.extensionFrame.heightLiked
         } else {
-            let comment = self.extension.comments[indexPath.row] as WXMomentComment
+            let comment = self.extension.comments[UInt(indexPath.row)] 
             return comment.commentFrame.height
         }
     }
@@ -134,8 +134,8 @@ class WXMomentBaseView: UIView {
     var extensionContainerView = UIView()
     var moment: WXMoment = WXMoment() {
         didSet {
-            avatarView.sd_setImage(with: URL(string: moment.user?.avatarURL ?? ""), for: UIControl.State.normal)
-            usernameView.setTitle(moment.user?.showName, for: .normal)
+            avatarView.sd_setImage(with: URL(string: moment.user.avatarURL ?? ""), for: UIControl.State.normal)
+            usernameView.setTitle(moment.user.showName, for: .normal)
             dateLabel.text = "1小时前"
             originLabel.text = "微博"
             extensionView.extension = moment.extension
@@ -334,7 +334,7 @@ class WXMomentDetailImagesView: WXMomentDetailTextView {
     }
     override var detail: WXMomentDetail? {
         didSet {
-            multiImageView.images = detail?.images.array() ?? []
+//            multiImageView.images = (detail?.images ?? []) as! [String]
             let offset: CGFloat = detail?.images.count ?? 0 > 0 ? (detail?.text.count ?? 0 > 0 ? 7.0 : 3.0) : 0.0
             multiImageView.snp.updateConstraints { (make) in
                 make.top.equalTo(self.titleLabel.snp.bottom).offset(offset)

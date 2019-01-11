@@ -117,7 +117,7 @@ class WXInfoViewController: UITableViewController, WXInfoButtonCellDelegate {
         let group = data[indexPath.section]
         let info = group[indexPath.row]
         var cell: WXTableViewCell
-        if info.type == .button {
+        if info.type == TLInfoType.button.rawValue {
             cell = tableView.dequeueReusableCell(withIdentifier: WXInfoButtonCell.identifier) as! WXInfoButtonCell
             (cell as! WXInfoButtonCell).delegate = self
             (cell as! WXInfoButtonCell).info = info
@@ -125,12 +125,12 @@ class WXInfoViewController: UITableViewController, WXInfoButtonCellDelegate {
             cell = tableView.dequeueReusableCell(withIdentifier: WXInfoCell.identifier) as! WXTableViewCell
             (cell as! WXInfoCell).info = info
         }
-        if indexPath.row == 0 && info.type != .button {
+        if indexPath.row == 0 && info.type != TLInfoType.button.rawValue {
             cell.topLineStyle = .fill
         } else {
             cell.topLineStyle = .none
         }
-        if info.type == .button {
+        if info.type == TLInfoType.button.rawValue {
             cell.bottomLineStyle = .none
         } else if indexPath.row == group.count - 1 {
             cell.bottomLineStyle = .fill
@@ -156,7 +156,7 @@ class WXInfoViewController: UITableViewController, WXInfoButtonCellDelegate {
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let info = data[indexPath.section][indexPath.row]
-        if info.type == .button {
+        if info.type == Int32(TLInfoType.button.rawValue) {
             return 50.0
         }
         return 44.0

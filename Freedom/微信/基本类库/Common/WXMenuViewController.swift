@@ -15,7 +15,7 @@ class WXMenuCell: UITableViewCell {
             iconImageView.image = UIImage(named: menuItem.iconPath)
             titleLabel.text = menuItem.title
             midLabel.text = menuItem.subTitle
-            if menuItem.rightIconURL.isEmpty {
+            if menuItem.rightIconURL?.isEmpty ?? true {
                 rightImageView.snp.updateConstraints { (make) in
                     make.width.equalTo(0)
                 }
@@ -23,7 +23,7 @@ class WXMenuCell: UITableViewCell {
                 rightImageView.snp.updateConstraints { (make) in
                     make.height.equalTo(self.rightImageView.snp.height)
                 }
-                rightImageView.sd_setImage(with: URL(string: menuItem.rightIconURL), placeholderImage: UIImage(named: PuserLogo))
+                rightImageView.sd_setImage(with: URL(string: menuItem.rightIconURL!), placeholderImage: UIImage(named: PuserLogo))
             }
             redPointView.isHidden = !menuItem.showRightRedPoint
         }
@@ -105,7 +105,7 @@ class WXMenuViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = data[indexPath.section][indexPath.row] as WXMenuItem
-        if !(item.rightIconURL.isEmpty && item.subTitle.isEmpty) {
+        if !(item.rightIconURL?.isEmpty ?? true && item.subTitle.isEmpty) {
             item.rightIconURL = ""
             item.subTitle = ""
             item.showRightRedPoint = false

@@ -19,3 +19,4 @@
 #import <UMMobClick/MobClick.h>
 #import <CommonCrypto/CommonDigest.h>
 #import "RESideMenu.h"
+#import "WXModes.h"

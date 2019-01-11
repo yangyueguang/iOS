@@ -51,7 +51,7 @@ class WXAccountAndSafetyViewController: WXSettingViewController {
         data = helper.mineAccountAndSafetyData(byUserInfo: WXUserHelper.shared.user)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = data[indexPath.section].items[indexPath.row]
+        let item = data[indexPath.section].items[UInt(indexPath.row)]
         if (item.title == "微信安全中心") {
             let webVC = WXWebViewController()
             webVC.url = "http://weixin110.qq.com/"

@@ -56,6 +56,7 @@ class WXMyExpressionCell: UITableViewCell {
 }
 class WXMyExpressionViewController: WXSettingViewController, WXMyExpressionCellDelegate {
     var helper = WXExpressionHelper.shared
+    var emojiGroupData: [TLEmojiGroup] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "我的表情"
@@ -68,15 +69,14 @@ class WXMyExpressionViewController: WXSettingViewController, WXMyExpressionCellD
             navigationItem.leftBarButtonItem = dismissBarButton
         }
         tableView.register(WXMyExpressionCell.self, forCellReuseIdentifier: "TLMyExpressionCell")
-        data = helper.myExpressionListData()
+        emojiGroupData = helper.myExpressionListData()
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let group: WXSettingGroup = data[indexPath.section]
-        if !group.headerTitle.isEmpty {
+        let group = emojiGroupData[indexPath.section]
+        if !group.groupName.isEmpty {
             // 有标题的就是表情组
-            let emojiGroup = group.items[indexPath.row] as! TLEmojiGroup
             let cell = tableView.dequeueReusableCell(withIdentifier: "TLMyExpressionCell") as! WXMyExpressionCell
-            cell.group = emojiGroup
+            cell.group = group
             cell.delegate = self
             return cell
         } else {
@@ -97,27 +97,14 @@ class WXMyExpressionViewController: WXSettingViewController, WXMyExpressionCellD
         if canDeleteFile {
             try! FileManager.default.removeItem(atPath:  group.path)
         }
-        var row = data[0].items.index(of: (group as! WXSettingItem)) ?? -1
-        let tempItems = data[0].items
-        var tempArray = tempItems.array()
-        tempArray.removeAll(where: { element in element == group })
-        data[0].items.removeAll()
-        data[0].items.append(objectsIn: tempArray)
-        let temp = data[0]
-        if temp.items.count == 0 {
-            data.remove(at: 0)
-            tableView.deleteSections(NSIndexSet(index: 0) as IndexSet, with: .automatic)
-        } else {
-            tableView.deleteRows(at: [IndexPath(row: row, section: 0)], with: .none)
-        }
+        tableView.deleteSections(NSIndexSet(index: 0) as IndexSet, with: .automatic)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let group: WXSettingGroup = data[indexPath.section]
-        if !group.headerTitle.isEmpty {
+        let group = emojiGroupData[indexPath.section]
+        if !group.groupName.isEmpty {
             // 有标题的就是表情组
-            let emojiGroup = group.items[indexPath.row] as! TLEmojiGroup
             let detailVC = WXExpressionDetailViewController()
-            detailVC.group = emojiGroup
+            detailVC.group = group
             hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(detailVC, animated: true)
         }

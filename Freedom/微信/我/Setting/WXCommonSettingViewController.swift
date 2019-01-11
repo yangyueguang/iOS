@@ -182,7 +182,7 @@ class WXCommonSettingViewController: WXSettingViewController {
         data = helper.commonSettingData
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = data[indexPath.section].items[indexPath.row]
+        let item = data[indexPath.section].items[UInt(indexPath.row)] 
         if (item.title == "字体大小") {
             let chatFontVC = WXChatFontViewController()
             hidesBottomBarWhenPushed = true

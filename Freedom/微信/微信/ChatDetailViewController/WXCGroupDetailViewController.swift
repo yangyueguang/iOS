@@ -15,14 +15,14 @@ class WXCGroupDetailViewController: WXSettingViewController, WechatUserGroupCell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TLUserGroupCell") as! WXUserGroupCell
-            cell.users = group.users.array()
+            cell.users = group.users.array() as! [WXUser]
             cell.delegate = self
             return cell
         }
         return super.tableView(tableView, cellForRowAt: indexPath)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = data[indexPath.section].items[indexPath.row]
+        let item = data[indexPath.section].items[UInt(indexPath.row)] 
         if (item.title == "群二维码") {
             let gorupQRCodeVC = WXGroupQRCodeViewController()
             gorupQRCodeVC.group = group

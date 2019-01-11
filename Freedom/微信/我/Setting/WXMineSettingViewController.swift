@@ -38,7 +38,7 @@ class WXMineSettingViewController: WXSettingViewController {
         data = helper.mineSettingData
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = data[indexPath.section].items[indexPath.row]
+        let item = data[indexPath.section].items[UInt(indexPath.row)]
         if (item.title == "账号与安全") {
             let accountAndSafetyVC = WXAccountAndSafetyViewController()
             hidesBottomBarWhenPushed = true

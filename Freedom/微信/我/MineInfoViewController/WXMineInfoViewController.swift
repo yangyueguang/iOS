@@ -51,7 +51,7 @@ class WXMineInfoViewController: WXSettingViewController {
         data = helper.mineInfoData(byUserInfo: WXUserHelper.shared.user)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = data[indexPath.section].items[indexPath.row]
+        let item = data[indexPath.section].items[UInt(indexPath.row)]
         if (item.title == "头像") {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TLMineInfoAvatarCell") as! WXMineInfoAvatarCell
             cell.item = item
@@ -60,7 +60,7 @@ class WXMineInfoViewController: WXSettingViewController {
         return super.tableView(tableView, cellForRowAt: indexPath)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = data[indexPath.section].items[indexPath.row]
+        let item = data[indexPath.section].items[UInt(indexPath.row)]
         if (item.title == "我的二维码") {
             let myQRCodeVC = WXMyQRCodeViewController()
             hidesBottomBarWhenPushed = true
@@ -69,7 +69,7 @@ class WXMineInfoViewController: WXSettingViewController {
         self.tableView.deselectRow(at: indexPath, animated: false)
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let item = data[indexPath.section].items[indexPath.row]
+        let item = data[indexPath.section].items[UInt(indexPath.row)] 
         if (item.title == "头像") {
             return 85.0
         }

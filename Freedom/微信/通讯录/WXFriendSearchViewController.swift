@@ -39,7 +39,7 @@ class WXFriendSearchViewController: WXTableViewController, UISearchResultsUpdati
         let searchText = searchController.searchBar.text?.lowercased() ?? ""
         data.removeAll()
         for user: WXUser in friendsData {
-            if user.remarkName.contains(searchText) || user.username.contains(searchText) || user.nikeName.contains(searchText) || user.pinyin.contains(searchText) || user.pinyinInitial.contains(searchText) {
+            if user.remarkName.contains(searchText) || user.username.contains(searchText) || user.nikeName.contains(searchText) || user.nikeName.pinyin().contains(searchText) || user.nikeName.firstLetter().contains(searchText) {
                 data.append(user)
             }
         }
