@@ -44,21 +44,21 @@ protocol WXChatUserProtocol: NSObjectProtocol {
 }
 @objcMembers
 class WXMomentFrame: RLMObject {
-    var height: CGFloat = 0.0
-    var heightDetail: CGFloat = 0.0
-    var heightExtension: CGFloat = 0.0
+    dynamic var height: CGFloat = 0.0
+    dynamic var heightDetail: CGFloat = 0.0
+    dynamic var heightExtension: CGFloat = 0.0
 }
 @objcMembers
 class WXMomentDetailFrame: RLMObject {
-    var height: CGFloat = 0.0
-    var heightText: CGFloat = 0.0
-    var heightImages: CGFloat = 0.0
+    dynamic var height: CGFloat = 0.0
+    dynamic var heightText: CGFloat = 0.0
+    dynamic var heightImages: CGFloat = 0.0
 }
 @objcMembers
 class WXMomentDetail: RLMObject {
-    var text = ""
-    var images = List<String>()
-    var detailFrame: WXMomentDetailFrame!
+    dynamic var text = ""
+    dynamic var images = List<String>()
+    dynamic var detailFrame: WXMomentDetailFrame!
     func heightText() -> CGFloat {
         if text.count > 0 {
             let textHeight: CGFloat = text.boundingRect(with: CGSize(width: APPW - 70.0, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)], context: nil).size.height
@@ -97,15 +97,15 @@ class WXMomentDetail: RLMObject {
 }
 @objcMembers
 class WXMomentExtensionFrame: RLMObject {
-    var height: CGFloat = 0.0
-    var heightLiked: CGFloat = 0.0
-    var heightComments: CGFloat = 0.0
+    dynamic var height: CGFloat = 0.0
+    dynamic var heightLiked: CGFloat = 0.0
+    dynamic var heightComments: CGFloat = 0.0
 }
 @objcMembers
 class WXMomentExtension: RLMObject {
-    var likedFriends = List<WXUser>()
-    var comments = List<WXMomentComment>()
-    var extensionFrame: WXMomentExtensionFrame!
+    dynamic var likedFriends = List<WXUser>()
+    dynamic var comments = List<WXMomentComment>()
+    dynamic var extensionFrame: WXMomentExtensionFrame!
     override static func ignoredProperties() -> [String] {
         return ["extensionFrame"]
     }
@@ -139,12 +139,12 @@ class WXMomentExtension: RLMObject {
 }
 @objcMembers
 class WXMoment: RLMObject {
-    var momentID = ""
-    var user: WXUser?
-    var date = Date()
-    var detail: WXMomentDetail?
-    var `extension`: WXMomentExtension!
-    var momentFrame: WXMomentFrame!
+    dynamic var momentID = ""
+    dynamic var user: WXUser?
+    dynamic var date = Date()
+    dynamic var detail: WXMomentDetail?
+    dynamic var `extension`: WXMomentExtension!
+    dynamic var momentFrame: WXMomentFrame!
     override init() {
         super.init()
         self.extension = WXMomentExtension()
@@ -159,14 +159,14 @@ class WXMoment: RLMObject {
 }
 @objcMembers
 class WXMomentCommentFrame: RLMObject {
-    var height: CGFloat = 0.0
+    dynamic var height: CGFloat = 0.0
 }
 @objcMembers
 class WXMomentComment: RLMObject,RealmCollectionValue {
-    var user: WXUser?
-    var toUser: WXUser?
-    var content = ""
-    var commentFrame: WXMomentCommentFrame!
+    dynamic var user: WXUser?
+    dynamic var toUser: WXUser?
+    dynamic var content = ""
+    dynamic var commentFrame: WXMomentCommentFrame!
     override init() {
         super.init()
         commentFrame = WXMomentCommentFrame()
@@ -201,11 +201,11 @@ class WXAddMenuHelper: NSObject {
 }
 @objcMembers
 class WXInfo: RLMObject {
-    var type = TLInfoType.defaultType
-    var title = ""
-    var subTitle = ""
-    var subImageArray = List<String>()
-    var userInfo = List<String>()
+    dynamic var type = TLInfoType.defaultType
+    dynamic var title = ""
+    dynamic var subTitle = ""
+    dynamic var subImageArray = List<String>()
+    dynamic var userInfo = List<String>()
     var titleColor: UIColor { return UIColor.black}
     var buttonColor: UIColor { return UIColor.green}
     var buttonHLColor: UIColor { return UIColor.green}
@@ -229,11 +229,11 @@ class WXInfo: RLMObject {
 }
 @objcMembers
 class WXMenuItem: RLMObject {
-    var iconPath = ""//左侧图标路径
-    var title = ""//标题
-    var subTitle = ""//副标题
-    var rightIconURL = ""//副图片URL
-    var showRightRedPoint = false//是否显示红点
+    dynamic var iconPath = ""//左侧图标路径
+    dynamic var title = ""//标题
+    dynamic var subTitle = ""//副标题
+    dynamic var rightIconURL = ""//副图片URL
+    dynamic var showRightRedPoint = false//是否显示红点
     class func createMenu(withIconPath iconPath: String, title: String) -> WXMenuItem {
         let item = WXMenuItem()
         item.iconPath = iconPath
@@ -291,13 +291,13 @@ class WXSettingGroup: RLMObject {
 }
 @objcMembers
 public class WXSettingItem: RLMObject,RealmCollectionValue {
-    var title = ""
-    var subTitle = ""
-    var rightImagePath = ""
-    var rightImageURL = ""
-    var showDisclosureIndicator = true
-    var disableHighlight = false
-    var type = TLSettingItemType.default
+    dynamic var title = ""
+    dynamic var subTitle = ""
+    dynamic var rightImagePath = ""
+    dynamic var rightImageURL = ""
+    dynamic var showDisclosureIndicator = true
+    dynamic var disableHighlight = false
+    dynamic var type = TLSettingItemType.default
     class func createItem(withTitle title: String) -> WXSettingItem {
         let item = WXSettingItem()
         item.title = title
@@ -333,58 +333,59 @@ class WXAddMenuItem: NSObject {
 }
 @objcMembers
 class WechatContact: RLMObject {
-    var name = ""
-    var avatarPath = ""
-    var avatarURL = ""
-    var tel = ""
-    var status = TLContactStatus.friend
-    var recordID: String = ""
-    var email = ""
+    dynamic var name = ""
+    dynamic var avatarPath = ""
+    dynamic var avatarURL = ""
+    dynamic var tel = ""
+    dynamic var status = TLContactStatus.friend
+    dynamic var recordID: String = ""
+    dynamic var email = ""
     var pinyin: String { return self.name.pinyin() }
     var pinyinInitial: String { return self.name.pinyin() }
 }
 @objcMembers
 class WXUserSetting: RLMObject {
-    var userID = ""
-    var star = false
-    var dismissTimeLine = false
-    var prohibitTimeLine = false
-    var blackList = false
+    dynamic var userID = ""
+    dynamic var star = false
+    dynamic var dismissTimeLine = false
+    dynamic var prohibitTimeLine = false
+    dynamic var blackList = false
 }
 @objcMembers
 class WXUserDetail: RLMObject {
-    var userID = ""
-    var sex = ""
-    var location = ""
-    var phoneNumber = ""
-    var qqNumber = ""
-    var email = ""
-    var albumArray = List<String>()
-    var motto = ""
-    var momentsWallURL = ""/// 备注信息
-    var remarkInfo = ""/// 备注图片（本地地址）
-    var remarkImagePath = ""/// 备注图片 (URL)
-    var remarkImageURL = ""/// 标签
-    var tags = List<String>()
+    dynamic var userID = ""
+    dynamic var sex = ""
+    dynamic var location = ""
+    dynamic var phoneNumber = ""
+    dynamic var qqNumber = ""
+    dynamic var email = ""
+    dynamic var albumArray = List<String>()
+    dynamic var motto = ""
+    dynamic var momentsWallURL = ""/// 备注信息
+    dynamic var remarkInfo = ""/// 备注图片（本地地址）
+    dynamic var remarkImagePath = ""/// 备注图片 (URL)
+    dynamic var remarkImageURL = ""/// 标签
+    dynamic var tags = List<String>()
 }
 @objcMembers
 class WXUserChatSetting: RLMObject {
-    var userID = ""
-    var top = false
-    var noDisturb = false
-    var chatBGPath = ""
+    dynamic var userID = ""
+    dynamic var top = false
+    dynamic var noDisturb = false
+    dynamic var chatBGPath = ""
 }
 @objcMembers
 class WXUser: RLMObject, WXChatUserProtocol, RealmCollectionValue {
-    var userID: String = ""
-    var avatarURL: String = ""
-    var avatarPath: String = ""
-    var pinyin: String = ""
-    var pinyinInitial: String = ""
-    var detailInfo: WXUserDetail!
-    var userSetting: WXUserSetting!
-    var chatSetting: WXUserChatSetting!
-    var username: String = "" {
+    dynamic var userID: String = ""
+    dynamic var avatarURL: String = ""
+    dynamic var avatarPath: String = ""
+    dynamic var pinyin: String = ""
+    dynamic var pinyinInitial: String = ""
+    dynamic var detailInfo: WXUserDetail!
+    dynamic var userSetting: WXUserSetting!
+    dynamic var chatSetting: WXUserChatSetting!
+//    let owner = LinkingObjects(fromType: WXGroup.self, property: "users")
+    dynamic var username: String = "" {
         didSet {
             if remarkName.count == 0 && nikeName.count == 0 && self.username.count > 0 {
                 pinyin = username.pinyin()
@@ -392,7 +393,7 @@ class WXUser: RLMObject, WXChatUserProtocol, RealmCollectionValue {
             }
         }
     }
-    var nikeName: String = "" {
+    dynamic var nikeName: String = "" {
         didSet {
             if remarkName.count == 0 && self.nikeName.count > 0 {
                 pinyin = nikeName.pinyin()
@@ -400,7 +401,7 @@ class WXUser: RLMObject, WXChatUserProtocol, RealmCollectionValue {
             }
         }
     }
-    var remarkName: String = "" {
+    dynamic var remarkName: String = "" {
         didSet {
             if self.remarkName.count > 0 {
                 pinyin = remarkName.pinyin()
@@ -408,7 +409,7 @@ class WXUser: RLMObject, WXChatUserProtocol, RealmCollectionValue {
             }
         }
     }
-    var showName: String {
+    dynamic var showName: String {
         return remarkName.count > 0 ? remarkName : (nikeName.count > 0 ? nikeName : username)
     }
     override init() {
@@ -452,8 +453,8 @@ class WXUser: RLMObject, WXChatUserProtocol, RealmCollectionValue {
 }
 @objcMembers
 class WXUserGroup: RLMObject {
-    var groupName = ""
-    var users = List<WXUser>()
+    dynamic var groupName = ""
+    dynamic var users = List<WXUser>()
     var count: Int {
         return users.count
     }
@@ -476,17 +477,18 @@ class WXUserGroup: RLMObject {
     }
 }
 @objcMembers
-class WXGroup: RLMObject, WXChatUserProtocol {
+class WXGroup: RLMObject, WXChatUserProtocol, RealmCollectionValue {
     var groupAvatarPath: String {
         return self.groupID + ".png"
     }
-    var groupID = ""
-    var users = List<WXUser>()
-    var post = ""
-    var myNikeName = ""// WXUserHelper.shared.user.showName
+    dynamic var groupID = ""
+    dynamic var users = List<WXUser>()
+    dynamic var tags = List<String>()
+    dynamic var post = ""
+    dynamic var myNikeName = ""// WXUserHelper.shared.user.showName
     var pinyin: String {return groupName.pinyin()}
     var pinyinInitial: String {return groupName.pinyin()}
-    var showNameInChat = false
+    dynamic var showNameInChat = false
     var count: Int {
         return users.count
     }
@@ -507,6 +509,10 @@ class WXGroup: RLMObject, WXChatUserProtocol {
     }
     override init() {
         super.init()
+    }
+
+    static func _rlmArray() -> RLMArray<AnyObject> {
+        return RLMArray(objectClassName: "WXGroup")
     }
     func add(_ anObject: WXUser) {
         users.append(anObject)

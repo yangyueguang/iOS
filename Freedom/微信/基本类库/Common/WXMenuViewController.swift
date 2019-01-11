@@ -48,7 +48,7 @@ class WXMenuCell: UITableViewCell {
             make.width.height.equalTo(25)
         }
         titleLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self.iconImageView.snp.right).offset(15)
+            make.left.equalTo(self.iconImageView.snp.right).offset(15)
             make.right.lessThanOrEqualTo(self.contentView).offset(15)
         }
         rightImageView.snp.makeConstraints { (make) in
@@ -85,6 +85,7 @@ class WXMenuViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         tableView.register(WXMenuCell.self, forCellReuseIdentifier: "TLMenuCell")
     }
 

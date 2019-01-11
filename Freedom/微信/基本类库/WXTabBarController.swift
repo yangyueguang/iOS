@@ -19,10 +19,10 @@ class WXTabBarController: UITabBarController {
         super.viewDidLoad()
         tabBar.backgroundColor = UIColor.lightGray
         tabBar.tintColor = UIColor.green
-        setupChildController(conversationVC, imageName: "tabbar_mainframe", shImageName: "tabbar_mainframeHL", title: "消息")
-        setupChildController(friendsVC, imageName: "tabbar_contacts", shImageName: "tabbar_contactsHL", title: "通讯录")
-        setupChildController(discoverVC, imageName: "tabbar_discoverS", shImageName: "tabbar_discoverHL", title: "发现")
-        setupChildController(mineVC, imageName: "tabbar_me", shImageName: "tabbar_meHL", title: "我")
+//        setupChildController(conversationVC, imageName: "tabbar_mainframe", shImageName: "tabbar_mainframeHL", title: "微信")
+//        setupChildController(friendsVC, imageName: "tabbar_contacts", shImageName: "tabbar_contactsHL", title: "通讯录")
+//        setupChildController(discoverVC, imageName: "tabbar_discoverS", shImageName: "tabbar_discoverHL", title: "发现")
+//        setupChildController(mineVC, imageName: "tabbar_me", shImageName: "tabbar_meHL", title: "我")
         p_initThirdPartSDK() // 初始化第三方SDK
     }
     func setupChildController(_ vc: UIViewController, imageName: String, shImageName: String, title: String?) {

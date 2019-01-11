@@ -2,6 +2,7 @@
 //  WXUserHelper.swift
 //  Freedom
 import RealmSwift
+import Realm
 import Foundation
 import Contacts
 import XExtension
@@ -41,7 +42,8 @@ class WXFriendHelper: NSObject {
         friendsData = WXDBStore.shared.friendsData(byUid: WXUserHelper.shared.user.userID)
         data = [defaultGroup]
         sectionHeaders = [UITableView.indexSearch]
-        groupsData = WXDBStore.shared.groupsData(byUid: WXUserHelper.shared.user.userID)
+        let results = WXGroup.allObjects(in: realmWX)
+        groupsData = results.array().compactMap{ $0 as? WXGroup }
         p_initTestData()
     }
     func getFriendInfo(byUserID userID: String) -> WXUser? {
@@ -123,34 +125,40 @@ class WXFriendHelper: NSObject {
             jsonArray = [try! JSONSerialization.jsonObject(with: aData as Data, options: JSONSerialization.ReadingOptions.allowFragments)]
         }
         try! realmWX.transaction {
-            for dict in jsonArray {
+            for array in jsonArray {
+                let array = array as! [Any]
+                for dict in array {
                 WXUser.createOrUpdate(in: realmWX, withValue: dict)
+                }
             }
         }
-        var add = WXUser.allObjects().array()
-        var arr = WXUser.parses(jsonArray) as! [WXUser]
+        let arr = WXUser.allObjects(in: realmWX).array()
         friendsData.removeAll()
-        friendsData.append(contentsOf: arr)
-        // 更新好友数据到数据库
-
-        WXDBStore.shared.updateFriendsData(friendsData, forUid: WXUserHelper.shared.user.userID)
+        friendsData.append(contentsOf: arr as! [WXUser])
         DispatchQueue.global(qos: .default).async(execute: {
             self.p_resetFriendData()
         })
         path = Bundle.main.path(forResource: "FriendGroupList", ofType: "json")
         jsonData = try! NSData(contentsOfFile: path ?? "")
         jsonArray = [try! JSONSerialization.jsonObject(with: jsonData! as Data, options: .allowFragments)]
-        var arr1 = WXGroup.parses(jsonArray) as! [WXGroup]
-        groupsData.removeAll()
-        groupsData.append(contentsOf: arr1)
-        WXDBStore.shared.updateGroupsData(groupsData, forUid: WXUserHelper.shared.user.userID)
-        for group: WXGroup in groupsData {
-            createGroupAvatar(group, finished: { _ in
-            })
+        try! realmWX.transaction {
+            for array in jsonArray {
+                let array = array as! [Any]
+                for dict in array {
+                    let group = WXGroup.createOrUpdate(in: realmWX, withValue: dict)
+                    realmWX.addOrUpdate(group)
+                }
+            }
+        }
+        groupsData = WXGroup.allObjects(in: realmWX).array().compactMap{ $0 as? WXGroup }
+        for group in groupsData {
+//            createGroupAvatar(group, finished: { _ in
+//            })
         }
     }
     func createGroupAvatar(_ group: WXGroup, finished: @escaping (_ groupID: String) -> Void) {
-        DispatchQueue.global(qos: .default).async(execute: {
+        DispatchQueue.main.async {
+            print(group.groupID)
             let usersCount: Int = group.users.count > 9 ? 9 : group.users.count
             let viewWidth: CGFloat = 200
             let width: CGFloat = viewWidth / 3 * 0.85
@@ -201,7 +209,7 @@ class WXFriendHelper: NSObject {
                 }
                 i -= 1
             }
-        })
+        }
     }
 
     func tlCreateInfo(_ t: String?,_ st: String?) -> WXInfo {

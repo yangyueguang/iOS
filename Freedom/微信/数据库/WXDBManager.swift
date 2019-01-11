@@ -8,15 +8,6 @@ class WXDBStore: NSObject {
     static let shared = WXDBStore()
     override init() {
         super.init()
-        try! realmWX.transaction {
-            WXMessage.createOrUpdate(in: realmWX, withValue: WXMessage())
-            WXConversation.createOrUpdate(in: realmWX, withValue: WXConversation())
-            TLEmojiGroup.createOrUpdate(in: realmWX, withValue: TLEmojiGroup())
-            TLEmoji.createOrUpdate(in: realmWX, withValue: TLEmoji())
-            WXUser.createOrUpdate(in: realmWX, withValue: WXUser())
-            WXGroup.createOrUpdate(in: realmWX, withValue: WXGroup())
-            WXUserGroup.createOrUpdate(in: realmWX, withValue: WXUserGroup())
-        }
     }
 }
 //WXDBMessageStore
@@ -221,29 +212,6 @@ extension WXDBStore {
 }
 //WXDBFriendStore
 extension WXDBStore {
-    func addFriend(_ user: WXUser, forUid uid: String) {
-        try! realmWX.transaction {
-            realmWX.addOrUpdate(user)
-        }
-    }
-
-    func updateFriendsData(_ friendData: [WXUser], forUid uid: String) {
-        let oldData = friendsData(byUid: uid)
-        if oldData.count > 0 {
-            var newDataHash: [AnyHashable : Any] = [:]
-            for user: WXUser in friendData {
-                newDataHash[user.userID] = "YES"
-            }
-            for user: WXUser in oldData {
-                if newDataHash[user.userID] == nil {
-                    deleteFriend(byFid: user.userID, forUid: uid)
-                }
-            }
-        }
-        for user: WXUser in friendData {
-            addFriend(user, forUid: uid)
-        }
-    }
     func friendsData(byUid uid: String) -> [WXUser] {
         var data: [WXUser] = []
         let pre = NSPredicate(format: "userID = %@", uid)
@@ -271,43 +239,6 @@ extension WXDBStore {
             realmWX.addOrUpdate(group)
         }
     }
-
-    func updateGroupsData(_ groupData: [WXGroup], forUid uid: String) {
-        let oldData = groupsData(byUid: uid)
-        if oldData.count > 0 {
-            var newDataHash: [String : Any] = [:]
-            for group: WXGroup in groupData {
-                newDataHash[group.groupID] = "YES"
-            }
-            for group: WXGroup in oldData {
-                if newDataHash[group.groupID] == nil {
-                    deleteGroup(byGid: group.groupID, forUid: uid)
-                }
-            }
-        }
-        // 将数据插入数据库
-        for group: WXGroup in groupData {
-            add(group, forUid: uid)
-        }
-    }
-    func groupsData(byUid uid: String) -> [WXGroup] {
-        var data: [WXGroup] = []
-        let pre = NSPredicate(format: "groupID = %@", uid)
-
-        try! realmWX.transaction {
-            let results = WXGroup.objects(in: realmWX, with: pre)
-            for index in 0..<results.count {
-                let group = results.object(at: index) as! WXGroup
-                data.append(group)
-            }
-        }
-        // 获取讨论组成员
-        for group: WXGroup in data {
-            group.users.removeAll()
-            group.users.append(objectsIn: groupMembers(forUid: uid, andGid: group.groupID))
-        }
-        return data
-    }
     func deleteGroup(byGid gid: String, forUid uid: String) {
         try! realmWX.transaction {
             let pre = NSPredicate(format: "chat_userID = %@ and groupID = %@", uid, gid)
@@ -316,42 +247,10 @@ extension WXDBStore {
         }
     }
 
-    /// Group Members
-    func addGroupMember(_ user: WXUser, forUid uid: String, andGid gid: String) {
-        try! realmWX.transaction {
-            realmWX.addOrUpdate(user)
-        }
-    }
-
     func addGroupMembers(_ users: [WXUser], forUid uid: String, andGid gid: String) {
-        let oldData = groupMembers(forUid: uid, andGid: gid)
-        if oldData.count > 0 {
-            // 建立新数据的hash表，用于删除数据库中的过时数据
-            var newDataHash: [String : Any] = [:]
-            for user: WXUser in users {
-                newDataHash[user.userID] = "YES"
-            }
-            for user: WXUser in oldData {
-                if newDataHash[user.userID] == nil {
-                    deleteGroupMember(forUid: uid, gid: gid, andFid: user.userID)
-                }
-            }
-        }
-        for user: WXUser in users{
-            addGroupMember(user, forUid: uid, andGid: gid)
-        }
-    }
-    func groupMembers(forUid uid: String, andGid gid: String) -> [WXUser] {
-        var data: [WXUser] = []
-        let pre = NSPredicate(format: "userID = %@", uid)
         try! realmWX.transaction {
-            let results = WXUser.objects(in: realmWX, with: pre)
-            for index in 0..<results.count {
-                let user = results.object(at: index) as! WXUser
-                data.append(user)
-            }
+            realmWX.addOrUpdateObjects(users as NSFastEnumeration)
         }
-        return data
     }
     func deleteGroupMember(forUid uid: String, gid: String, andFid fid: String) {
         try! realmWX.transaction {

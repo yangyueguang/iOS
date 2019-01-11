@@ -78,8 +78,8 @@
                   NSDictionary *allHeaderFieldsDic = response.allHeaderFields;
                   NSString *cookieString = allHeaderFieldsDic[@"Set-Cookie"];
                   NSMutableString *finalCookie = [NSMutableString new];
-                  NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cookieString];
-                  NSLog(@"%@",data);
+//                  NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cookieString];
+//                  NSLog(@"%@",data);
                   NSArray *cookieStrings = [cookieString componentsSeparatedByString:@","];
                   for (NSString *temp in cookieStrings) {
                       NSArray *tempArr = [temp componentsSeparatedByString:@";"];

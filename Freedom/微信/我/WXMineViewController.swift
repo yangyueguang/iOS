@@ -16,18 +16,18 @@ class WXMineHeaderCell: UITableViewCell {
             usernameLabel.text = user.username.isEmpty ? "": "微信号：" + user.username
         }
     }
-    var avatarImageView: UIImageView =  {
+    lazy var avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
         avatarImageView.layer.masksToBounds = true
         avatarImageView.layer.cornerRadius = 5.0
         return avatarImageView
     }()
-    var nikenameLabel: UILabel =  {
+    lazy var nikenameLabel: UILabel = {
         let nikenameLabel = UILabel()
         nikenameLabel.font = UIFont.systemFont(ofSize: 17.0)
         return nikenameLabel
     }()
-    var usernameLabel: UILabel = {
+    lazy var usernameLabel: UILabel = {
         let usernameLabel = UILabel()
         usernameLabel.font = UIFont.systemFont(ofSize: 14.0)
         return usernameLabel
@@ -40,11 +40,11 @@ class WXMineHeaderCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         accessoryType = .disclosureIndicator
-        contentView.addSubview(avatarImageView)
-        contentView.addSubview(nikenameLabel)
-        contentView.addSubview(usernameLabel)
-        contentView.addSubview(qrImageView)
-        addMasonry()
+        contentView.addSubview(self.avatarImageView)
+        contentView.addSubview(self.nikenameLabel)
+        contentView.addSubview(self.usernameLabel)
+        contentView.addSubview(self.qrImageView)
+//        addMasonry()
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
