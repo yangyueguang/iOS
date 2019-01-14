@@ -6,34 +6,16 @@
 //  Copyright © 2018 Super. All rights reserved.
 //
 import UIKit
-import AVFoundation
-import SDWebImage
 import Realm
+import Alamofire
+import Kingfisher
+import AVFoundation
 import UserNotifications
 import IQKeyboardManagerSwift
-//#import <ShareSDK/ShareSDK.h>
-//＝＝＝＝＝＝＝＝＝＝以下是各个平台SDK的头文件，根据需要继承的平台添加＝＝＝
-//腾讯开放平台（对应QQ和QQ空间）SDK头文件
-//#import <TencentOpenAPI/TencentOAuth.h>
-//#import <TencentOpenAPI/QQApiInterface.h>
-//以下是腾讯SDK的依赖库：
-//libsqlite3.dylib
-//微信SDK头文件
-//#import "WXApi.h"
-//新浪微博SDK头文件
-//#import "WeiboSDK.h"
-//新浪微博SDK需要在项目Build Settings中的Other Linker Flags添加"-ObjC"
-//人人SDK头文件
-//#import <RennSDK/RennSDK.h>
-//支付宝SDK
-//#import "APOpenAPI.h"
-//易信SDK头文件
-//#import "YXApi.h"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterDelegate{
-    var window: UIWindow?
+    var window: UIWindow? = UIApplication.shared.keyWindow
     var taskID :UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier(rawValue: 0)
-
     var runloopRef: CFRunLoop?
     var audioTimer: Timer?
     var queue: DispatchQueue?
@@ -101,10 +83,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         }
         RLMRealmConfiguration.setDefault(config)
         RLMRealm.default()
-        configRadialView()
     }
     func firstConfigWXRealm() {
-        let path = "\(FileManager.documentsPath())/User/2829969299/"
+        let path = "\(FileManager.documentsPath())/User/"
         if !FileManager.default.fileExists(atPath: path) {
             try? FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
         }
@@ -113,36 +94,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         realmWX = try! RLMRealm(configuration: config)
     }
     func firstConfigAllAPPIds(){
-        IQKeyboardManager.shared.enable = true
         let userDefault = UserDefaults.standard
-        let isNotFirst = false//userDefault.bool(forKey: "first")
+        let isNotFirst = userDefault.bool(forKey: "first")
+        var allAPPids = [String]()
         if !isNotFirst {
-            var allAPPids = [String]();
-                userDefault.set(true, forKey: "first")
-                userDefault.synchronize()
-//                let path = Bundle.main.path(forResource: "app", ofType: "plist")
-//                let allAPPDict :[String:String] = NSDictionary(contentsOfFile: path!) as! [String : String]
-//                for (key,value) in allAPPDict{
-//                    autoreleasepool {
-//                        let application = UIApplication.shared
-//                        let url = URL(string:value)
-//                        if let urla = url{
-//                            DispatchQueue.main.async {
-//                                if application.canOpenURL(urla){
-//                                    allAPPids.append(key)
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
+            let path = Bundle.main.path(forResource: "app", ofType: "plist")
+            let allAPPDict :[String:String] = NSDictionary(contentsOfFile: path!) as! [String : String]
+            for (key,value) in allAPPDict{
+                autoreleasepool {
+                    let application = UIApplication.shared
+                    let url = URL(string:value)
+                    if let urla = url{
+                        DispatchQueue.main.async {
+                            if application.canOpenURL(urla){
+                                allAPPids.append(key)
+                            }
+                        }
+                    }
+                }
+            }
             print(allAPPids)
-            allAPPids = ["472208016", "481294264", "512166629", "547166701", "444934666", "310633997", "461703208", "398453262", "333206289", "577130046", "284882215", "525463029", "454638411", "364787363", "518966501", "1110145109", "414478124", "364709193", "414706506", "932723216", "466122094", "376101648", "861891048", "414245413"]
-            self.addInstalledAPPS(allAPPids)
-            //            let real = try! RLMRealm()
-            //            real.addObjects([RLMObject()])
+            userDefault.set(true, forKey: "first")
+            userDefault.set(allAPPids, forKey: "apps")
+            userDefault.synchronize()
+        } else {
+            allAPPids = userDefault.array(forKey: "apps") as! [String]
         }
+        self.addInstalledAPPS(allAPPids)
     }
-    func addInstalledAPPS(_ allAPPids:[String]){
+    private func addInstalledAPPS(_ allAPPids:[String]){
         let appMan = AppManager.sharedInstance()
         appMan?.gotiTunesInfo(withTrackIds: allAPPids, completion: { apps in
             DispatchQueue.main.async {
@@ -163,7 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
             }
         })
     }
-    func addMyapps(){
+    private func addMyapps(){
         let myAppsPath = Bundle.main.path(forResource: "MyAPP", ofType: "plist")
         let myApps = NSArray(contentsOfFile: myAppsPath!)
         for (_ , dict) in myApps!.enumerated(){
@@ -199,58 +179,68 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     }
     func firstInitUMeng(){
         MobClick.setCrashReportEnabled(false)
-        // 如果不需要捕捉异常，注释掉此行
         MobClick.setLogEnabled(true)
-        // 打开友盟sdk调试，注意Release发布时需要注释掉此行,减少io消耗
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         MobClick.setAppVersion(version!)
         let umconfig = UMAnalyticsConfig.sharedInstance()
         umconfig?.appKey = UMENG_APPKEY
         umconfig?.ePolicy = REALTIME
         MobClick.start(withConfigure: umconfig!)
-        /**推送说明：
-         我们在知识库里还有推送调试页面加了很多说明，当遇到推送问题时可以去知识库里搜索还有查看推送测试页面的说明。
-         首先必须设置deviceToken，可以搜索本文件关键字“推送处理”。模拟器是无法获取devicetoken，也就没有推送功能。
-         当使用"开发／测试环境"的appkey测试推送时，必须用Development的证书打包，并且在后台上传"开发／测试环境"的推送证书，证书必须是development的。
-         当使用"生产／线上环境"的appkey测试推送时，必须用Distribution的证书打包，并且在后台上传"生产／线上环境"的推送证书，证书必须是distribution的。*/
     }
     func firstInitLaunching(){
-        launchView.frame = (self.window?.bounds)!
-        launchView.image = UIImage(named:"LaunchImage-700-568h")
-        launchView.alpha = 1;
-        self.window?.addSubview(launchView)
-        self.window?.bringSubviewToFront(launchView)
-        UIView.animate(withDuration: 1, delay: 1, options: UIView.AnimationOptions.transitionCurlDown, animations: {
+        DispatchQueue.main.async {
+        self.launchView.frame = (self.window?.bounds)!
+        self.launchView.image = UIImage(named:"launchImage")
+        XNetKit.luanch({[weak self] (resource) in
+            guard let `self` = self else { return }
+            self.launchView.kf.setImage(with: URL(string: resource))
+        })
+        self.launchView.alpha = 1;
+        self.window?.addSubview(self.launchView)
+        self.window?.bringSubviewToFront(self.launchView)
+        UIView.animate(withDuration: 3, delay: 0, options: UIView.AnimationOptions.transitionCurlDown, animations: {
             self.launchView.frame = CGRect(x: -80, y: -140, width: (self.window?.bounds.size.width)! + 160, height: (self.window?.bounds.size.height)! + 320)
             self.launchView.alpha = 0
         }) { (finished) in
             self.launchView.removeFromSuperview()
         }
+        }
+    }
+    func firstInitNetKit() {
+        let requestConfig = XNetKit.kit.config
+        requestConfig.scheme = "https://"
+        requestConfig.domain = "www.easy-mock.com"
+        requestConfig.port = ""
+        requestConfig.baseURL = "mock/5c1898ad37831a75ccf47a8f/api"
+        requestConfig.method = HTTPMethod.post
+        let responseConfig = APIResponse.APIResponseConfiguration.shared
+        responseConfig.codeKey = "code"
+        responseConfig.successCode = "200"
+        responseConfig.dataKey = "data"
+        responseConfig.messageKey = "message"
     }
     func firstInit(){
+        firstInitNetKit()
         firstInitLaunching()
         firstConfigRealm()
         firstConfigWXRealm()
         firstInitUMeng()
+        firstConfigAllAPPIds()
+        configRadialView()
+        RCDMainTabBarViewController.shareInstance().firstInitRongCloud()
+    }
+    //FIXME:应用程序启动
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.firstInit()
+        IQKeyboardManager.shared.enable = true
         let backButtonImage = UIImage(named: "u_cell_left")?.withRenderingMode(.alwaysTemplate)
         UINavigationBar.appearance().backIndicatorImage = backButtonImage
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButtonImage
         if Float(UIDevice.current.systemVersion) ?? 0.0 >= 8.0 {
             UINavigationBar.appearance().isTranslucent = false
         }
-        DispatchQueue.global().async {
-            self.firstConfigAllAPPIds()
-        }
-        RCDMainTabBarViewController.shareInstance().firstInitRongCloud()
-    }
-    //FIXME:应用程序启动
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        self.firstInit()
-        //启动页停留1秒钟。
         Thread.sleep(forTimeInterval: 1.0)
-        //为了在启动页面不显示statusBar，所以在工程设置里面把statusBar隐藏了，在启动页面过后，显示statusBar。
         application.isStatusBarHidden = false
-        /*** 推送处理1*/
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]){ (granted, error) in
             if granted {
                 DispatchQueue.main.async {
@@ -258,12 +248,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
                 }
             }
         }
-        //统计推送打开率1
         RCIMClient.shared().recordLaunchOptionsEvent(launchOptions)
-        //获取融云推送服务扩展字段1
         let pushServiceData = RCIMClient.shared().getPushExtra(fromLaunchOptions: launchOptions)
         if let pushDict = pushServiceData {
-            print("该启动事件包含来自融云的推送服务")
             for (key,value) in pushDict {
                 print("\(key)\(value)")
             }
@@ -287,12 +274,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     }
     ///收到远程通知
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        //统计推送打开率2
         RCIMClient.shared().recordRemoteNotificationEvent(userInfo)
-        //获取融云推送服务扩展字段2
         let pushServiceData = RCIMClient.shared().getPushExtra(fromRemoteNotification: userInfo)
         if let pushDict = pushServiceData {
-            print("该远程推送包含来自融云的推送服务")
             for (key,value) in pushDict {
                 print("key = \(key), value = \(value)")
             }
@@ -303,9 +287,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
     }
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        //统计推送打开率3
 //        RCIMClient.shared().recordLocalNotificationEvent(response.notification)
-        //震动
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         AudioServicesPlaySystemSound(1007)
     }
@@ -341,11 +323,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     }
     ///进入前台
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
     }
     ///闪退
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
     }
     ///关于iWatch
     func application(_ application: UIApplication, handleWatchKitExtensionRequest userInfo: [AnyHashable : Any]?, reply: @escaping ([AnyHashable : Any]?) -> Void) {
@@ -353,12 +335,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         let handler = RCWKRequestHandler(helperWithUserInfo: userInfo, provider:delegateVC) { (dict) in
         }
         if !(handler!.handleWatchKitRequest()) {
-            print("can not handled! app should handle it here not handled the request: \(String(describing: userInfo))");
+            print(String(describing: userInfo));
         }
     }
     // RedPacket_FTR //如果您使用了红包等融云的第三方扩展，请实现下面两个openURL方法
     ///打开其他程序
-    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+    private func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         return true
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -380,7 +362,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     }
     ///收到内存警告
     func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
-//        SDWebImageManager.shared()?.imageCache.clearMemory()
+
     }
     ///结束
     deinit {
@@ -407,12 +389,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         queue?.async(execute: {
             self.audioTimer = Timer(fireAt: Date(), interval: 1000.0, target: self, selector: #selector(self.loopDoInBackground), userInfo: nil, repeats: true)
             self.runloopRef = CFRunLoopGetCurrent()
-
             RunLoop.current.add(self.audioTimer!, forMode: RunLoop.Mode.default)
             CFRunLoopRun()
         })
     }
-
     @objc func loopDoInBackground() {
         print("aaa")
     }
@@ -431,83 +411,6 @@ extension NSURLRequest {
         return true
     }
 }
-
-/*
- -(void)initAPP {
- NSError* error;
- [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
- [[AVAudioSession sharedInstance] setActive:YES error:nil];
- [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
- [[APIManager instance]checkAndClearOutTimePackage];
- NSDictionary *appinfo = [[NSBundle mainBundle] infoDictionary];
- NSString *appVersion = appinfo[@"CFBundleVersion"];
- uint64_t version = [appVersion longLongValue];
- RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
- config.schemaVersion = version;
- config.migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
- if (oldSchemaVersion < 1) {
- // 什么都不要做！Realm 会自行检测新增和需要移除的属性，然后自动更新硬盘上的数据库架构
- }
- };
- [RLMRealmConfiguration setDefaultConfiguration:config];
- [RLMRealm defaultRealm];
- }
-
- +(UIBackgroundTaskIdentifier)backgroundPlayerID:(UIBackgroundTaskIdentifier)backTaskId{
- //设置并激活音频会话类别
- AVAudioSession *session=[AVAudioSession sharedInstance];
- [session setCategory:AVAudioSessionCategoryPlayback error:nil];
- [session setActive:YES error:nil];
- //允许应用程序接收远程控制
- [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
- //设置后台任务ID
- UIBackgroundTaskIdentifier newTaskId=UIBackgroundTaskInvalid;
- newTaskId=[[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
- if(newTaskId!=UIBackgroundTaskInvalid&&backTaskId!=UIBackgroundTaskInvalid){
- [[UIApplication sharedApplication] endBackgroundTask:backTaskId];
- }
- return newTaskId;
- }
-
-
- - (void)applicationWillResignActive:(UIApplication *)application {
- //    [BMKMapView willBackGround];//当应用即将后台时调用，停止一切调用opengl相关的操作
- DLog(@"\n\n倔强的打出一行字告诉你我要挂起了。。\n\n");
- //开启后台处理多媒体事件
- [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
- AVAudioSession *session=[AVAudioSession sharedInstance];
- [session setActive:YES error:nil];
- //后台播放
- [session setCategory:AVAudioSessionCategoryPlayback error:nil];
- //这样做，可以在按home键进入后台后 ，播放一段时间，几分钟吧。但是不能持续播放网络歌曲，若需要持续播放网络歌曲，还需要申请后台任务id，具体做法是：
- UIBackgroundTaskIdentifier *_bgTaskId=[AppDelegate backgroundPlayerID:UIBackgroundTaskInvalid];
- //其中的_bgTaskId是后台任务UIBackgroundTaskIdentifier _bgTaskId;
- //让app支持接受远程控制事件
- //    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
- }
-
- - (void)applicationDidEnterBackground:(UIApplication *)application {
-
- //允许后台播放音乐
- [application beginBackgroundTaskWithExpirationHandler:nil];
-
- application.applicationIconBadgeNumber = 0;
- }
-
- - (void)applicationWillEnterForeground:(UIApplication *)application {
- application.applicationIconBadgeNumber = 0;
- }
-
- - (void)applicationDidBecomeActive:(UIApplication *)application {
-
- //    [BMKMapView didForeGround];//当应用恢复前台状态时调用，回复地图的渲染和opengl相关的操作
- }
-
- - (void)applicationWillTerminate:(UIApplication *)application {
- NSLog(@"applicationWillTerminate");
- [[UIApplication sharedApplication] unregisterForRemoteNotifications];
- }
-*/
 //    常见变换类型（type）
 //    kCATransitionFade//淡出
 //    kCATransitionMoveIn//覆盖原图

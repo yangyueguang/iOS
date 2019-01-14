@@ -184,8 +184,8 @@ class FirstViewController: BaseViewController,UICollectionViewDataSource, UIColl
         homecollectionView.dataSource = self
         homecollectionView.backgroundColor = UIColor(230, 230, 230, 1)
         //下雪 每隔1秒下一次
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.snowAnimat(_:)), userInfo: nil, repeats: true)
-        timer?.fireDate = Date(timeIntervalSinceNow: 200)
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.snowAnimat(_:)), userInfo: nil, repeats: true)
+        timer?.fireDate = Date(timeIntervalSinceNow: 1000)
         switchExample()
     }
     // MARK: 设置与收藏的跳转

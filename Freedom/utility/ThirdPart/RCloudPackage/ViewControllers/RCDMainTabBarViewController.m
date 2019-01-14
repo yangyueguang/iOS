@@ -137,6 +137,7 @@
         [rc connectWithToken:token success:^(NSString *userId) {
             [AFHttpTool loginWithPhone:userName password:password region:@"86" success:^(id response) {
                 if ([response[@"code"] intValue] == 200) {
+                    [self loginSuccess:userName userId:userId token:token password:password];
                     [RCDHTTPTOOL getUserInfoByUserID:userId completion:^(RCUserInfo *user) {
                         [defaults setObject:user.portraitUri forKey:@"userPortraitUri"];
                         [defaults setObject:user.name forKey:@"userNickName"];
@@ -304,6 +305,11 @@
     [defaults setObject:token forKey:@"userToken"];
     [defaults setObject:userId forKey:@"userId"];
     [defaults synchronize];
+    User *user = [User shared];
+    user.name = userName;
+    user.pwd = password;
+    user.token = token;
+    user.Id = userId;
     //保存“发现”的信息
     [RCDHTTPTOOL getSquareInfoCompletion:^(NSMutableArray *result) {
         [defaults setObject:result forKey:@"SquareInfoList"];
@@ -314,6 +320,8 @@
             NSDictionary *result = response[@"result"];
             NSString *nickname = result[@"nickname"];
             NSString *portraitUri = result[@"portraitUri"];
+            user.realName = nickname;
+            user.logo = portraitUri;
             RCUserInfo *user = [[RCUserInfo alloc] initWithUserId:userId name:nickname portrait:portraitUri];
             if (!user.portraitUri || user.portraitUri.length <= 0) {
                 user.portraitUri = [FreedomTools defaultUserPortrait:user];
@@ -330,7 +338,9 @@
     [[RCDRCIMDataSource shareInstance] syncGroups];
     [[RCDRCIMDataSource shareInstance] syncFriendList:userId complete:^(NSMutableArray *friends){}];
     dispatch_async(dispatch_get_main_queue(), ^{
-        [UIApplication sharedApplication].delegate.window.rootViewController = [RCDMainTabBarViewController shareInstance];
+//        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        UIViewController *vc = [story instantiateViewControllerWithIdentifier:@"FirstViewController"];
+//        [UIApplication sharedApplication].delegate.window.rootViewController = vc;//[RCDMainTabBarViewController shareInstance];
     });
 }
 -(void)gotoLoginViewAndDisplayReasonInfo:(NSString *)reason{

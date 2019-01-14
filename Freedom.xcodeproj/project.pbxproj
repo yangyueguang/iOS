@@ -1098,6 +1098,7 @@
 		DF0489FC21D28BA40030C30B /* MotionAnimationPropertyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489F521D28BA40030C30B /* MotionAnimationPropertyState.swift */; };
 		DF0489FD21D28BA40030C30B /* ValueAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489F621D28BA40030C30B /* ValueAnimation.swift */; };
 		DF048A0421D29A810030C30B /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0489FE21D29A800030C30B /* RESideMenu.m */; };
+		DF09AB0C21EC305D00D8EC51 /* FreedomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF09AB0B21EC305D00D8EC51 /* FreedomAPI.swift */; };
 		DF0E966221CBAC7D009682CC /* WXAddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E966121CBAC7D009682CC /* WXAddFriendViewController.swift */; };
 		DF0E966421CBAC83009682CC /* WXContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E966321CBAC83009682CC /* WXContactsViewController.swift */; };
 		DF0E966621CBAC89009682CC /* WXFriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E966521CBAC89009682CC /* WXFriendDetailViewController.swift */; };
@@ -2457,6 +2458,7 @@
 		DF0489F621D28BA40030C30B /* ValueAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueAnimation.swift; sourceTree = "<group>"; };
 		DF0489FE21D29A800030C30B /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
 		DF0489FF21D29A800030C30B /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		DF09AB0B21EC305D00D8EC51 /* FreedomAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomAPI.swift; sourceTree = "<group>"; };
 		DF0E966121CBAC7D009682CC /* WXAddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXAddFriendViewController.swift; sourceTree = "<group>"; };
 		DF0E966321CBAC83009682CC /* WXContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXContactsViewController.swift; sourceTree = "<group>"; };
 		DF0E966521CBAC89009682CC /* WXFriendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXFriendDetailViewController.swift; sourceTree = "<group>"; };
@@ -3688,6 +3690,7 @@
 				71250EC52091C0F20093B59B /* FreedomTools.m */,
 				713728CE20AE9FC500A3227A /* FoundationSwift.swift */,
 				DF4C6FC721CC787700A54339 /* FoundationEnum.swift */,
+				DF09AB0B21EC305D00D8EC51 /* FreedomAPI.swift */,
 				DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */,
 				BF58BA2F20EDE837002CB4EE /* FreedomToolSwift.swift */,
 				DFA5BF3521B6A74D00CB9223 /* User.swift */,
@@ -6654,6 +6657,7 @@
 				DF6B520621CA804200460949 /* WXWebViewController.swift in Sources */,
 				BFC6D94120E4AC0B00F17378 /* SinaComposeViewController.swift in Sources */,
 				7115A5CC20AAD382000D0B96 /* PersonalPhoneViewController.swift in Sources */,
+				DF09AB0C21EC305D00D8EC51 /* FreedomAPI.swift in Sources */,
 				DF6B51FE21CA802500460949 /* WXQRCodeViewController.swift in Sources */,
 				713EE31220ADA0A40085B65D /* IqiyiMineViewController.swift in Sources */,
 				DF7B408A21AC020A00E3D975 /* AwemeListCellViews.swift in Sources */,

@@ -8,66 +8,155 @@
 //
 
 import Foundation
-//FIXME: 登         录         注         册         *******************
-public let SENSMCODE          =   "user/sendMcode"//发送验证码
-public let REGIST             =   "user/regist"//用户注册
-public let LOGIN              =   "user/login"//登录
-public let OTHWELOGIN         =   "user/tposlogin"//第三方登录
-//FIXME: 个         人         资         料         *******************/
-public let GETPENSONSOUCE     =   "info/getuserinfo"//获取个人质料
-public let EDITEMYSOUCE       =   "info/edtuserinfo"//编辑个人资料
-public let CHANGELONGPWS      =   "info/changepwd"//修改密码
-public let SUBMITCHANGW       =   "info/submitChange"//修改修改交易密码
-public let FINSPSW            =   "user/findpwd"//找回密码
-public let CHANGEBANGDING     =   "info/changemobile"//修改绑定手机
-public let GETBanner          =   "http://www.isolar88.com/app/information/getbanner"//设置banner
-public let EDITEICON          =   "info/editphoto"//编辑头像
-public let FreedomUpdate   =   "version/index"//版本更新
-public let APPStoreUpdate     =   "https://itunes.apple.com/us/app/isolar-guang-fu-bao/id1068086290?l=zh&ls=1&mt=8"//AppStore版本更新网页
-/************************************************************************************************************************************************************************************/
-//FIXME:     大         众         点         评         *******************/
-//http://developer.dianping.com/app/tutorial
-//FIXME:              支         付         宝              *******************/
-//https://doc.open.alipay.com
-//FIXME:           个         人         简         历           *******************/
-public let ResumeURL =  "http://u1610639.jisuapp.cn/index.php?r=pc/Index/InvitationPreview&iswhere=2&id=2387216"//个人简历url
-public let WeChatApplet1 =  "http://u1610639.jisuapp.cn/app?_app_id=FPNRLS1lOl"//我的微信小程序1
-public let WeChatApplet2 =  "http://u1610639.jisuapp.cn/app?_app_id=BAAAFJfnF3"//我的微信小程序2
-public let MicroPage1 =  "http://d.eqxiu.com/s/2laMmsfr?userKey=148636102478720979"//我的微页1与命运有约
-public let MicroPage2 =  "http://www.rabbitpre.com/m/v6eyraMYd?lc=2&sui=VgLIRGWS#from=share"//我的微页2生日快乐
-public let MicroPage3 =  "http://www.rabbitpre.com/m/qUviFRIRP?lc=1&sui=Z9lylffK#from=share"//我的微页3超级说服力
-//FIXME:           个         人         应         用           *******************/
-//FIXME:           自         由         主         义           *******************/
-//FIXME:                   淘         宝                    *******************/
-//http://open.taobao.com
-public let TBYiliaoGetuserJson     =   "http://yiliao.hupan.com/api/user/getUser.json?_input_charset=utf-8&"//
-public let TBTejia                 =   "https://tejia.taobao.com/"//天天特价
-//FIXME:                  微          信                   *******************/
-//https://open.weixin.qq.com
-public let WXBusinessPlist    =   "http://sqimg.qq.com/QQHDs/MacQQ/Release/resources/plist/business.plist"//下载business.plist上面有欢迎界面图片和访问时间。
-public let WXBusinessPlist1   =   "http://sqimg.qq.com/QQHDs/MacQQ/Release/PropertyList_v1.1.plist"//下载plist文件，上面有一些配置信息在business.plist文件之前访问的。
-public let WXWqsjd            =   "http://wqs.jd.com/portal/wx/portal_indexV4.shtml?PTAG=17007.13.1&ptype=1"//购物
-//FIXME:                  微          博                   *******************/
-//http://open.weibo.com
-public let WBLogin            =   "http://weibo.com/login.php"//
-public let WBMovie            =   "http://movie.weibo.com/"//
-//FIXME:         聚         合         数         据           *******************/
-//http://open.juhe.cn
-public let JHMorecpagequestion =  "http://m.juhe.cn/qa/more/cpage/2/question/"//
-public let JHNewsmorecpage    =   "http://m.juhe.cn/news/more/cpage/2"//
-public let JHContact          =   "http://m.juhe.cn/contact"//
-public let JHLogin            =   "http://m.juhe.cn/login"//
-public let JHLoginverify      =   "http://m.juhe.cn/login/verify"//
-public let JHEmpty            =   "http://m.juhe.cn/empty"//
-public let JHCN               =   "https://www.juhe.cn/"//
-public let JHCodeCN           =   "https://code.juhe.cn"//
-public let JHData             =   "http://m.juhe.cn/data"//首页
-public let JHQA               =   "http://m.juhe.cn/qa"//问题
-public let JHDocsapiid        =   "https://www.juhe.cn/docs/api/id/235"//API数据代码
-public let JH                 =   "http://m.juhe.cn/"//数据接口
-public let JHNews             =   "http://m.juhe.cn/news"//聚合动态
+//FIXME: Freedom by Super
+public struct API {
+    ///通用
+    enum global: String {
+        case comment = "global/comment"//评论列表
+        case citys = "global/citys"//城市列表
+    }
+    ///自由主义
+    enum freedom: String {
+        case luanch = "luanch"//启动
+        case applications = "applications"//应用列表
+        case profile = "profile"//用户信息
+        case login = "login"//登陆
+        case register = "register"//注册
+        case sendMcode = "sendMcode"//发送验证码
+    }
+    ///微信
+    enum wechat: String {
+        case profile = "wechat/profile"//微信/用户信息
+        case pocket = "wechat/pocket"//钱包
+        case circleFriends = "wechat/circleFriends"//朋友圈
+        case friends = "wechat/friends"//通讯录
+        case messageDetailList = "wechat/messageDetailList"//交流的消息列表
+        case message = "wechat/message"//微信消息列表
+    }
+    /// 支付宝
+    enum alipay: String {
+        case me = "alipay/me"//我的
+        case message = "alipay/message"//朋友页面的信息列表
+        case friends = "alipay/friends"//朋友
+        case mouth = "alipay/mouth"//口碑
+        case wealth = "alipay/wealth"//财富
+        case home = "alipay/home"//首页
+    }
+    /// 爱奇艺
+    enum iqiyi: String {
+        case bubble = "iqiyi/bubble"//泡泡
+        case me = "iqiyi/me"//我的
+        case vip = "iqiyi/vip"//VIP会员
+        case hot = "iqiyi/hot"//热点
+        case home = "iqiyi/home"//首页
+    }
+    ///抖音
+    enum douyin: String {
+        case me = "douyin/me"//我的
+        case message = "douyin/message"//消息
+        case notice = "douyin/notice"//关注
+        case home = "douyin/home"//首页
+    }
+    ///淘宝
+    enum taobao: String {
+        case me = "taobao/me"//我的
+        case shopCar = "taobao/shopCar"//购物车
+        case message = "taobao/message"//消息
+        case mini = "taobao/mini"//微淘
+        case home = "taobao/home"//首页
+    }
+    ///新浪微博
+    enum sina: String {
+        case me = "sina/me"//新浪微博/我的
+        case find = "sina/find"//新浪微博/发现
+        case message = "sina/message"//新浪微博/消息列表
+        case sinadetail = "sina/sinadetail"//微博详情
+        case homeList = "sina/homeList"//新浪微博/首页微博列表
+    }
+    ///大众点评
+    enum people: String {
+        case me = "people/me"//我的
+        case discussDetail = "people/discussDetail"//评论详情
+        case noticeList = "people/noticeList"//关注列表
+        case suggest = "people/suggest"//攻略列表
+        case detail = "people/detail"//信息详情
+        case messageList = "people/messageList"//分类标题下的信息列表
+        case topList = "people/topList"//首页顶部功能键及分类列表
+    }
+    ///今日头条
+    enum topic: String {
+        case detail = "topic/detail"//新闻详情
+        case me = "topic/me"//个人中心
+        case list = "topic/list"//新闻列表
+    }
+    ///微能量
+    enum energy: String {
+        case connect = "microEnergy/connect"//联系我们
+        case superMarket = "microEnergy/superMarket"//精品人人店
+        case homeList = "microEnergy/homeList"//首页功能列表
+        case dynamic = "microEnergy/dynamic"//最新动态
+        case detail = "microEnergy/detail"//公司案例详情
+        case industryList = "microEnergy/industryList"//经典行业案例列表
+        case demoList = "microEnergy/demoList"//行业内企业案例列表
+    }
+    ///个人应用
+    enum apply: String {
+        case companyDetail = "personalApply/companyDetail"//公司详情
+        case companyList = "personalApply/companyList"//企业列表
+        case industryList = "personalApply/industryList"//行业列表
+    }
+    ///书籍收藏
+    enum books: String {
+        case books = "freedom/books"//个性特色自由主义
+        case list = "books/list"//列表
+    }
+    enum database: String {
+        case database = "database"//我的数据库
+    }
+    ///个人简历
+    enum resume: String {
+        case theory = "resume/theory"//理论体系
+        case business = "resume/business"//事业合作
+        case home = "resume/home"//首页
+    }
+    ///聚合数据
+    enum juhe: String {
+        case dynamics = "juhe/dynamics"//动态列表
+        case apis = "juhe/apis"//数据接口
+        case questions = "juhe/questions"//常见问题
+        case connect = "juhe/connect"//联系我们
+    }
+    ///酷狗
+    enum kugou: String {
+        case sing = "kugou/sing"//唱歌列表
+        case look = "kugou/look"//看的列表
+        case listen = "kugou/listen"//听歌列表
+    }
+}
+enum WebURL: String {
+    case TBTejia = "https://tejia.taobao.com/"//淘宝天天特价
+    case WXWqsjd = "http://wqs.jd.com/portal/wx/portal_indexV4.shtml?PTAG=17007.13.1&ptype=1"//微信/发现/购物
+    case WBLogin = "http://weibo.com/login.php"//微博/登陆
+    case WBMovie = "http://movie.weibo.com/"//微博/电影
+
+    //FIXME:聚合数据*******************/
+    case JHLogin =   "http://m.juhe.cn/login"//
+    case JHCN =   "https://www.juhe.cn/"//
+    case JHCodeCN =   "https://code.juhe.cn"//
+    case JHData =   "http://m.juhe.cn/data"//首页
+    case JHQA =   "http://m.juhe.cn/qa"//问题
+    case JHDocsapiid =   "https://www.juhe.cn/docs/api/id/235"//API数据代码
+    case JH =   "http://m.juhe.cn/"//数据接口
+    case JHNews =   "http://m.juhe.cn/news"//聚合动态
+
+
+
+    var url: URL? {
+        return URL(string: self.rawValue)
+    }
+}
 //FIXME:                  酷          狗                   *******************/酷 狗 图片size一律为600
-//http://open.10155.com/cms
+
 public let RECOMMEND          =   "http://iosservice.kugou.com/api/v3/recommend/index?plat=2&showtype=1"//乐库推荐订阅
 public let RANKTOTAL          =   "http://iosservice.kugou.com/api/v3/rank/list"//排行总界面各种排行榜列表
 public let BANNER             =   "http://ioscdn.kugou.com/api/v3/banner/index?plat=2&count=5"//歌单总界面横幅图片
@@ -217,7 +306,6 @@ public let QYSearchm =  "http://search.video.qiyi.com/m?if=defaultQuery&is_qipu_
 public let TTEnergyURL    =   "http://api.nengapp.com/v2/info/ios/news/special?tagId=%@"//能见新闻从12到44
 //首页
 public let TTMonV1Settings =  "http://mon.snssdk.com/monitor/appmonitor/v1/settings?iid=5464891932&os_version=9.3.5&aid=13&device_id=22794530286&app_name=news_article&channel=App%20Store&device_platform=iphone&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E&live_sdk_version=1.3.0&vid=C0136D0B-9B89-4D42-9AE4-78F96CDC2AFF&openudid=29da7256a52d98281947cb96a6357791c40289b9&device_type=iPhone%206&idfv=C0136D0B-9B89-4D42-9AE4-78F96CDC2AFF&ssmix=a&version_code=5.7.7&resolution=750*1334&ab_client=a1,b1,b7,f2,f7,e1&ac=WIFI&encrypt=close"//域名列表
-public let TTMonSettins   =   "http://mon.snssdk.com/monitor/settings/?version_code=5.7.7&app_name=news_article&vid=C0136D0B-9B89-4D42-9AE4-78F96CDC2AFF&device_id=22794530286&channel=App%20Store&resolution=750*1334&aid=13&ab_version=72368,82650,79288&ab_feature=z1&ab_group=z1&openudid=29da7256a52d98281947cb96a6357791c40289b9&live_sdk_version=1.3.0&idfv=C0136D0B-9B89-4D42-9AE4-78F96CDC2AFF&ac=WIFI&os_version=9.3.5&ssmix=a&device_platform=iphone&iid=5464891932&ab_client=a1,b1,b7,f2,f7,e1&device_type=iPhone%206&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E"//新闻库
 public let TTLogApplogconfig =  "http://log.snssdk.com/service/2/app_log_config/?iid=5464891932&ac=WIFI&ssmix=a&aid=13&app_name=news_article&channel=App%2520Store&device_platform=iphone&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E&os_version=9.3.5&vid=C0136D0B-9B89-4D42-9AE4-78F96CDC2AFF&openudid=29da7256a52d98281947cb96a6357791c40289b9&device_type=iPhone%25206&ab_feature=z1&ab_group=z1&device_id=22794530286&ab_version=72368,82650,79288&resolution=750*1334&ab_client=a1,b1,b7,f2,f7,e1&version_code=5.7.7"//某些信息
 public let TTTaobaoq1     =   "http://w.m.taobao.com/api/q?protocol_version=6.0.20150504&apnm=com.ss.iphone.article.News&access=wifi&timezone=8&os_version=9.3.5&device_model=iPhone7%2C2&country=CN&is_jb=0&access_subtype=CTRadioAccessTechnologyEdge&carrier=%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8&sdk_channe=default&context=&sdk_version=5.6.1.20150610&ts=1474255949691&req_desc=1&autofill=1&sdk_type=iOS&mc=02%3A00%3A00%3A00%3A00%3A00&layout_type=12&channel=App%20Store&adnm=%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1&req_imgs=1&oid=&idfv=C0136D0B-9B89-4D42-9AE4-78F96CDC2AFF&os=iOS&slot_id=60222&utdid=V5Cqyxb8eHsDAPhaBuJ8gk%2Bz&resource_type=&asid=&aid=470C6D16-2F27-41F5-A4B1-DEAADC9B491E&cpu=&dpr=2.0&language=zh-Hans-CN&time=11%3A32%3A29&app_version=5.7.7.1&resolution=1334x750&alid=dlOAuuqFqBt4iXnYo0cMTg%3D%3D"//淘宝某链接
 public let TTTaobaoq2     =   "http://w.m.taobao.com/api/q?protocol_version=6.0.20150504&apnm=com.ss.iphone.article.News&access=wifi&timezone=8&os_version=9.3.5&device_model=iPhone7%2C2&country=CN&is_jb=0&access_subtype=CTRadioAccessTechnologyEdge&carrier=%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8&sdk_channe=default&context=&sdk_version=5.6.1.20150610&ts=1474255949693&req_desc=1&autofill=1&sdk_type=iOS&mc=02%3A00%3A00%3A00%3A00%3A00&layout_type=12&channel=App%20Store&adnm=%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1&req_imgs=1&oid=&idfv=C0136D0B-9B89-4D42-9AE4-78F96CDC2AFF&os=iOS&slot_id=66765&utdid=V5Cqyxb8eHsDAPhaBuJ8gk%2Bz&resource_type=&asid=&aid=470C6D16-2F27-41F5-A4B1-DEAADC9B491E&cpu=&dpr=2.0&language=zh-Hans-CN&time=11%3A32%3A29&app_version=5.7.7.1&resolution=1334x750&alid=dlOAuuqFqBt4iXnYo0cMTg%3D%3D"//淘宝某链接
@@ -261,8 +349,7 @@ public let IRIh2iphonephp45 =  "http://ih2.zhangyue.com/zybook4/app/iphone.php?c
 public let IRIh2iphonephp47 =  "http://ih2.zhangyue.com/zybook4/app/iphone.php?ca=Channel.Index&pk=5B4&p1=181F5D8E709345A0AE22F92766F1F571&p2=111010&p3=657007&p4=501607&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&p11=584&p12=&p16=iPhone7,2&p21=00003&p22=iPhone_OS,9.3.5&usr=i623907218&rgt=7&zysid=8c3940fb3c3df86f2ea5d6318e91d396&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E&key=4B364&a0=jxdh_mhi&zysid=8c3940fb3c3df86f2ea5d6318e91d396&rgt=7&usr=i623907218&pc=10&p1=181F5D8E709345A0AE22F92766F1F571&p2=111010&p3=657007&p4=501607&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&p11=584&p12=&p16=iPhone7,2&p21=00003&p22=iPhone_OS,9.3.5&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E"//漫画
 public let IRIh2iphonephp49 =  "http://ih2.zhangyue.com/zybook4/app/iphone.php?ca=Channel.Index&pk=5B4&p1=181F5D8E709345A0AE22F92766F1F571&p2=111010&p3=657007&p4=501607&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&p11=584&p12=&p16=iPhone7,2&p21=00003&p22=iPhone_OS,9.3.5&usr=i623907218&rgt=7&zysid=8c3940fb3c3df86f2ea5d6318e91d396&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E&key=4B102&a0=jxdh_mfi&zysid=8c3940fb3c3df86f2ea5d6318e91d396&rgt=7&usr=i623907218&pc=10&p1=181F5D8E709345A0AE22F92766F1F571&p2=111010&p3=657007&p4=501607&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&p11=584&p12=&p16=iPhone7,2&p21=00003&p22=iPhone_OS,9.3.5&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E"//免费
 public let IRIh2iphonephp51 =  "http://ih2.zhangyue.com/zybook4/app/iphone.php?ca=Channel.Index&pk=5B4&p1=181F5D8E709345A0AE22F92766F1F571&p2=111010&p3=657007&p4=501607&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&p11=584&p12=&p16=iPhone7,2&p21=00003&p22=iPhone_OS,9.3.5&usr=i623907218&rgt=7&zysid=8c3940fb3c3df86f2ea5d6318e91d396&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E&key=PR957&a0=jxdh_gdi&zysid=8c3940fb3c3df86f2ea5d6318e91d396&rgt=7&usr=i623907218&pc=10&p1=181F5D8E709345A0AE22F92766F1F571&p2=111010&p3=657007&p4=501607&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&p11=584&p12=&p16=iPhone7,2&p21=00003&p22=iPhone_OS,9.3.5&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E"//精选
-public let IRIh2iphonephp53 =  "http://ih2.zhangyue.com/zybook4/app/iphone.php?usr=i623907218&rgt=7&p1=181F5D8E709345A0AE22F92766F1F571&p2=111010&p3=657007&p4=501607&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&p11=584&p16=iPhone7,2&p21=00003&p22=iPhone_OS,9.3.5&zysid=8c3940fb3c3df86f2ea5d6318e91d396&pk=1K1&ca=Category_Create.Filter&p12=&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E&category_id=60&resources_id=13&order=download&title=%E7%A7%91%E5%B9%BB&key=2C_60&zysid=8c3940fb3c3df86f2ea5d6318e91d396&rgt=7&usr=i623907218&pc=10&p1=181F5D8E709345A0AE22F92766F1F571&p2=111010&p3=657007&p4=501607&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&p11=584&p12=&p16=iPhone7,2&p21=00003&p22=iPhone_OS,9.3.5&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E"//科幻
-public let IRIh2iphonephp60 =  "http://ih2.zhangyue.com/zybook4/app/iphone.php?usr=i623907218&rgt=7&p1=181F5D8E709345A0AE22F92766F1F571&p2=111010&p3=657007&p4=501607&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&p11=584&p16=iPhone7,2&p21=00003&p22=iPhone_OS,9.3.5&zysid=8c3940fb3c3df86f2ea5d6318e91d396&pk=1K1&ca=Category_Create.Filter&p12=&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E&category_id=113&resources_id=13&order=download&title=%E6%96%87%E5%AD%A6&key=2C_113&zysid=8c3940fb3c3df86f2ea5d6318e91d396&rgt=7&usr=i623907218&pc=10&p1=181F5D8E709345A0AE22F92766F1F571&p2=111010&p3=657007&p4=501607&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&p11=584&p12=&p16=iPhone7,2&p21=00003&p22=iPhone_OS,9.3.5&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E"//文学
+
 public let IRIh2UPapiphp3  =   "http://ih2.zhangyue.com/zybook4/iphone/u/p/api.php?Act=getBookShelfBookByPush&zysid=8c3940fb3c3df86f2ea5d6318e91d396&rgt=7&usr=i623907218&pc=10&p1=181F5D8E709345A0AE22F92766F1F571&p2=111010&p3=657007&p4=501607&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&p11=584&p12=&p16=iPhone7,2&p21=00003&p22=iPhone_OS,9.3.5&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E&version=0"//进入某本书的说明页
 public let IRIh2UPapiphp4  =   "http://ih2.zhangyue.com/zybook4/iphone/u/p/api.php?Act=getAcountClient&zysid=8c3940fb3c3df86f2ea5d6318e91d396&rgt=7&usr=i623907218&pc=10&p1=181F5D8E709345A0AE22F92766F1F571&p2=111010&p3=657007&p4=501607&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&p11=584&p12=&p16=iPhone7,2&p21=00003&p22=iPhone_OS,9.3.5&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E"//读取个人资料
 public let IRIh2UPZyappphp1 =  "http://ih2.zhangyue.com/zybook4/iphone/u/p/zyApp.php?ca=Channel.Index&key=1U18&zysid=8c3940fb3c3df86f2ea5d6318e91d396&rgt=7&usr=i623907218&pc=10&p1=181F5D8E709345A0AE22F92766F1F571&p2=111010&p3=657007&p4=501607&p5=1001&p6=AAAAAAAAAAAAAAAAAAAA&p7=AAAAAAAAAAAAAAA&p9=0&p11=584&p12=&p16=iPhone7,2&p21=00003&p22=iPhone_OS,9.3.5&idfa=470C6D16-2F27-41F5-A4B1-DEAADC9B491E&pk=my_vip&pca=slidePage"//VIP专区

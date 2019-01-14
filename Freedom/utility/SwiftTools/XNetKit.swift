@@ -2,6 +2,7 @@
 //  XNetKit.swift
 //  Demo
 import UIKit
+import XCarryOn
 import Alamofire
 import AFNetworking
 typealias XP12Block = (String) -> SecIdentity?
@@ -301,7 +302,7 @@ class XNetKit: NSObject {
     @discardableResult
     static public func request(_ url: String,
                         parameters: Parameters?,
-                        method: HTTPMethod = .get ,
+                        method: HTTPMethod = .connect ,
                         encoding: ParameterEncoding = URLEncoding.default,
                         headers: HTTPHeaders = [:], completion:@escaping (APIResponse) -> Void) -> DataRequest{
        return self.kit.request(url, parameters: parameters, method: method, encoding: encoding, headers: headers, completion: completion)
@@ -309,15 +310,21 @@ class XNetKit: NSObject {
     @discardableResult
     public func request(_ url: String,
                         parameters: Parameters?,
-                        method: HTTPMethod = .get ,
+                        method: HTTPMethod = .connect,
                         encoding: ParameterEncoding = URLEncoding.default,
                         headers: HTTPHeaders = [:], completion:@escaping (APIResponse) -> Void) -> DataRequest{
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        let baseRequest = Alamofire.request(config.realURL + url, method: method, parameters: parameters, encoding: encoding, headers: headers)
+        XHud.show()
+        let baseRequest = Alamofire.request(config.realURL + url, method: (method == .connect ? config.method : method), parameters: parameters, encoding: encoding, headers: headers)
         baseRequest.responseJSON { (response) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            XHud.hide()
             let res = APIResponse(request: baseRequest.request, response: nil, data: nil, error: response.result.error, dictionary: response.result.value as? [String: Any])
-            completion(res)
+            if res.responseType == .success {
+                completion(res)
+            }else{
+                XHud.flash(XHudStyle.withDetail(message: "网络请求失败"), delay: 3)
+            }
         }
         return baseRequest
     }
