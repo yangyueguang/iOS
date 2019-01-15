@@ -1214,6 +1214,8 @@
 		DFA5D3AE21BA184F00339006 /* PlayLRCSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */; };
 		DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */; };
 		DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */; };
+		DFA8793221ED736700BC1074 /* ToutiaoModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8793121ED736700BC1074 /* ToutiaoModels.swift */; };
+		DFA8795421EDC05500BC1074 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8795321EDC05500BC1074 /* BaseModel.swift */; };
 		DFB5FF5621CA280A0057C922 /* WXExpanded.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FF5521CA280A0057C922 /* WXExpanded.swift */; };
 		DFB5FF5C21CA2F1C0057C922 /* WXTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FF5B21CA2F1C0057C922 /* WXTabBarController.swift */; };
 		DFB5FF5E21CA2F3E0057C922 /* WXNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FF5D21CA2F3E0057C922 /* WXNavigationController.swift */; };
@@ -2580,6 +2582,8 @@
 		DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLRCSView.swift; sourceTree = "<group>"; };
 		DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBaseTableView.swift; sourceTree = "<group>"; };
 		DFA5D3B421BA8EC500339006 /* XRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRefreshControl.swift; sourceTree = "<group>"; };
+		DFA8793121ED736700BC1074 /* ToutiaoModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToutiaoModels.swift; sourceTree = "<group>"; };
+		DFA8795321EDC05500BC1074 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		DFB5FF5521CA280A0057C922 /* WXExpanded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXExpanded.swift; sourceTree = "<group>"; };
 		DFB5FF5B21CA2F1C0057C922 /* WXTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXTabBarController.swift; sourceTree = "<group>"; };
 		DFB5FF5D21CA2F3E0057C922 /* WXNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXNavigationController.swift; sourceTree = "<group>"; };
@@ -3117,6 +3121,7 @@
 				7121196320AC24790087E05B /* ToutiaoTabBarController.swift */,
 				7121196520AC24940087E05B /* ToutiaoNavigationViewController.swift */,
 				7121196720AC24A70087E05B /* ToutiaoBaseViewController.swift */,
+				DFA8793121ED736700BC1074 /* ToutiaoModels.swift */,
 			);
 			path = "基本类库";
 			sourceTree = "<group>";
@@ -3710,6 +3715,7 @@
 				DFFA80C121AEC84D009B1999 /* BaseTableView.swift */,
 				DFFA80B921AEC84B009B1999 /* BaseTableViewCell.swift */,
 				DFFA80BD21AEC84C009B1999 /* BaseViewController.swift */,
+				DFA8795321EDC05500BC1074 /* BaseModel.swift */,
 			);
 			path = BaseFile;
 			sourceTree = "<group>";
@@ -6619,6 +6625,7 @@
 				DF6B523A21CB76FF00460949 /* WXExpressionChosenViewController.swift in Sources */,
 				7115A5D220AAD3A3000D0B96 /* PersonalLuxuryViewController.swift in Sources */,
 				DF0E967C21CBACE5009682CC /* WXMomentDetailViewController.swift in Sources */,
+				DFA8793221ED736700BC1074 /* ToutiaoModels.swift in Sources */,
 				DF7B408221AC020A00E3D975 /* DouyinMessageViewController.swift in Sources */,
 				DFFA80C821AEC84D009B1999 /* BaseCollectionView.swift in Sources */,
 				BF58BB3B20EF1945002CB4EE /* RCDSearchHistoryMessageController.m in Sources */,
@@ -6845,6 +6852,7 @@
 				DF6B523421CB76EB00460949 /* WXMineSettingViewController.swift in Sources */,
 				7115A5A920AAA191000D0B96 /* FreedomBooksViewController.swift in Sources */,
 				DF0E968221CBACF5009682CC /* WXScanningViewController.swift in Sources */,
+				DFA8795421EDC05500BC1074 /* BaseModel.swift in Sources */,
 				7121193E20ABC58A0087E05B /* EnergyContactUSViewController.swift in Sources */,
 				7121192420ABC4C30087E05B /* EnergyBusinessListViewController.swift in Sources */,
 				77BFCC011E1F413C00C95B5E /* technology.md in Sources */,

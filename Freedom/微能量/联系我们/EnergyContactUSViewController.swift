@@ -23,14 +23,14 @@ class EnergyContactUSViewController: EnergyBaseViewController {
         banner.backgroundColor = .red
         self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH-TopHeight))
         self.tableView.rowHeight = 80
-        self.tableView.dataArray = NSMutableArray(array: ["一键导航","关注公众号","查看历史消息","微信营销交流","客服聊天","诚聘精英"])
+        self.tableView.dataArray = ["一键导航","关注公众号","查看历史消息","微信营销交流","客服聊天","诚聘精英"]
     self.tableView.tableHeaderView = banner
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     view.addSubview(tableView)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: EnergyContactUSViewCell.identifier()) as? EnergyContactUSViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: EnergyContactUSViewCell.identifier) as? EnergyContactUSViewCell
         if cell == nil{
             cell = EnergyContactUSViewCell.getInstance() as? EnergyContactUSViewCell
         }

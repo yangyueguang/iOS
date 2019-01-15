@@ -29,14 +29,14 @@ class JuheContectUSViewController: JuheBaseViewController,UICollectionViewDelega
     self.collectionView.dataArray = NSMutableArray(array: ["进入公众号","查看历史消息","关于我们","聊天"])
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-        self.collectionView.register(JuheContectUSViewCell.self, forCellWithReuseIdentifier: JuheContectUSViewCell.identifier())
+        self.collectionView.register(JuheContectUSViewCell.self, forCellWithReuseIdentifier: JuheContectUSViewCell.identifier)
     view.addSubview(collectionView)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.collectionView.dataArray.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JuheContectUSViewCell.identifier(), for: indexPath) as? JuheContectUSViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JuheContectUSViewCell.identifier, for: indexPath) as? JuheContectUSViewCell
         
         return cell!
     }

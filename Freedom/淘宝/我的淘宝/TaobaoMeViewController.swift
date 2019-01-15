@@ -86,8 +86,8 @@ class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDelegate,
         layout.footerReferenceSize = CGSize.zero
         collectionView = BaseCollectionView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - 110), collectionViewLayout: layout)
         collectionView.dataArray = [["name": "流量充值", "pic": "userLogo"]]
-        collectionView?.register(TaobaoMeViewCell1.self, forCellWithReuseIdentifier: TaobaoMeViewCell1.identifier())
-        collectionView?.register(TaobaoMeViewCell2.self, forCellWithReuseIdentifier: TaobaoMeViewCell2.identifier())
+        collectionView?.register(TaobaoMeViewCell1.self, forCellWithReuseIdentifier: TaobaoMeViewCell1.identifier)
+        collectionView?.register(TaobaoMeViewCell2.self, forCellWithReuseIdentifier: TaobaoMeViewCell2.identifier)
         collectionView?.register(TaobaoMeHeadView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview")
         collectionView?.register(TaobaoMeHeadView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "footview")
         collectionView?.addSubview(headView)
@@ -112,9 +112,9 @@ class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell: BaseCollectionViewCell? = nil
         if indexPath.section == 0 {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaobaoMeViewCell1.identifier(), for: indexPath) as? TaobaoMeViewCell1
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaobaoMeViewCell1.identifier, for: indexPath) as? TaobaoMeViewCell1
         } else {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaobaoMeViewCell2.identifier(), for: indexPath) as? TaobaoMeViewCell2
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaobaoMeViewCell2.identifier, for: indexPath) as? TaobaoMeViewCell2
         }
         return cell!
     }

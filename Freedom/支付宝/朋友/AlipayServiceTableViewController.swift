@@ -127,7 +127,7 @@ class AlipayServiceTableViewController: AlipayBaseViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataArray[indexPath.row]
-        var cell: AlipayServiceTableViewCell? = tableView.dequeueReusableCell(withIdentifier: AlipayServiceTableViewCell.identifier()) as? AlipayServiceTableViewCell
+        var cell: AlipayServiceTableViewCell? = tableView.dequeueReusableCell(withIdentifier: AlipayServiceTableViewCell.identifier) as? AlipayServiceTableViewCell
         if cell == nil {
             cell = AlipayServiceTableViewCell.getInstance() as? AlipayServiceTableViewCell
         }

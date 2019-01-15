@@ -32,7 +32,7 @@ class MyDatabaseViewController: MyDatabaseBaseViewController,UICollectionViewDel
 //        self.collectionView.dataArray = NSMutableArray(array: nil)
         self.collectionView.dataSource = self;
         self.collectionView.delegate = self;
-        self.collectionView.register(DataBaseCollectionViewCell.self, forCellWithReuseIdentifier: DataBaseCollectionViewCell.identifier())
+        self.collectionView.register(DataBaseCollectionViewCell.self, forCellWithReuseIdentifier: DataBaseCollectionViewCell.identifier)
         self.collectionView.backgroundColor = .white
         self.collectionView.frame = self.view.bounds;
         view.addSubview(self.collectionView)
@@ -46,7 +46,7 @@ class MyDatabaseViewController: MyDatabaseBaseViewController,UICollectionViewDel
         return 10
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DataBaseCollectionViewCell.identifier(), for: indexPath) as? DataBaseCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DataBaseCollectionViewCell.identifier, for: indexPath) as? DataBaseCollectionViewCell
         cell?.icon.image = UIImage(named:"userLogo")
         cell?.title.text = "name"
         return cell!;

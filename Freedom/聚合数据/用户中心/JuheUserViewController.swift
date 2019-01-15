@@ -47,13 +47,13 @@ class JuheUserViewController: JuheBaseViewController {
         banItemSV.selectBlock = {(index,dict) in
             print("点击了\(index),\(String(describing: dict))")
         }
-        self.tableView.dataArray = NSMutableArray(array: ["我的充值记录","我的消费记录","账户信息","密码修改","实名认证"])
+        self.tableView.dataArray = ["我的充值记录","我的消费记录","账户信息","密码修改","实名认证"]
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         view.addSubview(tableView)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: JuheUserViewCell.identifier()) as? JuheUserViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: JuheUserViewCell.identifier) as? JuheUserViewCell
         if cell == nil{
             cell = JuheUserViewCell.getInstance() as? JuheUserViewCell
         }

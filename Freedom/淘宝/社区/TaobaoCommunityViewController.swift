@@ -76,8 +76,8 @@ class TaobaoCommunityViewController: TaobaoBaseViewController,UICollectionViewDe
         layout.minimumLineSpacing = 10
         collectionView = BaseCollectionView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - 110), collectionViewLayout: layout)
         collectionView.dataArray = [["name": "流量充值", "pic": "userLogo"]]
-        collectionView.register(TaobaoCommunityViewCell2.self, forCellWithReuseIdentifier:TaobaoCommunityViewCell2.identifier())
-        collectionView.register(TaobaoCommunityViewCell1.self, forCellWithReuseIdentifier: TaobaoCommunityViewCell1.identifier())
+        collectionView.register(TaobaoCommunityViewCell2.self, forCellWithReuseIdentifier:TaobaoCommunityViewCell2.identifier)
+        collectionView.register(TaobaoCommunityViewCell1.self, forCellWithReuseIdentifier: TaobaoCommunityViewCell1.identifier)
         collectionView.register(TaobaoCommunityHeadView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview")
         collectionView.register(TaobaoCommunityHeadView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "footview")
         collectionView.dataSource = self
@@ -99,11 +99,11 @@ class TaobaoCommunityViewController: TaobaoBaseViewController,UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell: BaseCollectionViewCell? = nil
         if indexPath.section == 0 {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier:TaobaoCommunityViewCell1.identifier(), for: indexPath) as? TaobaoCommunityViewCell1
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier:TaobaoCommunityViewCell1.identifier, for: indexPath) as? TaobaoCommunityViewCell1
             cell?.frame = CGRect(x: 0, y: 0, width: APPW, height: 100)
             cell?.addSubview(banner)
         } else {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaobaoCommunityViewCell2.identifier(), for: indexPath) as? BaseCollectionViewCell
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaobaoCommunityViewCell2.identifier, for: indexPath) as? BaseCollectionViewCell
         }
         return cell!
     }

@@ -36,7 +36,7 @@ class EnergyHomeViewController: EnergyBaseViewController,UICollectionViewDelegat
         self.collectionView = BaseCollectionView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH-110), collectionViewLayout: layout)
         self.collectionView.dataArray = NSMutableArray(array: ["微请柬","微渠道","微助手","分销版","微政务","微社区","微外卖","微配送",
 "微挂号","微游戏","微OA","微名片","全景720","微贺卡","优惠券","微团购","微点菜","微小店","微彩票","问卷调查","微信打印机","微信wifi","客户备忘","微报名","订房易","抢元宝","微现场","超级加油","微网站","微商城","会员卡","微相册","微信支付","微喜帖","微测试","超级秒杀","全民经纪人","微投票","微签到","微预约"])
-self.collectionView.register(EnergyHomeViewCell.self, forCellWithReuseIdentifier: EnergyHomeViewCell.identifier())
+self.collectionView.register(EnergyHomeViewCell.self, forCellWithReuseIdentifier: EnergyHomeViewCell.identifier)
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
         self.collectionView.addSubview(banner)
@@ -46,7 +46,7 @@ self.collectionView.register(EnergyHomeViewCell.self, forCellWithReuseIdentifier
         return self.collectionView.dataArray.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EnergyHomeViewCell.identifier(), for: indexPath) as? EnergyHomeViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EnergyHomeViewCell.identifier, for: indexPath) as? EnergyHomeViewCell
         return cell!
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

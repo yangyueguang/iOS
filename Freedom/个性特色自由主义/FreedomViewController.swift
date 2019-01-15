@@ -37,7 +37,7 @@ class FreedomViewController: FreedomBaseViewController,UICollectionViewDelegate,
         self.collectionView.delegate = self;
         self.collectionView.backgroundColor = .white;
         self.collectionView.frame = self.view.bounds;
-        self.collectionView.register(FreedomViewCell.self, forCellWithReuseIdentifier: FreedomViewCell.identifier())
+        self.collectionView.register(FreedomViewCell.self, forCellWithReuseIdentifier: FreedomViewCell.identifier)
         view.addSubview(self.collectionView)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +49,7 @@ class FreedomViewController: FreedomBaseViewController,UICollectionViewDelegate,
         return 10
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell:FreedomViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: FreedomViewCell.identifier(), for: indexPath) as! FreedomViewCell
+        let cell:FreedomViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: FreedomViewCell.identifier, for: indexPath) as! FreedomViewCell
         cell.title.text = "name"
         cell.icon.image = UIImage(named: "userLogo")
         return cell

@@ -34,7 +34,7 @@ class PersonalApplyViewController: PersonalApplyBaseViewController {
         banner = BaseScrollView.init(banner: CGRect(x: 0, y: 0, width: APPW, height: 120), icons: ["","",""])
         banner.backgroundColor = .red
         self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH-TopHeight))
-        self.tableView.dataArray = NSMutableArray(array:["互联网行业","教育培训行业","计算机软件","计算机硬件","个人电脑","食品连锁","快消品行业","耐消品行业","手机市场","房地产行业","汽车行业","奢侈品行业","其他行业"])
+        self.tableView.dataArray = ["互联网行业","教育培训行业","计算机软件","计算机硬件","个人电脑","食品连锁","快消品行业","耐消品行业","手机市场","房地产行业","汽车行业","奢侈品行业","其他行业"]
         self.tableView.tableHeaderView = banner;
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
@@ -47,7 +47,7 @@ class PersonalApplyViewController: PersonalApplyBaseViewController {
         return 80
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: PersonalApplyViewCell.identifier()) as? PersonalApplyViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: PersonalApplyViewCell.identifier) as? PersonalApplyViewCell
         if cell == nil{
             cell = PersonalApplyViewCell.getInstance() as? PersonalApplyViewCell
         }

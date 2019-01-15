@@ -13,7 +13,6 @@ enum LoginType {
     case findPWD
 }
 class FreedomLoginViewController: BaseViewController {
-    let disposeBag = DisposeBag()
     let user = User.shared
     var vcType = LoginType.login
     var countTimer: Timer?

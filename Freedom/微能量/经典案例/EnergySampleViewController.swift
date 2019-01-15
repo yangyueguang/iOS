@@ -25,14 +25,14 @@ class EnergySampleViewController: EnergyBaseViewController {
         super.viewDidLoad()
         self.title = "经典案例"
         self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH-110))
-        self.tableView.dataArray = NSMutableArray(array:["政府机构/媒体","母婴/儿童","教育/培训","商场百货","电商/商贸/零售","金融/投资/保险","医疗/健康/保健/养生","旅游","酒店","婚庆","房产","装饰","娱乐","金融","政务","汽车","餐饮"])
+        self.tableView.dataArray = ["政府机构/媒体","母婴/儿童","教育/培训","商场百货","电商/商贸/零售","金融/投资/保险","医疗/健康/保健/养生","旅游","酒店","婚庆","房产","装饰","娱乐","金融","政务","汽车","餐饮"]
         self.tableView.rowHeight = 70
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         view.addSubview(self.tableView)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: EnergySampleViewCell.identifier()) as? EnergySampleViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: EnergySampleViewCell.identifier) as? EnergySampleViewCell
         if cell == nil{
             cell = EnergySampleViewCell.getInstance() as? EnergySampleViewCell
         }

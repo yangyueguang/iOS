@@ -1,6 +1,7 @@
 
 import UIKit
 import RxSwift
+import XCarryOn
 import Alamofire
 extension XNetKit {
     //FIXME: Freedom
@@ -309,10 +310,19 @@ extension XNetKit {
             next.onNext(response)
         }
     }
-    /// 今日头条/新闻列表
-    static func topicList(_ param: Parameters, next: PublishSubject<Any>) {
+    /// 今日头条/新闻分类列表
+    static func topicList(_ param: Parameters, next: PublishSubject<[BaseModel]>) {
         request(API.topic.list.rawValue, parameters: param) { (response) in
-            next.onNext(response)
+            let topicsTemp = response.body["list"] as! [Any]
+            let topics = BaseModel.parses(topicsTemp) as! [BaseModel]
+            next.onNext(topics)
+        }
+    }
+    /// 今日头条/某个分类的新闻列表
+    static func topicNewsList(_ url: String, next: PublishSubject<TopicModel>) {
+        get(url) { (response) in
+            let model = TopicModel.parse(response.body as NSDictionary)
+            next.onNext(model)
         }
     }
 

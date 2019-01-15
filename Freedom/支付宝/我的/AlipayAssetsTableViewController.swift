@@ -40,7 +40,7 @@ class AlipayAssetsTableViewController: AlipayBaseViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataArray[indexPath.section][indexPath.row]
-        var cell: AlipayAssetsTableViewControllerCell? = tableView.dequeueReusableCell(withIdentifier: AlipayAssetsTableViewControllerCell.identifier()) as? AlipayAssetsTableViewControllerCell
+        var cell: AlipayAssetsTableViewControllerCell? = tableView.dequeueReusableCell(withIdentifier: AlipayAssetsTableViewControllerCell.identifier) as? AlipayAssetsTableViewControllerCell
         if cell == nil {
             cell = AlipayAssetsTableViewControllerCell.getInstance() as? AlipayAssetsTableViewControllerCell
         }

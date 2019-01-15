@@ -46,14 +46,14 @@ class BooksViewController: BooksBaseViewController,UICollectionViewDelegate,UICo
     self.collectionView.delegate = self;
     self.collectionView.backgroundColor = .white
     self.collectionView.frame = self.view.bounds
-        self.collectionView.register(BooksViewCell.self, forCellWithReuseIdentifier: BooksViewCell.identifier())
+        self.collectionView.register(BooksViewCell.self, forCellWithReuseIdentifier: BooksViewCell.identifier)
         view.addSubview(self.collectionView)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BooksViewCell.identifier(), for: indexPath) as? BooksViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BooksViewCell.identifier, for: indexPath) as? BooksViewCell
         cell?.icon.image = UIImage(named:"userLogo")
         cell?.title.text = "书籍阅读"
         return cell!

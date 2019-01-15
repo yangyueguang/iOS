@@ -215,7 +215,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         requestConfig.method = HTTPMethod.post
         let responseConfig = APIResponse.APIResponseConfiguration.shared
         responseConfig.codeKey = "code"
-        responseConfig.successCode = "200"
+        responseConfig.successCode = 200
         responseConfig.dataKey = "data"
         responseConfig.messageKey = "message"
     }

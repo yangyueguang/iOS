@@ -34,7 +34,7 @@ class JuheDynamicViewController: JuheBaseViewController,UICollectionViewDelegate
     layout.minimumInteritemSpacing = 10;
     layout.minimumLineSpacing = 10;
 self.collectionView = BaseCollectionView(frame: CGRect(x: 0, y: APPH-360, width: APPW, height: 300), collectionViewLayout: layout)
-self.collectionView.register(JuheDynamicCollectionViewCell.self, forCellWithReuseIdentifier: JuheDynamicCollectionViewCell.identifier())
+self.collectionView.register(JuheDynamicCollectionViewCell.self, forCellWithReuseIdentifier: JuheDynamicCollectionViewCell.identifier)
         
         self.collectionView.dataArray = NSMutableArray(array: ["身份证认证","手机归属地","身份证查询","常用快递","餐饮美食","菜谱大全","彩票开奖","邮编查询"])
     self.collectionView.dataSource = self
@@ -47,7 +47,7 @@ self.collectionView.register(JuheDynamicCollectionViewCell.self, forCellWithReus
         return self.collectionView.dataArray.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JuheDynamicCollectionViewCell.identifier(), for: indexPath) as? JuheDynamicCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JuheDynamicCollectionViewCell.identifier, for: indexPath) as? JuheDynamicCollectionViewCell
         
         return cell!
     }

@@ -42,7 +42,7 @@ class AlipayDiscoverTableViewController: AlipayBaseViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataArray[indexPath.section][indexPath.row]
-        var cell: AlipayDiscoverTableViewControllerCell? = tableView.dequeueReusableCell(withIdentifier: AlipayDiscoverTableViewControllerCell.identifier()) as? AlipayDiscoverTableViewControllerCell
+        var cell: AlipayDiscoverTableViewControllerCell? = tableView.dequeueReusableCell(withIdentifier: AlipayDiscoverTableViewControllerCell.identifier) as? AlipayDiscoverTableViewControllerCell
         if cell == nil {
             cell = AlipayDiscoverTableViewControllerCell.getInstance() as? AlipayDiscoverTableViewControllerCell
             cell?.accessoryType = .disclosureIndicator

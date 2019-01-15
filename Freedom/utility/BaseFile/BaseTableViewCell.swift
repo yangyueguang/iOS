@@ -1,7 +1,9 @@
 
 import UIKit
+import RxSwift
 @objcMembers
 open class BaseTableViewCell : UITableViewCell {
+    let disposeBag = DisposeBag()
     open var icon: UIImageView!
     open var line: UIView!
     open var title: UILabel!
@@ -15,15 +17,12 @@ open class BaseTableViewCell : UITableViewCell {
             if (o is BaseTableViewCell) {
                 instance = o as? BaseTableViewCell
             }else {
-                instance = self.init(style: .default, reuseIdentifier: self.identifier())
+                instance = self.init(style: .default, reuseIdentifier: self.identifier)
             }
         }else {
-            instance = self.init(style: .default, reuseIdentifier: self.identifier())
+            instance = self.init(style: .default, reuseIdentifier: self.identifier)
         }
         return instance!
-    }
-    public class func identifier() -> String {
-        return "\(NSStringFromClass(self))Identifier"
     }
     required override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

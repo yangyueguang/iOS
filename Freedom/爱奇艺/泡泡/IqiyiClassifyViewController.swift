@@ -50,7 +50,7 @@ class TEMPBASEC:BaseTableViewCell{
     }
 }
 class IqiyiClassifyViewController: IqiyiBaseViewController {
-    let urlStr = urlWithclassifyData
+    let urlStr = "urlWithclassifyData"
     var dataSource = [AnyHashable]()
     override func viewDidLoad() {
         super.viewDidLoad()

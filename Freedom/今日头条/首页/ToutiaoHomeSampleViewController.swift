@@ -2,37 +2,70 @@
 //  ToutiaoHomeSampleViewController.swift
 //  Freedom
 import UIKit
+import RxSwift
 import XExtension
 import XCarryOn
 class ToutiaoHomeSampleViewCell:BaseTableViewCell{
+    let viewModel = PublishSubject<TopicModel.TopicNew>()
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 10, y: 0, width: 80, height: 80))
         title = UILabel(frame: CGRect(x:100, y: 10, width: 300, height: 80))
         title.numberOfLines = 0
         addSubviews([icon,title])
+        viewModel.subscribe(onNext: {[weak self] (news) in
+            guard let `self` = self else { return }
+            if news.media.count > 1 {
+//                let me = news.media[0]
+//                let img = me.sUrl
+//                self.icon.kf.setImage(with: URL(string: img))
+            }
+            self.title.text = news.title
+        }).disposed(by: disposeBag)
     }
 }
 class ToutiaoHomeSampleViewController: ToutiaoBaseViewController {
+    var topicModel = BaseModel()
+    var model = TopicModel()
+    let viewModel = PublishSubject<TopicModel>()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.rowHeight = 90
-    self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH), style: .grouped)
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-        self.tableView.dataArray = ["","","","","","","",""]
-    view.addSubview(tableView)
+        tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH), style: .grouped)
+        tableView.register(ToutiaoHomeSampleViewCell.self)
+        tableView.dataSource = self;
+        tableView.delegate = self;
+        tableView.rowHeight = 90
+        view.addSubview(tableView)
+        viewModel.subscribe(onNext: {[weak self] (model) in
+            guard let `self` = self else { return }
+            self.model = model
+            self.tableView.reloadData()
+        }).disposed(by: disposeBag)
+        XNetKit.topicNewsList(topicModel.url, next: viewModel)
+    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return model.lists.count
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 120
+        return model.top.count > 0 ? 120 : 0
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headBanner = BaseScrollView(banner: CGRect(x: 0, y: 0, width: APPW, height: 120), icons: ["","",""])
+        var icons: [String] = []
+        for topNew in model.top {
+            icons.append(topNew.mp_img)
+        }
+        let headBanner = BaseScrollView(banner: CGRect(x: 0, y: 0, width: APPW, height: 120), icons: icons)
         headBanner.selectBlock = {(index,dict) in
             print("\(index)\(String(describing: dict))")
         }
         return headBanner;
     }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ToutiaoHomeSampleViewCell.identifier) as! ToutiaoHomeSampleViewCell
+        cell.viewModel.onNext(model.lists[indexPath.row])
+        return cell
+    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        _ = self.push(ToutiaoHomeDetailViewController(), withInfo:"", withTitle: "")
+        let topNew = model.lists[indexPath.row]
+        _ = self.push(ToutiaoHomeDetailViewController(), withInfo:topNew, withTitle: topNew.title)
     }
 }

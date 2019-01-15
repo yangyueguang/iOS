@@ -156,7 +156,7 @@ class ChatListController: DouyinBaseViewController {
                     return
                 }
                 
-                DeleteGroupChatRequest.deleteGroupChat(id: chat.id ?? "", success: {[weak self] data in
+                DeleteGroupChatRequest.deleteGroupChat(id: chat.id, success: {[weak self] data in
                     self?.tableView?.beginUpdates()
                     var indexs = [Int]()
                     for indexPath in indexPaths {

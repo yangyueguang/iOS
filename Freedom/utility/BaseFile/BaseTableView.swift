@@ -2,7 +2,7 @@
 import UIKit
 @objcMembers
 open class BaseTableView : UITableView {
-    open var dataArray = NSMutableArray()
+    open var dataArray: [Any] = []
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

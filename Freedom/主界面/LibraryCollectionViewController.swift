@@ -43,7 +43,7 @@ class LibraryCollectionViewController: BaseViewController,ElasticMenuTransitionD
             "transition.transformType = .\(tm.transformType)\n" +
             "transition.sticky = \(tm.sticky)\n" +
             "transition.showShadow = \(tm.showShadow)")
-        collectionView.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.identifier())
+        collectionView.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
@@ -55,7 +55,7 @@ class LibraryCollectionViewController: BaseViewController,ElasticMenuTransitionD
         return items.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.identifier(), for: indexPath) as? LibraryCollectionViewCell
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.identifier, for: indexPath) as? LibraryCollectionViewCell
         if cell == nil {
             cell = LibraryCollectionViewCell(frame: CGRect(x: 0, y: 0, width: APPW / 5, height: 100))
         }

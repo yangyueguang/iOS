@@ -35,14 +35,6 @@ class WebPFrame: NSObject {
     var width: CGFloat = 0.0
     var has_alpha: CGFloat = 0.0
 }
-class BaseModel:NSObject {
-    required override init() {
-        super.init()
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
 
 class DouYinUser: BaseModel {
     var weibo_name:String?
@@ -261,7 +253,6 @@ class Text_extra: BaseModel  {
 class Music: BaseModel {
     var extra:String?
     var cover_large:Cover?
-    var id:Int?
     var cover_thumb:Cover?
     var mid:String?
     var cover_hd:Cover?
@@ -270,7 +261,6 @@ class Music: BaseModel {
     var play_url:Play_url?
     var cover_medium:Cover?
     var id_str:String?
-    var title:String?
     var offline_desc:String?
     var is_restricted:Bool?
     var schema_url:String?
@@ -317,7 +307,6 @@ class Download_addr: BaseModel {
 }
 
 class GroupChat: BaseModel {
-    var id:String?
     var msg_type:String?
     var msg_content:String?
     var visitor:Visitor?
@@ -419,7 +408,6 @@ class Visitor: BaseModel {
 
 class PictureInfo: BaseModel {
     var file_id:String?
-    var url:String?
     var width:CGFloat?
     var height:CGFloat?
     var type:String?

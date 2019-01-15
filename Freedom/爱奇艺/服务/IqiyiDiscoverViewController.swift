@@ -158,7 +158,7 @@ class IqiyiDiscoverViewController: IqiyiBaseViewController {
         discoverTableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {() -> Void in
             self.dataSource = [AnyHashable]()
             self.imageArray = [AnyHashable]()
-            let urlStr = urlWithDiscoverData
+            let urlStr = "urlWithDiscoverData"
             print(urlStr)
         })
         discoverTableView.mj_header.beginRefreshing()

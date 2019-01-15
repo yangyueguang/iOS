@@ -34,7 +34,7 @@ self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: AP
         return 60
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: ResumeListViewCell.identifier()) as? ResumeListViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: ResumeListViewCell.identifier) as? ResumeListViewCell
         if cell == nil{
             cell = ResumeListViewCell.getInstance() as? ResumeListViewCell
         }

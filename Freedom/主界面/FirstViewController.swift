@@ -178,8 +178,8 @@ class FirstViewController: BaseViewController,UICollectionViewDataSource, UIColl
         view.addGestureRecognizer(LibraryGR)
         showingSettings = false
         buildSettings()
-        homecollectionView.register(CollectionViewCell1.self, forCellWithReuseIdentifier: CollectionViewCell1.identifier())
-        homecollectionView.register(CollectionViewCell2.self, forCellWithReuseIdentifier: CollectionViewCell2.identifier())
+        homecollectionView.register(CollectionViewCell1.self, forCellWithReuseIdentifier: CollectionViewCell1.identifier)
+        homecollectionView.register(CollectionViewCell2.self, forCellWithReuseIdentifier: CollectionViewCell2.identifier)
         homecollectionView.delegate = self
         homecollectionView.dataSource = self
         homecollectionView.backgroundColor = UIColor(230, 230, 230, 1)
@@ -294,7 +294,7 @@ class FirstViewController: BaseViewController,UICollectionViewDataSource, UIColl
         let dic = items[indexPath.item]
         let color = UIColor.random
         if exampleSwitch.isOn {
-            let cell = cv.dequeueReusableCell(withReuseIdentifier: CollectionViewCell1.identifier(), for: indexPath) as? CollectionViewCell1
+            let cell = cv.dequeueReusableCell(withReuseIdentifier: CollectionViewCell1.identifier, for: indexPath) as? CollectionViewCell1
             cell?.icon.layer.borderColor = color.cgColor
             cell?.title.text = dic["title"]
             cell?.icon.image = UIImage(named:dic["icon"]!)
@@ -303,7 +303,7 @@ class FirstViewController: BaseViewController,UICollectionViewDataSource, UIColl
             }
             return UICollectionViewCell()
         } else {
-            let cell = cv.dequeueReusableCell(withReuseIdentifier: CollectionViewCell2.identifier(), for: indexPath) as? CollectionViewCell2
+            let cell = cv.dequeueReusableCell(withReuseIdentifier: CollectionViewCell2.identifier, for: indexPath) as? CollectionViewCell2
             cell?.title.text = dic["title"]
             cell?.title.textColor = color
             if let aCell = cell {

@@ -57,13 +57,13 @@ class DZDealListViewController: DZBaseViewController {
         var cell: BaseTableViewCell?
         if indexPath.row % 5 != 0 {
             //竖着的
-            cell = tableView.dequeueReusableCell(withIdentifier: DZDealListViewVerticalCell.identifier()) as? BaseTableViewCell
+            cell = tableView.dequeueReusableCell(withIdentifier: DZDealListViewVerticalCell.identifier) as? BaseTableViewCell
             if cell == nil {
                 cell = DZDealListViewVerticalCell.getInstance() as? BaseTableViewCell
             }
         } else {
             //横着的
-            cell = tableView.dequeueReusableCell(withIdentifier: DZDealListViewTransverseCell.identifier()) as? BaseTableViewCell
+            cell = tableView.dequeueReusableCell(withIdentifier: DZDealListViewTransverseCell.identifier) as? BaseTableViewCell
             if cell == nil {
                 cell = DZDealListViewTransverseCell.getInstance() as? BaseTableViewCell
             }

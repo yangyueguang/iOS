@@ -24,18 +24,18 @@ class JuheQuestionViewController: JuheBaseViewController {
         super.viewDidLoad()
         let more = UIBarButtonItem(image: UIImage(named:"juheadd"), style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = more
-    let searchBar = UISearchBar()
-    searchBar.placeholder = "输入问题关键字";
-    self.navigationItem.titleView = searchBar;
-    self.tableView.rowHeight = 60
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "输入问题关键字";
+        self.navigationItem.titleView = searchBar;
+        self.tableView.rowHeight = 60
         self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))
-        self.tableView.dataArray = NSMutableArray(array: ["","","","","","",""])
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    view.addSubview(tableView)
+        self.tableView.dataArray = ["","","","","","",""]
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        view.addSubview(tableView)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: JuheQuestionViewCell.identifier()) as? JuheQuestionViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: JuheQuestionViewCell.identifier) as? JuheQuestionViewCell
         if cell == nil{
             cell = JuheQuestionViewCell.getInstance() as? JuheQuestionViewCell
         }

@@ -160,11 +160,8 @@ class PostGroupChatImageRequest: BaseRequest {
 }
 
 class DeleteGroupChatRequest: BaseRequest {
-
-    var id:String?
     var udid:String?
-
-    static func deleteGroupChat(id:String, success:@escaping HttpSuccess, failure:@escaping HttpFailure) {
+    static func deleteGroupChat(id:Int, success:@escaping HttpSuccess, failure:@escaping HttpFailure) {
         let request = DeleteGroupChatRequest.init()
         request.id = id
         request.udid = UDID

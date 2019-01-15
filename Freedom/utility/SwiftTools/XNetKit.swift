@@ -83,9 +83,9 @@ public struct APIResponse {
     }
     public class APIResponseConfiguration {
         static let shared = APIResponseConfiguration()
-        var tokenInavalidCode = "500"
+        var tokenInavalidCode: Int = 500
         var tokenInvalid: (()->Void)? = nil
-        var successCode = "0000"
+        var successCode: Int = 200
         var dataKey = "data"
         var messageKey = "message"
         var codeKey = "code"
@@ -122,7 +122,7 @@ public struct APIResponse {
                 return
             }
         }
-        if let resultCode = (self.dictionary[config.codeKey] as? String) {
+        if let resultCode = (self.dictionary[config.codeKey] as? Int) {
             if resultCode == config.tokenInavalidCode {
                 self.responseType = .invalidToken
                 self.config.tokenInvalid?()
@@ -321,10 +321,43 @@ class XNetKit: NSObject {
             XHud.hide()
             let res = APIResponse(request: baseRequest.request, response: nil, data: nil, error: response.result.error, dictionary: response.result.value as? [String: Any])
             if res.responseType == .success {
+                Dlog(res.dictionary.jsonString(prettify: true))
                 completion(res)
             }else{
                 XHud.flash(XHudStyle.withDetail(message: "网络请求失败"), delay: 3)
             }
+        }
+        return baseRequest
+    }
+    @discardableResult
+    static public func requestProxy(_ url: String,
+                        parameters: Parameters?,
+                        method: HTTPMethod = .connect,
+                        encoding: ParameterEncoding = URLEncoding.default,
+                        headers: HTTPHeaders = [:], completion:@escaping (APIResponse) -> Void) -> DataRequest{
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        XHud.show()
+        let baseRequest = Alamofire.request(kit.config.realURL + url, method: (method == .connect ? kit.config.method : method), parameters: parameters, encoding: encoding, headers: headers)
+        baseRequest.responseJSON { (response) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            XHud.hide()
+            let res = APIResponse(request: baseRequest.request, response: nil, data: nil, error: response.result.error, dictionary: response.result.value as? [String: Any])
+            completion(res)
+        }
+        return baseRequest
+    }
+    @discardableResult
+    static public func get(_ url: String,
+                             method: HTTPMethod = .get,
+                             completion:@escaping (APIResponse) -> Void) -> DataRequest{
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        XHud.show()
+        let baseRequest = Alamofire.request(url)
+        baseRequest.responseJSON { (response) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            XHud.hide()
+            let res = APIResponse(request: baseRequest.request, response: nil, data: nil, error: response.result.error, dictionary: response.result.value as? [String: Any])
+            completion(res)
         }
         return baseRequest
     }

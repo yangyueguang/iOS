@@ -9,8 +9,9 @@ import UIKit
 class ToutiaoHomeDetailViewController: ToutiaoBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        var model: TopicModel.TopicNew = self.userInfo as! TopicModel.TopicNew
         let web = UIWebView(frame:view.bounds)
-        let url = URL(string:"http://weibo.com/tv/v/ErdijBWkT?ref=feedsdk&type=ug")
+        let url = URL(string:model.rawUrl)
         let request = URLRequest(url: url!)
         web.loadRequest(request)
         view.addSubview(web)

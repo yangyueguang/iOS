@@ -1,5 +1,6 @@
 
 import UIKit
+import RxSwift
 import XExtension
 import Alamofire
 @objcMembers
@@ -8,6 +9,7 @@ open class BaseViewController : UIViewController, UITableViewDelegate, UITableVi
     open var otherInfo: Any!
     open var tableView: BaseTableView!
     open var collectionView: BaseCollectionView!
+    let disposeBag = DisposeBag()
     override open func loadView() {
         super.loadView()
     }

@@ -40,7 +40,7 @@ view.backgroundColor = .white
         self.collectionView.dataArray = NSMutableArray(array: ["IP地址","手机号码归属地","身份证查询","常用快递","餐饮美食","菜谱大全","彩票开奖结果","邮编查询","律师查询","笑话大全","小说大全","恋爱物语","商品比价","新闻","微信精选","经典日至","天气查询","手机话费","个人缴费","移动出行","足球赛事","新闻资讯","视频播放","流量充值"])
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-        self.collectionView.register(JuheAPICollectionViewCell.self, forCellWithReuseIdentifier: JuheAPICollectionViewCell.identifier())
+        self.collectionView.register(JuheAPICollectionViewCell.self, forCellWithReuseIdentifier: JuheAPICollectionViewCell.identifier)
         collectionView.addSubview(banner)
         view.addSubview(collectionView)
     }
@@ -48,7 +48,7 @@ view.backgroundColor = .white
         return self.collectionView.dataArray.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JuheAPICollectionViewCell.identifier(), for: indexPath) as? JuheAPICollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JuheAPICollectionViewCell.identifier, for: indexPath) as? JuheAPICollectionViewCell
         
         return cell!
     }

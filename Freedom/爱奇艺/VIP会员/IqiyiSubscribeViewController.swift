@@ -175,7 +175,7 @@ class IqiyiSubscribeViewController: IqiyiBaseViewController {
         title = "订阅推荐"
     }
     func initData() {
-        _ = urlWithSubscribeData
+        
     }
     
     func initView() {
