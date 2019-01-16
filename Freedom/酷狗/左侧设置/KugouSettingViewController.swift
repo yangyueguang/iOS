@@ -134,7 +134,6 @@ class KugouSettingViewController: KugouBaseViewController {
 //                        self.bottomView.transform = CGAffineTransform(scaleX: 1, y: 1)
 //                    }, completion: {(_ finished: Bool) -> Void in
 //                        self.dismiss(animated: true) {() -> Void in }
-//                        NotificationCenter.default.post(name: NSNotification.Name("ChangeMainVCContentEnable"), object: nil)
 //                    })
 //                } else {
 //                    UIView.animate(withDuration: 0.3, animations: {() -> Void in
@@ -153,7 +152,7 @@ class KugouSettingViewController: KugouBaseViewController {
     
     @objc func clickMainVC() {
         dismiss(animated: true, completion: {() -> Void in
-            NotificationCenter.default.post(name: NSNotification.Name("ChangeMainVCContentEnable"), object: nil)
+            
         })
     }
 }

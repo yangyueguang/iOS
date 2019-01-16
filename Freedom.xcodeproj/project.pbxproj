@@ -67,20 +67,6 @@
 		7121194220ABDD4B0087E05B /* EnergyShopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121194120ABDD4B0087E05B /* EnergyShopTabBarController.swift */; };
 		7121194420ABE1280087E05B /* EnergySuperMarketTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121194320ABE1280087E05B /* EnergySuperMarketTabBarController.swift */; };
 		7121194620ABE3660087E05B /* MicroEnergyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121194520ABE3660087E05B /* MicroEnergyTabBarController.swift */; };
-		7121194820AC03220087E05B /* JuheDataTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121194720AC03220087E05B /* JuheDataTabBarController.swift */; };
-		7121194A20AC03800087E05B /* JuheNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121194920AC03800087E05B /* JuheNavigationController.swift */; };
-		7121194C20AC03BC0087E05B /* JuheBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121194B20AC03BC0087E05B /* JuheBaseViewController.swift */; };
-		7121194E20AC0BF00087E05B /* JuheContectUSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121194D20AC0BF00087E05B /* JuheContectUSViewController.swift */; };
-		7121195020AC0C000087E05B /* JuhePublicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121194F20AC0C000087E05B /* JuhePublicViewController.swift */; };
-		7121195220AC0C0C0087E05B /* JuheMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121195120AC0C0C0087E05B /* JuheMessageViewController.swift */; };
-		7121195420AC0C170087E05B /* JuheAboutUSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121195320AC0C170087E05B /* JuheAboutUSViewController.swift */; };
-		7121195620AC0C210087E05B /* JuheChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121195520AC0C210087E05B /* JuheChartViewController.swift */; };
-		7121195820AC0C2F0087E05B /* JuheAPIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121195720AC0C2F0087E05B /* JuheAPIViewController.swift */; };
-		7121195A20AC0C390087E05B /* JuheAPIDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121195920AC0C390087E05B /* JuheAPIDetailViewController.swift */; };
-		7121195C20AC0C450087E05B /* JuheQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121195B20AC0C450087E05B /* JuheQuestionViewController.swift */; };
-		7121195E20AC0C4F0087E05B /* JuheDetailQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121195D20AC0C4F0087E05B /* JuheDetailQuestion.swift */; };
-		7121196020AC0C620087E05B /* JuheDynamicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121195F20AC0C620087E05B /* JuheDynamicViewController.swift */; };
-		7121196220AC0C6E0087E05B /* JuheUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121196120AC0C6E0087E05B /* JuheUserViewController.swift */; };
 		7121196420AC24790087E05B /* ToutiaoTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121196320AC24790087E05B /* ToutiaoTabBarController.swift */; };
 		7121196620AC24940087E05B /* ToutiaoNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121196520AC24940087E05B /* ToutiaoNavigationViewController.swift */; };
 		7121196820AC24A70087E05B /* ToutiaoBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121196720AC24A70087E05B /* ToutiaoBaseViewController.swift */; };
@@ -164,9 +150,8 @@
 		7165A3DC20A58D77001C60D6 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = 7165A3C520A58D74001C60D6 /* movie.png */; };
 		7165A3EA20A5A291001C60D6 /* FreedomBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165A3E920A5A291001C60D6 /* FreedomBaseViewController.swift */; };
 		71ECDFB52091EB4B00495467 /* JSPatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71ECDFB22091EB4A00495467 /* JSPatch.framework */; };
-		7719171C1D65466E002F2BCD /* juheIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7719171A1D65466E002F2BCD /* juheIcon.png */; };
 		7719171D1D65466E002F2BCD /* toutiaoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7719171B1D65466E002F2BCD /* toutiaoIcon.png */; };
-		771917201D655039002F2BCD /* userLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7719171F1D655039002F2BCD /* userLogo.png */; };
+		771917201D655039002F2BCD /* userLogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7719171F1D655039002F2BCD /* userLogo1.png */; };
 		771917241D656F18002F2BCD /* snow.png in Resources */ = {isa = PBXBuildFile; fileRef = 771917231D656F18002F2BCD /* snow.png */; };
 		771917351D659950002F2BCD /* Alipay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771917341D659950002F2BCD /* Alipay.storyboard */; };
 		771917371D659957002F2BCD /* Kugou.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771917361D659957002F2BCD /* Kugou.storyboard */; };
@@ -175,7 +160,6 @@
 		7719173D1D65996F002F2BCD /* Sina.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7719173C1D65996F002F2BCD /* Sina.storyboard */; };
 		7719173F1D659979002F2BCD /* DZ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7719173E1D659979002F2BCD /* DZ.storyboard */; };
 		771917411D659983002F2BCD /* Toutiao.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771917401D659983002F2BCD /* Toutiao.storyboard */; };
-		771917431D659993002F2BCD /* JuheData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771917421D659993002F2BCD /* JuheData.storyboard */; };
 		771917451D6599C4002F2BCD /* MicroEnergy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771917441D6599C4002F2BCD /* MicroEnergy.storyboard */; };
 		771917471D6599EB002F2BCD /* PersonalApply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771917461D6599EB002F2BCD /* PersonalApply.storyboard */; };
 		771917491D659A00002F2BCD /* Freedom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771917481D659A00002F2BCD /* Freedom.storyboard */; };
@@ -360,7 +344,6 @@
 		772E895B1D76BC15004EDF50 /* n3.png in Resources */ = {isa = PBXBuildFile; fileRef = 772E83891D76BC15004EDF50 /* n3.png */; };
 		772E895C1D76BC15004EDF50 /* nav_ocean.png in Resources */ = {isa = PBXBuildFile; fileRef = 772E838A1D76BC15004EDF50 /* nav_ocean.png */; };
 		772E895E1D76BC15004EDF50 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = 772E838C1D76BC15004EDF50 /* next.png */; };
-		772E895F1D76BC15004EDF50 /* placeHoder-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 772E838D1D76BC15004EDF50 /* placeHoder-128.png */; };
 		772E89621D76BC15004EDF50 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 772E83901D76BC15004EDF50 /* setting.png */; };
 		772E89651D76BC15004EDF50 /* slider.png in Resources */ = {isa = PBXBuildFile; fileRef = 772E83931D76BC15004EDF50 /* slider.png */; };
 		772E89671D76BC15004EDF50 /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 772E83951D76BC15004EDF50 /* start.png */; };
@@ -503,7 +486,6 @@
 		7772A8191D64648B00444973 /* database.png in Resources */ = {isa = PBXBuildFile; fileRef = 7772A8091D64648B00444973 /* database.png */; };
 		7772A81A1D64648B00444973 /* weixinIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7772A80A1D64648B00444973 /* weixinIcon.png */; };
 		7772A81B1D64648B00444973 /* ZUAN.png in Resources */ = {isa = PBXBuildFile; fileRef = 7772A80B1D64648B00444973 /* ZUAN.png */; };
-		7772A81C1D64648B00444973 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = 7772A80C1D64648B00444973 /* books.png */; };
 		7772A81D1D64648B00444973 /* aiqiyiIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7772A80D1D64648B00444973 /* aiqiyiIcon.png */; };
 		7780D8DB1E23818A00807502 /* Taobaomessage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7780D8D91E23818A00807502 /* Taobaomessage.png */; };
 		7780D8DC1E23818A00807502 /* TaobaoScanner.png in Resources */ = {isa = PBXBuildFile; fileRef = 7780D8DA1E23818A00807502 /* TaobaoScanner.png */; };
@@ -1119,6 +1101,10 @@
 		DF0E968421CBACFA009682CC /* WXShakeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E968321CBACFA009682CC /* WXShakeSettingViewController.swift */; };
 		DF0E968621CBAD07009682CC /* WXShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E968521CBAD07009682CC /* WXShakeViewController.swift */; };
 		DF0E968821CBAD13009682CC /* WXShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0E968721CBAD13009682CC /* WXShoppingViewController.swift */; };
+		DF1208CB21EED1D100F7ED7F /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = DF1208CA21EED1D100F7ED7F /* books.png */; };
+		DF1208CD21EED3C500F7ED7F /* userLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = DF1208CC21EED3C500F7ED7F /* userLogo.png */; };
+		DF1208CF21EEE5A500F7ED7F /* KugouModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1208CE21EEE5A500F7ED7F /* KugouModels.swift */; };
+		DF1208D121EEE5AF00F7ED7F /* KugouAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1208D021EEE5AF00F7ED7F /* KugouAPI.swift */; };
 		DF29539D21D7A77F00E1C188 /* AXSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539121D7A77F00E1C188 /* AXSecurityPolicy.m */; };
 		DF29539E21D7A77F00E1C188 /* AXWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539721D7A77F00E1C188 /* AXWebViewControllerActivity.m */; };
 		DF29539F21D7A77F00E1C188 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539821D7A77F00E1C188 /* NJKWebViewProgressView.m */; };
@@ -1222,6 +1208,8 @@
 		DFB5FF6021CA2F530057C922 /* WXBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5FF5F21CA2F530057C922 /* WXBaseViewController.swift */; };
 		DFC433E921C3F74F003E1BCB /* XNetKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC433E821C3F74F003E1BCB /* XNetKit.swift */; };
 		DFC433EB21C3F7A7003E1BCB /* cer.der in Resources */ = {isa = PBXBuildFile; fileRef = DFC433EA21C3F7A7003E1BCB /* cer.der */; };
+		DFD8215E21EF2DD8006C8705 /* KugouTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8215D21EF2DD8006C8705 /* KugouTabBarView.swift */; };
+		DFD8216021EF2DEA006C8705 /* KugouTabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFD8215F21EF2DEA006C8705 /* KugouTabBarView.xib */; };
 		DFED981C21E8AC0B009270A3 /* WXModes.m in Sources */ = {isa = PBXBuildFile; fileRef = DFED981B21E8AC0B009270A3 /* WXModes.m */; };
 		DFF4AB9921B7969A00F03C71 /* XRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */; };
 		DFF4AB9B21B7AC5900F03C71 /* XAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */; };
@@ -1320,20 +1308,6 @@
 		7121194120ABDD4B0087E05B /* EnergyShopTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyShopTabBarController.swift; sourceTree = "<group>"; };
 		7121194320ABE1280087E05B /* EnergySuperMarketTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergySuperMarketTabBarController.swift; sourceTree = "<group>"; };
 		7121194520ABE3660087E05B /* MicroEnergyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroEnergyTabBarController.swift; sourceTree = "<group>"; };
-		7121194720AC03220087E05B /* JuheDataTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuheDataTabBarController.swift; sourceTree = "<group>"; };
-		7121194920AC03800087E05B /* JuheNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuheNavigationController.swift; sourceTree = "<group>"; };
-		7121194B20AC03BC0087E05B /* JuheBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuheBaseViewController.swift; sourceTree = "<group>"; };
-		7121194D20AC0BF00087E05B /* JuheContectUSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuheContectUSViewController.swift; sourceTree = "<group>"; };
-		7121194F20AC0C000087E05B /* JuhePublicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuhePublicViewController.swift; sourceTree = "<group>"; };
-		7121195120AC0C0C0087E05B /* JuheMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuheMessageViewController.swift; sourceTree = "<group>"; };
-		7121195320AC0C170087E05B /* JuheAboutUSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuheAboutUSViewController.swift; sourceTree = "<group>"; };
-		7121195520AC0C210087E05B /* JuheChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuheChartViewController.swift; sourceTree = "<group>"; };
-		7121195720AC0C2F0087E05B /* JuheAPIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuheAPIViewController.swift; sourceTree = "<group>"; };
-		7121195920AC0C390087E05B /* JuheAPIDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuheAPIDetailViewController.swift; sourceTree = "<group>"; };
-		7121195B20AC0C450087E05B /* JuheQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuheQuestionViewController.swift; sourceTree = "<group>"; };
-		7121195D20AC0C4F0087E05B /* JuheDetailQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuheDetailQuestion.swift; sourceTree = "<group>"; };
-		7121195F20AC0C620087E05B /* JuheDynamicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuheDynamicViewController.swift; sourceTree = "<group>"; };
-		7121196120AC0C6E0087E05B /* JuheUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuheUserViewController.swift; sourceTree = "<group>"; };
 		7121196320AC24790087E05B /* ToutiaoTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToutiaoTabBarController.swift; sourceTree = "<group>"; };
 		7121196520AC24940087E05B /* ToutiaoNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToutiaoNavigationViewController.swift; sourceTree = "<group>"; };
 		7121196720AC24A70087E05B /* ToutiaoBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToutiaoBaseViewController.swift; sourceTree = "<group>"; };
@@ -1423,9 +1397,8 @@
 		7165A3C520A58D74001C60D6 /* movie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movie.png; sourceTree = "<group>"; };
 		7165A3E920A5A291001C60D6 /* FreedomBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomBaseViewController.swift; sourceTree = "<group>"; };
 		71ECDFB22091EB4A00495467 /* JSPatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatch.framework; sourceTree = "<group>"; };
-		7719171A1D65466E002F2BCD /* juheIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = juheIcon.png; sourceTree = "<group>"; };
 		7719171B1D65466E002F2BCD /* toutiaoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toutiaoIcon.png; sourceTree = "<group>"; };
-		7719171F1D655039002F2BCD /* userLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userLogo.png; sourceTree = "<group>"; };
+		7719171F1D655039002F2BCD /* userLogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userLogo1.png; sourceTree = "<group>"; };
 		771917231D656F18002F2BCD /* snow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snow.png; sourceTree = "<group>"; };
 		771917341D659950002F2BCD /* Alipay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alipay.storyboard; sourceTree = "<group>"; };
 		771917361D659957002F2BCD /* Kugou.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Kugou.storyboard; sourceTree = "<group>"; };
@@ -1434,7 +1407,6 @@
 		7719173C1D65996F002F2BCD /* Sina.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sina.storyboard; sourceTree = "<group>"; };
 		7719173E1D659979002F2BCD /* DZ.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DZ.storyboard; sourceTree = "<group>"; };
 		771917401D659983002F2BCD /* Toutiao.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Toutiao.storyboard; sourceTree = "<group>"; };
-		771917421D659993002F2BCD /* JuheData.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JuheData.storyboard; sourceTree = "<group>"; };
 		771917441D6599C4002F2BCD /* MicroEnergy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MicroEnergy.storyboard; sourceTree = "<group>"; };
 		771917461D6599EB002F2BCD /* PersonalApply.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PersonalApply.storyboard; sourceTree = "<group>"; };
 		771917481D659A00002F2BCD /* Freedom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Freedom.storyboard; sourceTree = "<group>"; };
@@ -1619,7 +1591,6 @@
 		772E83891D76BC15004EDF50 /* n3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = n3.png; sourceTree = "<group>"; };
 		772E838A1D76BC15004EDF50 /* nav_ocean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_ocean.png; sourceTree = "<group>"; };
 		772E838C1D76BC15004EDF50 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
-		772E838D1D76BC15004EDF50 /* placeHoder-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeHoder-128.png"; sourceTree = "<group>"; };
 		772E83901D76BC15004EDF50 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 		772E83931D76BC15004EDF50 /* slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider.png; sourceTree = "<group>"; };
 		772E83951D76BC15004EDF50 /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = "<group>"; };
@@ -1766,7 +1737,6 @@
 		7772A8091D64648B00444973 /* database.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = database.png; sourceTree = "<group>"; };
 		7772A80A1D64648B00444973 /* weixinIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weixinIcon.png; sourceTree = "<group>"; };
 		7772A80B1D64648B00444973 /* ZUAN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ZUAN.png; sourceTree = "<group>"; };
-		7772A80C1D64648B00444973 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
 		7772A80D1D64648B00444973 /* aiqiyiIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aiqiyiIcon.png; sourceTree = "<group>"; };
 		7780D8D91E23818A00807502 /* Taobaomessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taobaomessage.png; sourceTree = "<group>"; };
 		7780D8DA1E23818A00807502 /* TaobaoScanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaobaoScanner.png; sourceTree = "<group>"; };
@@ -2481,6 +2451,10 @@
 		DF0E968321CBACFA009682CC /* WXShakeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXShakeSettingViewController.swift; sourceTree = "<group>"; };
 		DF0E968521CBAD07009682CC /* WXShakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXShakeViewController.swift; sourceTree = "<group>"; };
 		DF0E968721CBAD13009682CC /* WXShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXShoppingViewController.swift; sourceTree = "<group>"; };
+		DF1208CA21EED1D100F7ED7F /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
+		DF1208CC21EED3C500F7ED7F /* userLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userLogo.png; sourceTree = "<group>"; };
+		DF1208CE21EEE5A500F7ED7F /* KugouModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouModels.swift; sourceTree = "<group>"; };
+		DF1208D021EEE5AF00F7ED7F /* KugouAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouAPI.swift; sourceTree = "<group>"; };
 		DF29539121D7A77F00E1C188 /* AXSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXSecurityPolicy.m; sourceTree = "<group>"; };
 		DF29539221D7A77F00E1C188 /* AXSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXSecurityPolicy.h; sourceTree = "<group>"; };
 		DF29539421D7A77F00E1C188 /* AXWebViewControllerActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXWebViewControllerActivity.h; sourceTree = "<group>"; };
@@ -2590,6 +2564,8 @@
 		DFB5FF5F21CA2F530057C922 /* WXBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXBaseViewController.swift; sourceTree = "<group>"; };
 		DFC433E821C3F74F003E1BCB /* XNetKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNetKit.swift; sourceTree = "<group>"; };
 		DFC433EA21C3F7A7003E1BCB /* cer.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cer.der; sourceTree = "<group>"; };
+		DFD8215D21EF2DD8006C8705 /* KugouTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouTabBarView.swift; sourceTree = "<group>"; };
+		DFD8215F21EF2DEA006C8705 /* KugouTabBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KugouTabBarView.xib; sourceTree = "<group>"; };
 		DFED981A21E8AC0B009270A3 /* WXModes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXModes.h; sourceTree = "<group>"; };
 		DFED981B21E8AC0B009270A3 /* WXModes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXModes.m; sourceTree = "<group>"; };
 		DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRefreshHeader.swift; sourceTree = "<group>"; };
@@ -2725,8 +2701,9 @@
 		7719171E1D655031002F2BCD /* UserData */ = {
 			isa = PBXGroup;
 			children = (
+				DF1208CC21EED3C500F7ED7F /* userLogo.png */,
 				776463C51D6867A400ACCCAC /* UserErweima.png */,
-				7719171F1D655039002F2BCD /* userLogo.png */,
+				7719171F1D655039002F2BCD /* userLogo1.png */,
 			);
 			path = UserData;
 			sourceTree = "<group>";
@@ -2904,6 +2881,10 @@
 				713EE2B520AD901F0085B65D /* KugouBaseViewController.swift */,
 				713EE2B920AD906F0085B65D /* KugouNavigationViewController.swift */,
 				713EE2A920AD8F5C0085B65D /* KugouTabBarController.swift */,
+				DFD8215D21EF2DD8006C8705 /* KugouTabBarView.swift */,
+				DFD8215F21EF2DEA006C8705 /* KugouTabBarView.xib */,
+				DF1208CE21EEE5A500F7ED7F /* KugouModels.swift */,
+				DF1208D021EEE5AF00F7ED7F /* KugouAPI.swift */,
 			);
 			path = "基本类库";
 			sourceTree = "<group>";
@@ -3150,62 +3131,6 @@
 				7121197320AC250D0087E05B /* ToutiaoMeViewController.swift */,
 			);
 			path = "我的";
-			sourceTree = "<group>";
-		};
-		7745C20F1D67162F002212DE /* 常见问题 */ = {
-			isa = PBXGroup;
-			children = (
-				7121195B20AC0C450087E05B /* JuheQuestionViewController.swift */,
-				7121195D20AC0C4F0087E05B /* JuheDetailQuestion.swift */,
-			);
-			path = "常见问题";
-			sourceTree = "<group>";
-		};
-		7745C2101D67162F002212DE /* 基本类库 */ = {
-			isa = PBXGroup;
-			children = (
-				7121194720AC03220087E05B /* JuheDataTabBarController.swift */,
-				7121194920AC03800087E05B /* JuheNavigationController.swift */,
-				7121194B20AC03BC0087E05B /* JuheBaseViewController.swift */,
-			);
-			path = "基本类库";
-			sourceTree = "<group>";
-		};
-		7745C2111D67162F002212DE /* 聚合动态 */ = {
-			isa = PBXGroup;
-			children = (
-				7121195F20AC0C620087E05B /* JuheDynamicViewController.swift */,
-			);
-			path = "聚合动态";
-			sourceTree = "<group>";
-		};
-		7745C2121D67162F002212DE /* 联系我们 */ = {
-			isa = PBXGroup;
-			children = (
-				7121194D20AC0BF00087E05B /* JuheContectUSViewController.swift */,
-				7121194F20AC0C000087E05B /* JuhePublicViewController.swift */,
-				7121195120AC0C0C0087E05B /* JuheMessageViewController.swift */,
-				7121195320AC0C170087E05B /* JuheAboutUSViewController.swift */,
-				7121195520AC0C210087E05B /* JuheChartViewController.swift */,
-			);
-			path = "联系我们";
-			sourceTree = "<group>";
-		};
-		7745C2131D67162F002212DE /* 数据接口 */ = {
-			isa = PBXGroup;
-			children = (
-				7121195720AC0C2F0087E05B /* JuheAPIViewController.swift */,
-				7121195920AC0C390087E05B /* JuheAPIDetailViewController.swift */,
-			);
-			path = "数据接口";
-			sourceTree = "<group>";
-		};
-		7745C2141D67162F002212DE /* 用户中心 */ = {
-			isa = PBXGroup;
-			children = (
-				7121196120AC0C6E0087E05B /* JuheUserViewController.swift */,
-			);
-			path = "用户中心";
 			sourceTree = "<group>";
 		};
 		7745C2151D67168E002212DE /* 基本类库 */ = {
@@ -3640,7 +3565,6 @@
 				776C658B1D22540A00D77E0D /* 新浪微博 */,
 				776C65821D22540A00D77E0D /* 大众点评 */,
 				776C65841D22540A00D77E0D /* 今日头条 */,
-				776C65851D22540A00D77E0D /* 聚合数据 */,
 				776C65881D22540A00D77E0D /* 微能量 */,
 				776C65831D22540A00D77E0D /* 个人应用 */,
 				7772A7FB1D64639900444973 /* 个性特色自由主义 */,
@@ -3899,20 +3823,6 @@
 			path = "今日头条";
 			sourceTree = "<group>";
 		};
-		776C65851D22540A00D77E0D /* 聚合数据 */ = {
-			isa = PBXGroup;
-			children = (
-				7745C2101D67162F002212DE /* 基本类库 */,
-				7745C2121D67162F002212DE /* 联系我们 */,
-				7745C20F1D67162F002212DE /* 常见问题 */,
-				7745C2131D67162F002212DE /* 数据接口 */,
-				7745C2111D67162F002212DE /* 聚合动态 */,
-				7745C2141D67162F002212DE /* 用户中心 */,
-				771917421D659993002F2BCD /* JuheData.storyboard */,
-			);
-			path = "聚合数据";
-			sourceTree = "<group>";
-		};
 		776C65861D22540A00D77E0D /* 酷狗 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4113,7 +4023,6 @@
 			isa = PBXGroup;
 			children = (
 				771917231D656F18002F2BCD /* snow.png */,
-				7719171A1D65466E002F2BCD /* juheIcon.png */,
 				DF7B404A21ABFDFA00E3D975 /* douyinIcon.png */,
 				7719171B1D65466E002F2BCD /* toutiaoIcon.png */,
 				7772A7FE1D64648B00444973 /* zhifubaoIcon.png */,
@@ -4127,8 +4036,8 @@
 				7772A8071D64648B00444973 /* dianpingIcon.png */,
 				7772A8091D64648B00444973 /* database.png */,
 				7772A80A1D64648B00444973 /* weixinIcon.png */,
+				DF1208CA21EED1D100F7ED7F /* books.png */,
 				7772A80B1D64648B00444973 /* ZUAN.png */,
-				7772A80C1D64648B00444973 /* books.png */,
 				7772A80D1D64648B00444973 /* aiqiyiIcon.png */,
 			);
 			path = HomePictures;
@@ -4828,7 +4737,6 @@
 				772E83891D76BC15004EDF50 /* n3.png */,
 				772E838A1D76BC15004EDF50 /* nav_ocean.png */,
 				772E838C1D76BC15004EDF50 /* next.png */,
-				772E838D1D76BC15004EDF50 /* placeHoder-128.png */,
 				772E83901D76BC15004EDF50 /* setting.png */,
 				772E83931D76BC15004EDF50 /* slider.png */,
 				772E83951D76BC15004EDF50 /* start.png */,
@@ -5958,7 +5866,7 @@
 				779938E31E2F7B6500866968 /* d_tu.png in Resources */,
 				772E86A11D76BC15004EDF50 /* ktv_other.png in Resources */,
 				7741F1211D6D50F900EED332 /* alipayMeZhaocai.png in Resources */,
-				771917201D655039002F2BCD /* userLogo.png in Resources */,
+				771917201D655039002F2BCD /* userLogo1.png in Resources */,
 				772E85C51D76BC15004EDF50 /* ktv_giftnum520.png in Resources */,
 				77993A691E2F7B9D00866968 /* [蛋糕]@2x.png in Resources */,
 				779939541E2F7B6600866968 /* lxh_toule.gif in Resources */,
@@ -5971,7 +5879,6 @@
 				BF58BB8B20EF1D3F002CB4EE /* BQMM.bundle in Resources */,
 				7741F14B1D6D50F900EED332 /* home_pay.png in Resources */,
 				BFC6D96B20E5D3D400F17378 /* 走在冷风中.mp3 in Resources */,
-				771917431D659993002F2BCD /* JuheData.storyboard in Resources */,
 				77FD03D61E25F17C00E5099E /* taobaomini4.png in Resources */,
 				772E85EE1D76BC15004EDF50 /* ktv_ksong.png in Resources */,
 				772E85A61D76BC15004EDF50 /* ktv_findpage_new_invitereceive.png in Resources */,
@@ -5998,7 +5905,6 @@
 				77993A321E2F7B9D00866968 /* [怒]@2x.png in Resources */,
 				779939451E2F7B6600866968 /* lxh_oye.gif in Resources */,
 				77993A401E2F7B9D00866968 /* [撇嘴]@2x.png in Resources */,
-				7719171C1D65466E002F2BCD /* juheIcon.png in Resources */,
 				772E86981D76BC15004EDF50 /* ktv_occupation_it.png in Resources */,
 				772E845B1D76BC15004EDF50 /* fx_liveroom_xb_coin.png in Resources */,
 				7799393F1E2F7B6600866968 /* lxh_leifeng.png in Resources */,
@@ -6026,7 +5932,6 @@
 				779938BC1E2F7B6400866968 /* d_chanzui.png in Resources */,
 				779938DF1E2F7B6500866968 /* d_sikao.png in Resources */,
 				772E842E1D76BC15004EDF50 /* fx_golden_box_normal.png in Resources */,
-				7772A81C1D64648B00444973 /* books.png in Resources */,
 				DFF4ABA321B7FB6000F03C71 /* XExcellView.xib in Resources */,
 				7772A81B1D64648B00444973 /* ZUAN.png in Resources */,
 				77645F121D68259900ACCCAC /* EmotionsSendBtnBlueHL.png in Resources */,
@@ -6233,7 +6138,6 @@
 				779939421E2F7B6600866968 /* lxh_meigui.gif in Resources */,
 				7799390A1E2F7B6500866968 /* o_huatong.png in Resources */,
 				779938F41E2F7B6500866968 /* f_geili.png in Resources */,
-				772E895F1D76BC15004EDF50 /* placeHoder-128.png in Resources */,
 				77993A621E2F7B9D00866968 /* [红双喜]@2x.png in Resources */,
 				779938F11E2F7B6500866968 /* d_zuiyou.png in Resources */,
 				772E86B51D76BC15004EDF50 /* KTV_selecting_hotbtnp.png in Resources */,
@@ -6262,6 +6166,7 @@
 				7799392C1E2F7B6500866968 /* lxh_haobang.gif in Resources */,
 				77645EB61D68259900ACCCAC /* add_friend_icon_addgroup.png in Resources */,
 				772E86961D76BC15004EDF50 /* ktv_occupation_education.png in Resources */,
+				DFD8216021EF2DEA006C8705 /* KugouTabBarView.xib in Resources */,
 				774BA6441E28DA18007FF686 /* taobaono.png in Resources */,
 				77993A4B1E2F7B9D00866968 /* [灯泡]@2x.png in Resources */,
 				77993A3A1E2F7B9D00866968 /* [抠鼻]@2x.png in Resources */,
@@ -6351,6 +6256,7 @@
 				7741F15B1D6D50F900EED332 /* scan_net.png in Resources */,
 				771917371D659957002F2BCD /* Kugou.storyboard in Resources */,
 				779939521E2F7B6600866968 /* lxh_shuaishuaishou.gif in Resources */,
+				DF1208CB21EED1D100F7ED7F /* books.png in Resources */,
 				7788AC161D79969F00376C95 /* reader_bg3.png in Resources */,
 				779939361E2F7B6500866968 /* lxh_jiujie.gif in Resources */,
 				BFC6D95620E5C41B00F17378 /* Chapter6.txt in Resources */,
@@ -6381,6 +6287,7 @@
 				77993A131E2F7B9C00866968 /* [吐]@2x.png in Resources */,
 				779939511E2F7B6600866968 /* lxh_quntiweiguan.png in Resources */,
 				77993A421E2F7B9D00866968 /* [敲打]@2x.png in Resources */,
+				DF1208CD21EED3C500F7ED7F /* userLogo.png in Resources */,
 				772E84401D76BC15004EDF50 /* fx_liveList_entrance_newer.png in Resources */,
 				772E83AA1D76BC15004EDF50 /* box_redHeart.png in Resources */,
 				772E86741D76BC15004EDF50 /* ktv_mine.png in Resources */,
@@ -6649,17 +6556,16 @@
 				DF7B407021AC020A00E3D975 /* PhotoView.swift in Sources */,
 				BF58BB3C20EF1945002CB4EE /* RCDSearchDataManager.m in Sources */,
 				7115A5D420AAD716000D0B96 /* ResumeTabBarController.swift in Sources */,
-				7121196220AC0C6E0087E05B /* JuheUserViewController.swift in Sources */,
 				DF7B406F21AC020A00E3D975 /* Constants.swift in Sources */,
 				713728CC20AE839900A3227A /* AlipayYuEBaoTableViewController.swift in Sources */,
 				DF6B523621CB76F200460949 /* WXNewMessageSettingViewController.swift in Sources */,
 				7115A5D820AAD783000D0B96 /* ResumeBaseViewController.swift in Sources */,
 				7115A5F220AAFC0F000D0B96 /* MyDatabaseBaseViewController.swift in Sources */,
-				7121194C20AC03BC0087E05B /* JuheBaseViewController.swift in Sources */,
 				BF0E8B0820DCB0B500150476 /* AppManager.m in Sources */,
 				7121197220AC25000087E05B /* ToutiaoAttentionViewController.swift in Sources */,
 				713EE2CC20AD9B760085B65D /* TaobaoMiniDynamicViewController.swift in Sources */,
 				7115A5C620AAD35E000D0B96 /* PersonalFoodViewController.swift in Sources */,
+				DF1208D121EEE5AF00F7ED7F /* KugouAPI.swift in Sources */,
 				DF6B522221CB261A00460949 /* TLEmojiBaseCell.swift in Sources */,
 				DF6B520621CA804200460949 /* WXWebViewController.swift in Sources */,
 				BFC6D94120E4AC0B00F17378 /* SinaComposeViewController.swift in Sources */,
@@ -6675,12 +6581,10 @@
 				DF7B407221AC020A00E3D975 /* RefreshControl.swift in Sources */,
 				713EE2F020AD9CE50085B65D /* KugouMainViewController.swift in Sources */,
 				BF58BB6420EF1945002CB4EE /* RealTimeLocationViewController.m in Sources */,
-				7121194820AC03220087E05B /* JuheDataTabBarController.swift in Sources */,
 				DF6B523E21CB770B00460949 /* WXExpressionPublicViewController.swift in Sources */,
 				BFAC49C320D36A2700E5CB8D /* LibraryCollectionViewController.swift in Sources */,
 				DF0E968421CBACFA009682CC /* WXShakeSettingViewController.swift in Sources */,
 				DF8E5F5221E60E1D00F92CA6 /* RLMRealm+extension.swift in Sources */,
-				7121195820AC0C2F0087E05B /* JuheAPIViewController.swift in Sources */,
 				BF58BB3720EF1945002CB4EE /* RCDCreateGroupViewController.m in Sources */,
 				BF5B9B731F8E676500BD885E /* CareerViewController.swift in Sources */,
 				713EE2C620AD9B2B0085B65D /* DZMeController.swift in Sources */,
@@ -6721,9 +6625,9 @@
 				7121194220ABDD4B0087E05B /* EnergyShopTabBarController.swift in Sources */,
 				DFB5FF5621CA280A0057C922 /* WXExpanded.swift in Sources */,
 				DF6B520421CA803900460949 /* WXTableViewController.swift in Sources */,
+				DFD8215E21EF2DD8006C8705 /* KugouTabBarView.swift in Sources */,
 				DF6B523821CB76F800460949 /* WXPrivacySettingViewController.swift in Sources */,
 				BFAC491B20D2470F00E5CB8D /* BooksMainViewController.swift in Sources */,
-				7121195E20AC0C4F0087E05B /* JuheDetailQuestion.swift in Sources */,
 				BFC6D93B20E4AB6D00F17378 /* SinaAuthController.swift in Sources */,
 				DF7B407821AC020A00E3D975 /* DouyinNavigationViewController.swift in Sources */,
 				71267A552092DC93006E1B96 /* BookFriendsTableViewCell.m in Sources */,
@@ -6731,7 +6635,6 @@
 				BF58BB2820EF1945002CB4EE /* RCDContactTableViewCell.m in Sources */,
 				774BFB171D767389005CA603 /* PlayAudioViewController.m in Sources */,
 				DFED981C21E8AC0B009270A3 /* WXModes.m in Sources */,
-				7121195620AC0C210087E05B /* JuheChartViewController.swift in Sources */,
 				BFC6D93520E4AADB00F17378 /* SinaTabBarController.swift in Sources */,
 				DFA5D3AE21BA184F00339006 /* PlayLRCSView.swift in Sources */,
 				7788AC651D7996E000376C95 /* E_SearchViewController.m in Sources */,
@@ -6781,6 +6684,7 @@
 				BF4A80E02105CE5E00D32FB0 /* BaseSearchBarView.swift in Sources */,
 				7121194420ABE1280087E05B /* EnergySuperMarketTabBarController.swift in Sources */,
 				BF4A80DE2105CDFF00D32FB0 /* CRKeychainItem.m in Sources */,
+				DF1208CF21EEE5A500F7ED7F /* KugouModels.swift in Sources */,
 				DF6B521621CB25D200460949 /* WXChatTableViewController.swift in Sources */,
 				7115A5DE20AAD9CE000D0B96 /* ResumeDetailViewController.swift in Sources */,
 				DF0E966E21CBACAE009682CC /* WXNewFriendViewController.swift in Sources */,
@@ -6809,7 +6713,6 @@
 				BF58BB6720EF1945002CB4EE /* AFHttpTool.m in Sources */,
 				7121192820ABC4E10087E05B /* EnergyNewsViewController.swift in Sources */,
 				713EE2B220AD90010085B65D /* DZBaseViewController.swift in Sources */,
-				7121195A20AC0C390087E05B /* JuheAPIDetailViewController.swift in Sources */,
 				DFB5FF5C21CA2F1C0057C922 /* WXTabBarController.swift in Sources */,
 				DF7B407C21AC020A00E3D975 /* WebCacheManager.swift in Sources */,
 				7115A5E220AAD9E4000D0B96 /* ResumeTheorySystemViewController.swift in Sources */,
@@ -6880,7 +6783,6 @@
 				DF6B520E21CB25B100460949 /* WXChatDetailViewController.swift in Sources */,
 				BFEF19A42101E821003DCAC1 /* ioapi.c in Sources */,
 				DF846C8D21BE55FD002D9CA2 /* NSObject+Mirror.m in Sources */,
-				7121195020AC0C000087E05B /* JuhePublicViewController.swift in Sources */,
 				DF6B522E21CB76CF00460949 /* WXBgSettingViewController.swift in Sources */,
 				DFFA80C621AEC84D009B1999 /* BaseViewController.swift in Sources */,
 				BF58BB4920EF1945002CB4EE /* RCDDiscussGroupSettingViewController.m in Sources */,
@@ -6912,7 +6814,6 @@
 				DF0E967021CBACB9009682CC /* WXPublicServerSearchViewController.swift in Sources */,
 				DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */,
 				BF58BB3120EF1945002CB4EE /* RCDGroupAnnouncementViewController.m in Sources */,
-				7121194A20AC03800087E05B /* JuheNavigationController.swift in Sources */,
 				DF8BBC9C21D67F0600F0D1FD /* UIView+CircularAnimation.swift in Sources */,
 				7788AC661D7996E000376C95 /* E_WebViewControler.m in Sources */,
 				BF58BB4720EF1945002CB4EE /* RCDConversationSettingBaseViewController.m in Sources */,
@@ -6924,7 +6825,6 @@
 				DFC433E921C3F74F003E1BCB /* XNetKit.swift in Sources */,
 				DF6B51F621CA800500460949 /* WXInfoViewController.swift in Sources */,
 				DF6B523C21CB770500460949 /* WXExpressionDetailViewController.swift in Sources */,
-				7121196020AC0C620087E05B /* JuheDynamicViewController.swift in Sources */,
 				7121192020ABC4990087E05B /* EnergyBaseViewController.swift in Sources */,
 				7121194620ABE3660087E05B /* MicroEnergyTabBarController.swift in Sources */,
 				DF0E967621CBACD4009682CC /* WXBottleViewController.swift in Sources */,
@@ -6938,7 +6838,6 @@
 				713EE31020ADA0990085B65D /* IqiyiLoginViewController.swift in Sources */,
 				DF0489F721D28BA40030C30B /* NSObject+MotionAnimation.swift in Sources */,
 				BF93B91920F8B0C3007E4BFB /* FreedomLoginViewController.swift in Sources */,
-				7121195220AC0C0C0087E05B /* JuheMessageViewController.swift in Sources */,
 				BFEF19A32101E821003DCAC1 /* zip.c in Sources */,
 				BFC6D93320E322D200F17378 /* XRadiaMenu.swift in Sources */,
 				713EE2B420AD900F0085B65D /* TaobaoBaseViewController.swift in Sources */,
@@ -6961,12 +6860,10 @@
 				BFAC49C520D3857700E5CB8D /* FirstViewController.swift in Sources */,
 				7121193020ABC5270087E05B /* EnergySuperHomeViewController.swift in Sources */,
 				DF6B524421CB771D00460949 /* WXMyExpressionViewController.swift in Sources */,
-				7121194E20AC0BF00087E05B /* JuheContectUSViewController.swift in Sources */,
 				DF0489FB21D28BA40030C30B /* Types.swift in Sources */,
 				BF58BB5920EF1945002CB4EE /* RCDServiceViewController.m in Sources */,
 				BF58BB2B20EF1945002CB4EE /* RCDFrienfRemarksViewController.m in Sources */,
 				7115A5C020AAD339000D0B96 /* PersonalSoftViewController.swift in Sources */,
-				7121195C20AC0C450087E05B /* JuheQuestionViewController.swift in Sources */,
 				BF5B9B621F8E641000BD885E /* PhilosophyViewController.swift in Sources */,
 				BF58BB1520EF1944002CB4EE /* RCloudModel.m in Sources */,
 				DF0489EA21D28B870030C30B /* ElasticTransitionPresentationController.swift in Sources */,
@@ -7013,7 +6910,6 @@
 				7121196820AC24A70087E05B /* ToutiaoBaseViewController.swift in Sources */,
 				DF6B521821CB25D900460949 /* WXChatViewController.swift in Sources */,
 				DF0E967221CBACBF009682CC /* WXPublicServerViewController.swift in Sources */,
-				7121195420AC0C170087E05B /* JuheAboutUSViewController.swift in Sources */,
 				BFC6D93720E4AAF800F17378 /* SinaNavigationController.swift in Sources */,
 				BF58BB1420EF1944002CB4EE /* KxMenu.m in Sources */,
 				7115A5EA20AAEDF1000D0B96 /* BooksBaseViewController.swift in Sources */,

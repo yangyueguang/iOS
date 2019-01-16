@@ -434,32 +434,6 @@ extension XNetKit {
         }
     }
 
-    //FIXME: 聚合数据
-    /// 聚合数据/动态列表
-    static func juheDynamics(_ param: Parameters, next: PublishSubject<Any>) {
-        request(API.juhe.dynamics.rawValue, parameters: param) { (response) in
-            next.onNext(response)
-        }
-    }
-    /// 聚合数据/数据接口
-    static func juheApis(_ param: Parameters, next: PublishSubject<Any>) {
-        request(API.juhe.apis.rawValue, parameters: param) { (response) in
-            next.onNext(response)
-        }
-    }
-    /// 聚合数据/常见问题
-    static func juheQuestions(_ param: Parameters, next: PublishSubject<Any>) {
-        request(API.juhe.questions.rawValue, parameters: param) { (response) in
-            next.onNext(response)
-        }
-    }
-    /// 聚合数据/联系我们
-    static func juheConnect(_ param: Parameters, next: PublishSubject<Any>) {
-        request(API.juhe.connect.rawValue, parameters: param) { (response) in
-            next.onNext(response)
-        }
-    }
-
     //FIXME: 酷狗
     /// 酷狗/唱歌列表
     static func kugouSing(_ param: Parameters, next: PublishSubject<Any>) {

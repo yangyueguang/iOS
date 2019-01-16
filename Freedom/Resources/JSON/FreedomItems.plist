@@ -12,36 +12,28 @@
 	</dict>
 	<dict>
 		<key>control</key>
-		<string>JuheData</string>
-		<key>icon</key>
-		<string>juheIcon</string>
-		<key>title</key>
-		<string>聚合数据</string>
-	</dict>
-	<dict>
-		<key>control</key>
 		<string>Iqiyi</string>
 		<key>icon</key>
 		<string>aiqiyiIcon</string>
 		<key>title</key>
 		<string>爱奇艺</string>
 	</dict>
-    <dict>
-        <key>control</key>
-        <string>Douyin</string>
-        <key>icon</key>
-        <string>douyinIcon</string>
-        <key>title</key>
-        <string>抖音</string>
-    </dict>
-    <dict>
-        <key>control</key>
-        <string>Taobao</string>
-        <key>icon</key>
-        <string>taobaoIcon</string>
-        <key>title</key>
-        <string>淘宝</string>
-    </dict>
+	<dict>
+		<key>control</key>
+		<string>Douyin</string>
+		<key>icon</key>
+		<string>douyinIcon</string>
+		<key>title</key>
+		<string>抖音</string>
+	</dict>
+	<dict>
+		<key>control</key>
+		<string>Taobao</string>
+		<key>icon</key>
+		<string>taobaoIcon</string>
+		<key>title</key>
+		<string>淘宝</string>
+	</dict>
 	<dict>
 		<key>control</key>
 		<string>Sina</string>
