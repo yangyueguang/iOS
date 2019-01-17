@@ -104,9 +104,10 @@ class KugouLocalMusicViewController: KugouBaseViewController {
         def.synchronize()
         // 把相关信息传递到tabbar
         let tabbar = tabBarController as? KugouTabBarController
-        tabbar?.coustomTabBar.assetUrl = assetURLArr[indexPath.row]
-        tabbar?.coustomTabBar.iconView.image = iconArr[indexPath.row]
-        tabbar?.coustomTabBar.songNameLable.text = songArr[indexPath.row]
-        tabbar?.coustomTabBar.singerLable.text = singerArr[indexPath.row]
+
+//        tabbar?.coustomTabBar?.assetUrl = assetURLArr[indexPath.row]
+//        tabbar?.coustomTabBar?.iconView.image = iconArr[indexPath.row]
+//        tabbar?.coustomTabBar?.songNameLable.text = songArr[indexPath.row]
+//        tabbar?.coustomTabBar?.singerLable.text = singerArr[indexPath.row]
     }
 }

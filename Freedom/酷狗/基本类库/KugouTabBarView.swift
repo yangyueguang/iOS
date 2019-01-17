@@ -3,9 +3,12 @@
 //  Freedom
 //
 import UIKit
+import SnapKit
+import XExtension
 import MediaPlayer
-@IBDesignable
+//@IBDesignable
 class KugouTabBarView: UIView, AVAudioPlayerDelegate {
+    @IBOutlet var contentView: UIView!
     weak var timer: Timer?
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var sliderView: UISlider!
@@ -33,6 +36,22 @@ class KugouTabBarView: UIView, AVAudioPlayerDelegate {
         av?.delegate = self
         return av!
     }();
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initFromXIB()
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initFromXIB()
+    }
+    func initFromXIB() {
+        let nib = UINib(nibName: "KugouTabBarView", bundle: Bundle.main)
+        contentView = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        addSubview(contentView)
+        contentView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         sliderView.setThumbImage(UIImage(named: "slider"), for: .normal)

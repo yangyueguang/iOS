@@ -26,7 +26,7 @@
         <!--Kugou Main View Controller-->
         <scene sceneID="9Ud-Gw-GTT">
             <objects>
-                <viewController id="mAL-F9-4Uz" customClass="KugouMainViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KugouMainViewController" id="mAL-F9-4Uz" customClass="KugouMainViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kzh-on-Ypx"/>
                         <viewControllerLayoutGuide type="bottom" id="zj0-uK-NL7"/>
@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAF-rs-X40" userLabel="navBar">
-                                <rect key="frame" x="16" y="20" width="343" height="64"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxi-Fs-va7">
                                         <rect key="frame" x="0.0" y="20" width="44" height="44"/>
@@ -50,10 +50,10 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="s9a-wB-Bmf">
-                                        <rect key="frame" x="54" y="20" width="235" height="44"/>
+                                        <rect key="frame" x="54" y="20" width="267" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swg-kj-el9">
-                                                <rect key="frame" x="0.0" y="0.0" width="59" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="67" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="我">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,7 +63,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qq9-a0-Rvc">
-                                                <rect key="frame" x="59" y="0.0" width="58.5" height="44"/>
+                                                <rect key="frame" x="67" y="0.0" width="66.5" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="听">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -73,7 +73,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2P-aq-bfk">
-                                                <rect key="frame" x="117.5" y="0.0" width="59" height="44"/>
+                                                <rect key="frame" x="133.5" y="0.0" width="67" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="看">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -83,7 +83,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbt-Mm-fo2">
-                                                <rect key="frame" x="176.5" y="0.0" width="58.5" height="44"/>
+                                                <rect key="frame" x="200.5" y="0.0" width="66.5" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="唱">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -98,7 +98,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0F-O2-Ank">
-                                        <rect key="frame" x="299" y="20" width="44" height="44"/>
+                                        <rect key="frame" x="331" y="20" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="b4W-am-7SX"/>
                                             <constraint firstAttribute="width" constant="44" id="cdj-ea-ofi"/>
@@ -121,32 +121,29 @@
                                     <constraint firstAttribute="bottom" secondItem="vxi-Fs-va7" secondAttribute="bottom" id="oaQ-AN-oLm"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7G-vu-Znl">
-                                <rect key="frame" x="16" y="84" width="343" height="489"/>
-                                <connections>
-                                    <outlet property="delegate" destination="mAL-F9-4Uz" id="WzL-Y6-uYP"/>
-                                </connections>
-                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMj-Ph-YSf" customClass="KugouTabBarView" customModule="Freedom" customModuleProvider="target">
-                                <rect key="frame" x="16" y="573" width="343" height="50"/>
+                                <rect key="frame" x="0.0" y="573" width="375" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="tKA-mw-CqG"/>
                                 </constraints>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7G-vu-Znl">
+                                <rect key="frame" x="0.0" y="64" width="375" height="509"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="aMj-Ph-YSf" secondAttribute="trailing" id="1Wz-be-Qeu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aMj-Ph-YSf" secondAttribute="trailing" constant="-16" id="1Wz-be-Qeu"/>
                             <constraint firstItem="aMj-Ph-YSf" firstAttribute="top" secondItem="f7G-vu-Znl" secondAttribute="bottom" id="6yI-0s-OFd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="f7G-vu-Znl" secondAttribute="trailing" id="EdQ-W3-5X2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sAF-rs-X40" secondAttribute="trailing" id="G1c-9H-aLr"/>
-                            <constraint firstItem="aMj-Ph-YSf" firstAttribute="leading" secondItem="5n9-it-GZU" secondAttribute="leadingMargin" id="G4C-mO-VIG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="f7G-vu-Znl" secondAttribute="trailing" constant="-16" id="EdQ-W3-5X2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sAF-rs-X40" secondAttribute="trailing" constant="-16" id="G1c-9H-aLr"/>
+                            <constraint firstItem="aMj-Ph-YSf" firstAttribute="leading" secondItem="5n9-it-GZU" secondAttribute="leadingMargin" constant="-16" id="G4C-mO-VIG"/>
+                            <constraint firstItem="sAF-rs-X40" firstAttribute="leading" secondItem="5n9-it-GZU" secondAttribute="leadingMargin" constant="-16" id="Y9R-WQ-31a"/>
                             <constraint firstItem="zj0-uK-NL7" firstAttribute="top" secondItem="aMj-Ph-YSf" secondAttribute="bottom" id="csT-o1-9Z3"/>
-                            <constraint firstItem="f7G-vu-Znl" firstAttribute="leading" secondItem="5n9-it-GZU" secondAttribute="leadingMargin" id="dP1-gI-Sfu"/>
+                            <constraint firstItem="f7G-vu-Znl" firstAttribute="leading" secondItem="5n9-it-GZU" secondAttribute="leadingMargin" constant="-16" id="dP1-gI-Sfu"/>
                             <constraint firstItem="f7G-vu-Znl" firstAttribute="top" secondItem="sAF-rs-X40" secondAttribute="bottom" id="mGz-JZ-2rS"/>
-                            <constraint firstItem="sAF-rs-X40" firstAttribute="leading" secondItem="5n9-it-GZU" secondAttribute="leadingMargin" id="mkg-sc-3UR"/>
-                            <constraint firstItem="sAF-rs-X40" firstAttribute="top" secondItem="Kzh-on-Ypx" secondAttribute="bottom" id="mz0-IB-3Xq"/>
+                            <constraint firstItem="sAF-rs-X40" firstAttribute="top" secondItem="Kzh-on-Ypx" secondAttribute="bottom" constant="-20" id="mz0-IB-3Xq"/>
                         </constraints>
                     </view>
                     <toolbarItems>
@@ -154,8 +151,9 @@
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="contentView" destination="f7G-vu-Znl" id="gb1-7w-Jmj"/>
+                        <outlet property="contentView" destination="f7G-vu-Znl" id="mRC-up-pBe"/>
                         <outlet property="navBar" destination="sAF-rs-X40" id="yKr-Uj-xf7"/>
+                        <outlet property="tabBarView" destination="aMj-Ph-YSf" id="bss-Tm-Qye"/>
                         <outletCollection property="titleButtons" destination="swg-kj-el9" collectionClass="NSMutableArray" id="UQa-tb-Lsk"/>
                         <outletCollection property="titleButtons" destination="qq9-a0-Rvc" collectionClass="NSMutableArray" id="Df7-k2-bSA"/>
                         <outletCollection property="titleButtons" destination="V2P-aq-bfk" collectionClass="NSMutableArray" id="1l9-cf-ce0"/>

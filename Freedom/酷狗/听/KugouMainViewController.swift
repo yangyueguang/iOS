@@ -6,10 +6,9 @@ import XExtension
 import MediaPlayer
 import AVFoundation
 class KugouMainViewController: KugouBaseViewController {
-    var coustomTabBar: TabBarView!
     @IBOutlet weak var navBar: UIView!
     @IBOutlet weak var contentView: UIScrollView!
-    @IBOutlet weak var tabBarView: UIView!
+    @IBOutlet weak var tabBarView: KugouTabBarView?
     @IBOutlet var titleButtons: [UIButton]!
 
     let linsenVc = KugouLinsenViewController()
@@ -45,7 +44,6 @@ class KugouMainViewController: KugouBaseViewController {
         sender.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         self.contentView.setContentOffset(CGPoint(x: self.contentView.width * CGFloat(sender.tag), y: 0), animated: true)
     }
-    // MARK: - 抽屉效果
     @IBAction func setAction(_ sender: Any) {
         sideMenuViewController.presentLeftMenuViewController()
     }

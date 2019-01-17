@@ -5,11 +5,11 @@ import UIKit
 import XExtension
 import AVFoundation
 class KugouTabBarController: BaseTabBarViewController {
-    let coustomTabBar = TabBarView(frame: CGRect(x: 0, y: 49 - TabBarH, width: APPW, height: TabBarH))
+    let kugouMainVC = KugouMainViewController.storyVC("Kugou")
     override func viewDidLoad() {
         super.viewDidLoad()
         //创建RESideMenu对象(指定内容/左边/右边)
-        let navi = KugouNavigationViewController(rootViewController: KugouMainViewController())
+        let navi = KugouNavigationViewController(rootViewController: kugouMainVC)
         let sideViewController = RESideMenu(contentViewController: navi, leftMenuViewController: KugouSettingViewController(), rightMenuViewController: KugouRightSettingViewController())
         sideViewController?.backgroundImage = UIImage(named:"bj");
         //设置内容控制器的阴影颜色/半径/enable

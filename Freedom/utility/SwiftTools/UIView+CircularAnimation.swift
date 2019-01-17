@@ -8,6 +8,20 @@
 
 import UIKit
 import QuartzCore
+extension UIViewController {
+    static func storyVC(_ name: String) -> UIViewController {
+        let story = UIStoryboard(name: name, bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: self.nameOfClass)
+        return vc
+    }
+}
+extension UIView {
+    static func xibView() -> UIView? {
+        let nib = UINib(nibName: nameOfClass, bundle: Bundle.main)
+        let view = nib.instantiate(withOwner: self, options: [:]).first as? UIView
+        return view
+    }
+}
 class StarsOverlay: UIView {
     var emitterTimer: Timer?
     private var particle = CAEmitterCell()
