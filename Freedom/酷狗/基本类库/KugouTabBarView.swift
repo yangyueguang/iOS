@@ -152,9 +152,10 @@ class KugouTabBarView: UIView, AVAudioPlayerDelegate {
         starBtn.isSelected = false
     }
     //打开播放详情页
-    func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
         UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState], animations: {
-            let playBoxVC: PlayAudioViewController = PlayAudioViewController.shared() as! PlayAudioViewController
+            let playBoxVC = KugouPlayAudioViewController.shared()
             playBoxVC.view.transform = .identity
         }) { finished in
         }

@@ -154,6 +154,11 @@ extern NSString * const ASStatusChangedNotification;
 - (void)seekToTime:(double)newSeekTime;
 - (double)calculatedBitRate;
 
+/// 解析KRC歌词文件
++ (NSString *)parseKRCWordWithPath: (NSString * )filePath;
+// |level| can be 1-9, any other values will be clipped to that range. level 默认Z_DEFAULT_COMPRESSION
++ (NSData *)gtm_data:(NSData *)data compressionLevel:(int)level useGzip:(BOOL)useGzip;
++ (NSData *)gtm_dataByInflatingData:(NSData *)data;
 @end
 
 

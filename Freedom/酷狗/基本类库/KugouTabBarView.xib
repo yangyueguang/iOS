@@ -60,7 +60,7 @@
                     </constraints>
                     <state key="normal" image="menu.png"/>
                     <connections>
-                        <action selector="menuAction:" destination="Q4l-ig-dNh" eventType="touchUpInside" id="2aY-DL-CjO"/>
+                        <action selector="menuAction:" destination="-1" eventType="touchUpInside" id="nAn-fr-iDQ"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6XH-8c-vhg">
@@ -71,7 +71,7 @@
                     </constraints>
                     <state key="normal" image="next.png"/>
                     <connections>
-                        <action selector="nextAction:" destination="Q4l-ig-dNh" eventType="touchUpInside" id="mcD-wo-obA"/>
+                        <action selector="nextAction:" destination="-1" eventType="touchUpInside" id="6jV-wi-rYH"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOn-mh-RJj">
@@ -82,7 +82,7 @@
                     </constraints>
                     <state key="normal" image="start.png"/>
                     <connections>
-                        <action selector="playAction:" destination="Q4l-ig-dNh" eventType="touchUpInside" id="ZgL-KB-639"/>
+                        <action selector="playAction:" destination="-1" eventType="touchUpInside" id="oa4-1A-P6n"/>
                     </connections>
                 </button>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ERI-SZ-LbE">
@@ -91,7 +91,7 @@
                         <constraint firstAttribute="height" constant="10" id="Ifa-ZG-Pnp"/>
                     </constraints>
                     <connections>
-                        <action selector="sliderAction:" destination="Q4l-ig-dNh" eventType="valueChanged" id="CPN-8n-LTN"/>
+                        <action selector="sliderAction:" destination="-1" eventType="valueChanged" id="MDp-hR-AGy"/>
                     </connections>
                 </slider>
             </subviews>

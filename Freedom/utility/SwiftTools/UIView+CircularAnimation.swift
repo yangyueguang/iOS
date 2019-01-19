@@ -8,6 +8,25 @@
 
 import UIKit
 import QuartzCore
+extension String {
+    var intValue: Int {
+        return Int((self as NSString).intValue)
+    }
+    var floatValue: Float {
+        return (self as NSString).floatValue
+    }
+    var doubleValue: Double {
+        return (self as NSString).doubleValue
+    }
+
+    func substring(from index: Int) -> String {
+        guard count > index else { return "" }
+        return (self as NSString).substring(from:index)
+    }
+    var oc: NSString {
+        return self as NSString
+    }
+}
 extension UIViewController {
     static func storyVC(_ name: String) -> UIViewController {
         let story = UIStoryboard(name: name, bundle: nil)

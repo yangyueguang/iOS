@@ -14,9 +14,9 @@
 
 #import "E_ScrollViewController.h"
 #import "BookFriendsViewController.h"
-#import "PlayAudioViewController.h"
 #import "AppManager.h"
 #import <UMMobClick/MobClick.h>
 #import <CommonCrypto/CommonDigest.h>
 #import "RESideMenu.h"
 #import "WXModes.h"
+#import "AudioStreamer.h"

@@ -4,6 +4,7 @@
 import SnapKit
 import XExtension
 import Foundation
+import AVFoundation
 @objc protocol WXScannerDelegate: NSObjectProtocol {
     @objc optional func scannerViewControllerInitSuccess(_ scannerVC: WXScannerViewController)
     @objc optional func scannerViewController(_ scannerVC: WXScannerViewController, initFailed errorString: String)

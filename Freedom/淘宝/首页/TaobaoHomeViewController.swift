@@ -441,7 +441,7 @@ class TaobaoHomeViewController: TaobaoBaseViewController,UICollectionViewDelegat
                 return CGSize(width: APPW, height: APPW * ((190) / 375.0) + 8)
             }
             if indexPath.row == 4 {
-                return CGSize(width: APPW, height: 8 + 30 + 1 + 120 + 1 + 70 + 2 * 101)
+                return CGSize(width: APPW, height: CGFloat(8 + 30 + 1 + 120 + 1 + 70 + 2 * 101))
             }
             if indexPath.row == 5 {
                 return CGSize(width: APPW, height: (APPW - 32) / 3 + 8 + 30 + 8 + 42 + 40)

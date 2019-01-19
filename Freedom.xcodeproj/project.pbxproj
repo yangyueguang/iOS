@@ -124,7 +124,6 @@
 		713EE2EC20AD9CCE0085B65D /* KugouLinsenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EE2EB20AD9CCE0085B65D /* KugouLinsenViewController.swift */; };
 		713EE2EE20AD9CD90085B65D /* KugouLocalMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EE2ED20AD9CD90085B65D /* KugouLocalMusicViewController.swift */; };
 		713EE2F020AD9CE50085B65D /* KugouMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EE2EF20AD9CE50085B65D /* KugouMainViewController.swift */; };
-		713EE2F220AD9CF20085B65D /* KugouRightSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EE2F120AD9CF20085B65D /* KugouRightSettingViewController.swift */; };
 		713EE2F420AD9CFD0085B65D /* KugouSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EE2F320AD9CFD0085B65D /* KugouSettingViewController.swift */; };
 		713EE2F620AD9D300085B65D /* DetailScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EE2F520AD9D300085B65D /* DetailScrollViewController.swift */; };
 		713EE2F820AD9D3C0085B65D /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EE2F720AD9D3C0085B65D /* DetailTableViewController.swift */; };
@@ -393,7 +392,6 @@
 		774BFAE81D7672E2005CA603 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 774BFAE71D7672E2005CA603 /* CoreGraphics.framework */; };
 		774BFAEA1D7672F7005CA603 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 774BFAE91D7672F7005CA603 /* AVFoundation.framework */; };
 		774BFB161D767389005CA603 /* lll.Krc in Resources */ = {isa = PBXBuildFile; fileRef = 774BFAEC1D767389005CA603 /* lll.Krc */; };
-		774BFB171D767389005CA603 /* PlayAudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 774BFAEE1D767389005CA603 /* PlayAudioViewController.m */; };
 		774BFB181D767389005CA603 /* vocal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 774BFAEF1D767389005CA603 /* vocal.mp3 */; };
 		7759B6991D0EA37F00AE3A59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7759B6971D0EA37F00AE3A59 /* Main.storyboard */; };
 		7759B69B1D0EA37F00AE3A59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7759B69A1D0EA37F00AE3A59 /* Assets.xcassets */; };
@@ -1105,6 +1103,8 @@
 		DF1208CD21EED3C500F7ED7F /* userLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = DF1208CC21EED3C500F7ED7F /* userLogo.png */; };
 		DF1208CF21EEE5A500F7ED7F /* KugouModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1208CE21EEE5A500F7ED7F /* KugouModels.swift */; };
 		DF1208D121EEE5AF00F7ED7F /* KugouAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1208D021EEE5AF00F7ED7F /* KugouAPI.swift */; };
+		DF13330721F17945001D01CA /* KugouMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF13330621F17945001D01CA /* KugouMeViewController.swift */; };
+		DF13330921F17C1A001D01CA /* KugouPlayAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF13330821F17C1A001D01CA /* KugouPlayAudioViewController.swift */; };
 		DF29539D21D7A77F00E1C188 /* AXSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539121D7A77F00E1C188 /* AXSecurityPolicy.m */; };
 		DF29539E21D7A77F00E1C188 /* AXWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539721D7A77F00E1C188 /* AXWebViewControllerActivity.m */; };
 		DF29539F21D7A77F00E1C188 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539821D7A77F00E1C188 /* NJKWebViewProgressView.m */; };
@@ -1371,7 +1371,6 @@
 		713EE2EB20AD9CCE0085B65D /* KugouLinsenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouLinsenViewController.swift; sourceTree = "<group>"; };
 		713EE2ED20AD9CD90085B65D /* KugouLocalMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouLocalMusicViewController.swift; sourceTree = "<group>"; };
 		713EE2EF20AD9CE50085B65D /* KugouMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouMainViewController.swift; sourceTree = "<group>"; };
-		713EE2F120AD9CF20085B65D /* KugouRightSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouRightSettingViewController.swift; sourceTree = "<group>"; };
 		713EE2F320AD9CFD0085B65D /* KugouSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouSettingViewController.swift; sourceTree = "<group>"; };
 		713EE2F520AD9D300085B65D /* DetailScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScrollViewController.swift; sourceTree = "<group>"; };
 		713EE2F720AD9D3C0085B65D /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
@@ -1640,8 +1639,6 @@
 		774BFAE71D7672E2005CA603 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		774BFAE91D7672F7005CA603 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		774BFAEC1D767389005CA603 /* lll.Krc */ = {isa = PBXFileReference; lastKnownFileType = file; path = lll.Krc; sourceTree = "<group>"; };
-		774BFAED1D767389005CA603 /* PlayAudioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayAudioViewController.h; sourceTree = "<group>"; };
-		774BFAEE1D767389005CA603 /* PlayAudioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayAudioViewController.m; sourceTree = "<group>"; };
 		774BFAEF1D767389005CA603 /* vocal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = vocal.mp3; sourceTree = "<group>"; };
 		7759B68B1D0EA37F00AE3A59 /* Freedom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freedom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7759B6981D0EA37F00AE3A59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -2455,6 +2452,8 @@
 		DF1208CC21EED3C500F7ED7F /* userLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userLogo.png; sourceTree = "<group>"; };
 		DF1208CE21EEE5A500F7ED7F /* KugouModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouModels.swift; sourceTree = "<group>"; };
 		DF1208D021EEE5AF00F7ED7F /* KugouAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouAPI.swift; sourceTree = "<group>"; };
+		DF13330621F17945001D01CA /* KugouMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouMeViewController.swift; sourceTree = "<group>"; };
+		DF13330821F17C1A001D01CA /* KugouPlayAudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouPlayAudioViewController.swift; sourceTree = "<group>"; };
 		DF29539121D7A77F00E1C188 /* AXSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXSecurityPolicy.m; sourceTree = "<group>"; };
 		DF29539221D7A77F00E1C188 /* AXSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXSecurityPolicy.h; sourceTree = "<group>"; };
 		DF29539421D7A77F00E1C188 /* AXWebViewControllerActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXWebViewControllerActivity.h; sourceTree = "<group>"; };
@@ -2878,6 +2877,8 @@
 		7745C1ED1D671487002212DE /* 基本类库 */ = {
 			isa = PBXGroup;
 			children = (
+				713EE2EF20AD9CE50085B65D /* KugouMainViewController.swift */,
+				DF13330821F17C1A001D01CA /* KugouPlayAudioViewController.swift */,
 				713EE2B520AD901F0085B65D /* KugouBaseViewController.swift */,
 				713EE2B920AD906F0085B65D /* KugouNavigationViewController.swift */,
 				713EE2A920AD8F5C0085B65D /* KugouTabBarController.swift */,
@@ -3481,8 +3482,6 @@
 			isa = PBXGroup;
 			children = (
 				774BFAEC1D767389005CA603 /* lll.Krc */,
-				774BFAED1D767389005CA603 /* PlayAudioViewController.h */,
-				774BFAEE1D767389005CA603 /* PlayAudioViewController.m */,
 				DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */,
 				774BFAEF1D767389005CA603 /* vocal.mp3 */,
 			);
@@ -3510,17 +3509,16 @@
 			children = (
 				713EE2EB20AD9CCE0085B65D /* KugouLinsenViewController.swift */,
 				713EE2ED20AD9CD90085B65D /* KugouLocalMusicViewController.swift */,
-				713EE2EF20AD9CE50085B65D /* KugouMainViewController.swift */,
 			);
 			path = "听";
 			sourceTree = "<group>";
 		};
-		774BFB101D767389005CA603 /* 右侧界面 */ = {
+		774BFB101D767389005CA603 /* 我 */ = {
 			isa = PBXGroup;
 			children = (
-				713EE2F120AD9CF20085B65D /* KugouRightSettingViewController.swift */,
+				DF13330621F17945001D01CA /* KugouMeViewController.swift */,
 			);
-			path = "右侧界面";
+			path = "我";
 			sourceTree = "<group>";
 		};
 		774BFB131D767389005CA603 /* 左侧设置 */ = {
@@ -3827,10 +3825,10 @@
 			isa = PBXGroup;
 			children = (
 				774BFAEB1D767389005CA603 /* 播放界面 */,
-				774BFB001D767389005CA603 /* 唱 */,
-				774BFB031D767389005CA603 /* 看 */,
+				774BFB101D767389005CA603 /* 我 */,
 				774BFB061D767389005CA603 /* 听 */,
-				774BFB101D767389005CA603 /* 右侧界面 */,
+				774BFB031D767389005CA603 /* 看 */,
+				774BFB001D767389005CA603 /* 唱 */,
 				774BFB131D767389005CA603 /* 左侧设置 */,
 				7745C1ED1D671487002212DE /* 基本类库 */,
 				771917361D659957002F2BCD /* Kugou.storyboard */,
@@ -6554,6 +6552,7 @@
 				BFC6D94520E4AC2200F17378 /* SinaMeViewController.swift in Sources */,
 				DF0489ED21D28B870030C30B /* ElasticShapeLayer.swift in Sources */,
 				DF7B407021AC020A00E3D975 /* PhotoView.swift in Sources */,
+				DF13330921F17C1A001D01CA /* KugouPlayAudioViewController.swift in Sources */,
 				BF58BB3C20EF1945002CB4EE /* RCDSearchDataManager.m in Sources */,
 				7115A5D420AAD716000D0B96 /* ResumeTabBarController.swift in Sources */,
 				DF7B406F21AC020A00E3D975 /* Constants.swift in Sources */,
@@ -6633,7 +6632,6 @@
 				71267A552092DC93006E1B96 /* BookFriendsTableViewCell.m in Sources */,
 				DF6B521C21CB25EA00460949 /* WXImageExpressionDisplayView.swift in Sources */,
 				BF58BB2820EF1945002CB4EE /* RCDContactTableViewCell.m in Sources */,
-				774BFB171D767389005CA603 /* PlayAudioViewController.m in Sources */,
 				DFED981C21E8AC0B009270A3 /* WXModes.m in Sources */,
 				BFC6D93520E4AADB00F17378 /* SinaTabBarController.swift in Sources */,
 				DFA5D3AE21BA184F00339006 /* PlayLRCSView.swift in Sources */,
@@ -6653,7 +6651,6 @@
 				7115A5EC20AAEE1E000D0B96 /* BooksViewController.swift in Sources */,
 				BF58BB3420EF1945002CB4EE /* RCDGroupSettingsTableViewController.m in Sources */,
 				713EE2DC20AD9BFC0085B65D /* AlipayHomeViewController.swift in Sources */,
-				713EE2F220AD9CF20085B65D /* KugouRightSettingViewController.swift in Sources */,
 				BFEF19CA2101E990003DCAC1 /* SumCFile.c in Sources */,
 				713EE2DE20AD9C070085B65D /* AlipayScanViewController.swift in Sources */,
 				713EE2D020AD9B8C0085B65D /* TaobaoMiniVideoViewController.swift in Sources */,
@@ -6880,6 +6877,7 @@
 				DF2953A221D7A77F00E1C188 /* AXWebViewController.m in Sources */,
 				DF6B51F221CA6F7C00460949 /* WXMessageManager.swift in Sources */,
 				7121196C20AC24DF0087E05B /* ToutiaoHomeSampleViewController.swift in Sources */,
+				DF13330721F17945001D01CA /* KugouMeViewController.swift in Sources */,
 				7115A5D620AAD73F000D0B96 /* ResumeNavigationController.swift in Sources */,
 				BF58B95A20ECFC0B002CB4EE /* BaseSearchBar.swift in Sources */,
 				DF7B407621AC020A00E3D975 /* NetworkManager.swift in Sources */,

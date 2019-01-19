@@ -1,12 +1,286 @@
 //
 //  PlayLRCSView.swift
 //  Freedom
-//
-//  Created by Chao Xue 薛超 on 2018/12/7.
-//  Copyright © 2018 薛超. All rights reserved.
 // LRC 歌词文件逐行展示
-
 import UIKit
+@objcMembers
+class LyricsUtil: NSObject {
+    //拿到krc歌词，返回每句歌词的当个字time组成的数据，只针对krc
+    class func timeArray(withLineLyric lineLyric: String) -> [[String]] {
+        let LyricTillte: NSRange = lineLyric.oc.range(of: "[offset:0]")
+        guard LyricTillte.length > 0 else { return [] }
+        let LyricBody = lineLyric.oc.substring(from: LyricTillte.location + 10)
+        let lineLyricd = LyricBody.replacingOccurrences(of: ",0>", with: ">")
+        Dlog(lineLyricd)
+        var timeArray: [[String]] = []
+        let lineArray = lineLyricd.components(separatedBy: "\n")
+        for i in 1..<lineArray.count - 1 {
+            var oneLineArray: [String] = []
+            let start: NSRange = (lineArray[i] as NSString).range(of: "]")
+            let sub = (lineArray[i] as NSString).substring(from: Int(start.location) + 1)
+            Dlog(sub)
+            let array = sub.components(separatedBy: ">")
+            for y in 0..<array.count - 1 {
+                let start: NSRange = (array[y] as NSString).range(of: "<")
+                let end: NSRange = (array[y] as NSString).range(of: ",")
+                let sub1 = (array[y] as NSString).substring(with: NSRange(location: Int(start.location) + 1, length: Int(end.location - start.location) - 1))
+                oneLineArray.append(sub1)
+            }
+            let start1: NSRange = (array[array.count - 2] as NSString).range(of: ",")
+            let sub2 = (array[array.count - 2] as NSString).substring(from: Int(start1.location) + 1)
+            let lastTime = oneLineArray[oneLineArray.count - 1]
+            let sub2N = NSNumber(value: Int(sub2) ?? 0)
+            let lastTimeN = Int(lastTime) ?? 0
+            let lastN: Int = Int(sub2N) + lastTimeN
+            let lastStr = "\(lastN)"
+            oneLineArray.append(lastStr)
+            timeArray.append(oneLineArray)
+        }
+        Dlog(timeArray)
+        return timeArray
+    }
+    //得到每一行开始时间的数组,可根据时间判断换行
+    class func startTimeArray(withLineLyric lineLyric: String) -> [String] {
+        let LyricTillte: NSRange = lineLyric.oc.range(of: "[offset:0]")
+        guard LyricTillte.length > 0 else { return [] }
+        let LyricBody = lineLyric.oc.substring(from: LyricTillte.location + 10)
+        var stratTimeArray: [String] = []
+        let array = LyricBody.components(separatedBy: "\n")
+        for i in 1..<array.count - 1 {
+            //截取每行的开始时间
+            let start: NSRange = (array[i] as NSString).range(of: "[")
+            let end: NSRange = (array[i] as NSString).range(of: ",")
+            let sub = (array[i] as NSString).substring(with: NSRange(location: Int(start.location) + 1, length: Int(end.location - start.location) - 1))
+            Dlog(sub)
+            stratTimeArray.append(sub)
+        }
+        Dlog(stratTimeArray)
+        return stratTimeArray
+    }
+    //得到不带时间的歌词
+    class func getLyricString(withLyric lineLyric: String) -> String {
+        let LyricTillte: NSRange = lineLyric.oc.range(of: "[offset:0]")
+        guard LyricTillte.length > 0 else { return "" }
+        let LyricBody = lineLyric.substring(from: LyricTillte.location + 10)
+        var LyricStr = ""
+        let lineArray = LyricBody.components(separatedBy: "\n")
+        for i in 1..<lineArray.count - 1 {
+            let array = lineArray[i].components(separatedBy: "<")
+            Dlog(array)
+            var lineStr = ""
+            for y in 1..<array.count {
+                let start: NSRange = (array[y] as NSString).range(of: ">")
+                let sub1 = (array[y] as NSString).substring(from: Int(start.location) + 1)
+                lineStr = lineStr + sub1
+                Dlog(sub1)
+            }
+            LyricStr += lineStr
+            LyricStr += "\n"
+        }
+        return LyricStr
+    }
+    //得到不带时间的歌词的数组
+    class func getLyricSArray(withLyric lineLyric: String) -> [String] {
+        let LyricTillte: NSRange = (lineLyric as NSString).range(of: "[offset:0]")
+        guard LyricTillte.length > 0 else { return [] }
+        let LyricBody = (lineLyric as NSString).substring(from: LyricTillte.location + 10)
+        var lyricSArray: [String] = []
+        let lineArray = LyricBody.components(separatedBy: "\n")
+        for i in 1..<lineArray.count - 1 {
+            let array = lineArray[i].components(separatedBy: "<")
+            Dlog(array)
+            var lineStr = ""
+            for y in 1..<array.count {
+                let start: NSRange = (array[y] as NSString).range(of: ">")
+                let sub1 = (array[y] as NSString).substring(from: Int(start.location) + 1)
+                lineStr = lineStr + sub1
+                Dlog(sub1)
+            }
+            lyricSArray.append(lineStr)
+        }
+        return lyricSArray
+    }
+    //得到歌词的总行
+    class func getLyricLineNum(withLyric lineLyric: String) -> Int {
+        let LyricTillte: NSRange = (lineLyric as NSString).range(of: "[offset:0]")
+        guard LyricTillte.length > 0 else { return 0 }
+        let LyricBody = (lineLyric as NSString).substring(from: LyricTillte.location + 10)
+        var lineNum: Int
+        let lineArray = LyricBody.components(separatedBy: "\n")
+        lineNum = lineArray.count - 2
+        return lineNum
+    }
+    //得到每行歌词有多少个字的数组
+    class func getLineLyricWordNmu(withLyric lineLyric: String) -> [String] {
+        var wordNumArray: [String] = []
+        let LyricTillte: NSRange = (lineLyric as NSString).range(of: "[offset:0]")
+        guard LyricTillte.length > 0 else { return [] }
+        let LyricBody = (lineLyric as NSString).substring(from: LyricTillte.location + 10)
+        let lineArray = LyricBody.components(separatedBy: "\n")
+        for i in 1..<lineArray.count - 1 {
+            let array = lineArray[i].components(separatedBy: "<")
+            let num: Int = array.count - 1
+            let sNum = "\(num)"
+            wordNumArray.append(sNum)
+        }
+        return wordNumArray
+    }
+    //得到最大行的字体个数
+    class func getMaxLineNum(withArray lineNumArray: [String]) -> Int {
+        var max: Int = 0
+        lineNumArray.forEach { (str) in
+            if max < Int(str) ?? 0 {
+                max = Int(str) ?? 0
+            }
+        }
+        return max
+    }
+}
+@objcMembers
+class LyricsAndTime: NSObject {
+    var lyric = ""
+    var myTime = ""
+    init(lyrics lyric: String, andTime time: String) {
+        super.init()
+        self.lyric = lyric
+        myTime = time
+    }
+    func islater(_ obj: LyricsAndTime) -> Bool {
+        return myTime.compare(obj.myTime).rawValue > 0
+    }
+}
+
+@objcMembers
+class KugouLyricsManage: NSObject {
+    var arr: [LyricsAndTime] = []
+    var str = ""
+    var path = ""
+    func readFile() {
+        let str = try? String(contentsOfFile: path, encoding: .utf8)
+        var arr = [String]()
+        if let components = str?.components(separatedBy: CharacterSet(charactersIn: "[]")) {
+            arr = components
+        }
+        let song = arr[1].oc.substring(from: Int(arr[1].oc.range(of: ":").location) + 1)
+        let singer = arr[3].oc.substring(from: Int(arr[3].oc.range(of: ":").location) + 1)
+        self.str = "\(song)\(singer)"
+
+        var i = 9
+        while i < arr.count {
+            var x: Int = 1
+            while (arr[i + x] == "") {
+                x += 2
+            }
+            let obj = LyricsAndTime(lyrics: arr[i + x] as! String, andTime: arr[i])
+            self.arr.append(obj)
+            i += 2
+        }
+    }
+    func sort() {
+        arr = arr.sorted(by: { (a, b) -> Bool in
+            return a.islater(b)
+        })
+    }
+
+    func play() {
+        Dlog(str)
+        var temp: Float = 0
+        for obj: LyricsAndTime in arr {
+            Dlog(obj)
+            let x = (Float(obj.myTime) ?? 0) * 60 + (Float((obj.myTime as NSString).substring(from: 3)) ?? 0.0)
+            sleep(UInt32(x - temp))
+            temp = x
+        }
+    }
+
+}
+@objcMembers
+class LyricsView: UIView {
+    var textLable = UILabel()
+    var maskLable = UILabel()
+    var maskLayer: CALayer = CALayer()//用来控制maskLabel渲染的layer
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        firstInit()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        firstInit()
+    }
+    private func firstInit() {
+        textLable.frame = bounds
+        textLable.textAlignment = .center
+        textLable.textColor = UIColor.white
+        maskLable.frame = bounds
+        maskLable.textAlignment = .center
+        maskLable.textColor = UIColor.green
+        maskLable.backgroundColor = UIColor.clear
+        maskLayer.anchorPoint = CGPoint.zero
+        maskLayer.position = CGPoint(x: 0, y: 0)
+        maskLayer.bounds = CGRect(x: 0, y: 0, width: 0, height: 25)
+        maskLayer.backgroundColor = UIColor.white.cgColor
+        maskLable.layer.mask = maskLayer
+        addSubview(textLable)
+        addSubview(maskLable)
+    }
+
+    var text: String? {
+        didSet {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 10
+            let attributedString = NSMutableAttributedString(string: text ?? "")
+            attributedString.addAttribute(.paragraphStyle, value: paragraphStyle,range: NSRange(location: 0, length: text?.count ?? 0))
+            textLable.attributedText = attributedString
+            maskLable.attributedText = attributedString
+        }
+    }
+    func startLyricsAnimation(withTimeArray timeArray: [String], andLocationArray locationArray: [String]) {
+        //每行歌词的时间总长
+        let totalDuration = CGFloat((Float(timeArray.last ?? "") ?? 0) * 1.0 / 1000)
+        let animation = CAKeyframeAnimation(keyPath: "bounds.size.width")
+        var keyTimeArray: [NSNumber] = []
+        var widthArray: [NSNumber] = []
+        for i in 0..<timeArray.count {
+            let tempTime = CGFloat((Float(timeArray[i]) ?? 0) * 1.0 / 1000) / totalDuration
+            keyTimeArray.append(NSNumber(value: Float(tempTime)))
+            let tempWidth = (Float(locationArray[i]) ?? 0) * Float(maskLable.frame.width)
+            widthArray.append(NSNumber(value: tempWidth))
+        }
+        animation.values = widthArray
+        animation.keyTimes = keyTimeArray
+        animation.duration = CFTimeInterval(totalDuration)
+        animation.calculationMode = .linear
+        animation.fillMode = .forwards
+        animation.isRemovedOnCompletion = false
+        maskLayer.add(animation, forKey: "MaskAnimation")
+    }
+    func stop() {
+        pause(maskLayer)
+        maskLayer.removeAllAnimations()
+        maskLayer = CALayer()
+    }
+    //暂停
+    func pause(_ layer: CALayer?) {
+        let pausedTime: CFTimeInterval? = layer?.convertTime(CACurrentMediaTime(), from: nil)
+        layer?.speed = 0.0
+        layer?.timeOffset = pausedTime ?? 0
+    }
+    func reAnimation() {
+        resumeLayer(maskLayer)
+    }
+    //恢复
+    func resumeLayer(_ layer: CALayer?) {
+        let pausedTime: CFTimeInterval? = layer?.timeOffset
+        layer?.speed = 1.0
+        layer?.timeOffset = 0.0
+        layer?.beginTime = 0.0
+        let timeSincePause: CFTimeInterval = (layer?.convertTime(CACurrentMediaTime(), from: nil) ?? 0) - (pausedTime ?? 0)
+        layer?.beginTime = timeSincePause
+    }
+}
+
+
+
 private class SHLrcLine: NSObject {
     var time = ""
     var words = ""//歌词内容
