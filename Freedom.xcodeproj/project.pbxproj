@@ -2877,6 +2877,7 @@
 		7745C1ED1D671487002212DE /* 基本类库 */ = {
 			isa = PBXGroup;
 			children = (
+				DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */,
 				713EE2EF20AD9CE50085B65D /* KugouMainViewController.swift */,
 				DF13330821F17C1A001D01CA /* KugouPlayAudioViewController.swift */,
 				713EE2B520AD901F0085B65D /* KugouBaseViewController.swift */,
@@ -3478,16 +3479,6 @@
 			path = "书籍阅读";
 			sourceTree = "<group>";
 		};
-		774BFAEB1D767389005CA603 /* 播放界面 */ = {
-			isa = PBXGroup;
-			children = (
-				774BFAEC1D767389005CA603 /* lll.Krc */,
-				DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */,
-				774BFAEF1D767389005CA603 /* vocal.mp3 */,
-			);
-			path = "播放界面";
-			sourceTree = "<group>";
-		};
 		774BFB001D767389005CA603 /* 唱 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3824,7 +3815,6 @@
 		776C65861D22540A00D77E0D /* 酷狗 */ = {
 			isa = PBXGroup;
 			children = (
-				774BFAEB1D767389005CA603 /* 播放界面 */,
 				774BFB101D767389005CA603 /* 我 */,
 				774BFB061D767389005CA603 /* 听 */,
 				774BFB031D767389005CA603 /* 看 */,
@@ -4055,6 +4045,8 @@
 				BF6115B820FDACC9007A010A /* unicode.plist */,
 				BFC6D96A20E5D3D400F17378 /* 来自天堂的魔鬼.mp3 */,
 				BFC6D96920E5D3D300F17378 /* 走在冷风中.mp3 */,
+				774BFAEC1D767389005CA603 /* lll.Krc */,
+				774BFAEF1D767389005CA603 /* vocal.mp3 */,
 				BFC6D94C20E4EC8F00F17378 /* DianpingWo.plist */,
 				BF0E8AFA20DB9BE700150476 /* FreedomItems.plist */,
 				BFEF19B12101E8A9003DCAC1 /* downloadAPP.plist */,

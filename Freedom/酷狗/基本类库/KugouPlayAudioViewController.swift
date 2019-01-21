@@ -20,7 +20,6 @@ class KugouPlayAudioViewController: UIViewController {
     @IBOutlet weak var backScrollView: UIScrollView!
     @IBOutlet weak var centerLyricsLable: UILabel!
 
-
     private var startTouch = CGPoint.zero
     private var lrc: KugouLyricsManage!
     private var backLeft = false
@@ -187,7 +186,6 @@ class KugouPlayAudioViewController: UIViewController {
             isPlay = false
         }
     }
-
     //上一曲
     @IBAction func rewind(_ sender: Any) {
         rewind()
@@ -251,7 +249,6 @@ class KugouPlayAudioViewController: UIViewController {
             }
         }
     }
-
     //滑动音量条
     @objc func volumeChange(_ slider: UISlider) {
         audioPlayer?.volume = slider.value
@@ -288,7 +285,6 @@ class KugouPlayAudioViewController: UIViewController {
         }) { finished in
         }
     }
-
     //FIXME: 私有方法
     //停止按钮
     func stop() {
