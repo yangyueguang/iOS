@@ -8,7 +8,24 @@
 
 import Foundation
 //FIXME:里面定义各种程序中要用的枚举类型
-
+enum StoryName: String {
+    case wechat = "WX"
+    case alipay = "Alipay"
+    case kugou = "Kugou"
+    case iqiyi = "Iqiyi"
+    case douyin = "Douyin"
+    case taobao = "Taobao"
+    case sina = "Sina"
+    case people = "DZ"
+    case topic = "Toutiao"
+    case energy = "MicroEnergy"
+    case personal = "PersonalApply"
+    case freedom = "Freedom"
+    case resume = "Resume"
+    case books = "Books"
+    case database = "MyDatabase"
+    case main = "Main"
+}
 //会话提示类型
 enum TLClueType : Int {
     case none

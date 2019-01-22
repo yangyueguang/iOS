@@ -43,9 +43,12 @@
     }
 @end
 @implementation WXGroup
-    + (NSString *)primaryKey{
-        return @"groupID";
-    }
++ (NSString *)primaryKey{
+    return @"groupID";
+}
++(NSDictionary *)defaultPropertyValues{
+    return @{@"showNameInChat": @1};
+}
 @end
 @implementation WechatContact
 @end

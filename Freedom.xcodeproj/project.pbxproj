@@ -1111,6 +1111,8 @@
 		DF2953A021D7A77F00E1C188 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539921D7A77F00E1C188 /* Aspects.m */; };
 		DF2953A121D7A77F00E1C188 /* AXWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DF29539B21D7A77F00E1C188 /* AXWebViewController.bundle */; };
 		DF2953A221D7A77F00E1C188 /* AXWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539C21D7A77F00E1C188 /* AXWebViewController.m */; };
+		DF401C6821F716CD001482DE /* IqiyiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF401C6721F716CD001482DE /* IqiyiModels.swift */; };
+		DF401C6A21F716D4001482DE /* IqiyiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF401C6921F716D4001482DE /* IqiyiAPI.swift */; };
 		DF4C6FC821CC787700A54339 /* FoundationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C6FC721CC787700A54339 /* FoundationEnum.swift */; };
 		DF4C6FCA21CC790D00A54339 /* FoundationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */; };
 		DF6B51EE21CA6F5900460949 /* WXModes+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51ED21CA6F5900460949 /* WXModes+Extension.swift */; };
@@ -2465,6 +2467,8 @@
 		DF29539A21D7A77F00E1C188 /* AXWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXWebViewController.h; sourceTree = "<group>"; };
 		DF29539B21D7A77F00E1C188 /* AXWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AXWebViewController.bundle; sourceTree = "<group>"; };
 		DF29539C21D7A77F00E1C188 /* AXWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXWebViewController.m; sourceTree = "<group>"; };
+		DF401C6721F716CD001482DE /* IqiyiModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IqiyiModels.swift; sourceTree = "<group>"; };
+		DF401C6921F716D4001482DE /* IqiyiAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IqiyiAPI.swift; sourceTree = "<group>"; };
 		DF4C6FC721CC787700A54339 /* FoundationEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationEnum.swift; sourceTree = "<group>"; };
 		DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationAPI.swift; sourceTree = "<group>"; };
 		DF6B51ED21CA6F5900460949 /* WXModes+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WXModes+Extension.swift"; sourceTree = "<group>"; };
@@ -2906,6 +2910,8 @@
 				713EE2FD20AD9FF30085B65D /* IqiyiTabBarController.swift */,
 				713EE2FF20ADA00E0085B65D /* IqiyiNavigationController.swift */,
 				713EE30120ADA0320085B65D /* IqiyiBaseViewController.swift */,
+				DF401C6721F716CD001482DE /* IqiyiModels.swift */,
+				DF401C6921F716D4001482DE /* IqiyiAPI.swift */,
 			);
 			path = "基本类库";
 			sourceTree = "<group>";
@@ -6690,6 +6696,7 @@
 				BF58BB2220EF1944002CB4EE /* RCWKRequestHandler.m in Sources */,
 				713EE2D820AD9BBA0085B65D /* TaobaoShopCarViewController.swift in Sources */,
 				7115A5AD20AAA1F1000D0B96 /* FreedomViewController.swift in Sources */,
+				DF401C6821F716CD001482DE /* IqiyiModels.swift in Sources */,
 				DF0489EB21D28B870030C30B /* ElasticModalViewController.swift in Sources */,
 				BF5B9B6F1F8E674B00BD885E /* FreeViewController.swift in Sources */,
 				DF6B523021CB76DD00460949 /* WXCommonSettingViewController.swift in Sources */,
@@ -6865,6 +6872,7 @@
 				713EE2BC20AD9AEC0085B65D /* DZHomeController.swift in Sources */,
 				DF7B408921AC020A00E3D975 /* AwemeListController.swift in Sources */,
 				BF4A80F22105CFCC00D32FB0 /* GPAPolylineEncoding.m in Sources */,
+				DF401C6A21F716D4001482DE /* IqiyiAPI.swift in Sources */,
 				BF58BB6B20EF1945002CB4EE /* TFHppleElement.m in Sources */,
 				DF2953A221D7A77F00E1C188 /* AXWebViewController.m in Sources */,
 				DF6B51F221CA6F7C00460949 /* WXMessageManager.swift in Sources */,

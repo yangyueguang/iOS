@@ -348,11 +348,13 @@ class XNetKit: NSObject {
     }
     @discardableResult
     static public func get(_ url: String,
-                             method: HTTPMethod = .get,
-                             completion:@escaping (APIResponse) -> Void) -> DataRequest{
+                           param: Parameters? = nil,
+                           completion:@escaping (APIResponse) -> Void) -> DataRequest{
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         XHud.show()
-        let baseRequest = Alamofire.request(url)
+        let baseRequest = Alamofire.request(url,
+                                            method: .get,
+                                            parameters: param)
         baseRequest.responseJSON { (response) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             XHud.hide()
