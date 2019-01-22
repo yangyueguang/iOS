@@ -171,7 +171,7 @@ class KugouLyricsManage: NSObject {
             while (arr[i + x] == "") {
                 x += 2
             }
-            let obj = LyricsAndTime(lyrics: arr[i + x] as! String, andTime: arr[i])
+            let obj = LyricsAndTime(lyrics: arr[i + x], andTime: arr[i])
             self.arr.append(obj)
             i += 2
         }

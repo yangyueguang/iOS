@@ -8,6 +8,23 @@
 
 import UIKit
 import QuartzCore
+private var XCHView: UIView = UIView()
+extension UICollectionView {
+    var headView: UIView {
+        set {
+            XCHView.removeFromSuperview()
+            XCHView = newValue
+            var headFrame = newValue.frame
+            headFrame.origin.y = -headFrame.size.height
+            XCHView.frame = headFrame
+            contentInset = UIEdgeInsets(top: headFrame.size.height, left: 0, bottom: 0, right: 0)
+            addSubview(XCHView)
+        }
+        get {
+            return XCHView
+        }
+    }
+}
 extension String {
     var intValue: Int {
         return Int((self as NSString).intValue)

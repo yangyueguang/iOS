@@ -10,15 +10,16 @@ class KugouMainViewController: KugouBaseViewController {
     @IBOutlet weak var contentView: UIScrollView!
     @IBOutlet weak var tabBarView: KugouTabBarView?
     @IBOutlet var titleButtons: [UIButton]!
-
-    let linsenVc = KugouLinsenViewController()
-    let lookVc = KugouLookViewController()
-    let singVc = KugouSingViewController()
+    let meVc = KugouMeViewController.storyVC("Kugou")
+    let linsenVc = KugouLinsenViewController.storyVC("Kugou")
+    let lookVc = KugouLookViewController.storyVC("Kugou")
+    let singVc = KugouSingViewController.storyVC("Kugou")
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
         tabBarController?.tabBar.isHidden = true
         edgesForExtendedLayout = [.left, .right, .bottom]
+        addChild(meVc)
         addChild(linsenVc)
         addChild(lookVc)
         addChild(singVc)
@@ -39,9 +40,9 @@ class KugouMainViewController: KugouBaseViewController {
         titleButtons.forEach(where: { (btn) -> Bool in
             return true
         }) { (btn) in
-            btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+            btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         }
-        sender.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        sender.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         self.contentView.setContentOffset(CGPoint(x: self.contentView.width * CGFloat(sender.tag), y: 0), animated: true)
     }
     @IBAction func setAction(_ sender: Any) {
