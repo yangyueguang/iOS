@@ -1105,6 +1105,7 @@
 		DF1208D121EEE5AF00F7ED7F /* KugouAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1208D021EEE5AF00F7ED7F /* KugouAPI.swift */; };
 		DF13330721F17945001D01CA /* KugouMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF13330621F17945001D01CA /* KugouMeViewController.swift */; };
 		DF13330921F17C1A001D01CA /* KugouPlayAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF13330821F17C1A001D01CA /* KugouPlayAudioViewController.swift */; };
+		DF1ED02D21F75DA900AEF237 /* AlipayRichViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1ED02C21F75DA900AEF237 /* AlipayRichViewController.swift */; };
 		DF29539D21D7A77F00E1C188 /* AXSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539121D7A77F00E1C188 /* AXSecurityPolicy.m */; };
 		DF29539E21D7A77F00E1C188 /* AXWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539721D7A77F00E1C188 /* AXWebViewControllerActivity.m */; };
 		DF29539F21D7A77F00E1C188 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539821D7A77F00E1C188 /* NJKWebViewProgressView.m */; };
@@ -2456,6 +2457,7 @@
 		DF1208D021EEE5AF00F7ED7F /* KugouAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouAPI.swift; sourceTree = "<group>"; };
 		DF13330621F17945001D01CA /* KugouMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouMeViewController.swift; sourceTree = "<group>"; };
 		DF13330821F17C1A001D01CA /* KugouPlayAudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouPlayAudioViewController.swift; sourceTree = "<group>"; };
+		DF1ED02C21F75DA900AEF237 /* AlipayRichViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlipayRichViewController.swift; sourceTree = "<group>"; };
 		DF29539121D7A77F00E1C188 /* AXSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXSecurityPolicy.m; sourceTree = "<group>"; };
 		DF29539221D7A77F00E1C188 /* AXSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXSecurityPolicy.h; sourceTree = "<group>"; };
 		DF29539421D7A77F00E1C188 /* AXWebViewControllerActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXWebViewControllerActivity.h; sourceTree = "<group>"; };
@@ -3893,6 +3895,7 @@
 			children = (
 				7745C1E61D671430002212DE /* 基本类库 */,
 				7745C1EA1D671430002212DE /* 支付宝 */,
+				DF1ED02B21F75D7800AEF237 /* 财富 */,
 				7745C1E71D671430002212DE /* 口碑 */,
 				7745C1E81D671430002212DE /* 朋友 */,
 				7745C1E91D671430002212DE /* 我的 */,
@@ -5227,6 +5230,14 @@
 				DF0489F621D28BA40030C30B /* ValueAnimation.swift */,
 			);
 			path = MotionAnimation;
+			sourceTree = "<group>";
+		};
+		DF1ED02B21F75D7800AEF237 /* 财富 */ = {
+			isa = PBXGroup;
+			children = (
+				DF1ED02C21F75DA900AEF237 /* AlipayRichViewController.swift */,
+			);
+			path = "财富";
 			sourceTree = "<group>";
 		};
 		DF29538F21D7A77F00E1C188 /* AXWebViewController */ = {
@@ -6781,6 +6792,7 @@
 				DF846C8D21BE55FD002D9CA2 /* NSObject+Mirror.m in Sources */,
 				DF6B522E21CB76CF00460949 /* WXBgSettingViewController.swift in Sources */,
 				DFFA80C621AEC84D009B1999 /* BaseViewController.swift in Sources */,
+				DF1ED02D21F75DA900AEF237 /* AlipayRichViewController.swift in Sources */,
 				BF58BB4920EF1945002CB4EE /* RCDDiscussGroupSettingViewController.m in Sources */,
 				7115A5E620AAECED000D0B96 /* BooksTabBarController.swift in Sources */,
 				713EE2EC20AD9CCE0085B65D /* KugouLinsenViewController.swift in Sources */,
