@@ -85,7 +85,7 @@ class WXInfoHeaderFooterView: UITableViewHeaderFooterView {
     }
 }
 
-class WXInfoViewController: UITableViewController, WXInfoButtonCellDelegate {
+class WXInfoViewController: BaseTableViewController, WXInfoButtonCellDelegate {
     var data: [[WXInfo]] = []
     override func loadView() {
         view = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))

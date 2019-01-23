@@ -1196,6 +1196,7 @@
 		DF7B408921AC020A00E3D975 /* AwemeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406C21AC020A00E3D975 /* AwemeListController.swift */; };
 		DF7B408A21AC020A00E3D975 /* AwemeListCellViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406D21AC020A00E3D975 /* AwemeListCellViews.swift */; };
 		DF7B408B21AC020A00E3D975 /* AVPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */; };
+		DF80D21121F7FF2800A1D55F /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF80D21021F7FF2800A1D55F /* BaseTableViewController.swift */; };
 		DF846C8D21BE55FD002D9CA2 /* NSObject+Mirror.m in Sources */ = {isa = PBXBuildFile; fileRef = DF846C8B21BE55FD002D9CA2 /* NSObject+Mirror.m */; };
 		DF8BBC9C21D67F0600F0D1FD /* UIView+CircularAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BBC9721D67F0600F0D1FD /* UIView+CircularAnimation.swift */; };
 		DF8E5F5221E60E1D00F92CA6 /* RLMRealm+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8E5F5121E60E1D00F92CA6 /* RLMRealm+extension.swift */; };
@@ -2553,6 +2554,7 @@
 		DF7B406C21AC020A00E3D975 /* AwemeListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwemeListController.swift; sourceTree = "<group>"; };
 		DF7B406D21AC020A00E3D975 /* AwemeListCellViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwemeListCellViews.swift; sourceTree = "<group>"; };
 		DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerManager.swift; sourceTree = "<group>"; };
+		DF80D21021F7FF2800A1D55F /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		DF846C8B21BE55FD002D9CA2 /* NSObject+Mirror.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Mirror.m"; sourceTree = "<group>"; };
 		DF846C8C21BE55FD002D9CA2 /* NSObject+Mirror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Mirror.h"; sourceTree = "<group>"; };
 		DF8BBC9721D67F0600F0D1FD /* UIView+CircularAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+CircularAnimation.swift"; sourceTree = "<group>"; };
@@ -3636,6 +3638,7 @@
 				DFFA80C121AEC84D009B1999 /* BaseTableView.swift */,
 				DFFA80B921AEC84B009B1999 /* BaseTableViewCell.swift */,
 				DFFA80BD21AEC84C009B1999 /* BaseViewController.swift */,
+				DF80D21021F7FF2800A1D55F /* BaseTableViewController.swift */,
 				DFA8795321EDC05500BC1074 /* BaseModel.swift */,
 			);
 			path = BaseFile;
@@ -6886,6 +6889,7 @@
 				BF4A80F22105CFCC00D32FB0 /* GPAPolylineEncoding.m in Sources */,
 				DF401C6A21F716D4001482DE /* IqiyiAPI.swift in Sources */,
 				BF58BB6B20EF1945002CB4EE /* TFHppleElement.m in Sources */,
+				DF80D21121F7FF2800A1D55F /* BaseTableViewController.swift in Sources */,
 				DF2953A221D7A77F00E1C188 /* AXWebViewController.m in Sources */,
 				DF6B51F221CA6F7C00460949 /* WXMessageManager.swift in Sources */,
 				7121196C20AC24DF0087E05B /* ToutiaoHomeSampleViewController.swift in Sources */,

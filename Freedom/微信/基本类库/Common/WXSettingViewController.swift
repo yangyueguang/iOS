@@ -8,7 +8,7 @@ protocol WXSettingSwitchCellDelegate: NSObjectProtocol {
     func settingSwitchCell(for settingItem: WXSettingItem, didChangeStatus on: Bool)
 }
 
-class WXSettingViewController: UITableViewController, WXSettingSwitchCellDelegate {
+class WXSettingViewController: BaseTableViewController, WXSettingSwitchCellDelegate {
     var data: [WXSettingGroup] = []
     override func loadView() {
         view = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))

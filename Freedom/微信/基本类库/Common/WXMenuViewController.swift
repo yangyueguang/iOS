@@ -72,7 +72,7 @@ class WXMenuCell: UITableViewCell {
     }
 }
 
-class WXMenuViewController: UITableViewController {
+class WXMenuViewController: BaseTableViewController {
     var data: [[WXMenuItem]] = []
     override func loadView() {
         view = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))

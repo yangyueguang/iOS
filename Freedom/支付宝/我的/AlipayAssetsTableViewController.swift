@@ -16,7 +16,7 @@ class AlipayAssetsTableViewControllerCell:BaseTableViewCell{
         accessoryType = .disclosureIndicator
     }
 }
-class AlipayAssetsTableViewController: AlipayBaseViewController {
+class AlipayAssetsTableViewController: BaseTableViewController {
     var dataArray = [[AlipayAssetsTableViewControllerCellModel]]()
     override func viewDidLoad() {
         super.viewDidLoad()

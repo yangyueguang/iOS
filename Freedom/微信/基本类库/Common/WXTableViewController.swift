@@ -3,7 +3,7 @@
 //  Freedom
 
 import Foundation
-class WXTableViewController: UITableViewController {
+class WXTableViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.lightGray

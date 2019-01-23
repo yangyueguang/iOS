@@ -476,7 +476,8 @@ class WXChatCellMenuView: UIView {
         actionBlcok?(type)
     }
 }
-class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
+@objcMembers
+class WXChatTableViewController: BaseTableViewController, WXMessageCellDelegate {
     weak var delegate: WXChatTableViewControllerDelegate?
     var data: [WXMessage] = []/// 禁用下拉刷新
     var disablePullToRefresh = false {
@@ -545,16 +546,6 @@ class WXChatTableViewController: UITableViewController, WXMessageCellDelegate {
         tableView.reloadData()
     }
 
-    func delete(_ message: WXMessage) {
-        let index: Int = data.index(of: message) ?? -1
-        let ok = delegate?.chatTableViewController(self, delete: message) ?? false
-        if ok {
-            data.removeAll(where: { element in element == message })
-            tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-        } else {
-            noticeError("从数据库中删除消息失败。")
-        }
-    }
     func scrollToBottom(withAnimation animation: Bool) {
         tableView.scrollToBottom(withAnimation: animation)
     }
