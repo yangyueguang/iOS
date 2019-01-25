@@ -13,39 +13,39 @@ class BooksViewCell:BaseCollectionViewCell{
         addSubviews([self.title,self.icon])
     }
 }
-class BooksViewController: BooksBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-   
+class BooksLibraryViewController: BooksBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+
     @objc func rightAction(){
         let wxVc = BookFriendsViewController()
         self.present(wxVc, animated: true) {}
     }
     @objc func leftAction(){
-        let loginvctrl = E_ScrollViewController()
+        let loginvctrl = BookReaderViewController()
         self.present(loginvctrl, animated: true) {}
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "书籍📚阅读";
-    self.view.backgroundColor = .white
+        self.view.backgroundColor = .white
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.tintColor = .yellow
         let left = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(leftAction))
         let right = UIBarButtonItem(image: UIImage(named:"add"), style: .done, target: self, action: #selector(rightAction))
-    
-    self.navigationItem.leftBarButtonItem  = left;
-    self.navigationItem.rightBarButtonItem = right;
-    let layout = UICollectionViewFlowLayout()
-    layout.itemSize = CGSize(width: (APPW-50)/4, height:60);
-    layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right:10);
-    layout.minimumInteritemSpacing = 10;
-    layout.minimumLineSpacing = 10;
-    layout.headerReferenceSize = CGSize(width: APPW, height:30)
-    layout.footerReferenceSize = CGSize.zero
+
+        self.navigationItem.leftBarButtonItem  = left;
+        self.navigationItem.rightBarButtonItem = right;
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: (APPW-50)/4, height:60);
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right:10);
+        layout.minimumInteritemSpacing = 10;
+        layout.minimumLineSpacing = 10;
+        layout.headerReferenceSize = CGSize(width: APPW, height:30)
+        layout.footerReferenceSize = CGSize.zero
         self.collectionView = BaseCollectionView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH-10), collectionViewLayout: layout)
-    self.collectionView.dataSource = self;
-    self.collectionView.delegate = self;
-    self.collectionView.backgroundColor = .white
-    self.collectionView.frame = self.view.bounds
+        self.collectionView.dataSource = self;
+        self.collectionView.delegate = self;
+        self.collectionView.backgroundColor = .white
+        self.collectionView.frame = self.view.bounds
         self.collectionView.register(BooksViewCell.self, forCellWithReuseIdentifier: BooksViewCell.identifier)
         view.addSubview(self.collectionView)
     }
@@ -61,7 +61,7 @@ class BooksViewController: BooksBaseViewController,UICollectionViewDelegate,UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let log = "你选择的是\(indexPath.section)，\(indexPath.row)"
         noticeInfo(log)
-        let loginvctrl = E_ScrollViewController()
+        let loginvctrl = BookReaderViewController()
         self.present(loginvctrl, animated: true) {
         }
     }

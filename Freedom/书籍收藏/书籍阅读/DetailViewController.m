@@ -2,7 +2,7 @@
 //  WFCoretext
 //  Created by Super on 14/10/28.
 #import "DetailViewController.h"
-#import "E_ScrollViewController.h"
+#import "BookReaderViewController.h"
 @interface DetailViewController ()
 @end
 @implementation DetailViewController
@@ -26,7 +26,7 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 - (void)push{
-    E_ScrollViewController *loginvctrl = [[E_ScrollViewController alloc] init];
+    BookReaderViewController *loginvctrl = [[BookReaderViewController alloc] init];
     [self presentViewController:loginvctrl animated:NO completion:nil];
     
 }

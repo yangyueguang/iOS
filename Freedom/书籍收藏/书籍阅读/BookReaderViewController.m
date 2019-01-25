@@ -1,7 +1,7 @@
 //  E_ScrollViewController.m
 //   Freedom
 //  Created by Super on 14-8-8.
-#import "E_ScrollViewController.h"
+#import "BookReaderViewController.h"
 #import "E_ReaderViewController.h"
 #import "E_Paging.h"
 #import "BookSubViews.h"
@@ -124,7 +124,7 @@
     }
 }
 @end
-@interface E_ScrollViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,E_ReaderViewControllerDelegate,E_SettingTopBarDelegate,E_SettingBottomBarDelegate,E_DrawerViewDelegate,CDSideBarControllerDelegate,E_SearchViewControllerDelegate>{
+@interface BookReaderViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,E_ReaderViewControllerDelegate,E_SettingTopBarDelegate,E_SettingBottomBarDelegate,E_DrawerViewDelegate,CDSideBarControllerDelegate,E_SearchViewControllerDelegate>{
     UIPageViewController * _pageViewController;
     E_Paging             * _paginater;
     BOOL _isTurnOver;     //是否跨章；
@@ -147,7 +147,7 @@
 @property (unsafe_unretained, nonatomic) NSUInteger readOffset;
 @property (assign, nonatomic) NSInteger readPage;
 @end
-@implementation E_ScrollViewController
+@implementation BookReaderViewController
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {

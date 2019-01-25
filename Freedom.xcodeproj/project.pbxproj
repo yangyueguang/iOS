@@ -40,7 +40,6 @@
 		7115A5E620AAECED000D0B96 /* BooksTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5E520AAECED000D0B96 /* BooksTabBarController.swift */; };
 		7115A5E820AAED13000D0B96 /* BooksNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5E720AAED13000D0B96 /* BooksNavigationController.swift */; };
 		7115A5EA20AAEDF1000D0B96 /* BooksBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5E920AAEDF1000D0B96 /* BooksBaseViewController.swift */; };
-		7115A5EC20AAEE1E000D0B96 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5EB20AAEE1E000D0B96 /* BooksViewController.swift */; };
 		7115A5EE20AAFBBA000D0B96 /* MyDatabaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5ED20AAFBBA000D0B96 /* MyDatabaseTabBarController.swift */; };
 		7115A5F020AAFBF6000D0B96 /* MyDatabaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5EF20AAFBF6000D0B96 /* MyDatabaseNavigationController.swift */; };
 		7115A5F220AAFC0F000D0B96 /* MyDatabaseBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5F120AAFC0F000D0B96 /* MyDatabaseBaseViewController.swift */; };
@@ -506,7 +505,7 @@
 		7788AC611D7996E000376C95 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7788AC561D7996E000376C95 /* DetailViewController.m */; };
 		7788AC621D7996E000376C95 /* E_CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7788AC581D7996E000376C95 /* E_CommentViewController.m */; };
 		7788AC631D7996E000376C95 /* E_ReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7788AC5A1D7996E000376C95 /* E_ReaderViewController.m */; };
-		7788AC641D7996E000376C95 /* E_ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7788AC5C1D7996E000376C95 /* E_ScrollViewController.m */; };
+		7788AC641D7996E000376C95 /* BookReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7788AC5C1D7996E000376C95 /* BookReaderViewController.m */; };
 		7788AC651D7996E000376C95 /* E_SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7788AC5E1D7996E000376C95 /* E_SearchViewController.m */; };
 		7788AC661D7996E000376C95 /* E_WebViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7788AC601D7996E000376C95 /* E_WebViewControler.m */; };
 		7788AC7F1D79977200376C95 /* button_send_comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 7788AC771D79977200376C95 /* button_send_comment.png */; };
@@ -990,9 +989,7 @@
 		BF58BB8B20EF1D3F002CB4EE /* BQMM.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF58BB8420EF1D3D002CB4EE /* BQMM.bundle */; };
 		BF58BB8C20EF1D3F002CB4EE /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF58BB8620EF1D3F002CB4EE /* iflyMSC.framework */; };
 		BF58BB8D20EF1D3F002CB4EE /* RongCloudiFly.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF58BB8720EF1D3F002CB4EE /* RongCloudiFly.bundle */; };
-		BF5B9B5E1F8E636E00BD885E /* EconomicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B5D1F8E636E00BD885E /* EconomicsViewController.swift */; };
 		BF5B9B601F8E63CF00BD885E /* SearchDownloadBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B5F1F8E63CF00BD885E /* SearchDownloadBookViewController.swift */; };
-		BF5B9B621F8E641000BD885E /* PhilosophyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B611F8E641000BD885E /* PhilosophyViewController.swift */; };
 		BF5B9B671F8E66D900BD885E /* EconomicDevelopmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B661F8E66D900BD885E /* EconomicDevelopmentViewController.swift */; };
 		BF5B9B691F8E671500BD885E /* ThinkDevelopmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B681F8E671500BD885E /* ThinkDevelopmentViewController.swift */; };
 		BF5B9B6B1F8E673C00BD885E /* PursuitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B6A1F8E673C00BD885E /* PursuitViewController.swift */; };
@@ -1013,7 +1010,6 @@
 		BF7309E420E1195500FC3555 /* my.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7309E320E1195500FC3555 /* my.plist */; };
 		BF93B91920F8B0C3007E4BFB /* FreedomLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93B91820F8B0C3007E4BFB /* FreedomLoginViewController.swift */; };
 		BFAC491920D23BD600E5CB8D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAC491820D23BD600E5CB8D /* DetailView.swift */; };
-		BFAC491B20D2470F00E5CB8D /* BooksMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAC491A20D2470F00E5CB8D /* BooksMainViewController.swift */; };
 		BFAC49BF20D25EE700E5CB8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAC49BE20D25EE700E5CB8D /* AppDelegate.swift */; };
 		BFAC49C120D36A0F00E5CB8D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAC49C020D36A0F00E5CB8D /* SettingsViewController.swift */; };
 		BFAC49C320D36A2700E5CB8D /* LibraryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAC49C220D36A2700E5CB8D /* LibraryCollectionViewController.swift */; };
@@ -1231,6 +1227,9 @@
 		DFFA80C821AEC84D009B1999 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80BF21AEC84C009B1999 /* BaseCollectionView.swift */; };
 		DFFA80C921AEC84D009B1999 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80C021AEC84D009B1999 /* BaseScrollView.swift */; };
 		DFFA80CA21AEC84D009B1999 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFA80C121AEC84D009B1999 /* BaseTableView.swift */; };
+		DFFD98CD21FB0B4800A442D7 /* BooksFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFD98CC21FB0B4800A442D7 /* BooksFindViewController.swift */; };
+		DFFD98CF21FB0B5800A442D7 /* BooksLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFD98CE21FB0B5800A442D7 /* BooksLibraryViewController.swift */; };
+		DFFD98D121FB0B6200A442D7 /* BooksMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFD98D021FB0B6200A442D7 /* BooksMeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1285,7 +1284,6 @@
 		7115A5E520AAECED000D0B96 /* BooksTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTabBarController.swift; sourceTree = "<group>"; };
 		7115A5E720AAED13000D0B96 /* BooksNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksNavigationController.swift; sourceTree = "<group>"; };
 		7115A5E920AAEDF1000D0B96 /* BooksBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksBaseViewController.swift; sourceTree = "<group>"; };
-		7115A5EB20AAEE1E000D0B96 /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		7115A5ED20AAFBBA000D0B96 /* MyDatabaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDatabaseTabBarController.swift; sourceTree = "<group>"; };
 		7115A5EF20AAFBF6000D0B96 /* MyDatabaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDatabaseNavigationController.swift; sourceTree = "<group>"; };
 		7115A5F120AAFC0F000D0B96 /* MyDatabaseBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDatabaseBaseViewController.swift; sourceTree = "<group>"; };
@@ -1764,8 +1762,8 @@
 		7788AC581D7996E000376C95 /* E_CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_CommentViewController.m; sourceTree = "<group>"; };
 		7788AC591D7996E000376C95 /* E_ReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_ReaderViewController.h; sourceTree = "<group>"; };
 		7788AC5A1D7996E000376C95 /* E_ReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ReaderViewController.m; sourceTree = "<group>"; };
-		7788AC5B1D7996E000376C95 /* E_ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_ScrollViewController.h; sourceTree = "<group>"; };
-		7788AC5C1D7996E000376C95 /* E_ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ScrollViewController.m; sourceTree = "<group>"; };
+		7788AC5B1D7996E000376C95 /* BookReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookReaderViewController.h; sourceTree = "<group>"; };
+		7788AC5C1D7996E000376C95 /* BookReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookReaderViewController.m; sourceTree = "<group>"; };
 		7788AC5D1D7996E000376C95 /* E_SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_SearchViewController.h; sourceTree = "<group>"; };
 		7788AC5E1D7996E000376C95 /* E_SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_SearchViewController.m; sourceTree = "<group>"; };
 		7788AC5F1D7996E000376C95 /* E_WebViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_WebViewControler.h; sourceTree = "<group>"; };
@@ -2321,9 +2319,7 @@
 		BF58BB8720EF1D3F002CB4EE /* RongCloudiFly.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RongCloudiFly.bundle; sourceTree = "<group>"; };
 		BF5B9B011F8DE39B00BD885E /* area.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
 		BF5B9B021F8DE39B00BD885E /* city.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
-		BF5B9B5D1F8E636E00BD885E /* EconomicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomicsViewController.swift; sourceTree = "<group>"; };
 		BF5B9B5F1F8E63CF00BD885E /* SearchDownloadBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDownloadBookViewController.swift; sourceTree = "<group>"; };
-		BF5B9B611F8E641000BD885E /* PhilosophyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilosophyViewController.swift; sourceTree = "<group>"; };
 		BF5B9B631F8E645100BD885E /* OC-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OC-Swift.h"; sourceTree = "<group>"; };
 		BF5B9B661F8E66D900BD885E /* EconomicDevelopmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomicDevelopmentViewController.swift; sourceTree = "<group>"; };
 		BF5B9B681F8E671500BD885E /* ThinkDevelopmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkDevelopmentViewController.swift; sourceTree = "<group>"; };
@@ -2352,7 +2348,6 @@
 		BF7309E320E1195500FC3555 /* my.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = my.plist; sourceTree = "<group>"; };
 		BF93B91820F8B0C3007E4BFB /* FreedomLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomLoginViewController.swift; sourceTree = "<group>"; };
 		BFAC491820D23BD600E5CB8D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		BFAC491A20D2470F00E5CB8D /* BooksMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksMainViewController.swift; sourceTree = "<group>"; };
 		BFAC49BE20D25EE700E5CB8D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFAC49C020D36A0F00E5CB8D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BFAC49C220D36A2700E5CB8D /* LibraryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCollectionViewController.swift; sourceTree = "<group>"; };
@@ -2591,6 +2586,9 @@
 		DFFA80BF21AEC84C009B1999 /* BaseCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		DFFA80C021AEC84D009B1999 /* BaseScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScrollView.swift; sourceTree = "<group>"; };
 		DFFA80C121AEC84D009B1999 /* BaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
+		DFFD98CC21FB0B4800A442D7 /* BooksFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksFindViewController.swift; sourceTree = "<group>"; };
+		DFFD98CE21FB0B5800A442D7 /* BooksLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksLibraryViewController.swift; sourceTree = "<group>"; };
+		DFFD98D021FB0B6200A442D7 /* BooksMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksMeViewController.swift; sourceTree = "<group>"; };
 		E406CAF72A1293138277033C /* Pods_Freedom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freedom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -2658,7 +2656,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		71267A4C2092DC6F006E1B96 /* 朋友圈 */ = {
+		71267A4C2092DC6F006E1B96 /* 想法 */ = {
 			isa = PBXGroup;
 			children = (
 				71267A532092DC92006E1B96 /* BookFriendsTableViewCell.h */,
@@ -2668,7 +2666,7 @@
 				71267A4E2092DC7A006E1B96 /* BookFriendsViewController.h */,
 				71267A4D2092DC79006E1B96 /* BookFriendsViewController.m */,
 			);
-			path = "朋友圈";
+			path = "想法";
 			sourceTree = "<group>";
 		};
 		71ECE0262092128D00495467 /* ChatViewController */ = {
@@ -3473,8 +3471,8 @@
 				7788AC581D7996E000376C95 /* E_CommentViewController.m */,
 				7788AC591D7996E000376C95 /* E_ReaderViewController.h */,
 				7788AC5A1D7996E000376C95 /* E_ReaderViewController.m */,
-				7788AC5B1D7996E000376C95 /* E_ScrollViewController.h */,
-				7788AC5C1D7996E000376C95 /* E_ScrollViewController.m */,
+				7788AC5B1D7996E000376C95 /* BookReaderViewController.h */,
+				7788AC5C1D7996E000376C95 /* BookReaderViewController.m */,
 				7788AC5D1D7996E000376C95 /* E_SearchViewController.h */,
 				7788AC5E1D7996E000376C95 /* E_SearchViewController.m */,
 				7788AC5F1D7996E000376C95 /* E_WebViewControler.h */,
@@ -3979,14 +3977,13 @@
 			isa = PBXGroup;
 			children = (
 				7745C23C1D671801002212DE /* 基本类库 */,
-				BF5B9B591F8E632200BD885E /* 经济 */,
+				DFFD98C921FB0AF600A442D7 /* 发现 */,
+				DFFD98CB21FB0AF600A442D7 /* 书库 */,
+				71267A4C2092DC6F006E1B96 /* 想法 */,
+				DFFD98CA21FB0AF600A442D7 /* 我 */,
 				BF5B9B5A1F8E632200BD885E /* 搜索下载 */,
-				BF5B9B5B1F8E632300BD885E /* 哲学 */,
-				71267A4C2092DC6F006E1B96 /* 朋友圈 */,
 				7745C23E1D671801002212DE /* 书籍阅读 */,
 				7719174C1D659A5E002F2BCD /* Books.storyboard */,
-				7115A5EB20AAEE1E000D0B96 /* BooksViewController.swift */,
-				BFAC491A20D2470F00E5CB8D /* BooksMainViewController.swift */,
 			);
 			path = "书籍收藏";
 			sourceTree = "<group>";
@@ -5102,28 +5099,12 @@
 			path = NoUse;
 			sourceTree = "<group>";
 		};
-		BF5B9B591F8E632200BD885E /* 经济 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B5D1F8E636E00BD885E /* EconomicsViewController.swift */,
-			);
-			path = "经济";
-			sourceTree = "<group>";
-		};
 		BF5B9B5A1F8E632200BD885E /* 搜索下载 */ = {
 			isa = PBXGroup;
 			children = (
 				BF5B9B5F1F8E63CF00BD885E /* SearchDownloadBookViewController.swift */,
 			);
 			path = "搜索下载";
-			sourceTree = "<group>";
-		};
-		BF5B9B5B1F8E632300BD885E /* 哲学 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B611F8E641000BD885E /* PhilosophyViewController.swift */,
-			);
-			path = "哲学";
 			sourceTree = "<group>";
 		};
 		BF6E57961FAC055C005F7DF8 /* MineInfoViewController */ = {
@@ -5417,6 +5398,30 @@
 				DFF4ABA221B7FB6000F03C71 /* XExcellView.xib */,
 			);
 			path = SwiftTools;
+			sourceTree = "<group>";
+		};
+		DFFD98C921FB0AF600A442D7 /* 发现 */ = {
+			isa = PBXGroup;
+			children = (
+				DFFD98CC21FB0B4800A442D7 /* BooksFindViewController.swift */,
+			);
+			path = "发现";
+			sourceTree = "<group>";
+		};
+		DFFD98CA21FB0AF600A442D7 /* 我 */ = {
+			isa = PBXGroup;
+			children = (
+				DFFD98D021FB0B6200A442D7 /* BooksMeViewController.swift */,
+			);
+			path = "我";
+			sourceTree = "<group>";
+		};
+		DFFD98CB21FB0AF600A442D7 /* 书库 */ = {
+			isa = PBXGroup;
+			children = (
+				DFFD98CE21FB0B5800A442D7 /* BooksLibraryViewController.swift */,
+			);
+			path = "书库";
 			sourceTree = "<group>";
 		};
 		FCCABADD517AF7901A18F7B1 /* Frameworks */ = {
@@ -6619,7 +6624,6 @@
 				DFF4AB9B21B7AC5900F03C71 /* XAudioPlayer.swift in Sources */,
 				713EE30420ADA0490085B65D /* IqiyiViewController.swift in Sources */,
 				7115A5CE20AAD38C000D0B96 /* PersonalHouseViewController.swift in Sources */,
-				BF5B9B5E1F8E636E00BD885E /* EconomicsViewController.swift in Sources */,
 				7788AC311D7996B100376C95 /* E_Paging.mm in Sources */,
 				DFF4ABA121B7BFEC00F03C71 /* XExcellView.swift in Sources */,
 				BF5B9B751F8E676F00BD885E /* FamilyViewController.swift in Sources */,
@@ -6638,7 +6642,6 @@
 				DF6B520421CA803900460949 /* WXTableViewController.swift in Sources */,
 				DFD8215E21EF2DD8006C8705 /* KugouTabBarView.swift in Sources */,
 				DF6B523821CB76F800460949 /* WXPrivacySettingViewController.swift in Sources */,
-				BFAC491B20D2470F00E5CB8D /* BooksMainViewController.swift in Sources */,
 				BFC6D93B20E4AB6D00F17378 /* SinaAuthController.swift in Sources */,
 				DF7B407821AC020A00E3D975 /* DouyinNavigationViewController.swift in Sources */,
 				71267A552092DC93006E1B96 /* BookFriendsTableViewCell.m in Sources */,
@@ -6660,7 +6663,6 @@
 				DF0E967A21CBACDF009682CC /* WXGameViewController.swift in Sources */,
 				BF58BB2920EF1945002CB4EE /* RCDAddressBookTableViewCell.m in Sources */,
 				BFC6D93920E4AB1400F17378 /* SinaBaseViewController.swift in Sources */,
-				7115A5EC20AAEE1E000D0B96 /* BooksViewController.swift in Sources */,
 				BF58BB3420EF1945002CB4EE /* RCDGroupSettingsTableViewController.m in Sources */,
 				713EE2DC20AD9BFC0085B65D /* AlipayHomeViewController.swift in Sources */,
 				BFEF19CA2101E990003DCAC1 /* SumCFile.c in Sources */,
@@ -6699,7 +6701,7 @@
 				DF0E966E21CBACAE009682CC /* WXNewFriendViewController.swift in Sources */,
 				BF58BB3820EF1945002CB4EE /* RCDNavigationViewController.m in Sources */,
 				713EE2F620AD9D300085B65D /* DetailScrollViewController.swift in Sources */,
-				7788AC641D7996E000376C95 /* E_ScrollViewController.m in Sources */,
+				7788AC641D7996E000376C95 /* BookReaderViewController.m in Sources */,
 				DF2953A021D7A77F00E1C188 /* Aspects.m in Sources */,
 				DF6B524621CB772500460949 /* WXMineInfoViewController.swift in Sources */,
 				77BFCC001E1F413C00C95B5E /* notes.md in Sources */,
@@ -6718,6 +6720,7 @@
 				7115A5B620AAC314000D0B96 /* PersonalApplyNavigationController.swift in Sources */,
 				DF0E966821CBAC8F009682CC /* WXFriendSearchViewController.swift in Sources */,
 				DF6B521221CB25C300460949 /* WXChatFileViewController.swift in Sources */,
+				DFFD98CF21FB0B5800A442D7 /* BooksLibraryViewController.swift in Sources */,
 				713EE2A820AD8F500085B65D /* AlipayTabBarController.swift in Sources */,
 				7115A5A720AA9FE3000D0B96 /* FreedomNavigationController.swift in Sources */,
 				BF58BB6720EF1945002CB4EE /* AFHttpTool.m in Sources */,
@@ -6776,6 +6779,7 @@
 				DF6B51EE21CA6F5900460949 /* WXModes+Extension.swift in Sources */,
 				BF5B9B6D1F8E674400BD885E /* MoneyViewController.swift in Sources */,
 				BFC6D93D20E4ABF300F17378 /* SinaHomeViewController.swift in Sources */,
+				DFFD98CD21FB0B4800A442D7 /* BooksFindViewController.swift in Sources */,
 				7115A5BC20AAD31A000D0B96 /* PersonalInternetViewController.swift in Sources */,
 				BFEF19C32101E990003DCAC1 /* OcCallCpp.mm in Sources */,
 				7115A5F620AAFC40000D0B96 /* MyDatabaseEditViewController.swift in Sources */,
@@ -6841,6 +6845,7 @@
 				DF0E967621CBACD4009682CC /* WXBottleViewController.swift in Sources */,
 				BF58BB5220EF1945002CB4EE /* RCDPrivacyTableViewController.m in Sources */,
 				71267A582092E726006E1B96 /* BookReadMode.m in Sources */,
+				DFFD98D121FB0B6200A442D7 /* BooksMeViewController.swift in Sources */,
 				DF4C6FCA21CC790D00A54339 /* FoundationAPI.swift in Sources */,
 				DF0E968021CBACEF009682CC /* WXScannerViewController.swift in Sources */,
 				BF58BB2C20EF1945002CB4EE /* RCDPersonDetailViewController.m in Sources */,
@@ -6875,7 +6880,6 @@
 				BF58BB5920EF1945002CB4EE /* RCDServiceViewController.m in Sources */,
 				BF58BB2B20EF1945002CB4EE /* RCDFrienfRemarksViewController.m in Sources */,
 				7115A5C020AAD339000D0B96 /* PersonalSoftViewController.swift in Sources */,
-				BF5B9B621F8E641000BD885E /* PhilosophyViewController.swift in Sources */,
 				BF58BB1520EF1944002CB4EE /* RCloudModel.m in Sources */,
 				DF0489EA21D28B870030C30B /* ElasticTransitionPresentationController.swift in Sources */,
 				BF58BB2520EF1944002CB4EE /* RCDChatRoomViewController.m in Sources */,
