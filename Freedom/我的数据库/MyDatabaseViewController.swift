@@ -4,55 +4,37 @@
 import UIKit
 import XExtension
 import XCarryOn
-class DataBaseCollectionViewCell:BaseCollectionViewCell{
-    override func initUI() {
-        self.icon = UIImageView(frame: CGRect(x: 10, y: 0, width: APPW/5-20, height:40))
-        self.title = UILabel(frame: CGRect(x: 0, y:  self.icon.bottom, width: APPW/5-12, height:20))
-        self.title.font = UIFont.systemFont(ofSize: 14)
-        self.title.textAlignment = .center
-        addSubviews([self.title,self.icon])
-    }
-}
-class MyDatabaseViewController: MyDatabaseBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+class MyDatabaseViewController: MyDatabaseBaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "我的数据库"
-        let left = UIBarButtonItem(title: "设置", style: .plain, target: nil, action: nil)
-        let right = UIBarButtonItem(image: UIImage(named:"add"), style: .done, target: nil, action: nil)
-        self.navigationItem.leftBarButtonItem  = left;
-        self.navigationItem.rightBarButtonItem = right;
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: (APPW-50)/4, height:60)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        layout.minimumInteritemSpacing = 10;
-        layout.minimumLineSpacing = 10;
-        layout.headerReferenceSize = CGSize(width: APPW, height:30)
-        layout.footerReferenceSize = CGSize.zero
-        self.collectionView = BaseCollectionView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH-110), collectionViewLayout: layout)
-//        self.collectionView.dataArray = NSMutableArray(array: nil)
-        self.collectionView.dataSource = self;
-        self.collectionView.delegate = self;
-        self.collectionView.register(DataBaseCollectionViewCell.self, forCellWithReuseIdentifier: DataBaseCollectionViewCell.identifier)
-        self.collectionView.backgroundColor = .white
-        self.collectionView.frame = self.view.bounds;
-        view.addSubview(self.collectionView)
+        view.backgroundColor = UIColor.darkGray
+        let starsView = Circular3DStarView(frame: CGRect(x: 0, y: 100, width: APPW, height: APPW))
+        var stars: [UIView] = []
+        let items = ["微信","支付宝","酷狗","爱奇艺","抖音","淘宝","新浪微博","大众点评","今日头条","微能量","微信阅读","个性特色自由主义"]
+        for i in 0..<100 {
+            let index = Int(arc4random() % 12)
+            let text = items[index]
+            let item = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 30), font: UIFont.systemFont(ofSize: 10), color: UIColor.white, text: text)
+            item.textAlignment = .center
+            item.isTapEffectEnabled = false
+            let pointView = UIButton(frame: CGRect(x: 45, y: 20, width: 10, height: 10))
+            pointView.layer.cornerRadius = 5
+            pointView.backgroundColor = UIColor.random
+            pointView.tag = i
+            item.addSubview(pointView)
+            stars.append(item)
+        }
+        starsView.stars = stars
+        view.addSubview(starsView)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
         self.edgesForExtendedLayout = .all
     }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DataBaseCollectionViewCell.identifier, for: indexPath) as? DataBaseCollectionViewCell
-        cell?.icon.image = UIImage(named:"userLogo")
-        cell?.title.text = "name"
-        return cell!;
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let log = "你选择的是\(indexPath.section)，\(indexPath.row)"
+
+    @objc func touchedItem(_ sender: UIButton) {
+        let log = "你选择的是\(sender.tag)"
         noticeInfo(log, autoClear: true, autoClearTime: 3)
         _ = self.push(MyDatabaseEditViewController(), withInfo: "", withTitle: "数据库编辑详情")
     }
