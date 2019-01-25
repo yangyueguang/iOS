@@ -94,25 +94,13 @@ public struct API {
         case industryList = "microEnergy/industryList"//经典行业案例列表
         case demoList = "microEnergy/demoList"//行业内企业案例列表
     }
-    ///个人应用
-    enum apply: String {
-        case companyDetail = "personalApply/companyDetail"//公司详情
-        case companyList = "personalApply/companyList"//企业列表
-        case industryList = "personalApply/industryList"//行业列表
-    }
-    ///书籍收藏
+    ///微信阅读
     enum books: String {
         case books = "freedom/books"//个性特色自由主义
         case list = "books/list"//列表
     }
     enum database: String {
         case database = "database"//我的数据库
-    }
-    ///个人简历
-    enum resume: String {
-        case theory = "resume/theory"//理论体系
-        case business = "resume/business"//事业合作
-        case home = "resume/home"//首页
     }
     ///酷狗
     enum kugou: String {

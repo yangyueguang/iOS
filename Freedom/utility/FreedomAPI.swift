@@ -370,26 +370,6 @@ extension XNetKit {
         }
     }
 
-    //FIXME: 个人应用
-    /// 个人应用/公司详情
-    static func personalApplyCompanyDetail(_ param: Parameters, next: PublishSubject<Any>) {
-        request(API.apply.companyDetail.rawValue, parameters: param) { (response) in
-            next.onNext(response)
-        }
-    }
-    /// 个人应用/企业列表
-    static func personalApplyCompanyList(_ param: Parameters, next: PublishSubject<Any>) {
-        request(API.apply.companyList.rawValue, parameters: param) { (response) in
-            next.onNext(response)
-        }
-    }
-    /// 个人应用/行业列表
-    static func personalApplyIndustryList(_ param: Parameters, next: PublishSubject<Any>) {
-        request(API.apply.industryList.rawValue, parameters: param) { (response) in
-            next.onNext(response)
-        }
-    }
-
     //FIXME: 个性特色自由主义
     /// 个性特色自由主义
     static func freedomBooks(_ param: Parameters, next: PublishSubject<Any>) {
@@ -398,8 +378,8 @@ extension XNetKit {
         }
     }
 
-    //FIXME: 书籍收藏
-    /// 书籍收藏/列表
+    //FIXME: 微信阅读
+    /// 微信阅读/列表
     static func booksList(_ param: Parameters, next: PublishSubject<Any>) {
         request(API.books.list.rawValue, parameters: param) { (response) in
             next.onNext(response)
@@ -410,26 +390,6 @@ extension XNetKit {
     /// 我的数据库
     static func database(_ param: Parameters, next: PublishSubject<Any>) {
         request(API.database.database.rawValue, parameters: param) { (response) in
-            next.onNext(response)
-        }
-    }
-
-    //FIXME: 个人简历
-    /// 个人简历/理论体系
-    static func resumeTheory(_ param: Parameters, next: PublishSubject<Any>) {
-        request(API.resume.theory.rawValue, parameters: param) { (response) in
-            next.onNext(response)
-        }
-    }
-    /// 个人简历/事业合作
-    static func resumeBusiness(_ param: Parameters, next: PublishSubject<Any>) {
-        request(API.resume.business.rawValue, parameters: param) { (response) in
-            next.onNext(response)
-        }
-    }
-    /// 个人简历/首页
-    static func resumeHome(_ param: Parameters, next: PublishSubject<Any>) {
-        request(API.resume.home.rawValue, parameters: param) { (response) in
             next.onNext(response)
         }
     }

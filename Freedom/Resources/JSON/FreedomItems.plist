@@ -52,14 +52,6 @@
 	</dict>
 	<dict>
 		<key>control</key>
-		<string>Resume</string>
-		<key>icon</key>
-		<string>jianliIcon</string>
-		<key>title</key>
-		<string>我的简历</string>
-	</dict>
-	<dict>
-		<key>control</key>
 		<string>MyDatabase</string>
 		<key>icon</key>
 		<string>database</string>
@@ -113,14 +105,6 @@
 		<string>ziyouzhuyi</string>
 		<key>title</key>
 		<string>个性特色自由主义</string>
-	</dict>
-	<dict>
-		<key>control</key>
-		<string>PersonalApply</string>
-		<key>icon</key>
-		<string>yingyongIcon</string>
-		<key>title</key>
-		<string>个人应用</string>
 	</dict>
 </array>
 </plist>

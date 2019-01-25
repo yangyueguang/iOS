@@ -1,5 +1,5 @@
 //
-//  PersonalApplyViewController.swift
+//  FreedomIndustryViewController.swift
 //  Freedom
 //
 //  Created by Super on 2018/5/15.
@@ -8,7 +8,7 @@
 import UIKit
 import XExtension
 import XCarryOn
-class PersonalApplyViewCell:BaseTableViewCell{
+class FreedomViewCell:BaseTableViewCell{
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x: 10, y: 10, width: 60, height: 60))
         self.title = UILabel(frame: CGRect(x:self.icon.right+10, y: 20, width: APPW-self.icon.right-20, height: 20))
@@ -20,7 +20,7 @@ class PersonalApplyViewCell:BaseTableViewCell{
         self.addSubviews([self.title,self.icon,self.script,self.line])
     }
 }
-class PersonalApplyViewController: PersonalApplyBaseViewController {
+class FreedomIndustryViewController: FreedomBaseViewController {
     var controllers:[String]!
     var banner:BaseScrollView!
     override func viewWillAppear(_ animated: Bool) {
@@ -47,9 +47,9 @@ class PersonalApplyViewController: PersonalApplyBaseViewController {
         return 80
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: PersonalApplyViewCell.identifier) as? PersonalApplyViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: FreedomViewCell.identifier) as? FreedomViewCell
         if cell == nil{
-            cell = PersonalApplyViewCell.getInstance() as? PersonalApplyViewCell
+            cell = FreedomViewCell.getInstance() as? FreedomViewCell
         }
         cell?.icon.image = UIImage(named: "userLogo")
         cell?.title.text = self.tableView.dataArray[indexPath.row] as? String
@@ -57,23 +57,5 @@ class PersonalApplyViewController: PersonalApplyBaseViewController {
         return cell!
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc:PersonalApplyBaseViewController!
-        switch indexPath.row {
-        case 0:vc = PersonalInternetViewController();break;
-        case 1:vc = PersonalEducationViewController();break;
-        case 2:vc = PersonalSoftViewController();break;
-        case 3:vc = PersonalHardwareViewController();break;
-        case 4:vc = PersonalComputerViewController();break;
-        case 5:vc = PersonalFoodViewController();break;
-        case 6:vc = PersonalFastGoodsViewController();break;
-        case 7:vc = PersonalConsumerViewController();break;
-        case 8:vc = PersonalPhoneViewController();break;
-        case 9:vc = PersonalHouseViewController();break;
-        case 10:vc = PersonalCarViewController();break;
-        case 11:vc = PersonalLuxuryViewController();break;
-        default:vc = PersonalLuxuryViewController();break;
-        }
-        let theTitle = self.tableView.dataArray[indexPath.row] as! String
-        _ = self.push(vc, withInfo:"", withTitle:theTitle)
     }
 }

@@ -1,9 +1,9 @@
 //
-//  ResumeBusinessCooperationVC.swift
+//  FreedomBusinessViewController.swift
 //  Freedom
 //
 import UIKit
-class ResumeBusinessCooperationVC: ResumeBaseViewController {
+class FreedomBusinessViewController: FreedomBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "事业合作"

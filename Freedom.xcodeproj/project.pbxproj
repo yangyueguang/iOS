@@ -7,36 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7115A5A720AA9FE3000D0B96 /* FreedomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5A620AA9FE3000D0B96 /* FreedomNavigationController.swift */; };
-		7115A5A920AAA191000D0B96 /* FreedomBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5A820AAA191000D0B96 /* FreedomBooksViewController.swift */; };
-		7115A5AB20AAA1C4000D0B96 /* FreedomBooksEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5AA20AAA1C4000D0B96 /* FreedomBooksEditViewController.swift */; };
-		7115A5AD20AAA1F1000D0B96 /* FreedomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5AC20AAA1F1000D0B96 /* FreedomViewController.swift */; };
-		7115A5B120AABCF6000D0B96 /* FreedomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5B020AABCF6000D0B96 /* FreedomTabBarController.swift */; };
-		7115A5B420AAC2E3000D0B96 /* PersonalApplyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5B320AAC2E3000D0B96 /* PersonalApplyTabBarController.swift */; };
-		7115A5B620AAC314000D0B96 /* PersonalApplyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5B520AAC314000D0B96 /* PersonalApplyNavigationController.swift */; };
-		7115A5B820AAC348000D0B96 /* PersonalApplyBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5B720AAC348000D0B96 /* PersonalApplyBaseViewController.swift */; };
-		7115A5BA20AAC3E6000D0B96 /* PersonalApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5B920AAC3E6000D0B96 /* PersonalApplyViewController.swift */; };
-		7115A5BC20AAD31A000D0B96 /* PersonalInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5BB20AAD31A000D0B96 /* PersonalInternetViewController.swift */; };
-		7115A5BE20AAD32E000D0B96 /* PersonalEducationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5BD20AAD32E000D0B96 /* PersonalEducationViewController.swift */; };
-		7115A5C020AAD339000D0B96 /* PersonalSoftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5BF20AAD339000D0B96 /* PersonalSoftViewController.swift */; };
-		7115A5C220AAD345000D0B96 /* PersonalHardwareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5C120AAD345000D0B96 /* PersonalHardwareViewController.swift */; };
-		7115A5C420AAD351000D0B96 /* PersonalComputerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5C320AAD351000D0B96 /* PersonalComputerViewController.swift */; };
-		7115A5C620AAD35E000D0B96 /* PersonalFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5C520AAD35E000D0B96 /* PersonalFoodViewController.swift */; };
-		7115A5C820AAD36B000D0B96 /* PersonalFastGoodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5C720AAD36B000D0B96 /* PersonalFastGoodsViewController.swift */; };
-		7115A5CA20AAD376000D0B96 /* PersonalConsumerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5C920AAD376000D0B96 /* PersonalConsumerViewController.swift */; };
-		7115A5CC20AAD382000D0B96 /* PersonalPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5CB20AAD382000D0B96 /* PersonalPhoneViewController.swift */; };
-		7115A5CE20AAD38C000D0B96 /* PersonalHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5CD20AAD38C000D0B96 /* PersonalHouseViewController.swift */; };
-		7115A5D020AAD398000D0B96 /* PersonalCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5CF20AAD398000D0B96 /* PersonalCarViewController.swift */; };
-		7115A5D220AAD3A3000D0B96 /* PersonalLuxuryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5D120AAD3A3000D0B96 /* PersonalLuxuryViewController.swift */; };
-		7115A5D420AAD716000D0B96 /* ResumeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5D320AAD716000D0B96 /* ResumeTabBarController.swift */; };
-		7115A5D620AAD73F000D0B96 /* ResumeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5D520AAD73F000D0B96 /* ResumeNavigationController.swift */; };
-		7115A5D820AAD783000D0B96 /* ResumeBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5D720AAD783000D0B96 /* ResumeBaseViewController.swift */; };
-		7115A5DA20AAD9AA000D0B96 /* ResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5D920AAD9AA000D0B96 /* ResumeViewController.swift */; };
-		7115A5DC20AAD9C2000D0B96 /* ResumeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5DB20AAD9C2000D0B96 /* ResumeListViewController.swift */; };
-		7115A5DE20AAD9CE000D0B96 /* ResumeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5DD20AAD9CE000D0B96 /* ResumeDetailViewController.swift */; };
-		7115A5E020AAD9D8000D0B96 /* ResumeBusinessCooperationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5DF20AAD9D8000D0B96 /* ResumeBusinessCooperationVC.swift */; };
-		7115A5E220AAD9E4000D0B96 /* ResumeTheorySystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5E120AAD9E4000D0B96 /* ResumeTheorySystemViewController.swift */; };
-		7115A5E420AAD9F0000D0B96 /* ResumeCallMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5E320AAD9F0000D0B96 /* ResumeCallMeViewController.swift */; };
 		7115A5E620AAECED000D0B96 /* BooksTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5E520AAECED000D0B96 /* BooksTabBarController.swift */; };
 		7115A5E820AAED13000D0B96 /* BooksNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5E720AAED13000D0B96 /* BooksNavigationController.swift */; };
 		7115A5EA20AAEDF1000D0B96 /* BooksBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115A5E920AAEDF1000D0B96 /* BooksBaseViewController.swift */; };
@@ -146,7 +116,6 @@
 		7165A3D020A58D77001C60D6 /* emoticon_keyboard_magnifier.png in Resources */ = {isa = PBXBuildFile; fileRef = 7165A3B920A58D6A001C60D6 /* emoticon_keyboard_magnifier.png */; };
 		7165A3D820A58D77001C60D6 /* emoticonkeyboardbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7165A3C120A58D71001C60D6 /* emoticonkeyboardbutton.png */; };
 		7165A3DC20A58D77001C60D6 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = 7165A3C520A58D74001C60D6 /* movie.png */; };
-		7165A3EA20A5A291001C60D6 /* FreedomBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165A3E920A5A291001C60D6 /* FreedomBaseViewController.swift */; };
 		71ECDFB52091EB4B00495467 /* JSPatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71ECDFB22091EB4A00495467 /* JSPatch.framework */; };
 		7719171D1D65466E002F2BCD /* toutiaoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7719171B1D65466E002F2BCD /* toutiaoIcon.png */; };
 		771917201D655039002F2BCD /* userLogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7719171F1D655039002F2BCD /* userLogo1.png */; };
@@ -159,9 +128,6 @@
 		7719173F1D659979002F2BCD /* DZ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7719173E1D659979002F2BCD /* DZ.storyboard */; };
 		771917411D659983002F2BCD /* Toutiao.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771917401D659983002F2BCD /* Toutiao.storyboard */; };
 		771917451D6599C4002F2BCD /* MicroEnergy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771917441D6599C4002F2BCD /* MicroEnergy.storyboard */; };
-		771917471D6599EB002F2BCD /* PersonalApply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771917461D6599EB002F2BCD /* PersonalApply.storyboard */; };
-		771917491D659A00002F2BCD /* Freedom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 771917481D659A00002F2BCD /* Freedom.storyboard */; };
-		7719174B1D659A57002F2BCD /* Resume.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7719174A1D659A57002F2BCD /* Resume.storyboard */; };
 		7719174D1D659A5E002F2BCD /* Books.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7719174C1D659A5E002F2BCD /* Books.storyboard */; };
 		7719174F1D659A68002F2BCD /* MyDatabase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7719174E1D659A68002F2BCD /* MyDatabase.storyboard */; };
 		772E839B1D76BC15004EDF50 /* box_duty_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 772E7DC81D76BC07004EDF50 /* box_duty_icon.png */; };
@@ -990,21 +956,6 @@
 		BF58BB8C20EF1D3F002CB4EE /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF58BB8620EF1D3F002CB4EE /* iflyMSC.framework */; };
 		BF58BB8D20EF1D3F002CB4EE /* RongCloudiFly.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF58BB8720EF1D3F002CB4EE /* RongCloudiFly.bundle */; };
 		BF5B9B601F8E63CF00BD885E /* SearchDownloadBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B5F1F8E63CF00BD885E /* SearchDownloadBookViewController.swift */; };
-		BF5B9B671F8E66D900BD885E /* EconomicDevelopmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B661F8E66D900BD885E /* EconomicDevelopmentViewController.swift */; };
-		BF5B9B691F8E671500BD885E /* ThinkDevelopmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B681F8E671500BD885E /* ThinkDevelopmentViewController.swift */; };
-		BF5B9B6B1F8E673C00BD885E /* PursuitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B6A1F8E673C00BD885E /* PursuitViewController.swift */; };
-		BF5B9B6D1F8E674400BD885E /* MoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B6C1F8E674400BD885E /* MoneyViewController.swift */; };
-		BF5B9B6F1F8E674B00BD885E /* FreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B6E1F8E674B00BD885E /* FreeViewController.swift */; };
-		BF5B9B711F8E675100BD885E /* LoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B701F8E675100BD885E /* LoveViewController.swift */; };
-		BF5B9B731F8E676500BD885E /* CareerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B721F8E676500BD885E /* CareerViewController.swift */; };
-		BF5B9B751F8E676F00BD885E /* FamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B741F8E676F00BD885E /* FamilyViewController.swift */; };
-		BF5B9B771F8E677F00BD885E /* RelativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B761F8E677F00BD885E /* RelativeViewController.swift */; };
-		BF5B9B791F8E678900BD885E /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B781F8E678900BD885E /* FriendViewController.swift */; };
-		BF5B9B7B1F8E679300BD885E /* HealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B7A1F8E679300BD885E /* HealthViewController.swift */; };
-		BF5B9B7D1F8E67A700BD885E /* HonorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B7C1F8E67A700BD885E /* HonorViewController.swift */; };
-		BF5B9B7F1F8E67B900BD885E /* WidomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B7E1F8E67B900BD885E /* WidomViewController.swift */; };
-		BF5B9B811F8E67C000BD885E /* PowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B801F8E67C000BD885E /* PowerViewController.swift */; };
-		BF5B9B831F8E67CC00BD885E /* HappyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B821F8E67CC00BD885E /* HappyViewController.swift */; };
 		BF6115B920FDACC9007A010A /* unicode.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF6115B820FDACC9007A010A /* unicode.plist */; };
 		BF7309DC20E0D98100FC3555 /* usuallyAPP.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7309DB20E0D98100FC3555 /* usuallyAPP.plist */; };
 		BF7309E420E1195500FC3555 /* my.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7309E320E1195500FC3555 /* my.plist */; };
@@ -1212,6 +1163,14 @@
 		DFD8216021EF2DEA006C8705 /* KugouTabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFD8215F21EF2DEA006C8705 /* KugouTabBarView.xib */; };
 		DFED981C21E8AC0B009270A3 /* WXModes.m in Sources */ = {isa = PBXBuildFile; fileRef = DFED981B21E8AC0B009270A3 /* WXModes.m */; };
 		DFEF80DF21FB72B7001D81FA /* Circular3DStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF80DE21FB72B7001D81FA /* Circular3DStarView.swift */; };
+		DFEF80EE21FB7AE4001D81FA /* FreedomBusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF80E221FB7AE4001D81FA /* FreedomBusinessViewController.swift */; };
+		DFEF80EF21FB7AE4001D81FA /* FreedomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF80E421FB7AE4001D81FA /* FreedomTabBarController.swift */; };
+		DFEF80F021FB7AE4001D81FA /* FreedomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF80E521FB7AE4001D81FA /* FreedomNavigationController.swift */; };
+		DFEF80F121FB7AE4001D81FA /* FreedomBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF80E621FB7AE4001D81FA /* FreedomBaseViewController.swift */; };
+		DFEF80F221FB7AE4001D81FA /* FreedomTheorySystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF80E821FB7AE4001D81FA /* FreedomTheorySystemViewController.swift */; };
+		DFEF80F321FB7AE4001D81FA /* Freedom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFEF80E921FB7AE4001D81FA /* Freedom.storyboard */; };
+		DFEF80F421FB7AE4001D81FA /* FreedomIndustryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF80EB21FB7AE4001D81FA /* FreedomIndustryViewController.swift */; };
+		DFEF80F521FB7AE4001D81FA /* FreedomProductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF80ED21FB7AE4001D81FA /* FreedomProductionViewController.swift */; };
 		DFF4AB9921B7969A00F03C71 /* XRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */; };
 		DFF4AB9B21B7AC5900F03C71 /* XAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */; };
 		DFF4AB9D21B7B80000F03C71 /* XCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9C21B7B80000F03C71 /* XCardsView.swift */; };
@@ -1252,36 +1211,6 @@
 
 /* Begin PBXFileReference section */
 		640117F75915AD869477841F /* Pods-Freedom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freedom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Freedom/Pods-Freedom.release.xcconfig"; sourceTree = "<group>"; };
-		7115A5A620AA9FE3000D0B96 /* FreedomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomNavigationController.swift; sourceTree = "<group>"; };
-		7115A5A820AAA191000D0B96 /* FreedomBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomBooksViewController.swift; sourceTree = "<group>"; };
-		7115A5AA20AAA1C4000D0B96 /* FreedomBooksEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomBooksEditViewController.swift; sourceTree = "<group>"; };
-		7115A5AC20AAA1F1000D0B96 /* FreedomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomViewController.swift; sourceTree = "<group>"; };
-		7115A5B020AABCF6000D0B96 /* FreedomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomTabBarController.swift; sourceTree = "<group>"; };
-		7115A5B320AAC2E3000D0B96 /* PersonalApplyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalApplyTabBarController.swift; sourceTree = "<group>"; };
-		7115A5B520AAC314000D0B96 /* PersonalApplyNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalApplyNavigationController.swift; sourceTree = "<group>"; };
-		7115A5B720AAC348000D0B96 /* PersonalApplyBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalApplyBaseViewController.swift; sourceTree = "<group>"; };
-		7115A5B920AAC3E6000D0B96 /* PersonalApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalApplyViewController.swift; sourceTree = "<group>"; };
-		7115A5BB20AAD31A000D0B96 /* PersonalInternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInternetViewController.swift; sourceTree = "<group>"; };
-		7115A5BD20AAD32E000D0B96 /* PersonalEducationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalEducationViewController.swift; sourceTree = "<group>"; };
-		7115A5BF20AAD339000D0B96 /* PersonalSoftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSoftViewController.swift; sourceTree = "<group>"; };
-		7115A5C120AAD345000D0B96 /* PersonalHardwareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHardwareViewController.swift; sourceTree = "<group>"; };
-		7115A5C320AAD351000D0B96 /* PersonalComputerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalComputerViewController.swift; sourceTree = "<group>"; };
-		7115A5C520AAD35E000D0B96 /* PersonalFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFoodViewController.swift; sourceTree = "<group>"; };
-		7115A5C720AAD36B000D0B96 /* PersonalFastGoodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFastGoodsViewController.swift; sourceTree = "<group>"; };
-		7115A5C920AAD376000D0B96 /* PersonalConsumerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalConsumerViewController.swift; sourceTree = "<group>"; };
-		7115A5CB20AAD382000D0B96 /* PersonalPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPhoneViewController.swift; sourceTree = "<group>"; };
-		7115A5CD20AAD38C000D0B96 /* PersonalHouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHouseViewController.swift; sourceTree = "<group>"; };
-		7115A5CF20AAD398000D0B96 /* PersonalCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCarViewController.swift; sourceTree = "<group>"; };
-		7115A5D120AAD3A3000D0B96 /* PersonalLuxuryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalLuxuryViewController.swift; sourceTree = "<group>"; };
-		7115A5D320AAD716000D0B96 /* ResumeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTabBarController.swift; sourceTree = "<group>"; };
-		7115A5D520AAD73F000D0B96 /* ResumeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeNavigationController.swift; sourceTree = "<group>"; };
-		7115A5D720AAD783000D0B96 /* ResumeBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeBaseViewController.swift; sourceTree = "<group>"; };
-		7115A5D920AAD9AA000D0B96 /* ResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewController.swift; sourceTree = "<group>"; };
-		7115A5DB20AAD9C2000D0B96 /* ResumeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeListViewController.swift; sourceTree = "<group>"; };
-		7115A5DD20AAD9CE000D0B96 /* ResumeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeDetailViewController.swift; sourceTree = "<group>"; };
-		7115A5DF20AAD9D8000D0B96 /* ResumeBusinessCooperationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeBusinessCooperationVC.swift; sourceTree = "<group>"; };
-		7115A5E120AAD9E4000D0B96 /* ResumeTheorySystemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTheorySystemViewController.swift; sourceTree = "<group>"; };
-		7115A5E320AAD9F0000D0B96 /* ResumeCallMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeCallMeViewController.swift; sourceTree = "<group>"; };
 		7115A5E520AAECED000D0B96 /* BooksTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTabBarController.swift; sourceTree = "<group>"; };
 		7115A5E720AAED13000D0B96 /* BooksNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksNavigationController.swift; sourceTree = "<group>"; };
 		7115A5E920AAEDF1000D0B96 /* BooksBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksBaseViewController.swift; sourceTree = "<group>"; };
@@ -1397,7 +1326,6 @@
 		7165A3B920A58D6A001C60D6 /* emoticon_keyboard_magnifier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emoticon_keyboard_magnifier.png; sourceTree = "<group>"; };
 		7165A3C120A58D71001C60D6 /* emoticonkeyboardbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emoticonkeyboardbutton.png; sourceTree = "<group>"; };
 		7165A3C520A58D74001C60D6 /* movie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movie.png; sourceTree = "<group>"; };
-		7165A3E920A5A291001C60D6 /* FreedomBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreedomBaseViewController.swift; sourceTree = "<group>"; };
 		71ECDFB22091EB4A00495467 /* JSPatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatch.framework; sourceTree = "<group>"; };
 		7719171B1D65466E002F2BCD /* toutiaoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toutiaoIcon.png; sourceTree = "<group>"; };
 		7719171F1D655039002F2BCD /* userLogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userLogo1.png; sourceTree = "<group>"; };
@@ -1410,9 +1338,6 @@
 		7719173E1D659979002F2BCD /* DZ.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DZ.storyboard; sourceTree = "<group>"; };
 		771917401D659983002F2BCD /* Toutiao.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Toutiao.storyboard; sourceTree = "<group>"; };
 		771917441D6599C4002F2BCD /* MicroEnergy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MicroEnergy.storyboard; sourceTree = "<group>"; };
-		771917461D6599EB002F2BCD /* PersonalApply.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PersonalApply.storyboard; sourceTree = "<group>"; };
-		771917481D659A00002F2BCD /* Freedom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Freedom.storyboard; sourceTree = "<group>"; };
-		7719174A1D659A57002F2BCD /* Resume.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Resume.storyboard; sourceTree = "<group>"; };
 		7719174C1D659A5E002F2BCD /* Books.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Books.storyboard; sourceTree = "<group>"; };
 		7719174E1D659A68002F2BCD /* MyDatabase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyDatabase.storyboard; sourceTree = "<group>"; };
 		772E7DC81D76BC07004EDF50 /* box_duty_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_duty_icon.png; sourceTree = "<group>"; };
@@ -2322,21 +2247,6 @@
 		BF5B9B021F8DE39B00BD885E /* city.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		BF5B9B5F1F8E63CF00BD885E /* SearchDownloadBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDownloadBookViewController.swift; sourceTree = "<group>"; };
 		BF5B9B631F8E645100BD885E /* OC-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OC-Swift.h"; sourceTree = "<group>"; };
-		BF5B9B661F8E66D900BD885E /* EconomicDevelopmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EconomicDevelopmentViewController.swift; sourceTree = "<group>"; };
-		BF5B9B681F8E671500BD885E /* ThinkDevelopmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkDevelopmentViewController.swift; sourceTree = "<group>"; };
-		BF5B9B6A1F8E673C00BD885E /* PursuitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PursuitViewController.swift; sourceTree = "<group>"; };
-		BF5B9B6C1F8E674400BD885E /* MoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyViewController.swift; sourceTree = "<group>"; };
-		BF5B9B6E1F8E674B00BD885E /* FreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeViewController.swift; sourceTree = "<group>"; };
-		BF5B9B701F8E675100BD885E /* LoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveViewController.swift; sourceTree = "<group>"; };
-		BF5B9B721F8E676500BD885E /* CareerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerViewController.swift; sourceTree = "<group>"; };
-		BF5B9B741F8E676F00BD885E /* FamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyViewController.swift; sourceTree = "<group>"; };
-		BF5B9B761F8E677F00BD885E /* RelativeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeViewController.swift; sourceTree = "<group>"; };
-		BF5B9B781F8E678900BD885E /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
-		BF5B9B7A1F8E679300BD885E /* HealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewController.swift; sourceTree = "<group>"; };
-		BF5B9B7C1F8E67A700BD885E /* HonorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonorViewController.swift; sourceTree = "<group>"; };
-		BF5B9B7E1F8E67B900BD885E /* WidomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidomViewController.swift; sourceTree = "<group>"; };
-		BF5B9B801F8E67C000BD885E /* PowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerViewController.swift; sourceTree = "<group>"; };
-		BF5B9B821F8E67CC00BD885E /* HappyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyViewController.swift; sourceTree = "<group>"; };
 		BF5B9B841F8E692400BD885E /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
 		BF5B9B851F8E692B00BD885E /* b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b.png; sourceTree = "<group>"; };
 		BF5B9B861F8E692F00BD885E /* c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = c.png; sourceTree = "<group>"; };
@@ -2572,6 +2482,14 @@
 		DFED981A21E8AC0B009270A3 /* WXModes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXModes.h; sourceTree = "<group>"; };
 		DFED981B21E8AC0B009270A3 /* WXModes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXModes.m; sourceTree = "<group>"; };
 		DFEF80DE21FB72B7001D81FA /* Circular3DStarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circular3DStarView.swift; sourceTree = "<group>"; };
+		DFEF80E221FB7AE4001D81FA /* FreedomBusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreedomBusinessViewController.swift; sourceTree = "<group>"; };
+		DFEF80E421FB7AE4001D81FA /* FreedomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreedomTabBarController.swift; sourceTree = "<group>"; };
+		DFEF80E521FB7AE4001D81FA /* FreedomNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreedomNavigationController.swift; sourceTree = "<group>"; };
+		DFEF80E621FB7AE4001D81FA /* FreedomBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreedomBaseViewController.swift; sourceTree = "<group>"; };
+		DFEF80E821FB7AE4001D81FA /* FreedomTheorySystemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreedomTheorySystemViewController.swift; sourceTree = "<group>"; };
+		DFEF80E921FB7AE4001D81FA /* Freedom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Freedom.storyboard; sourceTree = "<group>"; };
+		DFEF80EB21FB7AE4001D81FA /* FreedomIndustryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreedomIndustryViewController.swift; sourceTree = "<group>"; };
+		DFEF80ED21FB7AE4001D81FA /* FreedomProductionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreedomProductionViewController.swift; sourceTree = "<group>"; };
 		DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRefreshHeader.swift; sourceTree = "<group>"; };
 		DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAudioPlayer.swift; sourceTree = "<group>"; };
 		DFF4AB9C21B7B80000F03C71 /* XCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCardsView.swift; sourceTree = "<group>"; };
@@ -3208,252 +3126,6 @@
 			path = HOME;
 			sourceTree = "<group>";
 		};
-		7745C21B1D671715002212DE /* 房地产行业 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5CD20AAD38C000D0B96 /* PersonalHouseViewController.swift */,
-			);
-			path = "房地产行业";
-			sourceTree = "<group>";
-		};
-		7745C21C1D671715002212DE /* 个人电脑 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5C320AAD351000D0B96 /* PersonalComputerViewController.swift */,
-			);
-			path = "个人电脑";
-			sourceTree = "<group>";
-		};
-		7745C21D1D671715002212DE /* 互联网行业 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5BB20AAD31A000D0B96 /* PersonalInternetViewController.swift */,
-			);
-			path = "互联网行业";
-			sourceTree = "<group>";
-		};
-		7745C21E1D671715002212DE /* 基本类库 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5B320AAC2E3000D0B96 /* PersonalApplyTabBarController.swift */,
-				7115A5B520AAC314000D0B96 /* PersonalApplyNavigationController.swift */,
-				7115A5B720AAC348000D0B96 /* PersonalApplyBaseViewController.swift */,
-			);
-			path = "基本类库";
-			sourceTree = "<group>";
-		};
-		7745C21F1D671715002212DE /* 计算机软件 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5BF20AAD339000D0B96 /* PersonalSoftViewController.swift */,
-			);
-			path = "计算机软件";
-			sourceTree = "<group>";
-		};
-		7745C2201D671715002212DE /* 计算机硬件 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5C120AAD345000D0B96 /* PersonalHardwareViewController.swift */,
-			);
-			path = "计算机硬件";
-			sourceTree = "<group>";
-		};
-		7745C2211D671715002212DE /* 教育培训行业 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5BD20AAD32E000D0B96 /* PersonalEducationViewController.swift */,
-			);
-			path = "教育培训行业";
-			sourceTree = "<group>";
-		};
-		7745C2221D671715002212DE /* 快消品行业 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5C720AAD36B000D0B96 /* PersonalFastGoodsViewController.swift */,
-			);
-			path = "快消品行业";
-			sourceTree = "<group>";
-		};
-		7745C2231D671715002212DE /* 耐消品行业 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5C920AAD376000D0B96 /* PersonalConsumerViewController.swift */,
-			);
-			path = "耐消品行业";
-			sourceTree = "<group>";
-		};
-		7745C2241D671715002212DE /* 汽车行业 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5CF20AAD398000D0B96 /* PersonalCarViewController.swift */,
-			);
-			path = "汽车行业";
-			sourceTree = "<group>";
-		};
-		7745C2251D671715002212DE /* 奢侈品行业 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5D120AAD3A3000D0B96 /* PersonalLuxuryViewController.swift */,
-			);
-			path = "奢侈品行业";
-			sourceTree = "<group>";
-		};
-		7745C2261D671715002212DE /* 食品连锁 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5C520AAD35E000D0B96 /* PersonalFoodViewController.swift */,
-			);
-			path = "食品连锁";
-			sourceTree = "<group>";
-		};
-		7745C2271D671715002212DE /* 手机市场 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5CB20AAD382000D0B96 /* PersonalPhoneViewController.swift */,
-			);
-			path = "手机市场";
-			sourceTree = "<group>";
-		};
-		7745C2281D671788002212DE /* 爱情 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B701F8E675100BD885E /* LoveViewController.swift */,
-			);
-			path = "爱情";
-			sourceTree = "<group>";
-		};
-		7745C2291D671788002212DE /* 好友 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B781F8E678900BD885E /* FriendViewController.swift */,
-			);
-			path = "好友";
-			sourceTree = "<group>";
-		};
-		7745C22A1D671788002212DE /* 基本类库 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5B020AABCF6000D0B96 /* FreedomTabBarController.swift */,
-				7115A5A620AA9FE3000D0B96 /* FreedomNavigationController.swift */,
-				7165A3E920A5A291001C60D6 /* FreedomBaseViewController.swift */,
-			);
-			path = "基本类库";
-			sourceTree = "<group>";
-		};
-		7745C22B1D671788002212DE /* 家庭 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B741F8E676F00BD885E /* FamilyViewController.swift */,
-			);
-			path = "家庭";
-			sourceTree = "<group>";
-		};
-		7745C22C1D671788002212DE /* 健康 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B7A1F8E679300BD885E /* HealthViewController.swift */,
-			);
-			path = "健康";
-			sourceTree = "<group>";
-		};
-		7745C22D1D671788002212DE /* 金钱 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B6C1F8E674400BD885E /* MoneyViewController.swift */,
-			);
-			path = "金钱";
-			sourceTree = "<group>";
-		};
-		7745C22E1D671788002212DE /* 经济建设 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B661F8E66D900BD885E /* EconomicDevelopmentViewController.swift */,
-			);
-			path = "经济建设";
-			sourceTree = "<group>";
-		};
-		7745C22F1D671788002212DE /* 快乐 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B821F8E67CC00BD885E /* HappyViewController.swift */,
-			);
-			path = "快乐";
-			sourceTree = "<group>";
-		};
-		7745C2301D671788002212DE /* 名誉 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B7C1F8E67A700BD885E /* HonorViewController.swift */,
-			);
-			path = "名誉";
-			sourceTree = "<group>";
-		};
-		7745C2311D671788002212DE /* 能力 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B801F8E67C000BD885E /* PowerViewController.swift */,
-			);
-			path = "能力";
-			sourceTree = "<group>";
-		};
-		7745C2321D671788002212DE /* 亲人 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B761F8E677F00BD885E /* RelativeViewController.swift */,
-			);
-			path = "亲人";
-			sourceTree = "<group>";
-		};
-		7745C2331D671788002212DE /* 人生追求 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B6A1F8E673C00BD885E /* PursuitViewController.swift */,
-			);
-			path = "人生追求";
-			sourceTree = "<group>";
-		};
-		7745C2341D671788002212DE /* 事业 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B721F8E676500BD885E /* CareerViewController.swift */,
-			);
-			path = "事业";
-			sourceTree = "<group>";
-		};
-		7745C2351D671788002212DE /* 思想建设 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B681F8E671500BD885E /* ThinkDevelopmentViewController.swift */,
-			);
-			path = "思想建设";
-			sourceTree = "<group>";
-		};
-		7745C2361D671788002212DE /* 智慧 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B7E1F8E67B900BD885E /* WidomViewController.swift */,
-			);
-			path = "智慧";
-			sourceTree = "<group>";
-		};
-		7745C2371D671788002212DE /* 自由 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B6E1F8E674B00BD885E /* FreeViewController.swift */,
-			);
-			path = "自由";
-			sourceTree = "<group>";
-		};
-		7745C2381D6717B3002212DE /* 基本类库 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5D320AAD716000D0B96 /* ResumeTabBarController.swift */,
-				7115A5D520AAD73F000D0B96 /* ResumeNavigationController.swift */,
-				7115A5D720AAD783000D0B96 /* ResumeBaseViewController.swift */,
-			);
-			path = "基本类库";
-			sourceTree = "<group>";
-		};
 		7745C23C1D671801002212DE /* 基本类库 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3565,10 +3237,8 @@
 				776C65821D22540A00D77E0D /* 大众点评 */,
 				776C65841D22540A00D77E0D /* 今日头条 */,
 				776C65881D22540A00D77E0D /* 微能量 */,
-				776C65831D22540A00D77E0D /* 个人应用 */,
-				7772A7FB1D64639900444973 /* 个性特色自由主义 */,
-				7772A7FC1D6463A900444973 /* 我的简历 */,
-				7772A7FD1D6463CA00444973 /* 书籍收藏 */,
+				7772A7FD1D6463CA00444973 /* 微信阅读 */,
+				DFEF80E021FB7AE4001D81FA /* 个性特色自由主义 */,
 				7772A7FA1D64636F00444973 /* 我的数据库 */,
 				7759B6C11D0EA3E900AE3A59 /* 主界面 */,
 				7789136C1D0FDDDB0096AB3B /* Others */,
@@ -3788,28 +3458,6 @@
 			path = "大众点评";
 			sourceTree = "<group>";
 		};
-		776C65831D22540A00D77E0D /* 个人应用 */ = {
-			isa = PBXGroup;
-			children = (
-				7745C21E1D671715002212DE /* 基本类库 */,
-				7745C21D1D671715002212DE /* 互联网行业 */,
-				7745C2211D671715002212DE /* 教育培训行业 */,
-				7745C21F1D671715002212DE /* 计算机软件 */,
-				7745C2201D671715002212DE /* 计算机硬件 */,
-				7745C21C1D671715002212DE /* 个人电脑 */,
-				7745C2261D671715002212DE /* 食品连锁 */,
-				7745C2221D671715002212DE /* 快消品行业 */,
-				7745C2231D671715002212DE /* 耐消品行业 */,
-				7745C2271D671715002212DE /* 手机市场 */,
-				7745C21B1D671715002212DE /* 房地产行业 */,
-				7745C2241D671715002212DE /* 汽车行业 */,
-				7745C2251D671715002212DE /* 奢侈品行业 */,
-				771917461D6599EB002F2BCD /* PersonalApply.storyboard */,
-				7115A5B920AAC3E6000D0B96 /* PersonalApplyViewController.swift */,
-			);
-			path = "个人应用";
-			sourceTree = "<group>";
-		};
 		776C65841D22540A00D77E0D /* 今日头条 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3935,47 +3583,7 @@
 			path = "我的数据库";
 			sourceTree = "<group>";
 		};
-		7772A7FB1D64639900444973 /* 个性特色自由主义 */ = {
-			isa = PBXGroup;
-			children = (
-				7745C22A1D671788002212DE /* 基本类库 */,
-				7745C22E1D671788002212DE /* 经济建设 */,
-				7745C2351D671788002212DE /* 思想建设 */,
-				7745C2331D671788002212DE /* 人生追求 */,
-				7745C22D1D671788002212DE /* 金钱 */,
-				7745C2371D671788002212DE /* 自由 */,
-				7745C2281D671788002212DE /* 爱情 */,
-				7745C2341D671788002212DE /* 事业 */,
-				7745C22B1D671788002212DE /* 家庭 */,
-				7745C2321D671788002212DE /* 亲人 */,
-				7745C2291D671788002212DE /* 好友 */,
-				7745C22C1D671788002212DE /* 健康 */,
-				7745C2301D671788002212DE /* 名誉 */,
-				7745C2361D671788002212DE /* 智慧 */,
-				7745C2311D671788002212DE /* 能力 */,
-				7745C22F1D671788002212DE /* 快乐 */,
-				771917481D659A00002F2BCD /* Freedom.storyboard */,
-				7115A5AC20AAA1F1000D0B96 /* FreedomViewController.swift */,
-				7115A5A820AAA191000D0B96 /* FreedomBooksViewController.swift */,
-				7115A5AA20AAA1C4000D0B96 /* FreedomBooksEditViewController.swift */,
-			);
-			path = "个性特色自由主义";
-			sourceTree = "<group>";
-		};
-		7772A7FC1D6463A900444973 /* 我的简历 */ = {
-			isa = PBXGroup;
-			children = (
-				7745C2381D6717B3002212DE /* 基本类库 */,
-				779B82101D7D4FEA00B23DFA /* 首页 */,
-				779B820F1D7D4FEA00B23DFA /* 事业合作 */,
-				779B820D1D7D4FEA00B23DFA /* 理论体系 */,
-				779B820E1D7D4FEA00B23DFA /* 联系我 */,
-				7719174A1D659A57002F2BCD /* Resume.storyboard */,
-			);
-			path = "我的简历";
-			sourceTree = "<group>";
-		};
-		7772A7FD1D6463CA00444973 /* 书籍收藏 */ = {
+		7772A7FD1D6463CA00444973 /* 微信阅读 */ = {
 			isa = PBXGroup;
 			children = (
 				7745C23C1D671801002212DE /* 基本类库 */,
@@ -3987,7 +3595,7 @@
 				7745C23E1D671801002212DE /* 书籍阅读 */,
 				7719174C1D659A5E002F2BCD /* Books.storyboard */,
 			);
-			path = "书籍收藏";
+			path = "微信阅读";
 			sourceTree = "<group>";
 		};
 		777656D31D2BDFFA00B538F9 /* Resources */ = {
@@ -4467,40 +4075,6 @@
 				779939FC1E2F7B9C00866968 /* [龇牙]@2x.png */,
 			);
 			path = "表情";
-			sourceTree = "<group>";
-		};
-		779B820D1D7D4FEA00B23DFA /* 理论体系 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5E120AAD9E4000D0B96 /* ResumeTheorySystemViewController.swift */,
-			);
-			path = "理论体系";
-			sourceTree = "<group>";
-		};
-		779B820E1D7D4FEA00B23DFA /* 联系我 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5E320AAD9F0000D0B96 /* ResumeCallMeViewController.swift */,
-			);
-			path = "联系我";
-			sourceTree = "<group>";
-		};
-		779B820F1D7D4FEA00B23DFA /* 事业合作 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5DF20AAD9D8000D0B96 /* ResumeBusinessCooperationVC.swift */,
-			);
-			path = "事业合作";
-			sourceTree = "<group>";
-		};
-		779B82101D7D4FEA00B23DFA /* 首页 */ = {
-			isa = PBXGroup;
-			children = (
-				7115A5D920AAD9AA000D0B96 /* ResumeViewController.swift */,
-				7115A5DB20AAD9C2000D0B96 /* ResumeListViewController.swift */,
-				7115A5DD20AAD9CE000D0B96 /* ResumeDetailViewController.swift */,
-			);
-			path = "首页";
 			sourceTree = "<group>";
 		};
 		77BD14781D6E7FE500DE5DB9 /* 爱奇艺 */ = {
@@ -5350,6 +4924,61 @@
 			path = "我";
 			sourceTree = "<group>";
 		};
+		DFEF80E021FB7AE4001D81FA /* 个性特色自由主义 */ = {
+			isa = PBXGroup;
+			children = (
+				DFEF80E321FB7AE4001D81FA /* 基本类库 */,
+				DFEF80EA21FB7AE4001D81FA /* 行业研究 */,
+				DFEF80E121FB7AE4001D81FA /* 商业策划 */,
+				DFEF80E721FB7AE4001D81FA /* 理论体系 */,
+				DFEF80EC21FB7AE4001D81FA /* 作品小结 */,
+				DFEF80E921FB7AE4001D81FA /* Freedom.storyboard */,
+			);
+			path = "个性特色自由主义";
+			sourceTree = "<group>";
+		};
+		DFEF80E121FB7AE4001D81FA /* 商业策划 */ = {
+			isa = PBXGroup;
+			children = (
+				DFEF80E221FB7AE4001D81FA /* FreedomBusinessViewController.swift */,
+			);
+			path = "商业策划";
+			sourceTree = "<group>";
+		};
+		DFEF80E321FB7AE4001D81FA /* 基本类库 */ = {
+			isa = PBXGroup;
+			children = (
+				DFEF80E421FB7AE4001D81FA /* FreedomTabBarController.swift */,
+				DFEF80E521FB7AE4001D81FA /* FreedomNavigationController.swift */,
+				DFEF80E621FB7AE4001D81FA /* FreedomBaseViewController.swift */,
+			);
+			path = "基本类库";
+			sourceTree = "<group>";
+		};
+		DFEF80E721FB7AE4001D81FA /* 理论体系 */ = {
+			isa = PBXGroup;
+			children = (
+				DFEF80E821FB7AE4001D81FA /* FreedomTheorySystemViewController.swift */,
+			);
+			path = "理论体系";
+			sourceTree = "<group>";
+		};
+		DFEF80EA21FB7AE4001D81FA /* 行业研究 */ = {
+			isa = PBXGroup;
+			children = (
+				DFEF80EB21FB7AE4001D81FA /* FreedomIndustryViewController.swift */,
+			);
+			path = "行业研究";
+			sourceTree = "<group>";
+		};
+		DFEF80EC21FB7AE4001D81FA /* 作品小结 */ = {
+			isa = PBXGroup;
+			children = (
+				DFEF80ED21FB7AE4001D81FA /* FreedomProductionViewController.swift */,
+			);
+			path = "作品小结";
+			sourceTree = "<group>";
+		};
 		DFF4AB9621B773D700F03C71 /* OCFile */ = {
 			isa = PBXGroup;
 			children = (
@@ -5801,7 +5430,6 @@
 				BFEF193E2101E6E2003DCAC1 /* AAChartView.html in Resources */,
 				772E86E81D76BC15004EDF50 /* ktv_wealth_type_day.png in Resources */,
 				772E87181D76BC15004EDF50 /* KTVInviKSong_Shake_WantDate_Sel.png in Resources */,
-				7719174B1D659A57002F2BCD /* Resume.storyboard in Resources */,
 				779939461E2F7B6600866968 /* lxh_oye.png in Resources */,
 				779939231E2F7B6500866968 /* lxh_buhaoyisi.png in Resources */,
 				77993A051E2F7B9C00866968 /* [傲慢]@2x.png in Resources */,
@@ -5876,6 +5504,7 @@
 				DF7B408121AC020A00E3D975 /* Douyin.storyboard in Resources */,
 				771917411D659983002F2BCD /* Toutiao.storyboard in Resources */,
 				772E86A51D76BC15004EDF50 /* KTV_PhotoAlbum_Self_Blank.png in Resources */,
+				DFEF80F321FB7AE4001D81FA /* Freedom.storyboard in Resources */,
 				772E84A21D76BC15004EDF50 /* fx_pop_chart.png in Resources */,
 				7741F11C1D6D50F900EED332 /* alipayHome9.png in Resources */,
 				77993A271E2F7B9C00866968 /* [左车头]@2x.png in Resources */,
@@ -6130,7 +5759,6 @@
 				77993A491E2F7B9D00866968 /* [流泪]@2x.png in Resources */,
 				77993A481E2F7B9D00866968 /* [流汗]@2x.png in Resources */,
 				BFC6D96C20E5D3D400F17378 /* 来自天堂的魔鬼.mp3 in Resources */,
-				771917471D6599EB002F2BCD /* PersonalApply.storyboard in Resources */,
 				779938D71E2F7B6500866968 /* d_nvhaier.png in Resources */,
 				779938CC1E2F7B6500866968 /* d_jiyan.png in Resources */,
 				7799395F1E2F7B6600866968 /* lxh_xiudada.png in Resources */,
@@ -6253,7 +5881,6 @@
 				BFC6D95A20E5C41B00F17378 /* Chapter3.txt in Resources */,
 				BFC6D95B20E5C41B00F17378 /* Chapter4.txt in Resources */,
 				7788AC141D79969F00376C95 /* reader_bg1.png in Resources */,
-				771917491D659A00002F2BCD /* Freedom.storyboard in Resources */,
 				77993A191E2F7B9C00866968 /* [回头]@2x.png in Resources */,
 				772E83AB1D76BC15004EDF50 /* box_sign_round_selected_bg.png in Resources */,
 				772E86421D76BC15004EDF50 /* ktv_listenwork_yuege_icon.png in Resources */,
@@ -6527,7 +6154,6 @@
 			files = (
 				DF6B51FC21CA801E00460949 /* WXPictureCarouselView.swift in Sources */,
 				DF0489EC21D28B870030C30B /* EdgePanTransition.swift in Sources */,
-				7115A5CA20AAD376000D0B96 /* PersonalConsumerViewController.swift in Sources */,
 				BFAC49BF20D25EE700E5CB8D /* AppDelegate.swift in Sources */,
 				DF7B407121AC020A00E3D975 /* BaseRequest.swift in Sources */,
 				7121196420AC24790087E05B /* ToutiaoTabBarController.swift in Sources */,
@@ -6535,8 +6161,8 @@
 				713EE30E20ADA08F0085B65D /* IqiyiSubscribeViewController.swift in Sources */,
 				BF58BB5520EF1945002CB4EE /* RCDAboutRongCloudTableViewController.m in Sources */,
 				DFFA80C521AEC84D009B1999 /* BaseStaticView.swift in Sources */,
-				7115A5E420AAD9F0000D0B96 /* ResumeCallMeViewController.swift in Sources */,
 				BF58BB3F20EF1945002CB4EE /* RCDSearchViewController.m in Sources */,
+				DFEF80F521FB7AE4001D81FA /* FreedomProductionViewController.swift in Sources */,
 				DF6B522421CB262100460949 /* TLEmojiKeyboard.swift in Sources */,
 				BF58BB6320EF1945002CB4EE /* RCAnnotationView.m in Sources */,
 				DF0489E121D26D120030C30B /* XMLDictionary.m in Sources */,
@@ -6548,7 +6174,6 @@
 				DF7B407B21AC020A00E3D975 /* Models.swift in Sources */,
 				BF58BB4C20EF1945002CB4EE /* RCDPushSettingViewController.m in Sources */,
 				DF6B523A21CB76FF00460949 /* WXExpressionChosenViewController.swift in Sources */,
-				7115A5D220AAD3A3000D0B96 /* PersonalLuxuryViewController.swift in Sources */,
 				DF0E967C21CBACE5009682CC /* WXMomentDetailViewController.swift in Sources */,
 				DFA8793221ED736700BC1074 /* ToutiaoModels.swift in Sources */,
 				DF7B408221AC020A00E3D975 /* DouyinMessageViewController.swift in Sources */,
@@ -6574,26 +6199,24 @@
 				DF7B407021AC020A00E3D975 /* PhotoView.swift in Sources */,
 				DF13330921F17C1A001D01CA /* KugouPlayAudioViewController.swift in Sources */,
 				BF58BB3C20EF1945002CB4EE /* RCDSearchDataManager.m in Sources */,
-				7115A5D420AAD716000D0B96 /* ResumeTabBarController.swift in Sources */,
 				DF7B406F21AC020A00E3D975 /* Constants.swift in Sources */,
 				713728CC20AE839900A3227A /* AlipayYuEBaoTableViewController.swift in Sources */,
 				DF6B523621CB76F200460949 /* WXNewMessageSettingViewController.swift in Sources */,
-				7115A5D820AAD783000D0B96 /* ResumeBaseViewController.swift in Sources */,
 				7115A5F220AAFC0F000D0B96 /* MyDatabaseBaseViewController.swift in Sources */,
 				BF0E8B0820DCB0B500150476 /* AppManager.m in Sources */,
 				7121197220AC25000087E05B /* ToutiaoAttentionViewController.swift in Sources */,
+				DFEF80F021FB7AE4001D81FA /* FreedomNavigationController.swift in Sources */,
 				713EE2CC20AD9B760085B65D /* TaobaoMiniDynamicViewController.swift in Sources */,
-				7115A5C620AAD35E000D0B96 /* PersonalFoodViewController.swift in Sources */,
 				DF1208D121EEE5AF00F7ED7F /* KugouAPI.swift in Sources */,
 				DF6B522221CB261A00460949 /* TLEmojiBaseCell.swift in Sources */,
 				DF6B520621CA804200460949 /* WXWebViewController.swift in Sources */,
 				BFC6D94120E4AC0B00F17378 /* SinaComposeViewController.swift in Sources */,
-				7115A5CC20AAD382000D0B96 /* PersonalPhoneViewController.swift in Sources */,
 				DF09AB0C21EC305D00D8EC51 /* FreedomAPI.swift in Sources */,
 				DF6B51FE21CA802500460949 /* WXQRCodeViewController.swift in Sources */,
 				713EE31220ADA0A40085B65D /* IqiyiMineViewController.swift in Sources */,
 				DF7B408A21AC020A00E3D975 /* AwemeListCellViews.swift in Sources */,
 				BF58BB2620EF1945002CB4EE /* RCDPrivateSettingsTableViewController.m in Sources */,
+				DFEF80F421FB7AE4001D81FA /* FreedomIndustryViewController.swift in Sources */,
 				DF0489FA21D28BA40030C30B /* MotionAnimation.swift in Sources */,
 				DF0E967421CBACC7009682CC /* WXTagsViewController.swift in Sources */,
 				7121196620AC24940087E05B /* ToutiaoNavigationViewController.swift in Sources */,
@@ -6605,7 +6228,6 @@
 				DF0E968421CBACFA009682CC /* WXShakeSettingViewController.swift in Sources */,
 				DF8E5F5221E60E1D00F92CA6 /* RLMRealm+extension.swift in Sources */,
 				BF58BB3720EF1945002CB4EE /* RCDCreateGroupViewController.m in Sources */,
-				BF5B9B731F8E676500BD885E /* CareerViewController.swift in Sources */,
 				713EE2C620AD9B2B0085B65D /* DZMeController.swift in Sources */,
 				BF58BB3220EF1945002CB4EE /* RCDGroupMembersTableViewController.m in Sources */,
 				7115A5F420AAFC34000D0B96 /* MyDatabaseViewController.swift in Sources */,
@@ -6621,24 +6243,18 @@
 				7121191E20ABC46F0087E05B /* EnergyNavigationController.swift in Sources */,
 				DF0E967E21CBACEA009682CC /* WXMomentsViewController.swift in Sources */,
 				DF0E968621CBAD07009682CC /* WXShakeViewController.swift in Sources */,
-				7115A5DA20AAD9AA000D0B96 /* ResumeViewController.swift in Sources */,
 				7115A5F020AAFBF6000D0B96 /* MyDatabaseNavigationController.swift in Sources */,
 				7121193620ABC55C0087E05B /* EnergyShopHomeViewController.swift in Sources */,
 				DFF4AB9B21B7AC5900F03C71 /* XAudioPlayer.swift in Sources */,
 				713EE30420ADA0490085B65D /* IqiyiViewController.swift in Sources */,
-				7115A5CE20AAD38C000D0B96 /* PersonalHouseViewController.swift in Sources */,
 				7788AC311D7996B100376C95 /* E_Paging.mm in Sources */,
 				DFF4ABA121B7BFEC00F03C71 /* XExcellView.swift in Sources */,
-				BF5B9B751F8E676F00BD885E /* FamilyViewController.swift in Sources */,
 				DF0489FC21D28BA40030C30B /* MotionAnimationPropertyState.swift in Sources */,
 				7121192C20ABC4FB0087E05B /* EnergyHomeViewController.swift in Sources */,
-				7115A5E020AAD9D8000D0B96 /* ResumeBusinessCooperationVC.swift in Sources */,
 				713EE30220ADA0320085B65D /* IqiyiBaseViewController.swift in Sources */,
 				BF58BB5020EF1945002CB4EE /* RCDBlackListViewController.m in Sources */,
-				7115A5BA20AAC3E6000D0B96 /* PersonalApplyViewController.swift in Sources */,
 				713EE2FC20AD9D550085B65D /* SingleOneSectionTableViewController.swift in Sources */,
 				DF7B407321AC020A00E3D975 /* CircleProgress.swift in Sources */,
-				BF5B9B831F8E67CC00BD885E /* HappyViewController.swift in Sources */,
 				BFEF19A52101E821003DCAC1 /* mztools.c in Sources */,
 				7121194220ABDD4B0087E05B /* EnergyShopTabBarController.swift in Sources */,
 				DFB5FF5621CA280A0057C922 /* WXExpanded.swift in Sources */,
@@ -6655,14 +6271,12 @@
 				BFC6D93520E4AADB00F17378 /* SinaTabBarController.swift in Sources */,
 				DFA5D3AE21BA184F00339006 /* PlayLRCSView.swift in Sources */,
 				7788AC651D7996E000376C95 /* E_SearchViewController.m in Sources */,
-				7165A3EA20A5A291001C60D6 /* FreedomBaseViewController.swift in Sources */,
 				BF58BB3620EF1945002CB4EE /* RCDReceiptDetailsTableViewController.m in Sources */,
 				DF7B408421AC020A00E3D975 /* ChatListView.swift in Sources */,
 				7121192220ABC4B80087E05B /* EnergySampleViewController.swift in Sources */,
 				BF58BB3D20EF1945002CB4EE /* RCDSearchMoreController.m in Sources */,
 				BF58BB6820EF1945002CB4EE /* RCDataBaseManager.m in Sources */,
 				DF0489FD21D28BA40030C30B /* ValueAnimation.swift in Sources */,
-				7115A5C820AAD36B000D0B96 /* PersonalFastGoodsViewController.swift in Sources */,
 				7121197420AC250D0087E05B /* ToutiaoMeViewController.swift in Sources */,
 				DF0E967A21CBACDF009682CC /* WXGameViewController.swift in Sources */,
 				BF58BB2920EF1945002CB4EE /* RCDAddressBookTableViewCell.m in Sources */,
@@ -6674,10 +6288,8 @@
 				713EE2D020AD9B8C0085B65D /* TaobaoMiniVideoViewController.swift in Sources */,
 				DF6B51F421CA6F8900460949 /* WXUserHelper.swift in Sources */,
 				DF7B408021AC020A00E3D975 /* DouyinHomeViewController.swift in Sources */,
-				BF5B9B811F8E67C000BD885E /* PowerViewController.swift in Sources */,
 				BF58BB5120EF1945002CB4EE /* RCDSettingsTableViewController.m in Sources */,
 				DF0E966C21CBACA7009682CC /* WXGroupViewController.swift in Sources */,
-				BF5B9B671F8E66D900BD885E /* EconomicDevelopmentViewController.swift in Sources */,
 				DFF4AB9921B7969A00F03C71 /* XRefreshHeader.swift in Sources */,
 				DF0489EE21D28B870030C30B /* ElasticTransition.swift in Sources */,
 				DF7B407421AC020A00E3D975 /* WebPImageView.swift in Sources */,
@@ -6692,16 +6304,15 @@
 				7121193420ABC5420087E05B /* EnergySuperMeViewController.swift in Sources */,
 				DF7B408321AC020A00E3D975 /* ChatListCells.swift in Sources */,
 				DF7B407521AC020A00E3D975 /* GestureAnimations.swift in Sources */,
-				7115A5C420AAD351000D0B96 /* PersonalComputerViewController.swift in Sources */,
 				DF6B520C21CB25A900460949 /* WXCGroupDetailViewController.swift in Sources */,
 				713EE30620ADA05F0085B65D /* IqiyiVideoDetailViewController.swift in Sources */,
 				713EE30C20ADA0850085B65D /* IqiyiSearchHistoryViewController.swift in Sources */,
 				BF4A80E02105CE5E00D32FB0 /* BaseSearchBarView.swift in Sources */,
 				7121194420ABE1280087E05B /* EnergySuperMarketTabBarController.swift in Sources */,
+				DFEF80F121FB7AE4001D81FA /* FreedomBaseViewController.swift in Sources */,
 				BF4A80DE2105CDFF00D32FB0 /* CRKeychainItem.m in Sources */,
 				DF1208CF21EEE5A500F7ED7F /* KugouModels.swift in Sources */,
 				DF6B521621CB25D200460949 /* WXChatTableViewController.swift in Sources */,
-				7115A5DE20AAD9CE000D0B96 /* ResumeDetailViewController.swift in Sources */,
 				DF0E966E21CBACAE009682CC /* WXNewFriendViewController.swift in Sources */,
 				BF58BB3820EF1945002CB4EE /* RCDNavigationViewController.m in Sources */,
 				713EE2F620AD9D300085B65D /* DetailScrollViewController.swift in Sources */,
@@ -6709,36 +6320,25 @@
 				DF2953A021D7A77F00E1C188 /* Aspects.m in Sources */,
 				DF6B524621CB772500460949 /* WXMineInfoViewController.swift in Sources */,
 				77BFCC001E1F413C00C95B5E /* notes.md in Sources */,
-				7115A5D020AAD398000D0B96 /* PersonalCarViewController.swift in Sources */,
 				DF6B522021CB261300460949 /* TLMoreKeyboard.swift in Sources */,
-				7115A5C220AAD345000D0B96 /* PersonalHardwareViewController.swift in Sources */,
 				713EE2DA20AD9BC50085B65D /* TaobaoMeViewController.swift in Sources */,
 				BF58BB2220EF1944002CB4EE /* RCWKRequestHandler.m in Sources */,
 				713EE2D820AD9BBA0085B65D /* TaobaoShopCarViewController.swift in Sources */,
-				7115A5AD20AAA1F1000D0B96 /* FreedomViewController.swift in Sources */,
 				DF401C6821F716CD001482DE /* IqiyiModels.swift in Sources */,
 				DF0489EB21D28B870030C30B /* ElasticModalViewController.swift in Sources */,
-				BF5B9B6F1F8E674B00BD885E /* FreeViewController.swift in Sources */,
 				DF6B523021CB76DD00460949 /* WXCommonSettingViewController.swift in Sources */,
-				BF5B9B771F8E677F00BD885E /* RelativeViewController.swift in Sources */,
-				7115A5B620AAC314000D0B96 /* PersonalApplyNavigationController.swift in Sources */,
 				DF0E966821CBAC8F009682CC /* WXFriendSearchViewController.swift in Sources */,
 				DF6B521221CB25C300460949 /* WXChatFileViewController.swift in Sources */,
 				DFFD98CF21FB0B5800A442D7 /* BooksLibraryViewController.swift in Sources */,
 				713EE2A820AD8F500085B65D /* AlipayTabBarController.swift in Sources */,
-				7115A5A720AA9FE3000D0B96 /* FreedomNavigationController.swift in Sources */,
 				BF58BB6720EF1945002CB4EE /* AFHttpTool.m in Sources */,
 				7121192820ABC4E10087E05B /* EnergyNewsViewController.swift in Sources */,
 				713EE2B220AD90010085B65D /* DZBaseViewController.swift in Sources */,
 				DFB5FF5C21CA2F1C0057C922 /* WXTabBarController.swift in Sources */,
 				DF7B407C21AC020A00E3D975 /* WebCacheManager.swift in Sources */,
-				7115A5E220AAD9E4000D0B96 /* ResumeTheorySystemViewController.swift in Sources */,
 				DF048A0421D29A810030C30B /* RESideMenu.m in Sources */,
 				DF6B522621CB70CD00460949 /* WXDBManager.swift in Sources */,
 				713EE2A620AD8F290085B65D /* TaobaoTabBarController.swift in Sources */,
-				BF5B9B691F8E671500BD885E /* ThinkDevelopmentViewController.swift in Sources */,
-				BF5B9B6B1F8E673C00BD885E /* PursuitViewController.swift in Sources */,
-				7115A5B420AAC2E3000D0B96 /* PersonalApplyTabBarController.swift in Sources */,
 				DF0489F921D28BA40030C30B /* SpringValueAnimation.swift in Sources */,
 				BF58BB2D20EF1945002CB4EE /* RCDContactSelectedTableViewController.m in Sources */,
 				7121197020AC24F60087E05B /* ToutiaoVideoViewController.swift in Sources */,
@@ -6761,7 +6361,6 @@
 				DF7B407721AC020A00E3D975 /* Extensions.swift in Sources */,
 				BF58B94A20EB22C9002CB4EE /* XTablesViewController.swift in Sources */,
 				713EE2BA20AD906F0085B65D /* KugouNavigationViewController.swift in Sources */,
-				7115A5DC20AAD9C2000D0B96 /* ResumeListViewController.swift in Sources */,
 				713EE2D220AD9B970085B65D /* TaobaoMiniArticleViewController.swift in Sources */,
 				BF58BB6620EF1945002CB4EE /* TFHpple.m in Sources */,
 				BF58BB4320EF1945002CB4EE /* RCDPrivateSettingViewController.m in Sources */,
@@ -6770,7 +6369,6 @@
 				713EE2AE20AD8FAB0085B65D /* TaobaoNavigationViewController.swift in Sources */,
 				7115A5EE20AAFBBA000D0B96 /* MyDatabaseTabBarController.swift in Sources */,
 				DF6B523421CB76EB00460949 /* WXMineSettingViewController.swift in Sources */,
-				7115A5A920AAA191000D0B96 /* FreedomBooksViewController.swift in Sources */,
 				DF0E968221CBACF5009682CC /* WXScanningViewController.swift in Sources */,
 				DFA8795421EDC05500BC1074 /* BaseModel.swift in Sources */,
 				7121193E20ABC58A0087E05B /* EnergyContactUSViewController.swift in Sources */,
@@ -6779,20 +6377,15 @@
 				DF7B407A21AC020A00E3D975 /* DouyinBaseViewController.swift in Sources */,
 				BF58BB6D20EF1945002CB4EE /* RCDShareViewController.m in Sources */,
 				713EE2CE20AD9B810085B65D /* TaobaoMiniNewViewController.swift in Sources */,
-				BF5B9B7D1F8E67A700BD885E /* HonorViewController.swift in Sources */,
 				DF6B51EE21CA6F5900460949 /* WXModes+Extension.swift in Sources */,
-				BF5B9B6D1F8E674400BD885E /* MoneyViewController.swift in Sources */,
 				BFC6D93D20E4ABF300F17378 /* SinaHomeViewController.swift in Sources */,
+				DFEF80EF21FB7AE4001D81FA /* FreedomTabBarController.swift in Sources */,
 				DFFD98CD21FB0B4800A442D7 /* BooksFindViewController.swift in Sources */,
-				7115A5BC20AAD31A000D0B96 /* PersonalInternetViewController.swift in Sources */,
 				BFEF19C32101E990003DCAC1 /* OcCallCpp.mm in Sources */,
 				7115A5F620AAFC40000D0B96 /* MyDatabaseEditViewController.swift in Sources */,
 				BFC6D94720E4AC3B00F17378 /* SinaEmotion.swift in Sources */,
 				DFB5FF5E21CA2F3E0057C922 /* WXNavigationController.swift in Sources */,
-				BF5B9B791F8E678900BD885E /* FriendViewController.swift in Sources */,
-				7115A5B120AABCF6000D0B96 /* FreedomTabBarController.swift in Sources */,
 				BF58BB5320EF1945002CB4EE /* RCDMeInfoTableViewController.m in Sources */,
-				7115A5AB20AAA1C4000D0B96 /* FreedomBooksEditViewController.swift in Sources */,
 				DF7B407F21AC020A00E3D975 /* DouyinFollowViewController.swift in Sources */,
 				BFC6D93F20E4ABFE00F17378 /* SinaMessageViewController.swift in Sources */,
 				DFA5BF3621B6A74D00CB9223 /* User.swift in Sources */,
@@ -6806,6 +6399,7 @@
 				DF1ED02D21F75DA900AEF237 /* AlipayRichViewController.swift in Sources */,
 				BF58BB4920EF1945002CB4EE /* RCDDiscussGroupSettingViewController.m in Sources */,
 				7115A5E620AAECED000D0B96 /* BooksTabBarController.swift in Sources */,
+				DFEF80F221FB7AE4001D81FA /* FreedomTheorySystemViewController.swift in Sources */,
 				713EE2EC20AD9CCE0085B65D /* KugouLinsenViewController.swift in Sources */,
 				DFB5FF6021CA2F530057C922 /* WXBaseViewController.swift in Sources */,
 				BFEF19CE2101F8DF003DCAC1 /* LanguageTableViewController.m in Sources */,
@@ -6814,7 +6408,6 @@
 				7121193C20ABC57C0087E05B /* EnergyShopMeViewController.swift in Sources */,
 				BF58BB5820EF1945002CB4EE /* RCDSquareTableViewController.m in Sources */,
 				7121193220ABC5320087E05B /* EnergyShopViewController.swift in Sources */,
-				BF5B9B7F1F8E67B900BD885E /* WidomViewController.swift in Sources */,
 				713EE30820ADA06B0085B65D /* IqiyiWatchRecordViewController.swift in Sources */,
 				DF6B524021CB771100460949 /* WXExpressionSearchViewController.swift in Sources */,
 				BFAC49C120D36A0F00E5CB8D /* SettingsViewController.swift in Sources */,
@@ -6853,7 +6446,6 @@
 				DF4C6FCA21CC790D00A54339 /* FoundationAPI.swift in Sources */,
 				DF0E968021CBACEF009682CC /* WXScannerViewController.swift in Sources */,
 				BF58BB2C20EF1945002CB4EE /* RCDPersonDetailViewController.m in Sources */,
-				7115A5BE20AAD32E000D0B96 /* PersonalEducationViewController.swift in Sources */,
 				713EE2C220AD9B110085B65D /* DZDealDetailViewController.swift in Sources */,
 				713EE31020ADA0990085B65D /* IqiyiLoginViewController.swift in Sources */,
 				DF0489F721D28BA40030C30B /* NSObject+MotionAnimation.swift in Sources */,
@@ -6871,7 +6463,6 @@
 				BF58BB4020EF1945002CB4EE /* RCDSearchResultViewCell.m in Sources */,
 				71250EC62091C0F20093B59B /* FreedomTools.m in Sources */,
 				DF6B524221CB771700460949 /* WXExpressionViewController.swift in Sources */,
-				7115A5B820AAC348000D0B96 /* PersonalApplyBaseViewController.swift in Sources */,
 				713EE2A420AD8F160085B65D /* DZTabBarController.swift in Sources */,
 				7121192620ABC4D10087E05B /* EnergyBusinessDetailViewController.swift in Sources */,
 				BF58BB2A20EF1945002CB4EE /* RCDAddressBookViewController.m in Sources */,
@@ -6883,7 +6474,6 @@
 				DF0489FB21D28BA40030C30B /* Types.swift in Sources */,
 				BF58BB5920EF1945002CB4EE /* RCDServiceViewController.m in Sources */,
 				BF58BB2B20EF1945002CB4EE /* RCDFrienfRemarksViewController.m in Sources */,
-				7115A5C020AAD339000D0B96 /* PersonalSoftViewController.swift in Sources */,
 				BF58BB1520EF1944002CB4EE /* RCloudModel.m in Sources */,
 				DF0489EA21D28B870030C30B /* ElasticTransitionPresentationController.swift in Sources */,
 				BF58BB2520EF1944002CB4EE /* RCDChatRoomViewController.m in Sources */,
@@ -6901,8 +6491,8 @@
 				DF2953A221D7A77F00E1C188 /* AXWebViewController.m in Sources */,
 				DF6B51F221CA6F7C00460949 /* WXMessageManager.swift in Sources */,
 				7121196C20AC24DF0087E05B /* ToutiaoHomeSampleViewController.swift in Sources */,
+				DFEF80EE21FB7AE4001D81FA /* FreedomBusinessViewController.swift in Sources */,
 				DF13330721F17945001D01CA /* KugouMeViewController.swift in Sources */,
-				7115A5D620AAD73F000D0B96 /* ResumeNavigationController.swift in Sources */,
 				BF58B95A20ECFC0B002CB4EE /* BaseSearchBar.swift in Sources */,
 				DF7B407621AC020A00E3D975 /* NetworkManager.swift in Sources */,
 				BF58BB3320EF1945002CB4EE /* RCDEditGroupNameViewController.m in Sources */,
@@ -6913,7 +6503,6 @@
 				7788AC621D7996E000376C95 /* E_CommentViewController.m in Sources */,
 				BF58BB4D20EF1945002CB4EE /* RCDMessageNoDisturbSettingController.m in Sources */,
 				DFFA80C221AEC84D009B1999 /* BaseTableViewCell.swift in Sources */,
-				BF5B9B711F8E675100BD885E /* LoveViewController.swift in Sources */,
 				7121192E20ABC5060087E05B /* EnergyDetailViewController.swift in Sources */,
 				DF6B521E21CB25F700460949 /* WXConversationViewController.swift in Sources */,
 				DF6B523221CB76E300460949 /* WXHelpAndFeedbackViewController.swift in Sources */,
@@ -6935,7 +6524,6 @@
 				BFC6D93720E4AAF800F17378 /* SinaNavigationController.swift in Sources */,
 				BF58BB1420EF1944002CB4EE /* KxMenu.m in Sources */,
 				7115A5EA20AAEDF1000D0B96 /* BooksBaseViewController.swift in Sources */,
-				BF5B9B7B1F8E679300BD885E /* HealthViewController.swift in Sources */,
 				BFEF19A22101E821003DCAC1 /* unzip.c in Sources */,
 				BFC6D94320E4AC1800F17378 /* SinaDiscoverViewController.swift in Sources */,
 				DF4C6FC821CC787700A54339 /* FoundationEnum.swift in Sources */,
