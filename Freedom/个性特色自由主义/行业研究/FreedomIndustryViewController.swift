@@ -23,11 +23,6 @@ class FreedomViewCell:BaseTableViewCell{
 class FreedomIndustryViewController: FreedomBaseViewController {
     var controllers:[String]!
     var banner:BaseScrollView!
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
-        self.edgesForExtendedLayout = .all
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "个人应用"
