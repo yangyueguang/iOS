@@ -1211,6 +1211,7 @@
 		DFD8215E21EF2DD8006C8705 /* KugouTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8215D21EF2DD8006C8705 /* KugouTabBarView.swift */; };
 		DFD8216021EF2DEA006C8705 /* KugouTabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFD8215F21EF2DEA006C8705 /* KugouTabBarView.xib */; };
 		DFED981C21E8AC0B009270A3 /* WXModes.m in Sources */ = {isa = PBXBuildFile; fileRef = DFED981B21E8AC0B009270A3 /* WXModes.m */; };
+		DFEF80DF21FB72B7001D81FA /* Circular3DStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF80DE21FB72B7001D81FA /* Circular3DStarView.swift */; };
 		DFF4AB9921B7969A00F03C71 /* XRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */; };
 		DFF4AB9B21B7AC5900F03C71 /* XAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */; };
 		DFF4AB9D21B7B80000F03C71 /* XCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4AB9C21B7B80000F03C71 /* XCardsView.swift */; };
@@ -2570,6 +2571,7 @@
 		DFD8215F21EF2DEA006C8705 /* KugouTabBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KugouTabBarView.xib; sourceTree = "<group>"; };
 		DFED981A21E8AC0B009270A3 /* WXModes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXModes.h; sourceTree = "<group>"; };
 		DFED981B21E8AC0B009270A3 /* WXModes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXModes.m; sourceTree = "<group>"; };
+		DFEF80DE21FB72B7001D81FA /* Circular3DStarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circular3DStarView.swift; sourceTree = "<group>"; };
 		DFF4AB9821B7969A00F03C71 /* XRefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRefreshHeader.swift; sourceTree = "<group>"; };
 		DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAudioPlayer.swift; sourceTree = "<group>"; };
 		DFF4AB9C21B7B80000F03C71 /* XCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCardsView.swift; sourceTree = "<group>"; };
@@ -5378,6 +5380,7 @@
 		DFF4AB9721B794B200F03C71 /* SwiftTools */ = {
 			isa = PBXGroup;
 			children = (
+				DFEF80DE21FB72B7001D81FA /* Circular3DStarView.swift */,
 				DF8BBC9721D67F0600F0D1FD /* UIView+CircularAnimation.swift */,
 				BF58B94920EB22C8002CB4EE /* XTablesViewController.swift */,
 				DFA5D3B321BA8EC500339006 /* XBaseTableView.swift */,
@@ -6643,6 +6646,7 @@
 				DFD8215E21EF2DD8006C8705 /* KugouTabBarView.swift in Sources */,
 				DF6B523821CB76F800460949 /* WXPrivacySettingViewController.swift in Sources */,
 				BFC6D93B20E4AB6D00F17378 /* SinaAuthController.swift in Sources */,
+				DFEF80DF21FB72B7001D81FA /* Circular3DStarView.swift in Sources */,
 				DF7B407821AC020A00E3D975 /* DouyinNavigationViewController.swift in Sources */,
 				71267A552092DC93006E1B96 /* BookFriendsTableViewCell.m in Sources */,
 				DF6B521C21CB25EA00460949 /* WXImageExpressionDisplayView.swift in Sources */,
