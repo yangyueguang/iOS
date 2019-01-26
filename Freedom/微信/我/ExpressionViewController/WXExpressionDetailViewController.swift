@@ -157,6 +157,7 @@ class WXExpressionItemCell: UICollectionViewCell {
 }
 class WXExpressionDetailViewController: WXBaseViewController {
     var kPageIndex: Int = 0
+    var collectionView: BaseCollectionView!
     var group: TLEmojiGroup = TLEmojiGroup() {
         didSet {
             navigationItem.title = group.groupName

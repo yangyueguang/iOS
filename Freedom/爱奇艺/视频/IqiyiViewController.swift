@@ -377,8 +377,8 @@ class IqiyiViewController: IqiyiBaseViewController ,IqiyiHomeBoxCellDelegate {
     }
     func initView() {
         let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - 64), style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         //将系统的Separator左边不留间隙
         tableView.separatorInset = UIEdgeInsets.zero
         homeTableView = tableView
@@ -405,14 +405,14 @@ class IqiyiViewController: IqiyiBaseViewController ,IqiyiHomeBoxCellDelegate {
             return height ?? 0.0
         }
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if bannerSource.count > 0 {
             return boxesSource.count + 1
         }else{
             return 0
         }
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let box: IqiyiBoxesModel? = boxesSource[indexPath.row - 1] as? IqiyiBoxesModel
         if box?.display_type ?? 0 == 1 {
             let cell = IqiyiHomeBoxCell(style: .default, reuseIdentifier: "")

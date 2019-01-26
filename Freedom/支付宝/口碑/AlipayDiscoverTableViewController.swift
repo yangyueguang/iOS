@@ -36,11 +36,11 @@ class AlipayDiscoverTableViewController: AlipayBaseViewController {
         dataArray = [[model01, model02, model03],[model11]]
         tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - TopHeight))
         tableView.tableHeaderView = header
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         view.addSubview(tableView)
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataArray[indexPath.section][indexPath.row]
         var cell: AlipayDiscoverTableViewControllerCell? = tableView.dequeueReusableCell(withIdentifier: AlipayDiscoverTableViewControllerCell.identifier) as? AlipayDiscoverTableViewControllerCell
         if cell == nil {
@@ -51,7 +51,7 @@ class AlipayDiscoverTableViewController: AlipayBaseViewController {
         cell?.imageView?.image = UIImage(named:model.iconImageName)
         return cell!
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = dataArray[indexPath.section][indexPath.row]
         let vc: UIViewController? = UIViewController()// model?.destinationControllerClass
         vc?.title = model.title
@@ -59,10 +59,10 @@ class AlipayDiscoverTableViewController: AlipayBaseViewController {
             navigationController?.pushViewController(aVc, animated: true)
         }
     }
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return (section == dataArray.count - 1) ? 10 : 0
     }
 }

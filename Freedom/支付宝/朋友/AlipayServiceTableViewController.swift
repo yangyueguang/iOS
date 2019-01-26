@@ -103,8 +103,8 @@ class AlipayServiceTableViewController: AlipayBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - TopHeight))
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         navigationItem.title = "朋友"
         tableView.rowHeight = 70
         let header = AlipayServiceTableViewHeader(frame: CGRect.zero)
@@ -122,10 +122,10 @@ class AlipayServiceTableViewController: AlipayBaseViewController {
         dataArray = temp as! [AlipayServiceTableViewCellModel]
         view.addSubview(tableView)
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataArray[indexPath.row]
         var cell: AlipayServiceTableViewCell? = tableView.dequeueReusableCell(withIdentifier: AlipayServiceTableViewCell.identifier) as? AlipayServiceTableViewCell
         if cell == nil {
@@ -134,7 +134,7 @@ class AlipayServiceTableViewController: AlipayBaseViewController {
         cell?.setModel(model)
         return cell!
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let _: AlipayServiceTableViewCellModel? = dataArray[indexPath.row]
     }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

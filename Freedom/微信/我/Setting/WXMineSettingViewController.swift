@@ -8,7 +8,7 @@ class WXSettingHelper: NSObject {
     var mineSettingData: [WXSettingGroup] = []
     override init() {
         super.init()
-        let item1 = WXSettingItem.createItem(withTitle: ("账号与安全"))
+        let item1 = WXSettingItem("账号与安全")
         if (1) != 0 {
             item1.subTitle = "已保护"
             item1.rightImagePath = "u_protectHL"
@@ -16,17 +16,17 @@ class WXSettingHelper: NSObject {
             item1.subTitle = "未保护"
             item1.rightImagePath = "u_protect"
         }
-        let group1: WXSettingGroup = TLCreateSettingGroup(nil, nil, [item1])
-        let item2 = WXSettingItem.createItem(withTitle: ("新消息通知"))
-        let item3 = WXSettingItem.createItem(withTitle: ("隐私"))
-        let item4 = WXSettingItem.createItem(withTitle: ("通用"))
-        let group2: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([item2, item3, item4]))
-        let item5 = WXSettingItem.createItem(withTitle: ("帮助与反馈"))
-        let item6 = WXSettingItem.createItem(withTitle: ("关于微信"))
-        let group3: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([item5, item6]))
-        let item7 = WXSettingItem.createItem(withTitle: ("退出登录"))
+        let group1: WXSettingGroup = WXSettingGroup(nil, nil, [item1])
+        let item2 = WXSettingItem("新消息通知")
+        let item3 = WXSettingItem("隐私")
+        let item4 = WXSettingItem("通用")
+        let group2: WXSettingGroup = WXSettingGroup(nil, nil, ([item2, item3, item4]))
+        let item5 = WXSettingItem("帮助与反馈")
+        let item6 = WXSettingItem("关于微信")
+        let group3: WXSettingGroup = WXSettingGroup(nil, nil, ([item5, item6]))
+        let item7 = WXSettingItem("退出登录")
         item7.type = .titleButton
-        let group4: WXSettingGroup = TLCreateSettingGroup(nil, nil, [item7])
+        let group4: WXSettingGroup = WXSettingGroup(nil, nil, [item7])
         mineSettingData.append(contentsOf: [group1, group2, group3, group4])
     }
 }
@@ -38,7 +38,7 @@ class WXMineSettingViewController: WXSettingViewController {
         data = helper.mineSettingData
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = data[indexPath.section].items[UInt(indexPath.row)]
+        let item = data[indexPath.section].items[indexPath.row]
         if (item.title == "账号与安全") {
             let accountAndSafetyVC = WXAccountAndSafetyViewController()
             hidesBottomBarWhenPushed = true

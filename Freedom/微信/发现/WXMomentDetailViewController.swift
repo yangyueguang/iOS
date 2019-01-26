@@ -93,10 +93,10 @@ class WXMomentExtensionView: UIView, UITableViewDelegate, UITableViewDataSource 
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 && self.extension.likedFriends.count > 0 {
-            return self.extension.extensionFrame.heightLiked
+            return self.extension.heightLiked
         } else {
             let comment = self.extension.comments[UInt(indexPath.row)] 
-            return comment.commentFrame.height
+            return comment.height
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -134,16 +134,16 @@ class WXMomentBaseView: UIView {
     var extensionContainerView = UIView()
     var moment: WXMoment = WXMoment() {
         didSet {
-            avatarView.sd_setImage(with: URL(string: moment.user.avatarURL ?? ""), for: UIControl.State.normal)
+            avatarView.sd_setImage(with: URL(string: moment.user.avatarURL), for: UIControl.State.normal)
             usernameView.setTitle(moment.user.showName, for: .normal)
             dateLabel.text = "1小时前"
             originLabel.text = "微博"
             extensionView.extension = moment.extension
             self.detailContainerView.snp.updateConstraints { (make) in
-                make.height.equalTo(moment.momentFrame.heightDetail)
+                make.height.equalTo(moment.heightDetail)
             }
             self.extensionContainerView.snp.updateConstraints { (make) in
-                make.height.equalTo(moment.momentFrame.heightExtension)
+                make.height.equalTo(moment.heightExtension)
             }
         }
     }
@@ -309,7 +309,7 @@ class WXMomentDetailTextView: WXMomentDetailBaseView {
         didSet {
             titleLabel.text = detail?.text
             titleLabel.snp.updateConstraints { (make) in
-                make.height.equalTo(detail?.detailFrame.heightText ?? 0)
+                make.height.equalTo(detail?.heightText ?? 0)
             }
         }
     }
@@ -385,7 +385,7 @@ class WXMomentDetailViewController: WXBaseViewController ,WXMomentViewDelegate {
         didSet {
             momentView.moment = moment
             momentView.snp.updateConstraints { (make) in
-                make.height.equalTo(moment.momentFrame.height)
+                make.height.equalTo(moment.height)
             }
         }
     }

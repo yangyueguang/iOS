@@ -98,8 +98,8 @@ class IqiyiSearchHistoryViewController: IqiyiBaseViewController,UITextFieldDeleg
         datas.append(hisDatas as AnyHashable)
         //用push方法推出时，Tabbar隐藏
         let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - 64), style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         //将系统的Separator左边不留间隙
         tableView.separatorInset = UIEdgeInsets.zero
         searchTableView = tableView
@@ -140,7 +140,7 @@ class IqiyiSearchHistoryViewController: IqiyiBaseViewController,UITextFieldDeleg
         }
         return true
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if datas.count == 2 {
             if section == 0 {
                 return 1//datas[0].count()
@@ -152,14 +152,14 @@ class IqiyiSearchHistoryViewController: IqiyiBaseViewController,UITextFieldDeleg
         }
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if datas.count == 2 && indexPath.section == 0 {
             let identifier = "historyCell"
             var cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? IqiyiSearchHistoryCell
@@ -198,7 +198,7 @@ class IqiyiSearchHistoryViewController: IqiyiBaseViewController,UITextFieldDeleg
         return headerView
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
     

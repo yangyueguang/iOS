@@ -17,7 +17,7 @@ let SLIDE_TABBAR_FOOTER:String = "SlideTabBarFooter"
 let AWEME_COLLECTION_CELL:String = "AwemeCollectionCell"
 
 class DouyinMeViewController: DouyinBaseViewController {
-
+    var collectionView: BaseCollectionView!
     var loadMore:LoadMoreControl?
     var selectIndex:Int = 0
     

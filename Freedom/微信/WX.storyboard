@@ -442,15 +442,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="54.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TLs-lh-kwW">
-                                                    <rect key="frame" x="31" y="12.5" width="30" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="u_frendsCircle" translatesAutoresizingMaskIntoConstraints="NO" id="TLs-lh-kwW">
+                                                    <rect key="frame" x="16" y="12.5" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="WEt-ei-aYN"/>
                                                         <constraint firstAttribute="width" constant="30" id="e4y-Co-FWK"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朋友圈" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9az-un-417">
-                                                    <rect key="frame" x="76" y="17.5" width="49" height="19.5"/>
+                                                    <rect key="frame" x="61" y="17.5" width="49" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -458,7 +458,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="9az-un-417" firstAttribute="leading" secondItem="TLs-lh-kwW" secondAttribute="trailing" constant="15" id="1QY-QB-emG"/>
-                                                <constraint firstItem="TLs-lh-kwW" firstAttribute="leading" secondItem="eWr-6o-clq" secondAttribute="leadingMargin" constant="15" id="Q8J-21-p1z"/>
+                                                <constraint firstItem="TLs-lh-kwW" firstAttribute="leading" secondItem="eWr-6o-clq" secondAttribute="leadingMargin" id="Q8J-21-p1z"/>
                                                 <constraint firstItem="9az-un-417" firstAttribute="centerY" secondItem="eWr-6o-clq" secondAttribute="centerY" id="UoH-HE-NwN"/>
                                                 <constraint firstItem="TLs-lh-kwW" firstAttribute="centerY" secondItem="eWr-6o-clq" secondAttribute="centerY" id="rdt-sS-Kik"/>
                                             </constraints>
@@ -769,6 +769,7 @@
         <image name="tabbar_mainframeHL" width="25" height="23"/>
         <image name="tabbar_me" width="23" height="23"/>
         <image name="tabbar_meHL" width="23" height="23"/>
+        <image name="u_frendsCircle" width="16" height="16"/>
         <image name="userLogo.png" width="2084" height="2084"/>
     </resources>
 </document>

@@ -20,6 +20,7 @@ class LibraryCollectionViewCell: BaseCollectionViewCell {
     }
 }
 class LibraryCollectionViewController: BaseViewController,ElasticMenuTransitionDelegate,UICollectionViewDelegate,UICollectionViewDataSource {
+    var collectionView: BaseCollectionView!
     var contentLength:CGFloat = APPW
     var items:[[String:String]] = (UIApplication.shared.delegate as! AppDelegate).items
     var dismissByBackgroundTouch = true

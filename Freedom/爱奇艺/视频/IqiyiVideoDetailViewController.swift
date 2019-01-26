@@ -131,8 +131,8 @@ class IqiyiVideoDetailViewController: IqiyiBaseViewController {
     }
     func initTableView() {
         let tableView = UITableView(frame: CGRect(x: 0, y: 220, width: APPW, height: APPH - 220), style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         //将系统的Separator左边不留间隙
         tableView.separatorInset = UIEdgeInsets.zero
         videoDetailTableView = tableView
@@ -198,7 +198,7 @@ class IqiyiVideoDetailViewController: IqiyiBaseViewController {
             return "\(hoursString):\(minsString):\(secsString)"
         }
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recommendArray.count + 1
     }
     
@@ -210,7 +210,7 @@ class IqiyiVideoDetailViewController: IqiyiBaseViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let ID = "JFVideoDetailCell"
             var cell = tableView.dequeueReusableCell(withIdentifier: ID) as? IqiyiVideoDetailCell
@@ -244,7 +244,7 @@ class IqiyiVideoDetailViewController: IqiyiBaseViewController {
             return cell!
         }
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row > 0 {
 //            let recommendM: JFRecommentModel? = recommendArray[indexPath.row - 1]
 //            iid = recommendM?.itemCode

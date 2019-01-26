@@ -24,10 +24,9 @@ class WXNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.barTintColor = UIColor(46.0, 49.0, 50.0, 1.0)
-        navigationBar.tintColor = UIColor.white
+        navigationBar.barTintColor = UIColor.lightGray
+        navigationBar.tintColor = UIColor.darkText
         view.backgroundColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17.5)]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)]
     }
-
 }

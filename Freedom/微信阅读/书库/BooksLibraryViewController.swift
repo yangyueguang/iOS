@@ -15,6 +15,7 @@ class BooksViewCell:BaseCollectionViewCell{
 }
 class BooksLibraryViewController: BooksBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
+    var collectionView: BaseCollectionView!
     @objc func rightAction(){
         let wxVc = BookFriendsViewController()
         self.present(wxVc, animated: true) {}

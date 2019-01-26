@@ -16,8 +16,8 @@ class SettingsViewController: BaseViewController ,ElasticMenuTransitionDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         tableView.backgroundColor = UIColor.clear
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: APPW * 0.8, height: 200))
         tableView.showsVerticalScrollIndicator = false
@@ -29,13 +29,13 @@ class SettingsViewController: BaseViewController ,ElasticMenuTransitionDelegate{
             "transition.sticky = \(tm.sticky)\n" +
             "transition.showShadow = \(tm.showShadow)")
     }
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "cell")
         if cell == nil {
             cell = UITableViewCell(frame: CGRect(x: 0, y: 0, width: 300, height: 100))
@@ -50,7 +50,7 @@ class SettingsViewController: BaseViewController ,ElasticMenuTransitionDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     }
 }

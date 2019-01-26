@@ -24,6 +24,32 @@ enum StoryName: String {
     case database = "MyDatabase"
     case main = "Main"
 }
+class FirstRun: NSObject {
+    static let shared = FirstRun()
+    let defaults = UserDefaults.standard
+    var wechat: Bool {
+        set {
+            defaults.set(wechat, forKey: StoryName.wechat.rawValue)
+            defaults.synchronize()
+        }
+        get {
+            return !defaults.bool(forKey: StoryName.wechat.rawValue)
+        }
+    }
+    var alipay = false
+    var kugou = false
+    var iqiyi = false
+    var douyin = false
+    var taobao = false
+    var sina = false
+    var people = false
+    var topic = false
+    var energy = false
+    var freedom = false
+    var books = false
+    var database = false
+    var main = false
+}
 //会话提示类型
 enum TLClueType : Int {
     case none

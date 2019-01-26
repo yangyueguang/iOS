@@ -53,7 +53,8 @@ class TaobaoCommunityHeadView: UICollectionReusableView {
     }
 }
 class TaobaoCommunityViewController: TaobaoBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource {
-    
+
+    var collectionView: BaseCollectionView!
     let banner = BaseScrollView(banner: CGRect(x: 0, y: 30, width: APPW, height: 130), icons:["",""])
     override func viewDidLoad() {
         super.viewDidLoad()

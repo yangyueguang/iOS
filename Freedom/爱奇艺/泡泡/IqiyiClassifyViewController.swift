@@ -55,8 +55,8 @@ class IqiyiClassifyViewController: IqiyiBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - 64), style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         //将系统的Separator左边不留间隙
         tableView.separatorInset = UIEdgeInsets.zero
         view.addSubview(tableView)
@@ -65,14 +65,14 @@ class IqiyiClassifyViewController: IqiyiBaseViewController {
         tableView.mj_header.beginRefreshing()
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let ID = "JFClassifyCell"
         var cell = tableView.dequeueReusableCell(withIdentifier: ID) as? IqiyiClassifyCell
         if cell == nil {
@@ -83,7 +83,7 @@ class IqiyiClassifyViewController: IqiyiBaseViewController {
         return cell!
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let webVC = IqiyiWebViewController()
         webVC.urlStr = TestWebURL
         navigationController?.pushViewController(webVC, animated: true)

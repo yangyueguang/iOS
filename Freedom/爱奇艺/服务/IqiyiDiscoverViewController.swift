@@ -149,8 +149,8 @@ class IqiyiDiscoverViewController: IqiyiBaseViewController {
         let rightItem = UIBarButtonItem(image: UIImage(named:"wnavi"), style: .done, target: nil, action: nil)
         navigationItem.rightBarButtonItem = rightItem
         let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - 64), style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         //将系统的Separator左边不留间隙
         tableView.separatorInset = UIEdgeInsets.zero
         discoverTableView = tableView
@@ -169,7 +169,7 @@ class IqiyiDiscoverViewController: IqiyiBaseViewController {
     }
     
     // MARK: - UITableViewDataSource
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
     
@@ -180,7 +180,7 @@ class IqiyiDiscoverViewController: IqiyiBaseViewController {
             return 40
         }
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let menuID = "menu"
             var cell = tableView.dequeueReusableCell(withIdentifier: menuID) as? IqiyiImageScrollCell
@@ -196,7 +196,7 @@ class IqiyiDiscoverViewController: IqiyiBaseViewController {
             return cell
         }
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row != 0 {
             let webVC = IqiyiWebViewController()
             webVC.urlStr = TestWebURL

@@ -31,17 +31,17 @@ class FreedomIndustryViewController: FreedomBaseViewController {
         self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH-TopHeight))
         self.tableView.dataArray = ["互联网行业","教育培训行业","计算机软件","计算机硬件","个人电脑","食品连锁","快消品行业","耐消品行业","手机市场","房地产行业","汽车行业","奢侈品行业","其他行业"]
         self.tableView.tableHeaderView = banner;
-        self.tableView.dataSource = self;
-        self.tableView.delegate = self;
+//        self.tableView.dataSource = self;
+//        self.tableView.delegate = self;
         view.addSubview(self.tableView)
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tableView.dataArray.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: FreedomViewCell.identifier) as? FreedomViewCell
         if cell == nil{
             cell = FreedomViewCell.getInstance() as? FreedomViewCell
@@ -51,6 +51,6 @@ class FreedomIndustryViewController: FreedomBaseViewController {
         cell?.script.text = "url"
         return cell!
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }

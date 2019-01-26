@@ -148,7 +148,7 @@ class WXMomentsViewController: WXTableViewController, WXMomentViewDelegate {
             return 260.0
         }
         let moment = data[indexPath.row - 1]
-        return moment.momentFrame.height
+        return moment.height
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -22,11 +22,11 @@ class WXSettingViewController: BaseTableViewController, WXSettingSwitchCellDeleg
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(WXSettingHeaderTitleView.self, forHeaderFooterViewReuseIdentifier: "TLSettingHeaderTitleView")
-        tableView.register(WechatSettingFooterTitleView.self, forHeaderFooterViewReuseIdentifier: "TLSettingFooterTitleView")
-        tableView.register(WXSettingCell.self, forCellReuseIdentifier: "TLSettingCell")
-        tableView.register(WechatSettingButtonCell.self, forCellReuseIdentifier: "TLSettingButtonCell")
-        tableView.register(WechatSettingSwitchCell.self, forCellReuseIdentifier: "TLSettingSwitchCell")
+        tableView.register(WXSettingHeaderTitleView.self, forHeaderFooterViewReuseIdentifier: WXSettingHeaderTitleView.identifier)
+        tableView.register(WechatSettingFooterTitleView.self, forHeaderFooterViewReuseIdentifier: WechatSettingFooterTitleView.identifier)
+        tableView.register(WXSettingCell.self, forCellReuseIdentifier: WXSettingCell.identifier)
+        tableView.register(WechatSettingButtonCell.self, forCellReuseIdentifier: WechatSettingButtonCell.identifier)
+        tableView.register(WechatSettingSwitchCell.self, forCellReuseIdentifier: WechatSettingSwitchCell.identifier)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -38,20 +38,29 @@ class WXSettingViewController: BaseTableViewController, WXSettingSwitchCellDeleg
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let group = data[indexPath.section]
-        let item = group.items[UInt(indexPath.row)]
-        let cell = tableView.dequeueReusableCell(withIdentifier: item.cellClassName()) as! WechatSettingSwitchCell
-        cell.item = item
-        if item.type == .switchBtn {
+        let item = group.items[indexPath.row]
+        switch item.type {
+        case .defalut1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: WXSettingCell.identifier) as! WXSettingCell
+            cell.item = item
+            return cell
+        case .titleButton:
+            let cell = tableView.dequeueReusableCell(withIdentifier: WechatSettingButtonCell.identifier) as! WechatSettingButtonCell
+            cell.item = item
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: WechatSettingSwitchCell.identifier) as! WechatSettingSwitchCell
+            cell.item = item
             cell.delegate = self
+            return cell
         }
-        return cell
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let group: WXSettingGroup = data[section]
         if group.headerTitle.isEmpty {
             return nil
         }
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TLSettingHeaderTitleView") as! WXSettingHeaderTitleView
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: WXSettingHeaderTitleView.identifier) as! WXSettingHeaderTitleView
         view.text = group.headerTitle
         return view
     }
@@ -61,7 +70,7 @@ class WXSettingViewController: BaseTableViewController, WXSettingSwitchCellDeleg
         if group.footerTitle.isEmpty {
             return nil
         }
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TLSettingFooterTitleView") as! WechatSettingFooterTitleView
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: WechatSettingFooterTitleView.identifier) as! WechatSettingFooterTitleView
         view.text = group.footerTitle
         return view
     }
@@ -73,12 +82,12 @@ class WXSettingViewController: BaseTableViewController, WXSettingSwitchCellDeleg
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let group: WXSettingGroup = data[section]
-        return 0.5 + (group.headerTitle.isEmpty ? 0 : 5.0 + group.headerHeight)
+        return 0.5 + (group.headerTitle.isEmpty ? 0 : 5.0)
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         let group: WXSettingGroup = data[section]
-        return 20.0 + (group.footerTitle.isEmpty ? 0 : 5.0 + group.footerHeight)
+        return 20.0 + (group.footerTitle.isEmpty ? 0 : 5.0)
     }
     func settingSwitchCell(for settingItem: WXSettingItem, didChangeStatus on: Bool) {
         noticeError("Switch事件未被子类处理Title: \(settingItem.title)\nStatus: \(on ? "on" : "off")")

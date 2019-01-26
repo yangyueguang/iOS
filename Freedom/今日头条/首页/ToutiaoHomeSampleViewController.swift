@@ -31,8 +31,8 @@ class ToutiaoHomeSampleViewController: ToutiaoBaseViewController {
         super.viewDidLoad()
         tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH), style: .grouped)
         tableView.register(ToutiaoHomeSampleViewCell.self)
-        tableView.dataSource = self;
-        tableView.delegate = self;
+//        tableView.dataSource = self;
+//        tableView.delegate = self;
         tableView.rowHeight = 90
         view.addSubview(tableView)
         viewModel.subscribe(onNext: {[weak self] (model) in
@@ -42,10 +42,10 @@ class ToutiaoHomeSampleViewController: ToutiaoBaseViewController {
         }).disposed(by: disposeBag)
         XNetKit.topicNewsList(topicModel.url, next: viewModel)
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.lists.count
     }
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return model.top.count > 0 ? 120 : 0
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -59,12 +59,12 @@ class ToutiaoHomeSampleViewController: ToutiaoBaseViewController {
         }
         return headBanner;
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ToutiaoHomeSampleViewCell.identifier) as! ToutiaoHomeSampleViewCell
         cell.viewModel.onNext(model.lists[indexPath.row])
         return cell
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let topNew = model.lists[indexPath.row]
         _ = self.push(ToutiaoHomeDetailViewController(), withInfo:topNew, withTitle: topNew.title)
     }

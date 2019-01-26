@@ -15,8 +15,8 @@ class DetailTableViewController: TaobaoBaseViewController {
         
             detailView = DetailView(frame: CGRect(x: 0, y: 64, width: view.bounds.size.width, height: view.bounds.size.height - 64))
             tableView = BaseTableView(frame: detailView.bounds)
-            tableView.delegate = self
-            tableView.dataSource = self
+//            tableView.delegate = self
+//            tableView.dataSource = self
         if let aView = detailView {
             view.addSubview(aView)
         }
@@ -25,7 +25,7 @@ class DetailTableViewController: TaobaoBaseViewController {
         detailView?.reloadData()
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dequeueReusableCellWithIdentifier = "dequeueReusableCellWithIdentifier"
         var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: dequeueReusableCellWithIdentifier)
         if cell == nil {
@@ -39,18 +39,18 @@ class DetailTableViewController: TaobaoBaseViewController {
         }
         return UITableViewCell()
     }
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 85
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         _ = data[indexPath.row]["class"]
 navigationController?.pushViewController(UIViewController(), animated: true)
     }

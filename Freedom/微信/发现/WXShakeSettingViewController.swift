@@ -7,17 +7,17 @@ class WXShakeHelper: NSObject {
     var shakeSettingData: [WXSettingGroup] = []
     override init() {
         super.init()
-        let item1 = WXSettingItem.createItem(withTitle: ("使用默认背景图片"))
+        let item1 = WXSettingItem("使用默认背景图片")
         item1.showDisclosureIndicator = false
-        let item2 = WXSettingItem.createItem(withTitle: ("换张背景图片"))
-        let item3 = WXSettingItem.createItem(withTitle: ("音效"))
+        let item2 = WXSettingItem("换张背景图片")
+        let item3 = WXSettingItem("音效")
         item3.type = .switchBtn
-        let group1: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([item1, item2, item3]))
-        let item5 = WXSettingItem.createItem(withTitle: ("打招呼的人"))
-        let item6 = WXSettingItem.createItem(withTitle: ("摇到的历史"))
-        let group2: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([item5, item6]))
-        let item7 = WXSettingItem.createItem(withTitle: ("摇一摇消息"))
-        let group3: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([item7]))
+        let group1: WXSettingGroup = WXSettingGroup(nil, nil, ([item1, item2, item3]))
+        let item5 = WXSettingItem("打招呼的人")
+        let item6 = WXSettingItem("摇到的历史")
+        let group2: WXSettingGroup = WXSettingGroup(nil, nil, ([item5, item6]))
+        let item7 = WXSettingItem("摇一摇消息")
+        let group3: WXSettingGroup = WXSettingGroup(nil, nil, ([item7]))
         shakeSettingData.append(contentsOf: [group1, group2, group3])
     }
 }
@@ -51,7 +51,7 @@ class WXShakeSettingViewController: WXSettingViewController, UINavigationControl
         picker.dismiss(animated: true)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = data[indexPath.section].items[UInt(indexPath.row)] 
+        let item = data[indexPath.section].items[indexPath.row] 
         if (item.title == "使用默认背景图片") {
             UserDefaults.standard.removeObject(forKey: "Shake_Image_Path")
             noticeInfo("已恢复默认背景图")

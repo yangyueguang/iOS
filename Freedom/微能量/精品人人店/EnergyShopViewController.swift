@@ -22,18 +22,18 @@ class EnergyShopViewController: EnergyBaseViewController {
     self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH-110))
         self.tableView.rowHeight = 80
         self.tableView.dataArray = ["酒水","茶饮","水果","生鲜","土地产","旅游","美丽人生","养生","服饰鞋袜","百货","美食","坚果零食","饰品","手工制品","家电家居","健身","宠品"]
-    self.tableView.delegate = self
-    self.tableView.dataSource = self
+//    self.tableView.delegate = self
+//    self.tableView.dataSource = self
         view.addSubview(tableView)
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: EnergyShopViewCell.identifier) as? EnergyShopViewCell
         if cell == nil{
             cell = EnergyShopViewCell.getInstance() as? EnergyShopViewCell
         }
         return cell!
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
 EnergySuperMarketTabBarController.sharedRootViewController.isRemoveTab = false
 //        myTabBar.hidesBottomBarWhenPushed = true

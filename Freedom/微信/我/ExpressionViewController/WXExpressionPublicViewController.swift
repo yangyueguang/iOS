@@ -52,6 +52,7 @@ class WXExpressionPublicCell: UICollectionViewCell {
     }
 }
 class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+    var collectionView: BaseCollectionView!
     var kPageIndex: Int = 0
     var data: [TLEmojiGroup] = []
     var proxy = WXExpressionHelper.shared

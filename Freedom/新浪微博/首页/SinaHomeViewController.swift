@@ -50,8 +50,8 @@ class SinaHomeViewController: SinaBaseViewController {
         let account = SinaAccount.account()
         title = account?.name
         tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: CGFloat(APPH - TopHeight)))
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         view.addSubview(tableView)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "u_personAdd"), style: .done, target: nil, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "u_scan"), style: .plain, target: nil, action: nil)
@@ -115,11 +115,11 @@ class SinaHomeViewController: SinaBaseViewController {
         }, failure: { task, error in
         })
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
     //数据源
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let ID = "status"
         var cell = tableView.dequeueReusableCell(withIdentifier: ID) as? SinaStatusViewCell
         if cell == nil {

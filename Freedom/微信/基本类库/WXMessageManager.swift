@@ -346,63 +346,63 @@ class WXMessageManager: NSObject {
         })
     }
     func chatDetailData(byUserInfo userInfo: WXUser) -> [WXSettingGroup] {
-        let users = WXSettingItem.createItem(withTitle: "users")
+        let users = WXSettingItem("users")
         users.type = .other
-        let group1: WXSettingGroup = TLCreateSettingGroup(nil, nil, [users])
-        let top = WXSettingItem.createItem(withTitle: ("置顶聊天"))
+        let group1: WXSettingGroup = WXSettingGroup(nil, nil, [users])
+        let top = WXSettingItem("置顶聊天")
         top.type = .switchBtn
-        let screen = WXSettingItem.createItem(withTitle: ("消息免打扰"))
+        let screen = WXSettingItem("消息免打扰")
         screen.type = .switchBtn
-        let group2: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([top, screen]))
-        let chatFile = WXSettingItem.createItem(withTitle: ("聊天文件"))
-        let group3: WXSettingGroup = TLCreateSettingGroup(nil, nil, [chatFile])
-        let chatBG = WXSettingItem.createItem(withTitle: ("设置当前聊天背景"))
-        let chatHistory = WXSettingItem.createItem(withTitle: ("查找聊天内容"))
-        let group4: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([chatBG, chatHistory]))
-        let clear = WXSettingItem.createItem(withTitle: ("清空聊天记录"))
+        let group2: WXSettingGroup = WXSettingGroup(nil, nil, ([top, screen]))
+        let chatFile = WXSettingItem("聊天文件")
+        let group3: WXSettingGroup = WXSettingGroup(nil, nil, [chatFile])
+        let chatBG = WXSettingItem("设置当前聊天背景")
+        let chatHistory = WXSettingItem("查找聊天内容")
+        let group4: WXSettingGroup = WXSettingGroup(nil, nil, ([chatBG, chatHistory]))
+        let clear = WXSettingItem("清空聊天记录")
         clear.showDisclosureIndicator = false
-        let group5: WXSettingGroup = TLCreateSettingGroup(nil, nil, [clear])
-        let report = WXSettingItem.createItem(withTitle: ("举报"))
-        let group6: WXSettingGroup = TLCreateSettingGroup(nil, nil, [report])
+        let group5: WXSettingGroup = WXSettingGroup(nil, nil, [clear])
+        let report = WXSettingItem("举报")
+        let group6: WXSettingGroup = WXSettingGroup(nil, nil, [report])
         return [group1, group2, group3, group4, group5, group6]
     }
 
     func chatDetailData(byGroupInfo groupInfo: WXGroup) -> [WXSettingGroup] {
-        let users = WXSettingItem.createItem(withTitle: ("users"))
+        let users = WXSettingItem("users")
         users.type = .other
-        let allUsers = WXSettingItem.createItem(withTitle: (String(format: "全部群成员(%ld)", Int(groupInfo.count))))
-        let group1: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([users, allUsers]))
-        let groupName = WXSettingItem.createItem(withTitle: ("群聊名称"))
+        let allUsers = WXSettingItem(String(format: "全部群成员(%ld)", groupInfo.count))
+        let group1: WXSettingGroup = WXSettingGroup(nil, nil, ([users, allUsers]))
+        let groupName = WXSettingItem("群聊名称")
         groupName.subTitle = groupInfo.groupName
-        let groupQR = WXSettingItem.createItem(withTitle: ("群二维码"))
+        let groupQR = WXSettingItem("群二维码")
         groupQR.rightImagePath = PQRCode
-        let groupPost = WXSettingItem.createItem(withTitle: ("群公告"))
+        let groupPost = WXSettingItem("群公告")
         if groupInfo.post.count > 0 {
             groupPost.subTitle = groupInfo.post
         } else {
             groupPost.subTitle = "未设置"
         }
-        let group2: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([groupName, groupQR, groupPost]))
-        let screen = WXSettingItem.createItem(withTitle: ("消息免打扰"))
+        let group2: WXSettingGroup = WXSettingGroup(nil, nil, ([groupName, groupQR, groupPost]))
+        let screen = WXSettingItem("消息免打扰")
         screen.type = .switchBtn
-        let top = WXSettingItem.createItem(withTitle: ("置顶聊天"))
+        let top = WXSettingItem("置顶聊天")
         top.type = .switchBtn
-        let save = WXSettingItem.createItem(withTitle: ("保存到通讯录"))
+        let save = WXSettingItem("保存到通讯录")
         save.type = .switchBtn
-        let group3: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([screen, top, save]))
-        let myNikeName = WXSettingItem.createItem(withTitle: ("我在本群的昵称"))
+        let group3: WXSettingGroup = WXSettingGroup(nil, nil, ([screen, top, save]))
+        let myNikeName = WXSettingItem("我在本群的昵称")
         myNikeName.subTitle = groupInfo.myNikeName
-        let showOtherNikeName = WXSettingItem.createItem(withTitle: ("显示群成员昵称"))
+        let showOtherNikeName = WXSettingItem("显示群成员昵称")
         showOtherNikeName.type = .switchBtn
-        let group4: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([myNikeName, showOtherNikeName]))
-        let chatFile = WXSettingItem.createItem(withTitle: ("聊天文件"))
-        let chatHistory = WXSettingItem.createItem(withTitle: ("查找聊天内容"))
-        let chatBG = WXSettingItem.createItem(withTitle: ("设置当前聊天背景"))
-        let report = WXSettingItem.createItem(withTitle: ("举报"))
-        let group5: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([chatFile, chatHistory, chatBG, report]))
-        let clear = WXSettingItem.createItem(withTitle: ("清空聊天记录"))
+        let group4: WXSettingGroup = WXSettingGroup(nil, nil, ([myNikeName, showOtherNikeName]))
+        let chatFile = WXSettingItem("聊天文件")
+        let chatHistory = WXSettingItem("查找聊天内容")
+        let chatBG = WXSettingItem("设置当前聊天背景")
+        let report = WXSettingItem("举报")
+        let group5: WXSettingGroup = WXSettingGroup(nil, nil, ([chatFile, chatHistory, chatBG, report]))
+        let clear = WXSettingItem("清空聊天记录")
         clear.showDisclosureIndicator = false
-        let group6: WXSettingGroup = TLCreateSettingGroup(nil, nil, [clear])
+        let group6: WXSettingGroup = WXSettingGroup(nil, nil, [clear])
         return [group1, group2, group3, group4, group5, group6]
     }
 }

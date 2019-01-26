@@ -12,10 +12,10 @@ class WXMenuCell: UITableViewCell {
     private var redPointView = UIView()
     var menuItem: WXMenuItem = WXMenuItem() {
         didSet {
-            iconImageView.image = UIImage(named: menuItem.iconPath)
+            iconImageView.image = UIImage(named: menuItem.icon)
             titleLabel.text = menuItem.title
             midLabel.text = menuItem.subTitle
-            if menuItem.rightIconURL?.isEmpty ?? true {
+            if menuItem.rightIconURL.isEmpty {
                 rightImageView.snp.updateConstraints { (make) in
                     make.width.equalTo(0)
                 }
@@ -23,7 +23,7 @@ class WXMenuCell: UITableViewCell {
                 rightImageView.snp.updateConstraints { (make) in
                     make.height.equalTo(self.rightImageView.snp.height)
                 }
-                rightImageView.sd_setImage(with: URL(string: menuItem.rightIconURL!), placeholderImage: UIImage(named: PuserLogo))
+                rightImageView.sd_setImage(with: URL(string: menuItem.rightIconURL), placeholderImage: UIImage(named: PuserLogo))
             }
             redPointView.isHidden = !menuItem.showRightRedPoint
         }
@@ -104,8 +104,8 @@ class WXMenuViewController: BaseTableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = data[indexPath.section][indexPath.row] as WXMenuItem
-        if !(item.rightIconURL?.isEmpty ?? true && item.subTitle.isEmpty) {
+        var item = data[indexPath.section][indexPath.row] as WXMenuItem
+        if !(item.rightIconURL.isEmpty && item.subTitle.isEmpty) {
             item.rightIconURL = ""
             item.subTitle = ""
             item.showRightRedPoint = false

@@ -69,6 +69,7 @@ class WXChatFileHeaderView: UICollectionReusableView {
     }
 }
 class WXChatFileViewController: WXBaseViewController {
+    var collectionView: BaseCollectionView!
     var partnerID = "" {
         didSet {
             WXMessageManager.shared.chatFiles(forPartnerID: partnerID, completed: { data in

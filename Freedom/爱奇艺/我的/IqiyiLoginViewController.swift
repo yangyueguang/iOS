@@ -12,13 +12,13 @@ class IqiyiLoginViewController: IqiyiBaseViewController {
 //        let leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"cellLeft"), style: .done, target: self, action: self.navigationController?.popViewController(animated: true))
 //        navigationItem.leftBarButtonItem = leftBarButtonItem
         tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH), style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         tableView.separatorStyle = .none
         view.addSubview(tableView)
         view.backgroundColor = UIColor(249, 249, 249,1)
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
     
@@ -29,7 +29,7 @@ class IqiyiLoginViewController: IqiyiBaseViewController {
             return 180
         }
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let ID = "JFLoginBtnCell"
         var cell = tableView.dequeueReusableCell(withIdentifier: ID) as? IqiyiLoginBtnCell
             if cell == nil {

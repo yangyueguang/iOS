@@ -25,19 +25,19 @@ class EnergyContactUSViewController: EnergyBaseViewController {
         self.tableView.rowHeight = 80
         self.tableView.dataArray = ["一键导航","关注公众号","查看历史消息","微信营销交流","客服聊天","诚聘精英"]
     self.tableView.tableHeaderView = banner
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+//    self.tableView.delegate = self;
+//    self.tableView.dataSource = self;
     view.addSubview(tableView)
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: EnergyContactUSViewCell.identifier) as? EnergyContactUSViewCell
         if cell == nil{
             cell = EnergyContactUSViewCell.getInstance() as? EnergyContactUSViewCell
         }
         return cell!
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let value = self.tableView.dataArray[indexPath.row];
-        _ = self.push(EnergyContactDetailViewController(), withInfo: "", withTitle: value as! String, withOther: value)
+        _ = self.push(EnergyContactDetailViewController(), withInfo: "", withTitle: value as! String)
     }
 }

@@ -22,7 +22,7 @@ class WXCGroupDetailViewController: WXSettingViewController, WechatUserGroupCell
         return super.tableView(tableView, cellForRowAt: indexPath)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = data[indexPath.section].items[UInt(indexPath.row)] 
+        let item = data[indexPath.section].items[indexPath.row]
         if (item.title == "群二维码") {
             let gorupQRCodeVC = WXGroupQRCodeViewController()
             gorupQRCodeVC.group = group

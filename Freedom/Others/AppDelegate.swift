@@ -185,6 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         let umconfig = UMAnalyticsConfig.sharedInstance()
         umconfig?.appKey = UMENG_APPKEY
         umconfig?.ePolicy = REALTIME
+        umconfig?.channelId = APP_CHANNEL
         MobClick.start(withConfigure: umconfig!)
     }
     func firstInitLaunching(){

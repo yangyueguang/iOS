@@ -8,6 +8,15 @@
 
 import UIKit
 import QuartzCore
+import Foundation
+extension Array where Element: Equatable {
+    func index(_ e: Element) -> Int? {
+        for (index, value) in lazy.enumerated() where value == e {
+            return index
+        }
+        return nil
+    }
+}
 private var XCHView: UIView = UIView()
 extension UICollectionView {
     var headView: UIView {

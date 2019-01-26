@@ -58,8 +58,8 @@ class TaobaoShopCarViewController: TaobaoBaseViewController {
         navigationItem.rightBarButtonItems = [edit, more]
         tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: Int(APPW), height: Int(APPH - TabBarH) - 44 - 50), style: .plain)
         tableView.dataArray = ["b", "a", "v", "f", "d", "a", "w", "u", "n", "o", "2"]
-        tableView.dataSource = self
-        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.delegate = self
         view.addSubview(tableView)
         let totalView = UIView(frame: CGRect(x: 0, y: APPH - 50 - TabBarH - 44, width: APPW, height: 40))
         let totalb = UIButton(frame: CGRect(x: 10, y: 12, width: 56, height: 16))

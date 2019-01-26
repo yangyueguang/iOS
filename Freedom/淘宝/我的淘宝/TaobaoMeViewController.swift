@@ -53,6 +53,7 @@ class TaobaoMeHeadView: UICollectionReusableView {
     }
 }
 class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+    var collectionView: BaseCollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "我的淘宝"

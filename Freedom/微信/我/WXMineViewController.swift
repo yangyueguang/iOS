@@ -76,17 +76,14 @@ class WXMineHelper: NSObject {
     var mineMenuData: [[WXMenuItem]] = []
     override init() {
         super.init()
-        let item0: WXMenuItem = tlCreateMenuItem("", Title: "")
-        let item1: WXMenuItem = tlCreateMenuItem("u_album_b", Title: "相册")
-        let item2: WXMenuItem = tlCreateMenuItem("u_favorites", Title: "收藏")
-        let item3: WXMenuItem = tlCreateMenuItem("MoreMyBankCard", Title: "钱包")
-        let item4: WXMenuItem = tlCreateMenuItem("MyCardPackageIcon", Title: "优惠券")
-        let item5: WXMenuItem = tlCreateMenuItem("MoreExpressionShops", Title: "表情")
-        let item6: WXMenuItem = tlCreateMenuItem("setingHL",Title: "设置")
+        let item0 = WXMenuItem("", "")
+        let item1 = WXMenuItem("u_album_b", "相册")
+        let item2 = WXMenuItem("u_favorites", "收藏")
+        let item3 = WXMenuItem("MoreMyBankCard", "钱包")
+        let item4 = WXMenuItem("MyCardPackageIcon", "优惠券")
+        let item5 = WXMenuItem("MoreExpressionShops", "表情")
+        let item6 = WXMenuItem("setingHL", "设置")
         mineMenuData.append(contentsOf:[[item0], [item1, item2, item3, item4], [item5], [item6]])
-    }
-    func tlCreateMenuItem(_ IconPath: String, Title: String) -> WXMenuItem {
-        return WXMenuItem.createMenu(withIconPath: IconPath, title: Title)
     }
 }
 class WXMineInfoHelper: NSObject {
@@ -95,11 +92,11 @@ class WXMineInfoHelper: NSObject {
         super.init()
     }
     func mineInfoData(byUserInfo userInfo: WXUser) -> [WXSettingGroup] {
-        let avatar = WXSettingItem.createItem(withTitle: ("头像"))
+        let avatar = WXSettingItem("头像")
         avatar.rightImageURL = userInfo.avatarURL
-        let nikename = WXSettingItem.createItem(withTitle: ("名字"))
+        let nikename = WXSettingItem("名字")
         nikename.subTitle = userInfo.nikeName.count > 0 ? userInfo.nikeName : "未设置"
-        let username = WXSettingItem.createItem(withTitle: ("微信号"))
+        let username = WXSettingItem("微信号")
         if userInfo.username.count > 0 {
             username.subTitle = userInfo.username
             username.showDisclosureIndicator = false
@@ -107,17 +104,17 @@ class WXMineInfoHelper: NSObject {
         } else {
             username.subTitle = "未设置"
         }
-        let qrCode = WXSettingItem.createItem(withTitle: ("我的二维码"))
+        let qrCode = WXSettingItem("我的二维码")
         qrCode.rightImagePath = PQRCode
-        let location = WXSettingItem.createItem(withTitle: ("我的地址"))
-        let group1: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([avatar, nikename, username, qrCode, location]))
-        let sex = WXSettingItem.createItem(withTitle: ("性别"))
+        let location = WXSettingItem("我的地址")
+        let group1: WXSettingGroup = WXSettingGroup(nil, nil, ([avatar, nikename, username, qrCode, location]))
+        let sex = WXSettingItem("性别")
         sex.subTitle = userInfo.detailInfo.sex
-        let city = WXSettingItem.createItem(withTitle: ("地区"))
+        let city = WXSettingItem("地区")
         city.subTitle = userInfo.detailInfo.location
-        let motto = WXSettingItem.createItem(withTitle: ("个性签名"))
+        let motto = WXSettingItem("个性签名")
         motto.subTitle = userInfo.detailInfo.motto.count > 0 ? userInfo.detailInfo.motto : "未填写"
-        let group2: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([sex, city, motto]))
+        let group2: WXSettingGroup = WXSettingGroup(nil, nil, ([sex, city, motto]))
         mineInfoData.removeAll()
         mineInfoData.append(contentsOf: [group1, group2])
         return mineInfoData

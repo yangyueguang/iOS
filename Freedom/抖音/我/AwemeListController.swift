@@ -73,8 +73,8 @@ class AwemeListController: DouyinBaseViewController {
         tableView = BaseTableView.init(frame: CGRect.init(x: 0, y: -screenHeight, width: screenWidth, height: screenHeight * 5)) as! BaseTableView
         tableView.contentInset = UIEdgeInsets(top: screenHeight, left: 0, bottom: screenHeight * 3, right: 0);
         tableView.backgroundColor = ColorClear
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
         if #available(iOS 11.0, *) {
@@ -152,7 +152,7 @@ class AwemeListController: DouyinBaseViewController {
         }
     }
     
-    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
 
@@ -160,7 +160,7 @@ class AwemeListController: DouyinBaseViewController {
         return screenHeight
     }
 
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AWEME_CELL) as! AwemeListCell
         cell.initData(aweme: data[indexPath.row])
         return cell

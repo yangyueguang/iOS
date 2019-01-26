@@ -19,45 +19,15 @@ class WXTabBarController: UITabBarController {
         super.viewDidLoad()
         tabBar.backgroundColor = UIColor.lightGray
         tabBar.tintColor = UIColor.green
-//        setupChildController(conversationVC, imageName: "tabbar_mainframe", shImageName: "tabbar_mainframeHL", title: "微信")
-//        setupChildController(friendsVC, imageName: "tabbar_contacts", shImageName: "tabbar_contactsHL", title: "通讯录")
-//        setupChildController(discoverVC, imageName: "tabbar_discoverS", shImageName: "tabbar_discoverHL", title: "发现")
-//        setupChildController(mineVC, imageName: "tabbar_me", shImageName: "tabbar_meHL", title: "我")
-        p_initThirdPartSDK() // 初始化第三方SDK
-    }
-    func setupChildController(_ vc: UIViewController, imageName: String, shImageName: String, title: String?) {
-        let image = UIImage(named: imageName)
-        let shImage = UIImage(named: shImageName)
-        vc.tabBarItem.image = image?.withRenderingMode(.alwaysOriginal)
-        vc.tabBarItem.selectedImage = shImage?.withRenderingMode(.alwaysOriginal)
-        var attM: [NSAttributedString.Key : Any] = [:]
-        attM[.foregroundColor] = UIColor.gray
-        vc.tabBarItem.setTitleTextAttributes(attM, for: .normal)
-        vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(0, 190, 12)], for: .selected)
-        let nav = WXNavigationController(rootViewController: vc)
-        self.addChild(nav)
-    }
-    func p_initThirdPartSDK() {
-        // 友盟统计
-        let config = UMAnalyticsConfig.sharedInstance()
-        config?.appKey = UMENG_APPKEY
-        config?.ePolicy = BATCH
-        config?.channelId = APP_CHANNEL
-        MobClick.start(withConfigure: config)
-        // 网络环境监测
-        AFNetworkReachabilityManager.shared().startMonitoring()
         let proxy = WXMessageManager.shared
         proxy.requestClientInitInfoSuccess({ data in
         }, failure: { error in
         })
-        // 初始化用户信息
-        Dlog("沙盒路径:\n\(FileManager.documentsPath())");
-        if UserDefaults.standard.object(forKey: "IsFirstRunApp") == nil {
-            UserDefaults.standard.set("NO", forKey: "IsFirstRunApp")
+        if FirstRun.shared.wechat {
+            FirstRun.shared.wechat = false
             let alert = UIAlertController("提示", "首次启动App，是否随机下载两组个性表情包，稍候也可在“我的”-“表情”中选择下载。", T1: "确定", T2: "取消", confirm1: {
                 self.p_downloadDefaultExpression()
             }, confirm2: {
-
             })
             self.present(alert, animated: true, completion: nil)
         }

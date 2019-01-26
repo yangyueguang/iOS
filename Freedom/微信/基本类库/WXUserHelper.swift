@@ -25,7 +25,10 @@ class WXFriendHelper: NSObject {
         item_public.userID = "-4"
         item_public.avatarPath = "add_friend_icon_offical"
         item_public.remarkName = "公共号"
-        let defaultGroup = WXUserGroup(groupName: "", users: [item_new, item_group, item_tag, item_public])
+
+        let defaultGroup = WXUserGroup()
+        defaultGroup.groupName = ""
+        defaultGroup.users.addObjects([item_new, item_group, item_tag, item_public] as NSFastEnumeration)
         return defaultGroup
     }()
     var friendsData: [WXUser] = []
@@ -259,7 +262,7 @@ class WXFriendHelper: NSObject {
         arr.append(sendMsg)
         if !(userInfo.userID == WXUserHelper.shared.user.userID) {
             let video: WXInfo = tlCreateInfo("视频聊天", nil)
-            video.type = TLInfoType.button.rawValue
+            video.type = Int32(TLInfoType.button.rawValue)
 //            video.buttonBorderColor = UIColor.gray
 //            video.buttonColor = UIColor.white
             arr.append(video)
@@ -268,25 +271,25 @@ class WXFriendHelper: NSObject {
         return data
     }
     func friendDetailSettingArray(byUserInfo userInfo: WXUser) -> [WXSettingGroup] {
-        let remark = WXSettingItem.createItem(withTitle: ("设置备注及标签"))
+        let remark = WXSettingItem("设置备注及标签")
         if userInfo.remarkName.count > 0 {
             remark.subTitle = userInfo.remarkName
         }
-        let group1: WXSettingGroup = TLCreateSettingGroup(nil, nil, [remark])
-        let recommand = WXSettingItem.createItem(withTitle: ("把他推荐给朋友"))
-        let group2: WXSettingGroup = TLCreateSettingGroup(nil, nil, [recommand])
-        let starFriend = WXSettingItem.createItem(withTitle: ("设为星标朋友"))
+        let group1: WXSettingGroup = WXSettingGroup(nil, nil, [remark])
+        let recommand = WXSettingItem("把他推荐给朋友")
+        let group2: WXSettingGroup = WXSettingGroup(nil, nil, [recommand])
+        let starFriend = WXSettingItem("设为星标朋友")
         starFriend.type = .switchBtn
-        let group3: WXSettingGroup = TLCreateSettingGroup(nil, nil, [starFriend])
-        let prohibit = WXSettingItem.createItem(withTitle: ("不让他看我的朋友圈"))
+        let group3: WXSettingGroup = WXSettingGroup(nil, nil, [starFriend])
+        let prohibit = WXSettingItem("不让他看我的朋友圈")
         prohibit.type = .switchBtn
-        let dismiss = WXSettingItem.createItem(withTitle: ("不看他的朋友圈"))
+        let dismiss = WXSettingItem("不看他的朋友圈")
         dismiss.type = .switchBtn
-        let group4: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([prohibit, dismiss]))
-        let blackList = WXSettingItem.createItem(withTitle: ("加入黑名单"))
+        let group4: WXSettingGroup = WXSettingGroup(nil, nil, ([prohibit, dismiss]))
+        let blackList = WXSettingItem("加入黑名单")
         blackList.type = .switchBtn
-        let report = WXSettingItem.createItem(withTitle: ("举报"))
-        let group5: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([blackList, report]))
+        let report = WXSettingItem("举报")
+        let group5: WXSettingGroup = WXSettingGroup(nil, nil, ([blackList, report]))
         return [group1, group2, group3, group4, group5]
     }
     class func gotNextEvent(withWechatContacts data: [WechatContact], success: @escaping (_ data: [WechatContact], _ formatData: [WXUserGroup], _ headers: [String]) -> Void) {
@@ -507,12 +510,12 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
         var data: [TLEmojiGroup] = []
         var myEmojiGroups = store.expressionGroups(byUid: WXUserHelper.shared.user.userID)
         if (myEmojiGroups.count) > 0 {
-//            let group1 = TLCreateSettingGroup("聊天面板中的表情", nil, myEmojiGroups)
+//            let group1 = WXSettingGroup("聊天面板中的表情", nil, myEmojiGroups)
 //            data.append(group1)
         }
-        let userEmojis = WXSettingItem.createItem(withTitle: "添加的表情")
-        let buyedEmojis = WXSettingItem.createItem(withTitle: "购买的表情")
-//        let group2: TLEmojiGroup = TLCreateSettingGroup(nil, nil, ([userEmojis, buyedEmojis]))
+        let userEmojis = WXSettingItem("添加的表情")
+        let buyedEmojis = WXSettingItem("购买的表情")
+//        let group2: TLEmojiGroup = WXSettingGroup(nil, nil, ([userEmojis, buyedEmojis]))
 //        data.append(group2)
         data.append(contentsOf: myEmojiGroups)
         return data

@@ -68,14 +68,14 @@ class KugouSettingViewController: KugouBaseViewController {
     }
     func setupTableView() {
         tableView = BaseTableView(frame: CGRect(x: 0, y: (topView?.height)!, width: APPW, height: APPH - 210), style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         tableView.backgroundColor = UIColor.clear
         tableView.tableFooterView = UIView()
         tableView.showsVerticalScrollIndicator = false
         bottomView?.addSubview(tableView)
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let setId = "setCell"
         var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: setId)
         if cell == nil {
@@ -91,15 +91,15 @@ class KugouSettingViewController: KugouBaseViewController {
         }
         return UITableViewCell()
     }
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 12
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
     func setupLeftGesture() {

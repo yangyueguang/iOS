@@ -49,11 +49,11 @@ class DZDealListViewController: DZBaseViewController {
         super.viewDidLoad()
             tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: view.height - 20), style: .plain)
             tableView.dataArray = ["b", "a", "v", "f", "d", "a", "w", "u", "n", "o", "b", "a", "v", "f", "d", "a", "w", "u", "n", "o", "b", "a", "v", "f", "d", "a", "w", "u", "n", "o", "2"]
-            tableView.dataSource = self
-            tableView.delegate = self
+//            tableView.dataSource = self
+//            tableView.delegate = self
             view.addSubview(tableView)
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: BaseTableViewCell?
         if indexPath.row % 5 != 0 {
             //竖着的
@@ -73,7 +73,7 @@ class DZDealListViewController: DZBaseViewController {
         }
         return UITableViewCell()
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         _ = push(DZDealDetailViewController(), withInfo: "", withTitle: "详情")
     }
 }

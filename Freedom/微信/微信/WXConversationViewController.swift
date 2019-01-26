@@ -46,7 +46,6 @@ class WechatAddMenuCell: WXTableViewCell {
 }
 class WechatAddMenuView: UIView, UITableViewDataSource, UITableViewDelegate {
     weak var delegate: WXAddMenuViewDelegate?
-    private var helper = WXAddMenuHelper()
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.isScrollEnabled = false
@@ -65,8 +64,13 @@ class WechatAddMenuView: UIView, UITableViewDataSource, UITableViewDelegate {
         addSubview(tableView)
         let panGR = UIPanGestureRecognizer(target: self, action: #selector(self.dismiss))
         addGestureRecognizer(panGR)
-        tableView.register(WechatAddMenuCell.self, forCellReuseIdentifier: "TLAddMenuCell")
-        data = helper.menuData
+        tableView.register(WechatAddMenuCell.self, forCellReuseIdentifier: WechatAddMenuCell.identifier)
+        let item1 = WXAddMenuItem(type: .groupChat, title: "发起群聊", iconPath: "nav_menu_groupchat", className: nil)
+        let item2 = WXAddMenuItem(type: .addFriend, title: "添加朋友", iconPath: "nav_menu_addfriend", className: WXAddFriendViewController.self)
+        let item3 = WXAddMenuItem(type: .wallet, title: "收付款", iconPath: "nav_menu_wallet", className: nil)
+        let item4 = WXAddMenuItem(type: .scan, title: "扫一扫", iconPath: "nav_menu_scan", className: WXScanningViewController.self)
+        data.append(contentsOf: [item1,item2,item3,item4])
+
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -99,7 +103,7 @@ class WechatAddMenuView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = data[indexPath.row] as WXAddMenuItem
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TLAddMenuCell") as! WechatAddMenuCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: WechatAddMenuCell.identifier) as! WechatAddMenuCell
         cell.item = item
         return cell
     }

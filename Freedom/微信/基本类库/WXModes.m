@@ -1,7 +1,6 @@
 //
 //  WXModes.m
 //  Freedom
-
 #import "WXModes.h"
 //#import "Freedom-Swift.h"
 @implementation CRRouteLine
@@ -38,9 +37,9 @@
 }
 @end
 @implementation WXUserGroup
-    + (NSString *)primaryKey{
-        return @"groupName";
-    }
++ (NSString *)primaryKey{
+    return @"groupName";
+}
 @end
 @implementation WXGroup
 + (NSString *)primaryKey{
@@ -53,30 +52,18 @@
 @implementation WechatContact
 @end
 @implementation WXMoment
-@end
-@implementation WXMomentFrame
++(NSDictionary *)defaultPropertyValues{
+    return @{@"height": @76};
+}
 @end
 @implementation WXMomentComment
-@end
-@implementation WXMomentCommentFrame
++(NSDictionary *)defaultPropertyValues{
+    return @{@"height": @35};
+}
 @end
 @implementation WXMomentDetail
 @end
-@implementation WXMomentDetailFrame
-@end
 @implementation WXMomentExtension
 @end
-@implementation WXMomentExtensionFrame
-@end
 @implementation WXInfo
-@end
-@implementation WXMenuItem
-+(NSDictionary *)defaultPropertyValues{
-    return @{@"rightIconURL":@""};
-}
-
-@end
-@implementation WXSettingGroup
-@end
-@implementation WXSettingItem
 @end

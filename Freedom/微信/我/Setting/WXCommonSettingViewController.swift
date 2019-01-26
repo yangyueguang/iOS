@@ -138,35 +138,35 @@ class WXChatFontViewController: WXBaseViewController {
 class WXCommonSettingHelper: NSObject {
     var commonSettingData: [WXSettingGroup] = []
     class func chatBackgroundSettingData() -> [WXSettingGroup] {
-        let select = WXSettingItem.createItem(withTitle: ("选择背景图"))
-        let group1: WXSettingGroup = TLCreateSettingGroup(nil, nil, [select])
-        let album = WXSettingItem.createItem(withTitle: ("从手机相册中选择"))
-        let camera = WXSettingItem.createItem(withTitle: ("拍一张"))
-        let group2: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([album, camera]))
-        let toAll = WXSettingItem.createItem(withTitle: ("将背景应用到所有聊天场景"))
+        let select = WXSettingItem("选择背景图")
+        let group1: WXSettingGroup = WXSettingGroup(nil, nil, [select])
+        let album = WXSettingItem("从手机相册中选择")
+        let camera = WXSettingItem("拍一张")
+        let group2: WXSettingGroup = WXSettingGroup(nil, nil, ([album, camera]))
+        let toAll = WXSettingItem("将背景应用到所有聊天场景")
         toAll.type = .titleButton
-        let group3: WXSettingGroup = TLCreateSettingGroup(nil, nil, [toAll])
+        let group3: WXSettingGroup = WXSettingGroup(nil, nil, [toAll])
         return [group1, group2, group3]
     }
     func p_initTestData() {
-        let item1 = WXSettingItem.createItem(withTitle: ("多语言"))
-        let group1: WXSettingGroup = TLCreateSettingGroup(nil, nil, [item1])
-        let item2 = WXSettingItem.createItem(withTitle: ("字体大小"))
-        let item3 = WXSettingItem.createItem(withTitle: ("聊天背景"))
-        let item4 = WXSettingItem.createItem(withTitle: ("我的表情"))
-        let item5 = WXSettingItem.createItem(withTitle: ("朋友圈小视频"))
-        let group2: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([item2, item3, item4, item5]))
-        let item6 = WXSettingItem.createItem(withTitle: ("听筒模式"))
+        let item1 = WXSettingItem("多语言")
+        let group1: WXSettingGroup = WXSettingGroup(nil, nil, [item1])
+        let item2 = WXSettingItem("字体大小")
+        let item3 = WXSettingItem("聊天背景")
+        let item4 = WXSettingItem("我的表情")
+        let item5 = WXSettingItem("朋友圈小视频")
+        let group2: WXSettingGroup = WXSettingGroup(nil, nil, ([item2, item3, item4, item5]))
+        let item6 = WXSettingItem("听筒模式")
         item6.type = .switchBtn
-        let group3: WXSettingGroup = TLCreateSettingGroup(nil, nil, [item6])
-        let item7 = WXSettingItem.createItem(withTitle: ("功能"))
-        let group4: WXSettingGroup = TLCreateSettingGroup(nil, nil, [item7])
-        let item8 = WXSettingItem.createItem(withTitle: ("聊天记录迁移"))
-        let item9 = WXSettingItem.createItem(withTitle: ("清理微信存储空间"))
-        let group5: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([item8, item9]))
-        let item10 = WXSettingItem.createItem(withTitle: ("清空聊天记录"))
+        let group3: WXSettingGroup = WXSettingGroup(nil, nil, [item6])
+        let item7 = WXSettingItem("功能")
+        let group4: WXSettingGroup = WXSettingGroup(nil, nil, [item7])
+        let item8 = WXSettingItem("聊天记录迁移")
+        let item9 = WXSettingItem("清理微信存储空间")
+        let group5: WXSettingGroup = WXSettingGroup(nil, nil, ([item8, item9]))
+        let item10 = WXSettingItem("清空聊天记录")
         item10.type = .titleButton
-        let group6: WXSettingGroup = TLCreateSettingGroup(nil, nil, [item10])
+        let group6: WXSettingGroup = WXSettingGroup(nil, nil, [item10])
         commonSettingData.append(contentsOf: [group1, group2, group3, group4, group5, group6])
     }
     override init() {
@@ -182,7 +182,7 @@ class WXCommonSettingViewController: WXSettingViewController {
         data = helper.commonSettingData
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = data[indexPath.section].items[UInt(indexPath.row)] 
+        let item = data[indexPath.section].items[indexPath.row]
         if (item.title == "字体大小") {
             let chatFontVC = WXChatFontViewController()
             hidesBottomBarWhenPushed = true

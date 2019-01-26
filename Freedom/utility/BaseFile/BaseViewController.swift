@@ -4,11 +4,9 @@ import RxSwift
 import XExtension
 import Alamofire
 @objcMembers
-open class BaseViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
+open class BaseViewController : UIViewController {
     @objc open var userInfo: Any!
-    open var otherInfo: Any!
     open var tableView: BaseTableView!
-    open var collectionView: BaseCollectionView!
     let disposeBag = DisposeBag()
     override open func loadView() {
         super.loadView()
@@ -25,8 +23,6 @@ open class BaseViewController : UIViewController, UITableViewDelegate, UITableVi
         backItem.title = "返回"
         self.navigationItem.backBarButtonItem = backItem;
     }
-
-
     private func monitorNetworkStatus() {
         let net = NetworkReachabilityManager()
         net?.listener = { status in
@@ -55,11 +51,10 @@ open class BaseViewController : UIViewController, UITableViewDelegate, UITableVi
     override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-    public func push(_ controller: BaseViewController=BaseViewController(), withInfo info: Any="", withTitle title: String, withOther other: Any="", tabBarHid abool: Bool=true) -> BaseViewController {
-        print("跳转到 \(title) 页面Base UserInfo:\(info)Base OtherInfo:\(String(describing: other))")
+    public func push(_ controller: BaseViewController=BaseViewController(), withInfo info: Any="", withTitle title: String, tabBarHid abool: Bool=true) -> BaseViewController {
+        print("跳转到 \(title) 页面Base UserInfo:\(info)")
         if controller.responds(to: #selector(setter: userInfo)) {
             controller.userInfo = info
-            controller.otherInfo = other
         }
         controller.title = title
         controller.hidesBottomBarWhenPushed = abool
@@ -86,70 +81,11 @@ open class BaseViewController : UIViewController, UITableViewDelegate, UITableVi
         }
     }
     //MARK: UItableViewDelegagte
-//    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 44
-//    }
-    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
-    }
-    open func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tableView.dataArray.count
-    }
-    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? BaseTableViewCell
-        if cell == nil {
-            cell = BaseTableViewCell.getInstance() as? BaseTableViewCell
-        }
-        return cell!
-    }
     open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return UIView()
     }
     open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
-    }
-    open func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-    open func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-    //MARK: 子类重写
-    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("请子类重写这个方法")
-    }
-    open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ""
-    }
-    open func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return ""
-    }
-    open func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        // 1 添加一个删除按钮
-        let deleteRowAction = UITableViewRowAction(style: .destructive, title: "删除", handler: {(_ action: UITableViewRowAction, _ indexPath: IndexPath) -> Void in
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        })
-        deleteRowAction.backgroundColor = .lightGray
-        return [deleteRowAction]
-    }
-    open func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
-    }
-    open func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }else {
-            tableView.insertRows(at: [indexPath], with: .left)
-        }
-    }
-    open func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        print("请子类重写这个方法")
     }
 
     // 开始摇一摇

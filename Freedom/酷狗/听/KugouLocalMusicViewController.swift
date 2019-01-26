@@ -65,19 +65,19 @@ class KugouLocalMusicViewController: KugouBaseViewController {
     }
     func setupTableView() {
         tableView = BaseTableView(frame: CGRect(x: 0, y: 64, width: APPW, height: APPH), style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.showsVerticalScrollIndicator = false
         view.addSubview(tableView)
     }
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return singerArr.count
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell :KugouLocalMusicCell = KugouLocalMusicCell.getInstance() as! KugouLocalMusicCell
         cell.iconView.image = iconArr[indexPath.row]
         cell.iconView.layer.cornerRadius = cell.iconView.frame.size.width * 0.5
@@ -93,7 +93,7 @@ class KugouLocalMusicViewController: KugouBaseViewController {
         }
         return cell
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let def = UserDefaults.standard
         let myencode = def.value(forKey: "currentMusicInfo") as? Data

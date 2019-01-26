@@ -69,8 +69,8 @@ class ChatListController: DouyinBaseViewController {
     func setUpView() {
         tableView = BaseTableView.init(frame: CGRect.init(x: 0, y: safeAreaTopHeight, width: screenWidth, height: screenHeight - (self.navagationBarHeight() + statusBarHeight) - 10 - safeAreaBottomHeight))
         tableView.backgroundColor = ColorClear
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         tableView.alwaysBounceVertical = true
         tableView.separatorStyle = .none
         if #available(iOS 11.0, *) {
@@ -201,7 +201,7 @@ class ChatListController: DouyinBaseViewController {
             scrollToBottom()
         }
     }
-    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
 
@@ -210,7 +210,7 @@ class ChatListController: DouyinBaseViewController {
         return chat.cellHeight
     }
 
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chat = data[indexPath.row]
         if chat.msg_type == "system" {
             let cell = tableView.dequeueReusableCell(withIdentifier: SYSTEM_MESSAGE_CELL) as! SystemMessageCell

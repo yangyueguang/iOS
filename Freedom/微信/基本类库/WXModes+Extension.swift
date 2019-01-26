@@ -5,9 +5,36 @@ import Realm
 import RealmSwift
 import Foundation
 import XExtension
-func TLCreateSettingGroup(_ Header: String?,_ Footer: String?, _ Items: [WXSettingItem]) -> WXSettingGroup {
-    return WXSettingGroup.createGroup(withHeaderTitle: Header ?? "", footerTitle: Footer ?? "", items: Items)
+
+extension WXMomentDetail {
+    func initValue() {
+        height = 0.0
+        heightText = 0
+        if text.count > 0 {
+            let textHeight: CGFloat = text.boundingRect(with: CGSize(width: APPW - 70.0, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)], context: nil).size.height
+            //: 浮点数会导致部分cell顶部多出来一条线，莫名其妙！！！
+            heightText = textHeight + 1.0
+        }
+        height += heightText
+        heightImages = 0.0
+        if images.count > 0 {
+            if text.count > 0 {
+                heightImages += 7.0
+            } else {
+                heightImages += 3.0
+            }
+            let space: CGFloat = 4.0
+            if images.count == 1 {
+                heightImages += APPW - 70.0 * 0.6 * 0.8
+            } else {
+                let row: Int = Int((images.count / 3) + (images.count % 3 == 0 ? 0 : 1))
+                heightImages += APPW - 70.0 * 0.31 * CGFloat(row) + space * CGFloat((row - 1))
+            }
+        }
+        height += heightImages
+    }
 }
+
 
 protocol WXChatUserProtocol: NSObjectProtocol {
     var chat_userID: String { get }
@@ -18,156 +45,66 @@ protocol WXChatUserProtocol: NSObjectProtocol {
     func groupMember(byID userID: String) -> WXUser?
     func groupMembers() -> [WXUser]
 }
-extension WechatContact {
-    var pinyin: String { return self.name.pinyin() }
-    var pinyinInitial: String { return self.name.pinyin() }
+enum TLChatUserType: Int {
+    case user
+    case group
 }
-extension WXMomentDetail {
-    func heightText() -> CGFloat {
-        if text.count > 0 {
-            let textHeight: CGFloat = text.boundingRect(with: CGSize(width: APPW - 70.0, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)], context: nil).size.height
-            //: 浮点数会导致部分cell顶部多出来一条线，莫名其妙！！！
-            return textHeight + 1.0
-        }
-        return 0.0
+enum TLInfoType: Int {
+    case defaultType
+    case titleOnly
+    case images
+    case mutiRow
+    case button
+    case other
+}
+enum TLSettingItemType: Int {
+    case defalut1
+    case titleButton
+    case switchBtn
+    case other
+}
+struct WXMenuItem {
+    var icon = ""
+    var title = ""
+    var subTitle = ""
+    var rightIconURL = ""
+    var showRightRedPoint = false
+    init() {
     }
-    func heightImages() -> CGFloat {
-        var height: CGFloat = 0.0
-        if images.count > 0 {
-            if text.count > 0 {
-                height += 7.0
-            } else {
-                height += 3.0
-            }
-            let space: CGFloat = 4.0
-            if images.count == 1 {
-                height += APPW - 70.0 * 0.6 * 0.8
-            } else {
-                let row: Int = Int((images.count / 3) + (images.count % 3 == 0 ? 0 : 1))
-                height += APPW - 70.0 * 0.31 * CGFloat(row) + space * CGFloat((row - 1))
-            }
-        }
-        return height
-    }
-    func initValue() {
-        detailFrame = WXMomentDetailFrame()
-        detailFrame.height = 0.0
-        detailFrame.heightText = heightText()
-        detailFrame.height += detailFrame.heightText
-        detailFrame.heightImages = heightImages()
-        detailFrame.height += detailFrame.heightImages
+    init(_ icon: String, _ title: String) {
+        self.icon = icon
+        self.title = title
     }
 }
-
-extension WXMomentExtension {
-    func initValue() {
-        extensionFrame = WXMomentExtensionFrame()
-        extensionFrame.height = 0.0
-        if likedFriends.count > 0 || comments.count > 0 {
-            extensionFrame.height += 5
-        }
-        extensionFrame.heightLiked = heightLiked()
-        extensionFrame.height += extensionFrame.heightLiked
-        extensionFrame.heightComments = heightComments()
-        extensionFrame.height += extensionFrame.heightComments
+class WXSettingItem: NSObject {
+    var title = ""
+    var subTitle = ""
+    var rightImagePath = ""
+    var rightImageURL = ""
+    var showDisclosureIndicator = false
+    var disableHighlight = false
+    var type = TLSettingItemType.defalut1
+    override init() {
+        super.init()
     }
-    func heightLiked() -> CGFloat {
-        var height: CGFloat = 0.0
-        if likedFriends.count > 0 {
-            height = 30.0
-        }
-        return height
+    convenience init(_ title: String) {
+        self.init()
+        self.title = title
     }
-
-    func heightComments() -> CGFloat {
-        var height: CGFloat = 0.0
-        for comment: WXMomentComment in (comments as! [WXMomentComment]) {
-            height += comment.commentFrame.height
-        }
-        return height
-    }
+  
 }
-extension WXMoment {
-    func initValue() {
-        self.extension = WXMomentExtension()
-        momentFrame = WXMomentFrame()
-        momentFrame.height = 76.0
-        momentFrame.heightDetail = detail.detailFrame.height 
-        momentFrame.height += momentFrame.heightDetail // 正文高度
-        momentFrame.heightExtension = self.extension.extensionFrame.height
-        momentFrame.height += momentFrame.heightExtension // 拓展高度
-
+class WXSettingGroup : NSObject {
+    var headerTitle = ""
+    var footerTitle = ""
+    var items: [WXSettingItem] = []
+    override init() {
+        super.init()
     }
-}
-extension WXMomentComment: RealmCollectionValue {
-    private func initValue() {
-        commentFrame = WXMomentCommentFrame()
-        commentFrame.height = 35.0
-    }
-}
-
-extension WXMenuItem {
-    class func createMenu(withIconPath iconPath: String, title: String) -> WXMenuItem {
-        let item = WXMenuItem()
-        item.iconPath = iconPath
-        item.title = title
-        return item
-    }
-}
-
-extension WXSettingGroup {
-    private var count: Int {
-        return Int(items.count) 
-    }
-    class func createGroup(withHeaderTitle headerTitle: String, footerTitle: String, items: [WXSettingItem]) -> WXSettingGroup {
-        let group = WXSettingGroup()
-        group.headerTitle = headerTitle
-        group.footerTitle = footerTitle
-        group.items.addObjects(items as NSFastEnumeration)
-        return group
-    }
-    func object(at index: Int) -> WXSettingItem {
-        return items[UInt(index)] 
-    }
-
-    func index(of obj: WXSettingItem) -> Int {
-        return Int(items.index(of: obj) )
-    }
-
-    func remove(_ obj: WXSettingItem) {
-//        items.remove(obj)
-    }
-    func setHeaderTitle(_ headerTitle: String) {
-        self.headerTitle = headerTitle
-//        self.headerHeight = getTextHeightOfText(headerTitle, font: UIFont.systemFont(ofSize: 14.0), width: APPW - 30)
-    }
-    func setFooterTitle(_ footerTitle: String) {
-        self.footerTitle = footerTitle
-//        self.footerHeight = getTextHeightOfText(footerTitle, font: UIFont.systemFont(ofSize: 14.0), width: APPW - 30)
-    }
-    func getTextHeightOfText(_ text: String, font: UIFont, width: CGFloat) -> CGFloat {
-        let hLabel = UILabel(frame: UIScreen.main.bounds)
-        hLabel.numberOfLines = 0
-        hLabel.frame = CGRect(x: hLabel.frame.origin.x, y: hLabel.frame.origin.y, width: width, height: hLabel.frame.size.height)
-        hLabel.font = font
-        hLabel.text = text
-        return hLabel.sizeThatFits(CGSize(width: width, height: CGFloat(MAXFLOAT))).height
-    }
-}
-extension WXSettingItem: RealmCollectionValue {
-    class func createItem(withTitle title: String) -> WXSettingItem {
-        let item = WXSettingItem()
-        item.title = title
-        return item
-    }
-    func cellClassName() -> String {
-        switch type {
-        case .defalut1:return "TLSettingCell"
-        case .titleButton:return "TLSettingButtonCell"
-        case .switchBtn:return "TLSettingSwitchCell"
-        default:break
-        }
-        return ""
+    convenience init(_ title: String?,_ foot: String?,_ items:[WXSettingItem]) {
+        self.init()
+        self.headerTitle = title ?? ""
+        self.footerTitle = foot ?? ""
+        self.items = items
     }
 }
 extension WXInfo {
@@ -184,7 +121,7 @@ extension WXInfo {
 }
 
 extension WXUser: WXChatUserProtocol, RealmCollectionValue {
-    func initValue(){
+    private func initValue(){
         detailInfo = WXUserDetail()
         userSetting = WXUserSetting()
         chatSetting = WXUserChatSetting()
@@ -212,37 +149,7 @@ extension WXUser: WXChatUserProtocol, RealmCollectionValue {
         return []
     }
 }
-extension WXUserGroup {
-    var count: Int {
-        return Int(users.count)
-    }
-    convenience init(groupName: String, users: [WXUser]) {
-        self.init()
-        self.groupName = groupName
-        self.users.addObjects(users as NSFastEnumeration)
-    }
-}
 extension WXGroup: WXChatUserProtocol, RealmCollectionValue {
-    var groupAvatarPath: String {
-        return self.groupID + ".png"
-    }
-    var pinyin: String {return groupName.pinyin()}
-    var pinyinInitial: String {return groupName.pinyin()}
-    var count: Int {
-        return Int(users.count)
-    }
-    func add(_ anObject: WXUser) {
-        users.add(anObject)
-    }
-    func object(at index: Int) -> WXUser {
-        return users.object(at: UInt(index)) as! WXUser
-    }
-    func member(byUserID uid: String) -> WXUser? {
-        for user in (users as! [WXUser]) where user.userID == uid {
-            return user as! WXUser
-        }
-        return nil
-    }
     //FIXME: delegate
     var chat_userID: String {
         return groupID
@@ -260,10 +167,13 @@ extension WXGroup: WXChatUserProtocol, RealmCollectionValue {
         return TLChatUserType.group.rawValue
     }
     func groupMember(byID userID: String) -> WXUser? {
-        return member(byUserID: userID)
+        for user in (users.array() as! [WXUser]) where user.userID == userID {
+            return user
+        }
+        return nil
     }
     func groupMembers() -> [WXUser] {
-        return users as! [WXUser]
+        return users.array() as! [WXUser]
     }
 }
 
@@ -273,39 +183,15 @@ class WXAddMenuItem: NSObject {
     var title = ""
     var iconPath = ""
     var className: UIViewController.Type?
-    class func create(with type: TLAddMneuType, title: String, iconPath: String, className: UIViewController.Type?) -> WXAddMenuItem {
-        let item = WXAddMenuItem()
-        item.type = type
-        item.title = title
-        item.iconPath = iconPath
-        item.className = className
-        return item
-    }
-}
-class WXAddMenuHelper: NSObject {
-    private var menuItemTypes: [Int] = [0, 1, 2, 3]
-    lazy var menuData: [WXAddMenuItem] = {
-        var menuData: [WXAddMenuItem] = []
-        for type in menuItemTypes {
-            let item: WXAddMenuItem = p_getMenuItem(by: TLAddMneuType(rawValue: type)!)
-            menuData.append(item)
-        }
-        return menuData
-    }()
     override init() {
         super.init()
     }
-    func p_getMenuItem(by type: TLAddMneuType) -> WXAddMenuItem {
-        switch type {
-        case .groupChat:
-            return WXAddMenuItem.create(with: .groupChat, title: "发起群聊", iconPath: "nav_menu_groupchat", className: nil)
-        case .addFriend:
-            return WXAddMenuItem.create(with: .addFriend, title: "添加朋友", iconPath: "nav_menu_addfriend", className: WXAddFriendViewController.self)
-        case .wallet:
-            return WXAddMenuItem.create(with: .wallet, title: "收付款", iconPath: "nav_menu_wallet", className: nil)
-        case .scan:
-            return WXAddMenuItem.create(with: .scan, title: "扫一扫", iconPath: "nav_menu_scan", className: WXScanningViewController.self)
-        }
+    convenience init(type: TLAddMneuType, title: String, iconPath: String, className: UIViewController.Type?) {
+        self.init()
+        self.type = type
+        self.title = title
+        self.iconPath = iconPath
+        self.className = className
     }
 }
 
@@ -338,7 +224,6 @@ class TLEmoji: RLMObject, RealmCollectionValue {
         let groupPath = FileManager.pathExpression(forGroupID: groupID)
         return "\(groupPath)\(emojiID)"
     }
-
     override static func primaryKey() -> String {
         return "groupID"
     }

@@ -7,12 +7,12 @@ class WXAboutHelper: NSObject {
     var abouSettingtData: [WXSettingGroup] = []
     override init() {
         super.init()
-        let item1 = WXSettingItem.createItem(withTitle: ("去评分"))
-        let item2 = WXSettingItem.createItem(withTitle: ("欢迎页"))
-        let item3 = WXSettingItem.createItem(withTitle: ("功能介绍"))
-        let item4 = WXSettingItem.createItem(withTitle: ("系统通知"))
-        let item5 = WXSettingItem.createItem(withTitle: ("举报与投诉"))
-        let group1: WXSettingGroup = TLCreateSettingGroup(nil, nil, ([item1, item2, item3, item4, item5]))
+        let item1 = WXSettingItem("去评分")
+        let item2 = WXSettingItem("欢迎页")
+        let item3 = WXSettingItem("功能介绍")
+        let item4 = WXSettingItem("系统通知")
+        let item5 = WXSettingItem("举报与投诉")
+        let group1: WXSettingGroup = WXSettingGroup(nil, nil, ([item1, item2, item3, item4, item5]))
         abouSettingtData.append(contentsOf: [group1])
     }
 }
