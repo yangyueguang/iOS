@@ -120,10 +120,10 @@ class WXChatViewController: WXChatBaseViewController, UIImagePickerControllerDel
 //        present(navC, animated: true)
     }
     override func didClickedUserAvatar(_ user: WXUser) {
-//        let detailVC = WXFriendDetailViewController()
-//        detailVC.user = user
-//        hidesBottomBarWhenPushed = true
-//        navigationController.pushViewController(detailVC, animated: true)
+        let detailVC = WXFriendDetailViewController()
+        detailVC.user = user
+        hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     override func didClickedImageMessages(_ imageMessages: [WXImageMessage], at index: Int) {
         var data: [MWPhoto] = []

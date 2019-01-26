@@ -25,11 +25,7 @@ class WXTabBarController: UITabBarController {
         })
         if FirstRun.shared.wechat {
             FirstRun.shared.wechat = false
-            let alert = UIAlertController("提示", "首次启动App，是否随机下载两组个性表情包，稍候也可在“我的”-“表情”中选择下载。", T1: "确定", T2: "取消", confirm1: {
-                self.p_downloadDefaultExpression()
-            }, confirm2: {
-            })
-            self.present(alert, animated: true, completion: nil)
+            self.p_downloadDefaultExpression()
         }
     }
     func p_downloadDefaultExpression() {

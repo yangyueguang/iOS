@@ -98,9 +98,9 @@ class WXInfoViewController: BaseTableViewController, WXInfoButtonCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 10.0))
-        tableView.register(WXInfoHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "TLInfoHeaderFooterView")
-        tableView.register(WXInfoCell.self, forCellReuseIdentifier: "TLInfoCell")
-        tableView.register(WXInfoButtonCell.self, forCellReuseIdentifier: "TLInfoButtonCell")
+        tableView.register(WXInfoHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: WXInfoHeaderFooterView.identifier)
+        tableView.register(WXInfoCell.self, forCellReuseIdentifier: WXInfoCell.identifier)
+        tableView.register(WXInfoButtonCell.self, forCellReuseIdentifier: WXInfoButtonCell.identifier)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -140,10 +140,10 @@ class WXInfoViewController: BaseTableViewController, WXInfoButtonCellDelegate {
         return cell
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableHeaderFooterView(withIdentifier: "TLInfoHeaderFooterView")
+        return tableView.dequeueReusableHeaderFooterView(withIdentifier: WXInfoHeaderFooterView.identifier)
     }
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableHeaderFooterView(withIdentifier: "TLInfoHeaderFooterView")
+        return tableView.dequeueReusableHeaderFooterView(withIdentifier: WXInfoHeaderFooterView.identifier)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)

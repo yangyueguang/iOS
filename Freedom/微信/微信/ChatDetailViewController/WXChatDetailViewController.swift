@@ -58,10 +58,10 @@ class WXChatDetailViewController: WXSettingViewController, WechatUserGroupCellDe
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
     func userGroupCellDidSelect(_ user: WXUser) {
-//        let detailVC = WXFriendDetailViewController()
-//        detailVC.user = user
-//        hidesBottomBarWhenPushed = true
-//        navigationController.pushViewController(detailVC, animated: true)
+        let detailVC = WXFriendDetailViewController()
+        detailVC.user = user
+        hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     func userGroupCellAddUserButtonDown() {
         noticeInfo("添加讨论组成员")
