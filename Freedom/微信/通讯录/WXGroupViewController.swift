@@ -45,7 +45,7 @@ class WXGroupSearchViewController: WXTableViewController, UISearchResultsUpdatin
 class WXGroupCell: WXTableViewCell {
     var group: WXGroup = WXGroup() {
         didSet {
-            let path = FileManager.pathUserAvatar(group.groupAvatarPath)
+            let path = FileManager.pathUserAvatar(group.groupID)
             let image = UIImage(named: path) ?? UIImage(named: PuserLogo)
             avatarImageView.image = image
             usernameLabel.text = group.groupName

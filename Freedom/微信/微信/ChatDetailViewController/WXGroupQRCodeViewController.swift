@@ -6,7 +6,7 @@ import Foundation
 class WXGroupQRCodeViewController: WXBaseViewController {
     var group: WXGroup = WXGroup() {
         didSet {
-            qrCodeVC.avatarPath = group.groupAvatarPath
+            qrCodeVC.avatarPath = group.groupID
             qrCodeVC.username = group.groupName
             qrCodeVC.qrCode = group.groupID
             let date = Date()

@@ -82,7 +82,6 @@ RLM_ARRAY_TYPE(WXUserChatSetting)
 RLM_ARRAY_TYPE(WXUser)
 @interface WXGroup : RLMObject
 @property (nonatomic, strong) NSString *groupName;
-@property (nonatomic, strong, nonnull) NSString *groupAvatarPath;
 @property (nonatomic, strong) NSString *groupID;
 @property (nonatomic, strong, nonnull) RLMArray<WXUser*><WXUser> *users;
 @property (nonatomic, strong) NSString *post;

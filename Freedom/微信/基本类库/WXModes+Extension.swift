@@ -161,7 +161,7 @@ extension WXGroup: WXChatUserProtocol, RealmCollectionValue {
         return ""
     }
     var chat_avatarPath: String {
-        return groupAvatarPath
+        return groupID
     }
     var chat_userType: Int {
         return TLChatUserType.group.rawValue

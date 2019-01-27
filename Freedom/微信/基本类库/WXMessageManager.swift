@@ -68,7 +68,7 @@ class WXConversation: RLMObject {
     }
     func updateGroupInfo(_ group: WXGroup) {
         partnerName = group.groupName
-        avatarPath = group.groupAvatarPath
+        avatarPath = group.groupID
     }
 }
 @objcMembers

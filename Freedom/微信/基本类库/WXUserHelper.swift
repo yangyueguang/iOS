@@ -193,7 +193,7 @@ class WXFriendHelper: NSObject {
                         let imageRefRect = imageRef?.cropping(to: CGRect(x: 0, y: 0, width: view.frame.size.width * 2, height: view.frame.size.height * 2))!
                         let ansImage = UIImage(cgImage: imageRefRect!)
                         let imageViewData = ansImage.pngData()
-                        let savedImagePath = FileManager.pathUserAvatar(group.groupAvatarPath)
+                        let savedImagePath = FileManager.pathUserAvatar(group.groupID)
                         try! imageViewData?.write(to: URL(fileURLWithPath: savedImagePath), options: Data.WritingOptions.atomic)
                         DispatchQueue.main.async(execute: {
                             finished(group.groupID)
