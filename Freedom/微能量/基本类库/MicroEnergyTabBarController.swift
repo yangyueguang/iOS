@@ -53,7 +53,7 @@ import XExtension
 //    }
 //}
 
-class MicroEnergyTabBarController: BaseTabBarViewController,UITabBarControllerDelegate {
+final class MicroEnergyTabBarController: BaseTabBarViewController,UITabBarControllerDelegate {
     let myTabBar = EnergySuperMarketTabBarController.sharedRootViewController
     override func viewDidLoad() {
         super.viewDidLoad()

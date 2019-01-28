@@ -6,7 +6,7 @@
 //  Copyright © 2018 薛超. All rights reserved.
 //
 import UIKit
-class SinaMeViewController: SinaBaseViewController {
+final class SinaMeViewController: SinaBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "设置", style: .done, target: nil, action: nil)

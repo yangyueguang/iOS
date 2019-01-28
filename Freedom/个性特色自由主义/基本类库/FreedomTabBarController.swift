@@ -2,7 +2,7 @@
 //  FreedomTabBarController.swift
 //  Freedom
 import UIKit
-class FreedomTabBarController: BaseTabBarViewController {
+final class FreedomTabBarController: BaseTabBarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.barTintColor = .white

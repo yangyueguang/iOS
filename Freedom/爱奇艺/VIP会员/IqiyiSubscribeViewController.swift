@@ -157,7 +157,7 @@ class IqiyiSubscribeScrollView: UIScrollView {
     func didSelectSubImageCard(_ subImageCard: IqiyiSubScribeCardView?, subItem: IqiyiSubItemModel?) {
     }
 }
-class IqiyiSubscribeViewController: IqiyiBaseViewController {
+final class IqiyiSubscribeViewController: IqiyiBaseViewController {
     var subscribeTableView : UITableView!
     var dataSource = [AnyHashable]()
     func setUpRefresh() {

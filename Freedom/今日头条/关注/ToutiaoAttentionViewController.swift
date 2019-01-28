@@ -2,7 +2,7 @@
 //  ToutiaoAttentionViewController.swift
 //  Freedom
 import UIKit
-class ToutiaoAttentionViewController: ToutiaoBaseViewController {
+final class ToutiaoAttentionViewController: ToutiaoBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

@@ -97,7 +97,7 @@ class AlipayServiceTableViewHeader : UIView,UITextFieldDelegate{
     }
         
 }
-class AlipayServiceTableViewController: AlipayBaseViewController {
+final class AlipayServiceTableViewController: AlipayBaseViewController {
     let cellClass = AlipayServiceTableViewCell.self
     var dataArray = [AlipayServiceTableViewCellModel]()
     override func viewDidLoad() {

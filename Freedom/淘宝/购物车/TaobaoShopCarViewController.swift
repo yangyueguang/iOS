@@ -48,7 +48,7 @@ class TaobaoShopCarViewCell:BaseTableViewCell{
         script.text = "颜色分类:红色;尺码:M"
     }
 }
-class TaobaoShopCarViewController: TaobaoBaseViewController {
+final class TaobaoShopCarViewController: TaobaoBaseViewController {
     func buildUI() {
         title = "购物车(10)"
         let more = UIBarButtonItem(barButtonSystemItem: .action, target:nil, action:nil)

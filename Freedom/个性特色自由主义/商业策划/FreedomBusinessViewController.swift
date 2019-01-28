@@ -3,7 +3,7 @@
 //  Freedom
 //
 import UIKit
-class FreedomBusinessViewController: FreedomBaseViewController {
+final class FreedomBusinessViewController: FreedomBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "事业合作"

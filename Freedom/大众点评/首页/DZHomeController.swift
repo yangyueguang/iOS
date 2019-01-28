@@ -150,7 +150,7 @@ class DZHomeHeadView2: UICollectionReusableView {
         }
     }
 }
-class DZHomeController: DZBaseViewController,UICollectionViewDataSource,UICollectionViewDelegate {
+final class DZHomeController: DZBaseViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     var collectionView: BaseCollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()

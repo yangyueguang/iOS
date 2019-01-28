@@ -49,7 +49,7 @@ class TEMPBASEC:BaseTableViewCell{
         self.icon.image = UIImage(named:"taobaomini2")
     }
 }
-class IqiyiClassifyViewController: IqiyiBaseViewController {
+final class IqiyiClassifyViewController: IqiyiBaseViewController {
     let urlStr = "urlWithclassifyData"
     var dataSource = [AnyHashable]()
     override func viewDidLoad() {

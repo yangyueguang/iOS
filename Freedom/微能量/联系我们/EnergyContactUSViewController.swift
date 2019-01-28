@@ -14,7 +14,7 @@ class EnergyContactUSViewCell:BaseTableViewCell{
         self.icon.image = UIImage(named:"taobaomini3")
     }
 }
-class EnergyContactUSViewController: EnergyBaseViewController {
+final class EnergyContactUSViewController: EnergyBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     self.title = "联系我们"

@@ -5,7 +5,7 @@ import UIKit
 import XExtension
 class IqiyiLoginBtnCell:BaseTableViewCell{
 }
-class IqiyiLoginViewController: IqiyiBaseViewController {
+final class IqiyiLoginViewController: IqiyiBaseViewController {
     override func viewDidLoad() {
         navigationController?.navigationBar.isHidden = false
         title = "登陆"

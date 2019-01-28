@@ -6,7 +6,7 @@ import UIKit
 import SnapKit
 import XCarryOn
 import XExtension
-class WXTabBarController: UITabBarController {
+final class WXTabBarController: UITabBarController {
     static let shared = WXTabBarController()
     let conversationVC = WXConversationViewController()
     let friendsVC = WXFriendsViewController()

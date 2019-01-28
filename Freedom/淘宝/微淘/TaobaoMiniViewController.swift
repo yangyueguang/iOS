@@ -3,7 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
-class TaobaoMiniViewController: TaobaoBaseViewController {
+final class TaobaoMiniViewController: TaobaoBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let leftI = UIBarButtonItem(image: UIImage(named: "TaobaoScanner"), style: .done, target: nil, action: nil)

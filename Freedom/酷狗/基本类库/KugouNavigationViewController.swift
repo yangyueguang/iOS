@@ -2,7 +2,7 @@
 //  KugouNavigationViewController.swift
 //  Freedom
 import UIKit
-class KugouNavigationViewController: BaseNavigationViewController {
+final class KugouNavigationViewController: BaseNavigationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

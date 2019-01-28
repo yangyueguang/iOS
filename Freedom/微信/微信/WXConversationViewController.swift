@@ -256,7 +256,7 @@ class WechatConversationCell: BaseTableViewCell {
         }
     }
 }
-class WXConversationViewController: BaseTableViewController, WXMessageManagerConvVCDelegate, UISearchBarDelegate, WXAddMenuViewDelegate {
+final class WXConversationViewController: BaseTableViewController, WXMessageManagerConvVCDelegate, UISearchBarDelegate, WXAddMenuViewDelegate {
     var searchVC = WXFriendSearchViewController()
     var data: [WXConversation] = []
     private var scrollTopView = UIImageView(image: UIImage(named: "conv_wechat_icon"))

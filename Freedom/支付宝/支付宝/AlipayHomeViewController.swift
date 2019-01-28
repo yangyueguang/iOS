@@ -319,7 +319,7 @@ class AlipayHomeGridView: UIScrollView, UIScrollViewDelegate {
         currentPressedView?.hidenIcon = true
     }
 }
-class AlipayHomeViewController: AlipayBaseViewController,SDHomeGridViewDeleate {
+final class AlipayHomeViewController: AlipayBaseViewController,SDHomeGridViewDeleate {
     var dataArray :[Any]!
     let mainView = AlipayHomeGridView()
     override func viewDidLoad() {

@@ -6,7 +6,7 @@
 //  Copyright © 2018 薛超. All rights reserved.
 import UIKit
 import XExtension
-class SinaMessageViewController: SinaBaseViewController {
+final class SinaMessageViewController: SinaBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - TopHeight), style: .plain)

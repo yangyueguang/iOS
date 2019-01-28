@@ -14,7 +14,7 @@ class EnergyNewsViewCell:BaseTableViewCell{
         self.icon.image = UIImage(named:"taobaomini3")
     }
 }
-class EnergyNewsViewController: EnergyBaseViewController {
+final class EnergyNewsViewController: EnergyBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "新闻动态";

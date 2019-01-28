@@ -7,7 +7,7 @@
 //
 import UIKit
 import XExtension
-class ToutiaoMeViewController: BaseTableViewController {
+final class ToutiaoMeViewController: BaseTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .default

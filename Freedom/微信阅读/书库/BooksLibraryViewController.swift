@@ -13,7 +13,7 @@ class BooksViewCell:BaseCollectionViewCell{
         addSubviews([self.title,self.icon])
     }
 }
-class BooksLibraryViewController: BooksBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+final class BooksLibraryViewController: BooksBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
     var collectionView: BaseCollectionView!
     @objc func rightAction(){

@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Super. All rights reserved.
 //
 import UIKit
-class MyDatabaseTabBarController: BaseTabBarViewController {
+final class MyDatabaseTabBarController: BaseTabBarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true

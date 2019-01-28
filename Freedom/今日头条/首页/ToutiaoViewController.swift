@@ -5,7 +5,7 @@
 import UIKit
 import RxSwift
 import XExtension
-class ToutiaoViewController: ToutiaoBaseViewController, UIScrollViewDelegate {
+final class ToutiaoViewController: ToutiaoBaseViewController, UIScrollViewDelegate {
     let titleScrollView = UIScrollView()//标题ScrollView
     let contentScrollView = UIScrollView()//内容scrollView
     var selTitlebutton = UIButton()//标题中的按钮

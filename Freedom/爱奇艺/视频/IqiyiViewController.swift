@@ -300,7 +300,7 @@ class IqiyiHomeVideoBoxCell: BaseTableViewCell {
         backView.addSubview(cardView6)
     }
 }
-class IqiyiViewController: IqiyiBaseViewController ,IqiyiHomeBoxCellDelegate {
+final class IqiyiViewController: IqiyiBaseViewController ,IqiyiHomeBoxCellDelegate {
         var homeTableView: UITableView?
         
         private var dataSource = [AnyHashable]()

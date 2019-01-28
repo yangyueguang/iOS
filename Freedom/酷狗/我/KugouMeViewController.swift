@@ -4,7 +4,7 @@
 
 import UIKit
 
-class KugouMeViewController: KugouBaseViewController {
+final class KugouMeViewController: KugouBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

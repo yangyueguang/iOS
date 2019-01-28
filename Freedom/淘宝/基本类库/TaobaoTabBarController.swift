@@ -2,5 +2,5 @@
 //  TaobaoTabBarController.swift
 //  Freedom
 import UIKit
-class TaobaoTabBarController: BaseTabBarViewController {
+final class TaobaoTabBarController: BaseTabBarViewController {
 }

@@ -87,7 +87,7 @@ class WechatContactCell: BaseTableViewCell {
     }
 }
 
-class WXContactsSearchViewController: BaseTableViewController, UISearchResultsUpdating {
+final class WXContactsSearchViewController: BaseTableViewController, UISearchResultsUpdating {
     var contactsData: [WechatContact] = []
     private var data: [WechatContact] = []
     override func viewDidLoad() {

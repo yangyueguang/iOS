@@ -3,7 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
-class IqiyiNavigationController: BaseNavigationViewController {
+final class IqiyiNavigationController: BaseNavigationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.isTranslucent = false

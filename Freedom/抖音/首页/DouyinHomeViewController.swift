@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DouyinHomeViewController: DouyinBaseViewController {
+final class DouyinHomeViewController: DouyinBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

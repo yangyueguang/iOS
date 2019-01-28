@@ -6,7 +6,7 @@
 //  Copyright © 2018 薛超. All rights reserved.
 //
 import UIKit
-class SinaDiscoverViewController: SinaBaseViewController {
+final class SinaDiscoverViewController: SinaBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 375, height: 30))

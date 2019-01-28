@@ -6,7 +6,7 @@
 //  Copyright © 2018 薛超. All rights reserved.
 import UIKit
 import AFNetworking
-class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
+final class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
     var textView: SinaEmotionTextView = SinaEmotionTextView()/** 输入控件 */
     var toolbar: SinaComposeToolbar = SinaComposeToolbar(frame: CGRect.zero)/** 键盘顶部的工具条 */
     var photoView: SinaComposePhotosView = SinaComposePhotosView()/** 相册（存放拍照或者相册中选择的图片） */

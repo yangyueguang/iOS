@@ -52,7 +52,7 @@ class TaobaoMeHeadView: UICollectionReusableView {
         addSubview(more)
     }
 }
-class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+final class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     var collectionView: BaseCollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()

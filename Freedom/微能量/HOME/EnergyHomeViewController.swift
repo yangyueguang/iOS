@@ -17,7 +17,7 @@ class EnergyHomeViewCell:BaseCollectionViewCell{
         self.icon.image = UIImage(named:"taobaomini2")
     }
 }
-class EnergyHomeViewController: EnergyBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource{
+final class EnergyHomeViewController: EnergyBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource{
 
     var collectionView: BaseCollectionView!
     override func viewDidLoad() {

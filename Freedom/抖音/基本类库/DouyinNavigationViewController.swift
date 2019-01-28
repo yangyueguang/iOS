@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DouyinNavigationViewController: BaseNavigationViewController {
+final class DouyinNavigationViewController: BaseNavigationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         isNavigationBarHidden = true

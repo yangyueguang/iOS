@@ -19,7 +19,7 @@ class EnergySampleViewCell:BaseTableViewCell{
         self.icon.image = UIImage(named:"taobaomini2")
     }
 }
-class EnergySampleViewController: EnergyBaseViewController {
+final class EnergySampleViewController: EnergyBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "经典案例"

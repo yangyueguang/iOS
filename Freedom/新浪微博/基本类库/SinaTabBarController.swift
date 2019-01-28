@@ -38,7 +38,7 @@ class SinaTabBar: UITabBar {
     }
 }
 //按钮出来动画
-class SinaTabBarController: BaseTabBarViewController {
+final class SinaTabBarController: BaseTabBarViewController {
     var plus: UIButton = UIButton(frame: CGRect(x: (APPW - 25) * 0.5, y: 8, width: 25, height: 25))
     var blurView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))
     var text: UIImageView = UIImageView(frame: CGRect(x: 31, y: 500, width: 71, height: 100))

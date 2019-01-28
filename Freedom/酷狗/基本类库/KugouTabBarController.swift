@@ -4,7 +4,7 @@
 import UIKit
 import XExtension
 import AVFoundation
-class KugouTabBarController: BaseTabBarViewController {
+final class KugouTabBarController: BaseTabBarViewController {
     let kugouMainVC = KugouMainViewController.storyVC("Kugou")
     override func viewDidLoad() {
         super.viewDidLoad()

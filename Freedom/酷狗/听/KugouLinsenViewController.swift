@@ -97,7 +97,7 @@ class KugoumainHeaderView: UIView {
         localMusic!()
     }
 }
-class KugouLinsenViewController: KugouBaseViewController {
+final class KugouLinsenViewController: KugouBaseViewController {
     var titlesArr = [Any]()
     override func viewDidLoad() {
         super.viewDidLoad()

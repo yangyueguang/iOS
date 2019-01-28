@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Super. All rights reserved.
 //
 import UIKit
-class FreedomProductionViewController: FreedomBaseViewController {
+final class FreedomProductionViewController: FreedomBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let a = ["我的简历","微信","微信小程序2","微页1","微页2","微页3"]

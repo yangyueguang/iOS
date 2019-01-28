@@ -11,7 +11,7 @@ import UIKit
 var USER_INFO_HEADER_HEIGHT:CGFloat = 340 + statusBarHeight
 var SLIDE_TABBAR_FOOTER_HEIGHT:CGFloat = 40
 
-class DouyinMeViewController: DouyinBaseViewController {
+final class DouyinMeViewController: DouyinBaseViewController {
     var collectionView: BaseCollectionView!
     var loadMore:LoadMoreControl?
     var selectIndex:Int = 0

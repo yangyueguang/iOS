@@ -120,7 +120,7 @@ class IqiyiDiscoverCell:BaseTableViewCell{
         imageView?.sd_setImage(with: URL(string: discoverModel?.module_icon ?? ""), placeholderImage: UIImage(named: "customService_y"))
     }
 }
-class IqiyiDiscoverViewController: IqiyiBaseViewController {
+final class IqiyiDiscoverViewController: IqiyiBaseViewController {
     var discoverTableView:UITableView!
     var dataSource = [AnyHashable]()
     var imageArray = [AnyHashable]()

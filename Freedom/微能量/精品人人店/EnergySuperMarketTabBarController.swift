@@ -2,7 +2,7 @@
 //  EnergySuperMarketTabBarController.swift
 //  Freedom
 import UIKit
-class EnergySuperMarketTabBarController: BaseTabBarViewController {
+final class EnergySuperMarketTabBarController: BaseTabBarViewController {
     static let sharedRootViewController = EnergySuperMarketTabBarController()
     var isRemoveTab = true
     let stabbar = EnergyShopTabBarController.sharedRootViewController;

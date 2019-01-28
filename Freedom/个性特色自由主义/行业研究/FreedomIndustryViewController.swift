@@ -19,7 +19,7 @@ class FreedomViewCell:BaseTableViewCell{
         self.addSubviews([self.title,self.icon,self.script])
     }
 }
-class FreedomIndustryViewController: FreedomBaseViewController {
+final class FreedomIndustryViewController: FreedomBaseViewController {
     var controllers:[String]!
     var banner:BaseScrollView!
     override func viewDidLoad() {

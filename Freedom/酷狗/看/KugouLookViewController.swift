@@ -12,7 +12,7 @@ class KugouLookViewCell:BaseTableViewCell{
         self.icon.image = UIImage(named:"taobaomini2")
     }
 }
-class KugouLookViewController: KugouBaseViewController {
+final class KugouLookViewController: KugouBaseViewController {
     var titlesArr = [Any]()
     override func viewDidLoad() {
         super.viewDidLoad()

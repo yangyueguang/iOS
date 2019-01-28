@@ -93,7 +93,7 @@ class WXFriendHeaderView: UITableViewHeaderFooterView {
     }
 }
 
-class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegate {
+final class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegate {
     private lazy var footerLabel: UILabel = {
         let footerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: APPW, height: 50.0))
         footerLabel.textAlignment = .center

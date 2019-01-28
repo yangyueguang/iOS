@@ -52,7 +52,7 @@ class TaobaoCommunityHeadView: UICollectionReusableView {
         addSubview(titleLabel)
     }
 }
-class TaobaoCommunityViewController: TaobaoBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+final class TaobaoCommunityViewController: TaobaoBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource {
 
     var collectionView: BaseCollectionView!
     let banner = BaseScrollView(banner: CGRect(x: 0, y: 30, width: APPW, height: 130), icons:["",""])

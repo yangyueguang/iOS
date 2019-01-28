@@ -25,7 +25,7 @@ class WXDiscoverHelper: NSObject {
         discoverMenuData.append(contentsOf: [[item1], [item2, item3], [item4, item5], [item6, item7]])
     }
 }
-class WXDiscoverViewController: BaseTableViewController {
+final class WXDiscoverViewController: BaseTableViewController {
     var momentsVC = WXMomentsViewController()
     var discoverHelper = WXDiscoverHelper()
     var data: [[WXMenuItem]] = []

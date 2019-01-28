@@ -301,7 +301,7 @@ class Footview1: UICollectionReusableView {
     }
 }
 //FIXME: 以下是正式的VC
-class TaobaoHomeViewController: TaobaoBaseViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+final class TaobaoHomeViewController: TaobaoBaseViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     var grid: UICollectionView!
     var dataArr = [Any]()
     var sectionArr = [Any]()

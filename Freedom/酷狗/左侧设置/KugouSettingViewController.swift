@@ -13,7 +13,7 @@ class KugouSettingViewCell:BaseTableViewCell{
         self.icon.image = UIImage(named:"taobaomini2")
     }
 }
-class KugouSettingViewController: KugouBaseViewController {
+final class KugouSettingViewController: KugouBaseViewController {
     var mainVC: KugouMainViewController?
     var topView: UIView?
     var bottomView: UIView?

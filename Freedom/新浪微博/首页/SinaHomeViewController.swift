@@ -43,7 +43,7 @@ class SinaStatusViewCell: BaseTableViewCell {
     var toolbar = UIView()/** 工具条 */
     var status: SinaStatus?
 }
-class SinaHomeViewController: SinaBaseViewController {
+final class SinaHomeViewController: SinaBaseViewController {
     var list = [SinaStatus]()
     override func viewDidLoad() {
         super.viewDidLoad()

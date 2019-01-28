@@ -3,7 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
-class IqiyiMineViewController: IqiyiBaseViewController {
+final class IqiyiMineViewController: IqiyiBaseViewController {
     override func viewDidLoad() {
         setNav()
         initViews()

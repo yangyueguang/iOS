@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DouyinMessageViewController: DouyinBaseViewController {
+final class DouyinMessageViewController: DouyinBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -22,7 +22,7 @@ class AlipayDiscoverTableViewControllerCell:BaseTableViewCell{
         fatalError("init(coder:) has not been implemented")
     }
 }
-class AlipayDiscoverTableViewController: AlipayBaseViewController {
+final class AlipayDiscoverTableViewController: AlipayBaseViewController {
     var dataArray = [[AlipayAssetsTableViewControllerCellModel]]()
     override func viewDidLoad() {
         super.viewDidLoad()

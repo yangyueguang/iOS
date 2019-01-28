@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Super. All rights reserved.
 //
 import UIKit
-class FreedomTheorySystemViewController: FreedomBaseViewController {
+final class FreedomTheorySystemViewController: FreedomBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "理论体系"

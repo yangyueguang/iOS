@@ -9,7 +9,7 @@
 import UIKit
 import CoreTelephony
 import Photos
-class DouyinTabBarController: BaseTabBarViewController {
+final class DouyinTabBarController: BaseTabBarViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

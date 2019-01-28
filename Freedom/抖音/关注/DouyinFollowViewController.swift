@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DouyinFollowViewController: DouyinBaseViewController {
+final class DouyinFollowViewController: DouyinBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

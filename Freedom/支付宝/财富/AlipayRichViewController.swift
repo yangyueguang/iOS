@@ -8,6 +8,6 @@
 
 import UIKit
 
-class AlipayRichViewController: AlipayBaseViewController {
+final class AlipayRichViewController: AlipayBaseViewController {
 
 }

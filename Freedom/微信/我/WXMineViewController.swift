@@ -120,7 +120,7 @@ class WXMineInfoHelper: NSObject {
         return mineInfoData
     }
 }
-class WXMineViewController: BaseTableViewController {
+final class WXMineViewController: BaseTableViewController {
     var mineHelper = WXMineHelper()
     var data: [[WXMenuItem]] = []
     override func loadView() {

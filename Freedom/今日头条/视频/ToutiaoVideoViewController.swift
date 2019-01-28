@@ -2,7 +2,7 @@
 //  ToutiaoVideoViewController.swift
 //  Freedom
 import UIKit
-class ToutiaoVideoViewController: ToutiaoBaseViewController {
+final class ToutiaoVideoViewController: ToutiaoBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

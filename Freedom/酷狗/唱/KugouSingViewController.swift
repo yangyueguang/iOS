@@ -2,7 +2,7 @@
 //  SingViewController.swift
 //  Freedom
 import UIKit
-class KugouSingViewController: KugouBaseViewController {
+final class KugouSingViewController: KugouBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }

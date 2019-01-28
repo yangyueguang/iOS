@@ -3,7 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
-class DZDiscoverController: DZBaseViewController {
+final class DZDiscoverController: DZBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let searchBar = UISearchBar()
