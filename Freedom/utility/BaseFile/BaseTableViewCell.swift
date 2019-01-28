@@ -12,7 +12,7 @@ open class BaseTableViewCell : UITableViewCell {
         let instance = self.init(style: .default, reuseIdentifier: self.identifier)
         return instance
     }
-    required public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    public required override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         loadBaseTableCellSubviews()
     }
