@@ -1052,6 +1052,7 @@
 		DF1208D121EEE5AF00F7ED7F /* KugouAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1208D021EEE5AF00F7ED7F /* KugouAPI.swift */; };
 		DF13330721F17945001D01CA /* KugouMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF13330621F17945001D01CA /* KugouMeViewController.swift */; };
 		DF13330921F17C1A001D01CA /* KugouPlayAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF13330821F17C1A001D01CA /* KugouPlayAudioViewController.swift */; };
+		DF1CAA1B21FEB9B9001FA53D /* XButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CAA1A21FEB9B9001FA53D /* XButton.swift */; };
 		DF1ED02D21F75DA900AEF237 /* AlipayRichViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1ED02C21F75DA900AEF237 /* AlipayRichViewController.swift */; };
 		DF29539D21D7A77F00E1C188 /* AXSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539121D7A77F00E1C188 /* AXSecurityPolicy.m */; };
 		DF29539E21D7A77F00E1C188 /* AXWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539721D7A77F00E1C188 /* AXWebViewControllerActivity.m */; };
@@ -2364,6 +2365,7 @@
 		DF1208D021EEE5AF00F7ED7F /* KugouAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouAPI.swift; sourceTree = "<group>"; };
 		DF13330621F17945001D01CA /* KugouMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouMeViewController.swift; sourceTree = "<group>"; };
 		DF13330821F17C1A001D01CA /* KugouPlayAudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouPlayAudioViewController.swift; sourceTree = "<group>"; };
+		DF1CAA1A21FEB9B9001FA53D /* XButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XButton.swift; sourceTree = "<group>"; };
 		DF1ED02C21F75DA900AEF237 /* AlipayRichViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlipayRichViewController.swift; sourceTree = "<group>"; };
 		DF29539121D7A77F00E1C188 /* AXSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXSecurityPolicy.m; sourceTree = "<group>"; };
 		DF29539221D7A77F00E1C188 /* AXSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXSecurityPolicy.h; sourceTree = "<group>"; };
@@ -5009,6 +5011,7 @@
 		DFF4AB9721B794B200F03C71 /* SwiftTools */ = {
 			isa = PBXGroup;
 			children = (
+				DF1CAA1A21FEB9B9001FA53D /* XButton.swift */,
 				DFEF80DE21FB72B7001D81FA /* Circular3DStarView.swift */,
 				DF8BBC9721D67F0600F0D1FD /* UIView+CircularAnimation.swift */,
 				BF58B94920EB22C8002CB4EE /* XTablesViewController.swift */,
@@ -6191,6 +6194,7 @@
 				BF4A80EE2105CFCC00D32FB0 /* AudioStreamer.m in Sources */,
 				713EE30A20ADA0790085B65D /* IqiyiDiscoverViewController.swift in Sources */,
 				DF0489E921D28B870030C30B /* Util.swift in Sources */,
+				DF1CAA1B21FEB9B9001FA53D /* XButton.swift in Sources */,
 				713EE2D420AD9BA20085B65D /* TaobaoMiniTopicViewController.swift in Sources */,
 				BF58BB4820EF1945002CB4EE /* RCDSettingBaseViewController.m in Sources */,
 				713EE2E820AD9CB60085B65D /* KugouSingViewController.swift in Sources */,
