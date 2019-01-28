@@ -72,7 +72,7 @@ extension WXDBStore {
         return data
     }
     func lastMessage(byUserID userID: String, partnerID: String) -> WXMessage? {
-        let pre = NSPredicate(format: "userID = %@ and friendID = %@", userID, partnerID)
+        let pre = NSPredicate(format: "userID = %@ and friendID = %@", userID, partnerID ?? "")
         return WXMessage.objects(in: realmWX, with: pre).lastObject() as? WXMessage
     }
 
@@ -112,7 +112,8 @@ extension WXDBStore {
     }
     func conversations(byUid uid: String) -> [WXConversation] {
         var data: [WXConversation] = []
-        let pre = NSPredicate(format: "partnerID = %@", uid)
+        print(uid)
+        let pre = NSPredicate(format: "partnerID != \"\"")
         try! realmWX.transaction {
             let results = WXConversation.objects(in: realmWX, with: pre)
             for index in 0..<results.count {

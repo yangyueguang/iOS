@@ -9,16 +9,25 @@
 import UIKit
 import QuartzCore
 import Foundation
-typealias XImage = UIImage.Asset
-extension UIImage {
-    enum Asset: String {
-        case icon = "icon"
-        var image: UIImage {
-            return UIImage(asset: self)
-        }
+enum WXImage: String {
+    case icon = "icon"
+    var image: UIImage {
+        let ima = UIImage(asset: rawValue)
+        assert(ima != nil, "图片资源丢失\(rawValue)")
+        return ima!
     }
-    convenience init!(asset: Asset) {
-        self.init(named: asset.rawValue, in: Bundle.main, compatibleWith: nil)
+}
+enum ALImage: String {
+    case icon = ""
+    var image: UIImage {
+        let ima = UIImage(asset: rawValue)
+        assert(ima != nil, "图片资源丢失\(rawValue)")
+        return ima!
+    }
+}
+extension UIImage {
+    convenience init?(asset: String) {
+        self.init(named: asset, in: Bundle.main, compatibleWith: nil)
     }
 }
 

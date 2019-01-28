@@ -51,17 +51,17 @@
         <!--Conversation View Controller-->
         <scene sceneID="n3n-aM-yN3">
             <objects>
-                <tableViewController id="PSe-31-1DH" customClass="WXConversationViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="WXConversationViewController" id="PSe-31-1DH" customClass="WXConversationViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="P77-3D-a30">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="1JQ-hI-o9B">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="106" id="1JQ-hI-o9B">
+                                <rect key="frame" x="0.0" y="28" width="375" height="106"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1JQ-hI-o9B" id="HVO-f1-Ufg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="105.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -71,11 +71,17 @@
                             <outlet property="delegate" destination="PSe-31-1DH" id="ntu-ny-lDS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="1XR-Da-S7Q"/>
+                    <navigationItem key="navigationItem" id="1XR-Da-S7Q">
+                        <barButtonItem key="rightBarButtonItem" image="u_message_add" style="plain" id="50M-PV-fCl">
+                            <connections>
+                                <action selector="rightAction:" destination="PSe-31-1DH" id="dUw-vt-9Kj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CJh-47-Snb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1046" y="301"/>
+            <point key="canvasLocation" x="1045.5999999999999" y="300.89955022488761"/>
         </scene>
         <!--通讯录-->
         <scene sceneID="kKb-fp-52y">
@@ -770,6 +776,7 @@
         <image name="tabbar_me" width="23" height="23"/>
         <image name="tabbar_meHL" width="23" height="23"/>
         <image name="u_frendsCircle" width="16" height="16"/>
+        <image name="u_message_add" width="30" height="30"/>
         <image name="userLogo.png" width="2084" height="2084"/>
     </resources>
 </document>

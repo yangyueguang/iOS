@@ -50,7 +50,7 @@ class WXFriendHelper: NSObject {
         p_initTestData()
     }
     func getFriendInfo(byUserID userID: String) -> WXUser? {
-        for user in friendsData where user.userID == userID {
+        for user in friendsData where user.userID == (userID.isEmpty ? "": userID) {
             return user
         }
         return nil
@@ -398,7 +398,7 @@ class WXUserHelper: NSObject {
     static let shared = WXUserHelper()
     lazy var user: WXUser = {
         let user = WXUser()
-        user.userID = "这是我的二维码：2829969299 \n没错，我爱你。" //我的二维码数据
+        user.userID = "1" //我的二维码数据
         user.avatarURL = "https://p1.ssl.qhmsg.com/dm/110_110_100/t01fffa4efd00af1898.jpg"
         user.nikeName = "Super"
         user.username = "2829969299"

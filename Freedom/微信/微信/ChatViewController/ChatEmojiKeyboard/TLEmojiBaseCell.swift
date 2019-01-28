@@ -185,12 +185,12 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
                     self.layoutIfNeeded()
                 })
             } else if sendButtonStatus == .blue {
-                sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_blue"), for: .normal)
-                sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_blueHL"), for: .highlighted)
+                sendButton.setBackgroundImage(UIImage(named: "u_message_add"), for: .normal)
+                sendButton.setBackgroundImage(UIImage(named: "u_message_addHL"), for: .highlighted)
                 sendButton.setTitleColor(UIColor.white, for: .normal)
             } else if sendButtonStatus == .gray {
-                sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_gray"), for: .normal)
-                sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_gray"), for: .highlighted)
+                sendButton.setBackgroundImage(UIImage(named: "u_message_add"), for: .normal)
+                sendButton.setBackgroundImage(UIImage(named: "u_message_addHL"), for: .highlighted)
                 sendButton.setTitleColor(UIColor.gray, for: .normal)
             }
         }
@@ -211,12 +211,7 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
             delegate?.emojiGroupControl(self, didSelectedGroup: group)
         }
     }
-    private lazy var addButton : UIButton = {
-        let addButton = UIButton()
-        addButton.setImage(UIImage(named: "emojiKB_groupControl_add"), for: .normal)
-        addButton.addTarget(self, action: #selector(self.emojiAddButtonDown), for: .touchUpInside)
-        return addButton
-    }()
+    private var addButton = UIButton()
     private lazy var collectionView: UICollectionView =  {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -231,20 +226,12 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
         return collectionView
     }()
 
-    private lazy var sendButton:UIButton = {
-        let sendButton = UIButton()
-        sendButton.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
-        sendButton.setTitle("发送", for: .normal)
-        sendButton.setTitleColor(UIColor.gray, for: .normal)
-        sendButton.backgroundColor = UIColor.clear
-        sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_gray"), for: .normal)
-        sendButton.setBackgroundImage(UIImage(named: "emojiKB_sendBtn_gray"), for: .highlighted)
-        sendButton.addTarget(self, action: #selector(self.sendButtonDown), for: .touchUpInside)
-        return sendButton
-    }()
+    private var sendButton = UIButton()
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor.white
+        addButton.setImage(UIImage(named: "u_message_add"), for: .normal)
+        addButton.addTarget(self, action: #selector(self.emojiAddButtonDown), for: .touchUpInside)
         addSubview(addButton)
         addSubview(collectionView)
         addSubview(sendButton)

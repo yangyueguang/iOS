@@ -4,130 +4,19 @@
 import SnapKit
 import Alamofire
 import Foundation
-protocol WXAddMenuViewDelegate: NSObjectProtocol {
-    func addMenuView(_ addMenuView: WechatAddMenuView, didSelectedItem item: WXAddMenuItem)
-}
 class WechatAddMenuCell: BaseTableViewCell {
     var item: WXAddMenuItem = WXAddMenuItem() {
         didSet {
-            iconImageView.image = UIImage(named: item.iconPath)
-            titleLabel.text = item.title
+            icon.image = UIImage(named: item.iconPath)
+            title.text = item.title
         }
     }
-    var iconImageView = UIImageView()
-    lazy var titleLabel: UILabel =  {
-        let titleLabel = UILabel()
-        titleLabel.textColor = UIColor.white
-        titleLabel.font = UIFont.systemFont(ofSize: 16.0)
-        return titleLabel
-    }()
-    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor(71, 70, 73, 1.0)
-        let selectedView = UIView()
-        selectedView.backgroundColor = UIColor(65, 64, 67, 1.0)
-        selectedBackgroundView = selectedView
-        contentView.addSubview(iconImageView)
-        contentView.addSubview(titleLabel)
-        iconImageView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(15)
-            make.centerY.equalToSuperview()
-            make.height.width.equalTo(32)
-        }
-        titleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self.iconImageView.snp.right).offset(10)
-            make.centerY.equalTo(self.iconImageView)
-        }
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-class WechatAddMenuView: UIView, UITableViewDataSource, UITableViewDelegate {
-    weak var delegate: WXAddMenuViewDelegate?
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.isScrollEnabled = false
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = UIColor(71, 70, 73, 1.0)
-        tableView.separatorStyle = .none
-        tableView.layer.masksToBounds = true
-        tableView.layer.cornerRadius = 3.0
-        return tableView
-    }()
-    private var data: [WXAddMenuItem] = []
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = UIColor.clear
-        addSubview(tableView)
-        let panGR = UIPanGestureRecognizer(target: self, action: #selector(self.dismiss))
-        addGestureRecognizer(panGR)
-        tableView.register(WechatAddMenuCell.self, forCellReuseIdentifier: WechatAddMenuCell.identifier)
-        let item1 = WXAddMenuItem(type: .groupChat, title: "发起群聊", iconPath: "nav_menu_groupchat", className: nil)
-        let item2 = WXAddMenuItem(type: .addFriend, title: "添加朋友", iconPath: "nav_menu_addfriend", className: WXAddFriendViewController.self)
-        let item3 = WXAddMenuItem(type: .wallet, title: "收付款", iconPath: "nav_menu_wallet", className: nil)
-        let item4 = WXAddMenuItem(type: .scan, title: "扫一扫", iconPath: "nav_menu_scan", className: WXScanningViewController.self)
-        data.append(contentsOf: [item1,item2,item3,item4])
-
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    func show(in view: UIView) {
-        view.addSubview(self)
-        setNeedsDisplay()
-        self.frame = view.bounds
-        let rect = CGRect(x: Int(view.frame.size.width - 140 - 5), y: Int(TopHeight) + 20 + 10, width: 140, height: data.count * 45)
-        tableView.frame = rect
-    }
-    func isShow() -> Bool {
-        return superview != nil
-    }
-    @objc func dismiss() {
-        UIView.animate(withDuration: 0.2, animations: {
-            self.alpha = 0.0
-        }) { finished in
-            if finished {
-                self.removeFromSuperview()
-                self.alpha = 1.0
-            }
-        }
-    }
-    func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
-        dismiss()
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = data[indexPath.row] as WXAddMenuItem
-        let cell = tableView.dequeueCell(WechatAddMenuCell.self)
-        cell.item = item
-        return cell
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = data[indexPath.row] as WXAddMenuItem
-        delegate?.addMenuView(self, didSelectedItem: item)
-        tableView.deselectRow(at: indexPath, animated: false)
-        dismiss()
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
-    }
-    override func draw(_ rect: CGRect) {
-        let startX: CGFloat = frame.size.width - 27
-        let startY: CGFloat = 20 + TopHeight + 3
-        let endY: CGFloat = 20 + TopHeight + 10
-        let width: CGFloat = 6
-        guard let context = UIGraphicsGetCurrentContext() else { return }
-        context.move(to: CGPoint(x: startX, y: startY))
-        context.addLine(to: CGPoint(x: startX + width, y: endY))
-        context.addLine(to: CGPoint(x: startX - width, y: endY))
-        context.closePath()
-        UIColor(71, 70, 73, 1.0).setFill()
-        UIColor(71, 70, 73, 1.0).setStroke()
-        context.drawPath(using: .fillStroke)
+    override func initUI() {
+        super.initUI()
+        backgroundColor = UIColor.darkGray
+        icon.frame = CGRect(x: 10, y: 10, width: 30, height: 30)
+        title.frame = CGRect(x: icon.right + 10, y: 15, width: 100, height: 20)
+        addSubviews([icon,title])
     }
 }
 class WechatConversationCell: BaseTableViewCell {
@@ -169,14 +58,14 @@ class WechatConversationCell: BaseTableViewCell {
     }()
     var conversation: WXConversation? {
         didSet {
-            if conversation?.avatarPath.count ?? 0 > 0 {
-                let path = FileManager.pathUserAvatar(conversation?.avatarPath ?? "")
-                avatarImageView.image = UIImage(named: path)
-            } else if conversation?.avatarURL.count ?? 0 > 0 {
-                avatarImageView.sd_setImage(with: URL(string: conversation?.avatarURL ?? ""), placeholderImage: UIImage(named: PuserLogo))
-            } else {
-                avatarImageView.image = nil
-            }
+//            if conversation?.avatarPath.count ?? 0 > 0 {
+//                let path = FileManager.pathUserAvatar(conversation?.avatarPath ?? "")
+//                avatarImageView.image = UIImage(named: path)
+//            } else if conversation?.avatarURL.count ?? 0 > 0 {
+//                avatarImageView.sd_setImage(with: URL(string: conversation?.avatarURL ?? ""), placeholderImage: UIImage(named: PuserLogo))
+//            } else {
+//                avatarImageView.image = nil
+//            }
             usernameLabel.text = conversation?.partnerName
             detailLabel.text = conversation?.content
             timeLabel.text = conversation?.date.timeToNow()
@@ -256,11 +145,14 @@ class WechatConversationCell: BaseTableViewCell {
         }
     }
 }
-final class WXConversationViewController: BaseTableViewController, WXMessageManagerConvVCDelegate, UISearchBarDelegate, WXAddMenuViewDelegate {
+
+
+
+final class WXConversationViewController: BaseTableViewController, WXMessageManagerConvVCDelegate, UISearchBarDelegate {
     var searchVC = WXFriendSearchViewController()
     var data: [WXConversation] = []
     private var scrollTopView = UIImageView(image: UIImage(named: "conv_wechat_icon"))
-    private var addMenuView = WechatAddMenuView()
+    private var addMenuView: XPopMenu<WXAddMenuItem>!
     private lazy var searchController: WXSearchController =  {
         let searchController = WXSearchController(searchResultsController: searchVC)
         searchController.searchResultsUpdater = searchVC
@@ -269,21 +161,43 @@ final class WXConversationViewController: BaseTableViewController, WXMessageMana
         searchController.showVoiceButton = true
         return searchController
     }()
+    @IBAction func rightAction(_ sender: Any) {
+        addMenuView.show()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         navigationItem.title = "微信"
-        addMenuView.delegate = self
         tableView.backgroundColor = UIColor.white
         tableView.tableHeaderView = searchController.searchBar
         tableView.addSubview(scrollTopView)
+        let item1 = WXAddMenuItem(type: .groupChat, title: "发起群聊", iconPath: "u_white_addfriend", className: nil)
+        let item2 = WXAddMenuItem(type: .addFriend, title: "添加朋友", iconPath: "u_white_addfriend", className: WXAddFriendViewController.self)
+        let item3 = WXAddMenuItem(type: .wallet, title: "收付款", iconPath: "u_white_addfriend", className: nil)
+        let item4 = WXAddMenuItem(type: .scan, title: "扫一扫", iconPath: "u_white_addfriend", className: WXScanningViewController.self)
+
+        addMenuView = XPopMenu(frame: CGRect(x: APPW - 150, y: 0, width: 140, height: 0), items: [item1, item2, item3, item4], cellHeight: 50)
+        addMenuView.cellClosure = {(table, item) in
+            let cell = table.dequeueCell(WechatAddMenuCell.self)
+            cell.item = item
+            return cell
+        }
+        addMenuView.actionClosure = {[weak self] item in
+            guard let `self` = self else { return }
+            if let cls = item.className {
+                let vc = cls.init()
+                self.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+                self.hidesBottomBarWhenPushed = false
+            } else {
+                self.noticeError("\(item.title) 功能暂未实现")
+            }
+        }
         scrollTopView.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.tableView)
             make.bottom.equalTo(self.tableView.snp.top).offset(-35)
         }
-        let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "nav_add"), style: .done, target: self, action: #selector(self.rightBarButtonDown(_:)))
-        navigationItem.rightBarButtonItem = rightBarButtonItem
         tableView.register(WechatConversationCell.self, forCellReuseIdentifier: WechatConversationCell.identifier)
         WXMessageManager.shared.conversationDelegate = (self)
         NotificationCenter.default.addObserver(self, selector: #selector(self.networkStatusChange(_:)), name: NSNotification.Name.AFNetworkingReachabilityDidChange, object: nil)
@@ -292,22 +206,7 @@ final class WXConversationViewController: BaseTableViewController, WXMessageMana
         super.viewWillAppear(animated)
         updateConversationData()
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if addMenuView.isShow() {
-            addMenuView.dismiss()
-        }
-    }
 
-    @objc func rightBarButtonDown(_ sender: UIBarButtonItem) {
-        if addMenuView.isShow() {
-            addMenuView.dismiss()
-        } else {
-            if let aView = navigationController?.view {
-                addMenuView.show(in: aView)
-            }
-        }
-    }
     // 网络情况改变
     @objc func networkStatusChange(_ noti: Notification) {
         let net = NetworkReachabilityManager()
@@ -323,8 +222,10 @@ final class WXConversationViewController: BaseTableViewController, WXMessageMana
         WXMessageManager.shared.conversationRecord({ data in
             for conversation: WXConversation in data {
                 if conversation.convType == .personal {
-                    let user: WXUser = WXFriendHelper.shared.getFriendInfo(byUserID: conversation.partnerID)!
-                    conversation.updateUserInfo(user)
+                    let user = WXFriendHelper.shared.getFriendInfo(byUserID: conversation.partnerID)
+                    if let user = user {
+                        conversation.updateUserInfo(user)
+                    }
                 } else if conversation.convType == .group {
                     let group: WXGroup = WXFriendHelper.shared.getGroupInfo(byGroupID: conversation.partnerID)!
                     conversation.updateGroupInfo(group)
@@ -401,15 +302,5 @@ final class WXConversationViewController: BaseTableViewController, WXMessageMana
 
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         noticeInfo("语音搜索按钮")
-    }
-    func addMenuView(_ addMenuView: WechatAddMenuView, didSelectedItem item: WXAddMenuItem) {
-        if let cls = item.className {
-            let vc = cls.init()
-            hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
-            hidesBottomBarWhenPushed = false
-        } else {
-            noticeError("\(item.title) 功能暂未实现")
-        }
     }
 }

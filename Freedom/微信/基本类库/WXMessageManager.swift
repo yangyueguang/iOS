@@ -109,7 +109,7 @@ class WXMessage: RLMObject, WXMessageProtocol {
     var messageFrame: WXMessageFrame!
     var messageID = ""
     var userID = ""
-    var friendID = ""
+    var friendID = "1"
     var groupID = ""
     var date = Date()
     var showTime = false
