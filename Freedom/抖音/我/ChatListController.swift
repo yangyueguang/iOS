@@ -9,11 +9,6 @@
 import Foundation
 import UIKit
 
-let TIME_CELL:String = "TIME_CELL"
-let SYSTEM_MESSAGE_CELL:String = "SYSTEM_MESSAGE_CELL"
-let IMAGE_MESSAGE_CELL:String = "IMAGE_MESSAGE_CELL"
-let TEXT_MESSAGE_CELL:String = "TEXT_MESSAGE_CELL"
-
 let SYS_MSG_CORNER_RADIUS:CGFloat = 10
 let MAX_SYS_MSG_WIDTH:CGFloat = screenWidth - 110
 let COMMON_MSG_PADDING:CGFloat = 8
@@ -78,10 +73,10 @@ class ChatListController: DouyinBaseViewController {
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
-        tableView.register(TimeCell.classForCoder(), forCellReuseIdentifier: TIME_CELL)
-        tableView.register(SystemMessageCell.classForCoder(), forCellReuseIdentifier: SYSTEM_MESSAGE_CELL)
-        tableView.register(ImageMessageCell.classForCoder(), forCellReuseIdentifier: IMAGE_MESSAGE_CELL)
-        tableView.register(TextMessageCell.classForCoder(), forCellReuseIdentifier: TEXT_MESSAGE_CELL)
+        tableView.register(TimeCell.classForCoder(), forCellReuseIdentifier: TimeCell.identifier)
+        tableView.register(SystemMessageCell.classForCoder(), forCellReuseIdentifier: SystemMessageCell.identifier)
+        tableView.register(ImageMessageCell.classForCoder(), forCellReuseIdentifier: ImageMessageCell.identifier)
+        tableView.register(TextMessageCell.classForCoder(), forCellReuseIdentifier: TextMessageCell.identifier)
         self.view.addSubview(tableView)
         
         refreshControl.onRefresh = {[weak self] in
@@ -137,7 +132,7 @@ class ChatListController: DouyinBaseViewController {
         tableView?.reloadData()
     }
     
-    func deleteChat(cell:UITableViewCell?) {
+    func deleteChat(cell:BaseTableViewCell?) {
         if cell == nil {
             return
         }
@@ -213,11 +208,11 @@ class ChatListController: DouyinBaseViewController {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chat = data[indexPath.row]
         if chat.msg_type == "system" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: SYSTEM_MESSAGE_CELL) as! SystemMessageCell
+            let cell = tableView.dequeueCell(SystemMessageCell.self)
             cell.initData(chat: chat)
             return cell
         } else if chat.msg_type == "text" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: TEXT_MESSAGE_CELL) as! TextMessageCell
+            let cell = tableView.dequeueCell(TextMessageCell.self)
             cell.initData(chat: chat)
             cell.onMenuAction = {[weak self] actionType in
                 if actionType == .DeleteAction {
@@ -229,7 +224,7 @@ class ChatListController: DouyinBaseViewController {
             }
             return cell
         } else if chat.msg_type == "image" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: IMAGE_MESSAGE_CELL) as! ImageMessageCell
+            let cell = tableView.dequeueCell(ImageMessageCell.self)
             cell.initData(chat: chat)
             cell.onMenuAction = {[weak self] actionType in
                 if actionType == .DeleteAction {
@@ -238,7 +233,7 @@ class ChatListController: DouyinBaseViewController {
             }
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: TIME_CELL) as! TimeCell
+            let cell = tableView.dequeueCell(TimeCell.self)
             cell.initData(chat: chat)
             return cell
         }

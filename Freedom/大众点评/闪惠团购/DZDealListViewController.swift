@@ -12,7 +12,6 @@ class DZDealListViewTransverseCell:BaseTableViewCell{
         title.numberOfLines = 0
         title.font = fontSmall
         script.font = Font(11)
-        line.frame = CGRect(x: 0, y: 100 - 1, width: APPW, height: 1)
         icon.image = UIImage(named: "image4.jpg")
         title.text = "与爱齐名，为有初心不变，小编为大家收集了超多好文好店，从手工匠人到原型设计，他们并没有忘记"
         script.text = "地道风味 精选外卖优惠"
@@ -31,7 +30,6 @@ class DZDealListViewVerticalCell:BaseTableViewCell{
         script.frame = CGRect(x: title.x, y: title.bottom + 5, width: 80, height: 20)
         let sees = UILabel(frame: CGRect(x: times.x, y: script.y, width: times.width, height: 15), font: Font(11), color: .gray, text: nil)
         sees.textAlignment = .right
-        line.frame = CGRect(x: 0, y: 100 - 1, width: APPW, height: 1)
         script.backgroundColor = .red
         script.textColor = .white
         addSubviews([name, times, sees])
@@ -54,24 +52,16 @@ class DZDealListViewController: DZBaseViewController {
             view.addSubview(tableView)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: BaseTableViewCell?
+        var cell: BaseTableViewCell!
         if indexPath.row % 5 != 0 {
             //竖着的
-            cell = tableView.dequeueReusableCell(withIdentifier: DZDealListViewVerticalCell.identifier) as? BaseTableViewCell
-            if cell == nil {
-                cell = DZDealListViewVerticalCell.getInstance() as? BaseTableViewCell
-            }
+            cell = tableView.dequeueCell(DZDealListViewVerticalCell.self)
+
         } else {
             //横着的
-            cell = tableView.dequeueReusableCell(withIdentifier: DZDealListViewTransverseCell.identifier) as? BaseTableViewCell
-            if cell == nil {
-                cell = DZDealListViewTransverseCell.getInstance() as? BaseTableViewCell
-            }
+            cell = tableView.dequeueCell(DZDealListViewTransverseCell.self)
         }
-        if let aCell = cell {
-            return aCell
-        }
-        return UITableViewCell()
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         _ = push(DZDealDetailViewController(), withInfo: "", withTitle: "详情")

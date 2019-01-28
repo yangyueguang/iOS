@@ -4,7 +4,7 @@
 import SnapKit
 import Foundation
 import XExtension
-class WXMineInfoAvatarCell: UITableViewCell {
+class WXMineInfoAvatarCell: BaseTableViewCell {
     var titleLabel = UILabel()
     var avatarImageView = UIImageView()
     var item: WXSettingItem = WXSettingItem() {
@@ -20,7 +20,7 @@ class WXMineInfoAvatarCell: UITableViewCell {
         }
     }
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         accessoryType = .disclosureIndicator
         avatarImageView.layer.masksToBounds = true
@@ -47,13 +47,13 @@ class WXMineInfoViewController: WXSettingViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "个人信息"
-        tableView.register(WXMineInfoAvatarCell.self, forCellReuseIdentifier: "TLMineInfoAvatarCell")
+        tableView.register(WXMineInfoAvatarCell.self, forCellReuseIdentifier: WXMineInfoAvatarCell.identifier)
         data = helper.mineInfoData(byUserInfo: WXUserHelper.shared.user)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = data[indexPath.section].items[indexPath.row]
         if (item.title == "头像") {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TLMineInfoAvatarCell") as! WXMineInfoAvatarCell
+            let cell = tableView.dequeueCell(WXMineInfoAvatarCell.self)
             cell.item = item
             return cell
         }

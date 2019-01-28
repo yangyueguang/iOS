@@ -4,25 +4,13 @@ import RxSwift
 @objcMembers
 open class BaseTableViewCell : UITableViewCell {
     let disposeBag = DisposeBag()
-    open var icon: UIImageView!
-    open var line: UIView!
-    open var title: UILabel!
-    open var script: UILabel!
+    @IBOutlet open var icon: UIImageView!
+    @IBOutlet open var title: UILabel!
+    @IBOutlet open var script: UILabel!
     ///单例初始化，兼容nib创建
-    open class func getInstance() -> Any {
-        var instance: BaseTableViewCell? = nil
-        let nibFilePath: String = URL(fileURLWithPath: Bundle.main.bundlePath).appendingPathComponent("\(NSStringFromClass(self)).nib").absoluteString
-        if FileManager.default.fileExists(atPath: nibFilePath) {
-            let o = Bundle.main.loadNibNamed(NSStringFromClass(self), owner: nil, options: nil)?.last
-            if (o is BaseTableViewCell) {
-                instance = o as? BaseTableViewCell
-            }else {
-                instance = self.init(style: .default, reuseIdentifier: self.identifier)
-            }
-        }else {
-            instance = self.init(style: .default, reuseIdentifier: self.identifier)
-        }
-        return instance!
+    public static func getInstance() -> Self {
+        let instance = self.init(style: .default, reuseIdentifier: self.identifier)
+        return instance
     }
     required override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -50,7 +38,6 @@ open class BaseTableViewCell : UITableViewCell {
         script.font = UIFont.systemFont(ofSize: 13)
         title.textColor = UIColor(red: 33, green: 34, blue: 35, alpha: 1)
         script.textColor = title.textColor
-        line = UIView()
     }
     override open func prepareForReuse() {
         super.prepareForReuse()

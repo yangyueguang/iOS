@@ -3,12 +3,12 @@
 //  Freedom
 import SnapKit
 import Foundation
-class WXGroupSearchViewController: WXTableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class WXGroupSearchViewController: BaseTableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     var groupData: [WXGroup] = []
     private var data: [WXGroup] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(WXGroupCell.self, forCellReuseIdentifier: "TLGroupCell")
+        tableView.register(WXGroupCell.self, forCellReuseIdentifier: WXGroupCell.identifier)
         automaticallyAdjustsScrollViewInsets = false
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -22,7 +22,7 @@ class WXGroupSearchViewController: WXTableViewController, UISearchResultsUpdatin
         return data.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TLGroupCell") as! WXGroupCell
+        let cell = tableView.dequeueCell(WXGroupCell.self)
         let group = data[indexPath.row]
         cell.group = group
         return cell
@@ -42,7 +42,7 @@ class WXGroupSearchViewController: WXTableViewController, UISearchResultsUpdatin
     }
 }
 
-class WXGroupCell: WXTableViewCell {
+class WXGroupCell: BaseTableViewCell {
     var group: WXGroup = WXGroup() {
         didSet {
             let path = FileManager.pathUserAvatar(group.groupID)
@@ -53,9 +53,8 @@ class WXGroupCell: WXTableViewCell {
     }
     private var avatarImageView = UIImageView()
     private var usernameLabel = UILabel()
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        leftSeparatorSpace = 10
         usernameLabel.font = UIFont.systemFont(ofSize: 17.0)
         contentView.addSubview(avatarImageView)
         contentView.addSubview(usernameLabel)
@@ -76,7 +75,7 @@ class WXGroupCell: WXTableViewCell {
     }
 }
 
-class WXGroupViewController: WXTableViewController ,UISearchBarDelegate {
+class WXGroupViewController: BaseTableViewController ,UISearchBarDelegate {
     private lazy var searchController: WXSearchController =  {
         let searchController = WXSearchController(searchResultsController: searchVC)
         searchController.searchResultsUpdater = searchVC
@@ -91,16 +90,15 @@ class WXGroupViewController: WXTableViewController ,UISearchBarDelegate {
         navigationItem.title = "群聊"
         view.backgroundColor = UIColor.white
         tableView.tableHeaderView = searchController.searchBar
-        tableView.register(WXGroupCell.self, forCellReuseIdentifier: "TLGroupCell")
+        tableView.register(WXGroupCell.self, forCellReuseIdentifier: WXGroupCell.identifier)
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let group: WXGroup = data[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TLGroupCell") as! WXGroupCell
+        let cell = tableView.dequeueCell(WXGroupCell.self)
         cell.group = group
-        cell.bottomLineStyle = (indexPath.row == data.count - 1 ? .fill : TLCellLineStyle.default)
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

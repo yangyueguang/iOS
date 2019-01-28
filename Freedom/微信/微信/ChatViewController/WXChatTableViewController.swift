@@ -48,7 +48,7 @@ protocol WXChatTableViewControllerDelegate: NSObjectProtocol {
     func chatTableViewController(_ chatTVC: WXChatTableViewController, didClick message: WXMessage)
     func chatTableViewController(_ chatTVC: WXChatTableViewController, didDoubleClick message: WXMessage)
 }
-class WXMessageBaseCell: UITableViewCell {
+class WXMessageBaseCell: BaseTableViewCell {
     weak var delegate: WXMessageCellDelegate?
     lazy var timeLabel: UILabel = {
         let timeLabel = UILabel()
@@ -135,7 +135,7 @@ class WXMessageBaseCell: UITableViewCell {
             }
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = UIColor.clear
         selectionStyle = .none
@@ -263,7 +263,7 @@ class WXTextMessageCell: WXMessageBaseCell {
             }
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(messageLabel)
     }
@@ -317,7 +317,7 @@ class WXImageMessageCell: WXMessageBaseCell {
             }
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(msgImageView)
     }
@@ -398,7 +398,7 @@ class WXExpressionMessageCell: WXMessageBaseCell {
             }
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(msgImageView)
     }
@@ -568,10 +568,10 @@ class WXChatTableViewController: BaseTableViewController, WXMessageCellDelegate 
     }
 
     func registerCellClass() {
-        tableView.register(WXTextMessageCell.self, forCellReuseIdentifier: "TLTextMessageCell")
-        tableView.register(WXImageMessageCell.self, forCellReuseIdentifier: "TLImageMessageCell")
-        tableView.register(WXExpressionMessageCell.self, forCellReuseIdentifier: "TLExpressionMessageCell")
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "EmptyCell")
+        tableView.register(WXTextMessageCell.self, forCellReuseIdentifier: WXTextMessageCell.identifier)
+        tableView.register(WXImageMessageCell.self, forCellReuseIdentifier: WXImageMessageCell.identifier)
+        tableView.register(WXExpressionMessageCell.self, forCellReuseIdentifier: WXExpressionMessageCell.identifier)
+        tableView.register(BaseTableViewCell.self, forCellReuseIdentifier: BaseTableViewCell.identifier)
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
@@ -579,22 +579,22 @@ class WXChatTableViewController: BaseTableViewController, WXMessageCellDelegate 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message: WXMessage = data[indexPath.row]
         if message.messageType == .text {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TLTextMessageCell") as! WXTextMessageCell
+            let cell = tableView.dequeueCell(WXTextMessageCell.self)
             cell.message = message
             cell.delegate = self
             return cell
         } else if message.messageType == .image {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TLImageMessageCell") as! WXImageMessageCell
+            let cell = tableView.dequeueCell(WXImageMessageCell.self)
             cell.message = message
             cell.delegate = self
             return cell
         } else if message.messageType == .expression {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TLExpressionMessageCell") as! WXExpressionMessageCell
+            let cell = tableView.dequeueCell(WXExpressionMessageCell.self)
             cell.message = message
             cell.delegate = self
             return cell
         }
-        return (tableView.dequeueReusableCell(withIdentifier: "EmptyCell"))!
+        return tableView.dequeueCell(BaseTableViewCell.self)
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let message: WXMessage = data[indexPath.row]

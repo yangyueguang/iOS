@@ -53,6 +53,23 @@ extension String {
         return self as NSString
     }
 }
+extension UITableView {
+    func dequeueCell<T: UITableViewCell>(_ cell: T.Type) -> T {
+        var ce = dequeueReusableCell(withIdentifier: cell.identifier)
+        if ce == nil {
+            ce = cell.init(style: .default, reuseIdentifier: cell.identifier)
+        }
+        return ce as! T
+    }
+}
+extension UICollectionView {
+    func dequeueCell<T: UICollectionViewCell>(_ cell: T.Type, for indexPath: IndexPath) -> T {
+        return dequeueReusableCell(withReuseIdentifier: cell.identifier, for: indexPath) as! T
+    }
+    func dequeueHeadFoot<T: UICollectionReusableView>(_ className: T.Type, kind: String, for indexPath: IndexPath) -> T {
+        return dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: className.identifier, for: indexPath) as! T
+    }
+}
 extension UIViewController {
     static func storyVC(_ name: String) -> UIViewController {
         let story = UIStoryboard(name: name, bundle: nil)

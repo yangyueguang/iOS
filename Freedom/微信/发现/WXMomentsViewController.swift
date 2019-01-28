@@ -14,12 +14,11 @@ class WXMomentsProxy: NSObject {
         return arr as! [WXMoment]
     }
 }
-class WXMomentBaseCell: WXTableViewCell {
+class WXMomentBaseCell: BaseTableViewCell {
     weak var delegate: WXMomentViewDelegate?
     var moment: WXMoment = WXMoment()
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        bottomLineStyle = .fill
         selectionStyle = .none
     }
     required init?(coder aDecoder: NSCoder) {
@@ -38,7 +37,7 @@ class WXMomentImagesCell: WXMomentBaseCell {
             momentView.delegate = delegate
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(momentView)
         momentView.snp.makeConstraints { (make) in
@@ -49,7 +48,7 @@ class WXMomentImagesCell: WXMomentBaseCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-class WXMomentHeaderCell: WXTableViewCell {
+class WXMomentHeaderCell: BaseTableViewCell {
     var user: WXUser = WXUser() {
         didSet {
             backgroundWall.sd_setImage(with: URL(string: user.detailInfo.momentsWallURL), for: UIControl.State.normal)
@@ -75,9 +74,8 @@ class WXMomentHeaderCell: WXTableViewCell {
         mottoLabel.textAlignment = .right
         return mottoLabel
     }()
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        bottomLineStyle = .none
         selectionStyle = .none
         contentView.addSubview(backgroundWall)
         contentView.addSubview(avatarView)
@@ -109,7 +107,7 @@ class WXMomentHeaderCell: WXTableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-class WXMomentsViewController: WXTableViewController, WXMomentViewDelegate {
+class WXMomentsViewController: BaseTableViewController, WXMomentViewDelegate {
     var data: [WXMoment] = []
     var proxy = WXMomentsProxy()
     override func viewDidLoad() {
@@ -119,21 +117,21 @@ class WXMomentsViewController: WXTableViewController, WXMomentViewDelegate {
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 60.0))
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "nav_camera"), style: .done, target: nil, action: nil)
         navigationItem.rightBarButtonItem = rightBarButton
-        tableView.register(WXMomentHeaderCell.self, forCellReuseIdentifier: "TLMomentHeaderCell")
-        tableView.register(WXMomentImagesCell.self, forCellReuseIdentifier: "TLMomentImagesCell")
-        tableView.register(WXTableViewCell.self, forCellReuseIdentifier: "EmptyCell")
+        tableView.register(WXMomentHeaderCell.self, forCellReuseIdentifier: WXMomentHeaderCell.identifier)
+        tableView.register(WXMomentImagesCell.self, forCellReuseIdentifier: WXMomentImagesCell.identifier)
+        tableView.register(BaseTableViewCell.self, forCellReuseIdentifier: BaseTableViewCell.identifier)
         data = proxy.testData()
         tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TLMomentHeaderCell") as! WXMomentHeaderCell
+            let cell = tableView.dequeueCell(WXMomentHeaderCell.self)
             cell.user = WXUserHelper.shared.user
             return cell
         }
         let moment = data[indexPath.row - 1]
-        let cell: WXMomentImagesCell = tableView.dequeueReusableCell(withIdentifier: "TLMomentImagesCell") as! WXMomentImagesCell
+        let cell: WXMomentImagesCell = tableView.dequeueCell(WXMomentImagesCell.self)
         cell.moment = moment
         cell.delegate = self
         return cell

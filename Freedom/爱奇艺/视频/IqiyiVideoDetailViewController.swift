@@ -76,7 +76,7 @@ class IqiyiRecommentVideoCell:BaseTableViewCell{
         pvLabel.text = "pvlabel"
     }
 }
-class IqiyiVideoDetailCell: UITableViewCell {
+class IqiyiVideoDetailCell: BaseTableViewCell {
     var iconImageView: UIImageView?
     var userNameLabel: UILabel?
     var playItemsLabel: UILabel?
@@ -85,18 +85,18 @@ class IqiyiVideoDetailCell: UITableViewCell {
     var subedNumberLabel: UILabel?
     var titleLabel: UILabel?
     var descLabel: UILabel?
-    var videoDetailModel: IqiyiVideoDetailModel?
-    func setVideoDetailModel(_ videoDetailModel: IqiyiVideoDetailModel?) {
-        self.videoDetailModel = videoDetailModel
-        iconImageView?.sd_setImage(with: URL(string: videoDetailModel?.channel_pic ?? ""), placeholderImage: UIImage(named: "tudoulogo"))
-        userNameLabel?.text = videoDetailModel?.username
-        if let aTimes = videoDetailModel?.user_play_times {
-            playItemsLabel?.text = "播放：\(aTimes)"
+    var videoDetailModel: IqiyiVideoDetailModel? {
+        didSet {
+            iconImageView?.sd_setImage(with: URL(string: videoDetailModel?.channel_pic ?? ""), placeholderImage: UIImage(named: "tudoulogo"))
+            userNameLabel?.text = videoDetailModel?.username
+            if let aTimes = videoDetailModel?.user_play_times {
+                playItemsLabel?.text = "播放：\(aTimes)"
+            }
+            userDesLabel?.text = videoDetailModel?.user_desc
+            subedNumberLabel?.text = "\(videoDetailModel?.subed_num ?? 0)人订阅"
+            titleLabel?.text = videoDetailModel?.title
+            descLabel?.text = videoDetailModel?.desc
         }
-        userDesLabel?.text = videoDetailModel?.user_desc
-        subedNumberLabel?.text = "\(videoDetailModel?.subed_num ?? 0)人订阅"
-        titleLabel?.text = videoDetailModel?.title
-        descLabel?.text = videoDetailModel?.desc
     }
 }
 class IqiyiVideoDetailViewController: IqiyiBaseViewController {
@@ -212,36 +212,30 @@ class IqiyiVideoDetailViewController: IqiyiBaseViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let ID = "JFVideoDetailCell"
-            var cell = tableView.dequeueReusableCell(withIdentifier: ID) as? IqiyiVideoDetailCell
-            if cell == nil {
-                cell = IqiyiVideoDetailCell(style: .default, reuseIdentifier: ID)
-                cell?.iconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-                cell?.userNameLabel = UILabel(frame: CGRect(x: 80, y: 0, width: 200, height: 20))
-                cell?.playItemsLabel = UILabel(frame: CGRect(x: 80, y: 20, width: 200, height: 20))
-                cell?.userDesLabel = UILabel(frame: CGRect(x: 200, y: 10, width: 100, height: 20))
-                cell?.subscribeButton = UIButton(frame: CGRect(x: 200, y: 30, width: 100, height: 30))
-                cell?.subedNumberLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 100, height: 20))
-                cell?.titleLabel = UILabel(frame: CGRect(x: 0, y: 120, width: 100, height: 20))
-                cell?.descLabel = UILabel(frame: CGRect(x: 0, y: 140, width: 100, height: 20))
-                cell?.subscribeButton?.backgroundColor = UIColor.green
-                cell?.addSubviews([(cell?.iconImageView)!, (cell?.userNameLabel)!, (cell?.playItemsLabel)!, (cell?.userDesLabel)!, (cell?.subscribeButton)!, (cell?.subedNumberLabel)!, (cell?.titleLabel)!, (cell?.descLabel)!])
-            }
-            cell?.selectionStyle = .none
+            var cell = tableView.dequeueCell(IqiyiVideoDetailCell.self)
+//            if cell == nil {
+//                cell = IqiyiVideoDetailCell(style: .default, reuseIdentifier: ID)
+//                cell?.iconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+//                cell?.userNameLabel = UILabel(frame: CGRect(x: 80, y: 0, width: 200, height: 20))
+//                cell?.playItemsLabel = UILabel(frame: CGRect(x: 80, y: 20, width: 200, height: 20))
+//                cell?.userDesLabel = UILabel(frame: CGRect(x: 200, y: 10, width: 100, height: 20))
+//                cell?.subscribeButton = UIButton(frame: CGRect(x: 200, y: 30, width: 100, height: 30))
+//                cell?.subedNumberLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 100, height: 20))
+//                cell?.titleLabel = UILabel(frame: CGRect(x: 0, y: 120, width: 100, height: 20))
+//                cell?.descLabel = UILabel(frame: CGRect(x: 0, y: 140, width: 100, height: 20))
+//                cell?.subscribeButton?.backgroundColor = UIColor.green
+//                cell?.addSubviews([(cell?.iconImageView)!, (cell?.userNameLabel)!, (cell?.playItemsLabel)!, (cell?.userDesLabel)!, (cell?.subscribeButton)!, (cell?.subedNumberLabel)!, (cell?.titleLabel)!, (cell?.descLabel)!])
+//            }
+            cell.selectionStyle = .none
             if (videoDM != nil) {
-                cell?.videoDetailModel = videoDM
+                cell.videoDetailModel = videoDM
             }
-            return cell!
+            return cell
         } else {
-            let ID = "JFRecommentVideoCell"
-            var cell = tableView.dequeueReusableCell(withIdentifier: ID) as? IqiyiRecommentVideoCell
-            if cell == nil {
-                // 从xib中加载cell
-                cell = IqiyiRecommentVideoCell(style: .default, reuseIdentifier: ID)
-            }
-            cell?.selectionStyle = .none
+            var cell = tableView.dequeueCell(IqiyiRecommentVideoCell.self)
+            cell.selectionStyle = .none
 //            cell.setRecommentModel = recommendArray[indexPath.row - 1]
-            return cell!
+            return cell
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

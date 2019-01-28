@@ -161,7 +161,7 @@ class AwemeListController: DouyinBaseViewController {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: AWEME_CELL) as! AwemeListCell
+        let cell = tableView.dequeueCell(AwemeListCell.self)
         cell.initData(aweme: data[indexPath.row])
         return cell
     }

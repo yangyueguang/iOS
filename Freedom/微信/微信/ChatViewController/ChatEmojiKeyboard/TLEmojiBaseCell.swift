@@ -248,7 +248,7 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
         addSubview(addButton)
         addSubview(collectionView)
         addSubview(sendButton)
-        collectionView.register(TLEmojiGroupCell.self, forCellWithReuseIdentifier: "TLEmojiGroupCell")
+        collectionView.register(TLEmojiGroupCell.self, forCellWithReuseIdentifier: TLEmojiGroupCell.identifier)
         addButton.snp.makeConstraints { (make) in
             make.left.top.bottom.equalToSuperview()
             make.width.equalTo(46)
@@ -273,7 +273,7 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
         return (emojiGroupData[section] as [Any]).count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLEmojiGroupCell", for: indexPath) as! TLEmojiGroupCell
+        let cell = collectionView.dequeueCell(TLEmojiGroupCell.self, for: indexPath)
         let group = emojiGroupData[indexPath.section][indexPath.row] as TLEmojiGroup
         cell.emojiGroup = group
         return cell

@@ -30,13 +30,13 @@ class WXChatBackgroundSelectViewController: WXBaseViewController, UICollectionVi
         }
     }
     func registerCell(for collectionView: UICollectionView) {
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "TLChatBackgroundSelectCell")
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.identifier)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLChatBackgroundSelectCell", for: indexPath)
+        let cell = collectionView.dequeueCell(UICollectionViewCell.self, for: indexPath)
         return cell
     }
 }

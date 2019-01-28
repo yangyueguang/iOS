@@ -15,8 +15,6 @@ class TaobaoShopCarViewCell:BaseTableViewCell{
         script.font = fontSmall
         title.textColor = blacktextcolor
         script.textColor = title.textColor
-        line = UIView(frame: CGRect(x: 0, y: 99, width: APPW, height: 1))
-        line.backgroundColor = .lightGray
         let headView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 20))
         let selecth = UIButton(frame: CGRect(x: 10, y: 2.5, width: 15, height: 15))
         selecth.setImage(UIImage(named: "taobaono"), for: .normal)
@@ -44,7 +42,7 @@ class TaobaoShopCarViewCell:BaseTableViewCell{
         let num = UILabel(frame: CGRect(x: APPW - 50, y: newPrice.y, width: 40, height: 20), font: fontSmall, color: .gray, text: "x1")
         num.textAlignment = .right
         contentV.addSubviews([selectc, icon, title, script, newPrice, oldPrice, num])
-        addSubviews([headView, contentV, line])
+        addSubviews([headView, contentV])
         icon.image = UIImage(named: "taobao05.jpg")
         title.text = "冬季外套女装学生韩版棉衣女中长款面包服女加厚棉服宽松冬装棉袄"
         script.text = "颜色分类:红色;尺码:M"

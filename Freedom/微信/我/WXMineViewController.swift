@@ -4,7 +4,7 @@
 import SnapKit
 import XExtension
 import Foundation
-class WXMineHeaderCell: UITableViewCell {
+class WXMineHeaderCell: BaseTableViewCell {
     var user: WXUser = WXUser() {
         didSet {
             if !user.avatarPath.isEmpty {
@@ -37,7 +37,7 @@ class WXMineHeaderCell: UITableViewCell {
         QRImageView.image = UIImage(named: PQRCode)
         return QRImageView
     }()
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         accessoryType = .disclosureIndicator
         contentView.addSubview(self.avatarImageView)
@@ -120,17 +120,29 @@ class WXMineInfoHelper: NSObject {
         return mineInfoData
     }
 }
-class WXMineViewController: WXMenuViewController {
+class WXMineViewController: BaseTableViewController {
     var mineHelper = WXMineHelper()
+    var data: [[WXMenuItem]] = []
+    override func loadView() {
+        view = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))
+        tableView = UITableView(frame: view.bounds, style: .grouped)
+        tableView.backgroundColor = UIColor.lightGray
+        tableView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        tableView.separatorColor = UIColor.gray
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 20))
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
         navigationItem.title = "我"
         data = mineHelper.mineMenuData
-        tableView.register(WXMineHeaderCell.self, forCellReuseIdentifier: "TLMineHeaderCell")
+        tableView.register(WXMineHeaderCell.self, forCellReuseIdentifier: WXMineHeaderCell.identifier)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TLMineHeaderCell") as! WXMineHeaderCell
+            let cell = tableView.dequeueCell(WXMineHeaderCell.self) 
             cell.user = WXUserHelper.shared.user
             return cell
         }

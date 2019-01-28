@@ -6,7 +6,7 @@ import Foundation
 protocol WXAddThirdPartFriendCellDelegate: NSObjectProtocol {
     func addThirdPartFriendCellDidSelectedType(_ type: TLThirdPartType)
 }
-class WXAddThirdPartFriendCell: WXTableViewCell {
+class WXAddThirdPartFriendCell: BaseTableViewCell {
     weak var delegate: WXAddThirdPartFriendCellDelegate?
     var lastItem: WXAddThirdPartFriendItem?
     var thridPartItems: [WXAddThirdPartFriendItem] = [] {
@@ -63,10 +63,9 @@ class WXAddThirdPartFriendCell: WXTableViewCell {
         return google
     }()
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        bottomLineStyle = .fill
         itemsDic = [TLThirdPartType.contacts.rawValue: contacts, TLThirdPartType.QQ.rawValue: qq, TLThirdPartType.google.rawValue: google]
     }
     required init?(coder aDecoder: NSCoder) {
@@ -93,7 +92,7 @@ class WXAddThirdPartFriendCell: WXTableViewCell {
         delegate?.addThirdPartFriendCellDidSelectedType(item.itemType)
     }
 }
-class WXNewFriendSearchViewController: WXTableViewController, UISearchResultsUpdating {
+class WXNewFriendSearchViewController: BaseTableViewController, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
     }
 }
@@ -121,7 +120,7 @@ class WXAddThirdPartFriendItem: UIButton {
         }
     }
 }
-class WXNewFriendViewController: WXTableViewController, UISearchBarDelegate, WXAddThirdPartFriendCellDelegate {
+class WXNewFriendViewController: BaseTableViewController, UISearchBarDelegate, WXAddThirdPartFriendCellDelegate {
     private var searchVC = WXNewFriendSearchViewController()
     private lazy var searchController: WXSearchController = {
         let searchController = WXSearchController(searchResultsController: searchVC)
@@ -137,7 +136,7 @@ class WXNewFriendViewController: WXTableViewController, UISearchBarDelegate, WXA
         tableView.tableHeaderView = searchController.searchBar
         let rightBarButton = UIBarButtonItem(title: "添加朋友", style: .plain, target: self, action: #selector(WXNewFriendViewController.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButton
-        tableView.register(WXAddThirdPartFriendCell.self, forCellReuseIdentifier: "TLAddThirdPartFriendCell")
+        tableView.register(WXAddThirdPartFriendCell.self, forCellReuseIdentifier: WXAddThirdPartFriendCell.identifier)
     }
     @objc func rightBarButtonDown(_ sender: UIBarButtonItem) {
         let addFriendVC = WXAddFriendViewController()
@@ -155,7 +154,7 @@ class WXNewFriendViewController: WXTableViewController, UISearchBarDelegate, WXA
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TLAddThirdPartFriendCell") as! WXAddThirdPartFriendCell
+            let cell = tableView.dequeueCell(WXAddThirdPartFriendCell.self)
             let item = WXAddThirdPartFriendItem(imagePath: "", andTitle: "")
             item.itemType = TLThirdPartType.contacts
             cell.thridPartItems = [item]

@@ -127,9 +127,9 @@ class AlipayYuEBaoTableViewCellContentView: UIView {
         flag += 1
     }
 }
-class AlipayYuEBaoTableViewCell:UITableViewCell {
+class AlipayYuEBaoTableViewCell:BaseTableViewCell {
     private var cellContentView: AlipayYuEBaoTableViewCellContentView?
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let contentView = AlipayYuEBaoTableViewCellContentView()
         self.cellContentView?.addSubview(contentView)

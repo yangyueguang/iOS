@@ -3,7 +3,7 @@
 //  Freedom
 import XExtension
 import Foundation
-class WXPublicServerViewController: WXTableViewController, UISearchBarDelegate {
+class WXPublicServerViewController: BaseTableViewController, UISearchBarDelegate {
     lazy var searchController: WXSearchController = {
         let searchController = WXSearchController(searchResultsController: searchVC)
         searchController.searchResultsUpdater = searchVC

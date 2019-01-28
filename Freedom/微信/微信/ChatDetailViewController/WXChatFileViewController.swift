@@ -147,8 +147,8 @@ class WXChatFileViewController: WXBaseViewController {
             
         })
         navigationItem.rightBarButtonItem = rightBarButton
-        collectionView.register(WXChatFileHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "TLChatFileHeaderView")
-        collectionView.register(WXChatFileCell.self, forCellWithReuseIdentifier: "TLChatFileCell")
+        collectionView.register(WXChatFileHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WXChatFileHeaderView.identifier)
+        collectionView.register(WXChatFileCell.self, forCellWithReuseIdentifier: WXChatFileCell.identifier)
         collectionView.snp.makeConstraints { (make) in
             make.left.right.top.equalTo(self.view)
             make.bottom.equalTo(self.view)
@@ -165,14 +165,14 @@ extension WXChatFileViewController: UICollectionViewDelegate,UICollectionViewDat
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let message = data[indexPath.section][indexPath.row] as WXMessage
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TLChatFileHeaderView", for: indexPath) as! WXChatFileHeaderView
+        let headerView = collectionView.dequeueHeadFoot(WXChatFileHeaderView.self, kind: kind, for: indexPath)
         headerView.title = message.date.timeToNow()
         return headerView
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let message = data[indexPath.section][indexPath.row] as WXMessage
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLChatFileCell", for: indexPath) as! WXChatFileCell
+        let cell = collectionView.dequeueCell(WXChatFileCell.self, for: indexPath)
         cell.message = message
         return cell
     }

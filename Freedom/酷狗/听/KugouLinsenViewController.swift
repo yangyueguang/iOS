@@ -137,17 +137,10 @@ class KugouLinsenViewController: KugouBaseViewController {
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let mainCellID = "mainID"
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: mainCellID)
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: mainCellID)
-        }
-        cell?.imageView?.image = UIImage(named: "music")
-        cell?.textLabel?.text = titlesArr[indexPath.row] as? String
-        if let aCell = cell {
-            return aCell
-        }
-        return UITableViewCell()
+        var cell = tableView.dequeueCell(BaseTableViewCell.self)
+        cell.imageView?.image = UIImage(named: "music")
+        cell.textLabel?.text = titlesArr[indexPath.row] as? String
+        return cell
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

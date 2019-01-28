@@ -7,7 +7,7 @@ import Foundation
 protocol WXAddMenuViewDelegate: NSObjectProtocol {
     func addMenuView(_ addMenuView: WechatAddMenuView, didSelectedItem item: WXAddMenuItem)
 }
-class WechatAddMenuCell: WXTableViewCell {
+class WechatAddMenuCell: BaseTableViewCell {
     var item: WXAddMenuItem = WXAddMenuItem() {
         didSet {
             iconImageView.image = UIImage(named: item.iconPath)
@@ -21,9 +21,8 @@ class WechatAddMenuCell: WXTableViewCell {
         titleLabel.font = UIFont.systemFont(ofSize: 16.0)
         return titleLabel
     }()
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        rightSeparatorSpace = 16
         backgroundColor = UIColor(71, 70, 73, 1.0)
         let selectedView = UIView()
         selectedView.backgroundColor = UIColor(65, 64, 67, 1.0)
@@ -103,7 +102,7 @@ class WechatAddMenuView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = data[indexPath.row] as WXAddMenuItem
-        let cell = tableView.dequeueReusableCell(withIdentifier: WechatAddMenuCell.identifier) as! WechatAddMenuCell
+        let cell = tableView.dequeueCell(WechatAddMenuCell.self)
         cell.item = item
         return cell
     }
@@ -131,7 +130,7 @@ class WechatAddMenuView: UIView, UITableViewDataSource, UITableViewDelegate {
         context.drawPath(using: .fillStroke)
     }
 }
-class WechatConversationCell: WXTableViewCell {
+class WechatConversationCell: BaseTableViewCell {
     lazy var avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
         avatarImageView.layer.masksToBounds = true
@@ -197,9 +196,8 @@ class WechatConversationCell: WXTableViewCell {
             markAsRead(self.conversation?.isRead ?? false)
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        leftSeparatorSpace = 10
         contentView.addSubview(avatarImageView)
         contentView.addSubview(usernameLabel)
         contentView.addSubview(detailLabel)
@@ -258,7 +256,7 @@ class WechatConversationCell: WXTableViewCell {
         }
     }
 }
-class WXConversationViewController: WXTableViewController, WXMessageManagerConvVCDelegate, UISearchBarDelegate, WXAddMenuViewDelegate {
+class WXConversationViewController: BaseTableViewController, WXMessageManagerConvVCDelegate, UISearchBarDelegate, WXAddMenuViewDelegate {
     var searchVC = WXFriendSearchViewController()
     var data: [WXConversation] = []
     private var scrollTopView = UIImageView(image: UIImage(named: "conv_wechat_icon"))
@@ -273,6 +271,8 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
         navigationItem.title = "微信"
         addMenuView.delegate = self
         tableView.backgroundColor = UIColor.white
@@ -284,7 +284,7 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
         }
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "nav_add"), style: .done, target: self, action: #selector(self.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        tableView.register(WechatConversationCell.self, forCellReuseIdentifier: "TLConversationCell")
+        tableView.register(WechatConversationCell.self, forCellReuseIdentifier: WechatConversationCell.identifier)
         WXMessageManager.shared.conversationDelegate = (self)
         NotificationCenter.default.addObserver(self, selector: #selector(self.networkStatusChange(_:)), name: NSNotification.Name.AFNetworkingReachabilityDidChange, object: nil)
     }
@@ -339,9 +339,8 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let conversation = data[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TLConversationCell") as! WechatConversationCell
+        let cell = tableView.dequeueCell(WechatConversationCell.self)
         cell.conversation = conversation
-        cell.bottomLineStyle = (indexPath.row == data.count - 1) ? .fill : .default
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -380,7 +379,6 @@ class WXConversationViewController: WXTableViewController, WXMessageManagerConvV
             if self.data.count > 0 && indexPath.row == self.data.count {
                 let lastIndexPath = IndexPath(row: (indexPath.row) - 1, section: indexPath.section)
                 let cell = self.tableView.cellForRow(at: lastIndexPath) as! WechatConversationCell
-                cell.bottomLineStyle = .fill
             }
         })
         let moreAction = UITableViewRowAction(style: .default, title: conversation.isRead ? "标为未读" : "标为已读", handler: { action, indexPath in

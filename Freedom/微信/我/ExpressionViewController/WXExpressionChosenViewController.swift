@@ -12,7 +12,7 @@ protocol WXExpressionCellDelegate: NSObjectProtocol {
 protocol WXExpressionBannerCellDelegate: NSObjectProtocol {
     func expressionBannerCellDidSelectBanner(_ item: TLEmojiGroup)
 }
-class WXExpressionCell: WXTableViewCell {
+class WXExpressionCell: BaseTableViewCell {
     weak var delegate: WXExpressionCellDelegate?
     private lazy var iconImageView: UIImageView = {
         let iconImageView = UIImageView()
@@ -75,7 +75,7 @@ class WXExpressionCell: WXTableViewCell {
             }
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(iconImageView)
         contentView.addSubview(titleLabel)
@@ -122,7 +122,7 @@ class WXExpressionCell: WXTableViewCell {
 }
 
 
-class WXExpressionBannerCell: WXTableViewCell,WXPictureCarouselDelegate {
+class WXExpressionBannerCell: BaseTableViewCell,WXPictureCarouselDelegate {
     weak var delegate: WXExpressionBannerCellDelegate?
     private var picCarouselView = WXPictureCarouselView()
     var data: [WXPictureCarouselProtocol] = [] {
@@ -130,9 +130,8 @@ class WXExpressionBannerCell: WXTableViewCell,WXPictureCarouselDelegate {
             picCarouselView.data = data
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        bottomLineStyle = .none
         selectionStyle = .none
         picCarouselView.delegate = self
         contentView.addSubview(picCarouselView)
@@ -148,7 +147,7 @@ class WXExpressionBannerCell: WXTableViewCell,WXPictureCarouselDelegate {
     }
 }
 
-class WXExpressionChosenViewController: WXTableViewController,UISearchBarDelegate {
+class WXExpressionChosenViewController: BaseTableViewController,UISearchBarDelegate {
     var kPageIndex: Int = 0
     var data: [TLEmojiGroup] = []
     var bannerData: [TLEmojiGroup] = []
@@ -167,8 +166,8 @@ class WXExpressionChosenViewController: WXTableViewController,UISearchBarDelegat
         tableView.frame = CGRect(x: 0, y: TopHeight + 20, width: APPW, height: APPH - 20 - TopHeight)
         tableView.backgroundColor = UIColor.white
         tableView.tableHeaderView = searchController.searchBar
-        tableView.register(WXExpressionBannerCell.self, forCellReuseIdentifier: "TLExpressionBannerCell")
-        tableView.register(WXExpressionCell.self, forCellReuseIdentifier: "TLExpressionCell")
+        tableView.register(WXExpressionBannerCell.self, forCellReuseIdentifier: WXExpressionBannerCell.identifier)
+        tableView.register(WXExpressionCell.self, forCellReuseIdentifier: WXExpressionCell.identifier)
         let footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(self.loadMoreData))
         footer?.setTitle("正在加载...", for: .refreshing)
         footer?.setTitle("", for: .noMoreData)
@@ -246,12 +245,12 @@ extension WXExpressionChosenViewController: WXExpressionCellDelegate, WXExpressi
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && bannerData.count > 0 {
-            let bannerCell = tableView.dequeueReusableCell(withIdentifier: "TLExpressionBannerCell") as! WXExpressionBannerCell
+            let bannerCell = tableView.dequeueCell(WXExpressionBannerCell.self)
             bannerCell.data = bannerData
             bannerCell.delegate = self
             return bannerCell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TLExpressionCell") as! WXExpressionCell
+        let cell = tableView.dequeueCell(WXExpressionCell.self)
         let group: TLEmojiGroup = data[indexPath.row]
         cell.group = group
         cell.delegate = self

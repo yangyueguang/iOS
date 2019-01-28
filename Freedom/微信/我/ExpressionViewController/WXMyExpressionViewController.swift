@@ -6,7 +6,7 @@ import Foundation
 protocol WXMyExpressionCellDelegate: NSObjectProtocol {
     func myExpressionCellDeleteButtonDown(_ group: TLEmojiGroup)
 }
-class WXMyExpressionCell: UITableViewCell {
+class WXMyExpressionCell: BaseTableViewCell {
     weak var delegate: WXMyExpressionCellDelegate?
     var group: TLEmojiGroup = TLEmojiGroup() {
         didSet {
@@ -31,7 +31,7 @@ class WXMyExpressionCell: UITableViewCell {
         return delButton
     }()
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(iconView)
         contentView.addSubview(titleLabel)
@@ -68,14 +68,14 @@ class WXMyExpressionViewController: WXSettingViewController, WXMyExpressionCellD
             })
             navigationItem.leftBarButtonItem = dismissBarButton
         }
-        tableView.register(WXMyExpressionCell.self, forCellReuseIdentifier: "TLMyExpressionCell")
+        tableView.register(WXMyExpressionCell.self, forCellReuseIdentifier: WXMyExpressionCell.identifier)
         emojiGroupData = helper.myExpressionListData()
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let group = emojiGroupData[indexPath.section]
         if !group.groupName.isEmpty {
             // 有标题的就是表情组
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TLMyExpressionCell") as! WXMyExpressionCell
+            let cell = tableView.dequeueCell(WXMyExpressionCell.self)
             cell.group = group
             cell.delegate = self
             return cell

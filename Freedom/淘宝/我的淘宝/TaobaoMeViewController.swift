@@ -89,8 +89,8 @@ class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDelegate,
         collectionView.dataArray = [["name": "流量充值", "pic": "userLogo"]]
         collectionView?.register(TaobaoMeViewCell1.self, forCellWithReuseIdentifier: TaobaoMeViewCell1.identifier)
         collectionView?.register(TaobaoMeViewCell2.self, forCellWithReuseIdentifier: TaobaoMeViewCell2.identifier)
-        collectionView?.register(TaobaoMeHeadView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview")
-        collectionView?.register(TaobaoMeHeadView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "footview")
+        collectionView?.register(TaobaoMeHeadView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TaobaoMeHeadView.identifier)
+        collectionView?.register(TaobaoMeHeadView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: TaobaoMeHeadView.identifier)
         collectionView?.addSubview(headView)
         collectionView?.dataSource = self
         collectionView?.delegate = self
@@ -113,9 +113,9 @@ class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell: BaseCollectionViewCell? = nil
         if indexPath.section == 0 {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaobaoMeViewCell1.identifier, for: indexPath) as? TaobaoMeViewCell1
+            cell = collectionView.dequeueCell(TaobaoMeViewCell1.self, for: indexPath)
         } else {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaobaoMeViewCell2.identifier, for: indexPath) as? TaobaoMeViewCell2
+            cell = collectionView.dequeueCell(TaobaoMeViewCell2.self, for: indexPath)
         }
         return cell!
     }
@@ -130,7 +130,7 @@ class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview", for: indexPath)
+        return collectionView.dequeueHeadFoot(TaobaoMeHeadView.self, kind: kind, for: indexPath)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let log = "你选择的是\(indexPath.section)，\(indexPath.row)"

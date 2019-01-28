@@ -170,22 +170,32 @@ class IqiyiImageCardView: UIView {
         delegate?.didSelectImageCard(self, video: video)
     }
 }
-class IqiyiHomeBoxCell: UITableViewCell,IqiyiImageCardViewDelegate {
+class IqiyiHomeBoxCell: BaseTableViewCell,IqiyiImageCardViewDelegate {
     private var titleLabel: UILabel?
     private var iconV : UIImageView!
     private var cardView1: IqiyiImageCardView!
     private var cardView2: IqiyiImageCardView!
     private var cardView3: IqiyiImageCardView!
     private var cardView4: IqiyiImageCardView!
-    var boxes: IqiyiBoxesModel?
-    weak var delegate: IqiyiHomeBoxCellDelegate?
-    func ainit(tableView: UITableView?) {
-        let menuID = "JFHomeBoxCell"
-        var cell = tableView?.dequeueReusableCell(withIdentifier: menuID) as? IqiyiHomeBoxCell
-        if cell == nil {
-            cell = IqiyiHomeBoxCell(style: .default, reuseIdentifier: menuID)
+    var boxes: IqiyiBoxesModel? {
+        didSet {
+            titleLabel?.text = boxes?.title
+            imageView?.sd_setImage(with: URL(string: boxes?.index_page_channel_icon ?? ""), placeholderImage: nil)
+            let video1 = IqiyiVideosModel.parse(boxes?.videos[0] as! NSDictionary)
+            let video2 = IqiyiVideosModel.parse(boxes?.videos[1] as! NSDictionary)
+            let video3 = IqiyiVideosModel.parse(boxes?.videos[2] as! NSDictionary)
+            let video4 = IqiyiVideosModel.parse(boxes?.videos[3] as! NSDictionary)
+            //    [_cardView1 setVideo:video1];
+            cardView1.video = video1
+            cardView2.video = video2
+            cardView3.video = video3
+            cardView4.video = video4
         }
-        cell?.selectionStyle = .none
+    }
+    weak var delegate: IqiyiHomeBoxCellDelegate?
+    func ainit(tableView: UITableView) {
+        var cell = tableView.dequeueCell(IqiyiHomeBoxCell.self)
+        cell.selectionStyle = .none
     }
     func initViews() {
         //背景
@@ -224,29 +234,32 @@ class IqiyiHomeBoxCell: UITableViewCell,IqiyiImageCardViewDelegate {
         backView.addSubview(cardView3)
         backView.addSubview(cardView4)
     }
-    func setBoxes(_ boxes: IqiyiBoxesModel?) {
-        titleLabel?.text = boxes?.title
-        imageView?.sd_setImage(with: URL(string: boxes?.index_page_channel_icon ?? ""), placeholderImage: nil)
-        let video1 = IqiyiVideosModel.parse(boxes?.videos[0] as! NSDictionary)
-        let video2 = IqiyiVideosModel.parse(boxes?.videos[1] as! NSDictionary)
-        let video3 = IqiyiVideosModel.parse(boxes?.videos[2] as! NSDictionary)
-        let video4 = IqiyiVideosModel.parse(boxes?.videos[3] as! NSDictionary)
-        //    [_cardView1 setVideo:video1];
-        cardView1.video = video1
-        cardView2.video = video2
-        cardView3.video = video3
-        cardView4.video = video4
-    }
     func didSelectImageCard(_ imageCard: IqiyiImageCardView?, video: IqiyiVideosModel?) {
         delegate?.didSelectHomeBox(video)
     }
         
 }
-class IqiyiHomeVideoBoxCell: UITableViewCell {
-    var boxes: IqiyiBoxesModel?
+class IqiyiHomeVideoBoxCell: BaseTableViewCell {
+    var boxes: IqiyiBoxesModel? {
+        didSet {
+            titleLabel.text = boxes?.title
+            imageView?.sd_setImage(with: URL(string: boxes?.index_page_channel_icon ?? ""), placeholderImage: nil)
+            let video1 = IqiyiVideosModel.parse(boxes?.videos[0] as! NSDictionary)
+            let video2 = IqiyiVideosModel.parse(boxes?.videos[1] as! NSDictionary)
+            let video3 = IqiyiVideosModel.parse(boxes?.videos[2] as! NSDictionary)
+            let video4 = IqiyiVideosModel.parse(boxes?.videos[3] as! NSDictionary)
+            let video5 = IqiyiVideosModel.parse(boxes?.videos[4] as! NSDictionary)
+            let video6 = IqiyiVideosModel.parse(boxes?.videos[5] as! NSDictionary)
+            cardView1.video = video1
+            cardView2.video = video2
+            cardView3.video = video3
+            cardView4.video = video4
+            cardView5.video = video5
+            cardView6.video = video6
+        }
+    }
     
     private var titleLabel: UILabel!
-    private var icon: UIImageView!
     private var cardView1: IqiyiImageCardView!
     private var cardView2: IqiyiImageCardView!
     private var cardView3: IqiyiImageCardView!
@@ -285,22 +298,6 @@ class IqiyiHomeVideoBoxCell: UITableViewCell {
         backView.addSubview(cardView4)
         backView.addSubview(cardView5)
         backView.addSubview(cardView6)
-    }
-    func setBoxes(_ boxes: IqiyiBoxesModel?) {
-        titleLabel.text = boxes?.title
-        imageView?.sd_setImage(with: URL(string: boxes?.index_page_channel_icon ?? ""), placeholderImage: nil)
-        let video1 = IqiyiVideosModel.parse(boxes?.videos[0] as! NSDictionary)
-        let video2 = IqiyiVideosModel.parse(boxes?.videos[1] as! NSDictionary)
-        let video3 = IqiyiVideosModel.parse(boxes?.videos[2] as! NSDictionary)
-        let video4 = IqiyiVideosModel.parse(boxes?.videos[3] as! NSDictionary)
-        let video5 = IqiyiVideosModel.parse(boxes?.videos[4] as! NSDictionary)
-        let video6 = IqiyiVideosModel.parse(boxes?.videos[5] as! NSDictionary)
-        cardView1.video = video1
-        cardView2.video = video2
-        cardView3.video = video3
-        cardView4.video = video4
-        cardView5.video = video5
-        cardView6.video = video6
     }
 }
 class IqiyiViewController: IqiyiBaseViewController ,IqiyiHomeBoxCellDelegate {
@@ -415,12 +412,12 @@ class IqiyiViewController: IqiyiBaseViewController ,IqiyiHomeBoxCellDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let box: IqiyiBoxesModel? = boxesSource[indexPath.row - 1] as? IqiyiBoxesModel
         if box?.display_type ?? 0 == 1 {
-            let cell = IqiyiHomeBoxCell(style: .default, reuseIdentifier: "")
+            let cell = IqiyiHomeBoxCell(style: .default, reuseIdentifier: IqiyiHomeBoxCell.identifier)
             cell.boxes = boxesSource[indexPath.row - 1] as? IqiyiBoxesModel
             cell.delegate = self
             return cell
         } else if box?.display_type ?? 0 == 2 {
-            let cell = IqiyiHomeVideoBoxCell(style: .default, reuseIdentifier: "")
+            let cell = IqiyiHomeVideoBoxCell(style: .default, reuseIdentifier: IqiyiHomeVideoBoxCell.identifier)
             cell.initViews()
             cell.boxes = box
             return cell

@@ -173,8 +173,8 @@ class WXExpressionDetailViewController: WXBaseViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true
-        collectionView.register(WXExpressionItemCell.self, forCellWithReuseIdentifier: "TLExpressionItemCell")
-        collectionView.register(WXExpressionDetailCell.self, forCellWithReuseIdentifier: "TLExpressionDetailCell")
+        collectionView.register(WXExpressionItemCell.self, forCellWithReuseIdentifier: WXExpressionItemCell.identifier)
+        collectionView.register(WXExpressionDetailCell.self, forCellWithReuseIdentifier: WXExpressionDetailCell.identifier)
         let longPressGR = UILongPressGestureRecognizer()
         longPressGR.minimumPressDuration = 1.0
         longPressGR.addTarget(self, action: #selector(self.didLongPressScreen(_:)))
@@ -258,12 +258,12 @@ extension WXExpressionDetailViewController: UICollectionViewDelegate, UICollecti
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLExpressionDetailCell", for: indexPath) as! WXExpressionDetailCell
+            let cell = collectionView.dequeueCell(WXExpressionDetailCell.self, for: indexPath)
             cell.group = group
             cell.delegate = self
             return cell
         }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLExpressionItemCell", for: indexPath) as! WXExpressionItemCell
+        let cell = collectionView.dequeueCell(WXExpressionItemCell.self, for: indexPath)
         let emoji = group.data[indexPath.row]
         cell.emoji = emoji
         return cell

@@ -32,12 +32,12 @@ class IqiyiClassifyModel: NSObject {
     var young_app_launcher = ""
     var normal_icon_for_v_4 = ""
 }
-class IqiyiClassifyCell: UITableViewCell {
-    var classifyModel: IqiyiClassifyModel?
-    func setClassifyModel(_ classifyModel: IqiyiClassifyModel?) {
-        self.classifyModel = classifyModel
-        imageView?.sd_setImage(with: URL(string: classifyModel?.image_at_bottom ?? ""), placeholderImage: UIImage(named: "home_GaoXiao"))
-        textLabel?.text = classifyModel?.image_at_top
+class IqiyiClassifyCell: BaseTableViewCell {
+    var classifyModel: IqiyiClassifyModel? {
+        didSet {
+            imageView?.sd_setImage(with: URL(string: classifyModel?.image_at_bottom ?? ""), placeholderImage: UIImage(named: "home_GaoXiao"))
+            textLabel?.text = classifyModel?.image_at_top
+        }
     }
 }
 class TEMPBASEC:BaseTableViewCell{
@@ -73,14 +73,9 @@ class IqiyiClassifyViewController: IqiyiBaseViewController {
         return 40
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let ID = "JFClassifyCell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: ID) as? IqiyiClassifyCell
-        if cell == nil {
-            // 从xib中加载cell
-            cell = IqiyiClassifyCell(style: .default, reuseIdentifier: ID)
-        }
-        cell?.selectionStyle = .none
-        return cell!
+        var cell = tableView.dequeueCell(IqiyiClassifyCell.self)
+        cell.selectionStyle = .none
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

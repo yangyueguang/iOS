@@ -25,7 +25,6 @@ class SinaMessageViewController: SinaBaseViewController {
         return 60
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let ID = "cell"
         if indexPath.row == 0 {
             let _searchBar = UISearchBar()
             _searchBar.frame = CGRect(x: _searchBar.frame.origin.x, y: _searchBar.frame.origin.y, width: APPW, height: 40)
@@ -34,13 +33,10 @@ class SinaMessageViewController: SinaBaseViewController {
             d.contentView.addSubview(_searchBar)
             return d
         }
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: ID)
-        if cell == nil {
-            cell = UITableViewCell(style: .subtitle, reuseIdentifier: ID)
-        }
-        cell?.textLabel?.text = "微博小秘书\(indexPath.row)"
-        cell?.detailTextLabel?.text = "今晚我想去你那里，等着我。详情请点击查看！"
-        cell?.imageView?.image = UIImage(named: "movie")
-        return cell!
+        var cell = tableView.dequeueCell(BaseTableViewCell.self)
+        cell.textLabel?.text = "微博小秘书\(indexPath.row)"
+        cell.detailTextLabel?.text = "今晚我想去你那里，等着我。详情请点击查看！"
+        cell.imageView?.image = UIImage(named: "movie")
+        return cell
     }
 }

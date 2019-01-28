@@ -64,7 +64,7 @@ class WXPictureCarouselView:UIView, UICollectionViewDelegate, UICollectionViewDa
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(collectionView)
-        collectionView.register(WXPictureCarouselViewCell.self, forCellWithReuseIdentifier: "TLPictureCarouselViewCell")
+        collectionView.register(WXPictureCarouselViewCell.self, forCellWithReuseIdentifier: WXPictureCarouselViewCell.identifier)
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -82,7 +82,7 @@ class WXPictureCarouselView:UIView, UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let row: Int = indexPath.row == 0 ? data.count - 1 : (indexPath.row == data.count + 1 ? 0 : indexPath.row - 1)
         let model: WXPictureCarouselProtocol = data[row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WXPictureCarouselViewCell.identifier, for: indexPath) as! WXPictureCarouselViewCell
+        let cell = collectionView.dequeueCell(WXPictureCarouselViewCell.self, for: indexPath)
         cell.model = model
         return cell
     }

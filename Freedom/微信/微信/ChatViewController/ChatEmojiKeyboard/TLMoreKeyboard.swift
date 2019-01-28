@@ -65,7 +65,7 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
         backgroundColor = UIColor(245.0, 245.0, 247.0, 1.0)
         addSubview(collectionView)
         addSubview(pageControl)
-        collectionView.register(TLMoreKeyboardCell.self, forCellWithReuseIdentifier: "TLMoreKeyboardCell")
+        collectionView.register(TLMoreKeyboardCell.self, forCellWithReuseIdentifier: TLMoreKeyboardCell.identifier)
         collectionView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(15)
             make.left.right.equalToSuperview()
@@ -143,7 +143,7 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
         context.strokePath()
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLMoreKeyboardCell", for: indexPath) as! TLMoreKeyboardCell
+        let cell = collectionView.dequeueCell(TLMoreKeyboardCell.self, for: indexPath)
         let index: Int = indexPath.section * 8 + indexPath.row
         let tIndex = p_transformIndex(index) // 矩阵坐标转置
         if tIndex >= chatMoreKeyboardData.count {

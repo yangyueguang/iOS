@@ -127,12 +127,9 @@ class AlipayServiceTableViewController: AlipayBaseViewController {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataArray[indexPath.row]
-        var cell: AlipayServiceTableViewCell? = tableView.dequeueReusableCell(withIdentifier: AlipayServiceTableViewCell.identifier) as? AlipayServiceTableViewCell
-        if cell == nil {
-            cell = AlipayServiceTableViewCell.getInstance() as? AlipayServiceTableViewCell
-        }
-        cell?.setModel(model)
-        return cell!
+        var cell = tableView.dequeueCell(AlipayServiceTableViewCell.self)
+        cell.setModel(model)
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let _: AlipayServiceTableViewCellModel? = dataArray[indexPath.row]

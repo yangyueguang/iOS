@@ -17,7 +17,7 @@ let SHARE_TAP_ACTION:Int = 4000
 
 typealias OnPlayerReady = () -> Void
 
-class AwemeListCell: UITableViewCell {
+class AwemeListCell: BaseTableViewCell {
     
     var container:UIView = UIView.init()
     var gradientLayer:CAGradientLayer = CAGradientLayer.init()
@@ -53,7 +53,7 @@ class AwemeListCell: UITableViewCell {
     var onPlayerReady:OnPlayerReady?
     var isPlayerReady:Bool = false
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         self.backgroundColor = ColorClear

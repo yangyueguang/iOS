@@ -10,11 +10,11 @@ class WXChatDetailViewController: WXSettingViewController, WechatUserGroupCellDe
         super.viewDidLoad()
         navigationItem.title = "聊天详情"
         data = helper.chatDetailData(byUserInfo: user)
-        tableView.register(WXUserGroupCell.self, forCellReuseIdentifier: "TLUserGroupCell")
+        tableView.register(WXUserGroupCell.self, forCellReuseIdentifier: WXUserGroupCell.identifier)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TLUserGroupCell") as! WXUserGroupCell
+            let cell = tableView.dequeueCell(WXUserGroupCell.self)
             cell.users = [user]
             cell.delegate = self
             return cell

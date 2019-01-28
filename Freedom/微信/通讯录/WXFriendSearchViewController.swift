@@ -3,12 +3,12 @@
 //  Freedom
 
 import Foundation
-class WXFriendSearchViewController: WXTableViewController, UISearchResultsUpdating {
+class WXFriendSearchViewController: BaseTableViewController, UISearchResultsUpdating {
     var friendsData: [WXUser] = []
     var data: [WXUser] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(WXFriendCell.self, forCellReuseIdentifier: "FriendCell")
+        tableView.register(WXFriendCell.self, forCellReuseIdentifier: WXFriendCell.identifier)
         automaticallyAdjustsScrollViewInsets = false
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -25,11 +25,9 @@ class WXFriendSearchViewController: WXTableViewController, UISearchResultsUpdati
         return "联系人"
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell") as! WXFriendCell
+        let cell = tableView.dequeueCell(WXFriendCell.self)
         let user = data[indexPath.row] as WXUser
         cell.user = user
-        cell.topLineStyle = (indexPath.row == 0 ? .fill : .none)
-        cell.bottomLineStyle = (indexPath.row == data.count - 1 ? .fill : .default)
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

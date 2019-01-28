@@ -294,22 +294,16 @@ class FirstViewController: BaseViewController,UICollectionViewDataSource, UIColl
         let dic = items[indexPath.item]
         let color = UIColor.random
         if exampleSwitch.isOn {
-            let cell = cv.dequeueReusableCell(withReuseIdentifier: CollectionViewCell1.identifier, for: indexPath) as? CollectionViewCell1
-            cell?.icon.layer.borderColor = color.cgColor
-            cell?.title.text = dic["title"]
-            cell?.icon.image = UIImage(named:dic["icon"]!)
-            if let aCell = cell {
-                return aCell
-            }
-            return UICollectionViewCell()
+            let cell = cv.dequeueCell(CollectionViewCell1.self, for: indexPath)
+            cell.icon.layer.borderColor = color.cgColor
+            cell.title.text = dic["title"]
+            cell.icon.image = UIImage(named:dic["icon"]!)
+            return cell
         } else {
-            let cell = cv.dequeueReusableCell(withReuseIdentifier: CollectionViewCell2.identifier, for: indexPath) as? CollectionViewCell2
-            cell?.title.text = dic["title"]
-            cell?.title.textColor = color
-            if let aCell = cell {
-                return aCell
-            }
-            return UICollectionViewCell()
+            let cell = cv.dequeueCell(CollectionViewCell2.self, for: indexPath)
+            cell.title.text = dic["title"]
+            cell.title.textColor = color
+            return cell
         }
     }
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

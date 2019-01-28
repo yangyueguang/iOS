@@ -60,7 +60,7 @@ class ToutiaoHomeSampleViewController: ToutiaoBaseViewController {
         return headBanner;
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ToutiaoHomeSampleViewCell.identifier) as! ToutiaoHomeSampleViewCell
+        let cell = tableView.dequeueCell(ToutiaoHomeSampleViewCell.self)
         cell.viewModel.onNext(model.lists[indexPath.row])
         return cell
     }

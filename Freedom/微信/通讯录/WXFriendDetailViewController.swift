@@ -6,7 +6,7 @@ import Foundation
 protocol WXFriendDetailUserCellDelegate: NSObjectProtocol {
     func friendDetailUserCellDidClickAvatar(_ info: WXInfo)
 }
-class WechatFriendDetailAlbumCell: WXTableViewCell {
+class WechatFriendDetailAlbumCell: BaseTableViewCell {
     var imageViewsArray: [UIImageView] = []
     var info: WXInfo = WXInfo() {
         didSet {
@@ -41,7 +41,7 @@ class WechatFriendDetailAlbumCell: WXTableViewCell {
             }
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         textLabel?.font = UIFont.systemFont(ofSize: 15.0)
         accessoryType = .disclosureIndicator
@@ -50,7 +50,7 @@ class WechatFriendDetailAlbumCell: WXTableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-class WechatFriendDetailUserCell: WXTableViewCell {
+class WechatFriendDetailUserCell: BaseTableViewCell {
     weak var delegate: WXFriendDetailUserCellDelegate?
     var info: WXInfo = WXInfo() {
         didSet {
@@ -81,7 +81,7 @@ class WechatFriendDetailUserCell: WXTableViewCell {
     private var shownameLabel = UILabel()
     private var usernameLabel = UILabel()
     private var nikenameLabel = UILabel()
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         shownameLabel.font = UIFont.systemFont(ofSize: 17.0)
         usernameLabel.font = UIFont.systemFont(ofSize: 14.0)
@@ -89,7 +89,6 @@ class WechatFriendDetailUserCell: WXTableViewCell {
         nikenameLabel.textColor = UIColor.gray
         nikenameLabel.font = UIFont.systemFont(ofSize: 14.0)
         selectionStyle = .none
-        leftSeparatorSpace = 15.0
         contentView.addSubview(avatarView)
         contentView.addSubview(shownameLabel)
         contentView.addSubview(usernameLabel)
@@ -131,7 +130,8 @@ class WechatFriendDetailSettingViewController: WXSettingViewController {
         data = WXFriendHelper.shared.friendDetailSettingArray(byUserInfo: user)
     }
 }
-class WXFriendDetailViewController: WXInfoViewController, WXFriendDetailUserCellDelegate {
+class WXFriendDetailViewController: BaseTableViewController, WXFriendDetailUserCellDelegate {
+    var data:[[WXInfo]] = []
     var user: WXUser = WXUser() {
         didSet {
             let array = WXFriendHelper.shared.friendDetailArray(byUserInfo: self.user)
@@ -139,14 +139,21 @@ class WXFriendDetailViewController: WXInfoViewController, WXFriendDetailUserCell
             tableView.reloadData()
         }
     }
+    override func loadView() {
+        view = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))
+        tableView = UITableView(frame: view.bounds, style: .grouped)
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 15.0))
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 12.0))
+        tableView.backgroundColor = UIColor.lightGray
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "详细资料"
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "nav_more"), style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButton
 
-        tableView.register(WechatFriendDetailUserCell.self, forCellReuseIdentifier: "TLFriendDetailUserCell")
-        tableView.register(WechatFriendDetailAlbumCell.self, forCellReuseIdentifier: "TLFriendDetailAlbumCell")
+        tableView.register(WechatFriendDetailUserCell.self, forCellReuseIdentifier: WechatFriendDetailUserCell.identifier)
+        tableView.register(WechatFriendDetailAlbumCell.self, forCellReuseIdentifier: WechatFriendDetailAlbumCell.identifier)
     }
 
     @objc func rightBarButtonDown(_ sender: UIBarButtonItem) {
@@ -159,14 +166,12 @@ class WXFriendDetailViewController: WXInfoViewController, WXFriendDetailUserCell
         let info = data[indexPath.section][indexPath.row] as WXInfo
         if info.type == TLInfoType.other.rawValue {
             if indexPath.section == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TLFriendDetailUserCell") as! WechatFriendDetailUserCell
+                let cell = tableView.dequeueCell(WechatFriendDetailUserCell.self)
                 cell.delegate = self
                 cell.info = info
-                cell.topLineStyle = .fill
-                cell.bottomLineStyle = .fill
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TLFriendDetailAlbumCell") as! WechatFriendDetailAlbumCell
+                let cell = tableView.dequeueCell(WechatFriendDetailAlbumCell.self)
                 cell.info = info
                 return cell
             }
@@ -183,7 +188,7 @@ class WXFriendDetailViewController: WXInfoViewController, WXFriendDetailUserCell
         }
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
-    override func infoButtonCellClicked(_ info: WXInfo) {
+    func infoButtonCellClicked(_ info: WXInfo) {
         if (info.title == "发消息") {
             let chatVC = WXChatViewController.shared
             var wxChatVC: WXChatViewController?
@@ -211,7 +216,7 @@ class WXFriendDetailViewController: WXInfoViewController, WXFriendDetailUserCell
                 vc.hidesBottomBarWhenPushed = false
             }
         } else {
-            super.infoButtonCellClicked(info)
+            
         }
     }
     func friendDetailUserCellDidClickAvatar(_ info: WXInfo) {

@@ -40,7 +40,7 @@ class IqiyiSearchHotCell:BaseTableViewCell{
         }
     }
 }
-class IqiyiSearchHistoryCell: UITableViewCell {
+class IqiyiSearchHistoryCell: BaseTableViewCell {
     var searchHistoryLabel: UILabel!
     /** 底部的线 */
     var bottomLineView: UIView!
@@ -161,30 +161,16 @@ class IqiyiSearchHistoryViewController: IqiyiBaseViewController,UITextFieldDeleg
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if datas.count == 2 && indexPath.section == 0 {
-            let identifier = "historyCell"
-            var cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? IqiyiSearchHistoryCell
-            if cell == nil {
-                cell = IqiyiSearchHistoryCell(style: .default, reuseIdentifier: identifier)
-                cell?.searchHistoryLabel = cell?.textLabel
-                let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-                button.setTitle("取消", for: .normal)
-                cell?.accessoryView?.addSubview(button)
-                //            button.addTarget(self, action: Selector("cancelSearchBtnClick:"), for: .touchUpInside)
-            }
-            cell?.tableView = tableView
-            cell?.hisDatas = datas
-            cell?.indexPath = indexPath
-            cell?.searchHistoryLabel.text = "aaa"//datas[0][indexPath.row]
-            return cell!
+            var cell = tableView.dequeueCell(IqiyiSearchHistoryCell.self)
+            cell.tableView = tableView
+            cell.hisDatas = datas
+            cell.indexPath = indexPath
+            cell.searchHistoryLabel.text = "aaa"//datas[0][indexPath.row]
+            return cell
         } else {
-            //这里就一个cell 不用注册了
-            let ID = "JFSearchHotCell"
-            var cell = tableView.dequeueReusableCell(withIdentifier: ID) as? IqiyiSearchHotCell
-            if cell == nil {
-                cell = IqiyiSearchHotCell(style: .default, reuseIdentifier: ID)
-            }
-            cell?.selectionStyle = .none
-            return cell!
+            var cell = tableView.dequeueCell(IqiyiSearchHotCell.self)
+            cell.selectionStyle = .none
+            return cell
         }
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

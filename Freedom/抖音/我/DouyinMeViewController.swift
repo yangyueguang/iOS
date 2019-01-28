@@ -11,11 +11,6 @@ import UIKit
 var USER_INFO_HEADER_HEIGHT:CGFloat = 340 + statusBarHeight
 var SLIDE_TABBAR_FOOTER_HEIGHT:CGFloat = 40
 
-
-let USER_INFO_HEADER:String = "UserInfoHeader"
-let SLIDE_TABBAR_FOOTER:String = "SlideTabBarFooter"
-let AWEME_COLLECTION_CELL:String = "AwemeCollectionCell"
-
 class DouyinMeViewController: DouyinBaseViewController {
     var collectionView: BaseCollectionView!
     var loadMore:LoadMoreControl?
@@ -82,9 +77,9 @@ class DouyinMeViewController: DouyinBaseViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UserInfoHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: USER_INFO_HEADER)
-        collectionView.register(SlideTabBarFooter.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SLIDE_TABBAR_FOOTER)
-        collectionView.register(AwemeCollectionCell.classForCoder(), forCellWithReuseIdentifier: AWEME_COLLECTION_CELL)
+        collectionView.register(UserInfoHeader.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: UserInfoHeader.identifier)
+        collectionView.register(SlideTabBarFooter.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SlideTabBarFooter.identifier)
+        collectionView.register(AwemeCollectionCell.classForCoder(), forCellWithReuseIdentifier: AwemeCollectionCell.identifier)
         self.view.addSubview(collectionView)
         
         loadMore = LoadMoreControl.init(frame: CGRect.init(x: 0, y: USER_INFO_HEADER_HEIGHT + SLIDE_TABBAR_FOOTER_HEIGHT, width: screenWidth, height: 50), surplusCount: 15)
@@ -188,7 +183,7 @@ extension DouyinMeViewController:UICollectionViewDataSource,UICollectionViewDele
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AWEME_COLLECTION_CELL, for: indexPath) as! AwemeCollectionCell
+        let cell = collectionView.dequeueCell(AwemeCollectionCell.self, for: indexPath)
         let aweme:Aweme = tabIndex == 0 ? workAwemes[indexPath.row] : favoriteAwemes[indexPath.row]
         cell.initData(aweme: aweme)
         return cell
@@ -201,7 +196,7 @@ extension DouyinMeViewController:UICollectionViewDataSource,UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if indexPath.section == 0 {
             if kind == UICollectionView.elementKindSectionHeader {
-                let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: USER_INFO_HEADER, for: indexPath) as! UserInfoHeader
+                let header = collectionView.dequeueHeadFoot(UserInfoHeader.self, kind: UICollectionView.elementKindSectionHeader, for: indexPath)
                 userInfoHeader = header
                 if let data = user {
                     header.initData(user: data)
@@ -209,7 +204,7 @@ extension DouyinMeViewController:UICollectionViewDataSource,UICollectionViewDele
                 }
                 return header
             } else {
-                let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SLIDE_TABBAR_FOOTER, for: indexPath) as! SlideTabBarFooter
+                let footer = collectionView.dequeueHeadFoot(SlideTabBarFooter.self, kind: UICollectionView.elementKindSectionFooter, for: indexPath)
                 footer.delegate = self
                 footer.setLabel(titles: ["作品" + String(user?.aweme_count ?? 0),"喜欢" + String(user?.favoriting_count ?? 0)], tabIndex: tabIndex)
                 return footer

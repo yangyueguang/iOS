@@ -76,20 +76,13 @@ class KugouSettingViewController: KugouBaseViewController {
         bottomView?.addSubview(tableView)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let setId = "setCell"
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: setId)
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: setId)
-        }
-        cell?.imageView?.image = UIImage(named: "music")
-        cell?.textLabel?.text = "手机专享"
-        cell?.textLabel?.textColor = UIColor.white
-        cell?.backgroundColor = UIColor(white: 0, alpha: 0)
-        cell?.selectionStyle = .none
-        if let aCell = cell {
-            return aCell
-        }
-        return UITableViewCell()
+        var cell = tableView.dequeueCell(BaseTableViewCell.self)
+        cell.imageView?.image = UIImage(named: "music")
+        cell.textLabel?.text = "手机专享"
+        cell.textLabel?.textColor = UIColor.white
+        cell.backgroundColor = UIColor(white: 0, alpha: 0)
+        cell.selectionStyle = .none
+        return cell
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

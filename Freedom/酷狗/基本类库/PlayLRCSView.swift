@@ -285,7 +285,7 @@ private class SHLrcLine: NSObject {
     var time = ""
     var words = ""//歌词内容
 }
-private class SHMusicLrcCell: UITableViewCell {
+private class SHMusicLrcCell: BaseTableViewCell {
     var message: SHLrcLine! {
         didSet {
             contentView.addSubview(lrcLabel)
@@ -300,7 +300,7 @@ private class SHMusicLrcCell: UITableViewCell {
         lrcLabel.textColor = UIColor.lightText
         return lrcLabel
     }()
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
 
@@ -417,7 +417,7 @@ extension PlayLRCSView: UITableViewDataSource, UITableViewDelegate {
         return lrclines.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = SHMusicLrcCell(style: .default, reuseIdentifier: "cell")
+        let cell = SHMusicLrcCell(style: .default, reuseIdentifier: SHMusicLrcCell.identifier)
         cell.backgroundColor = UIColor.clear
         cell.message = lrclines[indexPath.row]
         return cell

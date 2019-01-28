@@ -8,7 +8,7 @@ protocol WechatUserGroupCellDelegate: NSObjectProtocol {
     func userGroupCellAddUserButtonDown()
 }
 
-class WXUserGroupCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
+class WXUserGroupCell: BaseTableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 57, height: 75)
@@ -28,11 +28,11 @@ class WXUserGroupCell: UITableViewCell, UICollectionViewDataSource, UICollection
     }()
     weak var delegate: WechatUserGroupCellDelegate?
     var users: [WXUser] = []
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         contentView.addSubview(collectionView)
-        collectionView.register(WXUserGroupItemCell.self, forCellWithReuseIdentifier: "TLUserGroupItemCell")
+        collectionView.register(WXUserGroupItemCell.self, forCellWithReuseIdentifier: WXUserGroupItemCell.identifier)
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.contentView)
         }
@@ -45,7 +45,7 @@ class WXUserGroupCell: UITableViewCell, UICollectionViewDataSource, UICollection
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLUserGroupItemCell", for: indexPath) as! WXUserGroupItemCell
+        let cell = collectionView.dequeueCell(WXUserGroupItemCell.self, for: indexPath)
         if indexPath.row < users.count {
             cell.user = users[indexPath.row]
         } else {

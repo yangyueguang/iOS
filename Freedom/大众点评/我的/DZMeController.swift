@@ -96,24 +96,16 @@ class DZMeController: BaseTableViewController {
         }
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "cell"
         //forIndexPath:indexPath 跟 storyboard 配套使用
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
-        //Configure the cell ...
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
-        }
+        var cell = tableView.dequeueCell(BaseTableViewCell.self)
         //取出这一行对应的字典数据
-        cell?.textLabel?.text = "name"
-        cell?.imageView?.image = UIImage(named:"")
-        cell?.textLabel?.backgroundColor = UIColor.clear
-        cell?.selectionStyle = .none
-        cell?.accessoryType = .disclosureIndicator
-        cell?.textLabel?.font = UIFont.systemFont(ofSize: 15)
-        if let aCell = cell {
-            return aCell
-        }
-        return UITableViewCell()
+        cell.textLabel?.text = "name"
+        cell.imageView?.image = UIImage(named:"")
+        cell.textLabel?.backgroundColor = UIColor.clear
+        cell.selectionStyle = .none
+        cell.accessoryType = .disclosureIndicator
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+        return cell
     }
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 8

@@ -3,7 +3,7 @@
 //  Freedom
 import SnapKit
 import Foundation
-class WXFriendCell: WXTableViewCell {
+class WXFriendCell: BaseTableViewCell {
     private var avatarImageView = UIImageView()
     private var usernameLabel = UILabel()
     private lazy var subTitleLabel: UILabel =  {
@@ -34,9 +34,8 @@ class WXFriendCell: WXTableViewCell {
             }
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        leftSeparatorSpace = 10
         usernameLabel.font = UIFont.systemFont(ofSize: 17.0)
         contentView.addSubview(avatarImageView)
         contentView.addSubview(usernameLabel)
@@ -94,7 +93,7 @@ class WXFriendHeaderView: UITableViewHeaderFooterView {
     }
 }
 
-class WXFriendsViewController: WXTableViewController ,UISearchBarDelegate {
+class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegate {
     private lazy var footerLabel: UILabel = {
         let footerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: APPW, height: 50.0))
         footerLabel.textAlignment = .center
@@ -116,9 +115,11 @@ class WXFriendsViewController: WXTableViewController ,UISearchBarDelegate {
     var searchVC = WXFriendSearchViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
         navigationItem.title = "通讯录"
-        tableView.register(WXFriendHeaderView.self, forHeaderFooterViewReuseIdentifier: "TLFriendHeaderView")
-        tableView.register(WXFriendCell.self, forCellReuseIdentifier: "TLFriendCell")
+        tableView.register(WXFriendHeaderView.self, forHeaderFooterViewReuseIdentifier: WXFriendHeaderView.identifier)
+        tableView.register(WXFriendCell.self, forCellReuseIdentifier: WXFriendCell.identifier)
         data = friendHelper.data
         sectionHeaders = friendHelper.sectionHeaders
         footerLabel.text = String(format: "%ld位联系人",friendHelper.friendCount)
@@ -163,14 +164,12 @@ class WXFriendsViewController: WXTableViewController ,UISearchBarDelegate {
         return view
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TLFriendCell") as! WXFriendCell
+        let cell = tableView.dequeueCell(WXFriendCell.self)
         let group = data[indexPath.section] as WXUserGroup
         let user = group.users[UInt(indexPath.row)]
         cell.user = user as! WXUser
         if indexPath.section == data.count - 1 && indexPath.row == group.count - 1 {
-            cell.bottomLineStyle = .fill
         } else {
-            cell.bottomLineStyle = indexPath.row == group.count - 1 ? .none : .default
         }
         return cell
     }

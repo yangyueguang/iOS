@@ -1068,13 +1068,9 @@
 		DF6B51EE21CA6F5900460949 /* WXModes+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51ED21CA6F5900460949 /* WXModes+Extension.swift */; };
 		DF6B51F221CA6F7C00460949 /* WXMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51F121CA6F7C00460949 /* WXMessageManager.swift */; };
 		DF6B51F421CA6F8900460949 /* WXUserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51F321CA6F8900460949 /* WXUserHelper.swift */; };
-		DF6B51F621CA800500460949 /* WXInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51F521CA800500460949 /* WXInfoViewController.swift */; };
-		DF6B51F821CA800D00460949 /* WXMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51F721CA800D00460949 /* WXMenuViewController.swift */; };
 		DF6B51FC21CA801E00460949 /* WXPictureCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51FB21CA801E00460949 /* WXPictureCarouselView.swift */; };
 		DF6B51FE21CA802500460949 /* WXQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51FD21CA802500460949 /* WXQRCodeViewController.swift */; };
 		DF6B520021CA802C00460949 /* WXSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51FF21CA802C00460949 /* WXSearchController.swift */; };
-		DF6B520221CA803300460949 /* WXTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520121CA803300460949 /* WXTableViewCell.swift */; };
-		DF6B520421CA803900460949 /* WXTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520321CA803900460949 /* WXTableViewController.swift */; };
 		DF6B520621CA804200460949 /* WXWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520521CA804200460949 /* WXWebViewController.swift */; };
 		DF6B520821CA804B00460949 /* WXSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520721CA804B00460949 /* WXSettingViewController.swift */; };
 		DF6B520A21CB25A100460949 /* WXUserGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520921CB25A100460949 /* WXUserGroupCell.swift */; };
@@ -2387,13 +2383,9 @@
 		DF6B51ED21CA6F5900460949 /* WXModes+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WXModes+Extension.swift"; sourceTree = "<group>"; };
 		DF6B51F121CA6F7C00460949 /* WXMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXMessageManager.swift; sourceTree = "<group>"; };
 		DF6B51F321CA6F8900460949 /* WXUserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXUserHelper.swift; sourceTree = "<group>"; };
-		DF6B51F521CA800500460949 /* WXInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXInfoViewController.swift; sourceTree = "<group>"; };
-		DF6B51F721CA800D00460949 /* WXMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXMenuViewController.swift; sourceTree = "<group>"; };
 		DF6B51FB21CA801E00460949 /* WXPictureCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXPictureCarouselView.swift; sourceTree = "<group>"; };
 		DF6B51FD21CA802500460949 /* WXQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXQRCodeViewController.swift; sourceTree = "<group>"; };
 		DF6B51FF21CA802C00460949 /* WXSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXSearchController.swift; sourceTree = "<group>"; };
-		DF6B520121CA803300460949 /* WXTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXTableViewCell.swift; sourceTree = "<group>"; };
-		DF6B520321CA803900460949 /* WXTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXTableViewController.swift; sourceTree = "<group>"; };
 		DF6B520521CA804200460949 /* WXWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXWebViewController.swift; sourceTree = "<group>"; };
 		DF6B520721CA804B00460949 /* WXSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXSettingViewController.swift; sourceTree = "<group>"; };
 		DF6B520921CB25A100460949 /* WXUserGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXUserGroupCell.swift; sourceTree = "<group>"; };
@@ -3407,13 +3399,9 @@
 		776460711D6843BE00ACCCAC /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				DF6B51F521CA800500460949 /* WXInfoViewController.swift */,
-				DF6B51F721CA800D00460949 /* WXMenuViewController.swift */,
 				DF6B51FB21CA801E00460949 /* WXPictureCarouselView.swift */,
 				DF6B51FD21CA802500460949 /* WXQRCodeViewController.swift */,
 				DF6B51FF21CA802C00460949 /* WXSearchController.swift */,
-				DF6B520121CA803300460949 /* WXTableViewCell.swift */,
-				DF6B520321CA803900460949 /* WXTableViewController.swift */,
 				DF6B520521CA804200460949 /* WXWebViewController.swift */,
 				DF6B520721CA804B00460949 /* WXSettingViewController.swift */,
 			);
@@ -6266,7 +6254,6 @@
 				BFEF19A52101E821003DCAC1 /* mztools.c in Sources */,
 				7121194220ABDD4B0087E05B /* EnergyShopTabBarController.swift in Sources */,
 				DFB5FF5621CA280A0057C922 /* WXExpanded.swift in Sources */,
-				DF6B520421CA803900460949 /* WXTableViewController.swift in Sources */,
 				DFD8215E21EF2DD8006C8705 /* KugouTabBarView.swift in Sources */,
 				DF6B523821CB76F800460949 /* WXPrivacySettingViewController.swift in Sources */,
 				BFC6D93B20E4AB6D00F17378 /* SinaAuthController.swift in Sources */,
@@ -6364,7 +6351,6 @@
 				DF7B408821AC020A00E3D975 /* AwemeListCell.swift in Sources */,
 				DFFA80CA21AEC84D009B1999 /* BaseTableView.swift in Sources */,
 				DF0E966A21CBAC9D009682CC /* WXFriendsViewController.swift in Sources */,
-				DF6B520221CA803300460949 /* WXTableViewCell.swift in Sources */,
 				BF58BB5720EF1945002CB4EE /* RCDChatViewController.m in Sources */,
 				DF7B407721AC020A00E3D975 /* Extensions.swift in Sources */,
 				BF58B94A20EB22C9002CB4EE /* XTablesViewController.swift in Sources */,
@@ -6443,7 +6429,6 @@
 				BFEF19CB2101E990003DCAC1 /* TSViewController.m in Sources */,
 				DFFA80C321AEC84D009B1999 /* BaseNavigationViewController.swift in Sources */,
 				DFC433E921C3F74F003E1BCB /* XNetKit.swift in Sources */,
-				DF6B51F621CA800500460949 /* WXInfoViewController.swift in Sources */,
 				DF6B523C21CB770500460949 /* WXExpressionDetailViewController.swift in Sources */,
 				7121192020ABC4990087E05B /* EnergyBaseViewController.swift in Sources */,
 				7121194620ABE3660087E05B /* MicroEnergyTabBarController.swift in Sources */,
@@ -6516,7 +6501,6 @@
 				DF6B523221CB76E300460949 /* WXHelpAndFeedbackViewController.swift in Sources */,
 				713EE2B020AD8FDB0085B65D /* AlipayNavigationViewController.swift in Sources */,
 				DF0E966621CBAC89009682CC /* WXFriendDetailViewController.swift in Sources */,
-				DF6B51F821CA800D00460949 /* WXMenuViewController.swift in Sources */,
 				7121196A20AC24D30087E05B /* ToutiaoViewController.swift in Sources */,
 				DF6B522A21CB76BD00460949 /* WXAccountAndSafetyViewController.swift in Sources */,
 				BFAC491920D23BD600E5CB8D /* DetailView.swift in Sources */,

@@ -30,7 +30,6 @@ class TaobaoMiniDynamicViewCell:BaseTableViewCell{
         sees.font = Font(12)
         zan.titleLabel?.font = Font(12)
         pinglun.titleLabel?.font = Font(12)
-        line.frame = CGRect(x: 0, y: 280 - 1, width: APPW, height: 1)
         addSubviews([name, times, picV, cellContentView, sees, zan, pinglun])
         icon.image = UIImage(named: "xin")
         name.text = "微淘发现"

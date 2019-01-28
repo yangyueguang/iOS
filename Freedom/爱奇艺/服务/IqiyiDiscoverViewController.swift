@@ -80,7 +80,7 @@ class IqiyiImageScrollView: UIView, UIScrollViewDelegate {
         removeTimer()
     }
 }
-class IqiyiImageScrollCell: UITableViewCell {
+class IqiyiImageScrollCell: BaseTableViewCell {
     var imageScrollView = IqiyiImageScrollView(frame: CGRect(x: 0, y: 0, width: APPW, height: 100))
     var imageArr :[String] {
         set{
@@ -91,7 +91,7 @@ class IqiyiImageScrollCell: UITableViewCell {
             return self.imageArr
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(imageScrollView)
     }
@@ -110,13 +110,9 @@ class IqiyiDiscoverModel: NSObject {
     var group_location: NSNumber?
 }
 class IqiyiDiscoverCell:BaseTableViewCell{
-    func ainit(tableView: UITableView?) {
-        let ID = "JFDiscoverCell"
-        var cell = tableView?.dequeueReusableCell(withIdentifier: ID) as? IqiyiDiscoverCell
-        if cell == nil {
-            cell = IqiyiDiscoverCell(style: .default, reuseIdentifier: ID)
-        }
-        cell?.selectionStyle = .none
+    func ainit(tableView: UITableView) {
+        var cell = tableView.dequeueCell(IqiyiDiscoverCell.self)
+        cell.selectionStyle = .none
     }
     
     func setDiscoverModel(_ discoverModel: IqiyiDiscoverModel?) {
@@ -182,16 +178,11 @@ class IqiyiDiscoverViewController: IqiyiBaseViewController {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let menuID = "menu"
-            var cell = tableView.dequeueReusableCell(withIdentifier: menuID) as? IqiyiImageScrollCell
-            if cell == nil {
-                cell = IqiyiImageScrollCell(style: .default, reuseIdentifier: menuID)
-                cell?.selectionStyle = .none
-            }
-            cell?.imageArr = imageArray as! [String];
-            return cell!
+            var cell = tableView.dequeueCell(IqiyiImageScrollCell.self)
+            cell.imageArr = imageArray as! [String];
+            return cell
         } else {
-            let cell = IqiyiDiscoverCell(style: .default, reuseIdentifier: "")
+            let cell = IqiyiDiscoverCell(style: .default, reuseIdentifier: IqiyiDiscoverCell.identifier)
 //        cell.setDiscoverModel = dataSource[indexPath.row]
             return cell
         }

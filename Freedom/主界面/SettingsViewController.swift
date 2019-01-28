@@ -36,16 +36,10 @@ class SettingsViewController: BaseViewController ,ElasticMenuTransitionDelegate{
         return 20
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "cell")
-        if cell == nil {
-            cell = UITableViewCell(frame: CGRect(x: 0, y: 0, width: 300, height: 100))
-        }
-        cell?.backgroundColor = UIColor.clear
-        cell?.textLabel?.text = "\(indexPath.row)"
-        if let aCell = cell {
-            return aCell
-        }
-        return UITableViewCell()
+        var cell = tableView.dequeueCell(BaseTableViewCell.self)
+        cell.backgroundColor = UIColor.clear
+        cell.textLabel?.text = "\(indexPath.row)"
+        return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80

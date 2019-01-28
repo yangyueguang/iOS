@@ -79,8 +79,8 @@ class TaobaoCommunityViewController: TaobaoBaseViewController,UICollectionViewDe
         collectionView.dataArray = [["name": "流量充值", "pic": "userLogo"]]
         collectionView.register(TaobaoCommunityViewCell2.self, forCellWithReuseIdentifier:TaobaoCommunityViewCell2.identifier)
         collectionView.register(TaobaoCommunityViewCell1.self, forCellWithReuseIdentifier: TaobaoCommunityViewCell1.identifier)
-        collectionView.register(TaobaoCommunityHeadView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview")
-        collectionView.register(TaobaoCommunityHeadView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "footview")
+        collectionView.register(TaobaoCommunityHeadView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TaobaoCommunityHeadView.identifier)
+        collectionView.register(TaobaoCommunityHeadView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: TaobaoCommunityHeadView.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
         view.addSubview(collectionView)
@@ -104,7 +104,7 @@ class TaobaoCommunityViewController: TaobaoBaseViewController,UICollectionViewDe
             cell?.frame = CGRect(x: 0, y: 0, width: APPW, height: 100)
             cell?.addSubview(banner)
         } else {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaobaoCommunityViewCell2.identifier, for: indexPath) as? BaseCollectionViewCell
+            cell = collectionView.dequeueCell(TaobaoCommunityViewCell2.self, for: indexPath)
         }
         return cell!
     }
@@ -130,9 +130,9 @@ class TaobaoCommunityViewController: TaobaoBaseViewController,UICollectionViewDe
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview", for: indexPath)
+            return collectionView.dequeueHeadFoot(TaobaoCommunityHeadView.self, kind: kind, for: indexPath)
         }else{
-            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "footview", for: indexPath)
+            return collectionView.dequeueHeadFoot(TaobaoCommunityHeadView.self, kind: kind, for: indexPath)
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

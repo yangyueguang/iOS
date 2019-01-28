@@ -1105,7 +1105,7 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: COMMENT_CELL) as! CommentListCell
+        let cell = tableView.dequeueCell(CommentListCell.self)
         cell.initData(comment: data[indexPath.row])
         return cell
     }
@@ -1183,7 +1183,7 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
 }
 
 
-class CommentListCell:UITableViewCell {
+class CommentListCell:BaseTableViewCell {
 
     static let MaxContentWidth:CGFloat = screenWidth - 55 - 35
 
@@ -1195,7 +1195,7 @@ class CommentListCell:UITableViewCell {
     var likeNum = UILabel.init()
     var date = UILabel.init()
     var splitLine = UIView.init()
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         self.backgroundColor = ColorClear

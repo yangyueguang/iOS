@@ -6,11 +6,11 @@
 //  Copyright © 2018 Qiao Shi. All rights reserved.
 //
 import UIKit
-class TimeCell:UITableViewCell {
+class TimeCell:BaseTableViewCell {
 
     var textView:UITextView = UITextView.init()
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         self.backgroundColor = ColorClear
@@ -64,12 +64,12 @@ class TimeCell:UITableViewCell {
 
 }
 
-class SystemMessageCell:UITableViewCell {
+class SystemMessageCell:BaseTableViewCell {
 
 
     var textView:UITextView = UITextView.init()
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         self.backgroundColor = ColorClear
@@ -125,7 +125,7 @@ class SystemMessageCell:UITableViewCell {
 
 }
 
-class ImageMessageCell:UITableViewCell {
+class ImageMessageCell:BaseTableViewCell {
 
     var avatar = UIImageView.init(image: UIImage.init(named: "img_find_default"))
     var imageMsg:UIImageView = UIImageView.init()
@@ -137,7 +137,7 @@ class ImageMessageCell:UITableViewCell {
     var imageHeight:CGFloat = 0
     var rectImage:UIImage?
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         self.backgroundColor = ColorClear
@@ -325,7 +325,7 @@ class ImageMessageCell:UITableViewCell {
 }
 
 typealias OnMenuAction = (_ actionType:MenuActionType) -> Void
-class TextMessageCell:UITableViewCell {
+class TextMessageCell:BaseTableViewCell {
 
     var avatar = UIImageView.init(image: UIImage.init(named: "img_find_default"))
     var textView:UITextView = UITextView.init()
@@ -335,7 +335,7 @@ class TextMessageCell:UITableViewCell {
     var chat:GroupChat?
     var onMenuAction:OnMenuAction?
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         self.backgroundColor = ColorClear

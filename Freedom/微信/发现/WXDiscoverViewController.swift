@@ -25,11 +25,23 @@ class WXDiscoverHelper: NSObject {
         discoverMenuData.append(contentsOf: [[item1], [item2, item3], [item4, item5], [item6, item7]])
     }
 }
-class WXDiscoverViewController: WXMenuViewController {
+class WXDiscoverViewController: BaseTableViewController {
     var momentsVC = WXMomentsViewController()
     var discoverHelper = WXDiscoverHelper()
+    var data: [[WXMenuItem]] = []
+    override func loadView() {
+        view = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))
+        tableView = UITableView(frame: view.bounds, style: .grouped)
+        tableView.backgroundColor = UIColor.lightGray
+        tableView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        tableView.separatorColor = UIColor.gray
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 20))
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
         navigationItem.title = "发现"
         data = discoverHelper.discoverMenuData
     }

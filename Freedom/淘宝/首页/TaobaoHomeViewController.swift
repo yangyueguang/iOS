@@ -328,17 +328,17 @@ class TaobaoHomeViewController: TaobaoBaseViewController,UICollectionViewDelegat
         grid.backgroundColor = UIColor(245, 245, 245, 1)
         grid.delegate = self
         grid.dataSource = self
-        grid.register(GridCell.self, forCellWithReuseIdentifier: "GridCell")
-        grid.register(GridCell2.self, forCellWithReuseIdentifier: "GridCell2")
-        grid.register(GridCell3.self, forCellWithReuseIdentifier: "GridCell3")
-        grid.register(Cell1.self, forCellWithReuseIdentifier: "Cell1")
-        grid.register(HotShiChangCell.self, forCellWithReuseIdentifier: "HotShiChangCell")
-        grid.register(DaRenTaoCell.self, forCellWithReuseIdentifier: "DaRenTaoCell")
-        grid.register(Headview1.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview1")
-        grid.register(Headview2.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview2")
-        grid.register(Headview3.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview3")
-        grid.register(Footview0.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "footview0")
-        grid.register(Footview1.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "footview1")
+        grid.register(GridCell.self, forCellWithReuseIdentifier: GridCell.identifier)
+        grid.register(GridCell2.self, forCellWithReuseIdentifier: GridCell2.identifier)
+        grid.register(GridCell3.self, forCellWithReuseIdentifier: GridCell3.identifier)
+        grid.register(Cell1.self, forCellWithReuseIdentifier: Cell1.identifier)
+        grid.register(HotShiChangCell.self, forCellWithReuseIdentifier: HotShiChangCell.identifier)
+        grid.register(DaRenTaoCell.self, forCellWithReuseIdentifier: DaRenTaoCell.identifier)
+        grid.register(Headview1.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Headview1.identifier)
+        grid.register(Headview2.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Headview2.identifier)
+        grid.register(Headview3.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Headview3.identifier)
+        grid.register(Footview0.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: Footview0.identifier)
+        grid.register(Footview1.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: Footview1.identifier)
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
@@ -361,35 +361,35 @@ class TaobaoHomeViewController: TaobaoBaseViewController,UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var gridcell: UICollectionViewCell? = nil
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell3", for: indexPath) as? GridCell3
+            let cell = collectionView.dequeueCell(GridCell3.self, for: indexPath)
             gridcell = cell
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell1", for: indexPath) as? Cell1
+                let cell = collectionView.dequeueCell(Cell1.self, for: indexPath)
                 gridcell = cell
             } else if indexPath.row == 1 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell1", for: indexPath) as? Cell1
+                let cell = collectionView.dequeueCell(Cell1.self, for: indexPath)
                 gridcell = cell
             } else if indexPath.row == 2 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell1", for: indexPath) as? Cell1
+                let cell = collectionView.dequeueCell(Cell1.self, for: indexPath)
                 gridcell = cell
             } else if indexPath.row == 3 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell1", for: indexPath) as? Cell1
+                let cell = collectionView.dequeueCell(Cell1.self, for: indexPath)
                 gridcell = cell
             } else if indexPath.row == 4 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HotShiChangCell", for: indexPath) as? HotShiChangCell
+                let cell = collectionView.dequeueCell(HotShiChangCell.self, for: indexPath)
                 gridcell = cell
             } else if indexPath.row == 5 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DaRenTaoCell", for: indexPath) as? DaRenTaoCell
+                let cell = collectionView.dequeueCell(DaRenTaoCell.self, for: indexPath)
                 gridcell = cell
             } else {
             }
         } else if indexPath.section == 2 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell2", for: indexPath) as? GridCell2
+            let cell = collectionView.dequeueCell(GridCell2.self, for: indexPath)
             gridcell = cell
         } else {
             //可以加载更多的那个cell
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell", for: indexPath) as? GridCell
+            let cell = collectionView.dequeueCell(GridCell.self, for: indexPath)
             gridcell = cell
         }
         if let aGridcell = gridcell {
@@ -401,25 +401,25 @@ class TaobaoHomeViewController: TaobaoBaseViewController,UICollectionViewDelegat
         var reusableview: UICollectionReusableView? = nil
         if indexPath.section == 0 {
             if kind == UICollectionView.elementKindSectionHeader {
-                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview1", for: indexPath) as? Headview1
+                let headerView = collectionView.dequeueHeadFoot(Headview1.self, kind: kind, for: indexPath)
                 reusableview = headerView
             }
             if kind == UICollectionView.elementKindSectionFooter {
-                let footview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "footview0", for: indexPath) as? Footview0
+                let footview = collectionView.dequeueHeadFoot(Footview0.self, kind: kind, for: indexPath)
                 reusableview = footview
             }
         } else if indexPath.section == 2 {
             if kind == UICollectionView.elementKindSectionHeader {
-                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview2", for: indexPath) as? Headview2
+                let headerView = collectionView.dequeueHeadFoot(Headview2.self, kind: kind, for: indexPath)
                 reusableview = headerView
             }
         } else if indexPath.section == 3 {
             if kind == UICollectionView.elementKindSectionHeader {
-                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview3", for: indexPath) as? Headview3
+                let headerView = collectionView.dequeueHeadFoot(Headview3.self, kind: kind, for: indexPath)
                 reusableview = headerView
             }
             if kind == UICollectionView.elementKindSectionFooter {
-                let footview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "footview1", for: indexPath) as? Footview1
+                let footview = collectionView.dequeueHeadFoot(Footview1.self, kind: kind, for: indexPath)
                 reusableview = footview
             }
         }

@@ -73,7 +73,7 @@ class WXAboutViewController: WXSettingViewController {
         navigationItem.title = "关于微信"
         helper = WXAboutHelper()
         data = helper.abouSettingtData
-        tableView.register(WXAboutHeaderView.self, forHeaderFooterViewReuseIdentifier: "TLAboutHeaderView")
+        tableView.register(WXAboutHeaderView.self, forHeaderFooterViewReuseIdentifier: WXAboutHeaderView.identifier)
         tableView.tableFooterView?.addSubview(cmpLabel)
         cmpLabel.snp.makeConstraints { (make) in
             make.left.right.equalTo(self.tableView.tableFooterView ?? self.view)

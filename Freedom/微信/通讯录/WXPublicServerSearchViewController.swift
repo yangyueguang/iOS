@@ -3,7 +3,7 @@
 //  Freedom
 
 import Foundation
-class WXPublicServerSearchViewController: WXTableViewController, UISearchResultsUpdating {
+class WXPublicServerSearchViewController: BaseTableViewController, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
     }
 }

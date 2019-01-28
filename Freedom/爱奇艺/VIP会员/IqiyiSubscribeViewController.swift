@@ -196,15 +196,11 @@ class IqiyiSubscribeViewController: IqiyiBaseViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIndentifier = "JFSubscribeCell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIndentifier) as? IqiyiSubscribeCell
-        if cell == nil {
-            cell = IqiyiSubscribeCell(style: .default, reuseIdentifier: cellIndentifier)
-        }
+        var cell = tableView.dequeueCell(IqiyiSubscribeCell.self)
 //        cell?.delegate = self
         let subM = dataSource[indexPath.row] as? IqiyiSubscribeModel
         print(String(describing:subM!))
-        return cell!
+        return cell
     }
     func didSelect(_ subCell: IqiyiSubscribeCell?, subItem: IqiyiSubItemModel?) {
         let videoDetailVC = IqiyiVideoDetailViewController()

@@ -48,8 +48,8 @@ self.collectionView.register(EnergyHomeViewCell.self, forCellWithReuseIdentifier
         return self.collectionView.dataArray.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EnergyHomeViewCell.identifier, for: indexPath) as? EnergyHomeViewCell
-        return cell!
+        let cell = collectionView.dequeueCell(EnergyHomeViewCell.self, for: indexPath)
+        return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let value = self.collectionView.dataArray[indexPath.row]

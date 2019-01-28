@@ -28,7 +28,7 @@ class SinaStatus: NSObject {
     var attitudes_count: Int = 0/**表态数*/
 }
 /* 原创微博 */
-class SinaStatusViewCell: UITableViewCell {
+class SinaStatusViewCell: BaseTableViewCell {
     var originalView = UIView()/** 原创微博整体 */
     var iconView = UIImageView()/** 头像 */
     var vipView = UIImageView()/** 会员图标 */
@@ -120,17 +120,15 @@ class SinaHomeViewController: SinaBaseViewController {
     }
     //数据源
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let ID = "status"
-        var cell = tableView.dequeueReusableCell(withIdentifier: ID) as? SinaStatusViewCell
-        if cell == nil {
-            cell = SinaStatusViewCell(style: .subtitle, reuseIdentifier: ID)
-            cell?.backgroundColor = UIColor.clear
-            if let acell = cell{
-                acell.originalView.addSubviews([acell.iconView, acell.vipView, acell.photosView, acell.nameLabel, acell.timeLabel, acell.sourceLabel, acell.contentLabel, acell.retweetContentLabel, acell.retweetPhotosView])
-                acell.contentView.addSubviews([acell.originalView, acell.retweetView, acell.toolbar])
-            }
-        }
-        return cell!
+        var cell = tableView.dequeueCell(SinaStatusViewCell.self)
+//        if cell == nil {
+//            cell = SinaStatusViewCell(style: .subtitle, reuseIdentifier:"")
+//            cell?.backgroundColor = UIColor.clear
+//                cell.originalView.addSubviews([cell.iconView, acell.vipView, acell.photosView, acell.nameLabel, acell.timeLabel, acell.sourceLabel, acell.contentLabel, acell.retweetContentLabel, acell.retweetPhotosView])
+//                cell.contentView.addSubviews([acell.originalView, acell.retweetView, acell.toolbar])
+//            }
+//        }
+        return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100

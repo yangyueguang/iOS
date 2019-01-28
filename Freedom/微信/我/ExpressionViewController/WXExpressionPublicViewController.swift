@@ -81,8 +81,8 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
         footer?.setTitle("正在加载...", for: .refreshing)
         footer?.setTitle("", for: .noMoreData)
         collectionView.mj_footer = (footer)
-        collectionView.register(WXExpressionPublicCell.self, forCellWithReuseIdentifier: "TLExpressionPublicCell")
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "EmptyCell")
+        collectionView.register(WXExpressionPublicCell.self, forCellWithReuseIdentifier: WXExpressionPublicCell.identifier)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.identifier)
         loadData(withLoadingView: true)
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -98,12 +98,12 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row < data.count {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLExpressionPublicCell", for: indexPath) as! WXExpressionPublicCell
+            let cell = collectionView.dequeueCell(WXExpressionPublicCell.self, for: indexPath)
             let emojiGroup = data[indexPath.row] as TLEmojiGroup
             cell.group = emojiGroup
             return cell
         }
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCell", for: indexPath)
+        return collectionView.dequeueCell(UICollectionViewCell.self, for: indexPath)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -5,13 +5,13 @@ import SnapKit
 import XCarryOn
 import XExtension
 import Foundation
-class WXExpressionSearchViewController: WXTableViewController, UISearchResultsUpdating, UISearchBarDelegate, WXExpressionCellDelegate {
+class WXExpressionSearchViewController: BaseTableViewController, UISearchResultsUpdating, UISearchBarDelegate, WXExpressionCellDelegate {
     var proxy = WXExpressionHelper.shared
     var data: [TLEmojiGroup] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
-        tableView.register(WXExpressionCell.self, forCellReuseIdentifier: "TLExpressionCell")
+        tableView.register(WXExpressionCell.self, forCellReuseIdentifier: WXExpressionCell.identifier)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -21,7 +21,7 @@ class WXExpressionSearchViewController: WXTableViewController, UISearchResultsUp
         return data.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TLExpressionCell") as! WXExpressionCell
+        let cell = tableView.dequeueCell(WXExpressionCell.self)
         let group: TLEmojiGroup = data[indexPath.row]
         cell.group = group
         cell.delegate = self

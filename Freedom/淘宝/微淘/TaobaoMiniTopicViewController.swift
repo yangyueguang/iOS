@@ -10,7 +10,6 @@ class TaobaoMiniTopicViewCell:BaseTableViewCell{
         title.frame = CGRect(x: icon.right + 10, y: icon.y, width: APPW - icon.right - 10, height: 20)
         script.frame = CGRect(x: title.x, y: title.bottom + 10, width: title.width, height: 20)
         let sees = UILabel(frame: CGRect(x: script.x, y: script.bottom, width: script.width, height: 15), font: Font(12), color: .gray, text: nil)
-        line.frame = CGRect(x: 0, y: 90 - 1, width: APPW, height: 1)
         Dlog(self.height)
         addSubview(sees)
         icon.image = UIImage(named: "a")

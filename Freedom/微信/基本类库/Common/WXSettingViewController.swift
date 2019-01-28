@@ -4,11 +4,7 @@
 import Foundation
 import XExtension
 import SnapKit
-protocol WXSettingSwitchCellDelegate: NSObjectProtocol {
-    func settingSwitchCell(for settingItem: WXSettingItem, didChangeStatus on: Bool)
-}
-
-class WXSettingViewController: BaseTableViewController, WXSettingSwitchCellDelegate {
+class WXSettingViewController: BaseTableViewController {
     var data: [WXSettingGroup] = []
     override func loadView() {
         view = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))
@@ -41,17 +37,16 @@ class WXSettingViewController: BaseTableViewController, WXSettingSwitchCellDeleg
         let item = group.items[indexPath.row]
         switch item.type {
         case .defalut1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: WXSettingCell.identifier) as! WXSettingCell
+            let cell = tableView.dequeueCell(WXSettingCell.self)
             cell.item = item
             return cell
         case .titleButton:
-            let cell = tableView.dequeueReusableCell(withIdentifier: WechatSettingButtonCell.identifier) as! WechatSettingButtonCell
+            let cell = tableView.dequeueCell(WechatSettingButtonCell.self)
             cell.item = item
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: WechatSettingSwitchCell.identifier) as! WechatSettingSwitchCell
+            let cell = tableView.dequeueCell(WechatSettingSwitchCell.self)
             cell.item = item
-            cell.delegate = self
             return cell
         }
     }
@@ -89,12 +84,8 @@ class WXSettingViewController: BaseTableViewController, WXSettingSwitchCellDeleg
         let group: WXSettingGroup = data[section]
         return 20.0 + (group.footerTitle.isEmpty ? 0 : 5.0)
     }
-    func settingSwitchCell(for settingItem: WXSettingItem, didChangeStatus on: Bool) {
-        noticeError("Switch事件未被子类处理Title: \(settingItem.title)\nStatus: \(on ? "on" : "off")")
-    }
 }
-class WechatSettingSwitchCell: UITableViewCell {
-    weak var delegate: WXSettingSwitchCellDelegate?
+class WechatSettingSwitchCell: BaseTableViewCell {
     var item: WXSettingItem = WXSettingItem() {
         didSet {
             titleLabel.text = item.title
@@ -102,7 +93,7 @@ class WechatSettingSwitchCell: UITableViewCell {
     }
     private var titleLabel = UILabel()
     private var cellSwitch = UISwitch()
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         accessoryView = cellSwitch
@@ -118,17 +109,17 @@ class WechatSettingSwitchCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     @objc func switchChangeStatus(_ sender: UISwitch) {
-        delegate?.settingSwitchCell(for: item, didChangeStatus: sender.isOn)
+
     }
 }
 
-class WechatSettingButtonCell: UITableViewCell {
+class WechatSettingButtonCell: BaseTableViewCell {
     var item: WXSettingItem = WXSettingItem() {
         didSet {
             textLabel?.text = item.title
         }
     }
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         textLabel?.textAlignment = .center
     }
@@ -137,7 +128,7 @@ class WechatSettingButtonCell: UITableViewCell {
     }
 }
 
-class WXSettingCell: UITableViewCell {
+class WXSettingCell: BaseTableViewCell {
     private var titleLabel = UILabel()
     private var rightLabel = UILabel()
     private var rightImageView = UIImageView()
@@ -170,7 +161,7 @@ class WXSettingCell: UITableViewCell {
             }
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(titleLabel)
         contentView.addSubview(rightLabel)

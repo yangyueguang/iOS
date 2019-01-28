@@ -54,10 +54,10 @@ class BooksLibraryViewController: BooksBaseViewController,UICollectionViewDelega
         return 10
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BooksViewCell.identifier, for: indexPath) as? BooksViewCell
-        cell?.icon.image = UIImage(named:"userLogo")
-        cell?.title.text = "书籍阅读"
-        return cell!
+        let cell = collectionView.dequeueCell(BooksViewCell.self, for: indexPath)
+        cell.icon.image = UIImage(named:"userLogo")
+        cell.title.text = "书籍阅读"
+        return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let log = "你选择的是\(indexPath.section)，\(indexPath.row)"

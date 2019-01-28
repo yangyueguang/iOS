@@ -16,8 +16,7 @@ class FreedomViewCell:BaseTableViewCell{
         self.title.textAlignment = .center
         self.script = UILabel(frame:CGRect(x: self.title.x, y:  self.title.bottom, width: self.title.width, height: self.title.height))
         self.script.textColor = .gray
-        self.line = UIView(frame: CGRect(x: 10, y: 79, width: APPW-20, height: 1))
-        self.addSubviews([self.title,self.icon,self.script,self.line])
+        self.addSubviews([self.title,self.icon,self.script])
     }
 }
 class FreedomIndustryViewController: FreedomBaseViewController {
@@ -42,14 +41,11 @@ class FreedomIndustryViewController: FreedomBaseViewController {
         return 80
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: FreedomViewCell.identifier) as? FreedomViewCell
-        if cell == nil{
-            cell = FreedomViewCell.getInstance() as? FreedomViewCell
-        }
-        cell?.icon.image = UIImage(named: "userLogo")
-        cell?.title.text = self.tableView.dataArray[indexPath.row] as? String
-        cell?.script.text = "url"
-        return cell!
+        var cell = tableView.dequeueCell(FreedomViewCell.self)
+        cell.icon.image = UIImage(named: "userLogo")
+        cell.title.text = self.tableView.dataArray[indexPath.row] as? String
+        cell.script.text = "url"
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }

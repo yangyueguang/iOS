@@ -174,12 +174,12 @@ class DZHomeController: DZBaseViewController,UICollectionViewDataSource,UICollec
         layout.minimumInteritemSpacing = 10
         layout.minimumLineSpacing = 10
         collectionView = BaseCollectionView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - 110), collectionViewLayout: layout)
-        collectionView?.register(DZHomeViewCell1.self, forCellWithReuseIdentifier: "DZHomeViewCell1")
-        collectionView?.register(DZHomeViewCell2.self, forCellWithReuseIdentifier: "DZHomeViewCell2")
-        collectionView?.register(DZHomeViewCell3.self, forCellWithReuseIdentifier: "DZHomeViewCell3")
-        collectionView?.register(DZHomeViewCell4.self, forCellWithReuseIdentifier: "DZHomeViewCell4")
-        collectionView?.register(DZHomeHeadView1.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview1")
-        collectionView?.register(DZHomeHeadView2.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview2")
+        collectionView?.register(DZHomeViewCell1.self, forCellWithReuseIdentifier: DZHomeViewCell1.identifier)
+        collectionView?.register(DZHomeViewCell2.self, forCellWithReuseIdentifier: DZHomeViewCell2.identifier)
+        collectionView?.register(DZHomeViewCell3.self, forCellWithReuseIdentifier: DZHomeViewCell3.identifier)
+        collectionView?.register(DZHomeViewCell4.self, forCellWithReuseIdentifier: DZHomeViewCell4.identifier)
+        collectionView?.register(DZHomeHeadView1.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: DZHomeHeadView1.identifier)
+        collectionView?.register(DZHomeHeadView2.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: DZHomeHeadView2.identifier)
         collectionView?.addSubview(itemScrollView)
         collectionView?.dataSource = self
         collectionView?.delegate = self
@@ -187,82 +187,82 @@ class DZHomeController: DZBaseViewController,UICollectionViewDataSource,UICollec
             view.addSubview(aView)
         }
     }
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            if section == 0 {
-                return 1
-            }
-            if section == 1 {
-                return 6
-            }
-            if section == 2 {
-                return 8
-            }
-            return 20
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
         }
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            var cell: BaseCollectionViewCell? = nil
-            if indexPath.section == 0 {
-                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DZHomeViewCell1", for: indexPath) as? BaseCollectionViewCell
-            } else if indexPath.section == 1 {
-                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DZHomeViewCell2", for: indexPath) as? BaseCollectionViewCell
-            } else if indexPath.section == 2 {
-                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DZHomeViewCell3", for: indexPath) as? BaseCollectionViewCell
-            } else {
-                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DZHomeViewCell4", for: indexPath) as? BaseCollectionViewCell
-            }
-            return cell!
+        if section == 1 {
+            return 6
         }
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            if indexPath.section == 0 {
-                return CGSize(width: APPW, height: 130)
-            } else if indexPath.section == 1 {
-                return CGSize(width: APPW / 3 - 15, height: 100)
-            } else if indexPath.section == 2 {
-                return CGSize(width: APPW / 4 - 15, height: 90)
-            } else {
-                return CGSize(width: APPW, height: 100)
-            }
+        if section == 2 {
+            return 8
         }
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-            if section == 0 {
-                return CGSize(width: APPW, height: 60)
-            } else if section == 1 {
-                return CGSize(width: APPW, height: 30)
-            } else if section == 2 {
-                return CGSize(width: APPW, height: 60)
-            } else if section == 3 {
-                return CGSize(width: APPW, height: 30)
-            }
+        return 20
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var cell: BaseCollectionViewCell? = nil
+        if indexPath.section == 0 {
+            cell = collectionView.dequeueCell(DZHomeViewCell1.self, for: indexPath)
+        } else if indexPath.section == 1 {
+            cell = collectionView.dequeueCell(DZHomeViewCell2.self, for: indexPath)
+        } else if indexPath.section == 2 {
+            cell = collectionView.dequeueCell(DZHomeViewCell3.self, for: indexPath)
+        } else {
+            cell = collectionView.dequeueCell(DZHomeViewCell4.self, for: indexPath)
+        }
+        return cell!
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 0 {
+            return CGSize(width: APPW, height: 130)
+        } else if indexPath.section == 1 {
+            return CGSize(width: APPW / 3 - 15, height: 100)
+        } else if indexPath.section == 2 {
+            return CGSize(width: APPW / 4 - 15, height: 90)
+        } else {
+            return CGSize(width: APPW, height: 100)
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return CGSize(width: APPW, height: 60)
+        } else if section == 1 {
+            return CGSize(width: APPW, height: 30)
+        } else if section == 2 {
+            return CGSize(width: APPW, height: 60)
+        } else if section == 3 {
             return CGSize(width: APPW, height: 30)
         }
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-            return CGSize.zero
+        return CGSize(width: APPW, height: 30)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if section == 0 {
+            return UIEdgeInsets(top: 160, left: 10, bottom: 0, right: 10)
+        } else {
+            return UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         }
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            if section == 0 {
-                return UIEdgeInsets(top: 160, left: 10, bottom: 0, right: 10)
+    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            if indexPath.section == 0 {
+                return collectionView.dequeueHeadFoot(Headview1.self, kind: kind, for: indexPath)
+            } else if indexPath.section == 1 {
+                return collectionView.dequeueHeadFoot(Headview2.self, kind: kind, for: indexPath)
+            } else if indexPath.section == 2 {
+                return collectionView.dequeueHeadFoot(Headview1.self, kind: kind, for: indexPath)
             } else {
-                return UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+                return collectionView.dequeueHeadFoot(Headview2.self, kind: kind, for: indexPath)
             }
+        }else{
+            return collectionView.dequeueHeadFoot(Headview1.self, kind: kind, for: indexPath)
         }
-        func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-            if kind == UICollectionView.elementKindSectionHeader {
-                if indexPath.section == 0 {
-                    return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview1", for: indexPath)
-                } else if indexPath.section == 1 {
-                    return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview2", for: indexPath)
-                } else if indexPath.section == 2 {
-                    return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview1", for: indexPath)
-                } else {
-                    return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview2", for: indexPath)
-                }
-            }else{
-                return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headview1", for: indexPath)
-            }
-        }
-            func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-                let log = "你选择的是\(indexPath.section)，\(indexPath.row)"
-                Dlog(log)
-            }
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let log = "你选择的是\(indexPath.section)，\(indexPath.row)"
+        Dlog(log)
+    }
 }

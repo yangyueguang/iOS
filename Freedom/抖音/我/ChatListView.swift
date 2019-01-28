@@ -492,7 +492,6 @@ import Photos
 import Foundation
 
 let EMOTION_SELECTOR_HEIGHT:CGFloat = 220 + safeAreaBottomHeight
-let EMOTION_CELL = "EmotionCell"
 
 protocol EmotionSelectorDelegate:NSObjectProtocol {
     func onDelete()
@@ -544,7 +543,7 @@ class EmotionSelector:UIView,UICollectionViewDelegate,UICollectionViewDataSource
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.delegate = self
         collectionView?.dataSource = self
-        collectionView?.register(EmotionCell.classForCoder(), forCellWithReuseIdentifier: EMOTION_CELL)
+        collectionView?.register(EmotionCell.classForCoder(), forCellWithReuseIdentifier: EmotionCell.identifier)
         self.addSubview(collectionView!)
 
         currentIndex = 0
@@ -639,7 +638,7 @@ class EmotionSelector:UIView,UICollectionViewDelegate,UICollectionViewDataSource
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EMOTION_CELL, for: indexPath) as! EmotionCell
+        let cell = collectionView.dequeueCell(EmotionCell.self, for: indexPath)
         let array:[String] = data[indexPath.section]
         if(indexPath.section < data.count - 1) {
             if(indexPath.row < array.count) {
@@ -733,8 +732,6 @@ protocol PhotoSelectorDelegate:NSObjectProtocol {
 }
 class PhotoSelector:UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    let PHOTO_CELL:String = "PhotoCell"
-
     let ALBUM_TAG:Int = 1000
     let ORIGINAL_PHOTO_TAG:Int = 2000
     let SEND_TAG:Int = 3000
@@ -784,7 +781,7 @@ class PhotoSelector:UIView, UICollectionViewDelegate, UICollectionViewDataSource
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.delegate = self
         collectionView?.dataSource = self
-        collectionView?.register(PhotoCell.classForCoder(), forCellWithReuseIdentifier: PHOTO_CELL)
+        collectionView?.register(PhotoCell.classForCoder(), forCellWithReuseIdentifier: PhotoCell.identifier)
         self.addSubview(collectionView!)
 
         bottomView.frame = CGRect.init(x: 0, y: (collectionView?.frame.maxY)! + 2.5, width: screenWidth, height: 45 + safeAreaBottomHeight)
@@ -874,7 +871,7 @@ class PhotoSelector:UIView, UICollectionViewDelegate, UICollectionViewDataSource
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PHOTO_CELL, for: indexPath) as! PhotoCell
+        let cell = collectionView.dequeueCell(PhotoCell.self, for: indexPath)
         let asset = data[indexPath.row];
         cell.initData(asset: asset, selected: selectedData.contains(asset))
         cell.onSelect = {[weak self] isSelected in

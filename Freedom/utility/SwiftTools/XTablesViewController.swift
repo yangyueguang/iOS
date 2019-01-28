@@ -24,9 +24,9 @@ class UNTestTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         return 45
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "cell")
+        var cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.identifier)
         if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+            cell = UITableViewCell(style: .default, reuseIdentifier: UITableViewCell.identifier)
         }
         cell?.textLabel?.text = "===\(indexPath.row)"
         return cell!

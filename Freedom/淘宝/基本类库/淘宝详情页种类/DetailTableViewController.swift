@@ -27,17 +27,11 @@ class DetailTableViewController: TaobaoBaseViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dequeueReusableCellWithIdentifier = "dequeueReusableCellWithIdentifier"
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: dequeueReusableCellWithIdentifier)
-        if cell == nil {
-            cell = UITableViewCell(style: .value1, reuseIdentifier: dequeueReusableCellWithIdentifier)
-            cell?.accessoryType = .disclosureIndicator
-        }
-        cell?.textLabel?.text = data[indexPath.row]["title"] as? String
-        cell?.detailTextLabel?.text = data[indexPath.row]["author"] as? String
-        if let aCell = cell {
-            return aCell
-        }
-        return UITableViewCell()
+        var cell = tableView.dequeueCell(BaseTableViewCell.self)
+
+        cell.textLabel?.text = data[indexPath.row]["title"] as? String
+        cell.detailTextLabel?.text = data[indexPath.row]["author"] as? String
+        return cell
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

@@ -30,14 +30,8 @@ class IqiyiLoginViewController: IqiyiBaseViewController {
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let ID = "JFLoginBtnCell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: ID) as? IqiyiLoginBtnCell
-            if cell == nil {
-                // 从xib中加载cell
-                cell = IqiyiLoginBtnCell(style: .default, reuseIdentifier: ID)
-                cell?.backgroundColor = UIColor.red
-            }
-            cell?.selectionStyle = .none
-        return cell!
+        var cell = tableView.dequeueCell(IqiyiLoginBtnCell.self)
+        cell.selectionStyle = .none
+        return cell
     }
 }

@@ -56,14 +56,11 @@ class LibraryCollectionViewController: BaseViewController,ElasticMenuTransitionD
         return items.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.identifier, for: indexPath) as? LibraryCollectionViewCell
-        if cell == nil {
-            cell = LibraryCollectionViewCell(frame: CGRect(x: 0, y: 0, width: APPW / 5, height: 100))
-        }
+        var cell = collectionView.dequeueCell(LibraryCollectionViewCell.self, for: indexPath)
         let dict = items[indexPath.row]
-        cell?.title.text = dict["title"]
-        cell?.icon.image = UIImage(named: dict["icon"]!)
-        return cell!
+        cell.title.text = dict["title"]
+        cell.icon.image = UIImage(named: dict["icon"]!)
+        return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let mode = PopoutModel()

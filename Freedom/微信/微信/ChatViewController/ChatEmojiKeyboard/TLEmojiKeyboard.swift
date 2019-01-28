@@ -67,10 +67,10 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         addSubview(pageControl)
         addSubview(groupControl)
 
-        collectionView.register(TLEmojiItemCell.self, forCellWithReuseIdentifier: "TLEmojiItemCell")
-        collectionView.register(TLEmojiFaceItemCell.self, forCellWithReuseIdentifier: "TLEmojiFaceItemCell")
-        collectionView.register(TLEmojiImageItemCell.self, forCellWithReuseIdentifier: "TLEmojiImageItemCell")
-        collectionView.register(TLEmojiImageTitleItemCell.self, forCellWithReuseIdentifier: "TLEmojiImageTitleItemCell")
+        collectionView.register(TLEmojiItemCell.self, forCellWithReuseIdentifier: TLEmojiItemCell.identifier)
+        collectionView.register(TLEmojiFaceItemCell.self, forCellWithReuseIdentifier: TLEmojiFaceItemCell.identifier)
+        collectionView.register(TLEmojiImageItemCell.self, forCellWithReuseIdentifier: TLEmojiImageItemCell.identifier)
+        collectionView.register(TLEmojiImageTitleItemCell.self, forCellWithReuseIdentifier: TLEmojiImageTitleItemCell.identifier)
 
         let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressAction(_:)))
         collectionView.addGestureRecognizer(longPressGR)
@@ -186,13 +186,13 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         let index: Int = indexPath.section * curGroup.pageItemCount + indexPath.row
         var cell: TLEmojiBaseCell
         if curGroup.type == .emoji {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLEmojiItemCell", for: indexPath) as! TLEmojiBaseCell
+            cell = collectionView.dequeueCell(TLEmojiBaseCell.self, for: indexPath)
         } else if curGroup.type == .face {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLEmojiFaceItemCell", for: indexPath) as! TLEmojiBaseCell
+            cell = collectionView.dequeueCell(TLEmojiBaseCell.self, for: indexPath)
         } else if curGroup.type == .imageWithTitle {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLEmojiImageTitleItemCell", for: indexPath) as! TLEmojiBaseCell
+            cell = collectionView.dequeueCell(TLEmojiBaseCell.self, for: indexPath)
         } else {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TLEmojiImageItemCell", for: indexPath) as! TLEmojiBaseCell
+            cell = collectionView.dequeueCell(TLEmojiBaseCell.self, for: indexPath)
         }
         let tIndex = transformModelIndex(index) // 矩阵坐标转置
         let emojiItem = curGroup.count > tIndex ? curGroup.data[tIndex] : TLEmoji()

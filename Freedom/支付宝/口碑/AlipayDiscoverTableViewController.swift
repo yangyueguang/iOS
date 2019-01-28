@@ -42,14 +42,10 @@ class AlipayDiscoverTableViewController: AlipayBaseViewController {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataArray[indexPath.section][indexPath.row]
-        var cell: AlipayDiscoverTableViewControllerCell? = tableView.dequeueReusableCell(withIdentifier: AlipayDiscoverTableViewControllerCell.identifier) as? AlipayDiscoverTableViewControllerCell
-        if cell == nil {
-            cell = AlipayDiscoverTableViewControllerCell.getInstance() as? AlipayDiscoverTableViewControllerCell
-            cell?.accessoryType = .disclosureIndicator
-        }
-        cell?.textLabel?.text = model.title
-        cell?.imageView?.image = UIImage(named:model.iconImageName)
-        return cell!
+        var cell = tableView.dequeueCell(AlipayDiscoverTableViewControllerCell.self)
+        cell.textLabel?.text = model.title
+        cell.imageView?.image = UIImage(named:model.iconImageName)
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = dataArray[indexPath.section][indexPath.row]

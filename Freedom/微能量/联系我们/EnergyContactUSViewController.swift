@@ -9,8 +9,7 @@ class EnergyContactUSViewCell:BaseTableViewCell{
         accessoryType = .disclosureIndicator
         self.icon = UIImageView(frame: CGRect(x: 10, y: 10, width:60, height: 60))
         self.title = UILabel(frame: CGRect(x: self.icon.right+20, y: (80-20)/2.0, width: APPW-self.icon.right, height: 20))
-        self.line = UIView(frame:CGRect(x: 10, y: 79, width: APPW-20, height: 1))
-        self.addSubviews([self.title,self.icon,line])
+        self.addSubviews([self.title,self.icon])
         self.title.text = ""
         self.icon.image = UIImage(named:"taobaomini3")
     }
@@ -30,11 +29,8 @@ class EnergyContactUSViewController: EnergyBaseViewController {
     view.addSubview(tableView)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: EnergyContactUSViewCell.identifier) as? EnergyContactUSViewCell
-        if cell == nil{
-            cell = EnergyContactUSViewCell.getInstance() as? EnergyContactUSViewCell
-        }
-        return cell!
+        var cell = tableView.dequeueCell(EnergyContactUSViewCell.self)
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let value = self.tableView.dataArray[indexPath.row];
