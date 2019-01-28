@@ -4,19 +4,19 @@ import RxSwift
 @objcMembers
 open class BaseTableViewCell : UITableViewCell {
     let disposeBag = DisposeBag()
-    @IBOutlet open var icon: UIImageView!
-    @IBOutlet open var title: UILabel!
-    @IBOutlet open var script: UILabel!
+    open var icon: UIImageView!
+    open var title: UILabel!
+    open var script: UILabel!
     ///单例初始化，兼容nib创建
     public static func getInstance() -> Self {
         let instance = self.init(style: .default, reuseIdentifier: self.identifier)
         return instance
     }
-    required override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         loadBaseTableCellSubviews()
     }
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadBaseTableCellSubviews()
     }

@@ -9,6 +9,20 @@
 import UIKit
 import QuartzCore
 import Foundation
+typealias XImage = UIImage.Asset
+extension UIImage {
+    enum Asset: String {
+        case icon = "icon"
+        var image: UIImage {
+            return UIImage(asset: self)
+        }
+    }
+    convenience init!(asset: Asset) {
+        self.init(named: asset.rawValue, in: Bundle.main, compatibleWith: nil)
+    }
+}
+
+
 extension Array where Element: Equatable {
     func index(_ e: Element) -> Int? {
         for (index, value) in lazy.enumerated() where value == e {
