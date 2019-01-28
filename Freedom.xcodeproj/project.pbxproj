@@ -1053,6 +1053,7 @@
 		DF13330721F17945001D01CA /* KugouMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF13330621F17945001D01CA /* KugouMeViewController.swift */; };
 		DF13330921F17C1A001D01CA /* KugouPlayAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF13330821F17C1A001D01CA /* KugouPlayAudioViewController.swift */; };
 		DF1CAA1B21FEB9B9001FA53D /* XButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CAA1A21FEB9B9001FA53D /* XButton.swift */; };
+		DF1CAA1D21FEE33B001FA53D /* XPopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CAA1C21FEE33B001FA53D /* XPopMenu.swift */; };
 		DF1ED02D21F75DA900AEF237 /* AlipayRichViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1ED02C21F75DA900AEF237 /* AlipayRichViewController.swift */; };
 		DF29539D21D7A77F00E1C188 /* AXSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539121D7A77F00E1C188 /* AXSecurityPolicy.m */; };
 		DF29539E21D7A77F00E1C188 /* AXWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29539721D7A77F00E1C188 /* AXWebViewControllerActivity.m */; };
@@ -2366,6 +2367,7 @@
 		DF13330621F17945001D01CA /* KugouMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouMeViewController.swift; sourceTree = "<group>"; };
 		DF13330821F17C1A001D01CA /* KugouPlayAudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouPlayAudioViewController.swift; sourceTree = "<group>"; };
 		DF1CAA1A21FEB9B9001FA53D /* XButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XButton.swift; sourceTree = "<group>"; };
+		DF1CAA1C21FEE33B001FA53D /* XPopMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XPopMenu.swift; sourceTree = "<group>"; };
 		DF1ED02C21F75DA900AEF237 /* AlipayRichViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlipayRichViewController.swift; sourceTree = "<group>"; };
 		DF29539121D7A77F00E1C188 /* AXSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXSecurityPolicy.m; sourceTree = "<group>"; };
 		DF29539221D7A77F00E1C188 /* AXSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXSecurityPolicy.h; sourceTree = "<group>"; };
@@ -5027,6 +5029,7 @@
 				DFF4AB9A21B7AC5900F03C71 /* XAudioPlayer.swift */,
 				DFF4AB9C21B7B80000F03C71 /* XCardsView.swift */,
 				DF8E5F5121E60E1D00F92CA6 /* RLMRealm+extension.swift */,
+				DF1CAA1C21FEE33B001FA53D /* XPopMenu.swift */,
 				DFF4AB9E21B7BFA400F03C71 /* XPopItemsView.swift */,
 				DFF4ABB021B80A7500F03C71 /* XPopItemsView.xib */,
 				DFF4ABA021B7BFEC00F03C71 /* XExcellView.swift */,
@@ -6212,6 +6215,7 @@
 				DFEF80F021FB7AE4001D81FA /* FreedomNavigationController.swift in Sources */,
 				713EE2CC20AD9B760085B65D /* TaobaoMiniDynamicViewController.swift in Sources */,
 				DF1208D121EEE5AF00F7ED7F /* KugouAPI.swift in Sources */,
+				DF1CAA1D21FEE33B001FA53D /* XPopMenu.swift in Sources */,
 				DF6B522221CB261A00460949 /* TLEmojiBaseCell.swift in Sources */,
 				DF6B520621CA804200460949 /* WXWebViewController.swift in Sources */,
 				BFC6D94120E4AC0B00F17378 /* SinaComposeViewController.swift in Sources */,
