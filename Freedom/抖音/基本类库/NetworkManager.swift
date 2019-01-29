@@ -59,15 +59,15 @@ extension NetworkManager {
                     
                     let path = response.request?.url?.path
                     if(path?.contains(FIND_USER_BY_UID_URL))! {
-                        success(String.readJson2DicWithFileName(fileName: "user"))
+                        success(FileManager.readJson2Dict(fileName: "user"))
                     }else if(path?.contains(FIND_AWEME_POST_BY_PAGE_URL))! {
-                        success(String.readJson2DicWithFileName(fileName: "awemes"))
+                        success(FileManager.readJson2Dict(fileName: "awemes"))
                     }else if(path?.contains(FIND_AWEME_FAVORITE_BY_PAGE_URL))! {
-                        success(String.readJson2DicWithFileName(fileName: "favorites"))
+                        success(FileManager.readJson2Dict(fileName: "favorites"))
                     }else if(path?.contains(FIND_COMMENT_BY_PAGE_URL))! {
-                        success(String.readJson2DicWithFileName(fileName: "comments"))
+                        success(FileManager.readJson2Dict(fileName: "comments"))
                     }else if(path?.contains(FIND_GROUP_CHAT_BY_PAGE_URL))! {
-                        success(String.readJson2DicWithFileName(fileName: "groupchats"))
+                        success(FileManager.readJson2Dict(fileName: "groupchats"))
                     }else {
                         failure(err)
                     }

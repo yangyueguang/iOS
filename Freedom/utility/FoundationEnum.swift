@@ -92,7 +92,7 @@ enum TLMessageType : Int {
     case system // 系统
     case other
 }
-
+// 更多键盘的选项
 enum TLMoreKeyboardItemType : Int {
     case image
     case camera

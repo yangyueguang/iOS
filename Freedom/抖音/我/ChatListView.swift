@@ -14,12 +14,12 @@ class EmotionHelper:NSObject {
 
     //获取emotion.json中的以表情图片文件名作为key值、表情对应的文本作为value值的字典dic
     static let emotionDic:[String:String] = {
-        return String.readJson2DicWithFileName(fileName: "emotion")["dict"]
+        return FileManager.readJson2Dict(fileName: "emotion")["dict"]
         }() as! [String : String]
 
     //获取emotion.json中包含了表情选择器中每一页的表情图片文件名的二维数组array
     static let emotionArray:[[String]] = {
-        return String.readJson2DicWithFileName(fileName: "emotion")["array"]
+        return FileManager.readJson2Dict(fileName: "emotion")["array"]
         }() as! [[String]]
 
     //通过正则表达式匹配文本，表情文本转换为NSTextAttachment图片文本，例：[飞吻]→😘

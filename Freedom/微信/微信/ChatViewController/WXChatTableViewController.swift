@@ -25,15 +25,7 @@ enum TLChatMenuItemType: Int {
     case copy
     case delete
 }
-extension UITableView {
-    func scrollToBottom(withAnimation animation: Bool) {
-        let section = (dataSource?.numberOfSections!(in: self) ?? 1) - 1
-        let row: Int = dataSource?.tableView(self, numberOfRowsInSection: section) ?? 0
-        if (row) > 0 {
-            scrollToRow(at: IndexPath(row: (row) - 1, section: section), at: .bottom, animated: animation)
-        }
-    }
-}
+
 protocol WXMessageCellDelegate: NSObjectProtocol {
     func messageCellDidClickAvatar(forUser user: WXChatUserProtocol)
     func messageCellTap(_ message: WXMessage)
@@ -350,7 +342,7 @@ class WXExpressionMessageCell: WXMessageBaseCell {
     }()
     override var message: WXMessage {
         didSet {
-            var message: WXExpressionMessage = WXExpressionMessage()//message
+            let message = WXExpressionMessage()//message
             msgImageView.alpha = 1.0 // 取消长按效果
             let lastOwnType = self.message.ownerTyper
             let data = NSData(contentsOfFile: message.path)
@@ -359,7 +351,7 @@ class WXExpressionMessageCell: WXMessageBaseCell {
                 msgImageView.image = UIImage.sd_animatedGIF(with: data! as Data)
             } else {
                 // 表情组被删掉，先从缓存目录中查找，没有的话在下载并存入缓存目录
-                var MycachePath = FileManager.cache(forFile: "\(message.emoji.groupID)_\(message.emoji.emojiID).gif")
+                let MycachePath = FileManager.cache(forFile: "\(message.emoji.groupID)_\(message.emoji.emojiID).gif")
                 let data = NSData(contentsOfFile: MycachePath)
                 if data != nil {
                     msgImageView.image = UIImage(named: MycachePath)
@@ -368,7 +360,7 @@ class WXExpressionMessageCell: WXMessageBaseCell {
                     msgImageView.sd_setImage(with: URL(string: message.url), completed: { image, error, cacheType, imageURL in
                         if (imageURL?.absoluteString == (self.message as! WXExpressionMessage).url) {
                             DispatchQueue.global(qos: .default).async(execute: {
-                                var data = try! Data(contentsOf: imageURL!)
+                                let data = try! Data(contentsOf: imageURL!)
                                 let pa = NSSearchPathForDirectoriesInDomains(
                                     .cachesDirectory, .userDomainMask, true)[0]
                                 try! data.write(to: URL(fileURLWithPath: pa), options: NSData.WritingOptions.atomic) // 再写入到缓存中
@@ -653,6 +645,5 @@ class WXChatTableViewController: BaseTableViewController, WXMessageCellDelegate 
         }
     }
     func messageCellDidClickAvatar(forUser user: WXChatUserProtocol) {
-
     }
 }

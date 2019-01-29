@@ -9,41 +9,6 @@
 import UIKit
 import QuartzCore
 import Foundation
-enum Image: String {
-    case `default` = "userLogo1"
-    case logo = "userLogo"
-    case code = "u_QRCode"
-    var image: UIImage {
-        let ima = UIImage(asset: rawValue)
-        assert(ima != nil, "图片资源丢失\(rawValue)")
-        return ima!
-    }
-}
-enum WXImage: String {
-    case `default` = "userLogo"
-    case icon = "icon"
-    case addFriend = "u_white_addfriend"
-    var image: UIImage {
-        let ima = UIImage(asset: rawValue)
-        assert(ima != nil, "图片资源丢失\(rawValue)")
-        return ima!
-    }
-}
-enum ALImage: String {
-    case icon = ""
-    var image: UIImage {
-        let ima = UIImage(asset: rawValue)
-        assert(ima != nil, "图片资源丢失\(rawValue)")
-        return ima!
-    }
-}
-extension UIImage {
-    convenience init?(asset: String) {
-        self.init(named: asset, in: Bundle.main, compatibleWith: nil)
-    }
-}
-
-
 extension Array where Element: Equatable {
     func index(_ e: Element) -> Int? {
         for (index, value) in lazy.enumerated() where value == e {
@@ -88,7 +53,38 @@ extension String {
         return self as NSString
     }
 }
+extension FileManager {
+    static func readJson2Array(fileName:String) -> [Any] {
+        let path = Bundle.main.path(forResource: fileName, ofType: "json") ?? ""
+        var list = [Any]()
+        do{
+            let data = try Data.init(contentsOf: URL.init(fileURLWithPath: path))
+            list = try JSONSerialization.jsonObject(with: data, options:[]) as! [Any]
+        }catch {
+            print(error.localizedDescription)
+        }
+        return list
+    }
+    static func readJson2Dict(fileName:String) -> [String:Any] {
+        let path = Bundle.main.path(forResource: fileName, ofType: "json") ?? ""
+        var dict = [String:Any]()
+        do{
+            let data = try Data.init(contentsOf: URL.init(fileURLWithPath: path))
+            dict = try JSONSerialization.jsonObject(with: data, options:[]) as! [String : Any]
+        }catch {
+            print(error.localizedDescription)
+        }
+        return dict
+    }
+}
 extension UITableView {
+    func scrollToBottom(withAnimation animation: Bool) {
+        let section = (dataSource?.numberOfSections!(in: self) ?? 1) - 1
+        let row: Int = dataSource?.tableView(self, numberOfRowsInSection: section) ?? 0
+        if (row) > 0 {
+            scrollToRow(at: IndexPath(row: (row) - 1, section: section), at: .bottom, animated: animation)
+        }
+    }
     func dequeueCell<T: UITableViewCell>(_ cell: T.Type) -> T {
         var ce = dequeueReusableCell(withIdentifier: cell.identifier)
         if ce == nil {

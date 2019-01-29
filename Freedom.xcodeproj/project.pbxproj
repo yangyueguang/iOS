@@ -1081,11 +1081,9 @@
 		DF6B521621CB25D200460949 /* WXChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521521CB25D200460949 /* WXChatTableViewController.swift */; };
 		DF6B521821CB25D900460949 /* WXChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521721CB25D900460949 /* WXChatViewController.swift */; };
 		DF6B521A21CB25E100460949 /* WXChatBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521921CB25E100460949 /* WXChatBaseViewController.swift */; };
-		DF6B521C21CB25EA00460949 /* WXImageExpressionDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521B21CB25EA00460949 /* WXImageExpressionDisplayView.swift */; };
 		DF6B521E21CB25F700460949 /* WXConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521D21CB25F700460949 /* WXConversationViewController.swift */; };
 		DF6B522021CB261300460949 /* TLMoreKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521F21CB261300460949 /* TLMoreKeyboard.swift */; };
-		DF6B522221CB261A00460949 /* TLEmojiBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522121CB261A00460949 /* TLEmojiBaseCell.swift */; };
-		DF6B522421CB262100460949 /* TLEmojiKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522321CB262100460949 /* TLEmojiKeyboard.swift */; };
+		DF6B522421CB262100460949 /* XEmojiKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522321CB262100460949 /* XEmojiKeyboard.swift */; };
 		DF6B522621CB70CD00460949 /* WXDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522521CB70CD00460949 /* WXDBManager.swift */; };
 		DF6B522821CB76A300460949 /* WXAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522721CB76A300460949 /* WXAboutViewController.swift */; };
 		DF6B522A21CB76BD00460949 /* WXAccountAndSafetyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522921CB76BD00460949 /* WXAccountAndSafetyViewController.swift */; };
@@ -1159,6 +1157,7 @@
 		DFC433EB21C3F7A7003E1BCB /* cer.der in Resources */ = {isa = PBXBuildFile; fileRef = DFC433EA21C3F7A7003E1BCB /* cer.der */; };
 		DFD8215E21EF2DD8006C8705 /* KugouTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8215D21EF2DD8006C8705 /* KugouTabBarView.swift */; };
 		DFD8216021EF2DEA006C8705 /* KugouTabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFD8215F21EF2DEA006C8705 /* KugouTabBarView.xib */; };
+		DFEB45EB22009A7A00B1D8D8 /* FoundationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEB45EA22009A7A00B1D8D8 /* FoundationImage.swift */; };
 		DFED981C21E8AC0B009270A3 /* WXModes.m in Sources */ = {isa = PBXBuildFile; fileRef = DFED981B21E8AC0B009270A3 /* WXModes.m */; };
 		DFEF80DF21FB72B7001D81FA /* Circular3DStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF80DE21FB72B7001D81FA /* Circular3DStarView.swift */; };
 		DFEF80EE21FB7AE4001D81FA /* FreedomBusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF80E221FB7AE4001D81FA /* FreedomBusinessViewController.swift */; };
@@ -2396,11 +2395,9 @@
 		DF6B521521CB25D200460949 /* WXChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatTableViewController.swift; sourceTree = "<group>"; };
 		DF6B521721CB25D900460949 /* WXChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatViewController.swift; sourceTree = "<group>"; };
 		DF6B521921CB25E100460949 /* WXChatBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatBaseViewController.swift; sourceTree = "<group>"; };
-		DF6B521B21CB25EA00460949 /* WXImageExpressionDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXImageExpressionDisplayView.swift; sourceTree = "<group>"; };
 		DF6B521D21CB25F700460949 /* WXConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXConversationViewController.swift; sourceTree = "<group>"; };
 		DF6B521F21CB261300460949 /* TLMoreKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMoreKeyboard.swift; sourceTree = "<group>"; };
-		DF6B522121CB261A00460949 /* TLEmojiBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLEmojiBaseCell.swift; sourceTree = "<group>"; };
-		DF6B522321CB262100460949 /* TLEmojiKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLEmojiKeyboard.swift; sourceTree = "<group>"; };
+		DF6B522321CB262100460949 /* XEmojiKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XEmojiKeyboard.swift; sourceTree = "<group>"; };
 		DF6B522521CB70CD00460949 /* WXDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXDBManager.swift; sourceTree = "<group>"; };
 		DF6B522721CB76A300460949 /* WXAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXAboutViewController.swift; sourceTree = "<group>"; };
 		DF6B522921CB76BD00460949 /* WXAccountAndSafetyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXAccountAndSafetyViewController.swift; sourceTree = "<group>"; };
@@ -2475,6 +2472,7 @@
 		DFC433EA21C3F7A7003E1BCB /* cer.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cer.der; sourceTree = "<group>"; };
 		DFD8215D21EF2DD8006C8705 /* KugouTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouTabBarView.swift; sourceTree = "<group>"; };
 		DFD8215F21EF2DEA006C8705 /* KugouTabBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KugouTabBarView.xib; sourceTree = "<group>"; };
+		DFEB45EA22009A7A00B1D8D8 /* FoundationImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationImage.swift; sourceTree = "<group>"; };
 		DFED981A21E8AC0B009270A3 /* WXModes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXModes.h; sourceTree = "<group>"; };
 		DFED981B21E8AC0B009270A3 /* WXModes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXModes.m; sourceTree = "<group>"; };
 		DFEF80DE21FB72B7001D81FA /* Circular3DStarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circular3DStarView.swift; sourceTree = "<group>"; };
@@ -2588,10 +2586,9 @@
 		71ECE0262092128D00495467 /* ChatViewController */ = {
 			isa = PBXGroup;
 			children = (
-				DF6B521521CB25D200460949 /* WXChatTableViewController.swift */,
 				DF6B521721CB25D900460949 /* WXChatViewController.swift */,
+				DF6B521521CB25D200460949 /* WXChatTableViewController.swift */,
 				DF6B521921CB25E100460949 /* WXChatBaseViewController.swift */,
-				DF6B521B21CB25EA00460949 /* WXImageExpressionDisplayView.swift */,
 				71ECE02E2092128D00495467 /* ChatEmojiKeyboard */,
 			);
 			path = ChatViewController;
@@ -2601,8 +2598,7 @@
 			isa = PBXGroup;
 			children = (
 				DF6B521F21CB261300460949 /* TLMoreKeyboard.swift */,
-				DF6B522121CB261A00460949 /* TLEmojiBaseCell.swift */,
-				DF6B522321CB262100460949 /* TLEmojiKeyboard.swift */,
+				DF6B522321CB262100460949 /* XEmojiKeyboard.swift */,
 			);
 			path = ChatEmojiKeyboard;
 			sourceTree = "<group>";
@@ -2700,6 +2696,7 @@
 			children = (
 				776460711D6843BE00ACCCAC /* Common */,
 				DFB5FF5521CA280A0057C922 /* WXExpanded.swift */,
+				DF6B522521CB70CD00460949 /* WXDBManager.swift */,
 				DFED981A21E8AC0B009270A3 /* WXModes.h */,
 				DFED981B21E8AC0B009270A3 /* WXModes.m */,
 				DF6B51ED21CA6F5900460949 /* WXModes+Extension.swift */,
@@ -3283,6 +3280,7 @@
 				71250EC42091C0F20093B59B /* FreedomTools.h */,
 				71250EC52091C0F20093B59B /* FreedomTools.m */,
 				713728CE20AE9FC500A3227A /* FoundationSwift.swift */,
+				DFEB45EA22009A7A00B1D8D8 /* FoundationImage.swift */,
 				DF4C6FC721CC787700A54339 /* FoundationEnum.swift */,
 				DF09AB0B21EC305D00D8EC51 /* FreedomAPI.swift */,
 				DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */,
@@ -3386,14 +3384,6 @@
 				77645DEF1D68259900ACCCAC /* ShakeHideImg_women.png */,
 			);
 			path = "微信";
-			sourceTree = "<group>";
-		};
-		776460511D68435500ACCCAC /* 数据库 */ = {
-			isa = PBXGroup;
-			children = (
-				DF6B522521CB70CD00460949 /* WXDBManager.swift */,
-			);
-			path = "数据库";
 			sourceTree = "<group>";
 		};
 		776460711D6843BE00ACCCAC /* Common */ = {
@@ -3513,7 +3503,6 @@
 				7745C1E31D6713CD002212DE /* 通讯录 */,
 				7745C1E11D6713CD002212DE /* 发现 */,
 				7745C1E51D6713CD002212DE /* 我 */,
-				776460511D68435500ACCCAC /* 数据库 */,
 				77645FF01D68384600ACCCAC /* WX.storyboard */,
 			);
 			path = "微信";
@@ -6157,7 +6146,7 @@
 				DFFA80C521AEC84D009B1999 /* BaseStaticView.swift in Sources */,
 				BF58BB3F20EF1945002CB4EE /* RCDSearchViewController.m in Sources */,
 				DFEF80F521FB7AE4001D81FA /* FreedomProductionViewController.swift in Sources */,
-				DF6B522421CB262100460949 /* TLEmojiKeyboard.swift in Sources */,
+				DF6B522421CB262100460949 /* XEmojiKeyboard.swift in Sources */,
 				BF58BB6320EF1945002CB4EE /* RCAnnotationView.m in Sources */,
 				DF0489E121D26D120030C30B /* XMLDictionary.m in Sources */,
 				DF6B520021CA802C00460949 /* WXSearchController.swift in Sources */,
@@ -6204,7 +6193,6 @@
 				713EE2CC20AD9B760085B65D /* TaobaoMiniDynamicViewController.swift in Sources */,
 				DF1208D121EEE5AF00F7ED7F /* KugouAPI.swift in Sources */,
 				DF1CAA1D21FEE33B001FA53D /* XPopMenu.swift in Sources */,
-				DF6B522221CB261A00460949 /* TLEmojiBaseCell.swift in Sources */,
 				DF6B520621CA804200460949 /* WXWebViewController.swift in Sources */,
 				BFC6D94120E4AC0B00F17378 /* SinaComposeViewController.swift in Sources */,
 				DF09AB0C21EC305D00D8EC51 /* FreedomAPI.swift in Sources */,
@@ -6260,7 +6248,6 @@
 				DFEF80DF21FB72B7001D81FA /* Circular3DStarView.swift in Sources */,
 				DF7B407821AC020A00E3D975 /* DouyinNavigationViewController.swift in Sources */,
 				71267A552092DC93006E1B96 /* BookFriendsTableViewCell.m in Sources */,
-				DF6B521C21CB25EA00460949 /* WXImageExpressionDisplayView.swift in Sources */,
 				BF58BB2820EF1945002CB4EE /* RCDContactTableViewCell.m in Sources */,
 				DFED981C21E8AC0B009270A3 /* WXModes.m in Sources */,
 				BFC6D93520E4AADB00F17378 /* SinaTabBarController.swift in Sources */,
@@ -6360,6 +6347,7 @@
 				BF58BB4320EF1945002CB4EE /* RCDPrivateSettingViewController.m in Sources */,
 				713EE2CA20AD9B6C0085B65D /* TaobaoMiniViewController.swift in Sources */,
 				7121192A20ABC4EE0087E05B /* EnergyNewsDetailViewController.swift in Sources */,
+				DFEB45EB22009A7A00B1D8D8 /* FoundationImage.swift in Sources */,
 				713EE2AE20AD8FAB0085B65D /* TaobaoNavigationViewController.swift in Sources */,
 				7115A5EE20AAFBBA000D0B96 /* MyDatabaseTabBarController.swift in Sources */,
 				DF6B523421CB76EB00460949 /* WXMineSettingViewController.swift in Sources */,

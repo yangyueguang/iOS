@@ -51,18 +51,6 @@ extension String {
         return nil
     }
 
-    static func readJson2DicWithFileName(fileName:String) -> [String:Any] {
-        let path = Bundle.main.path(forResource: fileName, ofType: "json") ?? ""
-        var dict = [String:Any]()
-        do{
-            let data = try Data.init(contentsOf: URL.init(fileURLWithPath: path))
-            dict = try JSONSerialization.jsonObject(with: data, options:[]) as! [String : Any]
-        }catch {
-            print(error.localizedDescription)
-        }
-        return dict
-    }
-
     static func format(decimal:Float, _ maximumDigits:Int = 1, _ minimumDigits:Int = 1) ->String? {
         let number = NSNumber(value: decimal)
         let numberFormatter = NumberFormatter()
