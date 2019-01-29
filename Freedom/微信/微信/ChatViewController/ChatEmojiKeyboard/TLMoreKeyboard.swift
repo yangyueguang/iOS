@@ -4,26 +4,23 @@
 import SnapKit
 import XExtension
 import Foundation
-@objc protocol WXMoreKeyboardDelegate: NSObjectProtocol {
-    @objc optional func moreKeyboard(_ keyboard: Any, didSelectedFunctionItem funcItem: TLMoreKeyboardItem)
-}
-class TLMoreKeyboardItem: NSObject {
+// 使用
+/*
+    let keboard = TLMoreKeyboard.shared
+    keboard.chatMoreKeyboardData = [TLMoreKeyboardItem()]
+    keboard.show(in: UIView(), withAnimation: true)
+    keboard.dismiss(withAnimation: true)
+ */
+struct TLMoreKeyboardItem {
     var type = TLMoreKeyboardItemType.image
     var title = ""
     var imagePath = ""
-    class func create(by type: TLMoreKeyboardItemType, title: String, imagePath: String) -> TLMoreKeyboardItem {
-        let item = TLMoreKeyboardItem()
-        item.type = type
-        item.title = title
-        item.imagePath = imagePath
-        return item
-    }
 }
 
 class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
-    static let keyboard = TLMoreKeyboard()
-    weak var keyboardDelegate: TLKeyboardDelegate?
-    weak var delegate: WXMoreKeyboardDelegate?
+    static let shared = TLMoreKeyboard()
+    var clickBlock: ((_ item: TLMoreKeyboardItem) -> Void)?
+    weak var keyboardDelegate: XKeyboardDelegate?
     var chatMoreKeyboardData: [TLMoreKeyboardItem] = [] {
         didSet {
             collectionView.reloadData()
@@ -76,12 +73,13 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
             make.top.equalTo(self.collectionView.snp.bottom)
             make.bottom.equalToSuperview().offset(-2)
         }
+        self.chatMoreKeyboardData = WXMoreKBHelper().chatMoreKeyboardData
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     func show(in view: UIView, withAnimation animation: Bool) {
-        keyboardDelegate?.chatKeyboardWillShow!(self)
+        keyboardDelegate?.chatKeyboardWillShow?(self)
         view.addSubview(self)
         self.snp.remakeConstraints { (make) in
             make.left.right.equalTo(view)
@@ -95,16 +93,16 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
                     make.bottom.equalTo(view)
                 })
                 view.layoutIfNeeded()
-                self.keyboardDelegate?.chatKeyboard!(self, didChangeHeight: (view.frame.size.height) - self.frame.origin.y)
+                self.keyboardDelegate?.chatKeyboard?(self, didChangeHeight: (view.frame.size.height) - self.frame.origin.y)
             }) { finished in
-                self.keyboardDelegate?.chatKeyboardDidShow!(self)
+                self.keyboardDelegate?.chatKeyboardDidShow?(self)
             }
         } else {
             self.snp.updateConstraints { (make) in
                 make.bottom.equalTo(view)
             }
             view.layoutIfNeeded()
-            keyboardDelegate?.chatKeyboardDidShow!(self)
+            keyboardDelegate?.chatKeyboardDidShow?(self)
         }
     }
 
@@ -116,7 +114,7 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
                     make.bottom.equalToSuperview().offset(215)
                 })
                 self.superview?.layoutIfNeeded()
-                self.keyboardDelegate?.chatKeyboard!(self, didChangeHeight: self.superview?.frame.size.height ?? 0 - self.frame.origin.y)
+                self.keyboardDelegate?.chatKeyboard?(self, didChangeHeight: self.superview?.frame.size.height ?? 0 - self.frame.origin.y)
             }) { finished in
                 self.removeFromSuperview()
                 self.keyboardDelegate?.chatKeyboardDidDismiss?(self)
@@ -126,12 +124,7 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
             keyboardDelegate?.chatKeyboardDidDismiss?(self)
         }
     }
-    func reset() {
-        collectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: collectionView.frame.size.height), animated: false)
-    }
-    @objc func pageControlChanged(_ pageControl: UIPageControl) {
-        collectionView.scrollRectToVisible(CGRect(x: collectionView.frame.size.width * CGFloat(pageControl.currentPage), y: 0, width: collectionView.frame.size.width, height: collectionView.frame.size.height), animated: true)
-    }
+
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let context = UIGraphicsGetCurrentContext() else { return }
@@ -145,15 +138,13 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(TLMoreKeyboardCell.self, for: indexPath)
         let index: Int = indexPath.section * 8 + indexPath.row
-        let tIndex = p_transformIndex(index) // 矩阵坐标转置
+        let tIndex = transformIndex(index) // 矩阵坐标转置
         if tIndex >= chatMoreKeyboardData.count {
-//            cell.item = nil
+            cell.item = nil
         } else {
             cell.item = chatMoreKeyboardData[tIndex]
         }
-        cell.clickBlock = { sItem in
-            self.delegate?.moreKeyboard?(self, didSelectedFunctionItem: sItem)
-        }
+        cell.clickBlock = clickBlock
         return cell
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -165,7 +156,7 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         pageControl.currentPage = Int(scrollView.contentOffset.x / APPW)
     }
-    func p_transformIndex(_ index: Int) -> Int {
+    private func transformIndex(_ index: Int) -> Int {
         var index = index
         let page: Int = index / 8
         index = index % 8
@@ -173,9 +164,13 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
         let y: Int = index % 2
         return 4 * y + x + page * 8
     }
+    @objc private func pageControlChanged(_ pageControl: UIPageControl) {
+        collectionView.scrollRectToVisible(CGRect(x: collectionView.frame.size.width * CGFloat(pageControl.currentPage), y: 0, width: collectionView.frame.size.width, height: collectionView.frame.size.height), animated: true)
+    }
 }
 
 class TLMoreKeyboardCell: UICollectionViewCell {
+    var clickBlock: ((_ item: TLMoreKeyboardItem) -> Void)?
     var item: TLMoreKeyboardItem? {
         didSet {
             if item == nil {
@@ -191,7 +186,6 @@ class TLMoreKeyboardCell: UICollectionViewCell {
             iconButton.setImage(UIImage(named: item?.imagePath ?? ""), for: .normal)
         }
     }
-    var clickBlock: ((_ item: TLMoreKeyboardItem) -> Void)?
     private lazy var iconButton: UIButton = {
         let iconButton = UIButton()
         iconButton.layer.masksToBounds = true
@@ -228,5 +222,24 @@ class TLMoreKeyboardCell: UICollectionViewCell {
     }
     @objc func iconButtonDown(_ sender: UIButton) {
         clickBlock?(item!)
+    }
+}
+
+class WXMoreKBHelper: NSObject {
+    var chatMoreKeyboardData: [TLMoreKeyboardItem] = []
+    override init() {
+        super.init()
+        let imageItem = TLMoreKeyboardItem(type: .image, title: "照片", imagePath: "moreKB_image")
+        let cameraItem = TLMoreKeyboardItem(type: .camera, title: "拍摄", imagePath: "moreKB_video")
+        let videoItem = TLMoreKeyboardItem(type: .video, title: "小视频", imagePath: "moreKB_sight")
+        let videoCallItem = TLMoreKeyboardItem(type: .videoCall, title: "视频聊天", imagePath: "moreKB_video_call")
+        let walletItem = TLMoreKeyboardItem(type: .wallet, title: "红包", imagePath: "moreKB_wallet")
+        let transferItem = TLMoreKeyboardItem(type: .transfer, title: "转账", imagePath: "moreKB_pay")
+        let positionItem = TLMoreKeyboardItem(type: .position, title: "位置", imagePath: "moreKB_location")
+        let favoriteItem = TLMoreKeyboardItem(type: .favorite, title: "收藏", imagePath: "moreKB_favorite")
+        let businessCardItem = TLMoreKeyboardItem(type: .businessCard, title: "个人名片", imagePath: "moreKB_friendcard")
+        let voiceItem = TLMoreKeyboardItem(type: .voice, title: "语音输入", imagePath: "moreKB_voice")
+        let cardsItem = TLMoreKeyboardItem(type: .cards, title: "卡券", imagePath: "moreKB_wallet")
+        chatMoreKeyboardData.append(contentsOf: [imageItem, cameraItem, videoItem, videoCallItem, walletItem, transferItem, positionItem, favoriteItem, businessCardItem, voiceItem, cardsItem])
     }
 }

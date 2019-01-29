@@ -14,48 +14,29 @@ extension UIImagePickerController {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17.5)]
     }
 }
-class WXMoreKBHelper: NSObject {
-    var chatMoreKeyboardData: [TLMoreKeyboardItem] = []
-    override init() {
-        super.init()
-        let imageItem = TLMoreKeyboardItem.create(by: .image, title: "照片", imagePath: "moreKB_image")
-        let cameraItem = TLMoreKeyboardItem.create(by: .camera, title: "拍摄", imagePath: "moreKB_video")
-        let videoItem = TLMoreKeyboardItem.create(by: .video, title: "小视频", imagePath: "moreKB_sight")
-        let videoCallItem = TLMoreKeyboardItem.create(by: .videoCall, title: "视频聊天", imagePath: "moreKB_video_call")
-        let walletItem = TLMoreKeyboardItem.create(by: .wallet, title: "红包", imagePath: "moreKB_wallet")
-        let transferItem = TLMoreKeyboardItem.create(by: .transfer, title: "转账", imagePath: "moreKB_pay")
-        let positionItem = TLMoreKeyboardItem.create(by: .position, title: "位置", imagePath: "moreKB_location")
-        let favoriteItem = TLMoreKeyboardItem.create(by: .favorite, title: "收藏", imagePath: "moreKB_favorite")
-        let businessCardItem = TLMoreKeyboardItem.create(by: .businessCard, title: "个人名片", imagePath: "moreKB_friendcard")
-        let voiceItem = TLMoreKeyboardItem.create(by: .voice, title: "语音输入", imagePath: "moreKB_voice")
-        let cardsItem = TLMoreKeyboardItem.create(by: .cards, title: "卡券", imagePath: "moreKB_wallet")
-        chatMoreKeyboardData.append(contentsOf: [imageItem, cameraItem, videoItem, videoCallItem, walletItem, transferItem, positionItem, favoriteItem, businessCardItem, voiceItem, cardsItem])
-    }
-}
 class WXChatViewController: WXChatBaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     static let shared = WXChatViewController()
-    private var moreKBhelper = WXMoreKBHelper()
     private var emojiKBHelper: WXUserHelper!
     override var partner: WXChatUserProtocol? {
         didSet {
-//            if partner?.chat_userType == TLChatUserType.user.rawValue {
-//                rightBarButton.image = UIImage(named: "nav_chat_single")
-//            } else if partner?.chat_userType == TLChatUserType.group.rawValue {
-//                rightBarButton.image = UIImage(named: "nav_chat_multi")
-//            }
+            if partner?.chat_userType == TLChatUserType.user.rawValue {
+                rightBarButton.image = WXImage.default.image
+            } else if partner?.chat_userType == TLChatUserType.group.rawValue {
+                rightBarButton.image = WXImage.default.image
+            }
         }
     }
-    private var rightBarButton: UIBarButtonItem!
+    private lazy var rightBarButton: UIBarButtonItem = {
+        return UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        return
-        emojiKBHelper = WXUserHelper.shared
-        rightBarButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
+        return 
         navigationItem.rightBarButtonItem = rightBarButton
+        emojiKBHelper = WXUserHelper.shared
         user = WXUserHelper.shared.user as WXChatUserProtocol
-        self.moreKeyboard.chatMoreKeyboardData = moreKBhelper.chatMoreKeyboardData
         emojiKBHelper.emojiGroupDataComplete({ emojiGroups in
-            self.moreKeyboard.chatMoreKeyboardData = self.moreKBhelper.chatMoreKeyboardData
+            self.moreKeyboard.chatMoreKeyboardData = WXMoreKBHelper().chatMoreKeyboardData
             self.emojiKBHelper.emojiGroupDataComplete({ emojiGroups in
                 self.emojiKeyboard.emojiGroupData = [emojiGroups]
             })
@@ -109,15 +90,15 @@ class WXChatViewController: WXChatBaseViewController, UIImagePickerControllerDel
         }
     }
     func emojiKeyboardEmojiEditButtonDown() {
-//        let expressionVC = WXExpressionViewController()
-//        let navC = WXNavigationController(rootViewController: expressionVC)
-//        present(navC, animated: true)
+        let expressionVC = WXExpressionViewController()
+        let navC = WXNavigationController(rootViewController: expressionVC)
+        present(navC, animated: true)
     }
 
     func emojiKeyboardMyEmojiEditButtonDown() {
-//        let myExpressionVC = WXMyExpressionViewController()
-//        let navC = WXNavigationController(rootViewController: myExpressionVC)
-//        present(navC, animated: true)
+        let myExpressionVC = WXMyExpressionViewController()
+        let navC = WXNavigationController(rootViewController: myExpressionVC)
+        present(navC, animated: true)
     }
     override func didClickedUserAvatar(_ user: WXUser) {
         let detailVC = WXFriendDetailViewController()
