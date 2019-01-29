@@ -27,7 +27,7 @@ class WechatContactCell: BaseTableViewCell<WechatContact> {
                 let path = FileManager.pathContactsAvatar(contact.avatarPath)
                 avatarImageView.image = UIImage(named: path)
             } else {
-                avatarImageView.sd_setImage(with: URL(string: contact.avatarURL), placeholderImage: UIImage(named: PuserLogo))
+                avatarImageView.sd_setImage(with: URL(string: contact.avatarURL), placeholderImage: Image.logo.image)
             }
             usernameLabel.text = contact.name
             subTitleLabel.text = contact.tel

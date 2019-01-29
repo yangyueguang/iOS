@@ -222,7 +222,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     }
     func firstInit(){
         firstInitNetKit()
-        firstInitLaunching()
+//        firstInitLaunching()
         firstConfigRealm()
         firstConfigWXRealm()
         firstInitUMeng()

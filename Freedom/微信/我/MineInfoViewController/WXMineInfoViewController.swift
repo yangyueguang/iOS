@@ -13,7 +13,7 @@ class WXMineInfoAvatarCell: BaseTableViewCell<WXSettingItem> {
             if !item.rightImagePath.isEmpty {
                 avatarImageView.image = UIImage(named: item.rightImagePath)
             } else if !item.rightImageURL.isEmpty {
-                avatarImageView.sd_setImage(with: URL(string: item.rightImageURL), placeholderImage: UIImage(named: PuserLogo))
+                avatarImageView.sd_setImage(with: URL(string: item.rightImageURL), placeholderImage: Image.logo.image)
             } else {
                 avatarImageView.image = nil
             }

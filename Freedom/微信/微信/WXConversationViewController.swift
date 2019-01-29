@@ -4,7 +4,6 @@
 import SnapKit
 import Alamofire
 import Foundation
-import RxSwift
 class WechatAddMenuCell: BaseTableViewCell<WXAddMenuItem> {
     override func initUI() {
         super.initUI()
@@ -29,11 +28,12 @@ class WechatConversationCell: BaseTableViewCell<WXConversation> {
     override func initUI() {
         viewModel.subscribe(onNext: {[weak self] (con) in
             guard let `self` = self else { return }
-            if con.avatarPath.count > 0 {
+            self.model = con
+            if !con.avatarPath.isEmpty {
                 let path = FileManager.pathUserAvatar(con.avatarPath)
                 self.iconView.image = UIImage(named: path)
-            } else if con.avatarURL.count > 0 {
-                self.iconView.sd_setImage(with: URL(string: con.avatarURL), placeholderImage: UIImage(named: PuserLogo))
+            } else if !con.avatarURL.isEmpty {
+                self.iconView.sd_setImage(with: URL(string: con.avatarURL), placeholderImage: Image.logo.image)
             } else {
                 self.iconView.image = nil
             }
@@ -42,12 +42,9 @@ class WechatConversationCell: BaseTableViewCell<WXConversation> {
             self.timeLabel.text = con.date.timeToNow()
             switch con.remindType {
             case .normal:self.remindImageView.image = nil
-            case .closed:
-                self.remindImageView.image = (UIImage(named: "conv_remind_close"))
-            case .notLook:
-                self.remindImageView.image = (UIImage(named: "conv_remind_notlock"))
-            case .unlike:
-                self.remindImageView.image = (UIImage(named: "conv_remind_unlike"))
+            case .closed:self.remindImageView.image = Image.default.image
+            case .notLook:self.remindImageView.image = Image.default.image
+            case .unlike:self.remindImageView.image = Image.default.image
             }
             self.markAsRead(con.isRead)
         }).disposed(by: disposeBag)
@@ -61,13 +58,9 @@ class WechatConversationCell: BaseTableViewCell<WXConversation> {
         }
     }
 }
-
-
-
 final class WXConversationViewController: BaseTableViewController {
     var searchVC = WXFriendSearchViewController()
     var data: [WXConversation] = []
-    private var scrollTopView = UIImageView(image: UIImage(named: "conv_wechat_icon"))
     private var addMenuView: XPopMenu<WXAddMenuItem>!
     private lazy var searchController: WXSearchController =  {
         let searchController = WXSearchController(searchResultsController: searchVC)
@@ -87,12 +80,14 @@ final class WXConversationViewController: BaseTableViewController {
         navigationItem.title = "微信"
         tableView.backgroundColor = UIColor.white
         tableView.tableHeaderView = searchController.searchBar
-        tableView.addSubview(scrollTopView)
-        scrollTopView.backgroundColor = .red
-        let item1 = WXAddMenuItem(type: .groupChat, title: "发起群聊", iconPath: "u_white_addfriend", className: nil)
-        let item2 = WXAddMenuItem(type: .addFriend, title: "添加朋友", iconPath: "u_white_addfriend", className: WXAddFriendViewController.self)
-        let item3 = WXAddMenuItem(type: .wallet, title: "收付款", iconPath: "u_white_addfriend", className: nil)
-        let item4 = WXAddMenuItem(type: .scan, title: "扫一扫", iconPath: "u_white_addfriend", className: WXScanningViewController.self)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.networkStatusChange(_:)), name: NSNotification.Name.AFNetworkingReachabilityDidChange, object: nil)
+        addRightItem()
+    }
+    private func addRightItem() {
+        let item1 = WXAddMenuItem(title: "发起群聊", iconPath: WXImage.addFriend.rawValue, className: nil)
+        let item2 = WXAddMenuItem(title: "添加朋友", iconPath: WXImage.addFriend.rawValue, className: WXAddFriendViewController.self)
+        let item3 = WXAddMenuItem(title: "收付款", iconPath: WXImage.addFriend.rawValue, className: nil)
+        let item4 = WXAddMenuItem(title: "扫一扫", iconPath: WXImage.addFriend.rawValue, className: WXScanningViewController.self)
 
         addMenuView = XPopMenu(frame: CGRect(x: APPW - 150, y: 0, width: 140, height: 0), items: [item1, item2, item3, item4], cellHeight: 50)
         addMenuView.cellClosure = {(table, item) in
@@ -111,19 +106,11 @@ final class WXConversationViewController: BaseTableViewController {
                 self.noticeError("\(item.title) 功能暂未实现")
             }
         }
-        scrollTopView.snp.makeConstraints { (make) in
-            make.centerX.equalTo(self.tableView)
-            make.bottom.equalTo(self.tableView.snp.top).offset(-35)
-        }
-        tableView.register(WechatConversationCell.self, forCellReuseIdentifier: WechatConversationCell.identifier)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.networkStatusChange(_:)), name: NSNotification.Name.AFNetworkingReachabilityDidChange, object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateConversationData()
     }
-
-    // 网络情况改变
     @objc func networkStatusChange(_ noti: Notification) {
         let net = NetworkReachabilityManager()
         net?.listener = { status in
@@ -134,7 +121,7 @@ final class WXConversationViewController: BaseTableViewController {
         }
         net?.startListening()
     }
-    func updateConversationData() {
+    private func updateConversationData() {
         WXMessageManager.shared.conversationRecord({ data in
             for conversation: WXConversation in data {
                 if conversation.convType == .personal {
@@ -168,7 +155,7 @@ extension WXConversationViewController: UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         let chatVC = WXChatViewController.shared
-        let conversation = data[indexPath.row] as WXConversation
+        let conversation = data[indexPath.row]
         if conversation.convType == .personal {
             let user = WXFriendHelper.shared.getFriendInfo(byUserID: conversation.partnerID)
             if user == nil {
@@ -195,17 +182,13 @@ extension WXConversationViewController: UISearchBarDelegate {
             self.data.remove(at: indexPath.row)
             WXMessageManager.shared.deleteConversation(byPartnerID: conversation.partnerID)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            if self.data.count > 0 && indexPath.row == self.data.count {
-                let lastIndexPath = IndexPath(row: (indexPath.row) - 1, section: indexPath.section)
-                let cell = self.tableView.cellForRow(at: lastIndexPath) as! WechatConversationCell
-            }
         })
         let moreAction = UITableViewRowAction(style: .default, title: conversation.isRead ? "标为未读" : "标为已读", handler: { action, indexPath in
-            var cell = tableView.cellForRow(at: indexPath) as! WechatConversationCell
+            let cell = tableView.cellForRow(at: indexPath) as! WechatConversationCell
             cell.markAsRead(!conversation.isRead)
             tableView.setEditing(false, animated: true)
         })
-        moreAction.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
+        moreAction.backgroundColor = UIColor(hex: 0xdddddd)
         return [delAction, moreAction]
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -217,7 +200,6 @@ extension WXConversationViewController: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         tabBarController?.tabBar.isHidden = false
     }
-
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         noticeInfo("语音搜索按钮")
     }

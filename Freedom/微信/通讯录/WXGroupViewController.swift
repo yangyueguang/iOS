@@ -46,7 +46,7 @@ class WXGroupCell: BaseTableViewCell<WXGroup> {
     var group: WXGroup = WXGroup() {
         didSet {
             let path = FileManager.pathUserAvatar(group.groupID)
-            let image = UIImage(named: path) ?? UIImage(named: PuserLogo)
+            let image = UIImage(named: path) ?? Image.logo.image
             avatarImageView.image = image
             usernameLabel.text = group.groupName
         }

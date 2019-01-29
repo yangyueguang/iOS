@@ -211,7 +211,6 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
             delegate?.emojiGroupControl(self, didSelectedGroup: group)
         }
     }
-    private var addButton = UIButton()
     private lazy var collectionView: UICollectionView =  {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -226,6 +225,7 @@ class TLEmojiGroupControl: UIView,UICollectionViewDataSource, UICollectionViewDe
         return collectionView
     }()
 
+    private var addButton = UIButton()
     private var sendButton = UIButton()
     override init(frame: CGRect) {
         super.init(frame: frame)

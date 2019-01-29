@@ -9,8 +9,20 @@
 import UIKit
 import QuartzCore
 import Foundation
+enum Image: String {
+    case `default` = "userLogo1"
+    case logo = "userLogo"
+    case code = "u_QRCode"
+    var image: UIImage {
+        let ima = UIImage(asset: rawValue)
+        assert(ima != nil, "图片资源丢失\(rawValue)")
+        return ima!
+    }
+}
 enum WXImage: String {
+    case `default` = "userLogo"
     case icon = "icon"
+    case addFriend = "u_white_addfriend"
     var image: UIImage {
         let ima = UIImage(asset: rawValue)
         assert(ima != nil, "图片资源丢失\(rawValue)")

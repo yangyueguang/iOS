@@ -66,7 +66,7 @@ class WXUserGroupItemCell: UICollectionViewCell {
     var user: WXUser? {
         didSet {
             if user != nil {
-                avatarView.sd_setImage(with: URL(string: user?.avatarURL ?? ""), for: UIControl.State.normal, placeholderImage: UIImage(named: PuserLogo))
+                avatarView.sd_setImage(with: URL(string: user?.avatarURL ?? ""), for: UIControl.State.normal, placeholderImage: Image.logo.image)
                 usernameLabel.text = user?.showName
             } else {
                 avatarView.setImage(UIImage(named: "chatdetail_add_member"), for: .normal)

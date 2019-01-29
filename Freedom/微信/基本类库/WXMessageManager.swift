@@ -372,7 +372,7 @@ class WXMessageManager: NSObject {
         let groupName = WXSettingItem("群聊名称")
         groupName.subTitle = groupInfo.groupName
         let groupQR = WXSettingItem("群二维码")
-        groupQR.rightImagePath = PQRCode
+        groupQR.rightImagePath = Image.logo.rawValue
         let groupPost = WXSettingItem("群公告")
         if groupInfo.post.count > 0 {
             groupPost.subTitle = groupInfo.post

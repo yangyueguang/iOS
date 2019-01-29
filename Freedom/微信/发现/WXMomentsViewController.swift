@@ -53,7 +53,7 @@ class WXMomentHeaderCell: BaseTableViewCell<WXUser> {
         didSet {
             backgroundWall.sd_setImage(with: URL(string: user.detailInfo.momentsWallURL), for: UIControl.State.normal)
             backgroundWall.sd_setImage(with: URL(string: user.detailInfo.momentsWallURL), for: UIControl.State.highlighted)
-            avatarView.sd_setImage(with: URL(string: user.avatarURL), for: UIControl.State.normal, placeholderImage: UIImage(named: PuserLogo))
+            avatarView.sd_setImage(with: URL(string: user.avatarURL), for: UIControl.State.normal, placeholderImage: Image.logo.image)
             usernameLabel.text = user.nikeName
             mottoLabel.text = user.detailInfo.motto
         }

@@ -113,12 +113,6 @@ enum TLScannerType : Int {
     case translate // 扫一扫 - 翻译
 }
 
-enum TLAddMneuType : Int {
-    case groupChat = 0
-    case addFriend
-    case scan
-    case wallet
-}
 @objc enum TLEmojiType : Int {
     case emoji
     case favorite

@@ -34,7 +34,7 @@ class WXMineHeaderCell: BaseTableViewCell<WXUser> {
     }()
     lazy var qrImageView: UIImageView = {
         let QRImageView = UIImageView()
-        QRImageView.image = UIImage(named: PQRCode)
+        QRImageView.image = Image.code.image
         return QRImageView
     }()
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -105,7 +105,7 @@ class WXMineInfoHelper: NSObject {
             username.subTitle = "未设置"
         }
         let qrCode = WXSettingItem("我的二维码")
-        qrCode.rightImagePath = PQRCode
+        qrCode.rightImagePath = Image.code.rawValue
         let location = WXSettingItem("我的地址")
         let group1: WXSettingGroup = WXSettingGroup(nil, nil, ([avatar, nikename, username, qrCode, location]))
         let sex = WXSettingItem("性别")

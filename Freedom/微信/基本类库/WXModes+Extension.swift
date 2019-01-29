@@ -178,21 +178,10 @@ extension WXGroup: WXChatUserProtocol, RealmCollectionValue {
 }
 
 //FIXME: 本类🎄
-class WXAddMenuItem: NSObject {
-    var type = TLAddMneuType.groupChat
+struct WXAddMenuItem {
     var title = ""
     var iconPath = ""
     var className: UIViewController.Type?
-    override init() {
-        super.init()
-    }
-    convenience init(type: TLAddMneuType, title: String, iconPath: String, className: UIViewController.Type?) {
-        self.init()
-        self.type = type
-        self.title = title
-        self.iconPath = iconPath
-        self.className = className
-    }
 }
 
 //FIXME: 表情

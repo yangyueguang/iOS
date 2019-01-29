@@ -179,7 +179,7 @@ class WXFriendHelper: NSObject {
                 let user: WXUser = group.users[UInt(i)]
                 let imageView = UIImageView(frame: CGRect(x: x, y: y, width: width, height: width))
                 view.addSubview(imageView)
-                imageView.sd_setImage(with: URL(string: user.avatarURL), placeholderImage: UIImage(named: PuserLogo), completed: { image, error, cacheType, imageURL in
+                imageView.sd_setImage(with: URL(string: user.avatarURL), placeholderImage: Image.logo.image, completed: { image, error, cacheType, imageURL in
                     count += 1
                     if count == usersCount {
                         // 图片全部下载完成

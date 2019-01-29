@@ -5,7 +5,7 @@ import Foundation
 class WXQRCodeViewController: WXBaseViewController {/// 信息页面元素 —— 头像URL (若为nil，会尝试根据Path设置)
     var avatarURL = "" {
         didSet {
-            avatarImageView.sd_setImage(with: URL(string: avatarURL), placeholderImage: UIImage(named: PuserLogo))
+            avatarImageView.sd_setImage(with: URL(string: avatarURL), placeholderImage: Image.logo.image)
         }
     }/// 信息页面元素 —— 头像Path
     var avatarPath = "" {

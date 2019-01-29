@@ -27,7 +27,7 @@ class WechatFriendDetailAlbumCell: BaseTableViewCell<WXInfo> {
                     imageView = imageViewsArray[i]
                 }
                 contentView.addSubview(imageView)
-                imageView.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: PuserLogo))
+                imageView.sd_setImage(with: URL(string: imageURL), placeholderImage: Image.logo.image)
                 imageView.snp.makeConstraints { (make) in
                     make.top.equalTo(self.contentView).offset(spaceY)
                     make.bottom.equalTo(self.contentView).offset(-spaceY)
@@ -58,7 +58,7 @@ class WechatFriendDetailUserCell: BaseTableViewCell<WXInfo> {
             if !user.avatarPath.isEmpty {
                 avatarView.setImage(UIImage(named: user.avatarPath), for: .normal)
             } else {
-                avatarView.sd_setImage(with: URL(string: user.avatarURL), for: UIControl.State.normal, placeholderImage: UIImage(named: PuserLogo))
+                avatarView.sd_setImage(with: URL(string: user.avatarURL), for: UIControl.State.normal, placeholderImage: Image.logo.image)
             }
             shownameLabel.text = user.showName
             if user.username.count > 0 {

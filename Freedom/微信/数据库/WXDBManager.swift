@@ -115,7 +115,7 @@ extension WXDBStore {
         print(uid)
         let pre = NSPredicate(format: "partnerID != \"\"")
         try! realmWX.transaction {
-            let results = WXConversation.objects(in: realmWX, with: pre)
+            let results = WXConversation.objects(in: realmWX, with: pre).sortedResults(usingKeyPath: "date", ascending: true)
             for index in 0..<results.count {
                 let conversation = results.object(at: index) as! WXConversation
                 let message = self.lastMessage(byUserID: uid, partnerID: conversation.partnerID)
@@ -126,7 +126,6 @@ extension WXDBStore {
                 data.append(conversation)
             }
         }
-//        data.sorted(by: WXConversation.date, ascending: true)
         return data
     }
     //更新会话状态（已读）

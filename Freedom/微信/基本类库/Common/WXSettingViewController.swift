@@ -139,7 +139,7 @@ class WXSettingCell: BaseTableViewCell<WXSettingItem> {
             if !item.rightImagePath.isEmpty {
                 rightImageView.image = UIImage(named: item.rightImagePath)
             } else if !item.rightImageURL.isEmpty {
-                rightImageView.sd_setImage(with: URL(string: item.rightImageURL), placeholderImage: UIImage(named: PuserLogo))
+                rightImageView.sd_setImage(with: URL(string: item.rightImageURL), placeholderImage: Image.logo.image)
             } else {
                 rightImageView.image = nil
             }

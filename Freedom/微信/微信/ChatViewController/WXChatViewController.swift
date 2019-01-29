@@ -13,9 +13,6 @@ extension UIImagePickerController {
         view.backgroundColor = UIColor.lightGray
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17.5)]
     }
-    override open func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
 }
 class WXMoreKBHelper: NSObject {
     var chatMoreKeyboardData: [TLMoreKeyboardItem] = []
@@ -38,19 +35,22 @@ class WXMoreKBHelper: NSObject {
 class WXChatViewController: WXChatBaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     static let shared = WXChatViewController()
     private var moreKBhelper = WXMoreKBHelper()
-    private var emojiKBHelper = WXUserHelper.shared
+    private var emojiKBHelper: WXUserHelper!
     override var partner: WXChatUserProtocol? {
         didSet {
-            if partner?.chat_userType == TLChatUserType.user.rawValue {
-                rightBarButton.image = UIImage(named: "nav_chat_single")
-            } else if partner?.chat_userType == TLChatUserType.group.rawValue {
-                rightBarButton.image = UIImage(named: "nav_chat_multi")
-            }
+//            if partner?.chat_userType == TLChatUserType.user.rawValue {
+//                rightBarButton.image = UIImage(named: "nav_chat_single")
+//            } else if partner?.chat_userType == TLChatUserType.group.rawValue {
+//                rightBarButton.image = UIImage(named: "nav_chat_multi")
+//            }
         }
     }
-    private lazy var rightBarButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
+    private var rightBarButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        return
+        emojiKBHelper = WXUserHelper.shared
+        rightBarButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButton
         user = WXUserHelper.shared.user as WXChatUserProtocol
         self.moreKeyboard.chatMoreKeyboardData = moreKBhelper.chatMoreKeyboardData

@@ -18,7 +18,7 @@ class WXFriendCell: BaseTableViewCell<WXUser> {
             if !user.avatarPath.isEmpty {
                 avatarImageView.image = UIImage(named: user.avatarPath)
             } else {
-                avatarImageView.sd_setImage(with: URL(string: user.avatarURL), placeholderImage: UIImage(named: PuserLogo))
+                avatarImageView.sd_setImage(with: URL(string: user.avatarURL), placeholderImage: Image.logo.image)
             }
             usernameLabel.text = user.showName
             subTitleLabel.text = user.detailInfo.remarkInfo
