@@ -109,7 +109,7 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
     }
 
     func dismiss(withAnimation animation: Bool) {
-        keyboardDelegate?.chatKeyboardWillDismiss!(self)
+        keyboardDelegate?.chatKeyboardWillDismiss?(self)
         if animation {
             UIView.animate(withDuration: 0.3, animations: {
                 self.snp.updateConstraints({ (make) in
@@ -119,11 +119,11 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
                 self.keyboardDelegate?.chatKeyboard!(self, didChangeHeight: self.superview?.frame.size.height ?? 0 - self.frame.origin.y)
             }) { finished in
                 self.removeFromSuperview()
-                self.keyboardDelegate?.chatKeyboardDidDismiss!(self)
+                self.keyboardDelegate?.chatKeyboardDidDismiss?(self)
             }
         } else {
             removeFromSuperview()
-            keyboardDelegate?.chatKeyboardDidDismiss!(self)
+            keyboardDelegate?.chatKeyboardDidDismiss?(self)
         }
     }
     func reset() {
@@ -152,7 +152,7 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
             cell.item = chatMoreKeyboardData[tIndex]
         }
         cell.clickBlock = { sItem in
-            self.delegate?.moreKeyboard!(self, didSelectedFunctionItem: sItem)
+            self.delegate?.moreKeyboard?(self, didSelectedFunctionItem: sItem)
         }
         return cell
     }

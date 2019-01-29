@@ -20,7 +20,7 @@ extension WXDBStore {
     }
     func messages(byUserID userID: String, partnerID: String, from date: Date, count: Int, complete: @escaping ([WXMessage], Bool) -> Void) {
         var data: [WXMessage] = []
-        let pre = NSPredicate(format: "userID = %@ and friendID = %@ and date < %@ order by date desc LIMIT %ld", userID, partnerID, String(format: "%lf", date.timeIntervalSince1970), count + 1)
+        let pre = NSPredicate(format: "userID = %@", userID)
         try! realmWX.transaction {
             let results = WXMessage.objects(in: realmWX, with: pre)
             for index in 0..<results.count {
@@ -105,7 +105,7 @@ extension WXDBStore {
             let conversation = WXConversation()
             conversation.partnerID = fid
             conversation.unreadCount = unreadMessage(byUid: uid, fid: fid) + 1
-            conversation.convType = TLConversationType(rawValue: type) ?? TLConversationType.personal
+            conversation.convType = TLConversationType.personal
             conversation.date = date
             realmWX.addOrUpdate(conversation)
         }
@@ -134,7 +134,7 @@ extension WXDBStore {
 
     //查询所有会话
     func unreadMessage(byUid uid: String, fid: String) -> Int {
-        let pre = NSPredicate(format: "userID = %@ and friendID = %@", uid, fid)
+        let pre = NSPredicate(format: "partnerID = %@", fid)
         return Int(WXConversation.objects(in: realmWX, with: pre).count)
     }
     //删除单条会话

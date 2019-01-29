@@ -22,6 +22,7 @@ import Foundation
     @objc optional func emojiKeyboard(_ emojiKB: TLEmojiKeyboard, selectedEmojiGroupType type: TLEmojiType)
 }
 class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, TLEmojiGroupControlDelegate {
+    static let shared = TLEmojiKeyboard()
     var cellSize = CGSize.zero
     var headerReferenceSize = CGSize.zero
     var footerReferenceSize = CGSize.zero
@@ -30,7 +31,6 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     var sectionInsets: UIEdgeInsets = UIEdgeInsets.zero
     var curGroup = TLEmojiGroup()
     var groupControl = TLEmojiGroupControl()
-    var keyboard = TLEmojiKeyboard()
     weak var delegate: TLEmojiKeyboardDelegate?
     weak var keyboardDelegate: TLKeyboardDelegate?
     var emojiGroupData: [[TLEmojiGroup]] = [] {
@@ -95,7 +95,7 @@ class TLEmojiKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     }
 
     func show(in view: UIView, withAnimation animation: Bool) {
-        keyboardDelegate?.chatKeyboardWillShow!(self)
+        keyboardDelegate?.chatKeyboardWillShow?(self)
         view.addSubview(self)
         self.snp.remakeConstraints { (make) in
             make.left.right.equalToSuperview()

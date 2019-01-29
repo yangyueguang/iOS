@@ -575,7 +575,9 @@ extension WXChatBaseViewController: WXMoreKeyboardDelegate {
 
 }
 extension WXChatBaseViewController: TLKeyboardDelegate {
-
+    func chatKeyboardWillShow(_ keyboard: Any) {
+        
+    }
 }
 extension WXChatBaseViewController: WXChatBarDataDelegate {
     func chatBar(_ chatBar: WXChatBar, sendText text: String) {
@@ -693,6 +695,7 @@ extension WXChatBaseViewController: TLEmojiKeyboardDelegate {
     }
     func send(_ message: WXMessage) {
         message.userID = WXUserHelper.shared.user.userID
+        message.groupID = message.userID
         if partner?.chat_userType == TLChatUserType.user.rawValue {
             message.partnerType = .user
             message.friendID = partner?.chat_userID ?? ""
@@ -838,12 +841,18 @@ extension WXChatBaseViewController: WXChatBarDelegate {
             }
         } else if toStatus == .keyboard {
             if fromStatus == .more {
+                if moreKeyboard.superview == nil {
+                    moreKeyboard.show(in: view, withAnimation: true)
+                }
                 moreKeyboard.snp.remakeConstraints { (make) in
                     make.top.equalTo(self.chatBar.snp.bottom)
                     make.left.right.equalTo(self.view)
                     make.height.equalTo(215)
                 }
             } else if fromStatus == .emoji {
+                if emojiKeyboard.superview == nil {
+                    emojiKeyboard.show(in: view, withAnimation: true)
+                }
                 emojiKeyboard.snp.remakeConstraints { (make) in
                     make.top.equalTo(self.chatBar.snp.bottom)
                     make.left.right.equalTo(self.view)

@@ -160,14 +160,14 @@ extension WXConversationViewController: UISearchBarDelegate {
             let user = WXFriendHelper.shared.getFriendInfo(byUserID: conversation.partnerID)
             if user == nil {
                 noticeError("您不存在此好友")
-                return
+//                return
             }
             chatVC.partner = user
         } else if conversation.convType == .group {
             let group = WXFriendHelper.shared.getGroupInfo(byGroupID: conversation.partnerID)
             if group == nil {
                 noticeError("您不存在该讨论组")
-                return
+//                return
             }
             chatVC.partner = group
         }
