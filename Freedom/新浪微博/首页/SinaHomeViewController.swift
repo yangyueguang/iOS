@@ -28,7 +28,7 @@ class SinaStatus: NSObject {
     var attitudes_count: Int = 0/**表态数*/
 }
 /* 原创微博 */
-class SinaStatusViewCell: BaseTableViewCell {
+class SinaStatusViewCell: BaseTableViewCell<SinaStatus> {
     var originalView = UIView()/** 原创微博整体 */
     var iconView = UIImageView()/** 头像 */
     var vipView = UIImageView()/** 会员图标 */

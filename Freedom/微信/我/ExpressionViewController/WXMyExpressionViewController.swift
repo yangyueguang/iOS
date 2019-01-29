@@ -6,7 +6,7 @@ import Foundation
 protocol WXMyExpressionCellDelegate: NSObjectProtocol {
     func myExpressionCellDeleteButtonDown(_ group: TLEmojiGroup)
 }
-class WXMyExpressionCell: BaseTableViewCell {
+class WXMyExpressionCell: BaseTableViewCell<TLEmojiGroup> {
     weak var delegate: WXMyExpressionCellDelegate?
     var group: TLEmojiGroup = TLEmojiGroup() {
         didSet {

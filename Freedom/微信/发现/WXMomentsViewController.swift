@@ -14,7 +14,7 @@ class WXMomentsProxy: NSObject {
         return arr as! [WXMoment]
     }
 }
-class WXMomentBaseCell: BaseTableViewCell {
+class WXMomentBaseCell: BaseTableViewCell<WXMoment> {
     weak var delegate: WXMomentViewDelegate?
     var moment: WXMoment = WXMoment()
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -48,7 +48,7 @@ class WXMomentImagesCell: WXMomentBaseCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-class WXMomentHeaderCell: BaseTableViewCell {
+class WXMomentHeaderCell: BaseTableViewCell<WXUser> {
     var user: WXUser = WXUser() {
         didSet {
             backgroundWall.sd_setImage(with: URL(string: user.detailInfo.momentsWallURL), for: UIControl.State.normal)
@@ -119,7 +119,7 @@ class WXMomentsViewController: BaseTableViewController, WXMomentViewDelegate {
         navigationItem.rightBarButtonItem = rightBarButton
         tableView.register(WXMomentHeaderCell.self, forCellReuseIdentifier: WXMomentHeaderCell.identifier)
         tableView.register(WXMomentImagesCell.self, forCellReuseIdentifier: WXMomentImagesCell.identifier)
-        tableView.register(BaseTableViewCell.self, forCellReuseIdentifier: BaseTableViewCell.identifier)
+        tableView.register(BaseTableViewCell<Any>.self, forCellReuseIdentifier: BaseTableViewCell<Any>.identifier)
         data = proxy.testData()
         tableView.reloadData()
     }

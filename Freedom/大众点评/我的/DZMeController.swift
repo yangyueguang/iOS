@@ -4,7 +4,7 @@
 import UIKit
 import XExtension
 import XCarryOn
-class DZMeViewCell:BaseTableViewCell{
+class DZMeViewCell:BaseTableViewCell<Any> {
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x:0, y:0, width:0, height:120))
         self.title = UILabel(frame: CGRect(x:0, y:0, width:0, height: 20))
@@ -97,7 +97,7 @@ final class DZMeController: BaseTableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //forIndexPath:indexPath 跟 storyboard 配套使用
-        var cell = tableView.dequeueCell(BaseTableViewCell.self)
+        var cell = tableView.dequeueCell(BaseTableViewCell<Any>.self)
         //取出这一行对应的字典数据
         cell.textLabel?.text = "name"
         cell.imageView?.image = UIImage(named:"")

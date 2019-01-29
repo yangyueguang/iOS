@@ -4,7 +4,7 @@
 import SnapKit
 import XExtension
 import Foundation
-class WXMineHeaderCell: BaseTableViewCell {
+class WXMineHeaderCell: BaseTableViewCell<WXUser> {
     var user: WXUser = WXUser() {
         didSet {
             if !user.avatarPath.isEmpty {

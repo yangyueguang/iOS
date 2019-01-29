@@ -30,9 +30,7 @@ protocol WXMessageProtocol: NSObjectProtocol {
     func messageCopy() -> String
     func conversationContent() -> String
 }
-protocol WXMessageManagerConvVCDelegate: NSObjectProtocol {
-    func updateConversationData()
-}
+
 @objcMembers
 class WXConversation: RLMObject {
     var remindType = TLMessageRemindType.normal//消息提醒类型
@@ -279,7 +277,6 @@ class WXExpressionMessage: WXMessage {
 class WXMessageManager: NSObject {
     static let shared = WXMessageManager()
     var messageDelegate: Any?
-    weak var conversationDelegate: WXMessageManagerConvVCDelegate?
     private var userID: String {
         return WXUserHelper.shared.user.userID
     }

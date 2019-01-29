@@ -6,7 +6,7 @@ import XExtension
 import AVFoundation
 import MediaToolbox
 import MediaPlayer
-class KugouLocalMusicCell: BaseTableViewCell {
+class KugouLocalMusicCell: BaseTableViewCell<Any> {
     var iconView: UIImageView!
     var mainLable: UILabel!
     var subLable: UILabel!

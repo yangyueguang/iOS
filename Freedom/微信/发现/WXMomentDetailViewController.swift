@@ -46,7 +46,7 @@ class WXMomentExtensionView: UIView, UITableViewDelegate, UITableViewDataSource 
         }
         tableView.register(WXMomentExtensionCommentCell.self, forCellReuseIdentifier: WXMomentExtensionCommentCell.identifier)
         tableView.register(WXMomentExtensionLikedCell.self, forCellReuseIdentifier: WXMomentExtensionLikedCell.identifier)
-        tableView.register(BaseTableViewCell.self, forCellReuseIdentifier: BaseTableViewCell.identifier)
+        tableView.register(BaseTableViewCell<Any>.self, forCellReuseIdentifier: BaseTableViewCell<Any>.identifier)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -104,7 +104,7 @@ class WXMomentExtensionView: UIView, UITableViewDelegate, UITableViewDataSource 
     }
 }
 
-class WXMomentExtensionLikedCell: BaseTableViewCell {
+class WXMomentExtensionLikedCell: BaseTableViewCell<[WXUser]> {
     var likedFriends: [WXUser] = []
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -115,7 +115,7 @@ class WXMomentExtensionLikedCell: BaseTableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-class WXMomentExtensionCommentCell: BaseTableViewCell {
+class WXMomentExtensionCommentCell: BaseTableViewCell<WXMomentComment> {
     var comment: WXMomentComment = WXMomentComment()
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

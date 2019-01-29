@@ -4,7 +4,7 @@
 import UIKit
 import XExtension
 import XCarryOn
-class KugouSettingViewCell:BaseTableViewCell{
+class KugouSettingViewCell:BaseTableViewCell<Any> {
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x:0, y:0, width:0, height:120))
         self.title = UILabel(frame: CGRect(x:0, y:0, width:0, height: 20))
@@ -76,7 +76,7 @@ final class KugouSettingViewController: KugouBaseViewController {
         bottomView?.addSubview(tableView)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueCell(BaseTableViewCell.self)
+        var cell = tableView.dequeueCell(BaseTableViewCell<Any>.self)
         cell.imageView?.image = UIImage(named: "music")
         cell.textLabel?.text = "手机专享"
         cell.textLabel?.textColor = UIColor.white

@@ -4,7 +4,7 @@
 import UIKit
 import XExtension
 import XCarryOn
-class TaobaoShopCarViewCell:BaseTableViewCell{
+class TaobaoShopCarViewCell:BaseTableViewCell<Any> {
     override func initUI() {
         icon = UIImageView()
         icon.contentMode = .scaleToFill

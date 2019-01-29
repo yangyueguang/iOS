@@ -4,7 +4,7 @@
 import SnapKit
 import Foundation
 import XExtension
-class WXMineInfoAvatarCell: BaseTableViewCell {
+class WXMineInfoAvatarCell: BaseTableViewCell<WXSettingItem> {
     var titleLabel = UILabel()
     var avatarImageView = UIImageView()
     var item: WXSettingItem = WXSettingItem() {

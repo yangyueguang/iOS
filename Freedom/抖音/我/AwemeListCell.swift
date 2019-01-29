@@ -17,7 +17,7 @@ let SHARE_TAP_ACTION:Int = 4000
 
 typealias OnPlayerReady = () -> Void
 
-class AwemeListCell: BaseTableViewCell {
+class AwemeListCell: BaseTableViewCell<Aweme> {
     
     var container:UIView = UIView.init()
     var gradientLayer:CAGradientLayer = CAGradientLayer.init()
@@ -280,10 +280,6 @@ class AwemeListCell: BaseTableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-//gesture
-extension AwemeListCell {
     @objc func handleGesture(sender: UITapGestureRecognizer) {
         switch sender.view?.tag {
         case COMMENT_TAP_ACTION:
@@ -300,10 +296,10 @@ extension AwemeListCell {
             //判断当前点击时间与上次点击时间的时间间隔
             if (time - lastTapTime) > 0.25 {
                 //推迟0.25秒执行单击方法
-                self.perform(#selector(singleTapAction), with: nil, afterDelay: 0.25)
+                self.perform(#selector(self.singleTapAction), with: nil, afterDelay: 0.25)
             } else {
                 //取消执行单击方法
-                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(singleTapAction), object: nil)
+                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.singleTapAction), object: nil)
                 //执行连击显示爱心的方法
                 showLikeViewAnim(newPoint: point, oldPoint: lastTapPoint)
             }

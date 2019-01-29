@@ -3,7 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
-class DZDealListViewTransverseCell:BaseTableViewCell{
+class DZDealListViewTransverseCell:BaseTableViewCell<Any> {
     override func initUI() {
         super.initUI()
         icon.frame = CGRect(x: 10, y: 0, width: APPW - 20, height: 60)
@@ -17,7 +17,7 @@ class DZDealListViewTransverseCell:BaseTableViewCell{
         script.text = "地道风味 精选外卖优惠"
     }
 }
-class DZDealListViewVerticalCell:BaseTableViewCell{
+class DZDealListViewVerticalCell:BaseTableViewCell<Any> {
     override func initUI() {
         super.initUI()
         icon.frame = CGRect(x: 10, y: 10, width: 70, height: 70)
@@ -52,13 +52,10 @@ class DZDealListViewController: DZBaseViewController {
             view.addSubview(tableView)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: BaseTableViewCell!
-        if indexPath.row % 5 != 0 {
-            //竖着的
+        var cell: BaseTableViewCell<Any>!
+        if indexPath.row % 5 != 0 {//竖着的
             cell = tableView.dequeueCell(DZDealListViewVerticalCell.self)
-
-        } else {
-            //横着的
+        } else {//横着的
             cell = tableView.dequeueCell(DZDealListViewTransverseCell.self)
         }
         return cell

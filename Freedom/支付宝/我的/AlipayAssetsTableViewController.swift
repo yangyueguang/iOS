@@ -3,7 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
-class AlipayAssetsTableViewControllerCell:BaseTableViewCell{
+class AlipayAssetsTableViewControllerCell:BaseTableViewCell<Any> {
     override func initUI() {
         textLabel?.textColor = UIColor.darkGray
         textLabel?.font = UIFont.systemFont(ofSize: 15)

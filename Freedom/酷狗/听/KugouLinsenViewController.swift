@@ -137,7 +137,7 @@ final class KugouLinsenViewController: KugouBaseViewController {
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueCell(BaseTableViewCell.self)
+        var cell = tableView.dequeueCell(BaseTableViewCell<Any>.self)
         cell.imageView?.image = UIImage(named: "music")
         cell.textLabel?.text = titlesArr[indexPath.row] as? String
         return cell

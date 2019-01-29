@@ -6,7 +6,7 @@
 //  Copyright © 2018 Qiao Shi. All rights reserved.
 //
 import UIKit
-class TimeCell:BaseTableViewCell {
+class TimeCell:BaseTableViewCell<GroupChat> {
 
     var textView:UITextView = UITextView.init()
 
@@ -64,7 +64,7 @@ class TimeCell:BaseTableViewCell {
 
 }
 
-class SystemMessageCell:BaseTableViewCell {
+class SystemMessageCell:BaseTableViewCell<GroupChat> {
 
 
     var textView:UITextView = UITextView.init()
@@ -125,7 +125,7 @@ class SystemMessageCell:BaseTableViewCell {
 
 }
 
-class ImageMessageCell:BaseTableViewCell {
+class ImageMessageCell:BaseTableViewCell<GroupChat> {
 
     var avatar = UIImageView.init(image: UIImage.init(named: "img_find_default"))
     var imageMsg:UIImageView = UIImageView.init()
@@ -325,7 +325,7 @@ class ImageMessageCell:BaseTableViewCell {
 }
 
 typealias OnMenuAction = (_ actionType:MenuActionType) -> Void
-class TextMessageCell:BaseTableViewCell {
+class TextMessageCell: BaseTableViewCell<GroupChat> {
 
     var avatar = UIImageView.init(image: UIImage.init(named: "img_find_default"))
     var textView:UITextView = UITextView.init()

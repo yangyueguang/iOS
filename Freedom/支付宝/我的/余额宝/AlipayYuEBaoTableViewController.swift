@@ -127,7 +127,7 @@ class AlipayYuEBaoTableViewCellContentView: UIView {
         flag += 1
     }
 }
-class AlipayYuEBaoTableViewCell:BaseTableViewCell {
+class AlipayYuEBaoTableViewCell:BaseTableViewCell<Any> {
     private var cellContentView: AlipayYuEBaoTableViewCellContentView?
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

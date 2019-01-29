@@ -1183,7 +1183,7 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
 }
 
 
-class CommentListCell:BaseTableViewCell {
+class CommentListCell:BaseTableViewCell<Comment> {
 
     static let MaxContentWidth:CGFloat = screenWidth - 55 - 35
 

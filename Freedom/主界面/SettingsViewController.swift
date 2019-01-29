@@ -36,7 +36,7 @@ class SettingsViewController: BaseViewController ,ElasticMenuTransitionDelegate{
         return 20
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueCell(BaseTableViewCell.self)
+        var cell = tableView.dequeueCell(BaseTableViewCell<Any>.self)
         cell.backgroundColor = UIColor.clear
         cell.textLabel?.text = "\(indexPath.row)"
         return cell

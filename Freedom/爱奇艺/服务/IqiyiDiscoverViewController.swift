@@ -80,7 +80,7 @@ class IqiyiImageScrollView: UIView, UIScrollViewDelegate {
         removeTimer()
     }
 }
-class IqiyiImageScrollCell: BaseTableViewCell {
+class IqiyiImageScrollCell: BaseTableViewCell<Any> {
     var imageScrollView = IqiyiImageScrollView(frame: CGRect(x: 0, y: 0, width: APPW, height: 100))
     var imageArr :[String] {
         set{
@@ -109,7 +109,7 @@ class IqiyiDiscoverModel: NSObject {
     var sub_type = ""
     var group_location: NSNumber?
 }
-class IqiyiDiscoverCell:BaseTableViewCell{
+class IqiyiDiscoverCell:BaseTableViewCell<Any> {
     func ainit(tableView: UITableView) {
         var cell = tableView.dequeueCell(IqiyiDiscoverCell.self)
         cell.selectionStyle = .none

@@ -3,7 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
-class IqiyiLoginBtnCell:BaseTableViewCell{
+class IqiyiLoginBtnCell:BaseTableViewCell<Any> {
 }
 final class IqiyiLoginViewController: IqiyiBaseViewController {
     override func viewDidLoad() {

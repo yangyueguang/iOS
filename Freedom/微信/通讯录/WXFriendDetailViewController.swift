@@ -6,7 +6,7 @@ import Foundation
 protocol WXFriendDetailUserCellDelegate: NSObjectProtocol {
     func friendDetailUserCellDidClickAvatar(_ info: WXInfo)
 }
-class WechatFriendDetailAlbumCell: BaseTableViewCell {
+class WechatFriendDetailAlbumCell: BaseTableViewCell<WXInfo> {
     var imageViewsArray: [UIImageView] = []
     var info: WXInfo = WXInfo() {
         didSet {
@@ -50,7 +50,7 @@ class WechatFriendDetailAlbumCell: BaseTableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-class WechatFriendDetailUserCell: BaseTableViewCell {
+class WechatFriendDetailUserCell: BaseTableViewCell<WXInfo> {
     weak var delegate: WXFriendDetailUserCellDelegate?
     var info: WXInfo = WXInfo() {
         didSet {

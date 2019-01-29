@@ -4,7 +4,7 @@
 import SnapKit
 import XCarryOn
 import Foundation
-class WechatContactCell: BaseTableViewCell {
+class WechatContactCell: BaseTableViewCell<WechatContact> {
     var avatarImageView = UIImageView()
     var usernameLabel = UILabel()
     lazy var subTitleLabel: UILabel =  {

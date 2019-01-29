@@ -57,7 +57,7 @@ class IqiyiRecommentModel: NSObject {
     var limit = ""
     var time = ""
 }
-class IqiyiRecommentVideoCell:BaseTableViewCell{
+class IqiyiRecommentVideoCell:BaseTableViewCell<IqiyiRecommentModel> {
     let iconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
     let titleLabel = UILabel(frame: CGRect(x: 100, y: 10, width: 200, height: 20))
     let timeLabel = UILabel(frame: CGRect(x: 100, y: 40, width: 200, height: 20))
@@ -76,7 +76,7 @@ class IqiyiRecommentVideoCell:BaseTableViewCell{
         pvLabel.text = "pvlabel"
     }
 }
-class IqiyiVideoDetailCell: BaseTableViewCell {
+class IqiyiVideoDetailCell: BaseTableViewCell<IqiyiVideoDetailModel> {
     var iconImageView: UIImageView?
     var userNameLabel: UILabel?
     var playItemsLabel: UILabel?

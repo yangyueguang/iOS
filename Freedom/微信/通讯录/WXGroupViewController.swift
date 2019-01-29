@@ -42,7 +42,7 @@ class WXGroupSearchViewController: BaseTableViewController, UISearchResultsUpdat
     }
 }
 
-class WXGroupCell: BaseTableViewCell {
+class WXGroupCell: BaseTableViewCell<WXGroup> {
     var group: WXGroup = WXGroup() {
         didSet {
             let path = FileManager.pathUserAvatar(group.groupID)

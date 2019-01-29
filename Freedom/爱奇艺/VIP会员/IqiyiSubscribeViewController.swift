@@ -82,7 +82,7 @@ class IqiyiSubScribeCardView: UIView {
     @objc func tapImageCard(_ sender: UITapGestureRecognizer?) {
     }
 }
-class IqiyiSubscribeCell:BaseTableViewCell{
+class IqiyiSubscribeCell:BaseTableViewCell<IqiyiSubscribeModel> {
     override func initUI() {
         let backview = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 210))
         backview.backgroundColor = UIColor.white

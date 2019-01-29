@@ -132,7 +132,7 @@ class ChatListController: DouyinBaseViewController {
         tableView?.reloadData()
     }
     
-    func deleteChat(cell:BaseTableViewCell?) {
+    func deleteChat(cell:UITableViewCell?) {
         if cell == nil {
             return
         }

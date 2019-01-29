@@ -12,7 +12,7 @@ class AlipayDiscoverTableViewHeaderItemModel: NSObject {
         self.imageName = imageName!
     }
 }
-class AlipayDiscoverTableViewControllerCell:BaseTableViewCell{
+class AlipayDiscoverTableViewControllerCell:BaseTableViewCell<Any> {
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         textLabel?.textColor = UIColor.darkGray

@@ -33,7 +33,7 @@ final class SinaMessageViewController: SinaBaseViewController {
             d.contentView.addSubview(_searchBar)
             return d
         }
-        var cell = tableView.dequeueCell(BaseTableViewCell.self)
+        var cell = tableView.dequeueCell(BaseTableViewCell<Any>.self)
         cell.textLabel?.text = "微博小秘书\(indexPath.row)"
         cell.detailTextLabel?.text = "今晚我想去你那里，等着我。详情请点击查看！"
         cell.imageView?.image = UIImage(named: "movie")

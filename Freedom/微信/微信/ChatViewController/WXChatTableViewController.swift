@@ -48,7 +48,7 @@ protocol WXChatTableViewControllerDelegate: NSObjectProtocol {
     func chatTableViewController(_ chatTVC: WXChatTableViewController, didClick message: WXMessage)
     func chatTableViewController(_ chatTVC: WXChatTableViewController, didDoubleClick message: WXMessage)
 }
-class WXMessageBaseCell: BaseTableViewCell {
+class WXMessageBaseCell: BaseTableViewCell<WXMessage> {
     weak var delegate: WXMessageCellDelegate?
     lazy var timeLabel: UILabel = {
         let timeLabel = UILabel()
@@ -571,7 +571,7 @@ class WXChatTableViewController: BaseTableViewController, WXMessageCellDelegate 
         tableView.register(WXTextMessageCell.self, forCellReuseIdentifier: WXTextMessageCell.identifier)
         tableView.register(WXImageMessageCell.self, forCellReuseIdentifier: WXImageMessageCell.identifier)
         tableView.register(WXExpressionMessageCell.self, forCellReuseIdentifier: WXExpressionMessageCell.identifier)
-        tableView.register(BaseTableViewCell.self, forCellReuseIdentifier: BaseTableViewCell.identifier)
+        tableView.register(BaseTableViewCell<Any>.self, forCellReuseIdentifier: BaseTableViewCell<Any>.identifier)
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
@@ -594,7 +594,7 @@ class WXChatTableViewController: BaseTableViewController, WXMessageCellDelegate 
             cell.delegate = self
             return cell
         }
-        return tableView.dequeueCell(BaseTableViewCell.self)
+        return tableView.dequeueCell(BaseTableViewCell<Any>.self)
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let message: WXMessage = data[indexPath.row]

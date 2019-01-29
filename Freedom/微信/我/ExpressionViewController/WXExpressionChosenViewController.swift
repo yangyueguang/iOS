@@ -12,7 +12,7 @@ protocol WXExpressionCellDelegate: NSObjectProtocol {
 protocol WXExpressionBannerCellDelegate: NSObjectProtocol {
     func expressionBannerCellDidSelectBanner(_ item: TLEmojiGroup)
 }
-class WXExpressionCell: BaseTableViewCell {
+class WXExpressionCell: BaseTableViewCell<TLEmojiGroup> {
     weak var delegate: WXExpressionCellDelegate?
     private lazy var iconImageView: UIImageView = {
         let iconImageView = UIImageView()
@@ -122,7 +122,7 @@ class WXExpressionCell: BaseTableViewCell {
 }
 
 
-class WXExpressionBannerCell: BaseTableViewCell,WXPictureCarouselDelegate {
+class WXExpressionBannerCell: BaseTableViewCell<Any>,WXPictureCarouselDelegate {
     weak var delegate: WXExpressionBannerCellDelegate?
     private var picCarouselView = WXPictureCarouselView()
     var data: [WXPictureCarouselProtocol] = [] {

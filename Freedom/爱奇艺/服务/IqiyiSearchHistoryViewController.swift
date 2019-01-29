@@ -26,7 +26,7 @@ class IqiyiSearchTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
 }
-class IqiyiSearchHotCell:BaseTableViewCell{
+class IqiyiSearchHotCell:BaseTableViewCell<Any> {
     func setArray(_ array: [Any]?) {
         let buttons: Int? = array?.count
         let margin: CGFloat = 10
@@ -40,7 +40,7 @@ class IqiyiSearchHotCell:BaseTableViewCell{
         }
     }
 }
-class IqiyiSearchHistoryCell: BaseTableViewCell {
+class IqiyiSearchHistoryCell: BaseTableViewCell<Any> {
     var searchHistoryLabel: UILabel!
     /** 底部的线 */
     var bottomLineView: UIView!

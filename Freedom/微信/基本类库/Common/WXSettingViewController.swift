@@ -85,7 +85,7 @@ class WXSettingViewController: BaseTableViewController {
         return 20.0 + (group.footerTitle.isEmpty ? 0 : 5.0)
     }
 }
-class WechatSettingSwitchCell: BaseTableViewCell {
+class WechatSettingSwitchCell: BaseTableViewCell<WXSettingItem> {
     var item: WXSettingItem = WXSettingItem() {
         didSet {
             titleLabel.text = item.title
@@ -113,7 +113,7 @@ class WechatSettingSwitchCell: BaseTableViewCell {
     }
 }
 
-class WechatSettingButtonCell: BaseTableViewCell {
+class WechatSettingButtonCell: BaseTableViewCell<WXSettingItem> {
     var item: WXSettingItem = WXSettingItem() {
         didSet {
             textLabel?.text = item.title
@@ -128,7 +128,7 @@ class WechatSettingButtonCell: BaseTableViewCell {
     }
 }
 
-class WXSettingCell: BaseTableViewCell {
+class WXSettingCell: BaseTableViewCell<WXSettingItem> {
     private var titleLabel = UILabel()
     private var rightLabel = UILabel()
     private var rightImageView = UIImageView()

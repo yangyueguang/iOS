@@ -27,7 +27,7 @@ class DetailTableViewController: TaobaoBaseViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dequeueReusableCellWithIdentifier = "dequeueReusableCellWithIdentifier"
-        var cell = tableView.dequeueCell(BaseTableViewCell.self)
+        var cell = tableView.dequeueCell(BaseTableViewCell<Any>.self)
 
         cell.textLabel?.text = data[indexPath.row]["title"] as? String
         cell.detailTextLabel?.text = data[indexPath.row]["author"] as? String

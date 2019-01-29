@@ -9,7 +9,7 @@ import UIKit
 import UIKit
 import XExtension
 import XCarryOn
-class EnergySampleViewCell:BaseTableViewCell{
+class EnergySampleViewCell:BaseTableViewCell<Any> {
     override func initUI() {
         accessoryType = .disclosureIndicator
         self.icon = UIImageView(frame: CGRect(x: 10, y: 10, width: 50, height: 50))

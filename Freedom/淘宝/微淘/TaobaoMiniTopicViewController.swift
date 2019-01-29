@@ -3,7 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
-class TaobaoMiniTopicViewCell:BaseTableViewCell{
+class TaobaoMiniTopicViewCell:BaseTableViewCell<Any> {
     override func initUI() {
         super.initUI()
         icon.frame = CGRect(x: 10, y: 10, width: 70, height: 70)

@@ -32,7 +32,7 @@ class IqiyiClassifyModel: NSObject {
     var young_app_launcher = ""
     var normal_icon_for_v_4 = ""
 }
-class IqiyiClassifyCell: BaseTableViewCell {
+class IqiyiClassifyCell: BaseTableViewCell<IqiyiClassifyModel> {
     var classifyModel: IqiyiClassifyModel? {
         didSet {
             imageView?.sd_setImage(with: URL(string: classifyModel?.image_at_bottom ?? ""), placeholderImage: UIImage(named: "home_GaoXiao"))
@@ -40,7 +40,7 @@ class IqiyiClassifyCell: BaseTableViewCell {
         }
     }
 }
-class TEMPBASEC:BaseTableViewCell{
+class TEMPBASEC:BaseTableViewCell<Any> {
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x:0, y:0, width:0, height:120))
         self.title = UILabel(frame: CGRect(x:0, y:0, width:0, height: 20))

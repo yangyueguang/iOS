@@ -9,7 +9,7 @@ class AlipayServiceTableViewCellModel: NSObject {
     var detailString = ""
     var iconImageURLString = ""
 }
-class AlipayServiceTableViewCell:BaseTableViewCell{
+class AlipayServiceTableViewCell:BaseTableViewCell<Any> {
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 10, y: 10, width: 100, height: 80))
         title = UILabel(frame: CGRect(x: 120, y: 10, width: 200, height: 20))

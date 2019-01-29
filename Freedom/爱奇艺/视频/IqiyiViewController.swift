@@ -170,7 +170,7 @@ class IqiyiImageCardView: UIView {
         delegate?.didSelectImageCard(self, video: video)
     }
 }
-class IqiyiHomeBoxCell: BaseTableViewCell,IqiyiImageCardViewDelegate {
+class IqiyiHomeBoxCell: BaseTableViewCell<IqiyiBoxesModel>,IqiyiImageCardViewDelegate {
     private var titleLabel: UILabel?
     private var iconV : UIImageView!
     private var cardView1: IqiyiImageCardView!
@@ -239,7 +239,7 @@ class IqiyiHomeBoxCell: BaseTableViewCell,IqiyiImageCardViewDelegate {
     }
         
 }
-class IqiyiHomeVideoBoxCell: BaseTableViewCell {
+class IqiyiHomeVideoBoxCell: BaseTableViewCell<IqiyiBoxesModel> {
     var boxes: IqiyiBoxesModel? {
         didSet {
             titleLabel.text = boxes?.title

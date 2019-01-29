@@ -5,8 +5,7 @@ import UIKit
 import RxSwift
 import XExtension
 import XCarryOn
-class ToutiaoHomeSampleViewCell:BaseTableViewCell{
-    let viewModel = PublishSubject<TopicModel.TopicNew>()
+class ToutiaoHomeSampleViewCell:BaseTableViewCell<TopicModel.TopicNew> {
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 10, y: 0, width: 80, height: 80))
         title = UILabel(frame: CGRect(x:100, y: 10, width: 300, height: 80))

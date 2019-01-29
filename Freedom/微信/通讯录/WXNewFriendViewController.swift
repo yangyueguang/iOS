@@ -6,7 +6,7 @@ import Foundation
 protocol WXAddThirdPartFriendCellDelegate: NSObjectProtocol {
     func addThirdPartFriendCellDidSelectedType(_ type: TLThirdPartType)
 }
-class WXAddThirdPartFriendCell: BaseTableViewCell {
+class WXAddThirdPartFriendCell: BaseTableViewCell<[WXAddThirdPartFriendItem]> {
     weak var delegate: WXAddThirdPartFriendCellDelegate?
     var lastItem: WXAddThirdPartFriendItem?
     var thridPartItems: [WXAddThirdPartFriendItem] = [] {

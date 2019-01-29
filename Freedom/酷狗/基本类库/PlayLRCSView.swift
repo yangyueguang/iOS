@@ -285,7 +285,7 @@ private class SHLrcLine: NSObject {
     var time = ""
     var words = ""//歌词内容
 }
-private class SHMusicLrcCell: BaseTableViewCell {
+private class SHMusicLrcCell: BaseTableViewCell<SHLrcLine> {
     var message: SHLrcLine! {
         didSet {
             contentView.addSubview(lrcLabel)

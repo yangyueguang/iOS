@@ -8,7 +8,7 @@
 import UIKit
 import XExtension
 import XCarryOn
-class FreedomViewCell:BaseTableViewCell{
+class FreedomViewCell:BaseTableViewCell<Any> {
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x: 10, y: 10, width: 60, height: 60))
         self.title = UILabel(frame: CGRect(x:self.icon.right+10, y: 20, width: APPW-self.icon.right-20, height: 20))

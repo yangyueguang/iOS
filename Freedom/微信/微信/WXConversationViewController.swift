@@ -4,151 +4,67 @@
 import SnapKit
 import Alamofire
 import Foundation
-class WechatAddMenuCell: BaseTableViewCell {
-    var item: WXAddMenuItem = WXAddMenuItem() {
-        didSet {
-            icon.image = UIImage(named: item.iconPath)
-            title.text = item.title
-        }
-    }
+import RxSwift
+class WechatAddMenuCell: BaseTableViewCell<WXAddMenuItem> {
     override func initUI() {
         super.initUI()
         backgroundColor = UIColor.darkGray
         icon.frame = CGRect(x: 10, y: 10, width: 30, height: 30)
         title.frame = CGRect(x: icon.right + 10, y: 15, width: 100, height: 20)
         addSubviews([icon,title])
+        viewModel.subscribe(onNext: {[weak self] (item) in
+            guard let `self` = self else { return }
+            self.icon.image = UIImage(named: item.iconPath)
+            self.title.text = item.title
+        }).disposed(by: disposeBag)
     }
 }
-class WechatConversationCell: BaseTableViewCell {
-    lazy var avatarImageView: UIImageView = {
-        let avatarImageView = UIImageView()
-        avatarImageView.layer.masksToBounds = true
-        avatarImageView.layer.cornerRadius = 3.0
-        return avatarImageView
-    }()
-    lazy var usernameLabel: UILabel = {
-        let usernameLabel = UILabel()
-        usernameLabel.font = UIFont.systemFont(ofSize: 17.0)
-        return usernameLabel
-    }()
-    lazy var detailLabel: UILabel = {
-        let detailLabel = UILabel()
-        detailLabel.font = UIFont.systemFont(ofSize: 14.0)
-        detailLabel.textColor = UIColor.gray
-        return detailLabel
-    }()
-    lazy var timeLabel: UILabel = {
-        let timeLabel = UILabel()
-        timeLabel.font = UIFont.systemFont(ofSize: 12.5)
-        timeLabel.textColor = UIColor(160, 160, 160, 1.0)
-        return timeLabel
-    }()
-    lazy var remindImageView: UIImageView = {
-        let remindImageView = UIImageView()
-        remindImageView.alpha = 0.4
-        return remindImageView
-    }()
-    lazy var redPointView: UIView = {
-        let redPointView = UIView()
-        redPointView.backgroundColor = UIColor.red
-        redPointView.layer.masksToBounds = true
-        redPointView.layer.cornerRadius = 10 / 2.0
-        redPointView.isHidden = true
-        return redPointView
-    }()
-    var conversation: WXConversation? {
-        didSet {
-//            if conversation?.avatarPath.count ?? 0 > 0 {
-//                let path = FileManager.pathUserAvatar(conversation?.avatarPath ?? "")
-//                avatarImageView.image = UIImage(named: path)
-//            } else if conversation?.avatarURL.count ?? 0 > 0 {
-//                avatarImageView.sd_setImage(with: URL(string: conversation?.avatarURL ?? ""), placeholderImage: UIImage(named: PuserLogo))
-//            } else {
-//                avatarImageView.image = nil
-//            }
-            usernameLabel.text = conversation?.partnerName
-            detailLabel.text = conversation?.content
-            timeLabel.text = conversation?.date.timeToNow()
-            switch conversation?.remindType {
-            case .normal?:self.remindImageView.isHidden = (true)
-            case .closed?:
-                self.remindImageView.isHidden = (false)
-                self.remindImageView.image = (UIImage(named: "conv_remind_close"))
-            case .notLook?:
-                self.remindImageView.isHidden = (false)
-                self.remindImageView.image = (UIImage(named: "conv_remind_notlock"))
-            case .unlike?:
-                self.remindImageView.isHidden = (false)
-                self.remindImageView.image = (UIImage(named: "conv_remind_unlike"))
-            default:break
+class WechatConversationCell: BaseTableViewCell<WXConversation> {
+    @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var remindImageView: UIImageView!
+    @IBOutlet weak var redPointView: UIView!
+    override func initUI() {
+        viewModel.subscribe(onNext: {[weak self] (con) in
+            guard let `self` = self else { return }
+            if con.avatarPath.count > 0 {
+                let path = FileManager.pathUserAvatar(con.avatarPath)
+                self.iconView.image = UIImage(named: path)
+            } else if con.avatarURL.count > 0 {
+                self.iconView.sd_setImage(with: URL(string: con.avatarURL), placeholderImage: UIImage(named: PuserLogo))
+            } else {
+                self.iconView.image = nil
             }
-            markAsRead(self.conversation?.isRead ?? false)
-        }
-    }
-    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.addSubview(avatarImageView)
-        contentView.addSubview(usernameLabel)
-        contentView.addSubview(detailLabel)
-        contentView.addSubview(timeLabel)
-        contentView.addSubview(remindImageView)
-        contentView.addSubview(redPointView)
-        p_addMasonry()
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+            self.nameLabel.text = con.partnerName
+            self.detailLabel.text = con.content
+            self.timeLabel.text = con.date.timeToNow()
+            switch con.remindType {
+            case .normal:self.remindImageView.image = nil
+            case .closed:
+                self.remindImageView.image = (UIImage(named: "conv_remind_close"))
+            case .notLook:
+                self.remindImageView.image = (UIImage(named: "conv_remind_notlock"))
+            case .unlike:
+                self.remindImageView.image = (UIImage(named: "conv_remind_unlike"))
+            }
+            self.markAsRead(con.isRead)
+        }).disposed(by: disposeBag)
     }
     //标记为已读/未读
     func markAsRead(_ isRead: Bool) {
-        if conversation != nil {
-            switch conversation?.clueType {
-            case .pointWithNumber?:break
-            case .point?:redPointView.isHidden = (isRead)
-            case .none:break
-            default:break
-            }
-        }
-    }
-    func p_addMasonry() {
-        usernameLabel.setContentCompressionResistancePriority(UILayoutPriority(100), for: .horizontal)
-        detailLabel.setContentCompressionResistancePriority(UILayoutPriority(110), for: .horizontal)
-        timeLabel.setContentCompressionResistancePriority(UILayoutPriority(300), for: .horizontal)
-        remindImageView.setContentCompressionResistancePriority(UILayoutPriority(310), for: .horizontal)
-        avatarImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(10)
-            make.top.equalTo(9.5)
-            make.bottom.equalTo(-9.5)
-            make.width.equalTo(self.avatarImageView.snp.height)
-        }
-        usernameLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self.avatarImageView.snp.right).offset(10)
-            make.top.equalTo(self.avatarImageView).offset(2)
-            make.right.lessThanOrEqualTo(self.timeLabel.snp.left).offset(-5)
-        }
-        detailLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(self.avatarImageView).offset(-2)
-            make.left.equalTo(self.usernameLabel)
-            make.right.lessThanOrEqualTo(self.remindImageView.snp.left)
-        }
-        timeLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(self.usernameLabel)
-            make.right.equalTo(self.contentView).offset(-10)
-        }
-        remindImageView.snp.makeConstraints { (make) in
-            make.right.equalTo(self.timeLabel)
-            make.centerY.equalTo(self.detailLabel)
-        }
-        redPointView.snp.makeConstraints { (make) in
-            make.centerX.equalTo(self.avatarImageView.snp.right).offset(-2)
-            make.centerY.equalTo(self.avatarImageView.snp.top).offset(2)
-            make.width.height.equalTo(10)
+        switch self.model.clueType {
+        case .pointWithNumber:break
+        case .point:redPointView.isHidden = (isRead)
+        case .none:break
         }
     }
 }
 
 
 
-final class WXConversationViewController: BaseTableViewController, WXMessageManagerConvVCDelegate, UISearchBarDelegate {
+final class WXConversationViewController: BaseTableViewController {
     var searchVC = WXFriendSearchViewController()
     var data: [WXConversation] = []
     private var scrollTopView = UIImageView(image: UIImage(named: "conv_wechat_icon"))
@@ -172,6 +88,7 @@ final class WXConversationViewController: BaseTableViewController, WXMessageMana
         tableView.backgroundColor = UIColor.white
         tableView.tableHeaderView = searchController.searchBar
         tableView.addSubview(scrollTopView)
+        scrollTopView.backgroundColor = .red
         let item1 = WXAddMenuItem(type: .groupChat, title: "发起群聊", iconPath: "u_white_addfriend", className: nil)
         let item2 = WXAddMenuItem(type: .addFriend, title: "添加朋友", iconPath: "u_white_addfriend", className: WXAddFriendViewController.self)
         let item3 = WXAddMenuItem(type: .wallet, title: "收付款", iconPath: "u_white_addfriend", className: nil)
@@ -180,7 +97,7 @@ final class WXConversationViewController: BaseTableViewController, WXMessageMana
         addMenuView = XPopMenu(frame: CGRect(x: APPW - 150, y: 0, width: 140, height: 0), items: [item1, item2, item3, item4], cellHeight: 50)
         addMenuView.cellClosure = {(table, item) in
             let cell = table.dequeueCell(WechatAddMenuCell.self)
-            cell.item = item
+            cell.viewModel.onNext(item)
             return cell
         }
         addMenuView.actionClosure = {[weak self] item in
@@ -199,7 +116,6 @@ final class WXConversationViewController: BaseTableViewController, WXMessageMana
             make.bottom.equalTo(self.tableView.snp.top).offset(-35)
         }
         tableView.register(WechatConversationCell.self, forCellReuseIdentifier: WechatConversationCell.identifier)
-        WXMessageManager.shared.conversationDelegate = (self)
         NotificationCenter.default.addObserver(self, selector: #selector(self.networkStatusChange(_:)), name: NSNotification.Name.AFNetworkingReachabilityDidChange, object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -235,13 +151,15 @@ final class WXConversationViewController: BaseTableViewController, WXMessageMana
             self.tableView.reloadData()
         })
     }
+}
+extension WXConversationViewController: UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let conversation = data[indexPath.row]
         let cell = tableView.dequeueCell(WechatConversationCell.self)
-        cell.conversation = conversation
+        cell.viewModel.onNext(conversation)
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

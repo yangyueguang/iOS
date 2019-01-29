@@ -2,11 +2,13 @@
 import UIKit
 import RxSwift
 @objcMembers
-open class BaseTableViewCell : UITableViewCell {
+open class BaseTableViewCell<T> : UITableViewCell {
     let disposeBag = DisposeBag()
     open var icon: UIImageView!
     open var title: UILabel!
     open var script: UILabel!
+    let viewModel = PublishSubject<T>()
+    var model: T!
     ///单例初始化，兼容nib创建
     public static func getInstance() -> Self {
         let instance = self.init(style: .default, reuseIdentifier: self.identifier)

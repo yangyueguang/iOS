@@ -3,7 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
-class KugouLookViewCell:BaseTableViewCell{
+class KugouLookViewCell:BaseTableViewCell<Any> {
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x:0, y:0, width:0, height:120))
         self.title = UILabel(frame: CGRect(x:0, y:0, width:0, height: 20))
@@ -61,7 +61,7 @@ final class KugouLookViewController: KugouBaseViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueCell(BaseTableViewCell.self)
+        var cell = tableView.dequeueCell(BaseTableViewCell<Any>.self)
         cell.imageView?.image = UIImage(named: "music")
         cell.textLabel?.text = titlesArr[indexPath.row] as? String
         return cell

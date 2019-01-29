@@ -3,7 +3,7 @@
 //  Freedom
 import SnapKit
 import Foundation
-class WXFriendCell: BaseTableViewCell {
+class WXFriendCell: BaseTableViewCell<WXUser> {
     private var avatarImageView = UIImageView()
     private var usernameLabel = UILabel()
     private lazy var subTitleLabel: UILabel =  {

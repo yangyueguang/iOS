@@ -4,7 +4,7 @@
 import SnapKit
 import XExtension
 import Foundation
-class WXTagCell: BaseTableViewCell {
+class WXTagCell: BaseTableViewCell<Any> {
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         title = UILabel()

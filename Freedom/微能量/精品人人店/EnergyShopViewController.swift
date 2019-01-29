@@ -4,7 +4,7 @@
 import UIKit
 import XExtension
 import XCarryOn
-class EnergyShopViewCell:BaseTableViewCell{
+class EnergyShopViewCell:BaseTableViewCell<Any>{
     override func initUI() {
         accessoryType = .disclosureIndicator
         self.icon = UIImageView(frame: CGRect(x: 10, y: 10, width: 60, height: 60))

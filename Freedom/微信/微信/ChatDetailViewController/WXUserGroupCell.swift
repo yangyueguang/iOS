@@ -8,7 +8,7 @@ protocol WechatUserGroupCellDelegate: NSObjectProtocol {
     func userGroupCellAddUserButtonDown()
 }
 
-class WXUserGroupCell: BaseTableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
+class WXUserGroupCell: BaseTableViewCell<[WXUser]>, UICollectionViewDataSource, UICollectionViewDelegate {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 57, height: 75)
