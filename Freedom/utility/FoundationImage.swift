@@ -24,6 +24,12 @@ enum WXImage: String {
     case addFriend = "u_white_addfriend"
     case add = "u_message_add"
     case addHL = "u_message_addHL"
+    case voice = "u_message_voicek"
+    case voiceHL = "u_message_voicekHL"
+    case keyboard = "u_message_keyboard"
+    case keyboardHL = "u_message_keyboardHL"
+    case face = "u_message_face"
+    case faceHL = "u_message_faceHL"
     var image: UIImage {
         let ima = UIImage(asset: rawValue)
         assert(ima != nil, "图片资源丢失\(rawValue)")

@@ -130,10 +130,11 @@ class XEmojiKeyboard: UIView {
         if animation {
             UIView.animate(withDuration: 0.3, animations: {
                 self.snp.makeConstraints({ (make) in
-                    make.bottom.equalToSuperview().offset(215)
+                    make.height.equalTo(0)
+                    make.bottom.equalToSuperview()
                 })
                 self.superview?.layoutIfNeeded()
-                self.keyboardDelegate?.chatKeyboard?(self, didChangeHeight: self.superview?.frame.size.height ?? 0 - self.frame.origin.y)
+                self.keyboardDelegate?.chatKeyboard?(self, didChangeHeight: (self.superview?.frame.size.height ?? 0) - self.frame.origin.y)
             }) { finished in
                 self.removeFromSuperview()
                 self.keyboardDelegate?.chatKeyboardDidDismiss?(self)

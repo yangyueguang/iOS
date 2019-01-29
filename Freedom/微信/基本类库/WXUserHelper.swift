@@ -426,23 +426,19 @@ class WXUserHelper: NSObject {
     }
     func emojiGroupDataComplete(_ complete: @escaping ([TLEmojiGroup]) -> Void) {
         self.complete = complete
-        DispatchQueue.global(qos: .default).async(execute: {
-            var emojiGroupData: [TLEmojiGroup] = []
-            let defaultEmojiGroups = [WXExpressionHelper.shared.defaultFaceGroup, WXExpressionHelper.shared.defaultSystemEmojiGroup]
-            emojiGroupData.append(contentsOf: defaultEmojiGroups)
-            let preferEmojiGroup: TLEmojiGroup = WXExpressionHelper.shared.userPreferEmojiGroup
-            if preferEmojiGroup.count > 0 {
-                emojiGroupData.append(preferEmojiGroup)
-            }
-            let userGroups = WXExpressionHelper.shared.userEmojiGroups
-            if userGroups.count > 0 {
-                emojiGroupData.append(contentsOf:userGroups)
-            }
-            emojiGroupData.append(contentsOf:self.systemEmojiGroups)
-            DispatchQueue.main.async(execute: {
-                complete(emojiGroupData)
-            })
-        })
+        var emojiGroupData: [TLEmojiGroup] = []
+        let defaultEmojiGroups = [WXExpressionHelper.shared.defaultFaceGroup, WXExpressionHelper.shared.defaultSystemEmojiGroup]
+        emojiGroupData.append(contentsOf: defaultEmojiGroups)
+        let preferEmojiGroup: TLEmojiGroup = WXExpressionHelper.shared.userPreferEmojiGroup
+        if preferEmojiGroup.count > 0 {
+            emojiGroupData.append(preferEmojiGroup)
+        }
+        let userGroups = WXExpressionHelper.shared.userEmojiGroups
+        if userGroups.count > 0 {
+            emojiGroupData.append(contentsOf:userGroups)
+        }
+        emojiGroupData.append(contentsOf:self.systemEmojiGroups)
+        complete(emojiGroupData)
     }
 }
 //FIXME: 表情数据管理类

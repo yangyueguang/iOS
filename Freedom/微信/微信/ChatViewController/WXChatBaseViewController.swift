@@ -247,14 +247,6 @@ extension UIButton {
 }
 
 class WXChatBar: UIView ,UITextViewDelegate {
-    private let kVoiceImage = UIImage(named: "chat_toolbar_voice")
-    private let kVoiceImageHL = UIImage(named: "chat_toolbar_voice_HL")
-    private let kEmojiImage = UIImage(named: "chat_toolbar_emotion")
-    private let kEmojiImageHL = UIImage(named: "chat_toolbar_emotion_HL")
-    private let kMoreImage = UIImage(named: "chat_toolbar_more")
-    private let kMoreImageHL = UIImage(named: "chat_toolbar_more_HL")
-    private let kKeyboardImage = UIImage(named: "chat_toolbar_keyboard")
-    private let kKeyboardImageHL = UIImage(named: "chat_toolbar_keyboard_HL")
     private let modeButton = UIButton()
     private let voiceButton = UIButton()
     private let emojiButton = UIButton()
@@ -313,13 +305,13 @@ class WXChatBar: UIView ,UITextViewDelegate {
         addSubview(talkButton)
         addSubview(emojiButton)
         addSubview(moreButton)
-        modeButton.setImage(UIImage(named: "chat_toolbar_texttolist"), imageHL: UIImage(named: "chat_toolbar_texttolist_HL"))
+        modeButton.setImage(WXImage.add.image, imageHL: WXImage.addHL.image)
         modeButton.addTarget(self, action: #selector(self.modeButtonDown), for: .touchUpInside)
-        voiceButton.setImage(kVoiceImage, imageHL: kVoiceImageHL)
+        voiceButton.setImage(WXImage.voice.image, imageHL: WXImage.voiceHL.image)
         voiceButton.addTarget(self, action: #selector(self.voiceButtonDown), for: .touchUpInside)
-        emojiButton.setImage(kEmojiImage, imageHL: kEmojiImageHL)
+        emojiButton.setImage(WXImage.face.image, imageHL: WXImage.faceHL.image)
         emojiButton.addTarget(self, action: #selector(self.emojiButtonDown), for: .touchUpInside)
-        moreButton.setImage(kMoreImage, imageHL: kMoreImageHL)
+        moreButton.setImage(WXImage.add.image, imageHL: WXImage.addHL.image)
         moreButton.addTarget(self, action: #selector(self.moreButtonDown), for: .touchUpInside)
         modeButton.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
@@ -382,8 +374,8 @@ class WXChatBar: UIView ,UITextViewDelegate {
             delegate?.chatBar(self, changeStatusFrom: status, to: .default)
             textView.resignFirstResponder()
             status = .default
-            moreButton.setImage(kMoreImage, imageHL: kMoreImageHL)
-            emojiButton.setImage(kEmojiImage, imageHL: kEmojiImageHL)
+            moreButton.setImage(WXImage.add.image, imageHL: WXImage.addHL.image)
+            emojiButton.setImage(WXImage.face.image, imageHL: WXImage.faceHL.image)
         }
         return super.resignFirstResponder()
     }
@@ -392,9 +384,9 @@ class WXChatBar: UIView ,UITextViewDelegate {
         if status != .keyboard {
             delegate?.chatBar(self, changeStatusFrom: status, to: .keyboard)
             if status == .emoji {
-                emojiButton.setImage(kEmojiImage, imageHL: kEmojiImageHL)
+                emojiButton.setImage(WXImage.face.image, imageHL: WXImage.faceHL.image)
             } else if status == .more {
-                moreButton.setImage(kMoreImage, imageHL: kMoreImageHL)
+                moreButton.setImage(WXImage.add.image, imageHL: WXImage.addHL.image)
             }
             status = .keyboard
         }
@@ -444,11 +436,11 @@ class WXChatBar: UIView ,UITextViewDelegate {
     @objc func modeButtonDown() {
         if status == .emoji {
             delegate?.chatBar(self, changeStatusFrom: status, to: .default)
-            emojiButton.setImage(kEmojiImage, imageHL: kEmojiImageHL)
+            emojiButton.setImage(WXImage.face.image, imageHL: WXImage.faceHL.image)
             status = .default
         } else if status == .more {
             delegate?.chatBar(self, changeStatusFrom: status, to: .default)
-            moreButton.setImage(kMoreImage, imageHL: kMoreImageHL)
+            moreButton.setImage(WXImage.add.image, imageHL: WXImage.addHL.image)
             status = .default
         }
     }
@@ -456,7 +448,7 @@ class WXChatBar: UIView ,UITextViewDelegate {
         textView.resignFirstResponder()
         if status == .voice {
             delegate?.chatBar(self, changeStatusFrom: status, to: .keyboard)
-            voiceButton.setImage(kVoiceImage, imageHL: kVoiceImageHL)
+            voiceButton.setImage(WXImage.voice.image, imageHL: WXImage.faceHL.image)
             textView.becomeFirstResponder()
             textView.isHidden = false
             talkButton.isHidden = true
@@ -466,13 +458,13 @@ class WXChatBar: UIView ,UITextViewDelegate {
             if status == .keyboard {
                 textView.resignFirstResponder()
             } else if status == .emoji {
-                emojiButton.setImage(kEmojiImage, imageHL: kEmojiImageHL)
+                emojiButton.setImage(WXImage.face.image, imageHL: WXImage.faceHL.image)
             } else if status == .more {
-                moreButton.setImage(kMoreImage, imageHL: kMoreImageHL)
+                moreButton.setImage(WXImage.add.image, imageHL: WXImage.faceHL.image)
             }
             talkButton.isHidden = false
             textView.isHidden = true
-            voiceButton.setImage(kKeyboardImage, imageHL: kKeyboardImageHL)
+            voiceButton.setImage(WXImage.keyboard.image, imageHL: WXImage.keyboardHL.image)
             status = .voice
         }
     }
@@ -480,20 +472,20 @@ class WXChatBar: UIView ,UITextViewDelegate {
         // 开始文字输入
         if status == .emoji {
             delegate?.chatBar(self, changeStatusFrom: status, to: .keyboard)
-            emojiButton.setImage(kEmojiImage, imageHL: kEmojiImageHL)
+            emojiButton.setImage(WXImage.face.image, imageHL: WXImage.faceHL.image)
             textView.becomeFirstResponder()
             status = .keyboard
         } else {
             // 打开表情键盘
             delegate?.chatBar(self, changeStatusFrom: status, to: .emoji)
             if status == .voice {
-                voiceButton.setImage(kVoiceImage, imageHL: kVoiceImageHL)
+                voiceButton.setImage(WXImage.voice.image, imageHL: WXImage.voiceHL.image)
                 talkButton.isHidden = true
                 textView.isHidden = false
             } else if status == .more {
-                moreButton.setImage(kMoreImage, imageHL: kMoreImageHL)
+                moreButton.setImage(WXImage.keyboard.image, imageHL: WXImage.keyboardHL.image)
             }
-            emojiButton.setImage(kKeyboardImage, imageHL: kKeyboardImageHL)
+            emojiButton.setImage(WXImage.keyboard.image, imageHL: WXImage.keyboardHL.image)
             textView.resignFirstResponder()
             status = .emoji
         }
@@ -502,20 +494,20 @@ class WXChatBar: UIView ,UITextViewDelegate {
         // 开始文字输入
         if status == .more {
             delegate?.chatBar(self, changeStatusFrom: status, to: .keyboard)
-            moreButton.setImage(kMoreImage, imageHL: kMoreImageHL)
+            moreButton.setImage(WXImage.add.image, imageHL: WXImage.addHL.image)
             textView.becomeFirstResponder()
             status = .keyboard
         } else {
             // 打开更多键盘
             delegate?.chatBar(self, changeStatusFrom: status, to: .more)
             if status == .voice {
-                voiceButton.setImage(kVoiceImage, imageHL: kVoiceImageHL)
+                voiceButton.setImage(WXImage.voice.image, imageHL: WXImage.voiceHL.image)
                 talkButton.isHidden = true
                 textView.isHidden = false
             } else if status == .emoji {
-                emojiButton.setImage(kEmojiImage, imageHL: kEmojiImageHL)
+                emojiButton.setImage(WXImage.face.image, imageHL: WXImage.faceHL.image)
             }
-            moreButton.setImage(kKeyboardImage, imageHL: kKeyboardImageHL)
+            moreButton.setImage(WXImage.keyboard.image, imageHL: WXImage.keyboardHL.image)
             textView.resignFirstResponder()
             status = .more
         }
@@ -577,10 +569,12 @@ class WXChatBaseViewController: WXBaseViewController {
         view.addSubview(chatTableVC.tableView)
         view.addSubview(chatBar)
         chatTableVC.tableView.snp.makeConstraints { (make) in
-            make.top.left.right.equalTo(self.view)
+            make.top.left.right.equalToSuperview()
+            make.bottom.equalTo(chatBar.snp.top)
         }
         chatBar.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(self.view)
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(50)
         }
     }
 
@@ -866,7 +860,7 @@ extension WXChatBaseViewController: XEmojiKeyboardDelegate {
             return
         }
         chatBar.snp.updateConstraints { (make) in
-            make.bottom.equalTo(self.view)
+            make.bottom.equalToSuperview()
         }
         view.layoutIfNeeded()
     }
@@ -880,7 +874,7 @@ extension WXChatBaseViewController: XEmojiKeyboardDelegate {
             return
         }
         chatBar.snp.updateConstraints { (make) in
-            make.bottom.equalTo(self.view).offset(-keyboardFrame.size.height)
+            make.bottom.equalToSuperview().offset(-keyboardFrame.size.height)
         }
         view.layoutIfNeeded()
         chatTableVC.scrollToBottom(withAnimation: false)
@@ -895,7 +889,7 @@ extension WXChatBaseViewController: XEmojiKeyboardDelegate {
     }
     func chatKeyboard(_ keyboard: Any, didChangeHeight height: CGFloat) {
         chatBar.snp.updateConstraints { (make) in
-            make.bottom.equalTo(self.view).offset(-height)
+            make.bottom.equalToSuperview().offset(-height)
         }
         view.layoutIfNeeded()
         chatTableVC.scrollToBottom(withAnimation: false)
@@ -924,22 +918,20 @@ extension WXChatBaseViewController: WXChatBarDelegate {
             }
         } else if toStatus == .keyboard {
             if fromStatus == .more {
-                if moreKeyboard.superview == nil {
-                    moreKeyboard.show(in: view, withAnimation: true)
-                }
+                if moreKeyboard.superview != nil {
                 moreKeyboard.snp.remakeConstraints { (make) in
                     make.top.equalTo(self.chatBar.snp.bottom)
                     make.left.right.equalTo(self.view)
                     make.height.equalTo(215)
                 }
-            } else if fromStatus == .emoji {
-                if emojiKeyboard.superview == nil {
-                    emojiKeyboard.show(in: view, withAnimation: true)
                 }
+            } else if fromStatus == .emoji {
+                if emojiKeyboard.superview != nil {
                 emojiKeyboard.snp.remakeConstraints { (make) in
                     make.top.equalTo(self.chatBar.snp.bottom)
                     make.left.right.equalTo(self.view)
                     make.height.equalTo(215)
+                }
                 }
             }
         } else if toStatus == .voice {

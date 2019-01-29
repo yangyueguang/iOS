@@ -110,11 +110,14 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
         keyboardDelegate?.chatKeyboardWillDismiss?(self)
         if animation {
             UIView.animate(withDuration: 0.3, animations: {
-                self.snp.updateConstraints({ (make) in
-                    make.bottom.equalToSuperview().offset(215)
-                })
+                if self.superview != nil {
+                    self.snp.updateConstraints({ (make) in
+                        make.bottom.equalToSuperview()
+                        make.height.equalTo(0)
+                    })
+                }
                 self.superview?.layoutIfNeeded()
-                self.keyboardDelegate?.chatKeyboard?(self, didChangeHeight: self.superview?.frame.size.height ?? 0 - self.frame.origin.y)
+                self.keyboardDelegate?.chatKeyboard?(self, didChangeHeight: (self.superview?.frame.size.height ?? 0) - self.frame.origin.y)
             }) { finished in
                 self.removeFromSuperview()
                 self.keyboardDelegate?.chatKeyboardDidDismiss?(self)

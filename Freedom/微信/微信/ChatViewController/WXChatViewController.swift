@@ -16,7 +16,7 @@ extension UIImagePickerController {
 }
 class WXChatViewController: WXChatBaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     static let shared = WXChatViewController()
-    private var emojiKBHelper: WXUserHelper!
+    private var emojiKBHelper = WXUserHelper.shared
     override var partner: WXChatUserProtocol? {
         didSet {
             if partner?.chat_userType == TLChatUserType.user.rawValue {
@@ -27,19 +27,14 @@ class WXChatViewController: WXChatBaseViewController, UIImagePickerControllerDel
         }
     }
     private lazy var rightBarButton: UIBarButtonItem = {
-        return UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
+        return UIBarButtonItem(image: WXImage.add.image, style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        return 
         navigationItem.rightBarButtonItem = rightBarButton
-        emojiKBHelper = WXUserHelper.shared
         user = WXUserHelper.shared.user as WXChatUserProtocol
         emojiKBHelper.emojiGroupDataComplete({ emojiGroups in
             self.moreKeyboard.chatMoreKeyboardData = WXMoreKBHelper().chatMoreKeyboardData
-            self.emojiKBHelper.emojiGroupDataComplete({ emojiGroups in
-                self.emojiKeyboard.emojiGroupData = [emojiGroups]
-            })
         })
     }
     @objc func rightBarButtonDown(_ sender: UINavigationBar) {
