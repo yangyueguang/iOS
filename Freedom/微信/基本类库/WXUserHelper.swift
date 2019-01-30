@@ -11,7 +11,7 @@ class WXFriendHelper: NSObject {
     lazy var defaultGroup: WXUserGroup = {
         let item_new = WXUser()
         item_new.userID = "-1"
-        item_new.avatarPath = "u_personAddHL"
+        item_new.avatarPath = WXImage.addFriend.rawValue
         item_new.remarkName = "新的朋友"
         let item_group = WXUser()
         item_group.userID = "-2"
