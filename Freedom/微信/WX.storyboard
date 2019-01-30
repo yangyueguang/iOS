@@ -176,22 +176,93 @@
             </objects>
             <point key="canvasLocation" x="441" y="936"/>
         </scene>
-        <!--Friends View Controller-->
+        <!--通讯录-->
         <scene sceneID="c5m-uM-BDe">
             <objects>
-                <tableViewController id="rLI-TX-Y2K" customClass="WXFriendsViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FRU-zj-Za0">
+                <tableViewController title="通讯录" id="rLI-TX-Y2K" customClass="WXFriendsViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="22" sectionFooterHeight="1" id="FRU-zj-Za0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="7x8-5P-tg5">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Q7L-Bi-eaH">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="rLI-TX-Y2K" id="Tuq-q4-ywQ"/>
+                                    </connections>
+                                </searchBar>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="Q7L-Bi-eaH" secondAttribute="bottom" id="OUO-bB-mNR"/>
+                                <constraint firstAttribute="trailing" secondItem="Q7L-Bi-eaH" secondAttribute="trailing" id="V7c-mM-atm"/>
+                                <constraint firstItem="Q7L-Bi-eaH" firstAttribute="top" secondItem="7x8-5P-tg5" secondAttribute="top" id="foB-td-b4k"/>
+                                <constraint firstItem="Q7L-Bi-eaH" firstAttribute="leading" secondItem="7x8-5P-tg5" secondAttribute="leading" id="woO-tU-1PP"/>
+                            </constraints>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="ovN-Ia-4Lo">
+                            <rect key="frame" x="0.0" y="122" width="375" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100位联系人" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR3-aa-Bu1">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="OR3-aa-Bu1" secondAttribute="bottom" id="9Eq-Jx-EMm"/>
+                                <constraint firstItem="OR3-aa-Bu1" firstAttribute="leading" secondItem="ovN-Ia-4Lo" secondAttribute="leading" id="YIv-cT-8Vb"/>
+                                <constraint firstItem="OR3-aa-Bu1" firstAttribute="top" secondItem="ovN-Ia-4Lo" secondAttribute="top" id="YbC-dV-l0F"/>
+                                <constraint firstAttribute="trailing" secondItem="OR3-aa-Bu1" secondAttribute="trailing" id="hBR-CR-oDf"/>
+                            </constraints>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bf4-fs-vW8">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WXFriendCell" rowHeight="50" id="bf4-fs-vW8" customClass="WXFriendCell" customModule="Freedom" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bf4-fs-vW8" id="o1F-ul-FTh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="n5O-jc-oWb">
+                                            <rect key="frame" x="15" y="5" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="PZx-Fw-6Ux"/>
+                                                <constraint firstAttribute="width" constant="40" id="wFX-pd-GXu"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="杨越光" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3U-L8-31H">
+                                            <rect key="frame" x="65" y="15" width="49" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="a3U-L8-31H" firstAttribute="centerY" secondItem="o1F-ul-FTh" secondAttribute="centerY" id="K50-2b-CLS"/>
+                                        <constraint firstItem="a3U-L8-31H" firstAttribute="leading" secondItem="n5O-jc-oWb" secondAttribute="trailing" constant="10" id="KVP-Qw-YGc"/>
+                                        <constraint firstItem="n5O-jc-oWb" firstAttribute="centerY" secondItem="o1F-ul-FTh" secondAttribute="centerY" id="Lfc-Og-NG9"/>
+                                        <constraint firstItem="n5O-jc-oWb" firstAttribute="leading" secondItem="o1F-ul-FTh" secondAttribute="leading" constant="15" id="Zan-IP-9YY"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="iconImageView" destination="n5O-jc-oWb" id="oQO-QJ-paU"/>
+                                    <outlet property="titleLabel" destination="a3U-L8-31H" id="gYb-Zy-wjj"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -199,9 +270,28 @@
                             <outlet property="delegate" destination="rLI-TX-Y2K" id="Mzj-oZ-sJp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="E3b-QF-m34"/>
+                    <navigationItem key="navigationItem" id="E3b-QF-m34">
+                        <barButtonItem key="rightBarButtonItem" image="u_white_addfriend" style="plain" id="L8T-zY-vp4">
+                            <connections>
+                                <action selector="rightBarButtonDown:" destination="rLI-TX-Y2K" id="58G-z5-WOQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="footLabel" destination="OR3-aa-Bu1" id="iqs-qE-qTy"/>
+                        <outlet property="searchDisplayController" destination="RM4-bi-H8D" id="5H5-6f-uNf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hHe-bo-pac" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="RM4-bi-H8D">
+                    <connections>
+                        <outlet property="delegate" destination="rLI-TX-Y2K" id="anI-NY-ycB"/>
+                        <outlet property="searchBar" destination="Q7L-Bi-eaH" id="SSk-4O-bUo"/>
+                        <outlet property="searchContentsController" destination="rLI-TX-Y2K" id="5p5-Bo-4po"/>
+                        <outlet property="searchResultsDataSource" destination="rLI-TX-Y2K" id="jJK-tg-6dB"/>
+                        <outlet property="searchResultsDelegate" destination="rLI-TX-Y2K" id="cgG-lp-4zW"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1046" y="936"/>
         </scene>
@@ -851,6 +941,7 @@
         <image name="tabbar_meHL" width="23" height="23"/>
         <image name="u_frendsCircle" width="16" height="16"/>
         <image name="u_message_add" width="30" height="30"/>
+        <image name="u_white_addfriend" width="28" height="30"/>
         <image name="userLogo.png" width="2084" height="2084"/>
     </resources>
 </document>

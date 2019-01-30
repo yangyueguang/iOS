@@ -26,8 +26,8 @@ class WXFriendSearchViewController: BaseTableViewController, UISearchResultsUpda
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(WXFriendCell.self)
-        let user = data[indexPath.row] as WXUser
-        cell.user = user
+        let user = data[indexPath.row]
+        cell.viewModel.onNext(user)
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

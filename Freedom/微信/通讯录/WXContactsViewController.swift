@@ -176,7 +176,7 @@ class WXContactsViewController: BaseTableViewController, UISearchBarDelegate {
         let cell = tableView.dequeueCell(WechatContactCell.self)
 //        cell.contact = contact
         let temp = data[indexPath.section]
-        if indexPath.section == data.count - 1 && indexPath.row == temp.count - 1 {
+        if indexPath.section == data.count - 1 && indexPath.row == temp.users.count - 1 {
 
         } else {
             

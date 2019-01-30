@@ -49,18 +49,7 @@ class WXFriendHelper: NSObject {
         groupsData = results.array().compactMap{ $0 as? WXGroup }
         p_initTestData()
     }
-    func getFriendInfo(byUserID userID: String) -> WXUser? {
-        for user in friendsData where user.userID == (userID.isEmpty ? "": userID) {
-            return user
-        }
-        return nil
-    }
-    func getGroupInfo(byGroupID groupID: String) -> WXGroup? {
-        for group in groupsData where group.groupID == groupID {
-            return group
-        }
-        return nil
-    }
+
     func p_resetFriendData() {
         let serializeArray: [WXUser] = friendsData.sorted { (a, b) -> Bool in
             return a.nikeName > b.nikeName
@@ -81,7 +70,7 @@ class WXFriendHelper: NSObject {
             if c.isEmpty {
                 othGroup.users.add(user)
             } else if c != lastC {
-                if curGroup.count > 0 {
+                if curGroup.users.count > 0 {
                     ansData.append(curGroup)
                     ansSectionHeaders.append(curGroup.groupName)
                 }
@@ -106,16 +95,15 @@ class WXFriendHelper: NSObject {
                 }
             }
         }
-        if curGroup.count > 0 {
+        if curGroup.users.count > 0 {
             ansData.append(curGroup)
             ansSectionHeaders.append(curGroup.groupName)
         }
-        if othGroup.count > 0 {
+        if othGroup.users.count > 0 {
             ansData.append(othGroup)
             ansSectionHeaders.append(othGroup.groupName)
         }
 
-        data.removeAll()
         data.append(contentsOf: ansData)
         sectionHeaders.removeAll()
         sectionHeaders.append(contentsOf: ansSectionHeaders)
@@ -124,34 +112,21 @@ class WXFriendHelper: NSObject {
         })
     }
     func p_initTestData() {
-        var path = Bundle.main.path(forResource: "FriendList", ofType: "json")
-        var jsonData = try! NSData(contentsOfFile: path ?? "")
-        var jsonArray: [Any] = []
-        if let aData = jsonData {
-            jsonArray = [try! JSONSerialization.jsonObject(with: aData as Data, options: JSONSerialization.ReadingOptions.allowFragments)]
-        }
+        var jsonArray = FileManager.readJson2Array(fileName: "FriendList")
         try! realmWX.transaction {
-            for array in jsonArray {
-                let array = array as! [Any]
-                for dict in array {
+            for dict in jsonArray {
                 WXUser.createOrUpdate(in: realmWX, withValue: dict)
-                }
             }
         }
         let arr = WXUser.allObjects(in: realmWX).array()
         friendsData.removeAll()
         friendsData.append(contentsOf: arr as! [WXUser])
         self.p_resetFriendData()
-        path = Bundle.main.path(forResource: "FriendGroupList", ofType: "json")
-        jsonData = try! NSData(contentsOfFile: path ?? "")
-        jsonArray = [try! JSONSerialization.jsonObject(with: jsonData! as Data, options: .allowFragments)]
+        jsonArray = FileManager.readJson2Array(fileName: "FriendGroupList")
         try! realmWX.transaction {
-            for array in jsonArray {
-                let array = array as! [Any]
-                for dict in array {
-                    let group = WXGroup.createOrUpdate(in: realmWX, withValue: dict)
-                    realmWX.addOrUpdate(group)
-                }
+            for dict in jsonArray {
+                let group = WXGroup.createOrUpdate(in: realmWX, withValue: dict)
+                realmWX.addOrUpdate(group)
             }
         }
         groupsData = WXGroup.allObjects(in: realmWX).array().compactMap{ $0 as? WXGroup }
@@ -166,9 +141,9 @@ class WXFriendHelper: NSObject {
             let usersCount: Int = group.users.count > 9 ? 9 : Int(group.users.count) 
             let viewWidth: CGFloat = 200
             let width: CGFloat = viewWidth / 3 * 0.85
-            let space3: CGFloat = (viewWidth - width * 3) / 4 // 三张图时的边距（图与图之间的边距）
-            let space2: CGFloat = (viewWidth - width * 2 + space3) / 2 // 两张图时的边距
-            let space1: CGFloat = (viewWidth - width) / 2 // 一张图时的边距
+            let space3: CGFloat = (viewWidth - width * 3) / 4
+            let space2: CGFloat = (viewWidth - width * 2 + space3) / 2
+            let space1: CGFloat = (viewWidth - width) / 2
             var y: CGFloat = (usersCount) > 6 ? space3 : ((usersCount) > 3 ? space2 : space1)
             var x: CGFloat = (usersCount) % 3 == 0 ? space3 : ((usersCount) % 3 == 2 ? space2 : space1)
             let view = UIView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: viewWidth))
@@ -214,57 +189,50 @@ class WXFriendHelper: NSObject {
         }
     }
 
-    func tlCreateInfo(_ t: String?,_ st: String?) -> WXInfo {
-        return WXInfo.createInfo(withTitle: t ?? "", subTitle: st ?? "")
-    }
     func friendDetailArray(byUserInfo userInfo: WXUser) -> [[WXInfo]] {
         var data: [[WXInfo]] = []
         var arr: [WXInfo] = []
-        let user: WXInfo = tlCreateInfo("个人", nil)
+        let user: WXInfo = WXInfo.createInfo("个人", nil)
         user.type = Int32(TLInfoType.other.rawValue)
 //        user.userInfo = userInfo
         arr.append(user)
         data.append(arr)
         arr = []
         if userInfo.detailInfo.phoneNumber.count > 0 {
-            let tel: WXInfo = tlCreateInfo("电话号码", userInfo.detailInfo.phoneNumber)
+            let tel: WXInfo = WXInfo.createInfo("电话号码", userInfo.detailInfo.phoneNumber)
             tel.showDisclosureIndicator = false
             arr.append(tel)
         }
         if userInfo.detailInfo.tags.count == 0 {
-            let remark: WXInfo = tlCreateInfo("设置备注和标签", nil)
+            let remark: WXInfo = WXInfo.createInfo("设置备注和标签", nil)
             arr.insert(remark, at: 0)
         } else {
             let str = ""//userInfo.detailInfo.tags?.joined(separator: ",")
-            let remark: WXInfo = tlCreateInfo("标签", str)
+            let remark: WXInfo = WXInfo.createInfo("标签", str)
             arr.append(remark)
         }
         data.append(arr)
         arr = []
         if userInfo.detailInfo.location.count > 0 {
-            let location: WXInfo = tlCreateInfo("地区", userInfo.detailInfo.location)
+            let location: WXInfo = WXInfo.createInfo("地区", userInfo.detailInfo.location)
             location.showDisclosureIndicator = false
             location.disableHighlight = true
             arr.append(location)
         }
-        let album: WXInfo = tlCreateInfo("个人相册", nil)
+        let album: WXInfo = WXInfo.createInfo("个人相册", nil)
         album.userInfo = userInfo.detailInfo.albumArray
         album.type = Int32(TLInfoType.other.rawValue)
         arr.append(album)
-        let more: WXInfo = tlCreateInfo("更多", nil)
+        let more: WXInfo = WXInfo.createInfo("更多", nil)
         arr.append(more)
         data.append(arr)
         arr = []
-        let sendMsg: WXInfo = tlCreateInfo("发消息", nil)
+        let sendMsg: WXInfo = WXInfo.createInfo("发消息", nil)
         sendMsg.type = Int32(TLInfoType.button.rawValue)
-//        sendMsg.titleColor = UIColor.white
-//        sendMsg.buttonBorderColor = UIColor.gray
         arr.append(sendMsg)
         if !(userInfo.userID == WXUserHelper.shared.user.userID) {
-            let video: WXInfo = tlCreateInfo("视频聊天", nil)
+            let video: WXInfo = WXInfo.createInfo("视频聊天", nil)
             video.type = Int32(TLInfoType.button.rawValue)
-//            video.buttonBorderColor = UIColor.gray
-//            video.buttonColor = UIColor.white
             arr.append(video)
         }
         data.append(arr)

@@ -112,10 +112,10 @@ extension WXInfo {
     var buttonColor: UIColor { return UIColor.green}
     var buttonHLColor: UIColor { return UIColor.green}
     var buttonBorderColor: UIColor { return UIColor.gray}
-    class func createInfo(withTitle title: String, subTitle: String) -> WXInfo {
+    class func createInfo(_ title: String?,_ subTitle: String?) -> WXInfo {
         let info = WXInfo()
-        info.title = title
-        info.subTitle = subTitle
+        info.title = title ?? ""
+        info.subTitle = subTitle ?? ""
         return info
     }
 }

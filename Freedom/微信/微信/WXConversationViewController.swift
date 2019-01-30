@@ -125,13 +125,13 @@ final class WXConversationViewController: BaseTableViewController {
         WXMessageManager.shared.conversationRecord({ data in
             for conversation: WXConversation in data {
                 if conversation.convType == .personal {
-                    let user = WXFriendHelper.shared.getFriendInfo(byUserID: conversation.partnerID)
-                    if let user = user {
+                    for user in WXFriendHelper.shared.friendsData {
                         conversation.updateUserInfo(user)
                     }
                 } else if conversation.convType == .group {
-                    let group: WXGroup = WXFriendHelper.shared.getGroupInfo(byGroupID: conversation.partnerID)!
-                    conversation.updateGroupInfo(group)
+                    for group in WXFriendHelper.shared.groupsData {
+                        conversation.updateGroupInfo(group)
+                    }
                 }
             }
             self.data = data
@@ -157,11 +157,14 @@ extension WXConversationViewController: UISearchBarDelegate {
         let chatVC = WXChatViewController.shared
         let conversation = data[indexPath.row]
         if conversation.convType == .personal {
-            let user = WXFriendHelper.shared.getFriendInfo(byUserID: conversation.partnerID)
-            chatVC.partner = user
+            for user in WXFriendHelper.shared.friendsData where user.userID == conversation.partnerID {
+                chatVC.partner = user
+            }
+
         } else if conversation.convType == .group {
-            let group = WXFriendHelper.shared.getGroupInfo(byGroupID: conversation.partnerID)
-            chatVC.partner = group
+            for group in WXFriendHelper.shared.groupsData where group.groupID == conversation.partnerID {
+                chatVC.partner = group
+            }
         }
         hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(chatVC, animated: true)

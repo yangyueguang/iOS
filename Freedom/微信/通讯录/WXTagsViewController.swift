@@ -34,7 +34,7 @@ class WXTagsViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let group = data[indexPath.row]
         let cell = tableView.dequeueCell(WXTagCell.self)
-        cell.title.text = String(format: "%@(%ld)", group.groupName, Int(group.count))
+        cell.title.text = String(format: "%@(%ld)", group.groupName, Int(group.users.count))
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

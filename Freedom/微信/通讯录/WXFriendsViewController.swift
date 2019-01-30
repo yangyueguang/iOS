@@ -4,65 +4,18 @@
 import SnapKit
 import Foundation
 class WXFriendCell: BaseTableViewCell<WXUser> {
-    private var avatarImageView = UIImageView()
-    private var usernameLabel = UILabel()
-    private lazy var subTitleLabel: UILabel =  {
-        let subTitleLabel = UILabel()
-        subTitleLabel.font = UIFont.systemFont(ofSize: 14.0)
-        subTitleLabel.textColor = UIColor.gray
-        subTitleLabel.isHidden = true
-        return subTitleLabel
-    }()
-    var user: WXUser = WXUser() {
-        didSet {
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    override func initUI() {
+        viewModel.subscribe(onNext: {[weak self] (user) in
+            guard let `self` = self else { return }
             if !user.avatarPath.isEmpty {
-                avatarImageView.image = UIImage(named: user.avatarPath)
+                self.iconImageView.image = user.avatarPath.image
             } else {
-                avatarImageView.sd_setImage(with: URL(string: user.avatarURL), placeholderImage: Image.logo.image)
+                self.iconImageView.kf.setImage(with: URL(string: user.avatarURL))
             }
-            usernameLabel.text = user.showName
-            subTitleLabel.text = user.detailInfo.remarkInfo
-            if user.detailInfo.remarkInfo.count > 0 && subTitleLabel.isHidden {
-                subTitleLabel.isHidden = false
-                usernameLabel.snp.updateConstraints { (make) in
-                    make.centerY.equalTo(self.avatarImageView).offset(-9.5)
-                }
-            } else if user.detailInfo.remarkInfo.count == 0 && !subTitleLabel.isHidden {
-                usernameLabel.snp.updateConstraints { (make) in
-                    make.centerY.equalTo(self.avatarImageView)
-                }
-            }
-        }
-    }
-    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        usernameLabel.font = UIFont.systemFont(ofSize: 17.0)
-        contentView.addSubview(avatarImageView)
-        contentView.addSubview(usernameLabel)
-        contentView.addSubview(subTitleLabel)
-        p_addMasonry()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    func p_addMasonry() {
-        avatarImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(10)
-            make.top.equalTo(9)
-            make.bottom.equalTo(-9 + 0.5)
-            make.width.equalTo(self.avatarImageView.snp.height)
-        }
-        usernameLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self.avatarImageView.snp.right).offset(10)
-            make.centerY.equalTo(self.avatarImageView)
-            make.right.lessThanOrEqualToSuperview().offset(-20)
-        }
-        subTitleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self.usernameLabel)
-            make.top.equalTo(self.usernameLabel.snp.bottom).offset(2)
-            make.right.lessThanOrEqualToSuperview().offset(-20)
-        }
+            self.titleLabel.text = user.showName
+        }).disposed(by: disposeBag)
     }
 }
 class WXFriendHeaderView: UITableViewHeaderFooterView {
@@ -71,36 +24,24 @@ class WXFriendHeaderView: UITableViewHeaderFooterView {
             titleLabel.text = title
         }
     }
-    private var titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 14.5)
-        titleLabel.textColor = UIColor.gray
-        return titleLabel
-    }()
+    let titleLabel: UILabel = UILabel()
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        let bgView = UIView()
-        bgView.backgroundColor = UIColor.lightGray
-        backgroundView = bgView
+        backgroundColor = UIColor.lightGray
+        titleLabel.font = UIFont.systemFont(ofSize: 14.5)
+        titleLabel.textColor = UIColor.gray
         addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        titleLabel.frame = CGRect(x: 10, y: 0, width: frame.size.width - 15, height: frame.size.height)
-    }
 }
 
 final class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegate {
-    private lazy var footerLabel: UILabel = {
-        let footerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: APPW, height: 50.0))
-        footerLabel.textAlignment = .center
-        footerLabel.font = UIFont.systemFont(ofSize: 17.0)
-        footerLabel.textColor = UIColor.gray
-        return footerLabel
-    }()
+    @IBOutlet weak var footLabel: UILabel!
     private lazy var searchController: WXSearchController = {
         let searchController = WXSearchController(searchResultsController: searchVC)
         searchController.searchResultsUpdater = searchVC
@@ -115,18 +56,16 @@ final class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegat
     var searchVC = WXFriendSearchViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
-        tableView.separatorStyle = .none
-        navigationItem.title = "通讯录"
+
         tableView.register(WXFriendHeaderView.self, forHeaderFooterViewReuseIdentifier: WXFriendHeaderView.identifier)
-        tableView.register(WXFriendCell.self, forCellReuseIdentifier: WXFriendCell.identifier)
+        
         data = friendHelper.data
         sectionHeaders = friendHelper.sectionHeaders
-        footerLabel.text = String(format: "%ld位联系人",friendHelper.friendCount)
+        footLabel.text = String(format: "%ld位联系人",friendHelper.friendCount)
         friendHelper.dataChangedBlock = { data, headers, friendCount in
             self.data = data
             self.sectionHeaders = headers
-            self.footerLabel.text = String(format: "%ld位联系人", friendCount)
+            self.footLabel.text = String(format: "%ld位联系人", friendCount)
             self.tableView.reloadData()
         }
         tableView.layoutMargins = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
@@ -136,11 +75,8 @@ final class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegat
         tableView.sectionIndexBackgroundColor = UIColor.clear
         tableView.sectionIndexColor = UIColor(46.0, 49.0, 50.0, 1.0)
         tableView.tableHeaderView = searchController.searchBar
-        tableView.tableFooterView = footerLabel
-        let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "nav_add_friend"), style: .done, target: self, action: #selector(self.rightBarButtonDown(_:)))
-        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
-    @objc func rightBarButtonDown(_ sender: UIBarButtonItem) {
+    @IBAction func rightBarButtonDown(_ sender: UIBarButtonItem) {
         let addFriendVC = WXAddFriendViewController()
         hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(addFriendVC, animated: true)
@@ -151,26 +87,19 @@ final class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegat
         return data.count
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let group = data[section] as WXUserGroup
-        return group.count
+        return Int(data[section].users.count)
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            return nil
-        }
-        let group = data[section] as WXUserGroup
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TLFriendHeaderView") as! WXFriendHeaderView
-        view.title = group.groupName
+        if section == 0 { return nil }
+        let view = tableView.dequeueHeadFootView(view: WXFriendHeaderView.self)
+        view?.title = data[section].groupName
         return view
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(WXFriendCell.self)
-        let group = data[indexPath.section] as WXUserGroup
+        let group = data[indexPath.section]
         let user = group.users[UInt(indexPath.row)]
-        cell.user = user as! WXUser
-        if indexPath.section == data.count - 1 && indexPath.row == group.count - 1 {
-        } else {
-        }
+        cell.viewModel.onNext(user)
         return cell
     }
     // 拼音首字母检索
@@ -187,36 +116,29 @@ final class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegat
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 54
     }
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 0 : 22
-    }
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return section == 0 ? 0 : 22
+//    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = data[indexPath.section].users[UInt(indexPath.row)]
         if indexPath.section == 0 {
+            var targetVC: UIViewController!
             if (user.userID == "-1") {
-                let newFriendVC = WXNewFriendViewController()
-                hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(newFriendVC, animated: true)
-                hidesBottomBarWhenPushed = false
+                targetVC = WXNewFriendViewController()
             } else if (user.userID == "-2") {
-                let groupVC = WXGroupViewController()
-                hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(groupVC, animated: true)
-                hidesBottomBarWhenPushed = false
+                targetVC = WXGroupViewController()
             } else if (user.userID == "-3") {
-                let tagsVC = WXTagsViewController()
-                hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(tagsVC, animated: true)
-                hidesBottomBarWhenPushed = false
+                targetVC = WXTagsViewController()
             } else if (user.userID == "-4") {
-                let publicServer = WXPublicServerViewController()
-                hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(publicServer, animated: true)
-                hidesBottomBarWhenPushed = false
+                targetVC = WXPublicServerViewController()
             }
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(targetVC
+                , animated: true)
+            hidesBottomBarWhenPushed = false
         } else {
             let detailVC = WXFriendDetailViewController()
-            detailVC.user = user as! WXUser
+            detailVC.user = user
             hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(detailVC, animated: true)
             hidesBottomBarWhenPushed = false

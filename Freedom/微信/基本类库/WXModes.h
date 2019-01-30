@@ -95,7 +95,6 @@ RLM_ARRAY_TYPE(WXGroup)
 @interface WXUserGroup : RLMObject
 @property (nonatomic, strong) NSString *groupName;
 @property (nonatomic, strong, nonnull) RLMArray<WXUser*><WXUser> *users;
-@property (nonatomic, assign, readonly) NSInteger count;
 @end
 RLM_ARRAY_TYPE(WXUserGroup)
 @interface WXMomentDetail : RLMObject

@@ -17,6 +17,13 @@ extension Array where Element: Equatable {
         return nil
     }
 }
+extension String {
+    var image: UIImage {
+        let ima = UIImage(asset: self)
+        assert(ima != nil, "图片资源丢失\(self)")
+        return ima!
+    }
+}
 private var XCHView: UIView = UIView()
 extension UICollectionView {
     var headView: UIView {
@@ -84,6 +91,10 @@ extension UITableView {
         if (row) > 0 {
             scrollToRow(at: IndexPath(row: (row) - 1, section: section), at: .bottom, animated: animation)
         }
+    }
+    func dequeueHeadFootView<T: UITableViewHeaderFooterView>(view: T.Type) -> T? {
+        let head = dequeueReusableHeaderFooterView(withIdentifier: view.identifier)
+        return head as? T
     }
     func dequeueCell<T: UITableViewCell>(_ cell: T.Type) -> T {
         var ce = dequeueReusableCell(withIdentifier: cell.identifier)
