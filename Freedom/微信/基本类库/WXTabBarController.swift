@@ -6,12 +6,8 @@ import UIKit
 import SnapKit
 import XCarryOn
 import XExtension
-final class WXTabBarController: UITabBarController {
+final class WXTabBarController: BaseTabBarViewController {
     static let shared = WXTabBarController()
-    let conversationVC = WXConversationViewController()
-    let friendsVC = WXFriendsViewController()
-    let discoverVC = WXDiscoverViewController()
-    let mineVC = WXMineViewController()
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -19,10 +15,6 @@ final class WXTabBarController: UITabBarController {
         super.viewDidLoad()
         tabBar.backgroundColor = UIColor.lightGray
         tabBar.tintColor = UIColor.green
-        let proxy = WXMessageManager.shared
-        proxy.requestClientInitInfoSuccess({ data in
-        }, failure: { error in
-        })
         if FirstRun.shared.wechat {
             FirstRun.shared.wechat = false
             self.p_downloadDefaultExpression()
@@ -39,11 +31,11 @@ final class WXTabBarController: UITabBarController {
         group.groupIconURL = "http://123.57.155.230:8080/ibiaoqing/admin/expre/downloadsuo.do?pId=10790"
         group.groupInfo = "婉转的骂人"
         group.groupDetailInfo = "婉转的骂人表情，慎用"
-        proxy.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: 1, success: { data in
+        XNetKit.kit.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: 1, success: { data in
             XHud.hide()
             group.data.removeAll()
             group.data.append(objectsIn: data)
-            WXExpressionHelper.shared.downloadExpressions(withGroupInfo: group, progress: { progress in
+            XNetKit.kit.downloadExpressions(withGroupInfo: group, progress: { progress in
 
             }, success: { group in
                 WXExpressionHelper.shared.addExpressionGroup(group)
@@ -68,10 +60,10 @@ final class WXTabBarController: UITabBarController {
         group1.groupIconURL = "http://123.57.155.230:8080/ibiaoqing/admin/expre/downloadsuo.do?pId=10482"
         group1.groupInfo = "王锡玄 萌娃 冷笑宝宝"
         group1.groupDetailInfo = "韩国萌娃，冷笑宝宝王锡玄表情包"
-        proxy.requestExpressionGroupDetail(byGroupID: group1.groupID, pageIndex: 1, success: { data in
+        XNetKit.kit.requestExpressionGroupDetail(byGroupID: group1.groupID, pageIndex: 1, success: { data in
             group1.data.removeAll()
             group1.data.append(objectsIn: data)
-            WXExpressionHelper.shared.downloadExpressions(withGroupInfo: group1, progress: { progress in
+            XNetKit.kit.downloadExpressions(withGroupInfo: group1, progress: { progress in
             }, success: { group in
                 WXExpressionHelper.shared.addExpressionGroup(group)
                 successCount += 1

@@ -99,9 +99,7 @@ final class WXConversationViewController: BaseTableViewController {
             guard let `self` = self else { return }
             if let cls = item.className {
                 let vc = cls.init()
-                self.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
-                self.hidesBottomBarWhenPushed = false
             } else {
                 self.noticeError("\(item.title) 功能暂未实现")
             }
@@ -122,7 +120,7 @@ final class WXConversationViewController: BaseTableViewController {
         net?.startListening()
     }
     private func updateConversationData() {
-        WXMessageManager.shared.conversationRecord({ data in
+        WXMessageHelper.shared.conversationRecord({ data in
             for conversation: WXConversation in data {
                 if conversation.convType == .personal {
                     for user in WXFriendHelper.shared.friendsData {
@@ -157,25 +155,29 @@ extension WXConversationViewController: UISearchBarDelegate {
         let chatVC = WXChatViewController.shared
         let conversation = data[indexPath.row]
         if conversation.convType == .personal {
-            for user in WXFriendHelper.shared.friendsData where user.userID == conversation.partnerID {
-                chatVC.partner = user
+            let friends = WXFriendHelper.shared.friendsData
+            if conversation.partnerID.isEmpty {
+                conversation.partnerID = ""
             }
-
+            print(conversation.partnerID)
+            for user in friends where user.userID == conversation.partnerID {
+                chatVC.partner = user
+                break
+            }
         } else if conversation.convType == .group {
             for group in WXFriendHelper.shared.groupsData where group.groupID == conversation.partnerID {
                 chatVC.partner = group
+                break
             }
         }
-        hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(chatVC, animated: true)
-        hidesBottomBarWhenPushed = false
         (self.tableView.cellForRow(at: indexPath) as! WechatConversationCell).markAsRead(true)
     }
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction] {
         let conversation = data[indexPath.row]
         let delAction = UITableViewRowAction(style: .default, title: "删除", handler: { action, indexPath in
             self.data.remove(at: indexPath.row)
-            WXMessageManager.shared.deleteConversation(byPartnerID: conversation.partnerID)
+            WXMessageHelper.shared.deleteConversation(byPartnerID: conversation.partnerID)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         })
         let moreAction = UITableViewRowAction(style: .default, title: conversation.isRead ? "标为未读" : "标为已读", handler: { action, indexPath in

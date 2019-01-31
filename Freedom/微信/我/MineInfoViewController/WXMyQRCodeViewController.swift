@@ -39,7 +39,6 @@ class WXMyQRCodeViewController: WXBaseViewController {
             ac = UIAlertAction(title: "扫描二维码", style: .default, handler: { action in
                 let scannerVC = WXScanningViewController()
                 scannerVC.disableFunctionBar = true
-                self.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(scannerVC, animated: true)
             })
         }

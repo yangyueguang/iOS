@@ -59,13 +59,27 @@ extension RLMObject {
     func tes() {
         let re = CRResource()
         let realm = RLMRealm.default()
-        let predicate = NSPredicate.init(format: "status=%d", ResourceStatus.finish.rawValue)
+        let predicate = NSPredicate(format: "status=%d", ResourceStatus.finish.rawValue)
         let result = CRResource.objects(with: predicate)
         realm.addOrUpdate(re)
     }
+
 
 //    override static func ignoredProperties() -> [String] {
 //        return ["extensionFrame"]
 //    }
 
+}
+extension RLMRealm {
+    func add<T: RLMObject>(_ model: T?) {
+        guard let model = model else { return }
+        try! self.transaction {
+            self.addOrUpdate(model)
+        }
+    }
+    func write(_ closure: @escaping(()->())) {
+        try! transaction {
+            closure()
+        }
+    }
 }

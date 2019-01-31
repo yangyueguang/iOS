@@ -105,7 +105,6 @@ class WXMyExpressionViewController: WXSettingViewController, WXMyExpressionCellD
             // 有标题的就是表情组
             let detailVC = WXExpressionDetailViewController()
             detailVC.group = group
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(detailVC, animated: true)
         }
         self.tableView.deselectRow(at: indexPath, animated: false)

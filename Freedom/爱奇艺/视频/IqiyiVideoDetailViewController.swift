@@ -109,7 +109,6 @@ class IqiyiVideoDetailViewController: IqiyiBaseViewController {
         private var recommendArray = [AnyHashable]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        hidesBottomBarWhenPushed = true
         //用push方法推出时，Tabbar隐藏
         loadVideoDetailData()
         loadRecommentData()

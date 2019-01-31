@@ -100,6 +100,7 @@ class AlipayServiceTableViewHeader : UIView,UITextFieldDelegate{
 final class AlipayServiceTableViewController: AlipayBaseViewController {
     let cellClass = AlipayServiceTableViewCell.self
     var dataArray = [AlipayServiceTableViewCellModel]()
+    public var tableView: BaseTableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - TopHeight))

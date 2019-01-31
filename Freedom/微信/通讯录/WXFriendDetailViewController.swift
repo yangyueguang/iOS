@@ -159,7 +159,6 @@ class WXFriendDetailViewController: BaseTableViewController, WXFriendDetailUserC
     @objc func rightBarButtonDown(_ sender: UIBarButtonItem) {
         let detailSetiingVC = WechatFriendDetailSettingViewController()
         detailSetiingVC.user = user
-        hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailSetiingVC, animated: true)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -210,10 +209,8 @@ class WXFriendDetailViewController: BaseTableViewController, WXFriendDetailUserC
                 chatVC.partner = user
                 let vc: UIViewController = WXTabBarController.shared.children[0]
                 WXTabBarController.shared.selectedIndex = 0
-                vc.hidesBottomBarWhenPushed = true
                 vc.navigationController?.pushViewController(chatVC, animated: true)
                 navigationController?.popViewController(animated: false)
-                vc.hidesBottomBarWhenPushed = false
             }
         } else {
             

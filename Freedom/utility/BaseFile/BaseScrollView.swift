@@ -898,5 +898,3 @@ open class BaseScrollView : UIScrollView, UIScrollViewDelegate {
             }
     }
 }
-
-

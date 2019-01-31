@@ -2,7 +2,7 @@
 //  WXNavigationController.swift
 //  Freedom
 import UIKit
-final class WXNavigationController: UINavigationController {
+final class WXNavigationController: BaseNavigationViewController {
     var isFullScreenPopGesture: Bool {
         get {
             return type(of: interactivePopGestureRecognizer) == UIPanGestureRecognizer.self

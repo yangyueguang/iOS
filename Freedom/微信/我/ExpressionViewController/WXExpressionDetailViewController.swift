@@ -191,7 +191,7 @@ class WXExpressionDetailViewController: WXBaseViewController {
         if group.data.count <= 0 {
             XHud.show()
             kPageIndex = 1
-            proxy.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: kPageIndex, success: { data in
+            XNetKit.kit.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: kPageIndex, success: { data in
                 XHud.hide()
                 self.group.data.removeAll()
                 self.group.data.append(objectsIn: data)
@@ -288,7 +288,7 @@ extension WXExpressionDetailViewController: UICollectionViewDelegate, UICollecti
         return section == 0 ? .zero : UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     }
     func expressionDetailCellDownloadButtonDown(_ group: TLEmojiGroup) {
-        WXExpressionHelper.shared.downloadExpressions(withGroupInfo: group, progress: { progress in
+        XNetKit.kit.downloadExpressions(withGroupInfo: group, progress: { progress in
         }, success: { group in
             group.status = .downloaded
             self.collectionView.reloadData()

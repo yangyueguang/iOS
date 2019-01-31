@@ -179,7 +179,6 @@ class WXShakeViewController: WXBaseViewController {
     }
     func rightBarButtonDown(_ sender: UIBarButtonItem) {
         let shakeSettingVC = WXShakeSettingViewController()
-        hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(shakeSettingVC, animated: true)
     }
     func p_addMasonry() {

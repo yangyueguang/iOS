@@ -154,7 +154,6 @@ class WXMomentsViewController: BaseTableViewController, WXMomentViewDelegate {
             let moment = data[indexPath.row - 1]
             let detailVC = WXMomentDetailViewController()
             detailVC.moment = moment
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(detailVC, animated: true)
         }
         tableView.deselectRow(at: indexPath, animated: false)

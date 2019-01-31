@@ -31,7 +31,6 @@ class WXExpressionViewController: WXBaseViewController {
     }
     @objc func rightBarButtonDown() {
         let myExpressionVC = WXMyExpressionViewController()
-        hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(myExpressionVC, animated: true)
     }
     func segmentedControlChanged(_ segmentedControl: UISegmentedControl) {

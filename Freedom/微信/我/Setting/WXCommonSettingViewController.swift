@@ -185,19 +185,16 @@ class WXCommonSettingViewController: WXSettingViewController {
         let item = data[indexPath.section].items[indexPath.row]
         if (item.title == "字体大小") {
             let chatFontVC = WXChatFontViewController()
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(chatFontVC, animated: true)
         } else if (item.title == "聊天背景") {
             let chatBGSettingVC = WXBgSettingViewController()
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(chatBGSettingVC, animated: true)
         } else if (item.title == "我的表情") {
             let myExpressionVC = WXMyExpressionViewController()
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(myExpressionVC, animated: true)
         } else if (item.title == "清空聊天记录") {
             let alert = UIAlertController("将删除所有个人和群的聊天记录。", "", T1: "清空聊天记录", T2: "取消", confirm1: {
-                _ = WXMessageManager.shared.deleteAllMessages()
+                _ = WXMessageHelper.shared.deleteAllMessages()
                 WXChatViewController.shared.resetChatVC()
             }, confirm2: {
 

@@ -9,6 +9,7 @@
 import UIKit
 
 class DouyinBaseViewController: BaseViewController {
+    open var tableView: BaseTableView!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

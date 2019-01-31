@@ -41,12 +41,10 @@ class WXChatViewController: WXChatBaseViewController, UIImagePickerControllerDel
         if partner?.chat_userType == TLChatUserType.user.rawValue {
             let chatDetailVC = WXChatDetailViewController()
             chatDetailVC.user = partner as! WXUser
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(chatDetailVC, animated: true)
         } else if partner?.chat_userType == TLChatUserType.group.rawValue {
             let chatGroupDetailVC = WXCGroupDetailViewController()
             chatGroupDetailVC.group = partner as! WXGroup
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(chatGroupDetailVC, animated: true)
         }
     }
@@ -98,7 +96,6 @@ class WXChatViewController: WXChatBaseViewController, UIImagePickerControllerDel
     override func didClickedUserAvatar(_ user: WXUser) {
         let detailVC = WXFriendDetailViewController()
         detailVC.user = user
-        hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
     override func didClickedImageMessages(_ imageMessages: [WXImageMessage], at index: Int) {

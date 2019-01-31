@@ -91,7 +91,6 @@ class IqiyiSearchHistoryViewController: IqiyiBaseViewController,UITextFieldDeleg
     var hotDatas = [Any]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        hidesBottomBarWhenPushed = true
         hisDatas = ["优衣库"]
         hotDatas = ["琅琊榜", "奔跑吧兄弟"]
         datas = [AnyHashable]()

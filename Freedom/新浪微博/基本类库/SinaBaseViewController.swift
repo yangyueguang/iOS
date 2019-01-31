@@ -7,6 +7,7 @@
 //
 import UIKit
 class SinaBaseViewController: BaseViewController {
+    open var tableView: BaseTableView!
     override func viewDidLoad() {
         super.viewDidLoad()
     }

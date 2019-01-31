@@ -20,17 +20,7 @@ open class BaseTableViewController: UITableViewController {
         backItem.title = "返回"
         self.navigationItem.backBarButtonItem = backItem;
     }
-
-    // MARK: - Table view data source
-    override open func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-
-
+    
     // 开始摇一摇
     override open func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         let app:AppDelegate = UIApplication.shared.delegate as! AppDelegate

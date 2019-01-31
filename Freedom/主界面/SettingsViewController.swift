@@ -9,6 +9,7 @@ import UIKit
 import XExtension
 import XCarryOn
 class SettingsViewController: BaseViewController ,ElasticMenuTransitionDelegate{
+    open var tableView: BaseTableView!
     var contentLength:CGFloat = APPW * 0.8
     var dismissByBackgroundTouch = true
     var dismissByBackgroundDrag = true

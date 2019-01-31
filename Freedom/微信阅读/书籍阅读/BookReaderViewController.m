@@ -159,8 +159,7 @@
 - (void)viewDidAppear:(BOOL)animated{
    [super viewDidAppear:animated];
     self.navigationController.navigationBarHidden = YES;
-    self.hidesBottomBarWhenPushed = YES;//用push方法推出时，Tabbar隐藏
-   
+    self.hidesBottomBarWhenPushed = YES;
 }
 - (void)viewDidLoad{
     [super viewDidLoad];

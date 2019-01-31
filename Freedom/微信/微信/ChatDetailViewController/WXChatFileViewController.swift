@@ -72,7 +72,7 @@ class WXChatFileViewController: WXBaseViewController {
     var collectionView: BaseCollectionView!
     var partnerID = "" {
         didSet {
-            WXMessageManager.shared.chatFiles(forPartnerID: partnerID, completed: { data in
+            WXMessageHelper.shared.chatFiles(forPartnerID: partnerID, completed: { data in
                 self.data.removeAll()
                 self.mediaData = []
                 self.data.append(contentsOf: data)

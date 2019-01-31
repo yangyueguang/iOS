@@ -140,7 +140,6 @@ class WXNewFriendViewController: BaseTableViewController, UISearchBarDelegate, W
     }
     @objc func rightBarButtonDown(_ sender: UIBarButtonItem) {
         let addFriendVC = WXAddFriendViewController()
-        hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(addFriendVC, animated: true)
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -182,7 +181,6 @@ class WXNewFriendViewController: BaseTableViewController, UISearchBarDelegate, W
         switch type {
         case .contacts:
             let contactsVC = WXContactsViewController()
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(contactsVC, animated: true)
         case .QQ:break
         case .google:break

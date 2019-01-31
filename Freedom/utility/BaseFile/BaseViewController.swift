@@ -6,7 +6,6 @@ import Alamofire
 @objcMembers
 open class BaseViewController : UIViewController {
     @objc open var userInfo: Any!
-    open var tableView: BaseTableView!
     let disposeBag = DisposeBag()
     override open func loadView() {
         super.loadView()

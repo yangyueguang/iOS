@@ -55,7 +55,6 @@ class WXAccountAndSafetyViewController: WXSettingViewController {
         if (item.title == "微信安全中心") {
             let webVC = WXWebViewController()
             webVC.url = "http://weixin110.qq.com/"
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(webVC, animated: true)
         }
         self.tableView.deselectRow(at: indexPath, animated: false)

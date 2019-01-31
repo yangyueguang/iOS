@@ -23,16 +23,17 @@ class AlipayDiscoverTableViewControllerCell:BaseTableViewCell<Any> {
     }
 }
 final class AlipayDiscoverTableViewController: AlipayBaseViewController {
-    var dataArray = [[AlipayAssetsTableViewControllerCellModel]]()
+    var dataArray = [[AlipayMeCellModel]]()
+    open var tableView: BaseTableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "口碑"
         let header = UIView(frame: CGRect.zero)
         header.height = 90
-        let model01 = AlipayAssetsTableViewControllerCellModel(title: "淘宝电影", iconImageName: "adw_icon_movie_normal", destinationControllerClass: BaseTableView.self)
-        let model02 = AlipayAssetsTableViewControllerCellModel(title: "快抢", iconImageName: "adw_icon_flashsales_normal", destinationControllerClass: BaseTableView.self)
-        let model03 = AlipayAssetsTableViewControllerCellModel(title: "快的打车", iconImageName: "adw_icon_taxi_normal", destinationControllerClass: BaseTableView.self)
-        let model11 = AlipayAssetsTableViewControllerCellModel(title: "我的朋友", iconImageName: "adw_icon_contact_normal", destinationControllerClass: BaseTableView.self)
+        let model01 = AlipayMeCellModel("淘宝电影", "adw_icon_movie_normal", nil)
+        let model02 = AlipayMeCellModel("快抢", "adw_icon_flashsales_normal", nil)
+        let model03 = AlipayMeCellModel("快的打车", "adw_icon_taxi_normal", nil)
+        let model11 = AlipayMeCellModel("我的朋友", "adw_icon_contact_normal",nil)
         dataArray = [[model01, model02, model03],[model11]]
         tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - TopHeight))
         tableView.tableHeaderView = header
@@ -44,12 +45,12 @@ final class AlipayDiscoverTableViewController: AlipayBaseViewController {
         let model = dataArray[indexPath.section][indexPath.row]
         var cell = tableView.dequeueCell(AlipayDiscoverTableViewControllerCell.self)
         cell.textLabel?.text = model.title
-        cell.imageView?.image = UIImage(named:model.iconImageName)
+        cell.imageView?.image = UIImage(named:model.icon)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = dataArray[indexPath.section][indexPath.row]
-        let vc: UIViewController? = UIViewController()// model?.destinationControllerClass
+        let vc: UIViewController? = UIViewController()// model?.target
         vc?.title = model.title
         if let aVc = vc {
             navigationController?.pushViewController(aVc, animated: true)

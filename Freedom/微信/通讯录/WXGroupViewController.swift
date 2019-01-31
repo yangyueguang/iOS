@@ -110,10 +110,8 @@ class WXGroupViewController: BaseTableViewController ,UISearchBarDelegate {
         chatVC.partner = group
         let vc: UIViewController = WXTabBarController.shared.children[0]
         WXTabBarController.shared.selectedIndex = 0
-        vc.hidesBottomBarWhenPushed = true
         vc.navigationController?.pushViewController(chatVC, animated: true)
         self.navigationController?.popViewController(animated: false)
-        vc.hidesBottomBarWhenPushed = false
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchVC.groupData = data

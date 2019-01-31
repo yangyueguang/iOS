@@ -78,9 +78,7 @@ final class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegat
     }
     @IBAction func rightBarButtonDown(_ sender: UIBarButtonItem) {
         let addFriendVC = WXAddFriendViewController()
-        hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(addFriendVC, animated: true)
-        hidesBottomBarWhenPushed = false
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -132,16 +130,12 @@ final class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegat
             } else if (user.userID == "-4") {
                 targetVC = WXPublicServerViewController()
             }
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(targetVC
                 , animated: true)
-            hidesBottomBarWhenPushed = false
         } else {
             let detailVC = WXFriendDetailViewController()
             detailVC.user = user
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(detailVC, animated: true)
-            hidesBottomBarWhenPushed = false
         }
         tableView.deselectRow(at: indexPath, animated: false)
     }

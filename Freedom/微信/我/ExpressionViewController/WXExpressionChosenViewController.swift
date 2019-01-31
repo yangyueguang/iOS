@@ -183,7 +183,7 @@ class WXExpressionChosenViewController: BaseTableViewController,UISearchBarDeleg
             XHud.show()
         }
         kPageIndex = 1
-        proxy.requestExpressionChosenList(byPageIndex: kPageIndex, success: { data in
+        XNetKit.kit.requestExpressionChosenList(byPageIndex: kPageIndex, success: { data in
             XHud.hide()
             self.kPageIndex += 1
             for group: TLEmojiGroup in data {
@@ -199,7 +199,7 @@ class WXExpressionChosenViewController: BaseTableViewController,UISearchBarDeleg
         }, failure: { error in
             XHud.hide()
         })
-        proxy.requestExpressionChosenBannerSuccess({ data in
+        XNetKit.kit.requestExpressionChosenBannerSuccess({ data in
             self.bannerData = data
             self.tableView.reloadData()
         }, failure: { error in
@@ -207,7 +207,7 @@ class WXExpressionChosenViewController: BaseTableViewController,UISearchBarDeleg
     }
 
     @objc func loadMoreData() {
-        proxy.requestExpressionChosenList(byPageIndex: kPageIndex, success: { data in
+        XNetKit.kit.requestExpressionChosenList(byPageIndex: kPageIndex, success: { data in
             XHud.hide()
             if data.count == 0 {
                 self.tableView.mj_footer.endRefreshingWithNoMoreData()
@@ -261,7 +261,6 @@ extension WXExpressionChosenViewController: WXExpressionCellDelegate, WXExpressi
             let group = data[indexPath.row]
             let detailVC = WXExpressionDetailViewController()
             detailVC.group = group
-            parent?.hidesBottomBarWhenPushed = true
             parent?.navigationController?.pushViewController(detailVC, animated: true)
             tableView.deselectRow(at: indexPath, animated: false)
         }
@@ -278,15 +277,14 @@ extension WXExpressionChosenViewController: WXExpressionCellDelegate, WXExpressi
     func expressionBannerCellDidSelectBanner(_ item: TLEmojiGroup) {
         let detailVC = WXExpressionDetailViewController()
         detailVC.group = item
-        parent?.hidesBottomBarWhenPushed = true
         parent?.navigationController?.pushViewController(detailVC, animated: true)
     }
     func expressionCellDownloadButtonDown(_ group: TLEmojiGroup) {
         group.status = .downloading
-        proxy.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: 1, success: { data in
+        XNetKit.kit.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: 1, success: { data in
             group.data.removeAll()
             group.data.append(objectsIn:data)
-            WXExpressionHelper.shared.downloadExpressions(withGroupInfo: group, progress: { progress in
+            XNetKit.kit.downloadExpressions(withGroupInfo: group, progress: { progress in
             }, success: { group in
                 group.status = .downloaded
                 let index = self.data.index(of: group) ?? -1

@@ -5,7 +5,7 @@
 import Foundation
 class WXChatDetailViewController: WXSettingViewController, WechatUserGroupCellDelegate {
     var user: WXUser = WXUser()
-    var helper = WXMessageManager.shared
+    var helper = WXMessageHelper.shared
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "聊天详情"
@@ -26,12 +26,10 @@ class WXChatDetailViewController: WXSettingViewController, WechatUserGroupCellDe
 //        if (item.title == "聊天文件") {
 //            let chatFileVC = WXChatFileViewController()
 //            chatFileVC.partnerID = user.userID
-//            hidesBottomBarWhenPushed = true
 //            navigationController.pushViewController(chatFileVC, animated: true)
 //        } else if (item.title == "设置当前聊天背景") {
 //            let chatBGSettingVC = WXBgSettingViewController()
 //            chatBGSettingVC.partnerID = user.userID
-//            hidesBottomBarWhenPushed = true
 //            navigationController.pushViewController(chatBGSettingVC, animated: true)
 //        } else if (item.title == "清空聊天记录") {
 //            showAlerWithtitle(nil, message: nil, style: UIAlertController.Style.actionSheet, ac1: {
@@ -60,7 +58,6 @@ class WXChatDetailViewController: WXSettingViewController, WechatUserGroupCellDe
     func userGroupCellDidSelect(_ user: WXUser) {
         let detailVC = WXFriendDetailViewController()
         detailVC.user = user
-        hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
     func userGroupCellAddUserButtonDown() {

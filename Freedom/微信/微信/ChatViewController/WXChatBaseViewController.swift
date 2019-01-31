@@ -699,7 +699,7 @@ extension WXChatBaseViewController: WXChatBarDataDelegate {
 extension WXChatBaseViewController : WXChatTableViewControllerDelegate {
     // chatView 获取历史记录
     func chatTableViewController(_ chatTVC: WXChatTableViewController, getRecordsFrom date: Date, count: Int, completed: @escaping (Date, [WXMessage], Bool) -> Void) {
-        WXMessageManager.shared.messageRecord(forPartner: partner?.chat_userID ?? "", from: date, count: count, complete: { array, hasMore in
+        WXMessageHelper.shared.messageRecord(forPartner: partner?.chat_userID ?? "", from: date, count: count, complete: { array, hasMore in
             if (array.count) > 0 {
                 var count: Int = 0
                 var tm: TimeInterval = 0
@@ -731,7 +731,7 @@ extension WXChatBaseViewController : WXChatTableViewControllerDelegate {
         }
     }
     func chatTableViewController(_ chatTVC: WXChatTableViewController, delete message: WXMessage) -> Bool {
-        WXMessageManager.shared.deleteMessage(byMsgID: message.messageID)
+        WXMessageHelper.shared.deleteMessage(byMsgID: message.messageID)
         return true
     }
     func chatTableViewController(_ chatTVC: WXChatTableViewController, didClickUserAvatar user: WXUser) {
@@ -745,7 +745,7 @@ extension WXChatBaseViewController : WXChatTableViewControllerDelegate {
     }
     func chatTableViewController(_ chatTVC: WXChatTableViewController, didClick message: WXMessage) {
         if message.messageType == .image {
-            WXMessageManager.shared.chatImagesAndVideos(forPartnerID: partner?.chat_userID ?? "", completed: { imagesData in
+            WXMessageHelper.shared.chatImagesAndVideos(forPartnerID: partner?.chat_userID ?? "", completed: { imagesData in
                 var index: Int = -1
                 for i in 0..<imagesData.count {
                     if (message.messageID == imagesData[i].messageID) {
@@ -784,7 +784,7 @@ extension WXChatBaseViewController: XEmojiKeyboardDelegate {
         message.fromUser = WXUserHelper.shared.user
         message.date = Date()
         add(toShow: message) // 添加到列表
-        WXMessageManager.shared.send(message, progress: { message, pregress in
+        WXMessageHelper.shared.send(message, progress: { message, pregress in
         }, success: { message in
             Dlog("send success")
         }, failure: { message in

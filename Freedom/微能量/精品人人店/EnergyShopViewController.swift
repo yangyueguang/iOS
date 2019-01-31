@@ -32,7 +32,6 @@ class EnergyShopViewController: EnergyBaseViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
 EnergySuperMarketTabBarController.sharedRootViewController.isRemoveTab = false
-//        myTabBar.hidesBottomBarWhenPushed = true
 //        let animation = CATransition()
 //        animation.duration = 1
 //        view.window?.layer.add(animation, forKey: nil)

@@ -65,10 +65,7 @@ class AlipayScanViewController: AlipayBaseViewController {
         bottomRight.setImage(UIImage(named: "u_scan_4"), for: .normal)
         scanWindow.addSubview(bottomRight)
     }
-    //  The converted code is limited to 1 KB.
-    //  Please Sign Up (Free!) to remove this limitation.
-    //
-    //  Converted to Swift 4 by Swiftify v4.1.6710 - https://objectivec2swift.com/
+
     func beginScanning() {
         //获取摄像设备
         let device = AVCaptureDevice.default(for: .video)

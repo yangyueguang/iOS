@@ -71,7 +71,6 @@ class WXBgSettingViewController: WXSettingViewController, UINavigationController
         let item = data[indexPath.section].items[indexPath.row]
         if (item.title == "选择背景图") {
             let bgSelectVC = WXChatBackgroundSelectViewController()
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(bgSelectVC, animated: true)
         } else if (item.title == "从手机相册中选择") {
             let imagePickerController = UIImagePickerController()

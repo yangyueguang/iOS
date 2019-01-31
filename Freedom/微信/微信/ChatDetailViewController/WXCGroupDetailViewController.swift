@@ -5,7 +5,7 @@
 import Foundation
 class WXCGroupDetailViewController: WXSettingViewController, WechatUserGroupCellDelegate {
     var group: WXGroup = WXGroup()
-    var helper = WXMessageManager.shared
+    var helper = WXMessageHelper.shared
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "聊天详情"
@@ -26,21 +26,18 @@ class WXCGroupDetailViewController: WXSettingViewController, WechatUserGroupCell
         if (item.title == "群二维码") {
             let gorupQRCodeVC = WXGroupQRCodeViewController()
             gorupQRCodeVC.group = group
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(gorupQRCodeVC, animated: true)
         } else if (item.title == "设置当前聊天背景") {
             let chatBGSettingVC = WXBgSettingViewController()
             chatBGSettingVC.partnerID = group.groupID
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(chatBGSettingVC, animated: true)
         } else if (item.title == "聊天文件") {
             let chatFileVC = WXChatFileViewController()
             chatFileVC.partnerID = group.groupID
-            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(chatFileVC, animated: true)
         } else if (item.title == "清空聊天记录") {
             let alertVC = UIAlertController("", "", T1: "清空聊天记录", T2: "取消", confirm1: {
-                let ok = WXMessageManager.shared.deleteMessages(byPartnerID: self.group.groupID)
+                let ok = WXMessageHelper.shared.deleteMessages(byPartnerID: self.group.groupID)
                 WXChatViewController.shared.resetChatVC()
             }, confirm2: {
 
@@ -59,7 +56,6 @@ class WXCGroupDetailViewController: WXSettingViewController, WechatUserGroupCell
     func userGroupCellDidSelect(_ user: WXUser) {
         let detailVC = WXFriendDetailViewController()
         detailVC.user = user
-        hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
     func userGroupCellAddUserButtonDown() {

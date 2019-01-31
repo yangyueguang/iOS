@@ -32,8 +32,6 @@ typedef NS_ENUM(NSInteger, TLContactStatus) {
 @property (nonatomic, assign) TLContactStatus status;
 @property (nonatomic, assign) int recordID;
 @property (nonatomic, assign) NSString *email;
-@property (nonatomic, strong) NSString *pinyin;
-@property (nonatomic, strong) NSString *pinyinInitial;
 @end
 RLM_ARRAY_TYPE(WechatContact)
 @interface WXUserSetting : RLMObject

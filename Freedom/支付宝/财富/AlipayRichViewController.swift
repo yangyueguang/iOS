@@ -10,4 +10,5 @@ import UIKit
 
 final class AlipayRichViewController: AlipayBaseViewController {
 
+    @IBOutlet weak var tableView: UITableView!
 }

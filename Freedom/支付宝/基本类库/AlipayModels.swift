@@ -22,17 +22,17 @@ class AlipayTools: NSObject {
         UserDefaults.standard.synchronize()
     }
 }
-class AlipayAssetsTableViewControllerCellModel: NSObject {
+class AlipayMeCellModel<T: UIViewController>: NSObject {
     var title = ""
-    var iconImageName = ""
-    var destinationControllerClass: AnyClass?
-    
-    convenience init(title: String?, iconImageName: String?, destinationControllerClass: AnyClass) {
-        self.init()
-        self.title = title!
-        self.iconImageName = iconImageName!
-        self.destinationControllerClass = destinationControllerClass
+    var icon = ""
+    var target: T.Type?
+    override init() {
+        super.init()
     }
-}
-class AlipayModels: NSObject {
+    convenience init(_ title: String, _ i: String, _ t: T.Type?) {
+        self.init()
+        self.title = title
+        icon = i
+        target = t
+    }
 }

@@ -209,7 +209,6 @@ class WXScanningViewController: WXBaseViewController, WXScannerDelegate, UINavig
 
     @objc func myQRButtonDown() {
         let myQRCodeVC = WXMyQRCodeViewController()
-        hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(myQRCodeVC, animated: true)
     }
     func p_analysisQRAnswer(_ ansStr: String) {
@@ -219,9 +218,7 @@ class WXScanningViewController: WXBaseViewController, WXScannerDelegate, UINavig
             let vc = navigationController?.topViewController
             navigationController?.popViewController(animated: true)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(0.01 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
-                vc?.hidesBottomBarWhenPushed = true
                 vc?.navigationController?.pushViewController(webVC, animated: true)
-                vc?.hidesBottomBarWhenPushed = false
             })
         } else {
             let alvc = UIAlertController(title: "扫描结果", message: ansStr, preferredStyle: .alert)

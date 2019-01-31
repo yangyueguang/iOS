@@ -6,7 +6,6 @@ import XCarryOn
 import XExtension
 import Foundation
 class WXExpressionSearchViewController: BaseTableViewController, UISearchResultsUpdating, UISearchBarDelegate, WXExpressionCellDelegate {
-    var proxy = WXExpressionHelper.shared
     var data: [TLEmojiGroup] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +43,10 @@ class WXExpressionSearchViewController: BaseTableViewController, UISearchResults
     }
     func expressionCellDownloadButtonDown(_ group: TLEmojiGroup) {
         group.status = .downloading
-        proxy.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: 1, success: { data in
+        XNetKit.kit.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: 1, success: { data in
             group.data.removeAll()
             group.data.append(objectsIn: data)
-            WXExpressionHelper.shared.downloadExpressions(withGroupInfo: group, progress: { progress in
+            XNetKit.kit.downloadExpressions(withGroupInfo: group, progress: { progress in
             }, success: { group in
                 group.status = .downloaded
                 var index = self.data.index(of: group) ?? -1
@@ -69,7 +68,7 @@ class WXExpressionSearchViewController: BaseTableViewController, UISearchResults
         let keyword = searchBar.text ?? ""
         if keyword.count > 0 {
             XHud.show()
-            proxy.requestExpressionSearch(byKeyword: keyword, success: { data in
+            XNetKit.kit.requestExpressionSearch(byKeyword: keyword, success: { data in
                 self.data = data
                 self.tableView.reloadData()
                 XHud.hide()

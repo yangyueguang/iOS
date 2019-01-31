@@ -150,6 +150,7 @@ class AlipayYuEBaoTableViewCell:BaseTableViewCell<Any> {
 class AlipayYuEBaoTableViewController: AlipayBaseViewController {
     let cellClass = AlipayYuEBaoTableViewCell.self
     var dataArray = [AlipayYuEBaoTableViewCellModel]()
+    open var tableView: BaseTableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         let model = AlipayYuEBaoTableViewCellModel()

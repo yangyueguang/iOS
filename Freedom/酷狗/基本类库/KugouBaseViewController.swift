@@ -4,6 +4,7 @@
 import UIKit
 import XExtension
 class KugouBaseViewController: BaseViewController {
+    open var tableView: BaseTableView!
     override  func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false

@@ -42,7 +42,13 @@ class WXFriendHelper: NSObject {
     var tagsData: [WXUserGroup] = []
     override init() {
         super.init()
-        friendsData = WXDBStore.shared.friendsData(byUid: WXUserHelper.shared.user.userID)
+        let pre = NSPredicate(format: "userID = %@", WXUserHelper.shared.user.userID)
+        try! realmWX.transaction {
+            let results = WXUser.objects(in: realmWX, with: pre)
+            for index in 0..<results.count {
+                friendsData.append(results.object(at: index) as! WXUser)
+            }
+        }
         data = [defaultGroup]
         sectionHeaders = [UITableView.indexSearch]
         let results = WXGroup.allObjects(in: realmWX)
@@ -103,7 +109,7 @@ class WXFriendHelper: NSObject {
             ansData.append(othGroup)
             ansSectionHeaders.append(othGroup.groupName)
         }
-
+        data.removeAll()
         data.append(contentsOf: ansData)
         sectionHeaders.removeAll()
         sectionHeaders.append(contentsOf: ansSectionHeaders)
@@ -262,55 +268,48 @@ class WXFriendHelper: NSObject {
     }
     class func gotNextEvent(withWechatContacts data: [WechatContact], success: @escaping (_ data: [WechatContact], _ formatData: [WXUserGroup], _ headers: [String]) -> Void) {
         let serializeArray:[WechatContact] = data
-        var data: [TLEmojiGroup] = []
+        var data: [WXUserGroup] = []
         var headers = [UITableView.indexSearch]
         var lastC = "1"
         var curGroup = WXUserGroup()
         let othGroup = WXUserGroup()
         othGroup.groupName = "#"
         for contact in serializeArray {
-//            let contact = contact as! WXUser
-//            // 获取拼音失败
-//            if contact.pinyin.isEmpty {
-//                othGroup.users.add(contact)
-//                continue
-//            }
-//            if contact.pinyinInitial.isEmpty {
-//                // #组
-//                othGroup.users.add(contact)
-//            } else if contact.pinyinInitial != lastC {
-//                if curGroup.count > 0 {
-//                    data.append(curGroup)
-//                    headers.append(curGroup.groupName)
-//                    lastC = contact.pinyinInitial
-//                    curGroup = WXUserGroup()
-//                    curGroup.groupName = "\(contact.pinyinInitial)"
-//                    curGroup.users.add(contact)
-//                } else {
-//                    curGroup.users.add(contact)
-//                }
-//            }
-//            if curGroup.count > 0 {
-//                data.append(curGroup)
-//                headers.append(curGroup.groupName)
-//            }
-//            if othGroup.count > 0 {
-//                data.append(othGroup)
-//                headers.append(othGroup.groupName)
-//            }
-//            DispatchQueue.main.async(execute: {
-//                success(serializeArray, data, headers)
-//            })
-//            var dic: [StringLiteralConvertible : Any] = nil
-//            if let aData = data, let aHeaders = headers {
-//                dic = ["data": serializeArray, "formatData": aData, "headers": aHeaders]
-//            }
-//            let path = FileManager.pathContactsData()
-//            if let aDic = dic {
-//                if !NSKeyedArchiver.archiveRootObject(aDic, toFile: path) {
-//                    Dlog("缓存联系人数据失败")
-//                }
-//            }
+            let user = WXUser()
+            user.userID = contact.tel
+            user.username = contact.name
+            user.avatarPath = contact.avatarPath
+            // 获取拼音失败
+            if user.username.pinyin().isEmpty {
+                othGroup.users.add(user)
+                continue
+            }
+            if user.username.firstLetter().isEmpty {
+                // #组
+                othGroup.users.add(user)
+            } else if user.username.firstLetter() != lastC {
+                if curGroup.users.count > 0 {
+                    data.append(curGroup)
+                    headers.append(curGroup.groupName)
+                    lastC = user.username.firstLetter()
+                    curGroup = WXUserGroup()
+                    curGroup.groupName = lastC
+                    curGroup.users.add(user)
+                } else {
+                    curGroup.users.add(user)
+                }
+            }
+            if curGroup.users.count > 0 {
+                data.append(curGroup)
+                headers.append(curGroup.groupName)
+            }
+            if othGroup.users.count > 0 {
+                data.append(othGroup)
+                headers.append(othGroup.groupName)
+            }
+            DispatchQueue.main.async(execute: {
+                success(serializeArray, data, headers)
+            })
         }
     }
     class func trytoGetAllContacts(success: @escaping (_ data: [WechatContact], _ formatData: [WXUserGroup], _ headers: [String]) -> Void, failed: @escaping () -> Void) {
@@ -408,11 +407,96 @@ class WXUserHelper: NSObject {
         emojiGroupData.append(contentsOf:self.systemEmojiGroups)
         complete(emojiGroupData)
     }
+
+
+    func messages(byUserID userID: String, partnerID: String, from date: Date, count: Int, complete: @escaping ([WXMessage], Bool) -> Void) {
+        var data: [WXMessage] = []
+        let pre = NSPredicate(format: "userID = %@", userID)
+        try! realmWX.transaction {
+            let results = WXMessage.objects(in: realmWX, with: pre)
+            for index in 0..<results.count {
+                let message = results.object(at: index) as! WXMessage
+                data.insert(message, at: 0)
+            }
+        }
+        var hasMore = false
+        if data.count == count + 1 {
+            hasMore = true
+            data.remove(at: 0)
+        }
+        complete(data, hasMore)
+    }
+    func chatFiles(byUserID userID: String, partnerID: String) -> [[WXMessage]] {
+        var data: [[WXMessage]] = []
+        let pre = NSPredicate(format:"userID = %@ and friendID = %@ and messageType = 2", userID, partnerID)
+        var array: [WXMessage] = []
+        try! realmWX.transaction {
+            let results = WXMessage.objects(in: realmWX, with: pre)
+            for index in 0..<results.count {
+                let message = results.object(at: index) as! WXMessage
+                if message.date.isToday() {
+                    array.append(message)
+                } else {
+                    if array.count > 0 {
+                        data.append(array)
+                    }
+                    array = [message]
+                }
+            }
+            if array.count > 0 {
+                data.append(array)
+            }
+        }
+        return data
+    }
+
+    func chatImagesAndVideos(byUserID userID: String, partnerID: String) -> [WXImageMessage] {
+        var data: [WXImageMessage] = []
+        let pre = NSPredicate(format: "userID = %@ and friendID = %@ and messageType = 2", userID, partnerID)
+        try! realmWX.transaction {
+            let results = WXImageMessage.objects(in: realmWX, with: pre)
+            for index in 0..<results.count {
+                let message = results.object(at: index) as! WXImageMessage
+                data.append(message)
+            }
+        }
+        return data
+    }
+
+    func addConversation(byUid uid: String, fid: String, type: Int, date: Date) {
+        try! realmWX.transaction {
+            let conversation = WXConversation()
+            conversation.partnerID = fid
+            let pre = NSPredicate(format: "partnerID = %@", fid)
+            conversation.unreadCount = Int(WXConversation.objects(in: realmWX, with: pre).count) + 1
+            conversation.convType = TLConversationType.personal
+            conversation.date = date
+            realmWX.addOrUpdate(conversation)
+        }
+    }
+    func conversations(byUid uid: String) -> [WXConversation] {
+        var data: [WXConversation] = []
+        print(uid)
+        let pre = NSPredicate(format: "partnerID != \"\"")
+        try! realmWX.transaction {
+            let results = WXConversation.objects(in: realmWX, with: pre).sortedResults(usingKeyPath: "date", ascending: true)
+            for index in 0..<results.count {
+                let conversation = results.object(at: index) as! WXConversation
+                let pre = NSPredicate(format: "userID = %@ and friendID = %@", uid, conversation.partnerID ?? "")
+                let message = WXMessage.objects(in: realmWX, with: pre).lastObject() as? WXMessage
+                if message != nil {
+                    conversation.content = message?.conversationContent() ?? ""
+                    conversation.date = message?.date ?? Date()
+                }
+                data.append(conversation)
+            }
+        }
+        return data
+    }
 }
 //FIXME: 表情数据管理类
 class WXExpressionHelper: NSObject {/// 默认表情（Face）
     static let shared = WXExpressionHelper()
-    private var store = WXDBStore.shared
     lazy var defaultFaceGroup: TLEmojiGroup = {
         let defaultFaceGroup = TLEmojiGroup()
         defaultFaceGroup.type = .face
@@ -430,36 +514,32 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
         return defaultSystemEmojiGroup
     }()
     var userEmojiGroups: [TLEmojiGroup] {
-        return store.expressionGroups(byUid: WXUserHelper.shared.user.userID)
+        return WXExpressionHelper.shared.expressionGroups(byUid: WXUserHelper.shared.user.userID)
     }
     var userPreferEmojiGroup = TLEmojiGroup()
-    let IEXPRESSION_HOST_URL = "http://123.57.155.230:8080/ibiaoqing/admin/"
-    var IEXPRESSION_NEW_URL:String {
-        return IEXPRESSION_HOST_URL + ("expre/listBy.dopageNumber=%ld&status=Y&status1=B")
-    }
-    var IEXPRESSION_BANNER_URL: String {
-        return IEXPRESSION_HOST_URL + ("advertisement/getAll.dostatus=on")
-    }
-    var IEXPRESSION_PUBLIC_URL: String {
-        return IEXPRESSION_HOST_URL + ("expre/listBy.dopageNumber=%ld&status=Y&status1=B&count=yes")
-    }
-    var IEXPRESSION_SEARCH_URL: String {
-        return IEXPRESSION_HOST_URL + ("expre/listBy.dopageNumber=1&status=Y&eName=%@&seach=yes")
-    }
-    var IEXPRESSION_DETAIL_URL: String {
-        return IEXPRESSION_HOST_URL + ("expre/getByeId.dopageNumber=%ld&eId=%@")
-    }
+ 
     func addExpressionGroup(_ emojiGroup: TLEmojiGroup) {
-        store.addExpressionGroup(emojiGroup, forUid: WXUserHelper.shared.user.userID)
+        try! realmWX.transaction {
+            realmWX.addOrUpdate(emojiGroup)
+        }
+        try! realmWX.transaction {
+            realmWX.addObjects(emojiGroup.data.array() as NSFastEnumeration)
+        }
         WXUserHelper.shared.updateEmojiGroupData()
     }
     func deleteExpressionGroup(byID groupID: String) {
-        store.deleteExpressionGroup(byID: groupID, forUid: WXUserHelper.shared.user.userID)
+        try! realmWX.transaction {
+            let pre = NSPredicate(format: "groupID = %@", groupID)
+            let results = TLEmojiGroup.objects(in: realmWX, with: pre)
+            realmWX.deleteObjects(results)
+        }
+
         WXUserHelper.shared.updateEmojiGroupData()
     }
     func didExpressionGroupAlways(inUsed groupID: String) -> Bool {
-        let count = store.countOfUserWhoHasExpressionGroup(groupID)
-        return count > 0
+        let pre = NSPredicate(format: "groupID = %@", groupID)
+        let results = TLEmojiGroup.objects(in: realmWX, with: pre)
+        return Int(results.count) > 0
     }
     func emojiGroup(byID groupID: String) -> TLEmojiGroup? {
         for group: TLEmojiGroup in userEmojiGroups {
@@ -472,7 +552,7 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
 
     func myExpressionListData() -> [TLEmojiGroup] {
         var data: [TLEmojiGroup] = []
-        var myEmojiGroups = store.expressionGroups(byUid: WXUserHelper.shared.user.userID)
+        var myEmojiGroups = WXExpressionHelper.shared.expressionGroups(byUid: WXUserHelper.shared.user.userID)
         if (myEmojiGroups.count) > 0 {
 //            let group1 = WXSettingGroup("聊天面板中的表情", nil, myEmojiGroups)
 //            data.append(group1)
@@ -484,119 +564,171 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
         data.append(contentsOf: myEmojiGroups)
         return data
     }
-    func downloadExpressions(withGroupInfo group: TLEmojiGroup, progress: @escaping (CGFloat) -> Void, success: @escaping (TLEmojiGroup) -> Void, failure: @escaping (TLEmojiGroup, String) -> Void) {
-        let downloadQueue = DispatchQueue(label: group.groupID)
-        let downloadGroup = DispatchGroup()
-        for i in 0...group.data.count {
-            downloadQueue.async(group: downloadGroup) {
-                let groupPath = FileManager.pathExpression(forGroupID: group.groupID)
-                var emojiPath: String
-                var data: Data?
-                if i == group.data.count {
-                    emojiPath = "\(groupPath)icon_\(group.groupID)"
-                    if let anURL = URL(string: group.groupIconURL) {
-                        data = try! Data(contentsOf: anURL)
+
+
+    func expressionGroups(byUid uid: String) -> [TLEmojiGroup] {
+        var data: [TLEmojiGroup] = []
+        let pre = NSPredicate(format: "authID = %@", uid)
+        // 读取表情包信息
+        try! realmWX.transaction {
+            let results = TLEmojiGroup.objects(in: realmWX, with: pre)
+            for index in 0..<results.count {
+                let group = results.object(at: index) as! TLEmojiGroup
+                group.data.removeAll()
+
+                var emojis: [TLEmoji] = []
+                let pre = NSPredicate(format: "groupID = %@", group.groupID)
+                try! realmWX.transaction {
+                    let results = TLEmoji.objects(in: realmWX, with: pre)
+                    for index in 0..<results.count {
+                        emojis.append(results.object(at: index) as! TLEmoji)
                     }
-                } else {
-                    let emoji: TLEmoji = group.data[i]
-                    var urlString = "http://123.57.155.230:8080/ibiaoqing/admin/expre/download.dopId=\(emoji.emojiID)"
-                    if let aString = URL(string: urlString) {
-                        data = try! Data(contentsOf: aString)
-                    }
-                    if data == nil {
-                        urlString = "http://123.57.155.230:8080/ibiaoqing/admin/expre/downloadsuo.dopId=\(emoji.emojiID)"
-                        if let aString = URL(string: urlString) {
-                            data = try! Data(contentsOf: aString)
-                        }
-                    }
-                    emojiPath = "\(groupPath)\(emoji.emojiID)"
                 }
-                try! data?.write(to: URL(fileURLWithPath: emojiPath))
+                group.data.append(objectsIn: emojis)
+                data.append(group)
             }
         }
-        downloadGroup.notify(queue: DispatchQueue.main, work: DispatchWorkItem(block: {
-        success(group)
-        }))
-    }
-    func requestExpressionChosenList(byPageIndex pageIndex: Int, success: @escaping (_ data: [TLEmojiGroup]) -> Void, failure: @escaping (_ error: String) -> Void) {
-        let urlString = String(format: IEXPRESSION_NEW_URL, pageIndex)
-        AFHTTPSessionManager().post(urlString, parameters: nil, progress: nil, success: { task, responseObject in
-            //            let respArray = (responseObject as! NSArray).mj_JSONObject()!
-            //            let status = respArray[0] as String
-            //            if (status == "OK") {
-            //                let infoArray = respArray[2] as [Any]
-            //                var data = TLEmojiGroup.mj_objectArray(withKeyValuesArray: infoArray)
-            //                success(data)
-            //            } else {
-            //                failure(status)
-            //            }
-        }, failure: { task, error in
-            failure(error.localizedDescription)
-        })
-    }
-    func requestExpressionChosenBannerSuccess(_ success: @escaping ([TLEmojiGroup]) -> Void, failure: @escaping (String) -> Void) {
-        let urlString = IEXPRESSION_BANNER_URL
-        AFHTTPSessionManager().post(urlString, parameters: nil, progress: nil, success: { task, responseObject in
-            //            let respArray = responseObject.mj_JSONObject()
-            //            let status = respArray[0] as String
-            //            if (status == "OK") {
-            //                let infoArray = respArray[2] as [Any]
-            //                var data = TLEmojiGroup.mj_objectArray(withKeyValuesArray: infoArray)
-            //                success(data)
-            //            } else {
-            //                failure(status)
-            //            }
-        }, failure: { task, error in
-            failure(error.localizedDescription)
-        })
-    }
-    func requestExpressionPublicList(byPageIndex pageIndex: Int, success: @escaping (_ data: [TLEmojiGroup]) -> Void, failure: @escaping (_ error: String) -> Void) {
-        let urlString = String(format: IEXPRESSION_PUBLIC_URL, pageIndex)
-        AFHTTPSessionManager().post(urlString, parameters: nil, progress: nil, success: { task, responseObject in
-            //            let respArray = responseObject.mj_JSONObject()
-            //            let status = respArray[0] as String
-            //            if (status == "OK") {
-            //                let infoArray = respArray[2] as [Any]
-            //                var data = TLEmojiGroup.mj_objectArray(withKeyValuesArray: infoArray)
-            //                success(data)
-            //            } else {
-            //                failure(status)
-            //            }
-        }, failure: { task, error in
-            failure(error.localizedDescription)
-        })
-    }
-    func requestExpressionSearch(byKeyword keyword: String, success: @escaping (_ data: [TLEmojiGroup]) -> Void, failure: @escaping (_ error: String) -> Void) {
-        let urlString = String(format: IEXPRESSION_SEARCH_URL, keyword)
-        AFHTTPSessionManager().post(urlString, parameters: nil, progress: nil, success: { task, responseObject in
-            //            let respArray = responseObject.mj_json()
-            //            let status = respArray[0] as String
-            //            if (status == "OK") {
-            //                let infoArray = respArray[2] as [Any]
-            //                var data = TLEmojiGroup.mj_objectArray(withKeyValuesArray: infoArray)
-            //                success(data)
-            //            } else {
-            //                failure(status)
-            //            }
-        }, failure: { task, error in
-            failure(error.localizedDescription)
-        })
-    }
-    func requestExpressionGroupDetail(byGroupID groupID: String, pageIndex: Int, success: @escaping (_ data: [TLEmoji]) -> Void, failure: @escaping (_ error: String) -> Void) {
-        let urlString = String(format: IEXPRESSION_DETAIL_URL, pageIndex, groupID)
-        AFHTTPSessionManager().post(urlString, parameters: nil, progress: nil, success: { task, responseObject in
-            //            let respArray = responseObject.mj_JSONObject()
-            //            let status = respArray[0] as String
-            //            if (status == "OK") {
-            //                let infoArray = respArray[2] as [Any]
-            //                var data = TLEmoji.mj_objectArray(withKeyValuesArray: infoArray)
-            //                success(data)
-            //            } else {
-            //                failure(status)
-            //            }
-        }, failure: { task, error in
-            failure(error.localizedDescription)
-        })
+        return data
     }
 }
 
+class WXMessageHelper: NSObject {
+    static let shared = WXMessageHelper()
+    var messageDelegate: Any?
+    private var userID: String {
+        return WXUserHelper.shared.user.userID
+    }
+    func send(_ message: WXMessage, progress: @escaping (WXMessage, CGFloat) -> Void, success: @escaping (WXMessage) -> Void, failure: @escaping (WXMessage) -> Void) {
+        realmWX.add(message)
+        addConversation(by: message)
+    }
+    func addConversation(by message: WXMessage) {
+        var partnerID = message.friendID
+        var type: Int = 0
+        if message.partnerType == .group {
+            partnerID = message.groupID
+            type = 1
+        }
+        WXUserHelper.shared.addConversation(byUid: message.userID, fid: partnerID, type: type, date: message.date)
+    }
+    func conversationRecord(_ complete: @escaping ([WXConversation]) -> Void) {
+        let data = WXUserHelper.shared.conversations(byUid: userID)
+        complete(data)
+    }
+
+    func deleteConversation(byPartnerID partnerID: String) {
+        deleteMessages(byPartnerID: partnerID)
+        try! realmWX.transaction {
+            let pre = NSPredicate(format: "userID = %@ and friendID = %@", userID, partnerID)
+            let results = WXConversation.objects(in: realmWX, with: pre)
+            realmWX.deleteObjects(results)
+        }
+    }
+
+    func messageRecord(forPartner partnerID: String, from date: Date, count: Int, complete: @escaping ([WXMessage], Bool) -> Void) {
+        WXUserHelper.shared.messages(byUserID: userID, partnerID: partnerID, from: date, count: count, complete: { data, hasMore in
+            complete(data, hasMore)
+        })
+    }
+    func chatFiles(forPartnerID partnerID: String, completed: @escaping ([[WXMessage]]) -> Void) {
+        let data = WXUserHelper.shared.chatFiles(byUserID: userID, partnerID: partnerID)
+        completed(data)
+    }
+
+    func chatImagesAndVideos(forPartnerID partnerID: String, completed: @escaping ([WXImageMessage]) -> Void) {
+        let data = WXUserHelper.shared.chatImagesAndVideos(byUserID: userID, partnerID: partnerID)
+        completed(data)
+    }
+
+    func deleteMessage(byMsgID msgID: String) {
+        realmWX.write {
+            let results = WXMessage.objects(in: realmWX, with: NSPredicate(format: "messageID = %@", msgID))
+            realmWX.deleteObjects(results)
+        }
+
+    }
+
+    func deleteMessages(byPartnerID partnerID: String) {
+        realmWX.write {
+            let pre = NSPredicate(format: "userID = %@ and friendID = %@", self.userID, partnerID)
+            let results = WXMessage.objects(in: realmWX, with: pre)
+            realmWX.deleteObjects(results)
+        }
+
+        WXChatViewController.shared.resetChatVC()
+    }
+    func deleteAllMessages() {
+        try! realmWX.transaction {
+            let predicate = NSPredicate(format: "userID = %@", self.userID)
+            let results = WXMessage.objects(in: realmWX, with: predicate)
+            realmWX.deleteObjects(results)
+        }
+        WXChatViewController.shared.resetChatVC()
+        try! realmWX.transaction {
+            let pre = NSPredicate(format: "partnerID = %@", self.userID)
+            let results = WXConversation.objects(in: realmWX, with: pre)
+            realmWX.deleteObjects(results)
+        }
+    }
+    
+    func chatDetailData(byUserInfo userInfo: WXUser) -> [WXSettingGroup] {
+        let users = WXSettingItem("users")
+        users.type = .other
+        let group1: WXSettingGroup = WXSettingGroup(nil, nil, [users])
+        let top = WXSettingItem("置顶聊天")
+        top.type = .switchBtn
+        let screen = WXSettingItem("消息免打扰")
+        screen.type = .switchBtn
+        let group2: WXSettingGroup = WXSettingGroup(nil, nil, ([top, screen]))
+        let chatFile = WXSettingItem("聊天文件")
+        let group3: WXSettingGroup = WXSettingGroup(nil, nil, [chatFile])
+        let chatBG = WXSettingItem("设置当前聊天背景")
+        let chatHistory = WXSettingItem("查找聊天内容")
+        let group4: WXSettingGroup = WXSettingGroup(nil, nil, ([chatBG, chatHistory]))
+        let clear = WXSettingItem("清空聊天记录")
+        clear.showDisclosureIndicator = false
+        let group5: WXSettingGroup = WXSettingGroup(nil, nil, [clear])
+        let report = WXSettingItem("举报")
+        let group6: WXSettingGroup = WXSettingGroup(nil, nil, [report])
+        return [group1, group2, group3, group4, group5, group6]
+    }
+
+    func chatDetailData(byGroupInfo groupInfo: WXGroup) -> [WXSettingGroup] {
+        let users = WXSettingItem("users")
+        users.type = .other
+        let allUsers = WXSettingItem(String(format: "全部群成员(%ld)", groupInfo.count))
+        let group1: WXSettingGroup = WXSettingGroup(nil, nil, ([users, allUsers]))
+        let groupName = WXSettingItem("群聊名称")
+        groupName.subTitle = groupInfo.groupName
+        let groupQR = WXSettingItem("群二维码")
+        groupQR.rightImagePath = Image.logo.rawValue
+        let groupPost = WXSettingItem("群公告")
+        if groupInfo.post.count > 0 {
+            groupPost.subTitle = groupInfo.post
+        } else {
+            groupPost.subTitle = "未设置"
+        }
+        let group2: WXSettingGroup = WXSettingGroup(nil, nil, ([groupName, groupQR, groupPost]))
+        let screen = WXSettingItem("消息免打扰")
+        screen.type = .switchBtn
+        let top = WXSettingItem("置顶聊天")
+        top.type = .switchBtn
+        let save = WXSettingItem("保存到通讯录")
+        save.type = .switchBtn
+        let group3: WXSettingGroup = WXSettingGroup(nil, nil, ([screen, top, save]))
+        let myNikeName = WXSettingItem("我在本群的昵称")
+        myNikeName.subTitle = groupInfo.myNikeName
+        let showOtherNikeName = WXSettingItem("显示群成员昵称")
+        showOtherNikeName.type = .switchBtn
+        let group4: WXSettingGroup = WXSettingGroup(nil, nil, ([myNikeName, showOtherNikeName]))
+        let chatFile = WXSettingItem("聊天文件")
+        let chatHistory = WXSettingItem("查找聊天内容")
+        let chatBG = WXSettingItem("设置当前聊天背景")
+        let report = WXSettingItem("举报")
+        let group5: WXSettingGroup = WXSettingGroup(nil, nil, ([chatFile, chatHistory, chatBG, report]))
+        let clear = WXSettingItem("清空聊天记录")
+        clear.showDisclosureIndicator = false
+        let group6: WXSettingGroup = WXSettingGroup(nil, nil, [clear])
+        return [group1, group2, group3, group4, group5, group6]
+    }
+}

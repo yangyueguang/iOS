@@ -118,7 +118,7 @@ final class WXContactsSearchViewController: BaseTableViewController, UISearchRes
         let searchText = searchController.searchBar.text?.lowercased() ?? ""
         data.removeAll()
         for contact: WechatContact in contactsData {
-            if contact.name.contains(searchText) || contact.pinyin.contains(searchText) || contact.pinyinInitial.contains(searchText) {
+            if contact.name.contains(searchText) || contact.name.pinyin().contains(searchText) || contact.name.firstLetter().contains(searchText) {
                 data.append(contact)
             }
         }

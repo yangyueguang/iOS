@@ -111,7 +111,6 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
             let group = data[indexPath.row] as TLEmojiGroup
             let detailVC = WXExpressionDetailViewController()
             detailVC.group = group
-            parent?.hidesBottomBarWhenPushed = true
             parent?.navigationController?.pushViewController(detailVC, animated: true)
         }
         collectionView.deselectItem(at: indexPath, animated: false)
@@ -139,7 +138,7 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
             XHud.show()
         }
         kPageIndex = 1
-        proxy.requestExpressionPublicList(byPageIndex: kPageIndex, success: { data in
+        XNetKit.kit.requestExpressionPublicList(byPageIndex: kPageIndex, success: { data in
             XHud.hide()
             self.kPageIndex += 1
             for group: TLEmojiGroup in data {
@@ -158,7 +157,7 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
     }
 
     func loadMoreData() {
-        proxy.requestExpressionPublicList(byPageIndex: kPageIndex, success: { data in
+        XNetKit.kit.requestExpressionPublicList(byPageIndex: kPageIndex, success: { data in
             XHud.hide()
             if data.count == 0 {
                 self.collectionView.mj_footer.endRefreshingWithNoMoreData()
