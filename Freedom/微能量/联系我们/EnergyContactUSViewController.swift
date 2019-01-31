@@ -34,6 +34,6 @@ final class EnergyContactUSViewController: EnergyBaseViewController {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let value = self.tableView.dataArray[indexPath.row];
-        _ = self.push(EnergyContactDetailViewController(), withInfo: "", withTitle: value as! String)
+        push(EnergyContactDetailViewController(), info: "", title: value as! String)
     }
 }

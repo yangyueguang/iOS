@@ -65,6 +65,6 @@ class ToutiaoHomeSampleViewController: ToutiaoBaseViewController {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let topNew = model.lists[indexPath.row]
-        _ = self.push(ToutiaoHomeDetailViewController(), withInfo:topNew, withTitle: topNew.title)
+        push(ToutiaoHomeDetailViewController(), info:topNew, title: topNew.title)
     }
 }

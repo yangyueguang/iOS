@@ -36,6 +36,6 @@ class MyDatabaseViewController: MyDatabaseBaseViewController{
     @objc func touchedItem(_ sender: UIButton) {
         let log = "你选择的是\(sender.tag)"
         noticeInfo(log, autoClear: true, autoClearTime: 3)
-        _ = self.push(MyDatabaseEditViewController(), withInfo: "", withTitle: "数据库编辑详情")
+        push(MyDatabaseEditViewController(), info: "", title: "数据库编辑详情")
     }
 }

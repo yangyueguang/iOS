@@ -61,6 +61,6 @@ class DZDealListViewController: DZBaseViewController {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        _ = push(DZDealDetailViewController(), withInfo: "", withTitle: "详情")
+        push(DZDealDetailViewController(), info: "", title: "详情")
     }
 }

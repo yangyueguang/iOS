@@ -50,15 +50,15 @@ open class BaseViewController : UIViewController {
     override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-    public func push(_ controller: BaseViewController=BaseViewController(), withInfo info: Any="", withTitle title: String, tabBarHid abool: Bool=true) -> BaseViewController {
+    public func push(_ VC: UIViewController?, info: Any = "", title: String, tabBarHid: Bool = true) {
+        guard let vc = VC, let nav = navigationController else { return }
         print("跳转到 \(title) 页面Base UserInfo:\(info)")
-        if controller.responds(to: #selector(setter: userInfo)) {
-            controller.userInfo = info
+        if vc.responds(to: #selector(setter: userInfo)) {
+            (vc as! BaseViewController).userInfo = info
         }
-        controller.title = title
-        controller.hidesBottomBarWhenPushed = abool
-        navigationController?.pushViewController(controller, animated: true)
-        return controller
+        vc.title = title
+        vc.hidesBottomBarWhenPushed = tabBarHid
+        nav.pushViewController(vc, animated: true)
     }
     public func pop(toControllerNamed controllerstr: String, withSel sel: Selector?, withObj info: Any?) {
         print("返回到 \(controllerstr) 页面")

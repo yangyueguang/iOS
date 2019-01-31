@@ -53,6 +53,6 @@ self.collectionView.register(EnergyHomeViewCell.self, forCellWithReuseIdentifier
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let value = self.collectionView.dataArray[indexPath.row]
-        _ = self.push(EnergyDetailViewController(), withInfo: "", withTitle: value as! String)
+        push(EnergyDetailViewController(), title: value as! String)
     }
 }

@@ -30,6 +30,6 @@ self.tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: AP
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let value = self.tableView.dataArray[indexPath.row]
-        _ = self.push(EnergyBusinessDetailViewController(), withInfo: "", withTitle: value as! String)
+        push(EnergyBusinessDetailViewController(), info: "", title: value as! String)
     }
 }

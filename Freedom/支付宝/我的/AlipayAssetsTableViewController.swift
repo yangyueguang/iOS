@@ -39,17 +39,15 @@ final class AlipayAssetsTableViewController: BaseTableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataArray[indexPath.section][indexPath.row]
-        var cell = tableView.dequeueCell(AlipayMeCell.self)
-//        cell.setModel(model)
+        let cell = tableView.dequeueCell(AlipayMeCell.self)
+        cell.viewModel.onNext(model)
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = dataArray[indexPath.section][indexPath.row]
-        let vc: UIViewController? = UIViewController()// model?.target
+        let vc = model.target?.init()
         vc?.title = model.title
-        if let aVc = vc {
-            navigationController?.pushViewController(aVc, animated: true)
-        }
+        push(vc)
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20

@@ -20,7 +20,13 @@ open class BaseTableViewController: UITableViewController {
         backItem.title = "返回"
         self.navigationItem.backBarButtonItem = backItem;
     }
-    
+    public func push(_ controller: UIViewController?, title: String = "", tabBarHid: Bool = true) {
+        guard let `controller` = controller else { return }
+        print("跳转到 \(title) 页面")
+        controller.title = title
+        controller.hidesBottomBarWhenPushed = tabBarHid
+        navigationController?.pushViewController(controller, animated: true)
+    }
     // 开始摇一摇
     override open func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         let app:AppDelegate = UIApplication.shared.delegate as! AppDelegate

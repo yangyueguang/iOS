@@ -31,6 +31,6 @@ final class EnergyNewsViewController: EnergyBaseViewController {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let value = self.tableView.dataArray[indexPath.row]
-        _ = self.push(EnergyNewsDetailViewController(), withInfo: "", withTitle: value as! String)
+        push(EnergyNewsDetailViewController(), info: "", title: value as! String)
     }
 }
