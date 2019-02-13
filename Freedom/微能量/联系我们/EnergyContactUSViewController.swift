@@ -6,12 +6,14 @@ import XExtension
 import XCarryOn
 class EnergyContactUSViewCell:BaseTableViewCell<Any> {
     override func initUI() {
-        accessoryType = .disclosureIndicator
-        self.icon = UIImageView(frame: CGRect(x: 10, y: 10, width:60, height: 60))
-        self.title = UILabel(frame: CGRect(x: self.icon.right+20, y: (80-20)/2.0, width: APPW-self.icon.right, height: 20))
-        self.addSubviews([self.title,self.icon])
-        self.title.text = ""
-        self.icon.image = UIImage(named:"taobaomini3")
+        viewModel.subscribe(onNext: {[weak self] (model) in
+            guard let `self` = self else { return }
+            self.icon = UIImageView(frame: CGRect(x: 10, y: 10, width:60, height: 60))
+            self.title = UILabel(frame: CGRect(x: self.icon.right+20, y: (80-20)/2.0, width: APPW-self.icon.right, height: 20))
+            self.addSubviews([self.title,self.icon])
+            self.title.text = ""
+            self.icon.image = UIImage(named:"taobaomini3")
+        }).disposed(by: disposeBag)
     }
 }
 final class EnergyContactUSViewController: EnergyBaseViewController {
