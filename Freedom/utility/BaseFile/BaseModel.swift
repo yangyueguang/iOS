@@ -10,5 +10,5 @@ class BaseModel: NSObject {
     var url: String = ""
     var title: String = ""
     var subTitle: String = ""
-
+    var icon: String = ""
 }

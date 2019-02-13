@@ -7,7 +7,6 @@ open class BaseCollectionViewCell<T> : UICollectionViewCell {
     let disposeBag = DisposeBag()
     let viewModel = PublishSubject<T>()
     open var icon: UIImageView!
-    open var line: UIView!
     open var title: UILabel!
     open var script: UILabel!
     required override public init(frame: CGRect) {
@@ -35,7 +34,6 @@ open class BaseCollectionViewCell<T> : UICollectionViewCell {
         script.font = UIFont.systemFont(ofSize: 13)
         title.textColor = UIColor(red: 33, green: 34, blue: 35, alpha: 1)
         script.textColor = title.textColor
-        line = UIView()
     }
     override open func prepareForReuse() {
         super.prepareForReuse()

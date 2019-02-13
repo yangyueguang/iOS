@@ -15,8 +15,6 @@ class DZHomeViewCell1:BaseCollectionViewCell<Any> {
         image2.image = UIImage(named: "image2.jpg")
         view2.addSubview(image1)
         view3.addSubview(image2)
-        line = UIView(frame: CGRect(x: 0, y: 198, width: APPW, height: 2))
-        line.backgroundColor = .white
         addSubviews([view, view2, icon, view3])
     }
     func getViewWithFrame(_ rect: CGRect) -> UIView {

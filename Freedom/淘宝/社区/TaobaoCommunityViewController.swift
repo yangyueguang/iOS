@@ -15,9 +15,7 @@ class TaobaoCommunityViewCell1:BaseCollectionViewCell<Any> {
         script.numberOfLines = 0
         script.font = fontSmall
         script.textColor = gradtextcolor
-        line = UIView(frame: CGRect(x: 0, y: 198, width: APPW, height: 2))
-        line.backgroundColor = .white
-        addSubviews([title, icon, script, line])
+        addSubviews([title, icon, script])
         title.text = "我想买一个6000到8000左右的游戏本，求各位大神给个推荐"
         icon.image = UIImage(named: "image4.jpg")
         script.text = "这款笔记本电脑，用料考究，做工精细，运行速度快，携带方便，是您居家旅行的不二之选，它极致的性能堪比外挂，性价比特别高，建议选联想拯救者或惠普精灵系列的电脑，买电脑千万别图便宜，一分价格一分货。"
