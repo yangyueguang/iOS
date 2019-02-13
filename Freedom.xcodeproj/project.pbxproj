@@ -311,9 +311,6 @@
 		772E89651D76BC15004EDF50 /* slider.png in Resources */ = {isa = PBXBuildFile; fileRef = 772E83931D76BC15004EDF50 /* slider.png */; };
 		772E89671D76BC15004EDF50 /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 772E83951D76BC15004EDF50 /* start.png */; };
 		772E89681D76BC15004EDF50 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 772E83961D76BC15004EDF50 /* stop.png */; };
-		774019681E1F514600640916 /* juheintopublic.png in Resources */ = {isa = PBXBuildFile; fileRef = 774019671E1F514600640916 /* juheintopublic.png */; };
-		7740196A1E1F518100640916 /* juhelookhistory.png in Resources */ = {isa = PBXBuildFile; fileRef = 774019691E1F518100640916 /* juhelookhistory.png */; };
-		7740196C1E1F51BB00640916 /* juheaboutus.png in Resources */ = {isa = PBXBuildFile; fileRef = 7740196B1E1F51BB00640916 /* juheaboutus.png */; };
 		7741F0BC1D6D380800EED332 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7741F0BB1D6D380800EED332 /* README.md */; };
 		7741F1141D6D50F900EED332 /* alipayHome1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7741F0BE1D6D50F900EED332 /* alipayHome1.png */; };
 		7741F1151D6D50F900EED332 /* alipayMeDonation.png in Resources */ = {isa = PBXBuildFile; fileRef = 7741F0BF1D6D50F900EED332 /* alipayMeDonation.png */; };
@@ -1516,9 +1513,6 @@
 		772E83931D76BC15004EDF50 /* slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider.png; sourceTree = "<group>"; };
 		772E83951D76BC15004EDF50 /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = "<group>"; };
 		772E83961D76BC15004EDF50 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
-		774019671E1F514600640916 /* juheintopublic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = juheintopublic.png; sourceTree = "<group>"; };
-		774019691E1F518100640916 /* juhelookhistory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = juhelookhistory.png; sourceTree = "<group>"; };
-		7740196B1E1F51BB00640916 /* juheaboutus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = juheaboutus.png; sourceTree = "<group>"; };
 		7741F0BB1D6D380800EED332 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7741F0BE1D6D50F900EED332 /* alipayHome1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alipayHome1.png; sourceTree = "<group>"; };
 		7741F0BF1D6D50F900EED332 /* alipayMeDonation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alipayMeDonation.png; sourceTree = "<group>"; };
@@ -2241,11 +2235,9 @@
 		BF5B9B021F8DE39B00BD885E /* city.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		BF5B9B5F1F8E63CF00BD885E /* SearchDownloadBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDownloadBookViewController.swift; sourceTree = "<group>"; };
 		BF5B9B631F8E645100BD885E /* OC-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OC-Swift.h"; sourceTree = "<group>"; };
-		BF5B9B841F8E692400BD885E /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
 		BF5B9B851F8E692B00BD885E /* b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b.png; sourceTree = "<group>"; };
 		BF5B9B861F8E692F00BD885E /* c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = c.png; sourceTree = "<group>"; };
 		BF5B9B871F8E693600BD885E /* d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = d.png; sourceTree = "<group>"; };
-		BF5B9B881F8E693C00BD885E /* e.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e.png; sourceTree = "<group>"; };
 		BF5B9B891F8E694000BD885E /* f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f.png; sourceTree = "<group>"; };
 		BF5C6ACF20F37731000DF336 /* Freedom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Freedom.entitlements; sourceTree = "<group>"; };
 		BF6115B820FDACC9007A010A /* unicode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = unicode.plist; sourceTree = "<group>"; };
@@ -3580,15 +3572,12 @@
 				77BD14781D6E7FE500DE5DB9 /* 爱奇艺 */,
 				DF7B3FB321ABEEC500E3D975 /* 抖音 */,
 				77BD14791D6E7FE500DE5DB9 /* 大众点评 */,
-				77BD147A1D6E7FE500DE5DB9 /* 个人应用 */,
 				77BD147B1D6E7FE500DE5DB9 /* 个性特色自由主义 */,
 				77BD147C1D6E7FE500DE5DB9 /* 今日头条 */,
-				77BD147D1D6E7FE500DE5DB9 /* 聚合数据 */,
 				77BD147E1D6E7FE500DE5DB9 /* 酷狗 */,
-				77BD147F1D6E7FE500DE5DB9 /* 书籍收藏 */,
+				77BD147F1D6E7FE500DE5DB9 /* 微信阅读 */,
 				77BD14801D6E7FE500DE5DB9 /* 淘宝 */,
 				77BD14811D6E7FE500DE5DB9 /* 微能量 */,
-				77BD14821D6E7FE500DE5DB9 /* 我的简历 */,
 				77BD14831D6E7FE500DE5DB9 /* 我的数据库 */,
 				7741F0BD1D6D50F900EED332 /* 支付宝 */,
 				778E8BF71D695AA7004D899C /* 新浪微博 */,
@@ -4072,14 +4061,6 @@
 			path = "大众点评";
 			sourceTree = "<group>";
 		};
-		77BD147A1D6E7FE500DE5DB9 /* 个人应用 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B841F8E692400BD885E /* a.png */,
-			);
-			path = "个人应用";
-			sourceTree = "<group>";
-		};
 		77BD147B1D6E7FE500DE5DB9 /* 个性特色自由主义 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4094,16 +4075,6 @@
 				BF5B9B861F8E692F00BD885E /* c.png */,
 			);
 			path = "今日头条";
-			sourceTree = "<group>";
-		};
-		77BD147D1D6E7FE500DE5DB9 /* 聚合数据 */ = {
-			isa = PBXGroup;
-			children = (
-				774019671E1F514600640916 /* juheintopublic.png */,
-				774019691E1F518100640916 /* juhelookhistory.png */,
-				7740196B1E1F51BB00640916 /* juheaboutus.png */,
-			);
-			path = "聚合数据";
 			sourceTree = "<group>";
 		};
 		77BD147E1D6E7FE500DE5DB9 /* 酷狗 */ = {
@@ -4295,7 +4266,7 @@
 			path = "酷狗";
 			sourceTree = "<group>";
 		};
-		77BD147F1D6E7FE500DE5DB9 /* 书籍收藏 */ = {
+		77BD147F1D6E7FE500DE5DB9 /* 微信阅读 */ = {
 			isa = PBXGroup;
 			children = (
 				7788AC771D79977200376C95 /* button_send_comment.png */,
@@ -4318,7 +4289,7 @@
 				7788AC041D79969F00376C95 /* reader_font_increase.png */,
 				7788AC051D79969F00376C95 /* reader_more.png */,
 			);
-			path = "书籍收藏";
+			path = "微信阅读";
 			sourceTree = "<group>";
 		};
 		77BD14801D6E7FE500DE5DB9 /* 淘宝 */ = {
@@ -4357,14 +4328,6 @@
 				BF5B9B871F8E693600BD885E /* d.png */,
 			);
 			path = "微能量";
-			sourceTree = "<group>";
-		};
-		77BD14821D6E7FE500DE5DB9 /* 我的简历 */ = {
-			isa = PBXGroup;
-			children = (
-				BF5B9B881F8E693C00BD885E /* e.png */,
-			);
-			path = "我的简历";
 			sourceTree = "<group>";
 		};
 		77BD14831D6E7FE500DE5DB9 /* 我的数据库 */ = {
@@ -5202,7 +5165,6 @@
 				7799390F1E2F7B6500866968 /* o_weiguan.png in Resources */,
 				7799392B1E2F7B6500866968 /* lxh_haoaio.png in Resources */,
 				77993A251E2F7B9C00866968 /* [左哼哼]@2x.png in Resources */,
-				7740196A1E1F518100640916 /* juhelookhistory.png in Resources */,
 				779939161E2F7B6500866968 /* w_weifeng.png in Resources */,
 				779939591E2F7B6600866968 /* lxh_xianghumobai.png in Resources */,
 				772E84C91D76BC15004EDF50 /* fx_silver_box_opened.png in Resources */,
@@ -5255,7 +5217,6 @@
 				7741F1141D6D50F900EED332 /* alipayHome1.png in Resources */,
 				77FD03D71E25F17C00E5099E /* taobaomini5.png in Resources */,
 				779939301E2F7B6500866968 /* lxh_haoxihuan.gif in Resources */,
-				774019681E1F514600640916 /* juheintopublic.png in Resources */,
 				7799394D1E2F7B6600866968 /* lxh_qiubite.png in Resources */,
 				77993A881E2F7B9D00866968 /* [麻将]@2x.png in Resources */,
 				77993A671E2F7B9D00866968 /* [药]@2x.png in Resources */,
@@ -5577,7 +5538,6 @@
 				772E89681D76BC15004EDF50 /* stop.png in Resources */,
 				77993A331E2F7B9D00866968 /* [惊恐]@2x.png in Resources */,
 				77993A041E2F7B9C00866968 /* [偷笑]@2x.png in Resources */,
-				7740196C1E1F51BB00640916 /* juheaboutus.png in Resources */,
 				7799394B1E2F7B6600866968 /* lxh_qiaoqiao.png in Resources */,
 				779939281E2F7B6500866968 /* lxh_geijin.gif in Resources */,
 				77993A101E2F7B9C00866968 /* [右哼哼]@2x.png in Resources */,
