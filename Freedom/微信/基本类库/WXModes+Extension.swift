@@ -175,6 +175,12 @@ extension WXGroup: WXChatUserProtocol, RealmCollectionValue {
     func groupMembers() -> [WXUser] {
         return users.array() as! [WXUser]
     }
+    var user: WXUser {
+        let us = WXUser()
+        us.userID = groupID
+        us.username = groupName
+        return us
+    }
 }
 
 //FIXME: 本类🎄

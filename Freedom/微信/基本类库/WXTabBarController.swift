@@ -24,7 +24,6 @@ final class WXTabBarController: BaseTabBarViewController {
         XHud.show()
         var count: Int = 0
         var successCount: Int = 0
-        let proxy = WXExpressionHelper.shared
         let group = TLEmojiGroup()
         group.groupID = "241"
         group.groupName = "婉转的骂人"

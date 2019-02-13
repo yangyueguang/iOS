@@ -7,11 +7,7 @@ class WXMyQRCodeViewController: WXBaseViewController {
     var qrCodeVC = WXQRCodeViewController()
     var user: WXUser = WXUser() {
         didSet {
-            qrCodeVC.avatarURL = user.avatarURL
-            qrCodeVC.username = user.showName
-            qrCodeVC.subTitle = user.detailInfo.location
-            qrCodeVC.qrCode = user.userID
-            qrCodeVC.introduction = "扫一扫上面的二维码图案，加我微信"
+            qrCodeVC.user = user
         }
     }
     override func viewDidLoad() {

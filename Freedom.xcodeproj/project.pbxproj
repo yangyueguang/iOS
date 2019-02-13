@@ -1068,11 +1068,7 @@
 		DF6B520021CA802C00460949 /* WXSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51FF21CA802C00460949 /* WXSearchController.swift */; };
 		DF6B520621CA804200460949 /* WXWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520521CA804200460949 /* WXWebViewController.swift */; };
 		DF6B520821CA804B00460949 /* WXSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520721CA804B00460949 /* WXSettingViewController.swift */; };
-		DF6B520A21CB25A100460949 /* WXUserGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520921CB25A100460949 /* WXUserGroupCell.swift */; };
-		DF6B520C21CB25A900460949 /* WXCGroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520B21CB25A900460949 /* WXCGroupDetailViewController.swift */; };
 		DF6B520E21CB25B100460949 /* WXChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520D21CB25B100460949 /* WXChatDetailViewController.swift */; };
-		DF6B521221CB25C300460949 /* WXChatFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521121CB25C300460949 /* WXChatFileViewController.swift */; };
-		DF6B521421CB25CA00460949 /* WXGroupQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521321CB25CA00460949 /* WXGroupQRCodeViewController.swift */; };
 		DF6B521621CB25D200460949 /* WXChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521521CB25D200460949 /* WXChatTableViewController.swift */; };
 		DF6B521821CB25D900460949 /* WXChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521721CB25D900460949 /* WXChatViewController.swift */; };
 		DF6B521A21CB25E100460949 /* WXChatBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521921CB25E100460949 /* WXChatBaseViewController.swift */; };
@@ -2375,11 +2371,7 @@
 		DF6B51FF21CA802C00460949 /* WXSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXSearchController.swift; sourceTree = "<group>"; };
 		DF6B520521CA804200460949 /* WXWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXWebViewController.swift; sourceTree = "<group>"; };
 		DF6B520721CA804B00460949 /* WXSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXSettingViewController.swift; sourceTree = "<group>"; };
-		DF6B520921CB25A100460949 /* WXUserGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXUserGroupCell.swift; sourceTree = "<group>"; };
-		DF6B520B21CB25A900460949 /* WXCGroupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXCGroupDetailViewController.swift; sourceTree = "<group>"; };
 		DF6B520D21CB25B100460949 /* WXChatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatDetailViewController.swift; sourceTree = "<group>"; };
-		DF6B521121CB25C300460949 /* WXChatFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatFileViewController.swift; sourceTree = "<group>"; };
-		DF6B521321CB25CA00460949 /* WXGroupQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXGroupQRCodeViewController.swift; sourceTree = "<group>"; };
 		DF6B521521CB25D200460949 /* WXChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatTableViewController.swift; sourceTree = "<group>"; };
 		DF6B521721CB25D900460949 /* WXChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatViewController.swift; sourceTree = "<group>"; };
 		DF6B521921CB25E100460949 /* WXChatBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatBaseViewController.swift; sourceTree = "<group>"; };
@@ -2571,17 +2563,6 @@
 			path = "想法";
 			sourceTree = "<group>";
 		};
-		71ECE0262092128D00495467 /* ChatViewController */ = {
-			isa = PBXGroup;
-			children = (
-				DF6B521721CB25D900460949 /* WXChatViewController.swift */,
-				DF6B521521CB25D200460949 /* WXChatTableViewController.swift */,
-				DF6B521921CB25E100460949 /* WXChatBaseViewController.swift */,
-				71ECE02E2092128D00495467 /* ChatEmojiKeyboard */,
-			);
-			path = ChatViewController;
-			sourceTree = "<group>";
-		};
 		71ECE02E2092128D00495467 /* ChatEmojiKeyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -2589,18 +2570,6 @@
 				DF6B522321CB262100460949 /* XEmojiKeyboard.swift */,
 			);
 			path = ChatEmojiKeyboard;
-			sourceTree = "<group>";
-		};
-		71ECE0382092128E00495467 /* ChatDetailViewController */ = {
-			isa = PBXGroup;
-			children = (
-				DF6B520921CB25A100460949 /* WXUserGroupCell.swift */,
-				DF6B520B21CB25A900460949 /* WXCGroupDetailViewController.swift */,
-				DF6B520D21CB25B100460949 /* WXChatDetailViewController.swift */,
-				DF6B521121CB25C300460949 /* WXChatFileViewController.swift */,
-				DF6B521321CB25CA00460949 /* WXGroupQRCodeViewController.swift */,
-			);
-			path = ChatDetailViewController;
 			sourceTree = "<group>";
 		};
 		7719171E1D655031002F2BCD /* UserData */ = {
@@ -2716,9 +2685,12 @@
 		7745C1E41D6713CD002212DE /* 微信 */ = {
 			isa = PBXGroup;
 			children = (
-				71ECE0382092128E00495467 /* ChatDetailViewController */,
-				71ECE0262092128D00495467 /* ChatViewController */,
 				DF6B521D21CB25F700460949 /* WXConversationViewController.swift */,
+				DF6B521721CB25D900460949 /* WXChatViewController.swift */,
+				DF6B521521CB25D200460949 /* WXChatTableViewController.swift */,
+				DF6B521921CB25E100460949 /* WXChatBaseViewController.swift */,
+				DF6B520D21CB25B100460949 /* WXChatDetailViewController.swift */,
+				71ECE02E2092128D00495467 /* ChatEmojiKeyboard */,
 			);
 			path = "微信";
 			sourceTree = "<group>";
@@ -6120,7 +6092,6 @@
 				7121194020ABC5940087E05B /* EnergyContactDetailViewController.swift in Sources */,
 				BF58BB3520EF1945002CB4EE /* RCDGroupViewController.m in Sources */,
 				DFA5D3B521BA8EC600339006 /* XBaseTableView.swift in Sources */,
-				DF6B521421CB25CA00460949 /* WXGroupQRCodeViewController.swift in Sources */,
 				BF58BB4E20EF1945002CB4EE /* RCDMessageNotifySettingTableViewController.m in Sources */,
 				7121196E20AC24EA0087E05B /* ToutiaoHomeDetailViewController.swift in Sources */,
 				DF0E967821CBACDA009682CC /* WXDiscoverViewController.swift in Sources */,
@@ -6241,7 +6212,6 @@
 				7121193420ABC5420087E05B /* EnergySuperMeViewController.swift in Sources */,
 				DF7B408321AC020A00E3D975 /* ChatListCells.swift in Sources */,
 				DF7B407521AC020A00E3D975 /* GestureAnimations.swift in Sources */,
-				DF6B520C21CB25A900460949 /* WXCGroupDetailViewController.swift in Sources */,
 				713EE30620ADA05F0085B65D /* IqiyiVideoDetailViewController.swift in Sources */,
 				713EE30C20ADA0850085B65D /* IqiyiSearchHistoryViewController.swift in Sources */,
 				BF4A80E02105CE5E00D32FB0 /* BaseSearchBarView.swift in Sources */,
@@ -6265,7 +6235,6 @@
 				DF0489EB21D28B870030C30B /* ElasticModalViewController.swift in Sources */,
 				DF6B523021CB76DD00460949 /* WXCommonSettingViewController.swift in Sources */,
 				DF0E966821CBAC8F009682CC /* WXFriendSearchViewController.swift in Sources */,
-				DF6B521221CB25C300460949 /* WXChatFileViewController.swift in Sources */,
 				DFFD98CF21FB0B5800A442D7 /* BooksLibraryViewController.swift in Sources */,
 				713EE2A820AD8F500085B65D /* AlipayTabBarController.swift in Sources */,
 				BF58BB6720EF1945002CB4EE /* AFHttpTool.m in Sources */,
@@ -6445,7 +6414,6 @@
 				7121196A20AC24D30087E05B /* ToutiaoViewController.swift in Sources */,
 				DF6B522A21CB76BD00460949 /* WXAccountAndSafetyViewController.swift in Sources */,
 				BFAC491920D23BD600E5CB8D /* DetailView.swift in Sources */,
-				DF6B520A21CB25A100460949 /* WXUserGroupCell.swift in Sources */,
 				7788AC631D7996E000376C95 /* E_ReaderViewController.m in Sources */,
 				DFFA80C921AEC84D009B1999 /* BaseScrollView.swift in Sources */,
 				DF29539F21D7A77F00E1C188 /* NJKWebViewProgressView.m in Sources */,

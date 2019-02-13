@@ -464,7 +464,7 @@ class WXUserHelper: NSObject {
     }
 
     func addConversation(byUid uid: String, fid: String, type: Int, date: Date) {
-        try! realmWX.transaction {
+        realmWX.write {
             let conversation = WXConversation()
             conversation.partnerID = fid
             let pre = NSPredicate(format: "partnerID = %@", fid)

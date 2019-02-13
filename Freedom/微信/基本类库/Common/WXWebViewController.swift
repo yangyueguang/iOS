@@ -84,7 +84,7 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// æ˜¯å
             webView.load(URLRequest(url: anUrl))
         }
         if !disableBackButton && (navigationItem.leftBarButtonItems?.count ?? 0) <= 2 {
-            navigationItem.leftBarButtonItems = [backButtonItem] as? [UIBarButtonItem]
+            navigationItem.leftBarButtonItems = [backButtonItem]
         }
     }
     deinit {
