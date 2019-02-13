@@ -157,6 +157,34 @@
             </objects>
             <point key="canvasLocation" x="1045.5999999999999" y="300.89955022488761"/>
         </scene>
+        <!--Chat Table View Controller-->
+        <scene sceneID="sk8-OY-DHa">
+            <objects>
+                <tableViewController storyboardIdentifier="WXChatTableViewController" id="mgn-bW-73p" customClass="WXChatTableViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ayZ-SE-NOl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="rIo-1w-3cS">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rIo-1w-3cS" id="Agj-Hk-XZh">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mgn-bW-73p" id="qgG-kx-qyq"/>
+                            <outlet property="delegate" destination="mgn-bW-73p" id="RMu-bk-ylQ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nnN-qM-vnb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1687" y="301"/>
+        </scene>
         <!--通讯录-->
         <scene sceneID="kKb-fp-52y">
             <objects>
@@ -294,6 +322,79 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1046" y="936"/>
+        </scene>
+        <!--Contacts View Controller-->
+        <scene sceneID="mNi-vQ-1xI">
+            <objects>
+                <tableViewController storyboardIdentifier="WXContactsViewController" id="nPO-rN-URW" customClass="WXContactsViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="idF-fH-rFV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WechatContactCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WechatContactCell" rowHeight="94" id="4QT-vi-MVJ" customClass="WechatContactCell" customModule="Freedom" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="94"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4QT-vi-MVJ" id="7qh-TQ-tBE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="93.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sI2-sK-IGN">
+                                            <rect key="frame" x="15" y="22" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="TPz-7E-ynD"/>
+                                                <constraint firstAttribute="width" constant="50" id="usj-d2-PFf"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMi-9k-fAC">
+                                            <rect key="frame" x="75" y="21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xqb-0B-YMm">
+                                            <rect key="frame" x="303" y="32" width="46" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="46" id="FdU-cR-lJ2"/>
+                                                <constraint firstAttribute="height" constant="30" id="Txu-GC-aoO"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1b-l1-UFb">
+                                            <rect key="frame" x="75" y="52" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="sI2-sK-IGN" firstAttribute="leading" secondItem="7qh-TQ-tBE" secondAttribute="leading" constant="15" id="PVr-ge-XGT"/>
+                                        <constraint firstItem="u1b-l1-UFb" firstAttribute="top" secondItem="zMi-9k-fAC" secondAttribute="bottom" constant="10" id="S1C-uA-UDw"/>
+                                        <constraint firstItem="u1b-l1-UFb" firstAttribute="leading" secondItem="sI2-sK-IGN" secondAttribute="trailing" constant="10" id="TQH-Nw-Or7"/>
+                                        <constraint firstItem="sI2-sK-IGN" firstAttribute="centerY" secondItem="7qh-TQ-tBE" secondAttribute="centerY" id="V0F-wV-IEA"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Xqb-0B-YMm" secondAttribute="trailing" constant="10" id="hcN-sU-org"/>
+                                        <constraint firstItem="zMi-9k-fAC" firstAttribute="leading" secondItem="sI2-sK-IGN" secondAttribute="trailing" constant="10" id="ll0-ff-t7Y"/>
+                                        <constraint firstItem="zMi-9k-fAC" firstAttribute="top" secondItem="7qh-TQ-tBE" secondAttribute="topMargin" constant="10" id="oaJ-EE-dUs"/>
+                                        <constraint firstItem="Xqb-0B-YMm" firstAttribute="centerY" secondItem="7qh-TQ-tBE" secondAttribute="centerY" id="tCb-LB-ihI"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="iconImageView" destination="sI2-sK-IGN" id="eQs-ax-Giy"/>
+                                    <outlet property="rightButton" destination="Xqb-0B-YMm" id="ikh-sQ-kbM"/>
+                                    <outlet property="subTitleLabel" destination="u1b-l1-UFb" id="ej5-bY-e7g"/>
+                                    <outlet property="titleLabel" destination="zMi-9k-fAC" id="QwJ-1o-9Uf"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nPO-rN-URW" id="265-oH-kRs"/>
+                            <outlet property="delegate" destination="nPO-rN-URW" id="IwO-WD-Zj2"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vkd-kl-hfh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1669.5999999999999" y="936.88155922038993"/>
         </scene>
         <!--我-->
         <scene sceneID="30b-Js-3If">

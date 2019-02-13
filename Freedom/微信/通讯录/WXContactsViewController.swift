@@ -5,85 +5,37 @@ import SnapKit
 import XCarryOn
 import Foundation
 class WechatContactCell: BaseTableViewCell<WechatContact> {
-    var avatarImageView = UIImageView()
-    var usernameLabel = UILabel()
-    lazy var subTitleLabel: UILabel =  {
-        let subTitleLabel = UILabel()
-        subTitleLabel.font = UIFont.systemFont(ofSize: 14.0)
-        subTitleLabel.textColor = UIColor.gray
-        return subTitleLabel
-    }()
-    lazy var rightButton: UIButton = {
-        let rightButton = UIButton()
-        rightButton.titleLabel?.font = UIFont.systemFont(ofSize: 14.0)
-        rightButton.layer.masksToBounds = true
-        rightButton.layer.cornerRadius = 4.0
-        rightButton.layer.borderWidth = 1
-        return rightButton
-    }()
-    var contact: WechatContact = WechatContact() {
-        didSet {
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subTitleLabel: UILabel!
+    @IBOutlet weak var rightButton: UIButton!
+    override func initUI() {
+        viewModel.subscribe(onNext: { [weak self](contact) in
+            guard let `self` = self else { return }
             if !contact.avatarPath.isEmpty {
                 let path = FileManager.pathContactsAvatar(contact.avatarPath)
-                avatarImageView.image = UIImage(named: path)
+                self.iconImageView.image = UIImage(named: path)
             } else {
-                avatarImageView.sd_setImage(with: URL(string: contact.avatarURL), placeholderImage: Image.logo.image)
+                self.iconImageView.kf.setImage(with: URL(string: contact.avatarURL))
             }
-            usernameLabel.text = contact.name
-            subTitleLabel.text = contact.tel
+            self.titleLabel.text = contact.name
+            self.subTitleLabel.text = contact.tel
             if contact.status == .stranger {
-                rightButton.backgroundColor = UIColor.green
-                rightButton.setTitle("添加", for: .normal)
-                rightButton.setTitleColor(UIColor.white, for: .normal)
-                rightButton.layer.borderColor = UIColor(white: 0.7, alpha: 1.0).cgColor
+                self.rightButton.backgroundColor = UIColor.green
+                self.rightButton.setTitle("添加", for: .normal)
+                self.rightButton.setTitleColor(UIColor.white, for: .normal)
+                self.rightButton.layer.borderColor = UIColor(white: 0.7, alpha: 1.0).cgColor
             } else {
-                rightButton.backgroundColor = UIColor.clear
-                rightButton.setTitleColor(UIColor.gray, for: .normal)
-                rightButton.layer.borderColor = UIColor.clear.cgColor
+                self.rightButton.backgroundColor = UIColor.clear
+                self.rightButton.setTitleColor(UIColor.gray, for: .normal)
+                self.rightButton.layer.borderColor = UIColor.clear.cgColor
                 if contact.status == .friend {
-                    rightButton.setTitle("已添加", for: .normal)
+                    self.rightButton.setTitle("已添加", for: .normal)
                 } else if contact.status == .wait {
-                    rightButton.setTitle("等待验证 ", for: .normal)
+                    self.rightButton.setTitle("等待验证 ", for: .normal)
                 }
             }
-        }
-    }
-    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        usernameLabel.font = UIFont.systemFont(ofSize: 17.0)
-        contentView.addSubview(avatarImageView)
-        contentView.addSubview(usernameLabel)
-        contentView.addSubview(subTitleLabel)
-        contentView.addSubview(rightButton)
-        p_addMasonry()
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    func p_addMasonry() {
-        avatarImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(10)
-            make.top.equalTo(9.5)
-            make.bottom.equalTo(-9)
-            make.width.equalTo(self.avatarImageView.snp.height)
-        }
-        usernameLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self.avatarImageView.snp.right).offset(10)
-            make.top.equalTo(self.avatarImageView).offset(-1)
-            make.right.lessThanOrEqualTo(self.rightButton.snp.left).offset(-10)
-        }
-        subTitleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self.usernameLabel)
-            make.top.equalTo(self.usernameLabel.snp.bottom).offset(2)
-            make.right.lessThanOrEqualTo(self.rightButton.snp.left).offset(-10)
-        }
-        rightButton.snp.makeConstraints { (make) in
-            make.right.equalTo(self.contentView).offset(-5)
-            make.centerY.equalTo(self.contentView)
-            make.height.equalTo(30)
-            make.width.greaterThanOrEqualTo(48)
-        }
+        }).disposed(by: disposeBag)
     }
 }
 
@@ -108,7 +60,7 @@ final class WXContactsSearchViewController: BaseTableViewController, UISearchRes
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(WechatContactCell.self)
         let contact = data[indexPath.row]
-        cell.contact = contact
+        cell.viewModel.onNext(contact)
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -126,7 +78,7 @@ final class WXContactsSearchViewController: BaseTableViewController, UISearchRes
     }
 }
 
-class WXContactsViewController: BaseTableViewController, UISearchBarDelegate {
+final class WXContactsViewController: BaseTableViewController, UISearchBarDelegate {
     var contactsData: [WechatContact] = []// 通讯录好友（初始数据）
     var data: [WXUserGroup] = []// 通讯录好友（格式化的列表数据）
     var headers: [String] = []// 通讯录好友索引
@@ -174,7 +126,7 @@ class WXContactsViewController: BaseTableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let contact = data[indexPath.section].users[UInt(indexPath.row)]
         let cell = tableView.dequeueCell(WechatContactCell.self)
-//        cell.contact = contact
+//        cell.viewModel.onNext(contact)
         let temp = data[indexPath.section]
         if indexPath.section == data.count - 1 && indexPath.row == temp.users.count - 1 {
 

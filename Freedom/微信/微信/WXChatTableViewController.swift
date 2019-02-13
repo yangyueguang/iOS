@@ -5,21 +5,7 @@ import SnapKit
 import MJRefresh
 import XExtension
 import Foundation
-let PAGE_MESSAGE_COUNT = 15
-let MSG_SPACE_TOP = 14
-let MSG_SPACE_BTM = 20
-let MSG_SPACE_LEFT = 19
-let MSG_SPACE_RIGHT = 22
-let TIMELABEL_HEIGHT = 20.0
-let TIMELABEL_SPACE_Y = 10.0
-let NAMELABEL_HEIGHT = 14.0
-let NAMELABEL_SPACE_X = 12.0
-let NAMELABEL_SPACE_Y = 1.0
-let AVATAR_WIDTH = 40.0
-let AVATAR_SPACE_X = 8.0
-let AVATAR_SPACE_Y = 12.0
-let MSGBG_SPACE_X = 5.0
-let MSGBG_SPACE_Y = 1.0
+
 enum TLChatMenuItemType: Int {
     case cancel
     case copy
@@ -88,42 +74,42 @@ class WXMessageBaseCell: BaseTableViewCell<WXMessage> {
             }
             if self.message.showTime != message.showTime {
                 timeLabel.snp.updateConstraints { (make) in
-                    make.height.equalTo(message.showTime ? TIMELABEL_HEIGHT : 0)
-                    make.top.equalTo(self.contentView).offset(message.showTime ? TIMELABEL_SPACE_Y : 0)
+                    make.height.equalTo(message.showTime ? 20 : 0)
+                    make.top.equalTo(self.contentView).offset(message.showTime ? 10 : 0)
                 }
             }
             if self.message.ownerTyper != message.ownerTyper {
                 avatarButton.snp.remakeConstraints { (make) in
-                    make.width.height.equalTo(AVATAR_WIDTH)
-                    make.top.equalTo(self.timeLabel.snp.bottom).offset(AVATAR_SPACE_Y)
+                    make.width.height.equalTo(40)
+                    make.top.equalTo(self.timeLabel.snp.bottom).offset(12)
                     if message.ownerTyper == .own {
-                        make.right.equalTo(self.contentView).offset(-AVATAR_SPACE_X)
+                        make.right.equalTo(self.contentView).offset(-8)
                     }else{
-                        make.left.equalTo(self.contentView).offset(AVATAR_SPACE_X)
+                        make.left.equalTo(self.contentView).offset(8)
                     }
                 }
                 // 用户名
                 usernameLabel.snp.remakeConstraints { (make) in
-                    make.top.equalTo(self.avatarButton).offset(-NAMELABEL_SPACE_Y)
+                    make.top.equalTo(self.avatarButton).offset(-1)
                     if message.ownerTyper == .own {
-                        make.right.equalTo(self.avatarButton.snp.left).offset(-NAMELABEL_SPACE_X)
+                        make.right.equalTo(self.avatarButton.snp.left).offset(-12)
                     }else{
-                        make.left.equalTo(self.avatarButton.snp.right).offset(NAMELABEL_SPACE_X)
+                        make.left.equalTo(self.avatarButton.snp.right).offset(12)
                     }
                 }
                 // 背景
                 messageBackgroundView.snp.remakeConstraints { (make) in
                     if message.ownerTyper == .own {
-                        make.right.equalTo(self.avatarButton.snp.left).offset(-MSGBG_SPACE_X)
+                        make.right.equalTo(self.avatarButton.snp.left).offset(-5)
                     }else{
-                        make.left.equalTo(self.avatarButton.snp.right).offset(MSGBG_SPACE_X)
+                        make.left.equalTo(self.avatarButton.snp.right).offset(5)
                     }
-                    make.top.equalTo(self.usernameLabel.snp.bottom).offset(message.showName ? 0: -MSGBG_SPACE_Y)
+                    make.top.equalTo(self.usernameLabel.snp.bottom).offset(message.showName ? 0: -1)
                 }
             }
             usernameLabel.isHidden = !message.showName
             usernameLabel.snp.updateConstraints { (make) in
-                make.height.equalTo(message.showName ? NAMELABEL_HEIGHT : 0)
+                make.height.equalTo(message.showName ? 14 : 0)
             }
         }
     }
@@ -136,21 +122,21 @@ class WXMessageBaseCell: BaseTableViewCell<WXMessage> {
         contentView.addSubview(usernameLabel)
         contentView.addSubview(messageBackgroundView)
         timeLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(self.contentView).offset(TIMELABEL_SPACE_Y)
+            make.top.equalTo(self.contentView).offset(10)
             make.centerX.equalTo(self.contentView)
         }
         usernameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(self.avatarButton).offset(-NAMELABEL_SPACE_Y)
-            make.right.equalTo(self.avatarButton.snp.left).offset(-NAMELABEL_SPACE_X)
+            make.top.equalTo(self.avatarButton).offset(-1)
+            make.right.equalTo(self.avatarButton.snp.left).offset(-12)
         }
         avatarButton.snp.makeConstraints { (make) in
-            make.right.equalTo(self.contentView).offset(-AVATAR_SPACE_X)
-            make.width.height.equalTo(AVATAR_WIDTH)
-            make.top.equalTo(self.timeLabel.snp.bottom).offset(AVATAR_SPACE_Y)
+            make.right.equalTo(self.contentView).offset(-8)
+            make.width.height.equalTo(40)
+            make.top.equalTo(self.timeLabel.snp.bottom).offset(12)
         }
         messageBackgroundView.snp.makeConstraints { (make) in
-            make.right.equalTo(self.avatarButton.snp.left).offset(-MSGBG_SPACE_X)
-            make.top.lastBaseline.equalTo(self.usernameLabel.snp.bottom).offset(-MSGBG_SPACE_Y)
+            make.right.equalTo(self.avatarButton.snp.left).offset(-5)
+            make.top.lastBaseline.equalTo(self.usernameLabel.snp.bottom).offset(-1)
         }
     }
 
@@ -230,23 +216,23 @@ class WXTextMessageCell: WXMessageBaseCell {
                     messageBackgroundView.image = UIImage(named: "message_sender_bg")
                     messageBackgroundView.highlightedImage = UIImage(named: "message_sender_bgHL")
                     messageLabel.snp.remakeConstraints { (make) in
-                        make.right.equalTo(self.messageBackgroundView).offset(-MSG_SPACE_RIGHT)
-                        make.top.equalTo(self.messageBackgroundView).offset(MSG_SPACE_TOP)
+                        make.right.equalTo(self.messageBackgroundView).offset(-22)
+                        make.top.equalTo(self.messageBackgroundView).offset(15)
                     }
                     messageBackgroundView.snp.updateConstraints { (make) in
-                        make.left.equalTo(self.messageLabel).offset(-MSG_SPACE_LEFT)
-                        make.bottom.equalTo(self.messageLabel).offset(MSG_SPACE_BTM)
+                        make.left.equalTo(self.messageLabel).offset(-20)
+                        make.bottom.equalTo(self.messageLabel).offset(20)
                     }
                 } else if message.ownerTyper == .friend {
                     messageBackgroundView.image = UIImage(named: "message_receiver_bg")
                     messageBackgroundView.highlightedImage = UIImage(named: "message_receiver_bgHL")
                     messageLabel.snp.remakeConstraints { (make) in
-                        make.left.equalTo(self.messageBackgroundView).offset(MSG_SPACE_LEFT)
-                        make.top.equalTo(self.messageBackgroundView).offset(MSG_SPACE_TOP)
+                        make.left.equalTo(self.messageBackgroundView).offset(20)
+                        make.top.equalTo(self.messageBackgroundView).offset(15)
                     }
                     messageBackgroundView.snp.updateConstraints { (make) in
-                        make.right.equalTo(self.messageLabel).offset(MSG_SPACE_RIGHT)
-                        make.bottom.equalTo(self.messageLabel).offset(MSG_SPACE_BTM)
+                        make.right.equalTo(self.messageLabel).offset(22)
+                        make.bottom.equalTo(self.messageLabel).offset(20)
                     }
                 }
             }
@@ -546,7 +532,7 @@ class WXChatTableViewController: BaseTableViewController, WXMessageCellDelegate 
     }
     //获取聊天历史记录
     func p_try(toRefreshMoreRecord complete: @escaping (_ count: Int, _ hasMore: Bool) -> Void) {
-        delegate?.chatTableViewController(self, getRecordsFrom: curDate, count: PAGE_MESSAGE_COUNT, completed: { date, array, hasMore in
+        delegate?.chatTableViewController(self, getRecordsFrom: curDate, count: 15, completed: { date, array, hasMore in
             if array.count > 0 {
                 self.curDate = array[0].date
                 for (objectIndex, insertionIndex) in NSIndexSet(indexesIn: NSRange(location: 0, length: array.count)).enumerated() {

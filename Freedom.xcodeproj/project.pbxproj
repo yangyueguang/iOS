@@ -1071,7 +1071,6 @@
 		DF6B520E21CB25B100460949 /* WXChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B520D21CB25B100460949 /* WXChatDetailViewController.swift */; };
 		DF6B521621CB25D200460949 /* WXChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521521CB25D200460949 /* WXChatTableViewController.swift */; };
 		DF6B521821CB25D900460949 /* WXChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521721CB25D900460949 /* WXChatViewController.swift */; };
-		DF6B521A21CB25E100460949 /* WXChatBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521921CB25E100460949 /* WXChatBaseViewController.swift */; };
 		DF6B521E21CB25F700460949 /* WXConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521D21CB25F700460949 /* WXConversationViewController.swift */; };
 		DF6B522021CB261300460949 /* TLMoreKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B521F21CB261300460949 /* TLMoreKeyboard.swift */; };
 		DF6B522421CB262100460949 /* XEmojiKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B522321CB262100460949 /* XEmojiKeyboard.swift */; };
@@ -2374,7 +2373,6 @@
 		DF6B520D21CB25B100460949 /* WXChatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatDetailViewController.swift; sourceTree = "<group>"; };
 		DF6B521521CB25D200460949 /* WXChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatTableViewController.swift; sourceTree = "<group>"; };
 		DF6B521721CB25D900460949 /* WXChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatViewController.swift; sourceTree = "<group>"; };
-		DF6B521921CB25E100460949 /* WXChatBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXChatBaseViewController.swift; sourceTree = "<group>"; };
 		DF6B521D21CB25F700460949 /* WXConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXConversationViewController.swift; sourceTree = "<group>"; };
 		DF6B521F21CB261300460949 /* TLMoreKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMoreKeyboard.swift; sourceTree = "<group>"; };
 		DF6B522321CB262100460949 /* XEmojiKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XEmojiKeyboard.swift; sourceTree = "<group>"; };
@@ -2688,7 +2686,6 @@
 				DF6B521D21CB25F700460949 /* WXConversationViewController.swift */,
 				DF6B521721CB25D900460949 /* WXChatViewController.swift */,
 				DF6B521521CB25D200460949 /* WXChatTableViewController.swift */,
-				DF6B521921CB25E100460949 /* WXChatBaseViewController.swift */,
 				DF6B520D21CB25B100460949 /* WXChatDetailViewController.swift */,
 				71ECE02E2092128D00495467 /* ChatEmojiKeyboard */,
 			);
@@ -6327,7 +6324,6 @@
 				713EE2B620AD901F0085B65D /* KugouBaseViewController.swift in Sources */,
 				BF58BB6C20EF1945002CB4EE /* XPathQuery.m in Sources */,
 				DF7B407D21AC020A00E3D975 /* MenuPopView.swift in Sources */,
-				DF6B521A21CB25E100460949 /* WXChatBaseViewController.swift in Sources */,
 				DF0E967021CBACB9009682CC /* WXPublicServerSearchViewController.swift in Sources */,
 				DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */,
 				BF58BB3120EF1945002CB4EE /* RCDGroupAnnouncementViewController.m in Sources */,
