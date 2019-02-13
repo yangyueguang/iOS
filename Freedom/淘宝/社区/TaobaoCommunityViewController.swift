@@ -3,7 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
-class TaobaoCommunityViewCell1:BaseCollectionViewCell{
+class TaobaoCommunityViewCell1:BaseCollectionViewCell<Any> {
     override func initUI() {
         title = UILabel(frame: CGRect(x: 10, y: 0, width: APPW - 20, height: 40))
         title.numberOfLines = 0
@@ -23,7 +23,7 @@ class TaobaoCommunityViewCell1:BaseCollectionViewCell{
         script.text = "这款笔记本电脑，用料考究，做工精细，运行速度快，携带方便，是您居家旅行的不二之选，它极致的性能堪比外挂，性价比特别高，建议选联想拯救者或惠普精灵系列的电脑，买电脑千万别图便宜，一分价格一分货。"
     }
 }
-class TaobaoCommunityViewCell2:BaseCollectionViewCell {
+class TaobaoCommunityViewCell2:BaseCollectionViewCell<Any> {
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW / 2 - 20, height: 100))
         title = UILabel(frame: CGRect(x: 0, y: icon.bottom, width: icon.width, height: 70))
@@ -98,7 +98,7 @@ final class TaobaoCommunityViewController: TaobaoBaseViewController,UICollection
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell: BaseCollectionViewCell? = nil
+        var cell: BaseCollectionViewCell<Any>? = nil
         if indexPath.section == 0 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier:TaobaoCommunityViewCell1.identifier, for: indexPath) as? TaobaoCommunityViewCell1
             cell?.frame = CGRect(x: 0, y: 0, width: APPW, height: 100)

@@ -3,18 +3,13 @@
 //  Freedom
 import UIKit
 import XExtension
-class AlipayItemModel: NSObject {
-    var imageResString = ""
-    var title = ""
-    var destinationClass: AnyClass?
-}
-class AlipayItemCell: BaseCollectionViewCell {
+class AlipayItemCell: BaseCollectionViewCell<CellModelC<UIViewController>> {
     @IBOutlet weak var itemButton: XButton!
     override func initUI() {
 
     }
 }
-class AlipayMiddleCell: BaseCollectionViewCell {
+class AlipayMiddleCell: BaseCollectionViewCell<Any> {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -22,7 +17,7 @@ class AlipayMiddleCell: BaseCollectionViewCell {
 
     }
 }
-class AlipayProductCell: BaseCollectionViewCell {
+class AlipayProductCell: BaseCollectionViewCell<Any> {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!

@@ -5,69 +5,6 @@ import UIKit
 import XExtension
 import MJRefresh
 import XCarryOn
-class IqiyiHomeModel: NSObject {
-    var search_default_word_for_ipad = ""
-    var boxes = [AnyHashable]()
-    var banner = [AnyHashable]()
-    var index_channel_content_version = ""
-}
-class IqiyiBoxesModel: NSObject {
-    var videos = [AnyHashable]()
-    var ipad_display_type: NSNumber?
-    var index_page_channel_icon = ""
-    var display_type: NSNumber?
-    var index_page_channel_icon_for_ipad = ""
-    var video_count_for_ipad_index_page: NSNumber?
-    var cid = ""
-    var title = ""
-    var sub_title = ""
-    var redirect_type = ""
-    var url_for_more_link = ""
-    var is_podcast = ""
-    var height: Float = 0.0
-}
-class IqiyiBannerModel: NSObject {
-    var is_albumcover: NSNumber?
-    var image_1452_578 = ""
-    var image_800_450 = ""
-    var platform_for_url_type = ""
-    var title = ""
-    var url = ""
-    var url_include_ids_count: NSNumber?
-    var vip_information: NSObject?
-    var plid = ""
-    var short_desc = ""
-    var image_726_289 = ""
-    var iid = ""
-    var small_img = ""
-    var game_information: NSObject?
-    var aid = ""
-    var image_640_310 = ""
-    var big_img = ""
-    var type = ""
-    var browser_for_url_type: NSNumber?
-}
-class IqiyiVideosModel: NSObject {
-    var yaofeng = ""
-    var is_albumcover: NSNumber?
-    var pv = ""
-    var corner_image = ""
-    var title = ""
-    var url = ""
-    var url_include_ids_count: NSNumber?
-    var owner_nick = ""
-    var short_desc = ""
-    var game_information: NSObject?
-    var iid = ""
-    var small_img = ""
-    var stripe_b_r = ""
-    var plid = ""
-    var aid = ""
-    var owner_id = ""
-    var type = ""
-    var image_800x450 = ""
-    var big_img = ""
-}
 protocol IqiyiHomeBoxCellDelegate: NSObjectProtocol {
     func didSelectHomeBox(_ video: IqiyiVideosModel?)
 }

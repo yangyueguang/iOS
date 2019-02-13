@@ -6,7 +6,6 @@ import XExtension
 class IqiyiSearchTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         placeholder = "大家都在搜琅琊榜"
         font = UIFont.systemFont(ofSize: 16)
         let image = UIImage(named: "GroupCell")
@@ -17,7 +16,7 @@ class IqiyiSearchTextField: UITextField {
         //设置文边框左边专属View
         let leftView = UIImageView()
         leftView.bounds = CGRect(x: 0, y: 0, width: 35, height: 35)
-        //        leftView.contentMode = UIViewContentModeCenter;
+        leftView.contentMode = .center
         leftView.image = UIImage(named: "search_small")
         self.leftView = leftView
         leftViewMode = .always
@@ -26,18 +25,21 @@ class IqiyiSearchTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
 }
-class IqiyiSearchHotCell:BaseTableViewCell<Any> {
-    func setArray(_ array: [Any]?) {
-        let buttons: Int? = array?.count
-        let margin: CGFloat = 10
-        let buttonW = (APPW - CGFloat(((buttons ?? 0) + 1)) * margin) / CGFloat(buttons ?? Int(0.0))
-        for i in 0..<(array?.count ?? 0) {
-            let button = UIButton(type: .custom)
-            button.frame = CGRect(x: margin + CGFloat(i) * (buttonW + margin), y: 5, width: buttonW, height: 40)
-            let buttontitle = array![i] as? String
-            button.setTitle(buttontitle, for: .normal)
-            addSubview(button)
-        }
+class IqiyiSearchHotCell:BaseTableViewCell<[String]> {
+    override func initUI() {
+        viewModel.subscribe(onNext: {[weak self] (model) in
+            guard let `self` = self else { return }
+            let buttons = model.count
+            let margin: CGFloat = 10
+            let buttonW = (APPW - CGFloat(buttons + 1) * margin) / CGFloat(buttons)
+            for i in 0..<model.count {
+                let button = UIButton(type: .custom)
+                button.frame = CGRect(x: margin + CGFloat(i) * (buttonW + margin), y: 5, width: buttonW, height: 40)
+                let buttontitle = model[i]
+                button.setTitle(buttontitle, for: .normal)
+                self.addSubview(button)
+            }
+        }).disposed(by: disposeBag)
     }
 }
 class IqiyiSearchHistoryCell: BaseTableViewCell<Any> {

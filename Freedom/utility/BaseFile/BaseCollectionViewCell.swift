@@ -1,7 +1,11 @@
 
 import UIKit
+import RxSwift
 @objcMembers
-open class BaseCollectionViewCell : UICollectionViewCell {
+open class BaseCollectionViewCell<T> : UICollectionViewCell {
+    var model: T!
+    let disposeBag = DisposeBag()
+    let viewModel = PublishSubject<T>()
     open var icon: UIImageView!
     open var line: UIView!
     open var title: UILabel!

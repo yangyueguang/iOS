@@ -7,9 +7,7 @@
 //
 import UIKit
 class TimeCell:BaseTableViewCell<GroupChat> {
-
     var textView:UITextView = UITextView.init()
-
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
@@ -65,10 +63,7 @@ class TimeCell:BaseTableViewCell<GroupChat> {
 }
 
 class SystemMessageCell:BaseTableViewCell<GroupChat> {
-
-
     var textView:UITextView = UITextView.init()
-
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none

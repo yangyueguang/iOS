@@ -50,6 +50,27 @@ class FirstRun: NSObject {
     var database = false
     var main = false
 }
+struct CellModelS {
+    var title = ""
+    var subTitle = ""
+    var icon = ""
+}
+class CellModelC<T>: NSObject {
+    var title = ""
+    var subTitle = ""
+    var icon = ""
+    var target: T.Type?
+    override init() {
+        super.init()
+    }
+    convenience init(_ title: String, _ subTitle: String, _ icon: String, _ target: T.Type? = nil) {
+        self.init()
+        self.title = title
+        self.icon = icon
+        self.target = target
+    }
+}
+
 //会话提示类型
 enum TLClueType : Int {
     case none
@@ -76,7 +97,6 @@ enum TLMessageRemindType : Int {
     case notLook // 不看
     case unlike // 不喜欢
 }
-//  Converted to Swift 4 by Swiftify v4.2.17067 - https://objectivec2swift.com/
 //消息类型
 
 enum TLMessageType : Int {

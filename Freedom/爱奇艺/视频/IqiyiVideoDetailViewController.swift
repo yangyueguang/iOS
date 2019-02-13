@@ -3,77 +3,23 @@
 //  Freedom
 import UIKit
 import XExtension
-class IqiyiVideoDetailModel: NSObject {
-    var total_vv = ""
-    var duration: NSNumber?
-    var total_comment: NSNumber?
-    var img = ""
-    var title = ""
-    var play_url = ""
-    var channel_pic = ""
-    var cats = ""
-    var plid = ""
-    var isVuser = ""
-    var type = ""
-    var username = ""
-    var format_flag: NSNumber?
-    var img_hd = ""
-    var iid = ""
-    var subed_num: NSNumber?
-    var item_id = ""
-    var user_desc = ""
-    var desc = ""
-    var user_play_times = ""
-    var stripe_bottom = ""
-    var cid: NSNumber?
-    var userid: NSNumber?
-    var total_fav: NSNumber?
-    var limit: NSNumber?
-    var item_media_type = ""
-}
-class IqiyiRecommentModel: NSObject {
-    var total_pv: NSNumber?
-    var pubdate = ""
-    var img_16_9 = ""
-    var pv_pr = ""
-    var duration: NSNumber?
-    var pv = ""
-    var total_comment: NSNumber?
-    var img = ""
-    var title = ""
-    var state = ""
-    var cats = ""
-    var username = ""
-    var tags = [String]()
-    var img_hd = ""
-    var itemCode = ""
-    var total_down = ""
-    var total_up = ""
-    var desc = ""
-    var stripe_bottom = ""
-    var userid = ""
-    var total_fav: NSNumber?
-    var reputation = ""
-    var limit = ""
-    var time = ""
-}
 class IqiyiRecommentVideoCell:BaseTableViewCell<IqiyiRecommentModel> {
     let iconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
     let titleLabel = UILabel(frame: CGRect(x: 100, y: 10, width: 200, height: 20))
     let timeLabel = UILabel(frame: CGRect(x: 100, y: 40, width: 200, height: 20))
     let pvLabel = UILabel(frame: CGRect(x: APPW - 100, y: 20, width: 80, height: 20))
     override func initUI() {
-        self.addSubviews([iconImageView, titleLabel, timeLabel,pvLabel])
-    }
-    func setRecommentModel(_ recommentModel: IqiyiRecommentModel?) {
-        iconImageView.sd_setImage(with: URL(string: recommentModel?.img ?? ""), placeholderImage: UIImage(named: "rec_holder"))
-        titleLabel.text = recommentModel?.title
-        pvLabel.text = recommentModel?.pv_pr
-        timeLabel.text = recommentModel?.time
-        iconImageView.image = UIImage(named: "userLogo")
-        titleLabel.text = "title"
-        timeLabel.text = "time"
-        pvLabel.text = "pvlabel"
+        viewModel.subscribe(onNext: {[weak self] (model) in
+            guard let `self` = self else { return }
+            self.iconImageView.sd_setImage(with: URL(string: model.img ?? ""))
+            self.titleLabel.text = model.title
+            self.pvLabel.text = model.pv_pr
+            self.timeLabel.text = model.time
+            self.iconImageView.image = UIImage(named: "userLogo")
+            self.titleLabel.text = "title"
+            self.timeLabel.text = "time"
+            self.pvLabel.text = "pvlabel"
+        }).disposed(by: disposeBag)
     }
 }
 class IqiyiVideoDetailCell: BaseTableViewCell<IqiyiVideoDetailModel> {
@@ -85,18 +31,17 @@ class IqiyiVideoDetailCell: BaseTableViewCell<IqiyiVideoDetailModel> {
     var subedNumberLabel: UILabel?
     var titleLabel: UILabel?
     var descLabel: UILabel?
-    var videoDetailModel: IqiyiVideoDetailModel? {
-        didSet {
-            iconImageView?.sd_setImage(with: URL(string: videoDetailModel?.channel_pic ?? ""), placeholderImage: UIImage(named: "tudoulogo"))
-            userNameLabel?.text = videoDetailModel?.username
-            if let aTimes = videoDetailModel?.user_play_times {
-                playItemsLabel?.text = "播放：\(aTimes)"
-            }
-            userDesLabel?.text = videoDetailModel?.user_desc
-            subedNumberLabel?.text = "\(videoDetailModel?.subed_num ?? 0)人订阅"
-            titleLabel?.text = videoDetailModel?.title
-            descLabel?.text = videoDetailModel?.desc
-        }
+    override func initUI() {
+        viewModel.subscribe(onNext: {[weak self] (model) in
+            guard let `self` = self else { return }
+            self.iconImageView?.sd_setImage(with: URL(string: model.channel_pic ?? ""), placeholderImage: UIImage(named: "tudoulogo"))
+            self.userNameLabel?.text = model.username
+            self.playItemsLabel?.text = "播放：\(model.user_play_times)"
+            self.userDesLabel?.text = model.user_desc
+            self.subedNumberLabel?.text = "\(model.subed_num ?? 0)人订阅"
+            self.titleLabel?.text = model.title
+            self.descLabel?.text = model.desc
+        }).disposed(by: disposeBag)
     }
 }
 class IqiyiVideoDetailViewController: IqiyiBaseViewController {
@@ -227,7 +172,7 @@ class IqiyiVideoDetailViewController: IqiyiBaseViewController {
 //            }
             cell.selectionStyle = .none
             if (videoDM != nil) {
-                cell.videoDetailModel = videoDM
+                cell.viewModel.onNext(videoDM!)
             }
             return cell
         } else {

@@ -4,7 +4,7 @@
 import UIKit
 import XExtension
 import XCarryOn
-class BooksViewCell:BaseCollectionViewCell{
+class BooksViewCell:BaseCollectionViewCell<Any> {
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x: 10, y: 0, width: APPW/5-20, height:40))
         self.title = UILabel(frame: CGRect(x: 0, y:  self.icon.bottom, width: APPW/5-12, height:20))

@@ -7,21 +7,7 @@ import AVFoundation
 import MediaToolbox
 import MediaPlayer
 class KugouLocalMusicCell: BaseTableViewCell<Any> {
-    var iconView: UIImageView!
-    var mainLable: UILabel!
-    var subLable: UILabel!
-    var timerLable: UILabel!
     override func initUI() {
-        self.icon = UIImageView(frame: CGRect(x:0, y:0, width:0, height:120))
-        self.title = UILabel(frame: CGRect(x:0, y:0, width:0, height: 20))
-        self.addSubviews([self.title,self.icon])
-        self.title.text = "name"
-        self.icon.image = UIImage(named:"taobaomini2")
-        iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        mainLable = UILabel(frame: CGRect(x: 60, y: 10, width: 200, height: 20))
-        subLable = UILabel(frame: CGRect(x: 60, y: 40, width: 200, height: 20))
-        timerLable = UILabel(frame: CGRect(x: APPW - 100, y: 20, width: 80, height: 20))
-        addSubviews([iconView!, subLable,timerLable, mainLable])
     }
 }
 class KugouLocalMusicViewController: KugouBaseViewController {
@@ -79,17 +65,17 @@ class KugouLocalMusicViewController: KugouBaseViewController {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell :KugouLocalMusicCell = KugouLocalMusicCell.getInstance() as! KugouLocalMusicCell
-        cell.iconView.image = iconArr[indexPath.row]
-        cell.iconView.layer.cornerRadius = cell.iconView.frame.size.width * 0.5
-        cell.iconView.layer.masksToBounds = true
-        cell.mainLable.text = songArr[indexPath.row]
-        cell.subLable.text = singerArr[indexPath.row]
+//        cell.iconView.image = iconArr[indexPath.row]
+//        cell.iconView.layer.cornerRadius = cell.iconView.frame.size.width * 0.5
+//        cell.iconView.layer.masksToBounds = true
+//        cell.mainLable.text = songArr[indexPath.row]
+//        cell.subLable.text = singerArr[indexPath.row]
         let second: Int = timerArr[indexPath.row] as! Int
         if second < 60 {
-            cell.timerLable.text = "\(second)'"
+//            cell.timerLable.text = "\(second)'"
         } else {
             let minus: Int = second / 60
-            cell.timerLable.text = "\(minus):\(second % 60)'"
+//            cell.timerLable.text = "\(minus):\(second % 60)'"
         }
         return cell
     }

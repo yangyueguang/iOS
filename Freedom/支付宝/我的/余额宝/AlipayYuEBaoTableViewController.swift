@@ -129,23 +129,12 @@ class AlipayYuEBaoTableViewCellContentView: UIView {
 }
 class AlipayYuEBaoTableViewCell:BaseTableViewCell<Any> {
     private var cellContentView: AlipayYuEBaoTableViewCellContentView?
-    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override func initUI() {
         let contentView = AlipayYuEBaoTableViewCellContentView()
         self.cellContentView?.addSubview(contentView)
         cellContentView = contentView
         selectionStyle = .none
-        
     }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    //    func setModel(_ model: NSObject?) {
-//        super.setModel(model)
-//        let cellModel = model as? SDYuEBaoTableViewCellModel
-//        cellContentView.totalMoneyAmount = (cellModel?.totalMoneyAmount)!
-//        cellContentView.yesterdayIncome = (cellModel?.yesterdayIncome)!
-//    }
 }
 class AlipayYuEBaoTableViewController: AlipayBaseViewController {
     let cellClass = AlipayYuEBaoTableViewCell.self

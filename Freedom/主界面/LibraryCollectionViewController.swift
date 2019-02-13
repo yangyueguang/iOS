@@ -7,7 +7,7 @@
 //
 import UIKit
 import XExtension
-class LibraryCollectionViewCell: BaseCollectionViewCell {
+class LibraryCollectionViewCell: BaseCollectionViewCell<Any> {
     override func initUI() {
         super.initUI()
         icon.frame = CGRect(x: 0, y: 0, width: APPW / 5, height: 80)

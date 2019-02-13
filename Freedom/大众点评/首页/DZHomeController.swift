@@ -3,7 +3,7 @@
 //  Freedom
 import UIKit
 import XExtension
-class DZHomeViewCell1:BaseCollectionViewCell{
+class DZHomeViewCell1:BaseCollectionViewCell<Any> {
     override func initUI() {//120
         icon = UIImageView(frame: CGRect(x: 10, y: 60, width: self.width / 2 - 10, height: 60))
         let view = getViewWithFrame(CGRect(x: 0, y: 0, width: APPW / 2 - 10, height: 55))
@@ -34,7 +34,7 @@ class DZHomeViewCell1:BaseCollectionViewCell{
         icon.image = UIImage(named: "image4.jpg")
     }
 }
-class DZHomeViewCell2:BaseCollectionViewCell{
+class DZHomeViewCell2:BaseCollectionViewCell<Any> {
     override func initUI() {//100
         icon = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW / 4, height: 60))
         title = UILabel(frame: CGRect(x: 20, y: icon.bottom, width: icon.width, height: 20))
@@ -50,7 +50,7 @@ class DZHomeViewCell2:BaseCollectionViewCell{
         icon.image = UIImage(named: "taobaomini2")
     }
 }
-class DZHomeViewCell3:BaseCollectionViewCell{
+class DZHomeViewCell3:BaseCollectionViewCell<Any> {
     override func initUI() {//80
         icon = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW / 4 - 11, height: 50))
         icon.clipsToBounds = true
@@ -70,7 +70,7 @@ class DZHomeViewCell3:BaseCollectionViewCell{
         icon.image = UIImage(named: "taobaomini1")
     }
 }
-class DZHomeViewCell4:BaseCollectionViewCell{
+class DZHomeViewCell4:BaseCollectionViewCell<Any> {
     override func initUI() {//100
         icon = UIImageView(frame: CGRect(x: 10, y: 0, width: APPW / 4, height: 80))
         title = UILabel(frame: CGRect(x: icon.right + 10, y: icon.y, width: APPW - icon.right - 20, height: 20))
@@ -200,7 +200,7 @@ final class DZHomeController: DZBaseViewController,UICollectionViewDataSource,UI
         return 20
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell: BaseCollectionViewCell? = nil
+        var cell: BaseCollectionViewCell<Any>? = nil
         if indexPath.section == 0 {
             cell = collectionView.dequeueCell(DZHomeViewCell1.self, for: indexPath)
         } else if indexPath.section == 1 {

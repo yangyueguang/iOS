@@ -4,37 +4,6 @@
 import UIKit
 import XExtension
 import MJRefresh
-class IqiyiSubItemModel: NSObject {
-    var itemID: NSNumber?
-    var formatTotalTime = ""
-    var code = ""
-    var totalTime: NSNumber?
-    var pubDate: NSNumber?
-    var playLink = ""
-    var title = ""
-    var userpic_220_220 = ""
-    var playNum: NSNumber?
-    var bigPic = ""
-    var limit: NSNumber?
-    var picurl = ""
-    var playtimes: NSNumber?
-    var userpic = ""
-    var formatPubDate = ""
-    var type = ""
-    var uid: NSNumber?
-}
-class IqiyiSubscribeModel: NSObject {
-    var video_count: NSNumber?
-    var des = ""
-    var title = ""
-    var channelized_type = ""
-    var subed_count = ""
-    var last_item = [AnyHashable]()
-    var podcast_user_id = ""
-    var isVuser = ""
-    var image = ""
-    var avatar = ""
-}
 protocol IqiyiSubScribeCardViewDelegate: NSObjectProtocol {
     func didSelectSubImageCard(_ subImageCard: IqiyiSubScribeCardView?, subItem: IqiyiSubItemModel?)
 }
@@ -84,43 +53,14 @@ class IqiyiSubScribeCardView: UIView {
 }
 class IqiyiSubscribeCell:BaseTableViewCell<IqiyiSubscribeModel> {
     override func initUI() {
-        let backview = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 210))
-        backview.backgroundColor = UIColor.white
-        addSubview(backview)
-        let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 40, height: 40))
-        imageView.layer.cornerRadius = 20
-        imageView.layer.masksToBounds = true
-        backview.addSubview(imageView)
-        let titleLabel = UILabel(frame: CGRect(x: 65, y: 5, width: 120, height: 25))
-        titleLabel.font = UIFont.systemFont(ofSize: 14)
-        titleLabel.textColor = UIColor.black
-        backview.addSubview(titleLabel)
-        let subedLabel = UILabel(frame: CGRect(x: 65, y: 25, width: 120, height: 25))
-        subedLabel.font = UIFont.systemFont(ofSize: 12)
-        subedLabel.textColor = UIColor.lightGray
-        backview.addSubview(subedLabel)
-        let dingyueBtn = UIButton(type: .custom)
-        dingyueBtn.frame = CGRect(x: APPW - 10 - 70, y: 10, width: 70, height: 29)
-        dingyueBtn.setImage(UIImage(named: "dingyue"), for: .normal)
-        dingyueBtn.setImage(UIImage(named: "dingyue_sd"), for: .selected)
-        backview.addSubview(dingyueBtn)
         let scrollV = IqiyiSubImageScrollView(frame: CGRect(x: 0, y: 55, width: APPW, height: 155))
-//        scrollV.delegate = self
-        backview.addSubview(scrollV)
-    }
-    func setSubscribeM(_ subscribeM: IqiyiSubscribeModel?) {
-//        self.subscribeM = subscribeM
-//        items.removeAll()
-//        for i in 0..<subscribeM?.last_item.count ?? 0 {
-//            let item = JFSubItemModel.mj_object(withKeyValues: subscribeM?.last_item[i])
-//            items.append(item)
-//        }
-//        imageView.sd_setImage(with: URL(string: subscribeM?.image ?? ""), placeholderImage: UIImage(named: "rec_holder"))
-//        titleLabel.text = subscribeM?.title
-//        if let aCount = subscribeM?.subed_count {
-//            subedLabel.text = "订阅 \(aCount)"
-//        }
-//        scrollV.dataArray = items
+        addSubview(scrollV)
+        viewModel.subscribe(onNext: {[weak self] (model) in
+            guard let `self` = self else { return }
+            self.imageView?.sd_setImage(with: URL(string: model.image))
+            self.title.text = model.title
+            self.script.text = "订阅 \(model.subed_count)"
+        }).disposed(by: disposeBag)
     }
 }
 class IqiyiSubscribeScrollView: UIScrollView {

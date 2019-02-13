@@ -4,7 +4,7 @@
 import UIKit
 import XExtension
 import XCarryOn
-class TaobaoMeViewCell1:BaseCollectionViewCell{
+class TaobaoMeViewCell1:BaseCollectionViewCell<Any> {
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 10, y: 0, width: APPW / 5 - 20, height: 40))
         title = UILabel(frame: CGRect(x: 0, y: icon.bottom, width: APPW / 5 - 10, height: 20))
@@ -15,7 +15,7 @@ class TaobaoMeViewCell1:BaseCollectionViewCell{
         icon.image = UIImage(named: "taobaomini2")
     }
 }
-class TaobaoMeViewCell2:BaseCollectionViewCell{
+class TaobaoMeViewCell2:BaseCollectionViewCell<Any> {
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 10, y: 0, width: APPW / 5 - 20, height: 40))
         title = UILabel(frame: CGRect(x: 0, y: icon.bottom, width: APPW / 5 - 12, height: 20))
@@ -111,7 +111,7 @@ final class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDel
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell: BaseCollectionViewCell? = nil
+        var cell: BaseCollectionViewCell<Any>? = nil
         if indexPath.section == 0 {
             cell = collectionView.dequeueCell(TaobaoMeViewCell1.self, for: indexPath)
         } else {

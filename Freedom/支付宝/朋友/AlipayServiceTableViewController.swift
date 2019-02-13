@@ -4,28 +4,13 @@
 import UIKit
 import XExtension
 import MJRefresh
-class AlipayServiceTableViewCellModel: NSObject {
-    var title = ""
-    var detailString = ""
-    var iconImageURLString = ""
-}
-class AlipayServiceTableViewCell:BaseTableViewCell<Any> {
+class AlipayFriendsCell:BaseTableViewCell<CellModelS> {
     override func initUI() {
-        icon = UIImageView(frame: CGRect(x: 10, y: 10, width: 100, height: 80))
-        title = UILabel(frame: CGRect(x: 120, y: 10, width: 200, height: 20))
-        script = UILabel(frame: CGRect(x: 120, y: 40, width: 200, height: 20))
-        icon.layer.cornerRadius = 4
-        icon.clipsToBounds = true
-        title.font = Font(16)
-        script.font = Font(14)
-        script.textColor = UIColor.gray
-        addSubviews([icon, title, script])
-    }
-    func setModel(_ model: NSObject?) {
-        let cellModel = model as? AlipayServiceTableViewCellModel
-        title.text = cellModel?.title
-        script.text = cellModel?.detailString
-        icon.sd_setImage(with: URL(string: cellModel?.iconImageURLString ?? ""), placeholderImage: nil)
+        viewModel.subscribe(onNext: {[weak self] (model) in
+            self?.title.text = model.title
+            self?.script.text = model.subTitle
+            self?.icon.kf.setImage(with: URL(string: model.icon))
+        }).disposed(by: disposeBag)
     }
 }
 class AlipayServiceTableViewHeader : UIView,UITextFieldDelegate{
@@ -98,8 +83,8 @@ class AlipayServiceTableViewHeader : UIView,UITextFieldDelegate{
         
 }
 final class AlipayServiceTableViewController: AlipayBaseViewController {
-    let cellClass = AlipayServiceTableViewCell.self
-    var dataArray = [AlipayServiceTableViewCellModel]()
+    let cellClass = AlipayFriendsCell.self
+    var dataArray = [CellModelS]()
     public var tableView: BaseTableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,15 +97,15 @@ final class AlipayServiceTableViewController: AlipayBaseViewController {
         header.height = 44
         header.setPlaceholderText("搜索朋友")
         tableView.tableHeaderView = header
-        var temp = [AnyHashable]()
+        var temp = [CellModelS]()
         for i in 0..<12 {
-            let model = AlipayServiceTableViewCellModel()
+            var model = CellModelS()
             model.title = "服务提醒 -- \(i)"
-            model.detailString = "服务提醒摘要 -- \(i)"
-            model.iconImageURLString = "http://f.vip.duba.net/data/avatar//201309/9/328/137871226483UB.jpg"
+            model.subTitle = "服务提醒摘要 -- \(i)"
+            model.icon = "http://f.vip.duba.net/data/avatar//201309/9/328/137871226483UB.jpg"
             temp.append(model)
         }
-        dataArray = temp as! [AlipayServiceTableViewCellModel]
+        dataArray = temp 
         view.addSubview(tableView)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -128,12 +113,12 @@ final class AlipayServiceTableViewController: AlipayBaseViewController {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataArray[indexPath.row]
-        var cell = tableView.dequeueCell(AlipayServiceTableViewCell.self)
-        cell.setModel(model)
+        let cell = tableView.dequeueCell(AlipayFriendsCell.self)
+        cell.viewModel.onNext(model)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let _: AlipayServiceTableViewCellModel? = dataArray[indexPath.row]
+
     }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         tableView.endEditing(true)

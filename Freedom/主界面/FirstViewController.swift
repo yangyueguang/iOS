@@ -6,7 +6,7 @@
 //  Copyright © 2018 Super. All rights reserved.
 import UIKit
 import XExtension
-class CollectionViewCell1:BaseCollectionViewCell {
+class CollectionViewCell1:BaseCollectionViewCell<Any> {
     var view: UIView = UIView()
     override func initUI() {
         view.frame = CGRect(x: 0, y: (self.height - 80) * 0.5, width: 80, height: 80)
@@ -21,7 +21,7 @@ class CollectionViewCell1:BaseCollectionViewCell {
         icon.clipsToBounds = true
     }
 }
-class CollectionViewCell2: BaseCollectionViewCell {
+class CollectionViewCell2: BaseCollectionViewCell<Any> {
     override func initUI() {
         title = UILabel(frame: CGRect(x: 80, y: 0, width: 200, height: 40))
         title.font = Font(28)

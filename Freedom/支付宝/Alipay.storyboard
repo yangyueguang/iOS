@@ -246,7 +246,7 @@
         <scene sceneID="26g-hV-90J">
             <objects>
                 <tableViewController storyboardIdentifier="AlipayAssetsTableViewController" id="5e6-xa-7ua" customClass="AlipayAssetsTableViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="82R-rT-KR2">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="10" sectionFooterHeight="28" id="82R-rT-KR2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -327,7 +327,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jwq-5o-k56">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alipayMeDonation.png" translatesAutoresizingMaskIntoConstraints="NO" id="jwq-5o-k56">
                                                     <rect key="frame" x="15" y="7" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="48B-ok-5ap"/>
@@ -354,7 +354,7 @@
                             <tableViewSection headerTitle=" " id="dki-Ei-w8u">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="dAv-R2-hqB">
-                                        <rect key="frame" x="0.0" y="202" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="184" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dAv-R2-hqB" id="KiT-rl-oMc">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -383,7 +383,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="5QX-wM-6pP">
-                                        <rect key="frame" x="0.0" y="246" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="228" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5QX-wM-6pP" id="ppX-2j-2Y6">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -412,7 +412,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Q5u-wA-lQb">
-                                        <rect key="frame" x="0.0" y="290" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="272" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q5u-wA-lQb" id="6MN-O4-KRt">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -441,13 +441,13 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="fMY-hj-9xu">
-                                        <rect key="frame" x="0.0" y="334" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="316" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fMY-hj-9xu" id="x7N-bb-YYD">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wX7-PK-coA">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alipayMeYuebao.png" translatesAutoresizingMaskIntoConstraints="NO" id="wX7-PK-coA">
                                                     <rect key="frame" x="15" y="7" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="R6p-xe-TQk"/>
@@ -470,7 +470,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="2Xt-09-nwL">
-                                        <rect key="frame" x="0.0" y="378" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="360" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Xt-09-nwL" id="54u-yy-olw">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -499,13 +499,13 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="blp-ZB-DJ6">
-                                        <rect key="frame" x="0.0" y="422" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="404" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="blp-ZB-DJ6" id="2Jk-3N-UVY">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9M1-ba-Ehw">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alipayMeZhaocai.png" translatesAutoresizingMaskIntoConstraints="NO" id="9M1-ba-Ehw">
                                                     <rect key="frame" x="15" y="7" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="eTb-6w-V1f"/>
@@ -528,7 +528,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="0aa-ph-KJy">
-                                        <rect key="frame" x="0.0" y="466" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="448" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0aa-ph-KJy" id="Qrj-w0-xKY">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -561,13 +561,13 @@
                             <tableViewSection headerTitle=" " id="BcL-n4-5OD">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="2iL-Pi-oWR">
-                                        <rect key="frame" x="0.0" y="538" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="502" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2iL-Pi-oWR" id="sPG-Dg-Nby">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wiS-53-UYB">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alipayMeZhima.png" translatesAutoresizingMaskIntoConstraints="NO" id="wiS-53-UYB">
                                                     <rect key="frame" x="15" y="7" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="191-j3-3yk"/>
@@ -590,13 +590,13 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="MvF-gl-Thr">
-                                        <rect key="frame" x="0.0" y="582" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="546" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MvF-gl-Thr" id="yM9-XI-eAb">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4C9-8i-cNr">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alipayMeBaozhang.png" translatesAutoresizingMaskIntoConstraints="NO" id="4C9-8i-cNr">
                                                     <rect key="frame" x="15" y="7" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="eSV-H7-xY1"/>
@@ -619,7 +619,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="yMu-hF-D2t">
-                                        <rect key="frame" x="0.0" y="626" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="590" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yMu-hF-D2t" id="QQx-yI-nc0">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -648,13 +648,13 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="JuE-ao-InM">
-                                        <rect key="frame" x="0.0" y="670" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="634" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JuE-ao-InM" id="wH9-wf-9Ej">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vtz-mx-GlJ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alipayMeSuidai.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vtz-mx-GlJ">
                                                     <rect key="frame" x="15" y="7" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="0kx-FD-vpN"/>
@@ -681,13 +681,13 @@
                             <tableViewSection headerTitle=" " id="WF4-N9-ux9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="8WL-Sa-nrA">
-                                        <rect key="frame" x="0.0" y="742" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="688" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8WL-Sa-nrA" id="hlG-0Y-ZwK">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q5F-Am-O71">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alipayMeYulebao.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q5F-Am-O71">
                                                     <rect key="frame" x="15" y="7" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="4TS-1f-G1u"/>
@@ -710,10 +710,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="PuF-VN-xkP">
-                                        <rect key="frame" x="0.0" y="786" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="732" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PuF-VN-xkP" id="S6y-sq-IKT">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T79-SW-9ha">
@@ -1327,6 +1327,13 @@
         <image name="TabBar_HomeBar_Sel" width="43.200000762939453" height="43.200000762939453"/>
         <image name="TabBar_PublicService" width="30" height="30"/>
         <image name="TabBar_PublicService_Sel" width="43.200000762939453" height="43.200000762939453"/>
+        <image name="alipayMeBaozhang.png" width="48" height="48"/>
+        <image name="alipayMeDonation.png" width="48" height="48"/>
+        <image name="alipayMeSuidai.png" width="48" height="48"/>
+        <image name="alipayMeYuebao.png" width="48" height="48"/>
+        <image name="alipayMeYulebao.png" width="48" height="48"/>
+        <image name="alipayMeZhaocai.png" width="48" height="48"/>
+        <image name="alipayMeZhima.png" width="48" height="48"/>
         <image name="u_white_cell_left" width="15" height="30"/>
         <image name="userLogo.png" width="2084" height="2084"/>
     </resources>

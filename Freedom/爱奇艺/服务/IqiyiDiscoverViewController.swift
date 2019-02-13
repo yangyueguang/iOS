@@ -80,50 +80,28 @@ class IqiyiImageScrollView: UIView, UIScrollViewDelegate {
         removeTimer()
     }
 }
-class IqiyiImageScrollCell: BaseTableViewCell<Any> {
+class IqiyiImageScrollCell: BaseTableViewCell<[String]> {
     var imageScrollView = IqiyiImageScrollView(frame: CGRect(x: 0, y: 0, width: APPW, height: 100))
-    var imageArr :[String] {
-        set{
-            self.imageArr = newValue
-            self.imageScrollView.setImageArray(newValue)
-        }
-        get{
-            return self.imageArr
-        }
-    }
-    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.addSubview(imageScrollView)
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func initUI() {
+        viewModel.subscribe(onNext: { (model) in
+            self.imageScrollView.setImageArray(model)
+        }).disposed(by: disposeBag)
     }
 }
-class IqiyiDiscoverModel: NSObject {
-    var group_number: NSNumber?
-    var title = ""
-    var items = [AnyHashable]()
-    var skip_url = ""
-    var sub_title = ""
-    var module_icon = ""
-    var sub_type = ""
-    var group_location: NSNumber?
-}
-class IqiyiDiscoverCell:BaseTableViewCell<Any> {
-    func ainit(tableView: UITableView) {
-        var cell = tableView.dequeueCell(IqiyiDiscoverCell.self)
-        cell.selectionStyle = .none
-    }
-    
-    func setDiscoverModel(_ discoverModel: IqiyiDiscoverModel?) {
-        textLabel?.text = discoverModel?.title
-        imageView?.sd_setImage(with: URL(string: discoverModel?.module_icon ?? ""), placeholderImage: UIImage(named: "customService_y"))
+
+class IqiyiDiscoverCell:BaseTableViewCell<IqiyiDiscoverModel> {
+    override func initUI() {
+        selectionStyle = .none
+        viewModel.subscribe(onNext: {[weak self] (model) in
+            self?.textLabel?.text = model.title
+            self?.imageView?.kf.setImage(with: URL(string: model.module_icon ?? ""))
+        }).disposed(by: disposeBag)
     }
 }
 final class IqiyiDiscoverViewController: IqiyiBaseViewController {
     var discoverTableView:UITableView!
-    var dataSource = [AnyHashable]()
-    var imageArray = [AnyHashable]()
+    var dataSource = [IqiyiDiscoverModel]()
+    var imageArray = [String]()
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
     }
@@ -152,8 +130,6 @@ final class IqiyiDiscoverViewController: IqiyiBaseViewController {
         discoverTableView = tableView
         view.addSubview(discoverTableView)
         discoverTableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {() -> Void in
-            self.dataSource = [AnyHashable]()
-            self.imageArray = [AnyHashable]()
             let urlStr = "urlWithDiscoverData"
             print(urlStr)
         })
@@ -179,7 +155,7 @@ final class IqiyiDiscoverViewController: IqiyiBaseViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             var cell = tableView.dequeueCell(IqiyiImageScrollCell.self)
-            cell.imageArr = imageArray as! [String];
+            cell.viewModel.onNext(imageArray)
             return cell
         } else {
             let cell = IqiyiDiscoverCell(style: .default, reuseIdentifier: IqiyiDiscoverCell.identifier)
