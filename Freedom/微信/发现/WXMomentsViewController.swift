@@ -9,9 +9,15 @@ class WXMomentsProxy: NSObject {
     func testData() -> [WXMoment] {
         let path = Bundle.main.path(forResource: "Moments", ofType: "json")
         let jsonData = try! Data(contentsOf: URL(fileURLWithPath: path ?? ""))
-        let jsonArray = try! JSONSerialization.jsonObject(with: jsonData as Data, options: .allowFragments)
-        let arr = WXMoment.parses([jsonArray])
-        return arr as! [WXMoment]
+        let jsonArray = try! JSONSerialization.jsonObject(with: jsonData as Data, options: .allowFragments) as! [Any]
+        realmWX.write {
+            for dict in jsonArray {
+                let moment = WXMoment(value: dict)
+                realmWX.add(moment)
+            }
+        }
+        let arr = WXMoment.allObjects().array() as! [WXMoment]
+        return arr
     }
 }
 class WXMomentBaseCell: BaseTableViewCell<WXMoment> {

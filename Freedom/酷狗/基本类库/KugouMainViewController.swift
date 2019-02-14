@@ -10,10 +10,10 @@ class KugouMainViewController: KugouBaseViewController {
     @IBOutlet weak var contentView: UIScrollView!
     @IBOutlet weak var tabBarView: KugouTabBarView?
     @IBOutlet var titleButtons: [UIButton]!
-    let meVc = KugouMeViewController.storyVC("Kugou")
-    let linsenVc = KugouLinsenViewController.storyVC("Kugou")
-    let lookVc = KugouLookViewController.storyVC("Kugou")
-    let singVc = KugouSingViewController.storyVC("Kugou")
+    let meVc = KugouMeViewController.storyVC(.kugou)
+    let linsenVc = KugouLinsenViewController.storyVC(.kugou)
+    let lookVc = KugouLookViewController.storyVC(.kugou)
+    let singVc = KugouSingViewController.storyVC(.kugou)
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false

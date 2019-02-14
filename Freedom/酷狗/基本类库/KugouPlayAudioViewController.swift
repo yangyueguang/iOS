@@ -58,7 +58,7 @@ class KugouPlayAudioViewController: UIViewController {
     }
     class func shared() -> KugouPlayAudioViewController {
         if shared_sington == nil {
-            shared_sington = KugouPlayAudioViewController.storyVC("Kugou") as? KugouPlayAudioViewController
+            shared_sington = KugouPlayAudioViewController.storyVC(.kugou)
             if let view = shared_sington?.view {
                 UIApplication.shared.keyWindow?.addSubview(view)
             }

@@ -9,6 +9,11 @@
 import UIKit
 import QuartzCore
 import Foundation
+extension NSObject {
+    func toType<T>(_ type: T.Type = T.self) -> T {
+        return self as! T
+    }
+}
 extension Array where Element: Equatable {
     func index(_ e: Element) -> Int? {
         for (index, value) in lazy.enumerated() where value == e {
@@ -113,17 +118,20 @@ extension UICollectionView {
     }
 }
 extension UIViewController {
-    static func storyVC(_ name: String) -> UIViewController {
+    static func storyVC(name: String) -> Self {
         let story = UIStoryboard(name: name, bundle: nil)
         let vc = story.instantiateViewController(withIdentifier: self.nameOfClass)
-        return vc
+        return vc.toType()
+    }
+    static func storyVC(_ type: StoryName) -> Self {
+        return storyVC(name: type.rawValue)
     }
 }
 extension UIView {
-    static func xibView() -> UIView? {
+    static func xibView() -> Self? {
         let nib = UINib(nibName: nameOfClass, bundle: Bundle.main)
         let view = nib.instantiate(withOwner: self, options: [:]).first as? UIView
-        return view
+        return view?.toType()
     }
 }
 class StarsOverlay: UIView {

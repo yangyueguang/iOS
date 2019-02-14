@@ -233,7 +233,7 @@ class WXUserGroupItemCell: UICollectionViewCell {
 }
 
 class WXGroupQRCodeViewController: WXBaseViewController {
-    var qrCodeVC = WXQRCodeViewController.storyVC(StoryName.wechat.rawValue) as! WXQRCodeViewController
+    var qrCodeVC = WXQRCodeViewController.storyVC(.wechat)
     var group: WXGroup = WXGroup() {
         didSet {
             qrCodeVC.user = group.user

@@ -13,8 +13,11 @@ final class WXTabBarController: BaseTabBarViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.backgroundColor = UIColor.lightGray
-        tabBar.tintColor = UIColor.green
+        let barItem = UITabBarItem.appearance()
+        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.gray,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], for: .normal)
+        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.green,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], for: .selected)
+        tabBar.barTintColor = .white
+        tabBar.tintColor = .green
         if FirstRun.shared.wechat {
             FirstRun.shared.wechat = false
             XNetKit.kit.downloadDefaultExpression()

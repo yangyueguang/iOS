@@ -5,7 +5,7 @@ import UIKit
 import XExtension
 import AVFoundation
 final class KugouTabBarController: BaseTabBarViewController {
-    let kugouMainVC = KugouMainViewController.storyVC("Kugou")
+    let kugouMainVC = KugouMainViewController.storyVC(.kugou)
     override func viewDidLoad() {
         super.viewDidLoad()
         //创建RESideMenu对象(指定内容/左边/右边)

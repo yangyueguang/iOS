@@ -24,9 +24,17 @@ final class WXNavigationController: BaseNavigationViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appearance = UINavigationBar.appearance()
+        appearance.isTranslucent = false
+        appearance.backIndicatorImage = UIImage(named: "返回")?.withRenderingMode(.alwaysTemplate)
+        appearance.setBackgroundImage(UIImage.imageWithColor(.white, size: CGSize(width: 1, height: 1)), for: UIBarMetrics.default)
+        let item = UIBarButtonItem.appearance()
+        item.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.darkText,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)], for: UIControl.State())
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.darkText ,NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16)]
+
         navigationBar.barTintColor = UIColor.lightGray
-        navigationBar.tintColor = UIColor.darkText
+        navigationBar.tintColor = UIColor.gray
         view.backgroundColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkText, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)]
     }
 }
