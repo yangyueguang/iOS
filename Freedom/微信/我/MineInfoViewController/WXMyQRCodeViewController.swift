@@ -4,7 +4,7 @@
 
 import Foundation
 class WXMyQRCodeViewController: WXBaseViewController {
-    var qrCodeVC = WXQRCodeViewController()
+    var qrCodeVC = WXQRCodeViewController.storyVC(StoryName.wechat.rawValue) as! WXQRCodeViewController
     var user: WXUser = WXUser() {
         didSet {
             qrCodeVC.user = user

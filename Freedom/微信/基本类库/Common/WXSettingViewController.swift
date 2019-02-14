@@ -55,8 +55,8 @@ class WXSettingViewController: BaseTableViewController {
         if group.headerTitle.isEmpty {
             return nil
         }
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: WXSettingHeaderTitleView.identifier) as! WXSettingHeaderTitleView
-        view.text = group.headerTitle
+        let view = tableView.dequeueHeadFootView(view: WXSettingHeaderTitleView.self)
+        view?.text = group.headerTitle
         return view
     }
 
@@ -65,8 +65,8 @@ class WXSettingViewController: BaseTableViewController {
         if group.footerTitle.isEmpty {
             return nil
         }
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: WechatSettingFooterTitleView.identifier) as! WechatSettingFooterTitleView
-        view.text = group.footerTitle
+        let view = tableView.dequeueHeadFootView(view: WechatSettingFooterTitleView.self)
+        view?.text = group.footerTitle
         return view
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

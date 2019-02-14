@@ -233,6 +233,7 @@ class WXUserGroupItemCell: UICollectionViewCell {
 }
 
 class WXGroupQRCodeViewController: WXBaseViewController {
+    var qrCodeVC = WXQRCodeViewController.storyVC(StoryName.wechat.rawValue) as! WXQRCodeViewController
     var group: WXGroup = WXGroup() {
         didSet {
             qrCodeVC.user = group.user
@@ -240,7 +241,6 @@ class WXGroupQRCodeViewController: WXBaseViewController {
             qrCodeVC.introduceLabel.text = String(format: "该二维码7天内(%lu月%lu日前)有效，重新进入将更新", date.components.month ?? 0, date.components.day ?? 0)
         }
     }
-    var qrCodeVC = WXQRCodeViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
