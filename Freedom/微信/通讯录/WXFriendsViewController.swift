@@ -114,9 +114,6 @@ final class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegat
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 54
     }
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return section == 0 ? 0 : 22
-//    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = data[indexPath.section].users[UInt(indexPath.row)]
         if indexPath.section == 0 {

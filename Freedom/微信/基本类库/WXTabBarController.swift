@@ -9,7 +9,7 @@ import XExtension
 final class WXTabBarController: BaseTabBarViewController {
     static let shared = WXTabBarController()
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
     override func viewDidLoad() {
         super.viewDidLoad()

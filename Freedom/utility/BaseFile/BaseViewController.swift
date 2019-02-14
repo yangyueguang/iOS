@@ -12,7 +12,6 @@ open class BaseViewController : UIViewController {
     }
     override open func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white ,NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16)]
         automaticallyAdjustsScrollViewInsets = false
         edgesForExtendedLayout = UIRectEdge.all;
         let appearance = UINavigationBar.appearance()

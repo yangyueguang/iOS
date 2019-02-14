@@ -48,7 +48,7 @@
             </objects>
             <point key="canvasLocation" x="442" y="301"/>
         </scene>
-        <!--Conversation View Controller-->
+        <!--微信-->
         <scene sceneID="n3n-aM-yN3">
             <objects>
                 <tableViewController storyboardIdentifier="WXConversationViewController" id="PSe-31-1DH" customClass="WXConversationViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
@@ -145,7 +145,7 @@
                             <outlet property="delegate" destination="PSe-31-1DH" id="ntu-ny-lDS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="1XR-Da-S7Q">
+                    <navigationItem key="navigationItem" title="微信" id="1XR-Da-S7Q">
                         <barButtonItem key="rightBarButtonItem" image="u_message_add" style="plain" id="50M-PV-fCl">
                             <connections>
                                 <action selector="rightAction:" destination="PSe-31-1DH" id="dUw-vt-9Kj"/>
@@ -204,7 +204,7 @@
             </objects>
             <point key="canvasLocation" x="441" y="936"/>
         </scene>
-        <!--Friends View Controller-->
+        <!--通讯录-->
         <scene sceneID="c5m-uM-BDe">
             <objects>
                 <tableViewController id="rLI-TX-Y2K" customClass="WXFriendsViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
@@ -298,7 +298,7 @@
                             <outlet property="delegate" destination="rLI-TX-Y2K" id="Mzj-oZ-sJp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="E3b-QF-m34">
+                    <navigationItem key="navigationItem" title="通讯录" id="E3b-QF-m34">
                         <barButtonItem key="rightBarButtonItem" image="u_white_addfriend" style="plain" id="L8T-zY-vp4">
                             <connections>
                                 <action selector="rightBarButtonDown:" destination="rLI-TX-Y2K" id="58G-z5-WOQ"/>
@@ -415,7 +415,7 @@
             </objects>
             <point key="canvasLocation" x="441" y="2221"/>
         </scene>
-        <!--Mine View Controller-->
+        <!--我-->
         <scene sceneID="pq4-Wz-ozy">
             <objects>
                 <tableViewController id="Uqd-9g-Xu0" customClass="WXMineViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
@@ -673,7 +673,7 @@
                             <outlet property="delegate" destination="Uqd-9g-Xu0" id="kMR-VZ-FLG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="B5e-BJ-e0L"/>
+                    <navigationItem key="navigationItem" title="我" id="B5e-BJ-e0L"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ibk-N1-pdr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1050,7 +1050,7 @@
             </objects>
             <point key="canvasLocation" x="441" y="1582"/>
         </scene>
-        <!--Discover View Controller-->
+        <!--发现-->
         <scene sceneID="bIH-vp-ajq">
             <objects>
                 <tableViewController id="pUF-uD-zQI" customClass="WXDiscoverViewController" customModule="Freedom" customModuleProvider="target" sceneMemberID="viewController">
@@ -1379,7 +1379,7 @@
                             <outlet property="delegate" destination="pUF-uD-zQI" id="kza-eo-354"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="UmU-Cy-eSv"/>
+                    <navigationItem key="navigationItem" title="发现" id="UmU-Cy-eSv"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBp-nZ-BBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
