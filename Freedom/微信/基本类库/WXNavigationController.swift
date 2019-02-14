@@ -30,7 +30,7 @@ final class WXNavigationController: BaseNavigationViewController {
         UIApplication.shared.statusBarStyle = .default
         let appearance = UINavigationBar.appearance()
         appearance.isTranslucent = false
-        appearance.backIndicatorImage = UIImage(named: "返回")?.withRenderingMode(.alwaysTemplate)
+        appearance.backIndicatorImage = UIImage(named: "u_cell_left")?.withRenderingMode(.alwaysTemplate)
         appearance.setBackgroundImage(UIImage.imageWithColor(UIColor(hex: 0xEFEFEF), size: CGSize(width: 1, height: 1)), for: UIBarMetrics.default)
         let item = UIBarButtonItem.appearance()
         item.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)], for: UIControl.State())

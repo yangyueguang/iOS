@@ -32,7 +32,7 @@ class WXFriendHeaderView: UITableViewHeaderFooterView {
         titleLabel.textColor = UIColor.gray
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0))
         }
     }
     required init?(coder aDecoder: NSCoder) {

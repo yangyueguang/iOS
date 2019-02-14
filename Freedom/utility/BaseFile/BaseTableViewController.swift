@@ -13,8 +13,8 @@ open class BaseTableViewController: UITableViewController {
         automaticallyAdjustsScrollViewInsets = false
         edgesForExtendedLayout = UIRectEdge.all;
         let appearance = UINavigationBar.appearance()
-        appearance.backIndicatorImage = UIImage(named:"u_cellLeft")?.withRenderingMode(.alwaysOriginal);
-        appearance.backIndicatorTransitionMaskImage = UIImage(named:"u_cellLeft")?.withRenderingMode(.alwaysOriginal);
+        appearance.backIndicatorImage = UIImage(named:"u_cell_left")?.withRenderingMode(.alwaysOriginal);
+        appearance.backIndicatorTransitionMaskImage = UIImage(named:"u_cell_left")?.withRenderingMode(.alwaysOriginal)
         let backItem: UIBarButtonItem = UIBarButtonItem()
         backItem.title = "返回"
         self.navigationItem.backBarButtonItem = backItem;

@@ -77,7 +77,6 @@ final class WXConversationViewController: BaseTableViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
-        navigationItem.title = "微信"
         tableView.backgroundColor = UIColor.white
         tableView.tableHeaderView = searchController.searchBar
         NotificationCenter.default.addObserver(self, selector: #selector(self.networkStatusChange(_:)), name: NSNotification.Name.AFNetworkingReachabilityDidChange, object: nil)

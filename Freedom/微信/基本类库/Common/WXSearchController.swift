@@ -19,8 +19,8 @@ class WXSearchController: UISearchController {
     }
     override init(searchResultsController: UIViewController?) {
         super.init(searchResultsController: searchResultsController)
-        searchBar.frame = CGRect(x: 0, y: 0, width: APPW, height: CGFloat(TopHeight))
-        searchBar.backgroundImage = UIImage.imageWithColor(.lightGray)
+        searchBar.frame = CGRect(x: 0, y: 0, width: APPW, height: 44)
+        searchBar.backgroundImage = UIImage.imageWithColor(.clear)
         searchBar.barTintColor = UIColor.lightGray
         searchBar.tintColor = UIColor.green
         let tf = searchBar.subviews.first?.subviews.last as! UITextField
