@@ -9,7 +9,7 @@ final class WXDiscoverViewController: BaseTableViewController {
         super.viewDidLoad()
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var targetVC: UIViewController!
+        var targetVC: UIViewController?
         switch indexPath.section {
         case 0:targetVC = WXMomentsViewController()
         case 1:
@@ -30,7 +30,7 @@ final class WXDiscoverViewController: BaseTableViewController {
             }
         default:break;
         }
-        navigationController?.pushViewController(targetVC, animated: true)
-        super.tableView(tableView, didSelectRowAt: indexPath)
+        guard let target = targetVC else { return }
+        navigationController?.pushViewController(target, animated: true)
     }
 }

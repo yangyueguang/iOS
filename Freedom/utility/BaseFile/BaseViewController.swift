@@ -18,9 +18,8 @@ open class BaseViewController : UIViewController {
         appearance.backIndicatorImage = UIImage(named:"u_cell_left")?.withRenderingMode(.alwaysOriginal);
         appearance.backIndicatorTransitionMaskImage = UIImage(named:"u_cell_left")?.withRenderingMode(.alwaysOriginal);
         appearance.backItem?.title = "返回"
-        let backItem: UIBarButtonItem = UIBarButtonItem()
-        backItem.title = "返回"
-        self.navigationItem.backBarButtonItem = backItem;
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", action: {
+        })
     }
     private func monitorNetworkStatus() {
         let net = NetworkReachabilityManager()

@@ -15,9 +15,8 @@ open class BaseTableViewController: UITableViewController {
         let appearance = UINavigationBar.appearance()
         appearance.backIndicatorImage = UIImage(named:"u_cell_left")?.withRenderingMode(.alwaysOriginal);
         appearance.backIndicatorTransitionMaskImage = UIImage(named:"u_cell_left")?.withRenderingMode(.alwaysOriginal)
-        let backItem: UIBarButtonItem = UIBarButtonItem()
-        backItem.title = "返回"
-        self.navigationItem.backBarButtonItem = backItem;
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", action: {
+        })
     }
     public func push(_ controller: UIViewController?, title: String = "", tabBarHid: Bool = true) {
         guard let `controller` = controller else { return }
