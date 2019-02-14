@@ -563,7 +563,7 @@ class WXChatViewController: WXBaseViewController {
             resetChatVC()
             if partner?.chat_userType == TLChatUserType.user.rawValue {
                 rightBarButton.image = WXImage.default.image
-            } else if partner?.chat_userType == TLChatUserType.group.rawValue {
+            } else {
                 rightBarButton.image = WXImage.default.image
             }
         }
@@ -1019,9 +1019,9 @@ extension WXChatViewController: UIImagePickerControllerDelegate, UINavigationCon
             let chatDetailVC = WXChatDetailViewController()
             chatDetailVC.user = partner as! WXUser
             navigationController?.pushViewController(chatDetailVC, animated: true)
-        } else if partner?.chat_userType == TLChatUserType.group.rawValue {
+        } else {
             let chatGroupDetailVC = WXCGroupDetailViewController()
-            chatGroupDetailVC.group = partner as! WXGroup
+            chatGroupDetailVC.group = WXGroup()// partner as! WXGroup
             navigationController?.pushViewController(chatGroupDetailVC, animated: true)
         }
     }
