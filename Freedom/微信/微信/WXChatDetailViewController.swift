@@ -66,6 +66,7 @@ class WXCGroupDetailViewController: WXSettingViewController, WechatUserGroupCell
         navigationItem.title = "聊天详情"
         data = helper.chatDetailData(byGroupInfo: group)
         tableView.register(WXUserGroupCell.self, forCellReuseIdentifier: WXUserGroupCell.identifier)
+        tableView.reloadData()
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 0 {

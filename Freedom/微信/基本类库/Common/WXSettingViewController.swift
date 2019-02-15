@@ -18,11 +18,11 @@ class WXSettingViewController: BaseTableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(WXSettingHeaderTitleView.self, forHeaderFooterViewReuseIdentifier: WXSettingHeaderTitleView.identifier)
-        tableView.register(WechatSettingFooterTitleView.self, forHeaderFooterViewReuseIdentifier: WechatSettingFooterTitleView.identifier)
-        tableView.register(WXSettingCell.self, forCellReuseIdentifier: WXSettingCell.identifier)
-        tableView.register(WechatSettingButtonCell.self, forCellReuseIdentifier: WechatSettingButtonCell.identifier)
-        tableView.register(WechatSettingSwitchCell.self, forCellReuseIdentifier: WechatSettingSwitchCell.identifier)
+        tableView.register(WXSettingHeaderTitleView.self)
+        tableView.register(WechatSettingFooterTitleView.self)
+        tableView.register(WXSettingCell.self)
+        tableView.register(WechatSettingButtonCell.self)
+        tableView.register(WechatSettingSwitchCell.self)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -38,15 +38,15 @@ class WXSettingViewController: BaseTableViewController {
         switch item.type {
         case .defalut1:
             let cell = tableView.dequeueCell(WXSettingCell.self)
-            cell.item = item
+            cell.viewModel.onNext(item)
             return cell
         case .titleButton:
             let cell = tableView.dequeueCell(WechatSettingButtonCell.self)
-            cell.item = item
+            cell.viewModel.onNext(item)
             return cell
         default:
             let cell = tableView.dequeueCell(WechatSettingSwitchCell.self)
-            cell.item = item
+            cell.viewModel.onNext(item)
             return cell
         }
     }
@@ -85,46 +85,33 @@ class WXSettingViewController: BaseTableViewController {
         return 20.0 + (group.footerTitle.isEmpty ? 0 : 5.0)
     }
 }
+
 class WechatSettingSwitchCell: BaseTableViewCell<WXSettingItem> {
-    var item: WXSettingItem = WXSettingItem() {
-        didSet {
-            titleLabel.text = item.title
-        }
-    }
     private var titleLabel = UILabel()
     private var cellSwitch = UISwitch()
-    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override func initUI() {
         selectionStyle = .none
         accessoryView = cellSwitch
-        cellSwitch.addTarget(self, action: #selector(self.switchChangeStatus(_:)), for: .valueChanged)
         contentView.addSubview(titleLabel)
+        viewModel.subscribe(onNext: {[weak self] (item) in
+            guard let `self` = self else { return }
+            self.titleLabel.text = item.title
+        }).disposed(by: disposeBag)
         titleLabel.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(15)
             make.right.lessThanOrEqualToSuperview().offset(-15)
         }
     }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    @objc func switchChangeStatus(_ sender: UISwitch) {
-
-    }
 }
 
 class WechatSettingButtonCell: BaseTableViewCell<WXSettingItem> {
-    var item: WXSettingItem = WXSettingItem() {
-        didSet {
-            textLabel?.text = item.title
-        }
-    }
-    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override func initUI() {
         textLabel?.textAlignment = .center
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        viewModel.subscribe(onNext: {[weak self] (item) in
+            guard let `self` = self else { return }
+            self.textLabel?.text = item.title
+        }).disposed(by: disposeBag)
     }
 }
 
@@ -132,62 +119,58 @@ class WXSettingCell: BaseTableViewCell<WXSettingItem> {
     private var titleLabel = UILabel()
     private var rightLabel = UILabel()
     private var rightImageView = UIImageView()
-    var item: WXSettingItem = WXSettingItem() {
-        didSet {
-            titleLabel.text = item.title
-            rightLabel.text = item.subTitle
-            if !item.rightImagePath.isEmpty {
-                rightImageView.image = UIImage(named: item.rightImagePath)
-            } else if !item.rightImageURL.isEmpty {
-                rightImageView.sd_setImage(with: URL(string: item.rightImageURL), placeholderImage: Image.logo.image)
-            } else {
-                rightImageView.image = nil
-            }
-            if item.showDisclosureIndicator == false {
-                accessoryType = .none
-                rightLabel.snp.updateConstraints { (make) in
-                    make.right.equalTo(self.contentView).offset(-15)
-                }
-            } else {
-                accessoryType = .disclosureIndicator
-                rightLabel.snp.makeConstraints { (make) in
-                    make.right.equalTo(self.contentView)
-                }
-            }
-            if item.disableHighlight {
-                selectionStyle = .none
-            } else {
-                selectionStyle = .default
-            }
-        }
-    }
-    required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+    override func initUI() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(rightLabel)
         contentView.addSubview(rightImageView)
         rightLabel.textColor = UIColor.gray
         rightLabel.font = UIFont.systemFont(ofSize: 15.0)
         p_addMasonry()
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        viewModel.subscribe(onNext: {[weak self] (item) in
+            guard let `self` = self else { return }
+            self.titleLabel.text = item.title
+            self.rightLabel.text = item.subTitle
+            if !item.rightImagePath.isEmpty {
+                self.rightImageView.image = UIImage(named: item.rightImagePath)
+            } else if !item.rightImageURL.isEmpty {
+                self.rightImageView.sd_setImage(with: URL(string: item.rightImageURL), placeholderImage: Image.logo.image)
+            } else {
+                self.rightImageView.image = nil
+            }
+            if item.showDisclosureIndicator == false {
+                self.accessoryType = .none
+                self.rightLabel.snp.updateConstraints { (make) in
+                    make.right.equalTo(self.contentView).offset(-15)
+                }
+            } else {
+                self.accessoryType = .disclosureIndicator
+                self.rightLabel.snp.makeConstraints { (make) in
+                    make.right.equalTo(self.contentView)
+                }
+            }
+            if item.disableHighlight {
+                self.selectionStyle = .none
+            } else {
+                self.selectionStyle = .default
+            }
+        }).disposed(by: disposeBag)
     }
     func p_addMasonry() {
-        titleLabel.setContentCompressionResistancePriority(UILayoutPriority(500), for: .horizontal)
-        rightLabel.setContentCompressionResistancePriority(UILayoutPriority(200), for: .horizontal)
+
         titleLabel.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(15)
         }
         rightLabel.snp.makeConstraints { (make) in
             make.right.equalToSuperview()
-            make.centerY.equalTo(self.titleLabel)
+            make.centerY.equalToSuperview()
             make.left.greaterThanOrEqualTo(self.titleLabel.snp.right).offset(20)
         }
         rightImageView.snp.makeConstraints { (make) in
             make.right.equalTo(self.rightLabel.snp.left).offset(-2)
             make.centerY.equalToSuperview()
+            make.size.equalTo(CGSize(width: 50, height: 50))
         }
     }
 }

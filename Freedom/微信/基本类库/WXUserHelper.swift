@@ -708,7 +708,7 @@ class WXMessageHelper: NSObject {
         } else {
             groupPost.subTitle = "未设置"
         }
-        let group2: WXSettingGroup = WXSettingGroup(nil, nil, ([groupName, groupQR, groupPost]))
+        let group2 = WXSettingGroup(nil, nil, ([groupName, groupQR, groupPost]))
         let screen = WXSettingItem("消息免打扰")
         screen.type = .switchBtn
         let top = WXSettingItem("置顶聊天")
