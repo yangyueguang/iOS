@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
+    <dict>
+        <key>control</key>
+        <string>WX</string>
+        <key>icon</key>
+        <string>weixinIcon</string>
+        <key>title</key>
+        <string>微信</string>
+    </dict>
+    <dict>
+        <key>control</key>
+        <string>Alipay</string>
+        <key>icon</key>
+        <string>zhifubaoIcon</string>
+        <key>title</key>
+        <string>支付宝</string>
+    </dict>
 	<dict>
 		<key>control</key>
 		<string>Kugou</string>
@@ -44,38 +60,6 @@
 	</dict>
 	<dict>
 		<key>control</key>
-		<string>Alipay</string>
-		<key>icon</key>
-		<string>zhifubaoIcon</string>
-		<key>title</key>
-		<string>支付宝</string>
-	</dict>
-	<dict>
-		<key>control</key>
-		<string>MyDatabase</string>
-		<key>icon</key>
-		<string>database</string>
-		<key>title</key>
-		<string>我的数据库</string>
-	</dict>
-	<dict>
-		<key>control</key>
-		<string>MicroEnergy</string>
-		<key>icon</key>
-		<string>shengyibaoIcon</string>
-		<key>title</key>
-		<string>微能量</string>
-	</dict>
-	<dict>
-		<key>control</key>
-		<string>WX</string>
-		<key>icon</key>
-		<string>weixinIcon</string>
-		<key>title</key>
-		<string>微信</string>
-	</dict>
-	<dict>
-		<key>control</key>
 		<string>DZ</string>
 		<key>icon</key>
 		<string>dianpingIcon</string>
@@ -90,13 +74,21 @@
 		<key>title</key>
 		<string>今日头条</string>
 	</dict>
+    <dict>
+        <key>control</key>
+        <string>MicroEnergy</string>
+        <key>icon</key>
+        <string>shengyibaoIcon</string>
+        <key>title</key>
+        <string>微能量</string>
+    </dict>
 	<dict>
 		<key>control</key>
 		<string>Books</string>
 		<key>icon</key>
 		<string>books</string>
 		<key>title</key>
-		<string>书籍收藏</string>
+		<string>微信阅读</string>
 	</dict>
 	<dict>
 		<key>control</key>
@@ -106,5 +98,13 @@
 		<key>title</key>
 		<string>个性特色自由主义</string>
 	</dict>
+    <dict>
+        <key>control</key>
+        <string>MyDatabase</string>
+        <key>icon</key>
+        <string>database</string>
+        <key>title</key>
+        <string>我的数据库</string>
+    </dict>
 </array>
 </plist>
