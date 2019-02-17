@@ -24,12 +24,11 @@
     return self;
 }
 - (void)initSubViews {
-    CGFloat screenWidth = APPW;
-    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, 10, screenWidth, 44)];
+    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, 10, APPW, 44)];
     bgView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:bgView];
     self.view.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1];
-    CGFloat groupNameTextFieldWidth = screenWidth-8-8;
+    CGFloat groupNameTextFieldWidth = APPW-8-8;
     self.groupNameTextField = [[UITextField alloc]initWithFrame:CGRectMake(8, 10, groupNameTextFieldWidth, 44)];
     self.groupNameTextField.clearButtonMode = UITextFieldViewModeAlways;
     self.groupNameTextField.font = [UIFont systemFontOfSize:14];

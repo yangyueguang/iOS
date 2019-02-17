@@ -45,9 +45,9 @@ final class DouyinMeViewController: DouyinBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarTitleColor(color: ColorClear)
-        self.setNavigationBarBackgroundColor(color: ColorClear)
-        self.setStatusBarBackgroundColor(color: ColorClear)
+        self.setNavigationBarTitleColor(color: UIColor.clear)
+        self.setNavigationBarBackgroundColor(color: UIColor.clear)
+        self.setStatusBarBackgroundColor(color: UIColor.clear)
         self.setStatusBarStyle(style: .lightContent)
         self.setStatusBarHidden(hidden: false)
         
@@ -60,14 +60,14 @@ final class DouyinMeViewController: DouyinBaseViewController {
     }
     
     func initCollectionView() {
-        itemWidth = (screenWidth - CGFloat(Int(screenWidth) % 3)) / 3.0 - 1.0
+        itemWidth = (APPW - CGFloat(Int(APPW) % 3)) / 3.0 - 1.0
         itemHeight =  itemWidth * 1.3
         
         let layout = HoverViewFlowLayout.init(navHeight: safeAreaTopHeight)
         layout.minimumLineSpacing = 1;
         layout.minimumInteritemSpacing = 0;
-        collectionView = BaseCollectionView.init(frame: screenFrame, collectionViewLayout: layout)
-        collectionView.backgroundColor = ColorClear
+        collectionView = BaseCollectionView.init(frame: UIScreen.main.bounds, collectionViewLayout: layout)
+        collectionView.backgroundColor = UIColor.clear
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = UIScrollView.ContentInsetAdjustmentBehavior.never
         } else {
@@ -82,7 +82,7 @@ final class DouyinMeViewController: DouyinBaseViewController {
         collectionView.register(AwemeCollectionCell.classForCoder(), forCellWithReuseIdentifier: AwemeCollectionCell.identifier)
         self.view.addSubview(collectionView)
         
-        loadMore = LoadMoreControl.init(frame: CGRect.init(x: 0, y: USER_INFO_HEADER_HEIGHT + SLIDE_TABBAR_FOOTER_HEIGHT, width: screenWidth, height: 50), surplusCount: 15)
+        loadMore = LoadMoreControl.init(frame: CGRect.init(x: 0, y: USER_INFO_HEADER_HEIGHT + SLIDE_TABBAR_FOOTER_HEIGHT, width: APPW, height: 50), surplusCount: 15)
         loadMore?.startLoading()
         loadMore?.onLoad = {[weak self] in
             self?.loadData(page: self?.pageIndex ?? 0)
@@ -226,11 +226,11 @@ extension DouyinMeViewController:UICollectionViewDataSource,UICollectionViewDele
     
     //UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return section == 0 ? CGSize.init(width:screenWidth, height:USER_INFO_HEADER_HEIGHT) : .zero
+        return section == 0 ? CGSize.init(width:APPW, height:USER_INFO_HEADER_HEIGHT) : .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return section == 0 ? CGSize.init(width:screenWidth, height:SLIDE_TABBAR_FOOTER_HEIGHT) : .zero
+        return section == 0 ? CGSize.init(width:APPW, height:SLIDE_TABBAR_FOOTER_HEIGHT) : .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -254,7 +254,7 @@ extension DouyinMeViewController {
     
     func updateNavigationTitle(offsetY:CGFloat) {
         if USER_INFO_HEADER_HEIGHT - self.navagationBarHeight()*2 > offsetY {
-            setNavigationBarTitleColor(color: ColorClear)
+            setNavigationBarTitleColor(color: UIColor.clear)
         }
         
         if USER_INFO_HEADER_HEIGHT - self.navagationBarHeight()*2 < offsetY && offsetY < USER_INFO_HEADER_HEIGHT - self.navagationBarHeight() {
@@ -263,7 +263,7 @@ extension DouyinMeViewController {
         }
         
         if offsetY > USER_INFO_HEADER_HEIGHT - self.navagationBarHeight() {
-            self.setNavigationBarTitleColor(color: ColorWhite)
+            self.setNavigationBarTitleColor(color: UIColor.whitex)
         }
     }
 }

@@ -56,7 +56,7 @@ class AwemeListCell: BaseTableViewCell<Aweme> {
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
-        self.backgroundColor = ColorClear
+        self.backgroundColor = UIColor.clear
         lastTapTime = 0
         lastTapPoint = .zero
         initSubViews()
@@ -71,7 +71,7 @@ class AwemeListCell: BaseTableViewCell<Aweme> {
         singleTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(handleGesture(sender:)))
         container.addGestureRecognizer(singleTapGesture!)
 
-        gradientLayer.colors = [ColorClear.cgColor, ColorBlackAlpha20.cgColor, ColorBlackAlpha40.cgColor]
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.blackAlpha(0.2).cgColor, UIColor.blackAlpha(0.4).cgColor]
         gradientLayer.locations = [0.3, 0.6, 1.0]
         gradientLayer.startPoint = CGPoint.init(x: 0.0, y: 0.0)
         gradientLayer.endPoint = CGPoint.init(x: 0.0, y: 1.0)
@@ -86,24 +86,24 @@ class AwemeListCell: BaseTableViewCell<Aweme> {
         hoverTextView.hoverDelegate = self
         self.contentView.addSubview(hoverTextView)
         
-        playerStatusBar.backgroundColor = ColorWhite
+        playerStatusBar.backgroundColor = UIColor.whitex
         playerStatusBar.isHidden = true
         container.addSubview(playerStatusBar)
         
         musicIcon.contentMode = .center
         container.addSubview(musicIcon)
         
-        musicName.textColor = ColorWhite
-        musicName.font = MediumFont
+        musicName.textColor = UIColor.whitex
+        musicName.font = .middle
         container.addSubview(musicName)
         
         desc.numberOfLines = 0
-        desc.textColor = ColorWhiteAlpha80
-        desc.font = MediumFont
+        desc.textColor = UIColor.whiteAlpha(0.8)
+        desc.font = .middle
         container.addSubview(desc)
         
-        nickName.textColor = ColorWhite
-        nickName.font = BigBoldFont
+        nickName.textColor = UIColor.whitex
+        nickName.font = .big
         container.addSubview(nickName)
         
         container.addSubview(musicAlum)
@@ -115,8 +115,8 @@ class AwemeListCell: BaseTableViewCell<Aweme> {
         container.addSubview(share)
         
         shareNum.text = "0"
-        shareNum.textColor = ColorWhite
-        shareNum.font = SmallFont
+        shareNum.textColor = UIColor.whitex
+        shareNum.font = .small
         container.addSubview(shareNum)
         
         comment.contentMode = .center
@@ -126,20 +126,20 @@ class AwemeListCell: BaseTableViewCell<Aweme> {
         container.addSubview(comment)
         
         commentNum.text = "0"
-        commentNum.textColor = ColorWhite
-        commentNum.font = SmallFont
+        commentNum.textColor = UIColor.whitex
+        commentNum.font = .small
         container.addSubview(commentNum)
         
         container.addSubview(favorite)
         
         favoriteNum.text = "0"
-        favoriteNum.textColor = ColorWhite
-        favoriteNum.font = SmallFont
+        favoriteNum.textColor = UIColor.whitex
+        favoriteNum.font = .small
         container.addSubview(favoriteNum)
         
         let avatarRadius:CGFloat = 25
         avatar.layer.cornerRadius = avatarRadius
-        avatar.layer.borderColor = ColorWhiteAlpha80.cgColor
+        avatar.layer.borderColor = UIColor.whiteAlpha(0.8).cgColor
         avatar.layer.borderWidth = 1
         container.addSubview(avatar)
         
@@ -182,18 +182,18 @@ class AwemeListCell: BaseTableViewCell<Aweme> {
         musicName.snp.makeConstraints { make in
             make.left.equalTo(self.musicIcon.snp.right)
             make.centerY.equalTo(self.musicIcon)
-            make.width.equalTo(screenWidth/2)
+            make.width.equalTo(APPW/2)
             make.height.equalTo(20)
         }
         desc.snp.makeConstraints { make in
             make.left.equalTo(self).offset(10)
             make.bottom.equalTo(self.musicIcon.snp.top).inset(-5)
-            make.width.lessThanOrEqualTo(screenWidth / 5 * 3)
+            make.width.lessThanOrEqualTo(APPW / 5 * 3)
         }
         nickName.snp.makeConstraints { make in
             make.left.equalTo(self).offset(10)
             make.bottom.equalTo(self.desc.snp.top).inset(-5)
-            make.width.lessThanOrEqualTo(screenWidth / 4 * 3 + 30)
+            make.width.lessThanOrEqualTo(APPW / 4 * 3 + 30)
         }
         musicAlum.snp.makeConstraints { make in
             make.bottom.equalTo(self.musicName)
@@ -363,7 +363,7 @@ extension AwemeListCell {
     
     func startLoadingPlayItemAnim(_ isStart:Bool = true) {
         if isStart {
-            playerStatusBar.backgroundColor = ColorWhite
+            playerStatusBar.backgroundColor = UIColor.whitex
             playerStatusBar.isHidden = false
             playerStatusBar.layer.removeAllAnimations()
             
@@ -376,7 +376,7 @@ extension AwemeListCell {
             let scaleAnim = CABasicAnimation.init()
             scaleAnim.keyPath = "transform.scale.x"
             scaleAnim.fromValue = 1.0
-            scaleAnim.toValue = 1.0 * screenWidth
+            scaleAnim.toValue = 1.0 * APPW
             
             let alphaAnim = CABasicAnimation.init()
             alphaAnim.keyPath = "opacity"

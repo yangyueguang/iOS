@@ -9,6 +9,8 @@
 import Foundation
 //FIXME:里面定义各种程序中要用的枚举类型
 public extension UIFont {
+    static var sbig: UIFont {return UIFont.systemFont(ofSize: 26)}
+    static var huge: UIFont {return UIFont.systemFont(ofSize: 20)}
     static var large: UIFont {return UIFont.systemFont(ofSize: 18)}
     static var big: UIFont {return UIFont.systemFont(ofSize: 16)}
     static var normal: UIFont {return UIFont.systemFont(ofSize: 15)}
@@ -38,6 +40,12 @@ public extension UIColor {
     class var blackx: UIColor {return UIColor.black }
     class var whitex: UIColor {return UIColor.white }
     class var grayx: UIColor {return UIColor.gray }
+    class func blackAlpha(_ alpha: CGFloat) -> UIColor {
+        return UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: alpha)
+    }
+    class func whiteAlpha(_ alpha: CGFloat) -> UIColor {
+        return UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: alpha)
+    }
 }
 
 enum StoryName: String {

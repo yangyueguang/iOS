@@ -17,12 +17,12 @@ class DouyinBaseViewController: BaseViewController {
     }
 
     func initNavigationBarTransparent() {
-        setNavigationBarTitleColor(color: ColorWhite)
+        setNavigationBarTitleColor(color: UIColor.whitex)
         setNavigationBarBackgroundImage(image: UIImage.init())
         setStatusBarStyle(style: .lightContent)
         setNavigationBarShadowImage(image: UIImage.init())
         initLeftBarButton(imageName: "icon_titlebar_whiteback")
-        setBackgroundColor(color: ColorThemeBackground)
+        setBackgroundColor(color: .back)
     }
 
     func setBackgroundColor(color: UIColor) {
@@ -32,7 +32,7 @@ class DouyinBaseViewController: BaseViewController {
 
     func initLeftBarButton(imageName: String) {
         let leftButton = UIBarButtonItem.init(image: UIImage.init(named: imageName), style: .plain, target: self, action: #selector(back))
-        leftButton.tintColor = ColorWhite
+        leftButton.tintColor = UIColor.whitex
         self.navigationItem.leftBarButtonItem = leftButton;
     }
 
@@ -92,7 +92,7 @@ class DouyinBaseViewController: BaseViewController {
     }
 
     func setBackgroundImage(imageName:String) {
-        let background = UIImageView.init(frame: screenFrame)
+        let background = UIImageView.init(frame: UIScreen.main.bounds)
         background.clipsToBounds = true
         background.contentMode = .scaleAspectFill
         background.image = UIImage.init(named: imageName)

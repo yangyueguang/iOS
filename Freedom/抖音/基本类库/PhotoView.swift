@@ -53,7 +53,7 @@ class PhotoView: UIView {
     }
     
     init(_ urlPath:String? = "", _ image:UIImage? = UIImage.init()) {
-        super.init(frame: screenFrame)
+        super.init(frame: UIScreen.main.bounds)
         self.urlPath = urlPath
         self.image = image
         self.initSubView()
@@ -67,7 +67,7 @@ class PhotoView: UIView {
     func initSubView() {
         self.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(handleGuesture(sender:))))
         container.frame = self.bounds
-        container.backgroundColor = ColorBlack
+        container.backgroundColor = UIColor.blackx
         container.alpha = 0.0
         self.addSubview(container)
         

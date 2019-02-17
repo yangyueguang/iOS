@@ -11,7 +11,7 @@ class TimeCell:BaseTableViewCell<GroupChat> {
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
-        self.backgroundColor = ColorClear
+        self.backgroundColor = UIColor.clear
         initSubViews()
     }
 
@@ -20,7 +20,7 @@ class TimeCell:BaseTableViewCell<GroupChat> {
         textView.font = TimeCell.attributes()[.font] as? UIFont
         textView.isScrollEnabled = false
         textView.isEditable = false
-        textView.backgroundColor = ColorClear
+        textView.backgroundColor = UIColor.clear
         textView.textContainerInset = UIEdgeInsets.init(top: SYS_MSG_CORNER_RADIUS*2, left: SYS_MSG_CORNER_RADIUS, bottom: 0, right: SYS_MSG_CORNER_RADIUS)
         textView.textContainer.lineFragmentPadding = 0
         self.addSubview(textView)
@@ -45,7 +45,7 @@ class TimeCell:BaseTableViewCell<GroupChat> {
     }
 
     static func attributes() -> [NSAttributedString.Key:Any] {
-        return [.font: SmallFont, .foregroundColor:ColorGray]
+        return [.font: UIFont.small, .foregroundColor:UIColor.grayx]
     }
 
     static func cellHeight(chat:GroupChat) -> CGFloat {
@@ -67,7 +67,7 @@ class SystemMessageCell:BaseTableViewCell<GroupChat> {
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
-        self.backgroundColor = ColorClear
+        self.backgroundColor = UIColor.clear
         initSubViews()
     }
 
@@ -77,7 +77,7 @@ class SystemMessageCell:BaseTableViewCell<GroupChat> {
         textView.isScrollEnabled = false
         textView.isEditable = false
         textView.isSelectable = false
-        textView.backgroundColor = ColorGrayDark
+        textView.backgroundColor = UIColor.dark
         textView.textContainerInset = UIEdgeInsets.init(top: SYS_MSG_CORNER_RADIUS, left: SYS_MSG_CORNER_RADIUS, bottom: SYS_MSG_CORNER_RADIUS, right: SYS_MSG_CORNER_RADIUS)
         textView.textContainer.lineFragmentPadding = 0
         textView.layer.cornerRadius = SYS_MSG_CORNER_RADIUS
@@ -92,7 +92,7 @@ class SystemMessageCell:BaseTableViewCell<GroupChat> {
         super.layoutSubviews()
         let attributedString = NSMutableAttributedString.init(attributedString: textView.attributedText)
         let size = attributedString.multiLineSize(width: MAX_SYS_MSG_WIDTH)
-        textView.frame = CGRect.init(x: screenWidth/2 - size.width/2 - SYS_MSG_CORNER_RADIUS, y: COMMON_MSG_PADDING*2, width: size.width + SYS_MSG_CORNER_RADIUS * 2, height: size.height + SYS_MSG_CORNER_RADIUS * 2)
+        textView.frame = CGRect.init(x: APPW/2 - size.width/2 - SYS_MSG_CORNER_RADIUS, y: COMMON_MSG_PADDING*2, width: size.width + SYS_MSG_CORNER_RADIUS * 2, height: size.height + SYS_MSG_CORNER_RADIUS * 2)
     }
 
     func initData(chat:GroupChat) {
@@ -103,7 +103,7 @@ class SystemMessageCell:BaseTableViewCell<GroupChat> {
     }
 
     static func attributes() -> [NSAttributedString.Key:Any] {
-        return [.font: MediumFont, .foregroundColor:ColorGray]
+        return [.font: UIFont.middle, .foregroundColor:UIColor.grayx]
     }
 
     static func cellHeight(chat:GroupChat) -> CGFloat {
@@ -135,7 +135,7 @@ class ImageMessageCell:BaseTableViewCell<GroupChat> {
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
-        self.backgroundColor = ColorClear
+        self.backgroundColor = UIColor.clear
         initSubViews()
     }
 
@@ -144,7 +144,7 @@ class ImageMessageCell:BaseTableViewCell<GroupChat> {
         avatar.contentMode = .scaleToFill
         self.addSubview(avatar)
 
-        imageMsg.backgroundColor = ColorGray;
+        imageMsg.backgroundColor = UIColor.grayx;
         imageMsg.contentMode = .scaleAspectFit;
         imageMsg.layer.cornerRadius = MSG_IMAGE_CORNOR_RADIUS;
         imageMsg.isUserInteractionEnabled = true;
@@ -165,7 +165,7 @@ class ImageMessageCell:BaseTableViewCell<GroupChat> {
     override func layoutSubviews() {
         super.layoutSubviews()
         if MD5_UDID == chat?.visitor?.udid {
-            avatar.frame = CGRect.init(x: screenWidth - COMMON_MSG_PADDING - 30, y: COMMON_MSG_PADDING, width: 30, height: 30)
+            avatar.frame = CGRect.init(x: APPW - COMMON_MSG_PADDING - 30, y: COMMON_MSG_PADDING, width: 30, height: 30)
         } else {
             avatar.frame = CGRect.init(x: COMMON_MSG_PADDING, y: COMMON_MSG_PADDING, width: 30, height: 30)
         }
@@ -333,7 +333,7 @@ class TextMessageCell: BaseTableViewCell<GroupChat> {
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
-        self.backgroundColor = ColorClear
+        self.backgroundColor = UIColor.clear
         initSubViews()
     }
 
@@ -347,7 +347,7 @@ class TextMessageCell: BaseTableViewCell<GroupChat> {
         textView.isEditable = false
         textView.isSelectable = false
         textView.isScrollEnabled = false
-        textView.backgroundColor = ColorClear
+        textView.backgroundColor = UIColor.clear
         textView.textContainerInset = UIEdgeInsets.init(top: USER_MSG_CORNER_RADIUS, left: USER_MSG_CORNER_RADIUS, bottom: USER_MSG_CORNER_RADIUS, right: USER_MSG_CORNER_RADIUS)
         textView.textContainer.lineFragmentPadding = 0
         textView.addGestureRecognizer(UILongPressGestureRecognizer.init(target: self, action: #selector(showMenu)))
@@ -383,14 +383,14 @@ class TextMessageCell: BaseTableViewCell<GroupChat> {
         backgroundLayer.frame = CGRect.init(origin: .zero, size: CGSize.init(width: size.width + USER_MSG_CORNER_RADIUS * 2, height: size.height + USER_MSG_CORNER_RADIUS * 2))
         backgroundLayer.transform = CATransform3DIdentity
         if MD5_UDID == chat?.visitor?.udid {
-            avatar.frame = CGRect.init(x: screenWidth - COMMON_MSG_PADDING - 30, y: COMMON_MSG_PADDING, width: 30, height: 30)
+            avatar.frame = CGRect.init(x: APPW - COMMON_MSG_PADDING - 30, y: COMMON_MSG_PADDING, width: 30, height: 30)
             textView.frame = CGRect.init(x: self.avatar.frame.minX - COMMON_MSG_PADDING - (size.width + USER_MSG_CORNER_RADIUS * 2), y: COMMON_MSG_PADDING, width: size.width + USER_MSG_CORNER_RADIUS * 2, height: size.height + USER_MSG_CORNER_RADIUS * 2)
             backgroundLayer.transform = CATransform3DMakeRotation(.pi, 0.0, 1.0, 0.0)
-            backgroundLayer.fillColor = ColorThemeYellow.cgColor
+            backgroundLayer.fillColor = UIColor.yellowx.cgColor
         } else {
             avatar.frame = CGRect.init(x: COMMON_MSG_PADDING, y: COMMON_MSG_PADDING, width: 30, height: 30)
             textView.frame = CGRect.init(x: self.avatar.frame.maxX + COMMON_MSG_PADDING, y: COMMON_MSG_PADDING, width: size.width + USER_MSG_CORNER_RADIUS * 2, height: size.height + USER_MSG_CORNER_RADIUS * 2)
-            backgroundLayer.fillColor = ColorWhite.cgColor
+            backgroundLayer.fillColor = UIColor.whitex.cgColor
         }
         CATransaction.commit()
         indicator.snp.makeConstraints { make in
@@ -500,7 +500,7 @@ class TextMessageCell: BaseTableViewCell<GroupChat> {
     }
 
     static func attributes() -> [NSAttributedString.Key:Any] {
-        return [.font: BigFont, .foregroundColor:ColorBlack]
+        return [.font: UIFont.big, .foregroundColor:UIColor.blackx]
     }
 
     static func cellHeight(chat:GroupChat) -> CGFloat {

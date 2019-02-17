@@ -10,7 +10,7 @@ import Foundation
 import Photos
 class EmotionHelper:NSObject {
 
-    static let EmotionFont = BigFont
+    static let EmotionFont = UIFont.big
 
     //获取emotion.json中的以表情图片文件名作为key值、表情对应的文本作为value值的字典dic
     static let emotionDic:[String:String] = {
@@ -146,7 +146,7 @@ class ChatTextView:UIView {
     }()
     
     init() {
-        super.init(frame: screenFrame)
+        super.init(frame: UIScreen.main.bounds)
         initSubView()
     }
     
@@ -156,22 +156,22 @@ class ChatTextView:UIView {
     }
     
     func initSubView() {
-        self.backgroundColor = ColorClear
+        self.backgroundColor = UIColor.clear
         let tapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(handleGuesture(sender:)))
         tapGestureRecognizer.delegate = self
         self.addGestureRecognizer(tapGestureRecognizer)
         
-        container.frame = CGRect.init(x: 0, y: screenHeight, width: screenWidth, height: 0)
-        container.backgroundColor = ColorThemeGrayDark
+        container.frame = CGRect.init(x: 0, y: APPH, width: APPW, height: 0)
+        container.backgroundColor = .grayx
         self.addSubview(container)
         
         containerBoardHeight = safeAreaBottomHeight
         
-        textView.frame = CGRect.init(x: 0, y: screenHeight, width: screenWidth, height: 0)
-        textView.backgroundColor = ColorClear
+        textView.frame = CGRect.init(x: 0, y: APPH, width: APPW, height: 0)
+        textView.backgroundColor = UIColor.clear
         textView.clipsToBounds = true
-        textView.textColor = ColorWhite
-        textView.font = BigFont
+        textView.textColor = UIColor.whitex
+        textView.font = .big
         textView.returnKeyType = .send
         textView.isScrollEnabled = false
         textView.textContainer.lineBreakMode = .byTruncatingTail
@@ -179,10 +179,10 @@ class ChatTextView:UIView {
         textView.textContainer.lineFragmentPadding = 0
         textHeight = textView.font?.lineHeight ?? 0
         
-        placeHolderLabel.frame = CGRect.init(x:LEFT_INSET, y:0, width:screenWidth - LEFT_INSET - RIGHT_INSET, height:50)
+        placeHolderLabel.frame = CGRect.init(x:LEFT_INSET, y:0, width:APPW - LEFT_INSET - RIGHT_INSET, height:50)
         placeHolderLabel.text = "发送消息..."
-        placeHolderLabel.textColor = ColorGray
-        placeHolderLabel.font = BigFont
+        placeHolderLabel.textColor = UIColor.grayx
+        placeHolderLabel.font = .big
         textView.addSubview(placeHolderLabel)
 //        textView.setValue(placeHolderLabel, forKey: "_placeholderLabel")
         
@@ -208,14 +208,14 @@ class ChatTextView:UIView {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "containerBoardHeight" {
             if containerBoardHeight == safeAreaBottomHeight {
-                container.backgroundColor = ColorThemeGrayDark
-                textView.textColor = ColorWhite
+                container.backgroundColor = .grayx
+                textView.textColor = UIColor.whitex
                 
                 emotionBtn.setImage(UIImage.init(named: "baseline_emotion_white"), for: .normal)
                 photoBtn.setImage(UIImage.init(named: "outline_photo_white"), for: .normal)
             } else {
-                container.backgroundColor = ColorWhite
-                textView.textColor = ColorBlack
+                container.backgroundColor = UIColor.whitex
+                textView.textColor = UIColor.blackx
                 
                 emotionBtn.setImage(UIImage.init(named: "baseline_emotion_grey"), for: .normal)
                 photoBtn.setImage(UIImage.init(named: "outline_photo_grey"), for: .normal)
@@ -229,8 +229,8 @@ class ChatTextView:UIView {
         super.layoutSubviews()
         updateContainerFrame()
         
-        photoBtn.frame = CGRect.init(x: screenWidth - 50, y: 0, width: 50, height: 50)
-        emotionBtn.frame = CGRect.init(x: screenWidth - 85, y: 0, width: 50, height: 50)
+        photoBtn.frame = CGRect.init(x: APPW - 50, y: 0, width: 50, height: 50)
+        emotionBtn.frame = CGRect.init(x: APPW - 85, y: 0, width: 50, height: 50)
         
         let rounded = UIBezierPath.init(roundedRect: self.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize.init(width: 10.0, height: 10.0))
         let shape = CAShapeLayer.init()
@@ -249,26 +249,26 @@ class ChatTextView:UIView {
     }
     
     func updateContainerFrame() {
-        let textViewHeight = containerBoardHeight > safeAreaBottomHeight ? textHeight + 2*TOP_BOTTOM_INSET : BigFont.lineHeight + 2*TOP_BOTTOM_INSET
-        textView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: textViewHeight)
+        let textViewHeight = containerBoardHeight > safeAreaBottomHeight ? textHeight + 2*TOP_BOTTOM_INSET : UIFont.big.lineHeight + 2*TOP_BOTTOM_INSET
+        textView.frame = CGRect.init(x: 0, y: 0, width: APPW, height: textViewHeight)
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
-            self.container.frame = CGRect.init(x: 0, y: screenHeight - self.containerBoardHeight - textViewHeight, width: screenWidth, height: self.containerBoardHeight + textViewHeight)
+            self.container.frame = CGRect.init(x: 0, y: APPH - self.containerBoardHeight - textViewHeight, width: APPW, height: self.containerBoardHeight + textViewHeight)
             self.delegate?.onEditBoardHeightChange(height: self.container.frame.height)
         }) { finished in
         }
     }
     
     func updateSelectorFrame(animated:Bool) {
-        let textViewHeight = containerBoardHeight > 0 ? textHeight + 2*TOP_BOTTOM_INSET : BigFont.lineHeight + 2*TOP_BOTTOM_INSET;
+        let textViewHeight = containerBoardHeight > 0 ? textHeight + 2*TOP_BOTTOM_INSET : UIFont.big.lineHeight + 2*TOP_BOTTOM_INSET;
         if animated {
             switch (self.editMessageType) {
             case .EditEmotionMessage:
                 self.emotionSelector.isHidden = false
-                self.emotionSelector.frame = CGRect.init(x: 0, y: textViewHeight + self.containerBoardHeight, width: screenWidth, height: self.containerBoardHeight)
+                self.emotionSelector.frame = CGRect.init(x: 0, y: textViewHeight + self.containerBoardHeight, width: APPW, height: self.containerBoardHeight)
                 break
             case .EditPhotoMessage:
                 self.photoSelector.isHidden = false
-                self.photoSelector.frame = CGRect.init(x: 0, y: textViewHeight + self.containerBoardHeight, width: screenWidth, height: self.containerBoardHeight)
+                self.photoSelector.frame = CGRect.init(x: 0, y: textViewHeight + self.containerBoardHeight, width: APPW, height: self.containerBoardHeight)
                 break
             default:
                 break
@@ -277,16 +277,16 @@ class ChatTextView:UIView {
         UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseInOut, animations: {
             switch (self.editMessageType) {
             case .EditEmotionMessage:
-                self.emotionSelector.frame = CGRect.init(x:0, y:textViewHeight, width:screenWidth, height:self.containerBoardHeight)
-                self.photoSelector.frame = CGRect.init(x:0, y:textViewHeight + self.containerBoardHeight, width:screenWidth,  height:self.containerBoardHeight)
+                self.emotionSelector.frame = CGRect.init(x:0, y:textViewHeight, width:APPW, height:self.containerBoardHeight)
+                self.photoSelector.frame = CGRect.init(x:0, y:textViewHeight + self.containerBoardHeight, width:APPW,  height:self.containerBoardHeight)
                 break
             case .EditPhotoMessage:
-                self.photoSelector.frame = CGRect.init(x:0, y:textViewHeight,width:screenWidth, height:self.containerBoardHeight);
-                self.emotionSelector.frame = CGRect.init(x:0, y:textViewHeight + self.containerBoardHeight, width:screenWidth, height:self.containerBoardHeight)
+                self.photoSelector.frame = CGRect.init(x:0, y:textViewHeight,width:APPW, height:self.containerBoardHeight);
+                self.emotionSelector.frame = CGRect.init(x:0, y:textViewHeight + self.containerBoardHeight, width:APPW, height:self.containerBoardHeight)
                 break
             default:
-                self.photoSelector.frame = CGRect.init(x:0, y:textViewHeight + self.containerBoardHeight, width:screenWidth,  height:self.containerBoardHeight)
-                self.emotionSelector.frame = CGRect.init(x:0, y:textViewHeight + self.containerBoardHeight, width:screenWidth,  height:self.containerBoardHeight)
+                self.photoSelector.frame = CGRect.init(x:0, y:textViewHeight + self.containerBoardHeight, width:APPW,  height:self.containerBoardHeight)
+                self.emotionSelector.frame = CGRect.init(x:0, y:textViewHeight + self.containerBoardHeight, width:APPW,  height:self.containerBoardHeight)
                 break
             }
         }) { finished in
@@ -354,7 +354,7 @@ extension ChatTextView:UITextViewDelegate {
             textHeight = textView.font?.lineHeight ?? 0
         } else {
             placeHolderLabel.isHidden = true
-            textHeight = attributedString.multiLineSize(width: screenWidth - LEFT_INSET - RIGHT_INSET).height
+            textHeight = attributedString.multiLineSize(width: APPW - LEFT_INSET - RIGHT_INSET).height
         }
         updateContainerFrame()
         updateSelectorFrame(animated: false)
@@ -457,7 +457,7 @@ extension ChatTextView:EmotionSelectorDelegate {
         let location = textView.selectedRange.location
         textView.attributedText = EmotionHelper.insertEmotion(str: textView.attributedText, index: location, key: emotionKey)
         textView.selectedRange = NSRange.init(location: location + 1, length: 0)
-        textHeight = textView.attributedText.multiLineSize(width: screenWidth - LEFT_INSET - RIGHT_INSET).height
+        textHeight = textView.attributedText.multiLineSize(width: APPW - LEFT_INSET - RIGHT_INSET).height
         updateContainerFrame()
         updateSelectorFrame(animated: false)
     }
@@ -513,7 +513,7 @@ class EmotionSelector:UIView,UICollectionViewDelegate,UICollectionViewDataSource
     var send = UIButton.init()
 
     init() {
-        super.init(frame: CGRect.init(origin: .zero, size: CGSize.init(width: screenWidth, height: EMOTION_SELECTOR_HEIGHT)))
+        super.init(frame: CGRect.init(origin: .zero, size: CGSize.init(width: APPW, height: EMOTION_SELECTOR_HEIGHT)))
         initSubView()
     }
 
@@ -523,12 +523,12 @@ class EmotionSelector:UIView,UICollectionViewDelegate,UICollectionViewDataSource
     }
 
     func initSubView() {
-        self.backgroundColor = ColorSmoke;
+        self.backgroundColor = .grayx;
         self.clipsToBounds = false;
         emotionDic = EmotionHelper.emotionDic
         data = EmotionHelper.emotionArray
 
-        itemWidth = screenWidth / 7.0
+        itemWidth = APPW / 7.0
         itemHeight = 50
 
         let layout = UICollectionViewFlowLayout.init()
@@ -537,8 +537,8 @@ class EmotionSelector:UIView,UICollectionViewDelegate,UICollectionViewDataSource
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.itemSize = CGSize.init(width: itemWidth, height: itemHeight)
-        collectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: itemHeight * 3), collectionViewLayout: layout)
-        collectionView?.backgroundColor = ColorClear
+        collectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: 0, width: APPW, height: itemHeight * 3), collectionViewLayout: layout)
+        collectionView?.backgroundColor = UIColor.clear
         collectionView?.alwaysBounceHorizontal = false
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.delegate = self
@@ -551,22 +551,22 @@ class EmotionSelector:UIView,UICollectionViewDelegate,UICollectionViewDataSource
         let indicatorHeight:CGFloat = 5
         let indicatorSpacing:CGFloat = 8
         for index in 0..<data.count {
-            let pointView = UIView.init(frame:CGRect.init(x:screenWidth/2 - (indicatorWith*CGFloat(data.count) + indicatorSpacing*CGFloat(data.count-1))/2 + (indicatorWith + indicatorSpacing)*CGFloat(index),y:(collectionView?.frame.height)!,width:indicatorWith,height:indicatorHeight))
+            let pointView = UIView.init(frame:CGRect.init(x:APPW/2 - (indicatorWith*CGFloat(data.count) + indicatorSpacing*CGFloat(data.count-1))/2 + (indicatorWith + indicatorSpacing)*CGFloat(index),y:(collectionView?.frame.height)!,width:indicatorWith,height:indicatorHeight))
             if currentIndex == index {
-                pointView.backgroundColor = ColorThemeRed;
+                pointView.backgroundColor = UIColor.redx;
             }else {
-                pointView.backgroundColor = ColorGray;
+                pointView.backgroundColor = UIColor.grayx;
             }
             pointView.layer.cornerRadius = indicatorWith/2;
             pointViews.append(pointView)
             self.addSubview(pointView)
 
-            bottomView = UIView.init(frame: CGRect.init(x: 0, y: (collectionView?.frame.height)! + 25, width: screenWidth, height: 45 + safeAreaBottomHeight))
-            bottomView.backgroundColor = ColorWhite
+            bottomView = UIView.init(frame: CGRect.init(x: 0, y: (collectionView?.frame.height)! + 25, width: APPW, height: 45 + safeAreaBottomHeight))
+            bottomView.backgroundColor = UIColor.whitex
             self.addSubview(bottomView)
 
             let leftView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: itemWidth, height: 45 + safeAreaBottomHeight))
-            leftView.backgroundColor = ColorSmoke
+            leftView.backgroundColor = .grayx
             bottomView.addSubview(leftView)
 
             let defaultEmotion = UIImageView.init(frame: CGRect.init(origin: .zero, size: CGSize.init(width: itemWidth, height: 45)))
@@ -574,14 +574,14 @@ class EmotionSelector:UIView,UICollectionViewDelegate,UICollectionViewDataSource
             defaultEmotion.image = UIImage.init(named: "default_emoticon_cover")
             leftView.addSubview(defaultEmotion)
 
-            send = UIButton.init(frame: CGRect.init(x: screenWidth - 60 - 15, y: 10, width: 60, height: 25))
+            send = UIButton.init(frame: CGRect.init(x: APPW - 60 - 15, y: 10, width: 60, height: 25))
 
             send.isEnabled = false
-            send.backgroundColor = ColorSmoke
+            send.backgroundColor = .grayx
             send.layer.cornerRadius = 2
-            send.titleLabel?.font = MediumFont
+            send.titleLabel?.font = .middle
             send.setTitle("发送", for: .normal)
-            send.tintColor = ColorWhite
+            send.tintColor = UIColor.whitex
             send.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
             bottomView.addSubview(send)
         }
@@ -595,9 +595,9 @@ class EmotionSelector:UIView,UICollectionViewDelegate,UICollectionViewDataSource
         for index in 0..<pointViews.count {
             let pointView = pointViews[index]
             if currentIndex == index {
-                pointView.backgroundColor = ColorThemeRed;
+                pointView.backgroundColor = UIColor.redx;
             }else {
-                pointView.backgroundColor = ColorGray;
+                pointView.backgroundColor = UIColor.grayx;
             }
         }
     }
@@ -618,10 +618,10 @@ class EmotionSelector:UIView,UICollectionViewDelegate,UICollectionViewDataSource
         if keyPath == "attributedText" {
             let attributedString = change![NSKeyValueChangeKey.newKey] as? NSAttributedString
             if(attributedString != nil && (attributedString?.length ?? 0) > 0) {
-                send.backgroundColor = ColorThemeRed
+                send.backgroundColor = UIColor.redx
                 send.isEnabled = true
             }else {
-                send.backgroundColor = ColorSmoke
+                send.backgroundColor = .grayx
                 send.isEnabled = false
             }
         } else {
@@ -748,7 +748,7 @@ class PhotoSelector:UIView, UICollectionViewDelegate, UICollectionViewDataSource
     var send = UIButton.init()
 
     init() {
-        super.init(frame: CGRect.init(origin: .zero, size: CGSize.init(width: screenWidth, height: PHOTO_SELECTOR_HEIGHT)))
+        super.init(frame: CGRect.init(origin: .zero, size: CGSize.init(width: APPW, height: PHOTO_SELECTOR_HEIGHT)))
         initSubView()
     }
 
@@ -759,7 +759,7 @@ class PhotoSelector:UIView, UICollectionViewDelegate, UICollectionViewDataSource
 
     func initSubView() {
 
-        self.backgroundColor = ColorSmoke;
+        self.backgroundColor = .grayx;
         self.clipsToBounds = false;
 
         let options = PHFetchOptions.init()
@@ -775,8 +775,8 @@ class PhotoSelector:UIView, UICollectionViewDelegate, UICollectionViewDataSource
         layout.sectionInset = UIEdgeInsets.init(top:0, left:0, bottom:0, right:0)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 2.5
-        collectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: 2.5, width: screenWidth, height: PHOTO_ITEM_HEIGHT), collectionViewLayout: layout)
-        collectionView?.backgroundColor = ColorClear
+        collectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: 2.5, width: APPW, height: PHOTO_ITEM_HEIGHT), collectionViewLayout: layout)
+        collectionView?.backgroundColor = UIColor.clear
         collectionView?.alwaysBounceHorizontal = false
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.delegate = self
@@ -784,38 +784,38 @@ class PhotoSelector:UIView, UICollectionViewDelegate, UICollectionViewDataSource
         collectionView?.register(PhotoCell.classForCoder(), forCellWithReuseIdentifier: PhotoCell.identifier)
         self.addSubview(collectionView!)
 
-        bottomView.frame = CGRect.init(x: 0, y: (collectionView?.frame.maxY)! + 2.5, width: screenWidth, height: 45 + safeAreaBottomHeight)
-        bottomView.backgroundColor = ColorWhite
+        bottomView.frame = CGRect.init(x: 0, y: (collectionView?.frame.maxY)! + 2.5, width: APPW, height: 45 + safeAreaBottomHeight)
+        bottomView.backgroundColor = UIColor.whitex
         self.addSubview(bottomView)
 
         album = UIButton.init(frame: CGRect.init(x: 15, y: 10, width: 40, height: 25))
         album.tag = ALBUM_TAG
-        album.titleLabel?.font = BigFont
+        album.titleLabel?.font = .big
         album.setTitle("相册", for: .normal)
-        album.setTitleColor(ColorThemeRed, for: .normal)
+        album.setTitleColor(UIColor.redx, for: .normal)
         album.addTarget(self, action: #selector(onButtonClick(sender:)), for: .touchUpInside)
         bottomView.addSubview(album)
 
         originalPhoto = UIButton.init(frame: CGRect.init(x: album.frame.maxX + 10, y: 10, width: 60, height: 25))
         originalPhoto.tag = ORIGINAL_PHOTO_TAG;
         originalPhoto.titleEdgeInsets = UIEdgeInsets.init(top: 0, left: 2, bottom: 0, right: 0)
-        originalPhoto.titleLabel?.font = BigFont;
+        originalPhoto.titleLabel?.font = .big;
         originalPhoto.setTitle("原图", for: .normal)
-        originalPhoto.setTitleColor(ColorThemeRed, for: .normal)
+        originalPhoto.setTitleColor(UIColor.redx, for: .normal)
         originalPhoto.setImage(UIImage.init(named: "radio_button_unchecked_white"), for: .normal)
         originalPhoto.setImage(UIImage.init(named: "radio_button_checked_red"), for: .selected)
         originalPhoto.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -2, bottom: 0, right: 0)
         originalPhoto.addTarget(self, action: #selector(onButtonClick(sender:)), for: .touchUpInside)
         bottomView.addSubview(originalPhoto)
 
-        send = UIButton.init(frame: CGRect.init(x: screenWidth - 60 - 15, y: 10, width: 60, height: 25))
+        send = UIButton.init(frame: CGRect.init(x: APPW - 60 - 15, y: 10, width: 60, height: 25))
         send.tag = SEND_TAG;
         send.isEnabled = false
-        send.backgroundColor = ColorSmoke
+        send.backgroundColor = .grayx
         send.layer.cornerRadius = 2
-        send.titleLabel?.font = MediumFont
+        send.titleLabel?.font = .middle
         send.setTitle("发送", for: .normal)
-        send.setTitleColor(ColorWhite, for: .normal)
+        send.setTitleColor(UIColor.whitex, for: .normal)
         send.addTarget(self, action: #selector(onButtonClick(sender:)), for: .touchUpInside)
         bottomView.addSubview(send)
     }
@@ -884,10 +884,10 @@ class PhotoSelector:UIView, UICollectionViewDelegate, UICollectionViewDataSource
             }
             if self?.selectedData.count ?? 0 > 0 {
                 self?.send.isEnabled = true
-                self?.send.backgroundColor = ColorThemeRed
+                self?.send.backgroundColor = UIColor.redx
             } else {
                 self?.send.isEnabled = false
-                self?.send.backgroundColor = ColorSmoke
+                self?.send.backgroundColor = .grayx
             }
         }
         return cell
@@ -926,7 +926,7 @@ class PhotoCell:UICollectionViewCell {
         photo.contentMode = .scaleAspectFill;
         self.contentView.addSubview(photo)
 
-        coverLayer.backgroundColor = ColorBlackAlpha60.cgColor
+        coverLayer.backgroundColor = UIColor.blackAlpha(0.6).cgColor
         coverLayer.isHidden = true
         photo.layer.addSublayer(coverLayer)
 

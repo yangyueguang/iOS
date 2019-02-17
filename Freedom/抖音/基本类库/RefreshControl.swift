@@ -18,7 +18,7 @@ class RefreshControl: UIControl {
     var onRefresh: OnRefresh?
     
     init() {
-        super.init(frame: CGRect.init(x: 0, y: -50, width: screenWidth, height: 50))
+        super.init(frame: CGRect.init(x: 0, y: -50, width: APPW, height: 50))
         self.addSubview(indicator)
     }
     

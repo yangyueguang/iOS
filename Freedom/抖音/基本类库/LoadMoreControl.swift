@@ -100,8 +100,8 @@ class LoadMoreControl:UIControl {
         self.addSubview(indicator)
         
         label.text = "正在加载..."
-        label.textColor = ColorGray
-        label.font = SmallFont
+        label.textColor = UIColor.grayx
+        label.font = .small
         label.textAlignment = .center
         self.addSubview(label)
     }
@@ -157,7 +157,7 @@ class LoadMoreControl:UIControl {
                                             }
                                         }
                                         if indexPath.section == lastSection && indexPath.row == lastRow {
-                                            self.frame = CGRect.init(x: 0, y: tableView.visibleCells.last?.frame.maxY ?? 0, width: screenWidth, height: 50)
+                                            self.frame = CGRect.init(x: 0, y: tableView.visibleCells.last?.frame.maxY ?? 0, width: APPW, height: 50)
                                         }
                                     }
                                 }
@@ -183,7 +183,7 @@ class LoadMoreControl:UIControl {
                                         }
                                         if indexPath.section == lastSection && indexPath.row == lastRow {
                                             if let cell = collectionView.cellForItem(at: indexPath) {
-                                                self.frame = CGRect.init(x: 0, y: cell.frame.maxY, width: screenWidth, height: 50)
+                                                self.frame = CGRect.init(x: 0, y: cell.frame.maxY, width: APPW, height: 50)
                                             }
                                         }
                                     }
@@ -231,13 +231,13 @@ class LoadMoreControl:UIControl {
         if (superView?.isKind(of: UITableView.classForCoder()))! {
             if let tableView = superView as? UITableView {
                 let y:CGFloat = tableView.contentSize.height > originalFrame.origin.y ? tableView.contentSize.height : originalFrame.origin.y
-                self.frame = CGRect.init(x: 0, y: y, width: screenWidth, height: 50)
+                self.frame = CGRect.init(x: 0, y: y, width: APPW, height: 50)
             }
         }
         if (superView?.isKind(of: UICollectionView.classForCoder()))! {
             if let collectionView = superView as? UICollectionView {
                 let y:CGFloat = collectionView.contentSize.height > originalFrame.origin.y ? collectionView.contentSize.height : originalFrame.origin.y
-                self.frame = CGRect.init(x: 0, y: y, width: screenWidth, height: 50)
+                self.frame = CGRect.init(x: 0, y: y, width: APPW, height: 50)
             }
         }
     }

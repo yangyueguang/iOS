@@ -67,7 +67,7 @@ class UserInfoHeader: UICollectionReusableView {
         avatarBackground.frame = self.bounds
         avatarBackground.clipsToBounds = true
         avatarBackground.image = UIImage.init(named: "img_find_default")
-        avatarBackground.backgroundColor = ColorThemeGray
+        avatarBackground.backgroundColor = .grayx
         avatarBackground.contentMode = .scaleAspectFill
         self.addSubview(avatarBackground)
 
@@ -87,7 +87,7 @@ class UserInfoHeader: UICollectionReusableView {
 
         let paddingLayer = CALayer.init()
         paddingLayer.frame = CGRect.init(x: 0, y: 0, width: avatarRadius * 2, height: avatarRadius * 2)
-        paddingLayer.borderColor = ColorWhiteAlpha20.cgColor
+        paddingLayer.borderColor = UIColor.whiteAlpha(0.2).cgColor
         paddingLayer.borderWidth = 2
         paddingLayer.cornerRadius = avatarRadius
         avatar.layer.addSublayer(paddingLayer)
@@ -101,7 +101,7 @@ class UserInfoHeader: UICollectionReusableView {
 
     func initActionsView() {
         settingIcon.contentMode = .center
-        settingIcon.layer.backgroundColor = ColorWhiteAlpha20.cgColor
+        settingIcon.layer.backgroundColor = UIColor.whiteAlpha(0.2).cgColor
         settingIcon.layer.cornerRadius = 2
         settingIcon.tag = SETTING_TAG
         settingIcon.isUserInteractionEnabled = true
@@ -117,7 +117,7 @@ class UserInfoHeader: UICollectionReusableView {
         focusIcon.isUserInteractionEnabled = true
         focusIcon.clipsToBounds = true
         focusIcon.isHidden = !isFollowed
-        focusIcon.layer.backgroundColor = ColorWhiteAlpha20.cgColor
+        focusIcon.layer.backgroundColor = UIColor.whiteAlpha(0.2).cgColor
         focusIcon.layer.cornerRadius = 2
         focusIcon.tag = FOCUS_CANCEL_TAG
         focusIcon.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(onTapAction(sender:))))
@@ -129,11 +129,11 @@ class UserInfoHeader: UICollectionReusableView {
         }
 
         sendMessage.text = "发消息"
-        sendMessage.textColor = ColorWhiteAlpha60
+        sendMessage.textColor = UIColor.whiteAlpha(0.6)
         sendMessage.textAlignment = .center
-        sendMessage.font = MediumFont
+        sendMessage.font = .middle
         sendMessage.isHidden = !isFollowed
-        sendMessage.layer.backgroundColor = ColorWhiteAlpha20.cgColor
+        sendMessage.layer.backgroundColor = UIColor.whiteAlpha(0.2).cgColor
         sendMessage.layer.cornerRadius = 2
         sendMessage.tag = SEND_MESSAGE_TAG
         sendMessage.isUserInteractionEnabled = true
@@ -148,13 +148,13 @@ class UserInfoHeader: UICollectionReusableView {
 
         focusButton.titleEdgeInsets = UIEdgeInsets.init(top: 0, left: 2, bottom: 0, right: 0)
         focusButton.setTitle("关注", for: .normal)
-        focusButton.setTitleColor(ColorWhite, for: .normal)
-        focusButton.titleLabel?.font = MediumFont
+        focusButton.setTitleColor(UIColor.whitex, for: .normal)
+        focusButton.titleLabel?.font = .middle
         focusButton.isHidden = isFollowed
         focusButton.clipsToBounds = true
         focusButton.setImage(UIImage.init(named: "icon_personal_add_little"), for: .normal)
         focusButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -2, bottom: 0, right: 0)
-        focusButton.layer.backgroundColor = ColorThemeRed.cgColor
+        focusButton.layer.backgroundColor = UIColor.redx.cgColor
         focusButton.layer.cornerRadius = 2
         focusButton.tag = FOCUS_TAG
         focusButton.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(onTapAction(sender:))))
@@ -169,8 +169,8 @@ class UserInfoHeader: UICollectionReusableView {
 
     func initInfoView() {
         nickName.text = "name"
-        nickName.textColor = ColorWhite
-        nickName.font = SuperBigBoldFont
+        nickName.textColor = UIColor.whitex
+        nickName.font = UIFont.sbig
         containerView.addSubview(nickName)
         nickName.snp.makeConstraints { make in
             make.top.equalTo(self.avatar.snp.bottom).offset(20)
@@ -179,8 +179,8 @@ class UserInfoHeader: UICollectionReusableView {
         }
 
         douyinNum.text = "抖音号："
-        douyinNum.textColor = ColorWhite
-        douyinNum.font = SmallFont
+        douyinNum.textColor = UIColor.whitex
+        douyinNum.font = .small
         containerView.addSubview(douyinNum)
         douyinNum.snp.makeConstraints { make in
             make.top.equalTo(self.nickName.snp.bottom).offset(3)
@@ -196,8 +196,8 @@ class UserInfoHeader: UICollectionReusableView {
 
         github.titleEdgeInsets = UIEdgeInsets.init(top: 0, left: 3, bottom: 0, right: 0)
         github.setTitle("Github主页", for: .normal)
-        github.setTitleColor(ColorWhite, for: .normal)
-        github.titleLabel?.font = SmallFont
+        github.setTitleColor(UIColor.whitex, for: .normal)
+        github.titleLabel?.font = .small
         github.setImage(UIImage.init(named: "icon_github"), for: .normal)
         github.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -3, bottom: 0, right: 0)
         github.tag = GITHUB_TAG
@@ -210,7 +210,7 @@ class UserInfoHeader: UICollectionReusableView {
         }
 
         let splitLine = UIView.init()
-        splitLine.backgroundColor = ColorWhiteAlpha20
+        splitLine.backgroundColor = UIColor.whiteAlpha(0.2)
         containerView.addSubview(splitLine)
         splitLine.snp.makeConstraints { make in
             make.top.equalTo(self.douyinNum.snp.bottom).offset(10)
@@ -219,8 +219,8 @@ class UserInfoHeader: UICollectionReusableView {
         }
 
         brief.text = "本宝宝暂时还没想到个性的签名"
-        brief.textColor = ColorWhiteAlpha60
-        brief.font = SmallFont
+        brief.textColor = UIColor.whiteAlpha(0.6)
+        brief.font = .small
         brief.numberOfLines = 0
         containerView .addSubview(brief)
         brief.snp.makeConstraints { make in
@@ -228,7 +228,7 @@ class UserInfoHeader: UICollectionReusableView {
             make.left.right.equalTo(self.nickName)
         }
 
-        genderIcon.layer.backgroundColor = ColorWhiteAlpha20.cgColor
+        genderIcon.layer.backgroundColor = UIColor.whiteAlpha(0.2).cgColor
         genderIcon.layer.cornerRadius = 9
         genderIcon.contentMode = .center
         containerView.addSubview(genderIcon)
@@ -239,14 +239,14 @@ class UserInfoHeader: UICollectionReusableView {
             make.width.equalTo(22)
         }
 
-        constellation.textColor = ColorWhite
+        constellation.textColor = UIColor.whitex
         constellation.text = "座"
-        constellation.font = SuperSmallFont
+        constellation.font = UIFont.mini
         constellation.isScrollEnabled = false
         constellation.isEditable = false
         constellation.textContainerInset = UIEdgeInsets.init(top: 3, left: 6, bottom: 3, right: 6)
         constellation.textContainer.lineFragmentPadding = 0
-        constellation.layer.backgroundColor = ColorWhiteAlpha20.cgColor
+        constellation.layer.backgroundColor = UIColor.whiteAlpha(0.2).cgColor
         constellation.layer.cornerRadius = 9
         constellation.sizeToFit()
         containerView.addSubview(constellation)
@@ -256,8 +256,8 @@ class UserInfoHeader: UICollectionReusableView {
         }
 
         likeNum.text = "0获赞"
-        likeNum.textColor = ColorWhite
-        likeNum.font = BigBoldFont
+        likeNum.textColor = UIColor.whitex
+        likeNum.font = .big
         containerView.addSubview(likeNum)
         likeNum.snp.makeConstraints { make in
             make.top.equalTo(self.genderIcon.snp.bottom).offset(15)
@@ -265,8 +265,8 @@ class UserInfoHeader: UICollectionReusableView {
         }
 
         followNum.text = "0关注"
-        followNum.textColor = ColorWhite
-        followNum.font = BigBoldFont
+        followNum.textColor = UIColor.whitex
+        followNum.font = .big
         containerView.addSubview(followNum)
         followNum.snp.makeConstraints { make in
             make.top.equalTo(self.likeNum)
@@ -274,8 +274,8 @@ class UserInfoHeader: UICollectionReusableView {
         }
 
         followedNum.text = "0粉丝"
-        followedNum.textColor = ColorWhite
-        followedNum.font = BigBoldFont
+        followedNum.textColor = UIColor.whitex
+        followedNum.font = .big
         containerView.addSubview(followedNum)
         followedNum.snp.makeConstraints { make in
             make.top.equalTo(self.likeNum)
@@ -472,7 +472,7 @@ class SlideTabBarFooter: UICollectionReusableView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = ColorThemeGrayDark
+        self.backgroundColor = .grayx
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -485,15 +485,15 @@ class SlideTabBarFooter: UICollectionReusableView {
         }
         labels.removeAll()
 
-        itemWidth = screenWidth/(CGFloat(titles.count))
+        itemWidth = APPW/(CGFloat(titles.count))
 
         for index in 0..<titles.count {
             let title = titles[index]
             let label = UILabel.init()
             label.text = title
-            label.textColor = ColorWhiteAlpha60
+            label.textColor = UIColor.whiteAlpha(0.6)
             label.textAlignment = .center
-            label.font = MediumFont
+            label.font = .middle
             label.tag = index
             label.isUserInteractionEnabled = true
             label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(onTapAction(sender:))))
@@ -502,15 +502,15 @@ class SlideTabBarFooter: UICollectionReusableView {
             label.frame = CGRect.init(x: CGFloat(index) * itemWidth, y: 0, width: itemWidth, height: self.bounds.size.height)
             if(index != titles.count - 1) {
                 let spliteLine = UIView.init(frame: CGRect.init(x: CGFloat(index + 1) * itemWidth - 0.25, y: 12.5, width: 0.5, height: self.bounds.size.height - 25.0))
-                spliteLine.backgroundColor = ColorWhiteAlpha20
+                spliteLine.backgroundColor = UIColor.whiteAlpha(0.2)
                 spliteLine.layer.zPosition = 10
                 self.addSubview(spliteLine)
             }
         }
-        labels[tabIndex].textColor = ColorWhite
+        labels[tabIndex].textColor = UIColor.whitex
 
         slideLightView = UIView.init(frame: CGRect.init(x: CGFloat(tabIndex) * itemWidth + 15, y: self.bounds.size.height - 2, width: itemWidth - 30, height: 2))
-        slideLightView.backgroundColor = ColorThemeYellow
+        slideLightView.backgroundColor = .yellowx
         self.addSubview(slideLightView)
     }
 
@@ -523,7 +523,7 @@ class SlideTabBarFooter: UICollectionReusableView {
                 self.slideLightView.frame = frame
                 for idx in 0..<self.labels.count {
                     let label = self.labels[idx]
-                    label.textColor = index == idx ? ColorWhite : ColorWhiteAlpha60
+                    label.textColor = index == idx ? UIColor.whitex : UIColor.whiteAlpha(0.6)
                 }
             }) { finished in
                 self.delegate?.onTabTapAction(index: index)
@@ -548,13 +548,13 @@ class AwemeCollectionCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        imageView.backgroundColor = ColorThemeGray
+        imageView.backgroundColor = .grayx
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         self.addSubview(imageView)
 
         let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [ColorClear.cgColor, ColorBlackAlpha20.cgColor, ColorBlackAlpha60.cgColor]
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.blackAlpha(0.2).cgColor, UIColor.blackAlpha(0.6).cgColor]
         gradientLayer.locations = [0.3, 0.6, 1.0]
         gradientLayer.startPoint = CGPoint.init(x: 0.0, y: 0.0)
         gradientLayer.endPoint = CGPoint.init(x: 0.0, y: 1.0)
@@ -564,8 +564,8 @@ class AwemeCollectionCell: UICollectionViewCell {
         favoriteNum.contentHorizontalAlignment = .left
         favoriteNum.titleEdgeInsets = UIEdgeInsets.init(top: 0, left: 2, bottom: 0, right: 0)
         favoriteNum.setTitle("0", for: .normal)
-        favoriteNum.setTitleColor(ColorWhite, for: .normal)
-        favoriteNum.titleLabel?.font = SmallFont
+        favoriteNum.setTitleColor(UIColor.whitex, for: .normal)
+        favoriteNum.titleLabel?.font = .small
         favoriteNum.setImage(UIImage.init(named: "icon_home_likenum"), for: .normal)
         favoriteNum.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -2, bottom: 0, right: 0)
         self.addSubview(favoriteNum)

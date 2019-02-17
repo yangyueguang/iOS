@@ -40,7 +40,7 @@ class WebPImageView: UIImageView {
     
     init() {
         super.init(frame:.zero)
-        self.backgroundColor = ColorClear
+        self.backgroundColor = UIColor.clear
         displayLink = CADisplayLink.init(target: self, selector: #selector(startAnimation(link:)))
         displayLink?.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
         displayLink?.isPaused = true
@@ -54,7 +54,7 @@ class WebPImageView: UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = ColorClear
+        self.backgroundColor = UIColor.clear
         displayLink = CADisplayLink.init(target: self, selector: #selector(startAnimation(link:)))
         displayLink?.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
         displayLink?.isPaused = true
@@ -70,7 +70,7 @@ class WebPImageView: UIImageView {
     override init(image: UIImage?) {
         super.init(image: image)
         self.image = image
-        self.backgroundColor = ColorClear
+        self.backgroundColor = UIColor.clear
         displayLink = CADisplayLink.init(target: self, selector: #selector(startAnimation(link:)))
         displayLink?.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
         displayLink?.isPaused = true

@@ -16,6 +16,9 @@ public var TopHeight:CGFloat {
     }
     return 64.0
 }
+let safeAreaTopHeight:CGFloat = (APPH >= 812.0 && UIDevice.current.model == "iPhone" ? 88 : 64)
+let safeAreaBottomHeight:CGFloat = (APPH >= 812.0 && UIDevice.current.model == "iPhone"  ? 30 : 0)
+let statusBarHeight = UIApplication.shared.statusBarFrame.height
 public let APPW = UIScreen.main.bounds.size.width
 public let APPH = UIScreen.main.bounds.size.height
 public let TestWebURL = "https://www.baidu.com"

@@ -44,7 +44,7 @@ class AVPlayerView: UIView {
     var cancelLoadingQueue:DispatchQueue?
 
     init() {
-        super.init(frame: screenFrame)
+        super.init(frame: UIScreen.main.bounds)
         initSubView()
     }
 
@@ -352,7 +352,7 @@ class FavoriteView:UIView {
             for index in 0..<6 {
                 let layer = CAShapeLayer.init()
                 layer.position = favoriteBefore.center
-                layer.fillColor = ColorThemeRed.cgColor
+                layer.fillColor = UIColor.redx.cgColor
 
                 let startPath = UIBezierPath.init()
                 startPath.move(to: CGPoint.init(x: -2, y: -length))
@@ -452,7 +452,7 @@ class FocusView:UIImageView {
 
     func initSubView() {
         self.layer.cornerRadius = frame.size.width/2
-        self.layer.backgroundColor = ColorThemeRed.cgColor
+        self.layer.backgroundColor = UIColor.redx.cgColor
         self.image = UIImage.init(named: "icon_personal_add_little")
         self.contentMode = .center
         self.isUserInteractionEnabled = true
@@ -480,7 +480,7 @@ class FocusView:UIImageView {
     }
 
     func resetView() {
-        self.layer.backgroundColor = ColorThemeRed.cgColor
+        self.layer.backgroundColor = UIColor.redx.cgColor
         self.image = UIImage.init(named: "icon_personal_add_little")
         self.layer.removeAllAnimations()
         self.isHidden = false
@@ -496,7 +496,7 @@ extension FocusView: CAAnimationDelegate {
     func animationDidStart(_ anim: CAAnimation) {
         self.isUserInteractionEnabled = false
         self.contentMode = .scaleToFill
-        self.layer.backgroundColor = ColorThemeRed.cgColor
+        self.layer.backgroundColor = UIColor.redx.cgColor
         self.image = UIImage.init(named: "iconSignDone")
     }
 
@@ -533,7 +533,7 @@ class HoverTextView:UIView {
     var splitLine:UIView = UIView.init()
 
     init() {
-        super.init(frame: screenFrame)
+        super.init(frame: UIScreen.main.bounds)
         initSubView()
     }
 
@@ -544,15 +544,15 @@ class HoverTextView:UIView {
 
 
     func initSubView() {
-        self.backgroundColor = ColorClear
+        self.backgroundColor = UIColor.clear
         self.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(handleGuesture(sender:))))
 
         keyboardHeight = safeAreaBottomHeight;
 
-        textView.backgroundColor = ColorClear
+        textView.backgroundColor = UIColor.clear
         textView.clipsToBounds = false
-        textView.textColor = ColorWhite
-        textView.font = BigFont
+        textView.textColor = UIColor.whitex
+        textView.font = .big
         textView.returnKeyType = .send
         textView.isScrollEnabled = false
         textView.textContainer.lineBreakMode = .byTruncatingTail
@@ -560,10 +560,10 @@ class HoverTextView:UIView {
         textView.textContainerInset = UIEdgeInsets.init(top: TOP_BOTTOM_INSET, left: LEFT_INSET, bottom: TOP_BOTTOM_INSET, right: RIGHT_INSET)
         textHeight = textView.font?.lineHeight ?? 0
 
-        placeHolderLabel.frame = CGRect.init(x:LEFT_INSET, y:0, width:screenWidth - LEFT_INSET - RIGHT_INSET, height:50)
+        placeHolderLabel.frame = CGRect.init(x:LEFT_INSET, y:0, width:APPW - LEFT_INSET - RIGHT_INSET, height:50)
         placeHolderLabel.text = "有爱评论，说点儿好听的~"
-        placeHolderLabel.textColor = ColorWhiteAlpha40
-        placeHolderLabel.font = BigFont
+        placeHolderLabel.textColor = UIColor.whiteAlpha(0.4)
+        placeHolderLabel.font = .big
         textView.addSubview(placeHolderLabel)
         //        textView.setValue(placeHolderLabel, forKey: "_placeholderLabel")
 
@@ -571,18 +571,18 @@ class HoverTextView:UIView {
         editImageView.contentMode = .center
         textView.addSubview(editImageView)
 
-        atImageView.frame = CGRect.init(x: screenWidth - 50, y: 0, width: 50, height: 50)
+        atImageView.frame = CGRect.init(x: APPW - 50, y: 0, width: 50, height: 50)
         atImageView.contentMode = .center
         textView.addSubview(atImageView)
 
-        sendImageView.frame = CGRect.init(x: screenWidth, y: 0, width: 50, height: 50)
+        sendImageView.frame = CGRect.init(x: APPW, y: 0, width: 50, height: 50)
         sendImageView.contentMode = .center
         sendImageView.isUserInteractionEnabled = true
         sendImageView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(onSend)))
         textView.addSubview(sendImageView)
 
-        splitLine = UIView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 0.5))
-        splitLine.backgroundColor = ColorWhiteAlpha40
+        splitLine = UIView.init(frame: CGRect.init(x: 0, y: 0, width: APPW, height: 0.5))
+        splitLine.backgroundColor = UIColor.whiteAlpha(0.4)
         textView.addSubview(splitLine)
 
         textView.delegate = self
@@ -605,11 +605,11 @@ class HoverTextView:UIView {
 
     func updateTextViewFrame() {
         let textViewHeight = keyboardHeight > safeAreaBottomHeight ? textHeight + 2*TOP_BOTTOM_INSET : (textView.font?.lineHeight ?? 0) + 2*TOP_BOTTOM_INSET
-        self.textView.frame = CGRect.init(x: 0, y: screenHeight - keyboardHeight - textViewHeight, width: screenWidth, height: textViewHeight)
+        self.textView.frame = CGRect.init(x: 0, y: APPH - keyboardHeight - textViewHeight, width: APPW, height: textViewHeight)
     }
 
     func updateRightViewsFrame() {
-        var originX = screenWidth
+        var originX = APPW
         originX -= keyboardHeight > safeAreaBottomHeight ? 50 : (textView.text.count > 0 ? 50 : 0)
         UIView.animate(withDuration: 0.25) {
             self.sendImageView.frame = CGRect.init(x: originX, y: 0, width: 50, height: 50)
@@ -635,14 +635,14 @@ class HoverTextView:UIView {
 extension HoverTextView {
 
     @objc func keyboardWillShow(notification:Notification) {
-        self.backgroundColor = ColorBlackAlpha40
+        self.backgroundColor = UIColor.blackAlpha(0.4)
         keyboardHeight = notification.keyBoardHeight()
         updateViewFrameAndState()
         hoverDelegate?.hoverTextViewStateChange(isHover: true)
     }
 
     @objc func keyboardWillHide(notification:Notification) {
-        self.backgroundColor = ColorClear
+        self.backgroundColor = UIColor.clear
         keyboardHeight = safeAreaBottomHeight
         updateViewFrameAndState()
         hoverDelegate?.hoverTextViewStateChange(isHover: false)
@@ -659,7 +659,7 @@ extension HoverTextView:UITextViewDelegate {
             textHeight = textView.font?.lineHeight ?? 0
         } else {
             placeHolderLabel.isHidden = true
-            textHeight = attributedText.multiLineSize(width: screenWidth - LEFT_INSET - RIGHT_INSET).height
+            textHeight = attributedText.multiLineSize(width: APPW - LEFT_INSET - RIGHT_INSET).height
         }
         updateViewFrameAndState()
     }
@@ -691,7 +691,7 @@ extension HoverTextView {
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let hitView = super.hitTest(point, with: event)
         if hitView == self {
-            if hitView?.backgroundColor == ColorClear {
+            if hitView?.backgroundColor == UIColor.clear {
                 return nil
             }
         }
@@ -834,7 +834,7 @@ class CircleTextView:UIView {
         }
     }
 
-    var _textColor:UIColor = ColorWhite
+    var _textColor:UIColor = UIColor.whitex
     var textColor:UIColor {
         set {
             _textColor = newValue
@@ -845,7 +845,7 @@ class CircleTextView:UIView {
         }
     }
 
-    var _font:UIFont = MediumFont
+    var _font:UIFont = .middle
     var font:UIFont {
         set {
             _font = newValue
@@ -956,7 +956,7 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
     var loadMore:LoadMoreControl?
 
     init(awemeId:String) {
-        super.init(frame: screenFrame)
+        super.init(frame: UIScreen.main.bounds)
         self.awemeId = awemeId
         initSubView()
     }
@@ -972,11 +972,11 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
         tapGestureRecognizer.delegate = self
         self.addGestureRecognizer(tapGestureRecognizer)
 
-        container.frame = CGRect.init(x: 0, y: screenHeight, width: screenWidth, height: screenHeight * 3 / 4)
-        container.backgroundColor = ColorBlackAlpha60
+        container.frame = CGRect.init(x: 0, y: APPH, width: APPW, height: APPH * 3 / 4)
+        container.backgroundColor = UIColor.blackAlpha(0.6)
         self.addSubview(container)
 
-        let rounded = UIBezierPath.init(roundedRect: CGRect.init(origin: .zero, size: CGSize.init(width: screenWidth, height: screenHeight * 3 / 4)), byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize.init(width: 10.0, height: 10.0))
+        let rounded = UIBezierPath.init(roundedRect: CGRect.init(origin: .zero, size: CGSize.init(width: APPW, height: APPH * 3 / 4)), byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize.init(width: 10.0, height: 10.0))
         let shape = CAShapeLayer.init()
         shape.path = rounded.cgPath
         container.layer.mask = shape
@@ -987,21 +987,21 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
         visualEffectView.alpha = 1.0
         container.addSubview(visualEffectView)
 
-        label.frame = CGRect.init(origin: .zero, size: CGSize.init(width: screenWidth, height: 35))
+        label.frame = CGRect.init(origin: .zero, size: CGSize.init(width: APPW, height: 35))
         label.textAlignment = .center
         label.numberOfLines = 0
         label.text = "0条评论"
-        label.textColor = ColorGray
-        label.font = SmallFont
+        label.textColor = UIColor.grayx
+        label.font = .small
         container.addSubview(label)
 
-        close.frame = CGRect.init(x: screenWidth - 40, y: 0, width: 30, height: 30)
+        close.frame = CGRect.init(x: APPW - 40, y: 0, width: 30, height: 30)
         close.contentMode = .center
         close.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(handleGuesture(sender:))))
         container.addSubview(close)
 
-        tableView = UITableView.init(frame: CGRect.init(x: 0, y: 35, width: screenWidth, height: screenHeight*3/4 - 35 - 50 - safeAreaBottomHeight), style: .grouped)
-        tableView.backgroundColor = ColorClear
+        tableView = UITableView.init(frame: CGRect.init(x: 0, y: 35, width: APPW, height: APPH*3/4 - 35 - 50 - safeAreaBottomHeight), style: .grouped)
+        tableView.backgroundColor = UIColor.clear
         tableView.tableHeaderView = UIView.init(frame: CGRect.init(origin: .zero, size: CGSize.init(width: self.tableView.bounds.width, height: 0.01)))
         tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 50, right: 0)
         tableView.delegate = self
@@ -1010,7 +1010,7 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
         tableView.register(CommentListCell.classForCoder(), forCellReuseIdentifier: COMMENT_CELL)
         container.addSubview(tableView)
 
-        loadMore = LoadMoreControl.init(frame: CGRect.init(x: 0, y: 100, width: screenWidth, height: 50), surplusCount: 10)
+        loadMore = LoadMoreControl.init(frame: CGRect.init(x: 0, y: 100, width: APPW, height: 50), surplusCount: 10)
         loadMore?.startLoading()
         loadMore?.onLoad = {[weak self] in
             self?.loadData(page: self?.pageIndex ?? 0)
@@ -1185,7 +1185,7 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
 
 class CommentListCell:BaseTableViewCell<Comment> {
 
-    static let MaxContentWidth:CGFloat = screenWidth - 55 - 35
+    static let MaxContentWidth:CGFloat = APPW - 55 - 35
 
     var avatar = UIImageView.init(image: UIImage.init(named: "img_find_default"))
     var likeIcon = UIImageView.init(image: UIImage.init(named: "icCommentLikeBefore_black"))
@@ -1198,7 +1198,7 @@ class CommentListCell:BaseTableViewCell<Comment> {
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
-        self.backgroundColor = ColorClear
+        self.backgroundColor = UIColor.clear
         initSubViews()
     }
 
@@ -1211,26 +1211,26 @@ class CommentListCell:BaseTableViewCell<Comment> {
         self.addSubview(likeIcon)
 
         nickName.numberOfLines = 1
-        nickName.textColor = ColorWhiteAlpha60
-        nickName.font = SmallFont
+        nickName.textColor = UIColor.whiteAlpha(0.6)
+        nickName.font = .small
         self.addSubview(nickName)
 
         content.numberOfLines = 0
-        content.textColor = ColorWhiteAlpha80
-        content.font = MediumFont
+        content.textColor = UIColor.whiteAlpha(0.8)
+        content.font = .middle
         self.addSubview(content)
 
         date.numberOfLines = 1
-        date.textColor = ColorGray
-        date.font = SmallFont
+        date.textColor = UIColor.grayx
+        date.font = .small
         self.addSubview(date)
 
         likeNum.numberOfLines = 1
-        likeNum.textColor = ColorGray
-        likeNum.font = SmallFont
+        likeNum.textColor = UIColor.grayx
+        likeNum.font = .small
         self.addSubview(likeNum)
 
-        splitLine.backgroundColor = ColorWhiteAlpha10
+        splitLine.backgroundColor = UIColor.whiteAlpha(0.1)
         self.addSubview(splitLine)
     }
 
@@ -1294,7 +1294,7 @@ class CommentListCell:BaseTableViewCell<Comment> {
 
     static func cellHeight(comment:Comment) -> CGFloat {
         let attributedString = NSMutableAttributedString.init(string: comment.text ?? "")
-        attributedString.addAttributes([NSAttributedString.Key.font : MediumFont], range: NSRange.init(location: 0, length: attributedString.length))
+        attributedString.addAttributes([NSAttributedString.Key.font : UIFont.middle], range: NSRange.init(location: 0, length: attributedString.length))
         let size:CGSize = attributedString.multiLineSize(width: MaxContentWidth)
         return size.height + 30 + 30
     }
@@ -1326,7 +1326,7 @@ class CommentTextView:UIView, UITextViewDelegate {
     var visualEffectView = UIVisualEffectView.init()
 
     init() {
-        super.init(frame: screenFrame)
+        super.init(frame: UIScreen.main.bounds)
         initSubView()
     }
 
@@ -1337,20 +1337,20 @@ class CommentTextView:UIView, UITextViewDelegate {
 
 
     func initSubView() {
-        self.frame = screenFrame
-        self.backgroundColor = ColorClear
+        self.frame = UIScreen.main.bounds
+        self.backgroundColor = UIColor.clear
         self.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(handleGuestrue(sender:))))
 
         self.addSubview(container)
-        container.backgroundColor = ColorBlackAlpha40
+        container.backgroundColor = UIColor.blackAlpha(0.4)
 
         keyboardHeight = safeAreaBottomHeight
 
         textView = UITextView.init()
-        textView.backgroundColor = ColorClear
+        textView.backgroundColor = UIColor.clear
         textView.clipsToBounds = false
-        textView.textColor = ColorWhite
-        textView.font = BigFont
+        textView.textColor = UIColor.whitex
+        textView.font = .big
         textView.returnKeyType = .send
         textView.isScrollEnabled = false
         textView.textContainer.lineBreakMode = .byTruncatingTail
@@ -1358,10 +1358,10 @@ class CommentTextView:UIView, UITextViewDelegate {
         textView.textContainerInset = UIEdgeInsets(top: topBottomInset, left: leftInset, bottom: topBottomInset, right: rightInset)
         textHeight = textView.font?.lineHeight ?? 0
 
-        placeHolderLabel.frame = CGRect.init(x:LEFT_INSET, y:0, width:screenWidth - LEFT_INSET - RIGHT_INSET, height:50)
+        placeHolderLabel.frame = CGRect.init(x:LEFT_INSET, y:0, width:APPW - LEFT_INSET - RIGHT_INSET, height:50)
         placeHolderLabel.text = "有爱评论，说点儿好听的~"
-        placeHolderLabel.textColor = ColorGray
-        placeHolderLabel.font = BigFont
+        placeHolderLabel.textColor = UIColor.grayx
+        placeHolderLabel.font = .big
         textView.addSubview(placeHolderLabel)
         //        textView.setValue(placeHolderLabel, forKey: "_placeholderLabel")
 
@@ -1378,7 +1378,7 @@ class CommentTextView:UIView, UITextViewDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        atImageView.frame = CGRect.init(x: screenWidth - 50, y: 0, width: 50, height: 50)
+        atImageView.frame = CGRect.init(x: APPW - 50, y: 0, width: 50, height: 50)
         let rounded = UIBezierPath.init(roundedRect: self.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize.init(width: 10.0, height: 10.0))
         let shape = CAShapeLayer.init()
         shape.path = rounded.cgPath
@@ -1389,26 +1389,26 @@ class CommentTextView:UIView, UITextViewDelegate {
 
     func updateTextViewFrame() {
         let textViewHeight = keyboardHeight > safeAreaBottomHeight ? textHeight + 2 * topBottomInset : (textView.font?.lineHeight ?? 0) + 2*topBottomInset
-        textView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: textViewHeight)
-        container.frame = CGRect.init(x: 0, y: screenHeight - keyboardHeight - textViewHeight, width: screenWidth, height: textViewHeight + keyboardHeight)
+        textView.frame = CGRect.init(x: 0, y: 0, width: APPW, height: textViewHeight)
+        container.frame = CGRect.init(x: 0, y: APPH - keyboardHeight - textViewHeight, width: APPW, height: textViewHeight + keyboardHeight)
     }
 
     @objc func keyboardWillShow(notification:Notification) {
         keyboardHeight = notification.keyBoardHeight()
         updateTextViewFrame()
         atImageView.image = UIImage.init(named: "iconBlackaBefore")
-        container.backgroundColor = ColorWhite
-        textView.textColor = ColorBlack
-        self.backgroundColor = ColorBlackAlpha60
+        container.backgroundColor = UIColor.whitex
+        textView.textColor = UIColor.blackx
+        self.backgroundColor = UIColor.blackAlpha(0.6)
     }
 
     @objc func keyboardWillHide(notification:Notification) {
         keyboardHeight = safeAreaBottomHeight
         updateTextViewFrame()
         atImageView.image = UIImage.init(named: "iconWhiteaBefore")
-        container.backgroundColor = ColorBlackAlpha40
-        textView.textColor = ColorWhite
-        self.backgroundColor = ColorClear
+        container.backgroundColor = UIColor.blackAlpha(0.4)
+        textView.textColor = UIColor.whitex
+        self.backgroundColor = UIColor.clear
     }
 
     func textViewDidChange(_ textView: UITextView) {
@@ -1418,7 +1418,7 @@ class CommentTextView:UIView, UITextViewDelegate {
             textHeight = textView.font?.lineHeight ?? 0
         } else {
             placeHolderLabel.isHidden = true
-            textHeight = attributeText.multiLineSize(width: screenWidth - leftInset - rightInset).height
+            textHeight = attributeText.multiLineSize(width: APPW - leftInset - rightInset).height
         }
         updateTextViewFrame()
     }
@@ -1443,7 +1443,7 @@ class CommentTextView:UIView, UITextViewDelegate {
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let hitView = super.hitTest(point, with: event)
         if hitView == self {
-            if hitView?.backgroundColor == ColorClear {
+            if hitView?.backgroundColor == UIColor.clear {
                 return nil
             }
         }
@@ -1494,7 +1494,7 @@ class SharePopView:UIView {
     var cancel = UIButton.init()
 
     init() {
-        super.init(frame: screenFrame)
+        super.init(frame: UIScreen.main.bounds)
         initSubView()
     }
 
@@ -1506,8 +1506,8 @@ class SharePopView:UIView {
 
     func initSubView() {
         self.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(handleGuesture(sender:))))
-        container.frame = CGRect.init(x: 0, y: screenHeight, width: screenWidth, height: 280 + safeAreaBottomHeight)
-        container.backgroundColor = ColorBlackAlpha60
+        container.frame = CGRect.init(x: 0, y: APPH, width: APPW, height: 280 + safeAreaBottomHeight)
+        container.backgroundColor = UIColor.blackAlpha(0.6)
         self.addSubview(container)
 
         let rounded = UIBezierPath.init(roundedRect: container.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize.init(width: 10.0, height: 10.0))
@@ -1521,16 +1521,16 @@ class SharePopView:UIView {
         visualEffectView.alpha = 1.0
         container.addSubview(visualEffectView)
 
-        let label = UILabel.init(frame: CGRect.init(origin: .zero, size: CGSize.init(width: screenWidth, height: 35)))
+        let label = UILabel.init(frame: CGRect.init(origin: .zero, size: CGSize.init(width: APPW, height: 35)))
         label.textAlignment = .center
         label.numberOfLines = 0
         label.text = "分享到"
-        label.textColor = ColorGray
-        label.font = MediumFont
+        label.textColor = UIColor.grayx
+        label.font = .middle
         container.addSubview(label)
 
         let itemWidth = 68
-        let topScrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: 35, width: screenWidth, height: 90))
+        let topScrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: 35, width: APPW, height: 90))
         topScrollView.contentSize = CGSize.init(width: itemWidth * topIconsName.count, height: 80)
         topScrollView.showsHorizontalScrollIndicator = false
         topScrollView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 30)
@@ -1546,7 +1546,7 @@ class SharePopView:UIView {
             topScrollView.addSubview(item)
         }
 
-        let bottomScrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: 135, width: screenWidth, height: 90))
+        let bottomScrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: 135, width: APPW, height: 90))
         bottomScrollView.contentSize = CGSize.init(width: itemWidth * bottomIconsName.count, height: 80)
         bottomScrollView.showsHorizontalScrollIndicator = false
         bottomScrollView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 30)
@@ -1562,12 +1562,12 @@ class SharePopView:UIView {
             bottomScrollView.addSubview(item)
         }
 
-        cancel.frame = CGRect.init(x: 0, y: 230, width: screenWidth, height: 50 + safeAreaBottomHeight)
+        cancel.frame = CGRect.init(x: 0, y: 230, width: APPW, height: 50 + safeAreaBottomHeight)
         cancel.titleEdgeInsets = UIEdgeInsets(top: -safeAreaBottomHeight, left: 0, bottom: 0, right: 0)
         cancel.setTitle("取消", for: .normal)
-        cancel.setTitleColor(ColorWhite, for: .normal)
-        cancel.titleLabel?.font = BigFont
-        cancel.backgroundColor = ColorGrayLight
+        cancel.setTitleColor(UIColor.whitex, for: .normal)
+        cancel.titleLabel?.font = .big
+        cancel.backgroundColor = UIColor.grayx
         container.addSubview(cancel)
 
         let rounded2 = UIBezierPath.init(roundedRect: cancel.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize.init(width: 10.0, height: 10.0))
@@ -1660,8 +1660,8 @@ class ShareItem:UIView {
         self.addSubview(icon)
 
         label.text = "TEXT"
-        label.textColor = ColorWhiteAlpha60
-        label.font = MediumFont
+        label.textColor = UIColor.whiteAlpha(0.6)
+        label.font = .middle
         label.textAlignment = .center
         self.addSubview(label)
     }

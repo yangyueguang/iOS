@@ -70,9 +70,9 @@ class AwemeListController: DouyinBaseViewController {
     }
     
     func setUpView() {
-        tableView = BaseTableView.init(frame: CGRect.init(x: 0, y: -screenHeight, width: screenWidth, height: screenHeight * 5)) as! BaseTableView
-        tableView.contentInset = UIEdgeInsets(top: screenHeight, left: 0, bottom: screenHeight * 3, right: 0);
-        tableView.backgroundColor = ColorClear
+        tableView = BaseTableView.init(frame: CGRect.init(x: 0, y: -APPH, width: APPW, height: APPH * 5)) as! BaseTableView
+        tableView.contentInset = UIEdgeInsets(top: APPH, left: 0, bottom: APPH * 3, right: 0);
+        tableView.backgroundColor = UIColor.clear
 //        tableView.delegate = self
 //        tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
@@ -84,7 +84,7 @@ class AwemeListController: DouyinBaseViewController {
         }
         tableView.register(AwemeListCell.classForCoder(), forCellReuseIdentifier: AWEME_CELL)
         
-        loadMore = LoadMoreControl.init(frame: CGRect.init(x: 0, y: 100, width: screenWidth, height: 50), surplusCount: 10)
+        loadMore = LoadMoreControl.init(frame: CGRect.init(x: 0, y: 100, width: APPW, height: 50), surplusCount: 10)
         loadMore?.onLoad = {[weak self] in
             self?.loadData(page: self?.pageIndex ?? 0)
         }
@@ -157,7 +157,7 @@ class AwemeListController: DouyinBaseViewController {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return screenHeight
+        return APPH
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

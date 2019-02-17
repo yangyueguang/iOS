@@ -50,11 +50,11 @@ class CircleProgress:UIControl {
     }
     
     func initSubView() {
-        self.layer.backgroundColor = ColorBlackAlpha40.cgColor
-        self.layer.borderColor = ColorWhiteAlpha80.cgColor
+        self.layer.backgroundColor = UIColor.blackAlpha(0.4).cgColor
+        self.layer.borderColor = UIColor.whiteAlpha(0.8).cgColor
         self.layer.borderWidth = 1.0
         
-        progressLayer.fillColor = ColorWhiteAlpha80.cgColor
+        progressLayer.fillColor = UIColor.whiteAlpha(0.8).cgColor
         self.layer.addSublayer(progressLayer)
         
         tipIcon.contentMode = .center

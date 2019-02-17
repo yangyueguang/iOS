@@ -21,9 +21,8 @@
 - (void)initSubviews {
     CGFloat cellWidth = self.frame.size.width;
     CGFloat cellHeight = CellHeight;
-    CGFloat screenWidth = APPW;
-    if(cellWidth<screenWidth){
-        cellWidth = screenWidth;
+    if(cellWidth<APPW){
+        cellWidth = APPW;
     }
     //头像 portraitImageView
     CGFloat portraitImageViewX = 6+16;

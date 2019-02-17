@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 let SYS_MSG_CORNER_RADIUS:CGFloat = 10
-let MAX_SYS_MSG_WIDTH:CGFloat = screenWidth - 110
+let MAX_SYS_MSG_WIDTH:CGFloat = APPW - 110
 let COMMON_MSG_PADDING:CGFloat = 8
 let USER_MSG_CORNER_RADIUS:CGFloat = 10
-let MAX_USER_MSG_WIDTH:CGFloat = screenWidth - 160
+let MAX_USER_MSG_WIDTH:CGFloat = APPW - 160
 let MSG_IMAGE_CORNOR_RADIUS:CGFloat = 10
 let MAX_MSG_IMAGE_WIDTH:CGFloat = 200
 let MAX_MSG_IMAGE_HEIGHT:CGFloat = 200
@@ -43,9 +43,9 @@ class ChatListController: DouyinBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarTitle(title: "QSHI")
-        self.setNavigationBarTitleColor(color: ColorWhite)
-        self.setNavigationBarBackgroundColor(color: ColorThemeGrayDark)
-        self.setStatusBarBackgroundColor(color: ColorThemeGrayDark)
+        self.setNavigationBarTitleColor(color: UIColor.whitex)
+        self.setNavigationBarBackgroundColor(color: .grayx)
+        self.setStatusBarBackgroundColor(color: .grayx)
         self.setStatusBarStyle(style: .lightContent)
         self.setStatusBarHidden(hidden: false)
         textView.show()
@@ -62,8 +62,8 @@ class ChatListController: DouyinBaseViewController {
     }
     
     func setUpView() {
-        tableView = BaseTableView.init(frame: CGRect.init(x: 0, y: safeAreaTopHeight, width: screenWidth, height: screenHeight - (self.navagationBarHeight() + statusBarHeight) - 10 - safeAreaBottomHeight))
-        tableView.backgroundColor = ColorClear
+        tableView = BaseTableView.init(frame: CGRect.init(x: 0, y: safeAreaTopHeight, width: APPW, height: APPH - (self.navagationBarHeight() + statusBarHeight) - 10 - safeAreaBottomHeight))
+        tableView.backgroundColor = UIColor.clear
 //        tableView.delegate = self
 //        tableView.dataSource = self
         tableView.alwaysBounceVertical = true

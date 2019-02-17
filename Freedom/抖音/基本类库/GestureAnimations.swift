@@ -38,7 +38,7 @@ class ScalePresentAnimation: NSObject, UIViewControllerAnimatedTransitioning {
 
 class ScaleDismissAnimation: NSObject, UIViewControllerAnimatedTransitioning {
 
-    let centerFrame = CGRect.init(x: (screenWidth - 5)/2, y: (screenHeight - 5)/2, width: 5, height: 5)
+    let centerFrame = CGRect.init(x: (APPW - 5)/2, y: (APPH - 5)/2, width: 5, height: 5)
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.25
@@ -60,7 +60,7 @@ class ScaleDismissAnimation: NSObject, UIViewControllerAnimatedTransitioning {
             finalFrame = userHomePageController.collectionView?.convert(selectCell.frame, to: userHomePageController.collectionView?.superview) ?? centerFrame
         } else {
             snapshotView = fromVC.view.snapshotView(afterScreenUpdates: false)
-            scaleRatio = fromVC.view.frame.width/screenWidth
+            scaleRatio = fromVC.view.frame.width/APPW
             finalFrame = centerFrame
         }
 
@@ -94,7 +94,7 @@ class SwipeLeftInteractiveTransition: UIPercentDrivenInteractiveTransition {
     func wireToViewController(viewController:AwemeListController) {
         presentingVC = viewController
         presentingVC?.view.addGestureRecognizer(UIPanGestureRecognizer.init(target: self, action: #selector(handlerGesture(gestureRecognizer:))))
-        viewControllerCenter = presentingVC?.view.center ?? CGPoint.init(x: screenWidth/2, y: screenHeight/2)
+        viewControllerCenter = presentingVC?.view.center ?? CGPoint.init(x: APPW/2, y: APPH/2)
     }
 
     override var completionSpeed: CGFloat {
@@ -114,7 +114,7 @@ class SwipeLeftInteractiveTransition: UIPercentDrivenInteractiveTransition {
             interacting = true
             break
         case .changed:
-            var progress:CGFloat = translation.x / screenWidth
+            var progress:CGFloat = translation.x / APPW
             progress = CGFloat(fminf(fmaxf(Float(progress), 0.0), 1.0))
 
             let ratio:CGFloat = 1.0 - (progress * 0.5)
@@ -123,12 +123,12 @@ class SwipeLeftInteractiveTransition: UIPercentDrivenInteractiveTransition {
             update(progress)
             break
         case .cancelled, .ended:
-            var progress:CGFloat = translation.x / screenWidth
+            var progress:CGFloat = translation.x / APPW
             progress = CGFloat(fminf(fmaxf(Float(progress), 0.0), 1.0))
 
             if progress < 0.2 {
                 UIView.animate(withDuration: TimeInterval(progress), delay: 0.0, options: .curveEaseOut, animations: {
-                    self.presentingVC?.view.center = CGPoint.init(x: screenWidth / 2, y: screenHeight / 2)
+                    self.presentingVC?.view.center = CGPoint.init(x: APPW / 2, y: APPH / 2)
                     self.presentingVC?.view.transform = CGAffineTransform.init(scaleX: 1.0, y: 1.0)
                 }) { finished in
                     self.interacting = false
