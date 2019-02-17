@@ -10,8 +10,8 @@ open class BaseTabBarViewController: UITabBarController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         let barItem = UITabBarItem.appearance()
-        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.gray,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], for: .normal)
-        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.red,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], for: .selected)
+        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.gray,NSAttributedString.Key.font : UIFont.small.bold], for: .normal)
+        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.red,NSAttributedString.Key.font : UIFont.small.bold], for: .selected)
         tabBar.barTintColor = .green
         tabBar.tintColor = .yellow
         view.backgroundColor = .black
