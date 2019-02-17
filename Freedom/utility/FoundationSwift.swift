@@ -9,11 +9,6 @@
 import Foundation
 import XExtension
 import XCarryOn
-public let fontTitle = Font(15)
-public let fontMiddle = Font(14)
-public let fontSmall = Font(13)
-public let blacktextcolor = UIColor(33, 34, 35, 1)
-public let gradtextcolor = UIColor(116, 117, 118, 1)
 public let TabBarH:CGFloat = 49
 public var TopHeight:CGFloat {
     if APPH >= 812.0{

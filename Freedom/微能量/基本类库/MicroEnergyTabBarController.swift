@@ -38,7 +38,7 @@ import XExtension
 //        super.viewDidLoad()
 //        var i=0
 //        for vc in self.children{
-//            vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.red,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], for: .selected)
+//            vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.redx,NSAttributedString.Key.font : UIFont.small], for: .selected)
 //            vc.tabBarItem.image = vc.tabBarItem.image?.withRenderingMode(.alwaysOriginal)
 //            vc.tabBarItem.selectedImage = vc.tabBarItem.selectedImage?.withRenderingMode(.alwaysOriginal)
 //            vc.tabBarItem.tag = i;
@@ -57,12 +57,12 @@ final class MicroEnergyTabBarController: BaseTabBarViewController,UITabBarContro
     let myTabBar = EnergySuperMarketTabBarController.sharedRootViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.barTintColor = UIColor(59, 59,59, 1);
+        self.tabBar.barTintColor = UIColor.thin
         myTabBar.hidesBottomBarWhenPushed = true
         myTabBar.superTabbar = self;
        var i=0
         for vc in self.children{
-            vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.red,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], for: .selected)
+            vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.redx,NSAttributedString.Key.font : UIFont.small], for: .selected)
             vc.tabBarItem.image = vc.tabBarItem.image?.withRenderingMode(.alwaysOriginal)
             vc.tabBarItem.selectedImage = vc.tabBarItem.selectedImage?.withRenderingMode(.alwaysOriginal)
             vc.tabBarItem.tag = i;

@@ -22,7 +22,7 @@ class AlipayScanViewController: AlipayBaseViewController {
     func setupMaskView() {
         let mask = UIView()
         maskView = mask
-        mask.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor
+        mask.layer.borderColor = UIColor.grayx.cgColor
         mask.layer.borderWidth = kBorderW
         mask.bounds = CGRect(x: 0, y: 0, width: view.frame.size.width + kBorderW + kMargin * 2, height: view.height * 0.9)
         mask.center = CGPoint(x: view.frame.size.width * 0.5, y: view.height * 0.5)
@@ -31,7 +31,7 @@ class AlipayScanViewController: AlipayBaseViewController {
     }
     func setupBottomBar() {
         let bottomBar = UIView(frame: CGRect(x: 0, y: view.height * 0.9, width: view.frame.size.width, height: view.height * 0.1))
-        bottomBar.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.8)
+        bottomBar.backgroundColor = UIColor.back
         view.addSubview(bottomBar)
     }
     func setupScanWindowView() {

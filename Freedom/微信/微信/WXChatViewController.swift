@@ -8,10 +8,10 @@ import Foundation
 extension UIImagePickerController {
     override open func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.barTintColor = UIColor(46.0, 49.0, 50.0, 1.0)
-        navigationBar.tintColor = UIColor.white
-        view.backgroundColor = UIColor.lightGray
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17.5)]
+        navigationBar.barTintColor = UIColor.thin
+        navigationBar.tintColor = UIColor.whitex
+        view.backgroundColor = UIColor.light
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.whitex, NSAttributedString.Key.font: UIFont.large]
     }
 }
 protocol WXChatViewControllerProxy: NSObjectProtocol {
@@ -51,7 +51,7 @@ class WXTextDisplayView: UIView {
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.whitex
         addSubview(textView)
         textView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
@@ -115,8 +115,8 @@ class WXEmojiDisplayView: UIImageView {
     }()
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 12.0)
-        titleLabel.textColor = UIColor.gray
+        titleLabel.font = UIFont.small
+        titleLabel.textColor = UIColor.grayx
         return titleLabel
     }()
     override init(frame: CGRect) {
@@ -248,8 +248,8 @@ extension UIButton {
         btn.frame = frame
         btn.addTarget(target, action: method, for: .touchUpInside)
         btn.setTitle(title, for: .normal)
-        btn.setTitleColor(UIColor.white, for: .normal)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
+        btn.setTitleColor(UIColor.whitex, for: .normal)
+        btn.titleLabel?.font = UIFont.big
         btn.setImage(UIImage(named: setimageName), for: .normal)
         btn.setBackgroundImage(UIImage(named: backImageName), for: .normal)
         return btn
@@ -263,7 +263,7 @@ class WXChatBar: UIView ,UITextViewDelegate {
     private let moreButton = UIButton()
     private lazy var textView: UITextView = {
         let textView = UITextView()
-        textView.font = UIFont.systemFont(ofSize: 16.0)
+        textView.font = UIFont.big
         textView.returnKeyType = .send
         textView.layer.masksToBounds = true
         textView.layer.borderWidth = 1
@@ -277,9 +277,9 @@ class WXChatBar: UIView ,UITextViewDelegate {
         let talkButton = UIButton()
         talkButton.setTitle("按住 说话", for: .normal)
         talkButton.setTitle("松开 结束", for: .highlighted)
-        talkButton.setTitleColor(UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0), for: .normal)
-        talkButton.setBackgroundImage(UIImage.imageWithColor(UIColor(white: 0.0, alpha: 0.1)), for: .highlighted)
-        talkButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+        talkButton.setTitleColor(UIColor.subTitle, for: .normal)
+        talkButton.setBackgroundImage(UIImage.imageWithColor(UIColor.blackx), for: .highlighted)
+        talkButton.titleLabel?.font = UIFont.big
         talkButton.layer.masksToBounds = true
         talkButton.layer.cornerRadius = 4.0
         talkButton.layer.borderWidth = 1
@@ -300,15 +300,15 @@ class WXChatBar: UIView ,UITextViewDelegate {
     var activity = false {
         didSet {
             if activity {
-                textView.textColor = UIColor.black
+                textView.textColor = UIColor.blackx
             } else {
-                textView.textColor = UIColor.gray
+                textView.textColor = UIColor.grayx
             }
         }
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(245.0, 245.0, 247.0, 1.0)
+        backgroundColor = UIColor.back
         addSubview(modeButton)
         addSubview(voiceButton)
         addSubview(textView)
@@ -526,7 +526,7 @@ class WXChatBar: UIView ,UITextViewDelegate {
         super.draw(rect)
         guard let context = UIGraphicsGetCurrentContext() else { return }
         context.setLineWidth(0.5)
-        context.setStrokeColor(UIColor.gray.cgColor)
+        context.setStrokeColor(UIColor.grayx.cgColor)
         context.beginPath()
         context.move(to: CGPoint(x: 0, y: 0))
         context.addLine(to: CGPoint(x: APPW, y: 0))

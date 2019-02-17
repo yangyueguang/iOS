@@ -9,22 +9,22 @@ class TaobaoShopCarViewCell:BaseTableViewCell<Any> {
         icon = UIImageView()
         icon.contentMode = .scaleToFill
         title = UILabel()
-        title.font = fontTitle
+        title.font = .normal
         title.numberOfLines = 0
         script = UILabel()
-        script.font = fontSmall
-        title.textColor = blacktextcolor
+        script.font = .small
+        title.textColor = .c3
         script.textColor = title.textColor
         let headView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 20))
         let selecth = UIButton(frame: CGRect(x: 10, y: 2.5, width: 15, height: 15))
         selecth.setImage(UIImage(named: "taobaono"), for: .normal)
         selecth.setImage(UIImage(named: "taobaoon"), for: .selected)
-        let headTitle = UILabel(frame: CGRect(x: selecth.right, y: 0, width: APPW - 150, height: 20), font: fontSmall, color: gradtextcolor, text: "中华精品城 >")
+        let headTitle = UILabel(frame: CGRect(x: selecth.right, y: 0, width: APPW - 150, height: 20), font: .small, color: .cd, text: "中华精品城 >")
         let lingquan = UIButton(frame: CGRect(x: APPW - 100, y: 0, width: 40, height: 20))
         lingquan.setTitle("领券", for: .normal)
         let edit = UIButton(frame: CGRect(x: lingquan.right + 10, y: 0, width: 40, height: 20))
         edit.setTitle("编辑", for: .normal)
-        edit.titleLabel?.font = fontSmall
+        edit.titleLabel?.font = .small
         lingquan.titleLabel?.font = edit.titleLabel?.font
         headView.addSubviews([selecth, headTitle, lingquan, edit])
         let contentV = UIView(frame: CGRect(x: 0, y: headView.bottom, width: APPW, height: 80))
@@ -34,12 +34,12 @@ class TaobaoShopCarViewCell:BaseTableViewCell<Any> {
         icon.frame = CGRect(x: selectc.right + 10, y: 5, width: 60, height: 70)
         title.frame = CGRect(x: icon.right + 10, y: icon.y, width: APPW - icon.right - 20, height: 30)
         title.numberOfLines = 0
-        title.font = fontSmall
+        title.font = .small
         script.textColor = .gray
         script.frame = CGRect(x: title.x, y: title.bottom, width: title.width, height: 20)
-        let newPrice = UILabel(frame: CGRect(x: script.x, y: script.bottom, width: 60, height: 20), font: fontSmall, color: .red, text: "￥199")
-        let oldPrice = UILabel(frame: CGRect(x: newPrice.right, y: newPrice.y, width: 80, height: newPrice.height), font: fontSmall, color: .gray, text: "￥299")
-        let num = UILabel(frame: CGRect(x: APPW - 50, y: newPrice.y, width: 40, height: 20), font: fontSmall, color: .gray, text: "x1")
+        let newPrice = UILabel(frame: CGRect(x: script.x, y: script.bottom, width: 60, height: 20), font: .small, color: .red, text: "￥199")
+        let oldPrice = UILabel(frame: CGRect(x: newPrice.right, y: newPrice.y, width: 80, height: newPrice.height), font: .small, color: .gray, text: "￥299")
+        let num = UILabel(frame: CGRect(x: APPW - 50, y: newPrice.y, width: 40, height: 20), font: .small, color: .gray, text: "x1")
         num.textAlignment = .right
         contentV.addSubviews([selectc, icon, title, script, newPrice, oldPrice, num])
         addSubviews([headView, contentV])
@@ -67,10 +67,10 @@ final class TaobaoShopCarViewController: TaobaoBaseViewController {
         totalb.setImage(UIImage(named: "taobaoon"), for: .selected)
         let heji = UILabel(frame: CGRect(x: totalb.right + 20, y: 10, width: 200, height: 20))
         heji.text = "合计：￥100 不含运费"
-        heji.font = fontTitle
+        heji.font = .normal
         let pay = UIButton(frame: CGRect(x: APPW - 80, y: 0, width: 80, height: 40))
         pay.setTitle("结算(0)", for: .normal)
-        pay.backgroundColor = UIColor(252, 74, 1)
+        pay.backgroundColor = UIColor.back
         totalView.addSubviews([totalb, heji, pay])
         view.addSubview(totalView)
     }

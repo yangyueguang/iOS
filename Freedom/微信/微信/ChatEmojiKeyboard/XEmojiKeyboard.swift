@@ -63,15 +63,15 @@ class XEmojiKeyboard: UIView {
     lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.center = CGPoint(x: center.x, y: pageControl.center.y)
-        pageControl.pageIndicatorTintColor = UIColor.gray
-        pageControl.currentPageIndicatorTintColor = UIColor.gray
+        pageControl.pageIndicatorTintColor = UIColor.grayx
+        pageControl.currentPageIndicatorTintColor = UIColor.grayx
         pageControl.addTarget(self, action: #selector(self.pageControlChanged(_:)), for: .valueChanged)
         return pageControl
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         groupControl.delegate = self
-        backgroundColor = UIColor(245.0, 245.0, 247.0, 1.0)
+        backgroundColor = UIColor.back
         addSubview(collectionView)
         addSubview(pageControl)
         addSubview(groupControl)
@@ -152,7 +152,7 @@ class XEmojiKeyboard: UIView {
         super.draw(rect)
         guard let context = UIGraphicsGetCurrentContext() else { return }
         context.setLineWidth(0.5)
-        context.setStrokeColor(UIColor.gray.cgColor)
+        context.setStrokeColor(UIColor.grayx.cgColor)
         context.beginPath()
         context.move(to: CGPoint(x: 0, y: 0))
         context.addLine(to: CGPoint(x: APPW, y: 0))
@@ -322,8 +322,8 @@ class XEmojiCell: UICollectionViewCell {
     private var imageView = UIImageView()
     private lazy var label: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12.0)
-        label.textColor = UIColor.gray
+        label.font = UIFont.small
+        label.textColor = UIColor.grayx
         label.textAlignment = .center
         return label
     }()
@@ -385,7 +385,7 @@ class TLEmojiGroupCell: UICollectionViewCell {
         super.init(frame: frame)
         backgroundColor = UIColor.clear
         let selectedView = UIView()
-        selectedView.backgroundColor = UIColor(245.0, 245.0, 247.0, 1.0)
+        selectedView.backgroundColor = UIColor.back
         selectedBackgroundView = selectedView
         contentView.addSubview(groupIconView)
         groupIconView.snp.makeConstraints { (make) in
@@ -400,7 +400,7 @@ class TLEmojiGroupCell: UICollectionViewCell {
         super.draw(rect)
         guard let context = UIGraphicsGetCurrentContext() else { return }
         context.setLineWidth(0.5)
-        context.setStrokeColor(UIColor.gray.cgColor)
+        context.setStrokeColor(UIColor.grayx.cgColor)
         context.beginPath()
         context.move(to: CGPoint(x: frame.size.width - 0.5, y: 5))
         context.addLine(to: CGPoint(x: frame.size.width - 0.5, y: frame.size.height - 5))
@@ -444,7 +444,7 @@ class TLEmojiGroupControl: UIView {
             } else if sendButtonStatus == .gray {
                 sendButton.setBackgroundImage(WXImage.add.image, for: .normal)
                 sendButton.setBackgroundImage(WXImage.addHL.image, for: .highlighted)
-                sendButton.setTitleColor(UIColor.gray, for: .normal)
+                sendButton.setTitleColor(UIColor.grayx, for: .normal)
             }
         }
     }
@@ -464,7 +464,7 @@ class TLEmojiGroupControl: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.whitex
         addButton.setImage(WXImage.add.image, for: .normal)
         addButton.addTarget(self, action: #selector(self.emojiAddButtonDown), for: .touchUpInside)
         addSubview(addButton)
@@ -493,7 +493,7 @@ class TLEmojiGroupControl: UIView {
         super.draw(rect)
         guard let context = UIGraphicsGetCurrentContext() else { return }
         context.setLineWidth(0.5)
-        context.setStrokeColor(UIColor.gray.cgColor)
+        context.setStrokeColor(UIColor.grayx.cgColor)
         context.beginPath()
         context.move(to: CGPoint(x: 46, y: 5))
         context.addLine(to: CGPoint(x: 46, y: frame.size.height - 5))

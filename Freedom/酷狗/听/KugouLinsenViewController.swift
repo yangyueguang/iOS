@@ -34,13 +34,13 @@ class KugoumainHeaderView: UIView {
             btn.titleLabel?.textAlignment = .center
             btn.imageView?.contentMode = .scaleAspectFit
             btn.titleLabel?.textAlignment = .center
-            btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+            btn.titleLabel?.font = UIFont.normal
             btn.setImage(UIImage(named: "main_clock"), for: .normal)
             btn.setTitle(titleArr[i], for: .normal)
             addSubview(btn)
         }
         let lineView = UIView(frame: CGRect(x: 10, y: btnH + 30 + 30, width: APPW - 20, height: 0.5))
-        lineView.backgroundColor = UIColor.white
+        lineView.backgroundColor = UIColor.whitex
         lineView.alpha = 0.3
         addSubview(lineView)
         let phoneimage = UIImageView(frame: CGRect(x: 20, y: lineView.frame.maxY + 15, width: 20, height: 20))
@@ -48,15 +48,15 @@ class KugoumainHeaderView: UIView {
         addSubview(phoneimage)
         let lable = UILabel(frame: CGRect(x: phoneimage.frame.maxX + 8, y: phoneimage.y, width: 100, height: 25))
         lable.text = "本地音乐"
-        lable.font = UIFont.systemFont(ofSize: 14)
-        lable.textColor = UIColor.white
+        lable.font = UIFont.middle
+        lable.textColor = UIColor.whitex
         addSubview(lable)
 //        let everyMusic = MPMediaQuery()
 //        let musicArr = everyMusic.items
         let lable2 = UILabel(frame: CGRect(x: APPW - 130, y: phoneimage.y, width: 100, height: 25))
         lable2.text = "3首"
-        lable2.font = UIFont.systemFont(ofSize: 12)
-        lable2.textColor = UIColor.white
+        lable2.font = UIFont.small
+        lable2.textColor = UIColor.whitex
         lable2.textAlignment = .right
         addSubview(lable2)
         lable2.isUserInteractionEnabled = true
@@ -85,10 +85,10 @@ class KugoumainHeaderView: UIView {
             btn.titleLabel?.textAlignment = .center
             btn.imageView?.contentMode = .scaleAspectFit
             btn.titleLabel?.textAlignment = .center
-            btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+            btn.titleLabel?.font = UIFont.normal
             btn.setImage(UIImage(named: "n\(i + 1)"), for: .normal)
             btn.setTitle(titleArr[i], for: .normal)
-            btn.setTitleColor(UIColor.black, for: .normal)
+            btn.setTitleColor(UIColor.blackx, for: .normal)
             bView.addSubview(btn)
         }
     }
@@ -128,7 +128,7 @@ final class KugouLinsenViewController: KugouBaseViewController {
         tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         view.addSubview(tableView)
         let viewtab = UIView(frame: CGRect(x: 0, y: 100 + 44 * titlesArr.count, width: Int(APPW), height: 500))
-        viewtab.backgroundColor = UIColor.white
+        viewtab.backgroundColor = UIColor.whitex
         tableView.addSubview(viewtab)
         // 访问系统本地音乐
         headerView.localMusic = {() -> Void in

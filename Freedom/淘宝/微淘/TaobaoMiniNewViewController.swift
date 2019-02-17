@@ -7,8 +7,8 @@ class TaobaoMiniNewViewCell:BaseTableViewCell<Any> {
     override func initUI() {
         super.initUI()
         icon.frame = CGRect(x: 10, y: 10, width: 30, height: 30)
-        let name = UILabel(frame: CGRect(x: icon.right + 10, y: icon.y - 5, width: APPW - icon.right - 20, height: 20), font: fontMiddle, color: UIColor(0, 111, 255), text: nil)
-        let times = UILabel(frame: CGRect(x: name.x, y: name.bottom, width: name.width, height: 15), font: fontSmall, color: .gray, text: nil)
+        let name = UILabel(frame: CGRect(x: icon.right + 10, y: icon.y - 5, width: APPW - icon.right - 20, height: 20), font: UIFont.middle, color: UIColor.redx, text: nil)
+        let times = UILabel(frame: CGRect(x: name.x, y: name.bottom, width: name.width, height: 15), font: .small, color: .gray, text: nil)
         let picV = UIImageView(frame: CGRect(x: icon.x, y: icon.bottom + 10, width: APPW - 20, height: 130))
         let cellContentView = UIView(frame: CGRect(x: picV.x, y: picV.bottom, width: picV.width, height: 60))
         cellContentView.backgroundColor = .lightGray
@@ -18,7 +18,7 @@ class TaobaoMiniNewViewCell:BaseTableViewCell<Any> {
         script.frame = CGRect(x: title.x, y: title.bottom, width: title.width, height: 40)
         script.numberOfLines = 0
         cellContentView.addSubviews([title, script])
-        let sees = UILabel(frame: CGRect(x: 10, y: cellContentView.bottom + 10, width: 100, height: 15), font: fontSmall, color: .gray, text: nil)
+        let sees = UILabel(frame: CGRect(x: 10, y: cellContentView.bottom + 10, width: 100, height: 15), font: .small, color: .gray, text: nil)
         let zan = UIButton(frame: CGRect(x: APPW - 130, y: sees.y - 2, width: 55, height: 19))
         let pinglun = UIButton(frame: CGRect(x: zan.right + 10, y: zan.y, width: zan.width, height: zan.height))
         zan.layer.cornerRadius = 7.5

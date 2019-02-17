@@ -39,7 +39,7 @@ final class ToutiaoViewController: ToutiaoBaseViewController, UIScrollViewDelega
                 button.tag = i
                 button.setTitle(model.title, for: .normal)
                 button.setTitleColor(.white, for: .normal)
-                button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+                button.titleLabel?.font = UIFont.small
                 button.addTarget(self, action: #selector(self.clicked), for: .touchUpInside)
                 self.titleScrollView.addSubview(button)
                 self.buttons.append(button)
@@ -105,8 +105,8 @@ final class ToutiaoViewController: ToutiaoBaseViewController, UIScrollViewDelega
         let tranScale:CGFloat = 1.2 - 1 ;//左右按钮的缩放比例
         leftButton.transform = CGAffineTransform(scaleX: scaleL * tranScale+1, y: scaleR*tranScale+1)
         rightButton?.transform = CGAffineTransform(scaleX: scaleR * tranScale + 1, y: scaleR * tranScale + 1)
-        let rightColor = UIColor(250, 250, 250, 1)
-        let leftColor = UIColor(230, 230, 230,  1)
+        let rightColor = UIColor.back
+        let leftColor = UIColor.grayx
         leftButton.setTitleColor(leftColor, for: .normal)
         rightButton?.setTitleColor(rightColor, for: .normal)
     }

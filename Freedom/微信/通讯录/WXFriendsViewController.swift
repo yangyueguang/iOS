@@ -27,9 +27,9 @@ class WXFriendHeaderView: UITableViewHeaderFooterView {
     let titleLabel: UILabel = UILabel()
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor.lightGray
-        titleLabel.font = UIFont.systemFont(ofSize: 14.5)
-        titleLabel.textColor = UIColor.gray
+        backgroundColor = UIColor.light
+        titleLabel.font = UIFont.middle
+        titleLabel.textColor = UIColor.grayx
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.edges.equalTo(UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0))
@@ -70,10 +70,10 @@ final class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegat
         }
         tableView.layoutMargins = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        tableView.separatorColor = UIColor.gray
-        tableView.backgroundColor = UIColor.white
+        tableView.separatorColor = UIColor.grayx
+        tableView.backgroundColor = UIColor.whitex
         tableView.sectionIndexBackgroundColor = UIColor.clear
-        tableView.sectionIndexColor = UIColor(46.0, 49.0, 50.0, 1.0)
+        tableView.sectionIndexColor = UIColor.back
         tableView.tableHeaderView = searchController.searchBar
     }
     @IBAction func rightBarButtonDown(_ sender: UIBarButtonItem) {

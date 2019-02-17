@@ -40,7 +40,7 @@ class KugouMainViewController: KugouBaseViewController {
         titleButtons.forEach(where: { (btn) -> Bool in
             return true
         }) { (btn) in
-            btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+            btn.titleLabel?.font = UIFont.normal
         }
         sender.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         self.contentView.setContentOffset(CGPoint(x: self.contentView.width * CGFloat(sender.tag), y: 0), animated: true)

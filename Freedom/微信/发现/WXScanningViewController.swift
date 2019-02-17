@@ -25,10 +25,10 @@ class WXScannerButton: UIButton {
     var iconImageView = UIImageView()
     lazy var textLabel: UILabel = {
         let textLabel = UILabel()
-        textLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textLabel.font = UIFont.small
         textLabel.textAlignment = .center
-        textLabel.textColor = UIColor.white
-        textLabel.highlightedTextColor = UIColor.green
+        textLabel.textColor = UIColor.whitex
+        textLabel.highlightedTextColor = UIColor.greenx
         return textLabel
     }()
     override var isSelected: Bool {
@@ -74,15 +74,15 @@ class WXScanningViewController: WXBaseViewController, WXScannerDelegate, UINavig
     lazy var myQRButton: UIButton = {
         let myQRButton = UIButton()
         myQRButton.setTitle("我的二维码", for: .normal)
-        myQRButton.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
-        myQRButton.setTitleColor(UIColor.green, for: .normal)
+        myQRButton.titleLabel?.font = UIFont.normal
+        myQRButton.setTitleColor(UIColor.greenx, for: .normal)
         myQRButton.addTarget(self, action: #selector(self.myQRButtonDown), for: .touchUpInside)
         myQRButton.isHidden = true
         return myQRButton
     }()
     lazy var bottomView: UIView =  {
         let blackView = UIView()
-        blackView.backgroundColor = UIColor.black
+        blackView.backgroundColor = UIColor.blackx
         blackView.alpha = 0.5
         let bottomView = UIView()
         bottomView.addSubview(blackView)
@@ -97,7 +97,7 @@ class WXScanningViewController: WXBaseViewController, WXScannerDelegate, UINavig
     var translateButton = WXScannerButton(type: .translate, title: "翻译", iconPath: "scan_word", iconHLPath: "scan_word_HL")
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.blackx
         view.addSubview(scanVC.view)
         view.addSubview(bottomView)
         view.addSubview(myQRButton)

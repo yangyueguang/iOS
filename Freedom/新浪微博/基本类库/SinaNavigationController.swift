@@ -8,7 +8,7 @@ import UIKit
 final class SinaNavigationController: BaseNavigationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.orange ,NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)]
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.yellowx ,NSAttributedString.Key.font : UIFont.normal]
     }
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)

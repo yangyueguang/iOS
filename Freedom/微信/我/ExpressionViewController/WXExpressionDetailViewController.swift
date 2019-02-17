@@ -26,13 +26,13 @@ class WXExpressionDetailCell: UICollectionViewCell {
             detailLabel.text = group.groupDetailInfo
             if group.status == .downloaded {
                 downloadButton.setTitle("已下载", for: .normal)
-                downloadButton.backgroundColor = UIColor.gray
+                downloadButton.backgroundColor = UIColor.grayx
             } else if group.status == .downloading {
                 downloadButton.setTitle("下载中", for: .normal)
-                downloadButton.backgroundColor = UIColor.green
+                downloadButton.backgroundColor = UIColor.greenx
             } else {
                 downloadButton.setTitle("下载", for: .normal)
-                downloadButton.backgroundColor = UIColor.green
+                downloadButton.backgroundColor = UIColor.greenx
             }
         }
     }
@@ -41,19 +41,19 @@ class WXExpressionDetailCell: UICollectionViewCell {
     lazy var downloadButton: UIButton = {
         let downloadButton = UIButton()
         downloadButton.setTitle("下载", for: .normal)
-        downloadButton.backgroundColor = UIColor.green
-        downloadButton.titleLabel?.font = UIFont.systemFont(ofSize: 13.0)
+        downloadButton.backgroundColor = UIColor.greenx
+        downloadButton.titleLabel?.font = UIFont.small
         downloadButton.layer.masksToBounds = true
         downloadButton.layer.cornerRadius = 3.0
         downloadButton.layer.borderWidth = 1
-        downloadButton.layer.borderColor = UIColor.gray.cgColor
+        downloadButton.layer.borderColor = UIColor.grayx.cgColor
         downloadButton.addTarget(self, action: #selector(self.downloadButtonDown(_:)), for: .touchUpInside)
         return downloadButton
     }()
     lazy var detailLabel: UILabel = {
         let detailLabel = UILabel()
-        detailLabel.font = UIFont.systemFont(ofSize: 13.0)
-        detailLabel.textColor = UIColor.gray
+        detailLabel.font = UIFont.small
+        detailLabel.textColor = UIColor.grayx
         detailLabel.numberOfLines = 0
         return detailLabel
     }()
@@ -64,14 +64,14 @@ class WXExpressionDetailCell: UICollectionViewCell {
         contentView.addSubview(downloadButton)
         contentView.addSubview(detailLabel)
         let line1 = UIView()
-        line1.backgroundColor = UIColor.gray
+        line1.backgroundColor = UIColor.grayx
         contentView.addSubview(line1)
         let line2 = UIView()
-        line2.backgroundColor = UIColor.gray
+        line2.backgroundColor = UIColor.grayx
         contentView.addSubview(line2)
         let label = UILabel()
         label.textColor = UIColor.gray
-        label.font = UIFont.systemFont(ofSize: 12.0)
+        label.font = UIFont.small
         label.text = "长按表情可预览"
         contentView.addSubview(label)
         bannerView.snp.makeConstraints { (make) in
@@ -119,7 +119,7 @@ class WXExpressionDetailCell: UICollectionViewCell {
     }
 
     class func cellHeight(forModel group: TLEmojiGroup) -> CGFloat {
-        let detailHeight: CGFloat = group.groupDetailInfo.boundingRect(with: CGSize(width: APPW - 30, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13.0)], context: nil).size.height
+        let detailHeight: CGFloat = group.groupDetailInfo.boundingRect(with: CGSize(width: APPW - 30, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.small], context: nil).size.height
         let bannerHeight: CGFloat = group.bannerURL.count > 0 ? (APPW * 0.45) : 0
         let height: CGFloat = 105.0 + (detailHeight) + bannerHeight
         return height
@@ -169,7 +169,7 @@ class WXExpressionDetailViewController: WXBaseViewController {
         super.viewDidLoad()
         let layout = UICollectionViewFlowLayout()
         collectionView = BaseCollectionView(frame: view.bounds, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor.whitex
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true

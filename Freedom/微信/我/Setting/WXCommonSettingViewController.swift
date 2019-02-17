@@ -13,7 +13,7 @@ class WXChatFontSettingView: UIView {
     var fontSizeChangeTo: ((_ size: Float) -> Void)?
     lazy var miniFontLabel: UILabel = {
         let miniFontLabel = UILabel()
-        miniFontLabel.font = UIFont.systemFont(ofSize: 15)
+        miniFontLabel.font = UIFont.normal
         miniFontLabel.text = "A"
         return miniFontLabel
     }()
@@ -25,7 +25,7 @@ class WXChatFontSettingView: UIView {
     }()
     lazy var standardFontLabel: UILabel = {
         let standardFontLabel = UILabel()
-        standardFontLabel.font = UIFont.systemFont(ofSize: 16)
+        standardFontLabel.font = UIFont.big
         standardFontLabel.text = "标准"
         return standardFontLabel
     }()
@@ -38,7 +38,7 @@ class WXChatFontSettingView: UIView {
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.whitex
         addSubview(miniFontLabel)
         addSubview(maxFontLabel)
         addSubview(standardFontLabel)

@@ -23,7 +23,7 @@ class WXChatBackgroundSelectViewController: WXBaseViewController, UICollectionVi
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.alwaysBounceVertical = true
-        collectionView.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
+        collectionView.backgroundColor = UIColor.back
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)

@@ -111,14 +111,14 @@ final class IqiyiDiscoverViewController: IqiyiBaseViewController {
         let w: CGFloat = APPW * 0.8
         let searchButton = UIButton(type: .custom)
         searchButton.imageView?.contentMode = .center
-        searchButton.titleLabel?.font = UIFont.systemFont(ofSize: 11)
-        searchButton.setTitleColor(UIColor.black, for: .normal)
+        searchButton.titleLabel?.font = UIFont.small
+        searchButton.setTitleColor(UIColor.blackx, for: .normal)
         searchButton.frame = CGRect(x: 0, y: 0, width: w, height: 30)
         searchButton.setBackgroundImage(UIImage(named: "GroupCell"), for: .normal)
         searchButton.setImage(UIImage(named: "search_small"), for: .normal)
         searchButton.setTitle("请输入：港囧，夏洛特烦恼，徐峥等", for: .normal)
         searchButton.addTarget(self, action: #selector(self.searchButtonClick), for: .touchUpInside)
-        searchButton.setTitleColor(UIColor.gray, for: .normal)
+        searchButton.setTitleColor(UIColor.grayx, for: .normal)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchButton)
         let rightItem = UIBarButtonItem(image: UIImage(named:"wnavi"), style: .done, target: nil, action: nil)
         navigationItem.rightBarButtonItem = rightItem

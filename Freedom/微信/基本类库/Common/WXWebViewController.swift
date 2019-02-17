@@ -26,7 +26,7 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// ÊòØÂê
     lazy var progressView: UIProgressView = {
         let progressView = UIProgressView(frame: CGRect(x: 0, y: TopHeight + 20.0, width: APPW, height: 10.0))
         progressView.transform = CGAffineTransform(scaleX: 1.0, y: 2.0)
-        progressView.progressTintColor = UIColor.green
+        progressView.progressTintColor = UIColor.greenx
         progressView.trackTintColor = UIColor.clear
         return progressView
     }()
@@ -43,9 +43,9 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// ÊòØÂê
     }
     lazy var authLabel: UILabel = {
         let authLabel = UILabel(frame: CGRect(x: 20, y: Int(TopHeight) + 20 + 13, width: Int(APPW - 40), height: 0))
-            authLabel.font = UIFont.systemFont(ofSize: 12.0)
+            authLabel.font = UIFont.small
             authLabel.textAlignment = .center
-            authLabel.textColor = UIColor.gray
+            authLabel.textColor = UIColor.grayx
             authLabel.numberOfLines = 0
             return authLabel
         }()
@@ -62,12 +62,12 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// ÊòØÂê
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
-        view.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
+        view.backgroundColor = UIColor.back
         webView.scrollView.backgroundColor = UIColor.clear
         for vc in webView.scrollView.subviews {
             if let cls = object_getClass(vc) {
                 if (NSStringFromClass(cls) == "WKContentView") {
-                    vc.backgroundColor = UIColor.white
+                    vc.backgroundColor = UIColor.whitex
                     break
                 }
             }

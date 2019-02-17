@@ -10,7 +10,7 @@ class KugouBaseViewController: BaseViewController {
         automaticallyAdjustsScrollViewInsets = false
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.isTranslucent = false
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.whitex
     }
     func goBack() {
         let vcarr = navigationController?.viewControllers

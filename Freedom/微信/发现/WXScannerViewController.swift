@@ -35,7 +35,7 @@ class WXScannerView: UIView {
         bgView.backgroundColor = UIColor.clear
         bgView.layer.masksToBounds = true
         bgView.layer.borderWidth = 1
-        bgView.layer.borderColor = UIColor.white.cgColor
+        bgView.layer.borderColor = UIColor.whitex.cgColor
         return bgView
     }()
     var topLeftView = UIImageView(image: UIImage(named: "scanner_top_left"))
@@ -116,10 +116,10 @@ class WXScannerBackgroundView: UIView {
         addSubview(btmView)
         addSubview(leftView)
         addSubview(rightView)
-        topView.backgroundColor = UIColor(71, 70, 73, 1.0)
-        btmView.backgroundColor = UIColor(71, 70, 73, 1.0)
-        leftView.backgroundColor = UIColor(71, 70, 73, 1.0)
-        rightView.backgroundColor = UIColor(71, 70, 73, 1.0)
+        topView.backgroundColor = .dark
+        btmView.backgroundColor = .dark
+        leftView.backgroundColor = .dark
+        rightView.backgroundColor = .dark
         addMasonry()
     }
 
@@ -183,8 +183,8 @@ class WXScannerViewController: WXBaseViewController ,AVCaptureMetadataOutputObje
         let introudctionLabel = UILabel()
         introudctionLabel.backgroundColor = UIColor.clear
         introudctionLabel.textAlignment = .center
-        introudctionLabel.font = UIFont.systemFont(ofSize: 12.0)
-        introudctionLabel.textColor = UIColor.white
+        introudctionLabel.font = UIFont.small
+        introudctionLabel.textColor = UIColor.whitex
         return introudctionLabel
     }()
     var scannerType = TLScannerType.qr {
@@ -248,7 +248,7 @@ class WXScannerViewController: WXBaseViewController ,AVCaptureMetadataOutputObje
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.blackx
         view.addSubview(introudctionLabel)
         view.addSubview(scannerView)
         view.addSubview(scannerBGView)

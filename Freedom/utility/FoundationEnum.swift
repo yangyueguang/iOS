@@ -8,6 +8,38 @@
 
 import Foundation
 //FIXME:里面定义各种程序中要用的枚举类型
+public extension UIFont {
+    static var large: UIFont {return UIFont.systemFont(ofSize: 18)}
+    static var big: UIFont {return UIFont.systemFont(ofSize: 16)}
+    static var normal: UIFont {return UIFont.systemFont(ofSize: 15)}
+    static var middle: UIFont {return UIFont.systemFont(ofSize: 14)}
+    static var small: UIFont {return UIFont.systemFont(ofSize: 12)}
+    static var mini: UIFont {return UIFont.systemFont(ofSize: 10)}
+    var bold: UIFont {return UIFont.boldSystemFont(ofSize: pointSize)}
+}
+
+public extension UIColor {
+    class var c3: UIColor {return UIColor(hex:0x333333)}
+    class var c6: UIColor {return UIColor(hex:0x666666)}
+    class var c9: UIColor {return UIColor(hex:0x999999)}
+    class var cd: UIColor {return UIColor(hex: 0xdddddd)}
+    class var title: UIColor {return UIColor(hex: 0x363C54)}
+    class var subTitle: UIColor {return UIColor(hex: 0xCDCED4)}
+    class var back: UIColor {return UIColor(hex: 0xEFEFEF)}
+    class var hold: UIColor {return UIColor(hex: 0xD0D0D0)}
+    class var dark: UIColor {return UIColor(hex: 0x5F7494)}
+    class var thin: UIColor {return UIColor(hex: 0x696D7F)}
+    class var light: UIColor {return UIColor(hex: 0xeeeeee)}
+
+    class var redx: UIColor {return UIColor.red}
+    class var greenx: UIColor {return UIColor.green}
+    class var bluex: UIColor {return UIColor.blue}
+    class var yellowx: UIColor {return UIColor.yellow}
+    class var blackx: UIColor {return UIColor.black }
+    class var whitex: UIColor {return UIColor.white }
+    class var grayx: UIColor {return UIColor.gray }
+}
+
 enum StoryName: String {
     case wechat = "WX"
     case alipay = "Alipay"

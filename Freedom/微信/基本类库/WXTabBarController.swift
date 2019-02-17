@@ -15,8 +15,8 @@ final class WXTabBarController: BaseTabBarViewController {
         super.viewDidLoad()
         WXTabBarController.shared = self
         let barItem = UITabBarItem.appearance()
-        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.gray,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], for: .normal)
-        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.green,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], for: .selected)
+        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.grayx,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], for: .normal)
+        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.greenx,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], for: .selected)
         tabBar.barTintColor = .white
         tabBar.tintColor = .green
         if FirstRun.shared.wechat {

@@ -19,15 +19,15 @@ class WXMyExpressionCell: BaseTableViewCell<TLEmojiGroup> {
     lazy var delButton: UIButton =  {
         let delButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
         delButton.setTitle("移除", for: .normal)
-        delButton.setTitleColor(UIColor.gray, for: .normal)
-        delButton.backgroundColor = UIColor.lightGray
-        delButton.setBackgroundImage(UIImage.imageWithColor(UIColor.gray), for: .highlighted)
-        delButton.titleLabel?.font = UIFont.systemFont(ofSize: 13.0)
+        delButton.setTitleColor(UIColor.grayx, for: .normal)
+        delButton.backgroundColor = UIColor.light
+        delButton.setBackgroundImage(UIImage.imageWithColor(UIColor.grayx), for: .highlighted)
+        delButton.titleLabel?.font = UIFont.small
         delButton.addTarget(self, action: #selector(self.delButtonDown), for: .touchUpInside)
         delButton.layer.masksToBounds = true
         delButton.layer.cornerRadius = 3.0
         delButton.layer.borderWidth = 1
-        delButton.layer.borderColor = UIColor.gray.cgColor
+        delButton.layer.borderColor = UIColor.grayx.cgColor
         return delButton
     }()
 

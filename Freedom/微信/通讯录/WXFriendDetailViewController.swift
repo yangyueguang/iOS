@@ -43,7 +43,7 @@ class WechatFriendDetailAlbumCell: BaseTableViewCell<WXInfo> {
     }
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        textLabel?.font = UIFont.systemFont(ofSize: 15.0)
+        textLabel?.font = UIFont.normal
         accessoryType = .disclosureIndicator
     }
     required init?(coder aDecoder: NSCoder) {
@@ -83,11 +83,11 @@ class WechatFriendDetailUserCell: BaseTableViewCell<WXInfo> {
     private var nikenameLabel = UILabel()
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        shownameLabel.font = UIFont.systemFont(ofSize: 17.0)
-        usernameLabel.font = UIFont.systemFont(ofSize: 14.0)
-        usernameLabel.textColor = UIColor.gray
-        nikenameLabel.textColor = UIColor.gray
-        nikenameLabel.font = UIFont.systemFont(ofSize: 14.0)
+        shownameLabel.font = UIFont.large
+        usernameLabel.font = UIFont.middle
+        usernameLabel.textColor = UIColor.grayx
+        nikenameLabel.textColor = UIColor.grayx
+        nikenameLabel.font = UIFont.middle
         selectionStyle = .none
         contentView.addSubview(avatarView)
         contentView.addSubview(shownameLabel)
@@ -144,7 +144,7 @@ class WXFriendDetailViewController: BaseTableViewController, WXFriendDetailUserC
         tableView = UITableView(frame: view.bounds, style: .grouped)
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 15.0))
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 12.0))
-        tableView.backgroundColor = UIColor.lightGray
+        tableView.backgroundColor = UIColor.light
     }
     override func viewDidLoad() {
         super.viewDidLoad()

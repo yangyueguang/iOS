@@ -7,7 +7,7 @@ import Foundation
 class WechatAddMenuCell: BaseTableViewCell<WXAddMenuItem> {
     override func initUI() {
         super.initUI()
-        backgroundColor = UIColor.darkGray
+        backgroundColor = UIColor.dark
         icon.frame = CGRect(x: 10, y: 10, width: 30, height: 30)
         title.frame = CGRect(x: icon.right + 10, y: 15, width: 100, height: 20)
         addSubviews([icon,title])
@@ -77,7 +77,7 @@ final class WXConversationViewController: BaseTableViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor.white
+        tableView.backgroundColor = UIColor.whitex
         tableView.tableHeaderView = searchController.searchBar
         NotificationCenter.default.addObserver(self, selector: #selector(self.networkStatusChange(_:)), name: NSNotification.Name.AFNetworkingReachabilityDidChange, object: nil)
         addRightItem()
@@ -184,7 +184,7 @@ extension WXConversationViewController: UISearchBarDelegate {
             cell.markAsRead(!conversation.isRead)
             tableView.setEditing(false, animated: true)
         })
-        moreAction.backgroundColor = UIColor(hex: 0xdddddd)
+        moreAction.backgroundColor = UIColor.back
         return [delAction, moreAction]
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

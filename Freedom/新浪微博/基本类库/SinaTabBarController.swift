@@ -51,7 +51,7 @@ final class SinaTabBarController: BaseTabBarViewController {
         super.viewDidLoad()
         var i=0
         for vc in self.children{
-            vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.red,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], for: .selected)
+            vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.redx,NSAttributedString.Key.font : UIFont.small], for: .selected)
             vc.tabBarItem.image = vc.tabBarItem.image?.withRenderingMode(.alwaysOriginal)
             vc.tabBarItem.selectedImage = vc.tabBarItem.selectedImage?.withRenderingMode(.alwaysOriginal)
             vc.tabBarItem.tag = i;
@@ -69,8 +69,8 @@ final class SinaTabBarController: BaseTabBarViewController {
             let word = UILabel(frame: CGRect(x: 0, y: 75, width: 71, height: 25))
             word.text = text
             word.textAlignment = .center
-            word.font = UIFont.systemFont(ofSize: 15)
-            word.textColor = UIColor.gray
+            word.font = UIFont.normal
+            word.textColor = UIColor.grayx
             img.addSubview(image)
             img.addSubview(word)
             let gesture = UITapGestureRecognizer(target: self, action: #selector(self.compose(gesture:)))
@@ -91,7 +91,7 @@ final class SinaTabBarController: BaseTabBarViewController {
         plus.setImage(UIImage(named: "tabbar_compose_background_icon_add"), for: .normal)
         plus.addTarget(self, action: #selector(self.closeClick), for: .touchUpInside)
         let bottom = UIView(frame: CGRect(x: 0, y: view.bounds.size.height - 44, width: view.bounds.size.height, height: 44))
-        bottom.backgroundColor = UIColor.white
+        bottom.backgroundColor = UIColor.whitex
         bottom.addSubview(plus)
         blurView.addSubview(compose)
         blurView.addSubview(bottom)

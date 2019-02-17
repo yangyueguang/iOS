@@ -9,7 +9,7 @@ final class DZDiscoverController: DZBaseViewController {
         let searchBar = UISearchBar()
         searchBar.placeholder = "输入商户名、地点"
         navigationItem.titleView = searchBar
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.whitex
         let map = UIBarButtonItem(title: "北京", action: {
         })
         navigationItem.leftBarButtonItem = map

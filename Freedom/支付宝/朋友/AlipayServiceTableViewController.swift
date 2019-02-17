@@ -19,12 +19,12 @@ class AlipayServiceTableViewHeader : UIView,UITextFieldDelegate{
     let textFieldPlaceholderLabel = UILabel()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.lightGray.withAlphaComponent(0.7)
+        backgroundColor = UIColor.light.withAlphaComponent(0.7)
         let textField = UITextField()
         textField.layer.cornerRadius = 5
         textField.clipsToBounds = true
-        textField.backgroundColor = UIColor.white
-        textField.font = UIFont.systemFont(ofSize: 15)
+        textField.backgroundColor = UIColor.whitex
+        textField.font = UIFont.normal
         textField.addTarget(self, action: Selector(("textFieldValueChanged:")), for: .editingChanged)
         textField.clearButtonMode = .always
         textField.delegate = self as UITextFieldDelegate
@@ -35,7 +35,7 @@ class AlipayServiceTableViewHeader : UIView,UITextFieldDelegate{
         self.textField.addSubview(searchIcon)
         textFieldSearchIcon = searchIcon
         textFieldPlaceholderLabel.font = self.textField.font
-        textFieldPlaceholderLabel.textColor = UIColor.lightGray
+        textFieldPlaceholderLabel.textColor = UIColor.light
         textField.addSubview(textFieldPlaceholderLabel)
         
     }

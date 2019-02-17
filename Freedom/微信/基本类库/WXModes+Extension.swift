@@ -11,7 +11,7 @@ extension WXMomentDetail {
         height = 0.0
         heightText = 0
         if text.count > 0 {
-            let textHeight: CGFloat = text.boundingRect(with: CGSize(width: APPW - 70.0, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)], context: nil).size.height
+            let textHeight: CGFloat = text.boundingRect(with: CGSize(width: APPW - 70.0, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.normal], context: nil).size.height
             //: 浮点数会导致部分cell顶部多出来一条线，莫名其妙！！！
             heightText = textHeight + 1.0
         }

@@ -29,10 +29,10 @@ class WXShakeButton: UIButton {
     var iconImageView = UIImageView()
     lazy var textLabel: UILabel = {
         let textLabel = UILabel()
-        textLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textLabel.font = UIFont.small
         textLabel.textAlignment = .center
-        textLabel.textColor = UIColor.white
-        textLabel.highlightedTextColor = UIColor.green
+        textLabel.textColor = UIColor.whitex
+        textLabel.highlightedTextColor = UIColor.greenx
         return textLabel
     }()
     override init(frame: CGRect) {
@@ -75,13 +75,13 @@ class WXShakeViewController: WXBaseViewController {
     var curType = TLShakeButtonType.people
     lazy var topLogoView: UIImageView = {
         let topLogoView = UIImageView(image: UIImage(named: "shake_logo_top"))
-        topLogoView.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
+        topLogoView.backgroundColor = UIColor.back
         topLogoView.contentMode = .bottom
         return topLogoView
     }()
     lazy var bottomLogoView: UIImageView = {
         let bottomLogoView = UIImageView(image: UIImage(named: "shake_logo_bottom"))
-        bottomLogoView.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
+        bottomLogoView.backgroundColor = UIColor.back
         bottomLogoView.contentMode = .top
         return bottomLogoView
     }()
@@ -114,7 +114,7 @@ class WXShakeViewController: WXBaseViewController {
         topLineView.isHidden = true
         bottomLineView.isHidden = true
         navigationItem.title = "摇一摇"
-        view.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
+        view.backgroundColor = UIColor.back
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "nav_setting"), style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButton
         view.addSubview(centerLogoView)

@@ -131,7 +131,7 @@ class WXUserGroupCell: BaseTableViewCell<[WXUser]>, UICollectionViewDataSource, 
         layout.minimumInteritemSpacing = (APPW - 57 * 4) / 5
         layout.sectionInset = UIEdgeInsets(top: 15, left: (APPW - 57 * 4) / 5 * 0.9, bottom: 15, right: 15 * 0.9)
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor.whitex
         collectionView.isScrollEnabled = false
         collectionView.isPagingEnabled = true
         collectionView.dataSource = self
@@ -201,7 +201,7 @@ class WXUserGroupItemCell: UICollectionViewCell {
     }()
     lazy var usernameLabel: UILabel = {
         let usernameLabel = UILabel()
-        usernameLabel.font = UIFont.systemFont(ofSize: 12.0)
+        usernameLabel.font = UIFont.small
         usernameLabel.textAlignment = .center
         return usernameLabel
     }()
@@ -238,7 +238,7 @@ class WXGroupQRCodeViewController: WXBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
+        view.backgroundColor = UIColor.back
         navigationItem.title = "群二维码名片"
         view.addSubview(qrCodeVC.view)
         addChild(qrCodeVC)
@@ -299,14 +299,14 @@ class WXChatFileHeaderView: UICollectionReusableView {
     }
     lazy var bgView: UIView = {
         let bgView = UIView()
-        bgView.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
+        bgView.backgroundColor = UIColor.back
         bgView.alpha = 0.8
         return bgView
     }()
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.textColor = UIColor.white
-        titleLabel.font = UIFont.systemFont(ofSize: 14.0)
+        titleLabel.textColor = UIColor.whitex
+        titleLabel.font = UIFont.middle
         return titleLabel
     }()
     override init(frame: CGRect) {
@@ -382,7 +382,7 @@ class WXChatFileViewController: WXBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "聊天文件"
-        view.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
+        view.backgroundColor = UIColor.back
         let layout = UICollectionViewFlowLayout()
         if Float(UIDevice.current.systemVersion) ?? 0 >= 9.0 {
             layout.sectionHeadersPinToVisibleBounds = true

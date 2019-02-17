@@ -16,10 +16,10 @@ class DetailWapViewController: TaobaoBaseViewController {
         detailView = DetailView(frame: CGRect(x: 0, y: 64, width: view.bounds.size.width, height: view.bounds.size.height - 64))
         topWebView = UIWebView(frame: detailView.bounds)
         topWebView.scrollView.showsVerticalScrollIndicator = false
-        topWebView.backgroundColor = UIColor.white
+        topWebView.backgroundColor = UIColor.whitex
         topWebView.isOpaque = false
         view.addSubview(detailView)
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor.light
         if let aString = URL(string: "http://m.b5m.com/item.html?tid=2614676&mps=____&type=index") {
             topWebView.loadRequest(URLRequest(url: aString))
         }

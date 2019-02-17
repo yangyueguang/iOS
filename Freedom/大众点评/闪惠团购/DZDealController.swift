@@ -8,7 +8,7 @@ final class DZDealController: DZBaseViewController {
         super.viewDidLoad()
     }
     func buildUI() {
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.whitex
         let map = UIBarButtonItem(title: "北京", action: {
 
         })

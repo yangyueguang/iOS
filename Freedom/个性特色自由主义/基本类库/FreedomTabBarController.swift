@@ -7,8 +7,8 @@ final class FreedomTabBarController: BaseTabBarViewController {
         super.viewDidLoad()
         tabBar.barTintColor = .white
         let barItem = UITabBarItem.appearance()
-        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.gray,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], for: .normal)
-        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.red,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], for: .selected)
+        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.gray,NSAttributedString.Key.font : UIFont.small], for: .normal)
+        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.red,NSAttributedString.Key.font : UIFont.small], for: .selected)
         for vc in self.children{
             vc.tabBarItem.image = vc.tabBarItem.image?.withRenderingMode(.alwaysOriginal)
             vc.tabBarItem.selectedImage = vc.tabBarItem.selectedImage?.withRenderingMode(.alwaysOriginal)

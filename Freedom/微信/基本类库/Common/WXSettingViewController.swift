@@ -11,10 +11,10 @@ class WXSettingViewController: BaseTableViewController {
         tableView = UITableView(frame: view.bounds, style: .grouped)
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 15.0))
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 12.0))
-        tableView.backgroundColor = UIColor.lightGray
+        tableView.backgroundColor = UIColor.light
         tableView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
-        tableView.separatorColor = UIColor.gray
+        tableView.separatorColor = UIColor.grayx
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,8 +124,8 @@ class WXSettingCell: BaseTableViewCell<WXSettingItem> {
         contentView.addSubview(titleLabel)
         contentView.addSubview(rightLabel)
         contentView.addSubview(rightImageView)
-        rightLabel.textColor = UIColor.gray
-        rightLabel.font = UIFont.systemFont(ofSize: 15.0)
+        rightLabel.textColor = UIColor.grayx
+        rightLabel.font = UIFont.normal
         p_addMasonry()
         viewModel.subscribe(onNext: {[weak self] (item) in
             guard let `self` = self else { return }
@@ -178,8 +178,8 @@ class WXSettingCell: BaseTableViewCell<WXSettingItem> {
 class WXSettingHeaderTitleView: UITableViewHeaderFooterView {
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.textColor = UIColor.gray
-        titleLabel.font = UIFont.systemFont(ofSize: 14.0)
+        titleLabel.textColor = UIColor.grayx
+        titleLabel.font = UIFont.middle
         titleLabel.numberOfLines = 0
     return titleLabel
     }()

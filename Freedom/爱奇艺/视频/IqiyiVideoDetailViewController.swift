@@ -65,7 +65,7 @@ class IqiyiVideoDetailViewController: IqiyiBaseViewController {
     func initNav() {
         navigationController?.navigationBar.isHidden = true
         let backView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 20))
-        backView.backgroundColor = UIColor.black
+        backView.backgroundColor = UIColor.blackx
         view.addSubview(backView)
         let backBtn = UIButton(type: .custom)
         backBtn.frame = CGRect(x: 15, y: 20, width: 30, height: 30)
@@ -167,7 +167,7 @@ class IqiyiVideoDetailViewController: IqiyiBaseViewController {
 //                cell?.subedNumberLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 100, height: 20))
 //                cell?.titleLabel = UILabel(frame: CGRect(x: 0, y: 120, width: 100, height: 20))
 //                cell?.descLabel = UILabel(frame: CGRect(x: 0, y: 140, width: 100, height: 20))
-//                cell?.subscribeButton?.backgroundColor = UIColor.green
+//                cell?.subscribeButton?.backgroundColor = UIColor.greenx
 //                cell?.addSubviews([(cell?.iconImageView)!, (cell?.userNameLabel)!, (cell?.playItemsLabel)!, (cell?.userDesLabel)!, (cell?.subscribeButton)!, (cell?.subedNumberLabel)!, (cell?.titleLabel)!, (cell?.descLabel)!])
 //            }
             cell.selectionStyle = .none

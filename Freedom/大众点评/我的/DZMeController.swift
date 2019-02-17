@@ -79,10 +79,10 @@ final class DZMeController: BaseTableViewController {
             headerView.addSubview(userImage)
             //用户名
             let userNameLabel = UILabel(frame: CGRect(x: 10 + 55 + 5, y: 15, width: 200, height: 30))
-            userNameLabel.font = UIFont.systemFont(ofSize: 13)
+            userNameLabel.font = UIFont.small
             //账户余额
             let moneyLabel = UILabel(frame: CGRect(x: 10 + 55 + 5, y: 40, width: 200, height: 30))
-            moneyLabel.font = UIFont.systemFont(ofSize: 13)
+            moneyLabel.font = UIFont.small
             moneyLabel.text = "余额：0.00元"
             headerView.addSubview(moneyLabel)
             let arrowImg = UIImageView(frame: CGRect(x: APPW - 10 - 24, y: 30, width: 12, height: 24))
@@ -91,7 +91,7 @@ final class DZMeController: BaseTableViewController {
             return headerView
         } else {
             let headerView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 5))
-            headerView.backgroundColor = UIColor(239, 239, 244)
+            headerView.backgroundColor = UIColor.back
             return headerView
         }
     }
@@ -104,7 +104,7 @@ final class DZMeController: BaseTableViewController {
         cell.textLabel?.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
         cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+        cell.textLabel?.font = UIFont.normal
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

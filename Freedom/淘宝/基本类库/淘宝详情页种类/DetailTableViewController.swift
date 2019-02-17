@@ -20,7 +20,7 @@ class DetailTableViewController: TaobaoBaseViewController {
         if let aView = detailView {
             view.addSubview(aView)
         }
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor.light
         tableView.reloadData()
         detailView?.reloadData()
     }

@@ -12,7 +12,7 @@ class WXMyQRCodeViewController: WXBaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(46.0, 49.0, 50.0, 1.0)
+        view.backgroundColor = UIColor.back
         navigationItem.title = "我的二维码"
         view.addSubview(qrCodeVC.view)
         addChild(qrCodeVC)

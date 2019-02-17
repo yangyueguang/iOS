@@ -31,8 +31,8 @@ class WXAboutHeaderView: UITableViewHeaderFooterView {
     var imageView = UIImageView()
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 17.0)
-        titleLabel.textColor = UIColor.gray
+        titleLabel.font = UIFont.large
+        titleLabel.textColor = UIColor.grayx
         titleLabel.textAlignment = .center
         return titleLabel
     }()
@@ -63,8 +63,8 @@ class WXAboutViewController: WXSettingViewController {
         let cmpLabel = UILabel()
         cmpLabel.text = "高仿微信 仅供学习\nhttps://github.com/tbl00c/TLChat"
         cmpLabel.textAlignment = .center
-        cmpLabel.textColor = UIColor.gray
-        cmpLabel.font = UIFont.systemFont(ofSize: 12.0)
+        cmpLabel.textColor = UIColor.grayx
+        cmpLabel.font = UIFont.small
         cmpLabel.numberOfLines = 2
         return cmpLabel
     }()

@@ -7,7 +7,7 @@ class IqiyiSearchTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         placeholder = "大家都在搜琅琊榜"
-        font = UIFont.systemFont(ofSize: 16)
+        font = UIFont.big
         let image = UIImage(named: "GroupCell")
         background = image?.stretchableImage(withLeftCapWidth: Int((image?.size.width ?? 0.0) * 0.5), topCapHeight: Int((image?.size.height ?? 0.0) * 0.5))
         clearButtonMode = .always
@@ -76,7 +76,7 @@ class IqiyisearchHeaderView: UITableViewHeaderFooterView {
             }
             //        headView = [[[NSBundle mainBundle] loadNibNamed:@"JFsearchHeaderView" owner:nil options:nil] lastObject];
         }
-        headView?.backgroundColor = UIColor(200, 199, 204,1)
+        headView?.backgroundColor = UIColor.back
         return headView!
     }
 }

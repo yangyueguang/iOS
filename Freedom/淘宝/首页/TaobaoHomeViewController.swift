@@ -16,10 +16,10 @@ class TitlesImageViewFull: UIView {
         imageview = UIImageView(frame: CGRect(x: 8, y: 25, width: frame.size.width, height: 20))
         imageview.contentMode = .scaleAspectFit
         iconview.contentMode = .scaleAspectFit
-        title.font = UIFont.systemFont(ofSize: 14)
-        subtitle.font = UIFont.systemFont(ofSize: 12)
-        title.textColor = UIColor.red
-        subtitle.textColor = UIColor.green
+        title.font = UIFont.middle
+        subtitle.font = UIFont.small
+        title.textColor = UIColor.redx
+        subtitle.textColor = UIColor.greenx
         addSubview(title)
         addSubview(subtitle)
         addSubview(iconview)
@@ -35,11 +35,11 @@ class DaRenTaoCell: UICollectionViewCell {
         let daren = UIButton(frame: CGRect(x: APPW / 2 - 50, y: 0, width: 100, height: 20))
         daren.setImage(UIImage(named: "hot"), for: .normal)
         daren.setTitle("达人淘", for: .normal)
-        daren.setTitleColor(UIColor.red, for: .normal)
+        daren.setTitleColor(UIColor.redx, for: .normal)
         let more = UILabel(frame: CGRect(x: APPW - 80, y: 0, width: 60, height: 20))
         more.text = "更多 >"
         let mainView = UIView(frame: CGRect(x: 0, y: daren.bottom, width: APPW, height: self.height - daren.bottom - 30))
-        mainView.backgroundColor = UIColor.white
+        mainView.backgroundColor = UIColor.whitex
         let height: CGFloat = (APPW - 32) / 3 + 14 + 3 + 12 + 3
         let view1 = TitlesImageViewFull(frame: CGRect(x: 8, y: 6, width: (APPW - 32) / 3, height: height))
         let view2 = TitlesImageViewFull(frame: CGRect(x: 8 + (APPW - 32) / 3 + 8, y: 6, width: (APPW - 32) / 3, height: height))
@@ -92,15 +92,15 @@ class GridCell: UICollectionViewCell {
         let iv = UIImageView(frame: CGRect(x: 0, y: 0, width: self.width, height: self.height - 60))
         iv.clipsToBounds = true
         let bgview = UIView(frame: bounds)
-        bgview.layer.shadowColor = UIColor.black.cgColor
+        bgview.layer.shadowColor = UIColor.blackx.cgColor
         bgview.layer.shadowOffset = CGSize(width: 0, height: 1)
         bgview.layer.shadowOpacity = 0.2
         bgview.layer.shadowRadius = 10
         let titleLab = UILabel(frame: CGRect(x: 0, y: iv.bottom, width: self.width, height: 40))
-        titleLab.highlightedTextColor = UIColor(200, 200, 200)
+        titleLab.highlightedTextColor = UIColor.cd
         let priceLabel = UILabel(frame: CGRect(x: 10, y: titleLab.bottom, width: 100, height: 20))
         let flagLab = UILabel(frame: CGRect(x: self.width - 60, y: priceLabel.y, width: 40, height: 20))
-        flagLab.backgroundColor = UIColor.red
+        flagLab.backgroundColor = UIColor.redx
         addSubviews([bgview, iv, titleLab, priceLabel, flagLab])
         iv.image = UIImage(named: "image1.jpg")
         titleLab.text = "户外腰包男女士跑步运动音乐手机包轻薄贴身防水"
@@ -161,7 +161,7 @@ class HotShiChangCell: UICollectionViewCell {
         mainView.backgroundColor = UIColor.clear
         let view1 = TitlesImageViewFull(frame: CGRect(x: 0, y: 0, width: (APPW - 1) / 2, height: 120))
         let view2 = TitlesImageViewFull(frame: CGRect(x: (APPW - 1) / 2 + 1, y: 0, width: (APPW - 1) / 2, height: 120))
-        view2.backgroundColor = UIColor.white
+        view2.backgroundColor = UIColor.whitex
         view1.backgroundColor = view2.backgroundColor
         mainView.addSubview(view1)
         mainView.addSubview(view2)
@@ -199,7 +199,7 @@ class HotShiChangCell: UICollectionViewCell {
             view?.title.text = dic["title"]
             view?.subtitle.text = dic["subtitle"]
             view?.imageview.image = UIImage(named: dic["image"]!)
-            view?.backgroundColor = UIColor.white
+            view?.backgroundColor = UIColor.whitex
             mainView.addSubview(view!)
         }
     }
@@ -247,11 +247,11 @@ class Headview3: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let line = UIView(frame: CGRect(x: 0, y: 20, width: APPW, height: 1))
-        line.backgroundColor = UIColor(224, 225, 226, 1)
+        line.backgroundColor = UIColor.back
         let lable = UILabel(frame: CGRect(x: 100, y: 10, width: 300, height: 20))
         lable.textAlignment = .center
         lable.text = "实时推荐最适合你的宝贝"
-        lable.backgroundColor = UIColor(245, 245, 245, 1)
+        lable.backgroundColor = UIColor.back
         contentMode = .center
         addSubviews([line, lable])
     }
@@ -274,8 +274,8 @@ class Footview0: UICollectionReusableView {
         mainview.addSubview(scroll)
         let ttv1 = UIView(frame: CGRect(x: 0, y: 50 * 0, width: APPW - 50 * 3 / 2, height: 50))
         let ttv2 = UIView(frame: CGRect(x: 0, y: 50 * 1, width: APPW - 50 * 3 / 2, height: 50))
-        ttv1.backgroundColor = UIColor.yellow
-        ttv2.backgroundColor = UIColor.green
+        ttv1.backgroundColor = UIColor.yellowx
+        ttv2.backgroundColor = UIColor.greenx
         scroll.addSubview(ttv1)
         scroll.addSubview(ttv2)
         scroll.contentSize = CGSize(width: APPW - 50 * 3 / 2, height: 50 * 2)
@@ -314,7 +314,7 @@ final class TaobaoHomeViewController: TaobaoBaseViewController,UICollectionViewD
         let searchBar = UISearchBar()
         searchBar.placeholder = "输入搜索关键字"
         navigationItem.titleView = searchBar
-        navigationController?.navigationBar.tintColor = UIColor.gray
+        navigationController?.navigationBar.tintColor = UIColor.grayx
         let image = UIImage(named: "Taobaomessage")?.withRenderingMode(.alwaysOriginal)
         let leftI = UIBarButtonItem(image: UIImage(named: "TaobaoScanner"), style: .done, target: nil, action: nil)
         let rightI = UIBarButtonItem(image: image, style: .done, target: nil, action: nil)
@@ -325,7 +325,7 @@ final class TaobaoHomeViewController: TaobaoBaseViewController,UICollectionViewD
         layout.headerReferenceSize = CGSize(width: 320, height: 40)
         grid = UICollectionView(frame: view.frame, collectionViewLayout: layout)
         view.addSubview(grid)
-        grid.backgroundColor = UIColor(245, 245, 245, 1)
+        grid.backgroundColor = UIColor.back
         grid.delegate = self
         grid.dataSource = self
         grid.register(GridCell.self, forCellWithReuseIdentifier: GridCell.identifier)

@@ -19,12 +19,12 @@ class DZHomeViewCell1:BaseCollectionViewCell<Any> {
     }
     func getViewWithFrame(_ rect: CGRect) -> UIView {
         let view = UIView(frame: rect)
-        let a = UILabel(frame: CGRect(x: 10, y: 0, width: APPW / 2 - 20, height: 18), font: fontSmall, color: .red, text: "外卖贺新春")
-        let b = UILabel(frame: CGRect(x: a.x, y: a.bottom, width: a.width, height: a.height), font: fontSmall, color: blacktextcolor, text: "省事省力又省心")
-        let c = UILabel(frame: CGRect(x: a.x, y: b.bottom, width: 100, height: 15), font: fontSmall, color: .yellow, text: "用外卖订年夜饭")
+        let a = UILabel(frame: CGRect(x: 10, y: 0, width: APPW / 2 - 20, height: 18), font: .small, color: .red, text: "外卖贺新春")
+        let b = UILabel(frame: CGRect(x: a.x, y: a.bottom, width: a.width, height: a.height), font: .small, color: .dark, text: "省事省力又省心")
+        let c = UILabel(frame: CGRect(x: a.x, y: b.bottom, width: 100, height: 15), font: .small, color: .yellow, text: "用外卖订年夜饭")
         c.layer.cornerRadius = 7
         c.layer.borderWidth = 1
-        c.layer.borderColor = UIColor.red.cgColor
+        c.layer.borderColor = UIColor.redx.cgColor
         view.addSubviews([a, b, c])
         return view
     }
@@ -37,9 +37,9 @@ class DZHomeViewCell2:BaseCollectionViewCell<Any> {
         icon = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW / 4, height: 60))
         title = UILabel(frame: CGRect(x: 20, y: icon.bottom, width: icon.width, height: 20))
         script = UILabel(frame: CGRect(x: title.x, y: title.bottom, width: title.width, height: title.height))
-        script.font = fontSmall
-        title.font = fontMiddle
-        script.textColor = gradtextcolor
+        script.font = .small
+        title.font = .middle
+        script.textColor = .cd
         addSubviews([icon, title, script])
     }
     func setCollectionDataWithDic(_ dict: [AnyHashable: Any]?) {
@@ -56,8 +56,8 @@ class DZHomeViewCell3:BaseCollectionViewCell<Any> {
         title = UILabel(frame: CGRect(x: 0, y: icon.bottom, width: icon.width, height: 18))
         script = UILabel(frame: CGRect(x: title.x, y: title.bottom, width: title.width, height: 15))
         script.font = Font(12)
-        title.font = fontSmall
-        script.textColor = gradtextcolor
+        title.font = .small
+        script.textColor = .cd
         title.textAlignment = .center
         script.textAlignment = .center
         addSubviews([icon, title, script])
@@ -78,7 +78,7 @@ class DZHomeViewCell4:BaseCollectionViewCell<Any> {
         let b = UILabel(frame: CGRect(x: title.x, y: script.bottom, width: title.width, height: title.height))
         let d = UILabel(frame: CGRect(x: a.x, y: b.y, width: a.width, height: a.height))
         d.textAlignment = .right
-        d.font = fontSmall
+        d.font = .small
         a.font = d.font
         script.font = a.font
         script.numberOfLines = 0
@@ -116,7 +116,7 @@ class DZHomeHeadView1: UICollectionReusableView {
             icon.clipsToBounds = true
             icon.layer.cornerRadius = 20
             icon.image = UIImage(named: "userLogo")
-            let label1 = UILabel(frame: CGRect(x: icon.right + 10, y: 10, width: APPW / 2, height: 40), font: fontSmall, color: blacktextcolor, text: "好友蜂蜜绿茶，吃完这家，还有下一家。地点中环广场店")
+            let label1 = UILabel(frame: CGRect(x: icon.right + 10, y: 10, width: APPW / 2, height: 40), font: .small, color: .c3, text: "好友蜂蜜绿茶，吃完这家，还有下一家。地点中环广场店")
             label1.numberOfLines = 0
             view.addSubviews([icon, label1])
             view.backgroundColor = .red
@@ -152,7 +152,7 @@ final class DZHomeController: DZBaseViewController,UICollectionViewDataSource,UI
     var collectionView: BaseCollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.whitex
         let more = UIBarButtonItem(image: UIImage(named: "u_add_y"), style: .done, target: nil, action: nil)
         navigationItem.rightBarButtonItem = more
         let map = UIBarButtonItem(title: "北京") {

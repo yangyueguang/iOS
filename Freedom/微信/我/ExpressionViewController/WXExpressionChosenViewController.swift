@@ -23,13 +23,13 @@ class WXExpressionCell: BaseTableViewCell<TLEmojiGroup> {
     }()
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 16.0)
+        titleLabel.font = UIFont.big
         return titleLabel
     }()
     private lazy var detailLabel: UILabel = {
         let detailLabel = UILabel()
-        detailLabel.font = UIFont.systemFont(ofSize: 13.0)
-        detailLabel.textColor = UIColor.gray
+        detailLabel.font = UIFont.small
+        detailLabel.textColor = UIColor.grayx
         return detailLabel
     }()
     private lazy var tagView: UIImageView = {
@@ -41,12 +41,12 @@ class WXExpressionCell: BaseTableViewCell<TLEmojiGroup> {
     private lazy var downloadButton: UIButton = {
         let downloadButton = UIButton()
         downloadButton.setTitle("下载", for: .normal)
-        downloadButton.titleLabel?.font = UIFont.systemFont(ofSize: 14.0)
-        downloadButton.setTitleColor(UIColor.green, for: .normal)
+        downloadButton.titleLabel?.font = UIFont.middle
+        downloadButton.setTitleColor(UIColor.greenx, for: .normal)
         downloadButton.layer.masksToBounds = true
         downloadButton.layer.cornerRadius = 3.0
         downloadButton.layer.borderWidth = 1.0
-        downloadButton.layer.borderColor = UIColor.green.cgColor
+        downloadButton.layer.borderColor = UIColor.greenx.cgColor
         downloadButton.addTarget(self, action: #selector(self.downloadButtonDown(_:)), for: .touchUpInside)
         return downloadButton
     }()
@@ -62,16 +62,16 @@ class WXExpressionCell: BaseTableViewCell<TLEmojiGroup> {
             detailLabel.text = group.groupDetailInfo
             if group.status == .downloaded {
                 downloadButton.setTitle("已下载", for: .normal)
-                downloadButton.layer.borderColor = UIColor.gray.cgColor
-                downloadButton.setTitleColor(UIColor.gray, for: .normal)
+                downloadButton.layer.borderColor = UIColor.grayx.cgColor
+                downloadButton.setTitleColor(UIColor.grayx, for: .normal)
             } else if group.status == .downloading {
                 downloadButton.setTitle("下载中", for: .normal)
-                downloadButton.layer.borderColor = UIColor.green.cgColor
-                downloadButton.setTitleColor(UIColor.green, for: .normal)
+                downloadButton.layer.borderColor = UIColor.greenx.cgColor
+                downloadButton.setTitleColor(UIColor.greenx, for: .normal)
             } else {
                 downloadButton.setTitle("下载", for: .normal)
-                downloadButton.layer.borderColor = UIColor.green.cgColor
-                downloadButton.setTitleColor(UIColor.green, for: .normal)
+                downloadButton.layer.borderColor = UIColor.greenx.cgColor
+                downloadButton.setTitleColor(UIColor.greenx, for: .normal)
             }
         }
     }
@@ -164,7 +164,7 @@ class WXExpressionChosenViewController: BaseTableViewController,UISearchBarDeleg
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
         tableView.frame = CGRect(x: 0, y: TopHeight + 20, width: APPW, height: APPH - 20 - TopHeight)
-        tableView.backgroundColor = UIColor.white
+        tableView.backgroundColor = UIColor.whitex
         tableView.tableHeaderView = searchController.searchBar
         tableView.register(WXExpressionBannerCell.self, forCellReuseIdentifier: WXExpressionBannerCell.identifier)
         tableView.register(WXExpressionCell.self, forCellReuseIdentifier: WXExpressionCell.identifier)

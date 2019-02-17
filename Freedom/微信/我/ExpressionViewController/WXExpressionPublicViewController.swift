@@ -14,7 +14,7 @@ class WXExpressionPublicCell: UICollectionViewCell {
             if image != nil {
                 imageView.image = image
             } else {
-                imageView.sd_setImage(with: URL(string: group.groupIconURL), placeholderImage: UIImage.imageWithColor(UIColor.lightGray))
+                imageView.sd_setImage(with: URL(string: group.groupIconURL), placeholderImage: UIImage.imageWithColor(UIColor.light))
             }
         }
     }
@@ -24,13 +24,13 @@ class WXExpressionPublicCell: UICollectionViewCell {
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 5.0
         imageView.layer.borderWidth = 1
-        imageView.layer.borderColor = UIColor.gray.cgColor
+        imageView.layer.borderColor = UIColor.grayx.cgColor
         return imageView
     }()
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.systemFont(ofSize: 12.0)
+        titleLabel.font = UIFont.small
         return titleLabel
     }()
     override init(frame: CGRect) {
@@ -70,12 +70,12 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
         let layout = UICollectionViewFlowLayout()
         let rect = CGRect(x: 0, y: TopHeight + 20, width: APPW, height: APPH - TopHeight - 20)
         collectionView = BaseCollectionView(frame: rect, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor.whitex
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true
         view.addSubview(collectionView)
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor.whitex
         //    [self.collectionView setTableHeaderView:self.searchController.searchBar];
         let footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(self.loadMoreData))
         footer?.setTitle("正在加载...", for: .refreshing)

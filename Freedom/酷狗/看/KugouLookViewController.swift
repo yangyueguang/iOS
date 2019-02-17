@@ -21,7 +21,7 @@ final class KugouLookViewController: KugouBaseViewController {
     }
     var headerView: UIView? {
         let headerView1 = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 100))
-        headerView1.backgroundColor = UIColor.white
+        headerView1.backgroundColor = UIColor.whitex
         view.addSubview(headerView1)
         let banner = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW, height: 150))
         banner.image = UIImage(named: "bj")
@@ -35,10 +35,10 @@ final class KugouLookViewController: KugouBaseViewController {
             let btn = UIButton(frame: CGRect(x: btnX, y: banner.height + 15, width: btnW, height: btnH))
             btn.imageView?.contentMode = .scaleAspectFit
             btn.titleLabel?.textAlignment = .center
-            btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+            btn.titleLabel?.font = UIFont.normal
             btn.setImage(UIImage(named: "n\(i + 1)"), for: .normal)
             btn.setTitle(titleArr[i], for: .normal)
-            btn.setTitleColor(UIColor.black, for: .normal)
+            btn.setTitleColor(UIColor.blackx, for: .normal)
             headerView1.addSubview(btn)
         }
         return headerView1

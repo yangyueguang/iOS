@@ -55,7 +55,7 @@ class WXGroupCell: BaseTableViewCell<WXGroup> {
     private var usernameLabel = UILabel()
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        usernameLabel.font = UIFont.systemFont(ofSize: 17.0)
+        usernameLabel.font = UIFont.large
         contentView.addSubview(avatarImageView)
         contentView.addSubview(usernameLabel)
         avatarImageView.snp.makeConstraints { (make) in
@@ -88,7 +88,7 @@ class WXGroupViewController: BaseTableViewController ,UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "群聊"
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.whitex
         tableView.tableHeaderView = searchController.searchBar
         tableView.register(WXGroupCell.self, forCellReuseIdentifier: WXGroupCell.identifier)
     }

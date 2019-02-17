@@ -52,14 +52,14 @@ class TLMoreKeyboard: UIView, UICollectionViewDataSource, UICollectionViewDelega
     lazy var pageControl: UIPageControl =  {
         let pageControl = UIPageControl()
         pageControl.center = CGPoint(x: center.x, y: pageControl.center.y)
-        pageControl.pageIndicatorTintColor = UIColor.gray
-        pageControl.currentPageIndicatorTintColor = UIColor.gray
+        pageControl.pageIndicatorTintColor = UIColor.grayx
+        pageControl.currentPageIndicatorTintColor = UIColor.grayx
         pageControl.addTarget(self, action: #selector(self.pageControlChanged(_:)), for: .valueChanged)
         return pageControl
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(245.0, 245.0, 247.0, 1.0)
+        backgroundColor = UIColor.back
         addSubview(collectionView)
         addSubview(pageControl)
         collectionView.register(TLMoreKeyboardCell.self, forCellWithReuseIdentifier: TLMoreKeyboardCell.identifier)
@@ -194,15 +194,15 @@ class TLMoreKeyboardCell: UICollectionViewCell {
         iconButton.layer.masksToBounds = true
         iconButton.layer.cornerRadius = 5.0
         iconButton.layer.borderWidth = 1
-        iconButton.layer.borderColor = UIColor.gray.cgColor
-        iconButton.setBackgroundImage(UIImage.imageWithColor(UIColor.gray), for: .highlighted)
+        iconButton.layer.borderColor = UIColor.grayx.cgColor
+        iconButton.setBackgroundImage(UIImage.imageWithColor(UIColor.grayx), for: .highlighted)
         iconButton.addTarget(self, action: #selector(self.iconButtonDown(_:)), for: .touchUpInside)
         return iconButton
     }()
     private var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 12.0)
-        titleLabel.textColor = UIColor.gray
+        titleLabel.font = UIFont.small
+        titleLabel.textColor = UIColor.grayx
         return titleLabel
     }()
     override init(frame: CGRect) {

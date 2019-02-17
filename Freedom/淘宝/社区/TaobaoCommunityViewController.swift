@@ -7,14 +7,14 @@ class TaobaoCommunityViewCell1:BaseCollectionViewCell<Any> {
     override func initUI() {
         title = UILabel(frame: CGRect(x: 10, y: 0, width: APPW - 20, height: 40))
         title.numberOfLines = 0
-        title.font = fontTitle
+        title.font = .normal
         icon = UIImageView(frame: CGRect(x: 10, y: title.bottom, width: self.width - 20, height: 100))
         icon.layer.cornerRadius = 10
         icon.clipsToBounds = true
         script = UILabel(frame: CGRect(x: 10, y: icon.bottom, width: APPW - 20, height: 60))
         script.numberOfLines = 0
-        script.font = fontSmall
-        script.textColor = gradtextcolor
+        script.font = .small
+        script.textColor = .cd
         addSubviews([title, icon, script])
         title.text = "我想买一个6000到8000左右的游戏本，求各位大神给个推荐"
         icon.image = UIImage(named: "image4.jpg")
@@ -25,8 +25,8 @@ class TaobaoCommunityViewCell2:BaseCollectionViewCell<Any> {
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW / 2 - 20, height: 100))
         title = UILabel(frame: CGRect(x: 0, y: icon.bottom, width: icon.width, height: 70))
-        title.font = fontSmall
-        title.textColor = gradtextcolor
+        title.font = .small
+        title.textColor = .cd
         title.numberOfLines = 0
         addSubviews([icon, title])
         title.text = "做工很精细，大品牌，值得信赖！用了几天才评价，真实堪称完美！质量上乘，使用方便，是您居家旅行，过节送礼，朋友关系维护的绝佳产品，可以送老人，送孩子，送长辈，价格合理，你值得拥有！"
@@ -59,7 +59,7 @@ final class TaobaoCommunityViewController: TaobaoBaseViewController,UICollection
         let searchBar = UISearchBar()
         searchBar.placeholder = "你想要的购物经验，这里都能找到"
         navigationItem.titleView = searchBar
-        navigationController?.navigationBar.tintColor = UIColor.gray
+        navigationController?.navigationBar.tintColor = UIColor.grayx
         let image = UIImage(named: "Taobaomessage")?.withRenderingMode(.alwaysOriginal)
         let leftI = UIBarButtonItem(image: UIImage(named:"TaobaoScanner"), style: .done, target: nil, action: nil)
         let rightI = UIBarButtonItem(image: image, style: .done, target: nil, action:nil)

@@ -27,8 +27,8 @@ class IqiyiImageCardView: UIView {
         }
         //
         titleLabel = UILabel(frame: CGRect(x: 5, y: frame.size.height - 40, width: frame.size.width - 5, height: 20))
-        titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        titleLabel?.textColor = UIColor.black
+        titleLabel?.font = UIFont.middle
+        titleLabel?.textColor = UIColor.blackx
         titleLabel?.lineBreakMode = .byTruncatingTail
         //        self.titleLabel.text = video.title;
         if let aLabel = titleLabel {
@@ -36,13 +36,13 @@ class IqiyiImageCardView: UIView {
         }
         //
         pvLabel = UILabel(frame: CGRect(x: 5, y: frame.size.height - 20, width: frame.size.width - 5, height: 20))
-        pvLabel?.font = UIFont.systemFont(ofSize: 11)
-        pvLabel?.textColor = UIColor.lightGray
+        pvLabel?.font = UIFont.small
+        pvLabel?.textColor = UIColor.light
         addSubview(pvLabel!)
         //
         yaofengLabel = UILabel(frame: CGRect(x: 10, y: frame.size.height - 60, width: frame.size.width - 10, height: 20))
-        yaofengLabel?.font = UIFont.systemFont(ofSize: 11)
-        yaofengLabel?.textColor = UIColor.white
+        yaofengLabel?.font = UIFont.small
+        yaofengLabel?.textColor = UIColor.whitex
         //        self.yaofengLabel.text = video.yaofeng;
         addSubview(yaofengLabel!)
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.onTapImageCard(_:)))
@@ -58,8 +58,8 @@ class IqiyiImageCardView: UIView {
         }
         //
         titleLabel = UILabel(frame: CGRect(x: 5, y: frame.size.height - 40, width: frame.size.width - 5, height: 20))
-        titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        titleLabel?.textColor = UIColor.black
+        titleLabel?.font = UIFont.middle
+        titleLabel?.textColor = UIColor.blackx
         titleLabel?.lineBreakMode = .byTruncatingTail
         //        self.titleLabel.text = video.title;
         if let aLabel = titleLabel {
@@ -67,13 +67,13 @@ class IqiyiImageCardView: UIView {
         }
         //
         pvLabel = UILabel(frame: CGRect(x: 5, y: frame.size.height - 20, width: frame.size.width - 5, height: 20))
-        pvLabel?.font = UIFont.systemFont(ofSize: 11)
-        pvLabel?.textColor = UIColor.lightGray
+        pvLabel?.font = UIFont.small
+        pvLabel?.textColor = UIColor.light
         addSubview(pvLabel!)
         //
         yaofengLabel = UILabel(frame: CGRect(x: 10, y: frame.size.height - 60, width: frame.size.width - 10, height: 20))
-        yaofengLabel?.font = UIFont.systemFont(ofSize: 11)
-        yaofengLabel?.textColor = UIColor.white
+        yaofengLabel?.font = UIFont.small
+        yaofengLabel?.textColor = UIColor.whitex
         //        self.yaofengLabel.text = video.yaofeng;
         addSubview(yaofengLabel!)
         
@@ -137,7 +137,7 @@ class IqiyiHomeBoxCell: BaseTableViewCell<IqiyiBoxesModel>,IqiyiImageCardViewDel
     func initViews() {
         //背景
         let backView = UIView(frame: CGRect(x: 0, y: 5, width: APPW, height: 40 + 300))
-        backView.backgroundColor = UIColor.white
+        backView.backgroundColor = UIColor.whitex
         addSubview(backView)
         //头
         let headView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 40))
@@ -147,7 +147,7 @@ class IqiyiHomeBoxCell: BaseTableViewCell<IqiyiBoxesModel>,IqiyiImageCardViewDel
         backView.addSubview(imageView!)
         //
         titleLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 100, height: 40))
-        titleLabel?.textColor = blacktextcolor
+        titleLabel?.textColor = .dark
         headView.addSubview(titleLabel!)
         //
         let lineView = UIView(frame: CGRect(x: 5, y: 38, width: APPW - 10, height: 1))
@@ -206,7 +206,7 @@ class IqiyiHomeVideoBoxCell: BaseTableViewCell<IqiyiBoxesModel> {
     func initViews() {
         //背景
         let backView = UIView(frame: CGRect(x: 0, y: 5, width: APPW, height: 40 + 230 + 230))
-        backView.backgroundColor = UIColor.white
+        backView.backgroundColor = UIColor.whitex
         addSubview(backView)
         //头
         let headView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 40))
@@ -216,7 +216,7 @@ class IqiyiHomeVideoBoxCell: BaseTableViewCell<IqiyiBoxesModel> {
         backView.addSubview(icon)
         //
         titleLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 100, height: 40))
-        titleLabel.textColor = gradtextcolor
+        titleLabel.textColor = .cd
         headView.addSubview(titleLabel)
         //
         let lineView = UIView(frame: CGRect(x: 5, y: 38, width: APPW - 10, height: 1))
@@ -246,7 +246,7 @@ final class IqiyiViewController: IqiyiBaseViewController ,IqiyiHomeBoxCellDelega
         private var headImageArray = [AnyHashable]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.whitex
         initNav()
         initView()
         setUpRefresh()

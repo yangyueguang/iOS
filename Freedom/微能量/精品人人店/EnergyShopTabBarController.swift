@@ -21,7 +21,7 @@ EnergySuperMarketTabBarController.sharedRootViewController.isRemoveTab = true
         controller.tabBarItem.selectedImage = UIImage(named: selectImage)?.withRenderingMode(.alwaysOriginal)
         controller.tabBarItem.title = title
         controller.title = title
-        controller.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.red], for: .selected)
+        controller.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.redx], for: .selected)
         addChild(controller)
     }
 }

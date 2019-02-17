@@ -21,23 +21,23 @@ class WXSearchController: UISearchController {
         super.init(searchResultsController: searchResultsController)
         searchBar.frame = CGRect(x: 0, y: 0, width: APPW, height: 44)
         searchBar.backgroundImage = UIImage.imageWithColor(.clear)
-        searchBar.barTintColor = UIColor.lightGray
-        searchBar.tintColor = UIColor.green
+        searchBar.barTintColor = UIColor.light
+        searchBar.tintColor = UIColor.greenx
         let tf = searchBar.subviews.first?.subviews.last as! UITextField
         tf.layer.masksToBounds = true
         tf.layer.borderWidth = 1
-        tf.layer.borderColor = UIColor.gray.cgColor
+        tf.layer.borderColor = UIColor.grayx.cgColor
         tf.layer.cornerRadius = 5.0
         for view: UIView in searchBar.subviews[0].subviews {
             if (NSStringFromClass(object_getClass(view) ?? UIView.self) == "UISearchBarBackground") {
                 let bg = UIView()
-                bg.backgroundColor = UIColor.lightGray
+                bg.backgroundColor = UIColor.light
                 view.addSubview(bg)
                 bg.snp.makeConstraints { (make) in
                     make.edges.equalToSuperview()
                 }
                 let line = UIView()
-                line.backgroundColor = UIColor.gray
+                line.backgroundColor = UIColor.grayx
                 view.addSubview(line)
                 line.snp.makeConstraints { (make) in
                     make.left.right.bottom.equalToSuperview()

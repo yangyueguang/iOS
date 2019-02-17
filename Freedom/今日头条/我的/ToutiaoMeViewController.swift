@@ -29,9 +29,9 @@ final class ToutiaoMeViewController: BaseTableViewController {
             button.setImage(UIImage(named:"userLogo"), for: .normal)
             topView.addSubview(button)
         }
-        topView.backgroundColor = UIColor(10, 10, 10,  1)
+        topView.backgroundColor = UIColor.dark
         let label = UILabel(frame: CGRect(x: 10, y: view.bounds.size.height-30, width: APPW-20, height: 20))
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.middle
         label.textColor = .white
         label.text = "登录推荐更精准"
         label.textAlignment = .center
@@ -45,7 +45,7 @@ final class ToutiaoMeViewController: BaseTableViewController {
             buton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 45, bottom: 20, right: 45)
             buton.titleEdgeInsets = UIEdgeInsets(top: 35, left: -APPW/3+10, bottom: 0, right: 0)
             buton.setTitleColor(.black, for: .normal)
-            buton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            buton.titleLabel?.font = UIFont.middle
             buton.backgroundColor = .white
             head.addSubview(buton)
         }

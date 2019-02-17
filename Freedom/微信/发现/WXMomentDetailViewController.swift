@@ -28,7 +28,7 @@ class WXMomentExtensionView: UIView, UITableViewDelegate, UITableViewDataSource 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor(243.0, 243.0, 245.0, 1.0)
+        tableView.backgroundColor = UIColor.back
         tableView.delegate = self
         tableView.dataSource = self
         tableView.scrollsToTop = false
@@ -61,8 +61,8 @@ class WXMomentExtensionView: UIView, UITableViewDelegate, UITableViewDataSource 
         context.addLine(to: CGPoint(x: startX + width, y: endY))
         context.addLine(to: CGPoint(x: startX - width, y: endY))
         context.closePath()
-        UIColor(243.0, 243.0, 245.0, 1.0).setFill()
-        UIColor(243.0, 243.0, 245.0, 1.0).setStroke()
+        UIColor.back.setFill()
+        UIColor.back.setStroke()
         context.drawPath(using: .fillStroke)
     }
 
@@ -155,20 +155,20 @@ class WXMomentBaseView: UIView {
         let usernameView = UIButton()
         usernameView.tag = TLMomentViewButtonType.userName.rawValue
         usernameView.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
-        usernameView.setTitleColor(UIColor(74.0, 99.0, 141.0, 1.0), for: .normal)
+        usernameView.setTitleColor(UIColor.title, for: .normal)
         usernameView.addTarget(self, action: #selector(self.buttonClicked(_:)), for: .touchUpInside)
         return usernameView
     }()
     private lazy var dateLabel: UILabel =  {
         let dateLabel = UILabel()
-        dateLabel.textColor = UIColor.gray
-        dateLabel.font = UIFont.systemFont(ofSize: 12.0)
+        dateLabel.textColor = UIColor.grayx
+        dateLabel.font = UIFont.small
         return dateLabel
     }()
     private lazy var originLabel: UILabel = {
         let originLabel = UILabel()
-        originLabel.textColor = UIColor.gray
-        originLabel.font = UIFont.systemFont(ofSize: 12.0)
+        originLabel.textColor = UIColor.grayx
+        originLabel.font = UIFont.small
         return originLabel
     }()
     private lazy var moreButton: UIButton = {
@@ -299,7 +299,7 @@ class WXMomentDetailBaseView: UIView {
 class WXMomentDetailTextView: WXMomentDetailBaseView {
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 15.0)
+        titleLabel.font = UIFont.normal
         titleLabel.numberOfLines = 0
         return titleLabel
     }()
@@ -390,7 +390,7 @@ class WXMomentDetailViewController: WXBaseViewController ,WXMomentViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "详情"
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.whitex
         scrollView.alwaysBounceVertical = true
         momentView.delegate = self
         view.addSubview(scrollView)

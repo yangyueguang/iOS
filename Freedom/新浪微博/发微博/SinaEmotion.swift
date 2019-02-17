@@ -67,7 +67,7 @@ class SinaEmotionListView: UIView, UIScrollViewDelegate {
     var pageControl: UIPageControl = UIPageControl()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.whitex
         scrollView.isPagingEnabled = true
         scrollView.delegate = self
         scrollView.showsHorizontalScrollIndicator = false
@@ -126,7 +126,7 @@ class SinaEmotionListView: UIView, UIScrollViewDelegate {
 }
 class SinaEmotionTextView: UITextView {
     var placeholder = ""
-    var placeholderColor: UIColor = .red
+    var placeholderColor: UIColor = .redx
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         NotificationCenter.default.addObserver(self, selector: #selector(self.textDidChange), name: UITextView.textDidChangeNotification, object: self)
@@ -149,7 +149,7 @@ class SinaEmotionTextView: UITextView {
         let y: CGFloat = 8
         let h: CGFloat = rect.size.height - 2 * y
         let placeholderRect = CGRect(x: x, y: y, width: w, height: h)
-        placeholder.draw(in: placeholderRect, withAttributes:[NSAttributedString.Key.foregroundColor:UIColor.red])
+        placeholder.draw(in: placeholderRect, withAttributes:[NSAttributedString.Key.foregroundColor:UIColor.redx])
     }
     func insert(_ emotion: SinaEmotion) {
         if emotion.code != "" {
@@ -204,9 +204,9 @@ class SinaEmotionTabBar: UIView {
     }
     func setupBtn(_ title: String?, buttonType: Int) -> UIButton? {
         let btn = UIButton()
-        btn.setTitleColor(UIColor.white, for: .normal)
-        btn.setTitleColor(UIColor.darkGray, for: .disabled)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+        btn.setTitleColor(UIColor.whitex, for: .normal)
+        btn.setTitleColor(UIColor.dark, for: .disabled)
+        btn.titleLabel?.font = UIFont.small
         btn.addTarget(self, action: #selector(self.btnClick(_:)), for: .touchDown)
         btn.tag = buttonType
         btn.setTitle(title, for: .normal)

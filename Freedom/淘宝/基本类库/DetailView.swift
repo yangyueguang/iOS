@@ -21,16 +21,16 @@ class DetailView: UIView {
     private var currentIndex: Int = -1
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.whitex
         topScrollPageView = UIView(frame: CGRect(x: 0, y: -370, width: width, height: 370))
         topScrollPageView.layer.masksToBounds = false
         tipView = UIView(frame: CGRect(x: 0, y: height, width: width, height: 44))
         topView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         bottomView = UIView(frame: CGRect(x: 0, y: height, width: width, height: height - 0))
         sectionView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: middleHeight))
-        sectionView.backgroundColor = UIColor.white
+        sectionView.backgroundColor = UIColor.whitex
         sectionLineView = UIView(frame: CGRect(x: width, y: middleHeight - 2, width: width, height: 2))
-        sectionLineView.backgroundColor = UIColor.red
+        sectionLineView.backgroundColor = UIColor.redx
         topScrollView.addObserver(self, forKeyPath: "contentOffset", options: [.old, .new], context: nil)
         topScrollView.addObserver(self, forKeyPath: "contentSize", options: [.old, .new], context: nil)
         topScrollView.addSubview(tipView)
@@ -63,17 +63,17 @@ class DetailView: UIView {
         for i in 0..<titleTotal {
             let button = UIButton(type: .custom)
             button.frame = CGRect(x: itemWidth * CGFloat(i), y: 0, width:width / CGFloat(titleTotal), height: middleHeight)
-            button.backgroundColor = UIColor.white
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
-            button.setTitleColor(UIColor.gray, for: .normal)
-            button.setTitleColor(UIColor.red, for: .selected)
+            button.backgroundColor = UIColor.whitex
+            button.titleLabel?.font = UIFont.normal
+            button.setTitleColor(UIColor.grayx, for: .normal)
+            button.setTitleColor(UIColor.redx, for: .selected)
             button.tag = 20140830 + i
             button.addTarget(self, action: #selector(self.sectionButtonAction(_:)), for: .touchUpInside)
             sectionView.addSubview(button)
         }
         if middleHeight > 1.0 {
             let lineView = UIView(frame: CGRect(x: 0, y: middleHeight - 1, width: width, height: 1))
-            lineView.backgroundColor = UIColor.lightGray
+            lineView.backgroundColor = UIColor.light
             lineView.alpha = 0.5
             sectionView.addSubview(lineView)
         }

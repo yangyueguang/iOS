@@ -30,9 +30,9 @@ class WXMessageBaseCell: BaseTableViewCell<WXMessage> {
     weak var delegate: WXMessageCellDelegate?
     lazy var timeLabel: UILabel = {
         let timeLabel = UILabel()
-        timeLabel.font = UIFont.systemFont(ofSize: 12.0)
-        timeLabel.textColor = UIColor.white
-        timeLabel.backgroundColor = UIColor.gray
+        timeLabel.font = UIFont.small
+        timeLabel.textColor = UIColor.whitex
+        timeLabel.backgroundColor = UIColor.grayx
         timeLabel.alpha = 0.7
         timeLabel.layer.masksToBounds = true
         timeLabel.layer.cornerRadius = 5.0
@@ -48,8 +48,8 @@ class WXMessageBaseCell: BaseTableViewCell<WXMessage> {
     }()
     lazy var usernameLabel: UILabel = {
         let usernameLabel = UILabel()
-        usernameLabel.textColor = UIColor.gray
-        usernameLabel.font = UIFont.systemFont(ofSize: 12.0)
+        usernameLabel.textColor = UIColor.grayx
+        usernameLabel.font = UIFont.small
         return usernameLabel
     }()
     lazy var messageBackgroundView: UIImageView = {

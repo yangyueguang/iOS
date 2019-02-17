@@ -35,7 +35,7 @@ class WXPictureCarouselView:UIView, UICollectionViewDelegate, UICollectionViewDa
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = .zero
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor.whitex
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isPagingEnabled = true

@@ -31,8 +31,8 @@ class IqiyiSubScribeCardView: UIView {
         }
         //
         titleLabel = UILabel(frame: CGRect(x: 5, y: frame.size.height - 30, width: frame.size.width - 5, height: 30))
-        titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        titleLabel?.textColor = UIColor.black
+        titleLabel?.font = UIFont.middle
+        titleLabel?.textColor = UIColor.blackx
         if let aLabel = titleLabel {
             addSubview(aLabel)
         }

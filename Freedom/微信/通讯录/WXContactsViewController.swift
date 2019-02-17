@@ -21,13 +21,13 @@ class WechatContactCell: BaseTableViewCell<WechatContact> {
             self.titleLabel.text = contact.name
             self.subTitleLabel.text = contact.tel
             if contact.status == .stranger {
-                self.rightButton.backgroundColor = UIColor.green
+                self.rightButton.backgroundColor = UIColor.greenx
                 self.rightButton.setTitle("添加", for: .normal)
-                self.rightButton.setTitleColor(UIColor.white, for: .normal)
+                self.rightButton.setTitleColor(UIColor.whitex, for: .normal)
                 self.rightButton.layer.borderColor = UIColor(white: 0.7, alpha: 1.0).cgColor
             } else {
                 self.rightButton.backgroundColor = UIColor.clear
-                self.rightButton.setTitleColor(UIColor.gray, for: .normal)
+                self.rightButton.setTitleColor(UIColor.grayx, for: .normal)
                 self.rightButton.layer.borderColor = UIColor.clear.cgColor
                 if contact.status == .friend {
                     self.rightButton.setTitle("已添加", for: .normal)
@@ -93,9 +93,9 @@ final class WXContactsViewController: BaseTableViewController, UISearchBarDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "通讯录朋友"
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.whitex
         tableView.sectionIndexBackgroundColor = UIColor.clear
-        tableView.sectionIndexColor = UIColor(46.0, 49.0, 50.0, 1.0)
+        tableView.sectionIndexColor = UIColor.back
         tableView.tableHeaderView = searchController.searchBar
         tableView.register(WXFriendHeaderView.self, forHeaderFooterViewReuseIdentifier: WXFriendHeaderView.identifier)
         tableView.register(WechatContactCell.self, forCellReuseIdentifier: WechatContactCell.identifier)

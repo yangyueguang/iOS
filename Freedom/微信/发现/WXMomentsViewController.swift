@@ -70,13 +70,13 @@ class WXMomentHeaderCell: BaseTableViewCell<WXUser> {
         let avatarView = UIButton()
         avatarView.layer.masksToBounds = true
         avatarView.layer.borderWidth = 2.0
-        avatarView.layer.borderColor = UIColor.white.cgColor
+        avatarView.layer.borderColor = UIColor.whitex.cgColor
         return avatarView
     }()
     lazy var mottoLabel: UILabel =  {
         let mottoLabel = UILabel()
-        mottoLabel.font = UIFont.systemFont(ofSize: 14.0)
-        mottoLabel.textColor = UIColor.gray
+        mottoLabel.font = UIFont.middle
+        mottoLabel.textColor = UIColor.grayx
         mottoLabel.textAlignment = .right
         return mottoLabel
     }()
@@ -87,8 +87,8 @@ class WXMomentHeaderCell: BaseTableViewCell<WXUser> {
         contentView.addSubview(avatarView)
         contentView.addSubview(usernameLabel)
         contentView.addSubview(mottoLabel)
-        backgroundWall.backgroundColor = UIColor.gray
-        usernameLabel.textColor = UIColor.white
+        backgroundWall.backgroundColor = UIColor.grayx
+        usernameLabel.textColor = UIColor.whitex
         backgroundWall.snp.makeConstraints { (make) in
             make.left.right.equalTo(self.contentView)
             make.bottom.equalTo(self.mottoLabel.snp.top).offset(-65 / 3.0 - 8.0)
@@ -119,7 +119,7 @@ class WXMomentsViewController: BaseTableViewController, WXMomentViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "朋友圈"
-        tableView.backgroundColor = UIColor.white
+        tableView.backgroundColor = UIColor.whitex
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 60.0))
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "nav_camera"), style: .done, target: nil, action: nil)
         navigationItem.rightBarButtonItem = rightBarButton

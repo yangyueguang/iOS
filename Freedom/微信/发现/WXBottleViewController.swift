@@ -25,9 +25,9 @@ class WXBottleButton: UIButton {
     var iconImageView = UIImageView()
     lazy var textLabel: UILabel = {
         let textLabel = UILabel()
-        textLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textLabel.font = UIFont.small
         textLabel.textAlignment = .center
-        textLabel.textColor = UIColor.white
+        textLabel.textColor = UIColor.whitex
         return textLabel
     }()
     override init(frame: CGRect) {

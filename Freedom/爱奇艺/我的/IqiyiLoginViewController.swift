@@ -16,7 +16,7 @@ final class IqiyiLoginViewController: IqiyiBaseViewController {
 //        tableView.dataSource = self
         tableView.separatorStyle = .none
         view.addSubview(tableView)
-        view.backgroundColor = UIColor(249, 249, 249,1)
+        view.backgroundColor = UIColor.back
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2

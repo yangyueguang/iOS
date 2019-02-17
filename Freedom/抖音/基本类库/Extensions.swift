@@ -147,7 +147,7 @@ extension UIWindow {
         let maxHeight:CGFloat = window?.frame.size.height ?? 0 - 200
         let commonInset:CGFloat = 10
 
-        let font = UIFont.systemFont(ofSize: 12)
+        let font = UIFont.small
         let string = NSMutableAttributedString.init(string: text)
         string.addAttributes([.font:font], range: NSRange.init(location: 0, length: string.length))
 
@@ -159,8 +159,8 @@ extension UIWindow {
         let textView = UITextView.init(frame: textFrame)
         textView.text = text
         textView.font = font
-        textView.textColor = UIColor.white
-        textView.backgroundColor = UIColor.black
+        textView.textColor = UIColor.whitex
+        textView.backgroundColor = UIColor.blackx
         textView.layer.cornerRadius  = 5
         textView.isEditable = false
         textView.isSelectable = false

@@ -15,7 +15,7 @@ final class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         emotionKeyboard.frame = CGRect(x: emotionKeyboard.frame.origin.x, y: emotionKeyboard.frame.origin.y, width: view.frame.size.width, height: 256)
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.whitex
         //设置导航栏内容
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(self.cancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发送", style: .plain, target: self, action: #selector(self.send))
@@ -29,8 +29,8 @@ final class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate
             let str = "\(prefix)\n\(ac.name)"
             // 创建一个带有属性的字符串（比如颜色属性、字体属性等文字属性）
             let attStr = NSMutableAttributedString(string: str)
-            attStr.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: (str as NSString).range(of: prefix))
-            attStr.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 12), range: (str as NSString).range(of: ac.name))
+            attStr.addAttribute(NSAttributedString.Key.font, value: UIFont.big, range: (str as NSString).range(of: prefix))
+            attStr.addAttribute(NSAttributedString.Key.font, value: UIFont.small, range: (str as NSString).range(of: ac.name))
             titleView.attributedText = attStr
             navigationItem.titleView = titleView
         } else {
@@ -41,7 +41,7 @@ final class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate
         // 垂直方向上永远可以拖拽（有弹簧效果）
         textView.alwaysBounceVertical = true
         textView.frame = view.bounds
-        textView.font = UIFont.systemFont(ofSize: 16)
+        textView.font = UIFont.big
         textView.setNeedsDisplay()
         view.addSubview(textView)
         textView.delegate = self

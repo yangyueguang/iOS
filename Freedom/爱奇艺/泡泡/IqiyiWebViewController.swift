@@ -10,7 +10,7 @@ class IqiyiWebViewController: IqiyiBaseViewController,UIWebViewDelegate{
     var activityView = UIActivityIndicatorView(frame: CGRect(x: APPW / 2 - 15, y: APPH / 2 - 15, width: 30, height: 30))
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.whitex
         //返回
         let backBtn = UIButton(type: .custom)
         backBtn.frame = CGRect(x: 0, y: 0, width: 23, height: 23)

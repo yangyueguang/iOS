@@ -8,7 +8,7 @@ class WXTagCell: BaseTableViewCell<Any> {
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         title = UILabel()
-        title.font = UIFont.systemFont(ofSize: 15.0)
+        title.font = UIFont.normal
         contentView.addSubview(title)
     }
     required init?(coder aDecoder: NSCoder) {
@@ -20,7 +20,7 @@ class WXTagsViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "标签"
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.whitex
         tableView.register(WXTagCell.self, forCellReuseIdentifier: WXTagCell.identifier)
         let rightBarButton = UIBarButtonItem(title: "新建", style: .plain, target: self, action: #selector(WXTagsViewController.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButton

@@ -40,15 +40,15 @@ final class IqiyiMineViewController: IqiyiBaseViewController {
         userImage.addGestureRecognizer(tapGR)
         //登陆
         let loginLable = UILabel(frame: CGRect(x: userImage.frame.maxX + 10, y: 30, width: 100, height: 30))
-        loginLable.textColor = UIColor.white
-        loginLable.font = UIFont.systemFont(ofSize: 14)
+        loginLable.textColor = UIColor.whitex
+        loginLable.font = UIFont.middle
         loginLable.text = "马上登陆"
         view.addSubview(loginLable)
         //
         let msgLabel = UILabel(frame: CGRect(x: userImage.frame.maxX + 10, y: 60, width: 100, height: 20))
         msgLabel.text = "登陆后更精彩"
-        msgLabel.textColor = UIColor.white
-        msgLabel.font = UIFont.systemFont(ofSize: 12)
+        msgLabel.textColor = UIColor.whitex
+        msgLabel.font = UIFont.small
         view.addSubview(msgLabel)
     }
     func initViews() {

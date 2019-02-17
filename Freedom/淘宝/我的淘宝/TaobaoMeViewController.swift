@@ -8,7 +8,7 @@ class TaobaoMeViewCell1:BaseCollectionViewCell<Any> {
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 10, y: 0, width: APPW / 5 - 20, height: 40))
         title = UILabel(frame: CGRect(x: 0, y: icon.bottom, width: APPW / 5 - 10, height: 20))
-        title.font = fontSmall
+        title.font = .small
         title.textAlignment = .center
         addSubviews([title, icon])
         title.text = "待收货"
@@ -19,7 +19,7 @@ class TaobaoMeViewCell2:BaseCollectionViewCell<Any> {
     override func initUI() {
         icon = UIImageView(frame: CGRect(x: 10, y: 0, width: APPW / 5 - 20, height: 40))
         title = UILabel(frame: CGRect(x: 0, y: icon.bottom, width: APPW / 5 - 12, height: 20))
-        title.font = fontSmall
+        title.font = .small
         title.textAlignment = .center
         addSubviews([title, icon])
         title.text = "蚂蚁花呗"
@@ -43,7 +43,7 @@ class TaobaoMeHeadView: UICollectionReusableView {
         let more = UILabel(frame: CGRect(x: titleLabel.right, y: titleLabel!.y, width: APPW - titleLabel.right - 10, height: 20))
         more.textColor = .gray
         more.textAlignment = .right
-        more.font = fontSmall
+        more.font = .small
         more.text = "查看更多 >"
         backgroundColor = .white
         if let aLabel = titleLabel {
@@ -67,13 +67,13 @@ final class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDel
         navigationItem.leftBarButtonItem = `left`
         navigationItem.rightBarButtonItems = [right1, right2] as? [UIBarButtonItem]
         let headView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 100))
-        headView.backgroundColor = UIColor(252, 50, 50, 1)
+        headView.backgroundColor = UIColor.back
         let icon = UIImageView(frame: CGRect(x: APPW / 2 - 30, y: 0, width: 60, height: 60))
         icon.layer.cornerRadius = 30
         icon.image = UIImage(named: "userLogo")
         icon.clipsToBounds = true
-        let name = UILabel(frame: CGRect(x: 10, y: icon.bottom, width: APPW - 20, height: 20), font: fontMiddle, color: .white, text: "杨越光", alignment: .center)
-        let taoqi = UILabel(frame: CGRect(x: APPW / 2 - 40, y: name.bottom, width: 80, height: 15), font: fontSmall, color: .red, text: "淘气值：710", alignment: .center)
+        let name = UILabel(frame: CGRect(x: 10, y: icon.bottom, width: APPW - 20, height: 20), font: .middle, color: .white, text: "杨越光", alignment: .center)
+        let taoqi = UILabel(frame: CGRect(x: APPW / 2 - 40, y: name.bottom, width: 80, height: 15), font: .small, color: .red, text: "淘气值：710", alignment: .center)
         taoqi.clipsToBounds = true
         taoqi.layer.cornerRadius = 7
         taoqi.backgroundColor = .yellow

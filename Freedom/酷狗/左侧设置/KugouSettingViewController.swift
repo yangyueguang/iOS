@@ -47,7 +47,7 @@ final class KugouSettingViewController: KugouBaseViewController {
         img2.layer.masksToBounds = true
         topView?.addSubview(img2)
         let lineView = UIView(frame: CGRect(x: 10, y: 99, width: APPW - 70, height: 0.5))
-        lineView.backgroundColor = UIColor.white
+        lineView.backgroundColor = UIColor.whitex
         lineView.alpha = 0.3
         topView?.addSubview(lineView)
         return topView
@@ -55,12 +55,12 @@ final class KugouSettingViewController: KugouBaseViewController {
     func setupBottomView() -> UIView? {
         let foot = UIView(frame: CGRect(x: 0, y: APPH - 110, width: APPW, height: 110))
         let lineView = UIView(frame: CGRect(x: 10, y: 0, width: APPW - 70, height: 0.5))
-        lineView.backgroundColor = UIColor.white
+        lineView.backgroundColor = UIColor.whitex
         lineView.alpha = 0.3
         foot.addSubview(lineView)
         let btn = UIButton(frame: CGRect(x: 20, y: 40, width: 80, height: 40))
         btn.setTitle("设置", for: .normal)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        btn.titleLabel?.font = UIFont.normal
         btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
         btn.setImage(UIImage(named: "setting"), for: .normal)
         foot.addSubview(btn)
@@ -79,8 +79,8 @@ final class KugouSettingViewController: KugouBaseViewController {
         var cell = tableView.dequeueCell(BaseTableViewCell<Any>.self)
         cell.imageView?.image = UIImage(named: "music")
         cell.textLabel?.text = "手机专享"
-        cell.textLabel?.textColor = UIColor.white
-        cell.backgroundColor = UIColor(white: 0, alpha: 0)
+        cell.textLabel?.textColor = UIColor.whitex
+        cell.backgroundColor = UIColor.blackx
         cell.selectionStyle = .none
         return cell
     }

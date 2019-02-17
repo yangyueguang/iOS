@@ -75,7 +75,7 @@ class WXAddThirdPartFriendCell: BaseTableViewCell<[WXAddThirdPartFriendItem]> {
         super.draw(rect)
         guard let context = UIGraphicsGetCurrentContext() else { return }
         context.setLineWidth(0.5)
-        context.setStrokeColor(UIColor.gray.cgColor)
+        context.setStrokeColor(UIColor.grayx.cgColor)
         context.beginPath()
         if thridPartItems.count == 2 {
             context.move(to: CGPoint(x: frame.size.width / 2.0, y: 0))
@@ -105,7 +105,7 @@ class WXAddThirdPartFriendItem: UIButton {
     }
     init(imagePath: String, andTitle title: String) {
         super.init(frame: CGRect.zero)
-        textLabel.font = UIFont.systemFont(ofSize: 12.0)
+        textLabel.font = UIFont.small
         iconImageView.image = UIImage(named: imagePath)
         textLabel.text = title
         addSubview(iconImageView)

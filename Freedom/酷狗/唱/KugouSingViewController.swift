@@ -8,7 +8,7 @@ final class KugouSingViewController: KugouBaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.whitex
         
         let banner = UIImageView(frame: CGRect(x: 0, y: 64, width: APPW, height: 150))
         banner.image = UIImage(named: "bj")
@@ -26,7 +26,7 @@ final class KugouSingViewController: KugouBaseViewController {
         wode.setTitle("我的", for: .normal)
         let woyaochang = UIButton(frame: CGRect(x: (APPW - 100) / 2, y: guanzhu.y - 50, width: 100, height: 100))
         woyaochang.layer.cornerRadius = 50
-        woyaochang.backgroundColor = UIColor.red
+        woyaochang.backgroundColor = UIColor.redx
         woyaochang.setTitle("我要唱", for: .normal)
         woyaochang.addTarget(self, action: #selector(self.woyaochang), for: .touchUpInside)
         let cell = UIView(frame: CGRect(x: 0, y: guanzhu.y + guanzhu.height, width: APPW, height: 60))
@@ -49,7 +49,7 @@ final class KugouSingViewController: KugouBaseViewController {
         view.addSubview(wode)
         view.addSubview(woyaochang)
         view.addSubview(cell)
-        view.backgroundColor = UIColor.gray
+        view.backgroundColor = UIColor.grayx
     }
     func fujin() {
     }

@@ -17,7 +17,7 @@ final class FreedomTheorySystemViewController: FreedomBaseViewController {
         for i in 0..<100 {
             let index = Int(arc4random() % 12)
             let text = items[index]
-            let item = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 30), font: UIFont.systemFont(ofSize: 10), color: UIColor.white, text: text)
+            let item = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 30), font: UIFont.mini, color: UIColor.white, text: text)
             item.textAlignment = .center
             item.isTapEffectEnabled = false
             let pointView = UIButton(frame: CGRect(x: 45, y: 20, width: 10, height: 10))

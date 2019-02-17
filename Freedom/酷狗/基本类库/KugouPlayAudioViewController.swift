@@ -293,7 +293,7 @@ class KugouPlayAudioViewController: UIViewController {
             timer?.invalidate()
             timer = nil
             centerLyricsLable.text = lrc.str
-            centerLyricsLable.textColor = UIColor.green
+            centerLyricsLable.textColor = UIColor.greenx
         }
         isPlay = true
         audioPlayer?.stop()
@@ -346,11 +346,11 @@ class KugouPlayAudioViewController: UIViewController {
             lrc.readFile()
             lrc.sort()
             centerLyricsLable.text = lrc.str
-            centerLyricsLable.textColor = UIColor.green
+            centerLyricsLable.textColor = UIColor.greenx
             haveLyrics = true
         } else {
             centerLyricsLable.text = "暂未找到歌词"
-            centerLyricsLable.textColor = UIColor.black
+            centerLyricsLable.textColor = UIColor.blackx
             haveLyrics = false
         }
     }
@@ -372,12 +372,12 @@ class KugouPlayAudioViewController: UIViewController {
             let x = (lrc.arr[privateIndex].myTime.doubleValue * 60) + (Double(tempStr) ?? 0.0)
             if (audioPlayer?.currentTime ?? 0) >= x {
                 centerLyricsLable.text = lrc.arr[privateIndex].lyric
-                centerLyricsLable.textColor = UIColor.green
+                centerLyricsLable.textColor = UIColor.greenx
                 privateIndex += 1
             }
         }
         if privateIndex == lrc.arr.count {
-            centerLyricsLable.textColor = UIColor.red
+            centerLyricsLable.textColor = UIColor.redx
         }
     }
     //判断歌词播放换行

@@ -210,15 +210,15 @@ class LyricsView: UIView {
     private func firstInit() {
         textLable.frame = bounds
         textLable.textAlignment = .center
-        textLable.textColor = UIColor.white
+        textLable.textColor = UIColor.whitex
         maskLable.frame = bounds
         maskLable.textAlignment = .center
-        maskLable.textColor = UIColor.green
+        maskLable.textColor = UIColor.greenx
         maskLable.backgroundColor = UIColor.clear
         maskLayer.anchorPoint = CGPoint.zero
         maskLayer.position = CGPoint(x: 0, y: 0)
         maskLayer.bounds = CGRect(x: 0, y: 0, width: 0, height: 25)
-        maskLayer.backgroundColor = UIColor.white.cgColor
+        maskLayer.backgroundColor = UIColor.whitex.cgColor
         maskLable.layer.mask = maskLayer
         addSubview(textLable)
         addSubview(maskLable)
@@ -293,11 +293,11 @@ private class SHMusicLrcCell: BaseTableViewCell<SHLrcLine> {
     }
     lazy var lrcLabel: UILabel = {
         let lrcLabel = UILabel(frame: CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.height))
-        lrcLabel.font = UIFont.systemFont(ofSize: 17)
+        lrcLabel.font = UIFont.large
         lrcLabel.text = message.words
-        lrcLabel.textColor = UIColor.purple
+        lrcLabel.textColor = UIColor.grayx
         lrcLabel.textAlignment = .center
-        lrcLabel.textColor = UIColor.lightText
+        lrcLabel.textColor = UIColor.light
         return lrcLabel
     }()
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -308,12 +308,12 @@ private class SHMusicLrcCell: BaseTableViewCell<SHLrcLine> {
         fatalError("init(coder:) has not been implemented")
     }
     func settingCurrentTextColor() {
-        lrcLabel.textColor = UIColor.red
+        lrcLabel.textColor = UIColor.redx
         lrcLabel.font = UIFont.systemFont(ofSize: 25)
     }
     func settingLastTextColor() {
-        lrcLabel.textColor = UIColor.lightText
-        lrcLabel.font = UIFont.systemFont(ofSize: 17)
+        lrcLabel.textColor = UIColor.light
+        lrcLabel.font = UIFont.large
     }
 }
 class PlayLRCSView: UIView {

@@ -15,7 +15,7 @@ class WXPublicServerViewController: BaseTableViewController, UISearchBarDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "公众号"
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.whitex
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "nav_add"), style: .plain, target: self, action: #selector(WXPublicServerViewController.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButton
         tableView.tableHeaderView = searchController.searchBar
