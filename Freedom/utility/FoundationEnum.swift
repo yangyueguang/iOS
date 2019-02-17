@@ -27,7 +27,7 @@ public extension UIColor {
     class var subTitle: UIColor {return UIColor(hex: 0xCDCED4)}
     class var back: UIColor {return UIColor(hex: 0xEFEFEF)}
     class var hold: UIColor {return UIColor(hex: 0xD0D0D0)}
-    class var dark: UIColor {return UIColor(hex: 0xcccccc)}
+    class var dark: UIColor {return UIColor(hex: 0x3c3c3c)}
     class var thin: UIColor {return UIColor(hex: 0x696D7F)}
     class var light: UIColor {return UIColor(hex: 0xeeeeee)}
 
