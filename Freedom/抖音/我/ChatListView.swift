@@ -8,6 +8,17 @@
 
 import Foundation
 import Photos
+extension NSTextAttachment {
+    static var _emotionKey = "emotionKey"
+    var emotionKey:String? {
+        get{
+            return objc_getAssociatedObject(self, &NSTextAttachment._emotionKey) as? String
+        }
+        set {
+            objc_setAssociatedObject(self, &NSTextAttachment._emotionKey, newValue, .OBJC_ASSOCIATION_RETAIN)
+        }
+    }
+}
 class EmotionHelper:NSObject {
 
     static let EmotionFont = UIFont.big
@@ -354,7 +365,7 @@ extension ChatTextView:UITextViewDelegate {
             textHeight = textView.font?.lineHeight ?? 0
         } else {
             placeHolderLabel.isHidden = true
-            textHeight = attributedString.multiLineSize(width: APPW - LEFT_INSET - RIGHT_INSET).height
+            textHeight = attributedString.boundingRect(with: CGSize(width: APPW - LEFT_INSET - RIGHT_INSET, height: CGFloat(MAXFLOAT)), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size.height
         }
         updateContainerFrame()
         updateSelectorFrame(animated: false)
@@ -415,7 +426,7 @@ extension ChatTextView:UIGestureRecognizerDelegate {
                         }
                     }
                 } else {
-                    UIWindow.showTips(text: "请在设置中开启图库读取权限")
+                    noticeInfo("请在设置中开启图库读取权限")
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0, execute: {
                         UIApplication.shared.openURL(URL.init(string: UIApplication.openSettingsURLString)!)
                     })
@@ -446,7 +457,7 @@ extension ChatTextView:EmotionSelectorDelegate {
                 updateSelectorFrame(animated: false)
             } else {
                 hideContainerBoard()
-                UIWindow.showTips(text: "请输入文字")
+                noticeInfo("请输入文字")
             }
         }
     }
@@ -457,7 +468,7 @@ extension ChatTextView:EmotionSelectorDelegate {
         let location = textView.selectedRange.location
         textView.attributedText = EmotionHelper.insertEmotion(str: textView.attributedText, index: location, key: emotionKey)
         textView.selectedRange = NSRange.init(location: location + 1, length: 0)
-        textHeight = textView.attributedText.multiLineSize(width: APPW - LEFT_INSET - RIGHT_INSET).height
+        textHeight = textView.attributedText.boundingRect(with: CGSize(width: APPW - LEFT_INSET - RIGHT_INSET, height: CGFloat(MAXFLOAT)), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size.height
         updateContainerFrame()
         updateSelectorFrame(animated: false)
     }
@@ -837,7 +848,7 @@ class PhotoSelector:UIView, UICollectionViewDelegate, UICollectionViewDataSource
 
     func processAssets() {
         if selectedData.count > 9 {
-            UIWindow.showTips(text: "最多选择9张图片")
+            noticeInfo("最多选择9张图片")
             return
         }
         if delegate != nil {

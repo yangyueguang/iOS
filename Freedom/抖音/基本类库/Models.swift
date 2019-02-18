@@ -10,19 +10,15 @@ class WebPImage: UIImage {
     var curDecodeIndex: Int = 0
     var frameCount: Int = 0
     var frames: [WebPFrame] = []
-
     func curDisplayFrameDuration() -> CGFloat {
         return 0
     }
-
     func decodeCurFrame() -> WebPFrame? {
         return curDisplayFrame
     }
-
     func incrementCurDisplayIndex() {
         curDecodeIndex += 1
     }
-
     func isAllFrameDecoded() -> Bool {
         return true
     }
@@ -327,7 +323,7 @@ class GroupChat: BaseModel {
     func createTimeChat() -> GroupChat {
         let timeChat = GroupChat.init()
         timeChat.msg_type = "time"
-        timeChat.msg_content = Date.formatTime(timeInterval: TimeInterval(self.create_time ?? 0))
+        timeChat.msg_content = Date(timeIntervalSince1970:  TimeInterval(self.create_time ?? 0)).timeToNow()
         timeChat.create_time = self.create_time
         timeChat.cellHeight = TimeCell.cellHeight(chat: timeChat)
         return timeChat

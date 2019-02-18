@@ -284,12 +284,7 @@ class UserInfoHeader: UICollectionReusableView {
     }
 
     func initData(user:DouYinUser) {
-
-        avatar.setImageWithURL(imageUrl: URL.init(string: user.avatar_medium?.url_list.first ?? "")!, completed: {[weak self] (image, error) in
-            self?.avatarBackground.image = image
-            self?.avatar.image = image?.drawCircleImage()
-        })
-
+        avatar.kf.setImage(with: URL(string: user.avatar_medium?.url_list.first ?? ""))
         nickName.text = user.nickname
         douyinNum.text = "抖音号:" + (user.short_id ?? "")
         if user.signature != "" {
@@ -587,15 +582,8 @@ class AwemeCollectionCell: UICollectionViewCell {
     }
 
     func initData(aweme:Aweme) {
-        imageView.setWebPImageWithURL(imageUrl: URL.init(string: (aweme.video?.dynamic_cover?.url_list.first) ?? "")!, completed: {[weak self] (image, error) in
-            if error == nil {
-                if let img = image as? WebPImage {
-                    self?.imageView.image = img
-                }
-            }
-        })
-
-        favoriteNum.setTitle(String.formatCount(count: aweme.statistics?.digg_count ?? 0), for: .normal)
+        imageView.kf.setImage(with: URL(string: (aweme.video?.dynamic_cover?.url_list.first) ?? ""))
+        favoriteNum.setTitle(String(aweme.statistics?.digg_count ?? 0), for: .normal)
     }
 }
 

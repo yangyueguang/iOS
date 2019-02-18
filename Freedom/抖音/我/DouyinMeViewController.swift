@@ -8,12 +8,13 @@
 
 import Foundation
 import UIKit
+import XCarryOn
+import MJRefresh
 var USER_INFO_HEADER_HEIGHT:CGFloat = 340 + statusBarHeight
 var SLIDE_TABBAR_FOOTER_HEIGHT:CGFloat = 40
 
 final class DouyinMeViewController: DouyinBaseViewController {
     var collectionView: BaseCollectionView!
-    var loadMore:LoadMoreControl?
     var selectIndex:Int = 0
     
     let uid:String = "97795069353"
@@ -81,13 +82,9 @@ final class DouyinMeViewController: DouyinBaseViewController {
         collectionView.register(SlideTabBarFooter.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SlideTabBarFooter.identifier)
         collectionView.register(AwemeCollectionCell.classForCoder(), forCellWithReuseIdentifier: AwemeCollectionCell.identifier)
         self.view.addSubview(collectionView)
-        
-        loadMore = LoadMoreControl.init(frame: CGRect.init(x: 0, y: USER_INFO_HEADER_HEIGHT + SLIDE_TABBAR_FOOTER_HEIGHT, width: APPW, height: 50), surplusCount: 15)
-        loadMore?.startLoading()
-        loadMore?.onLoad = {[weak self] in
+        collectionView.mj_footer = MJRefreshAutoFooter(refreshingBlock: { [weak self] in
             self?.loadData(page: self?.pageIndex ?? 0)
-        }
-        collectionView.addSubview(loadMore!)
+        })
     }
     
     @objc func onNetworkStatusChange(notification:NSNotification) {
@@ -107,7 +104,7 @@ final class DouyinMeViewController: DouyinBaseViewController {
             self?.setNavigationBarTitle(title: self?.user?.nickname ?? "")
             self?.collectionView?.reloadSections(IndexSet.init(integer: 0))
         }, failure: { error in
-            UIWindow.showTips(text: error.localizedDescription)
+            self.noticeError(error.localizedDescription)
         })
     }
     
@@ -131,14 +128,13 @@ final class DouyinMeViewController: DouyinBaseViewController {
                         self?.collectionView?.insertItems(at: indexPaths)
                     }, completion: { finished in
                         UIView.setAnimationsEnabled(true)
-                        self?.loadMore?.endLoading()
-                        if response.has_more == 0 {
-                            self?.loadMore?.loadingAll()
-                        }
+
+                        self?.collectionView.mj_footer.endRefreshing()
                     })
                 }
             }, failure:{ error in
-                self.loadMore?.loadingFailed()
+
+                self.collectionView.mj_footer.endRefreshing()
             })
         } else {
             AwemeListRequest.findFavoriteAwemesPaged(uid: uid, page: page, size, success: {[weak self] data in
@@ -159,14 +155,13 @@ final class DouyinMeViewController: DouyinBaseViewController {
                         self?.collectionView?.insertItems(at: indexPaths)
                     }, completion: { finished in
                         UIView.setAnimationsEnabled(true)
-                        self?.loadMore?.endLoading()
-                        if response.has_more == 0 {
-                            self?.loadMore?.loadingAll()
-                        }
+
+                        self?.tableView.mj_footer.endRefreshing()
                     })
                 }
             }, failure: { error in
-                self.loadMore?.loadingFailed()
+
+                self.tableView.mj_footer.endRefreshing()
             })
         }
     }
@@ -296,13 +291,14 @@ extension DouyinMeViewController: UserInfoDelegate, OnTabTapActionDelegate {
             userInfoHeader?.startFocusAnimation()
             break
         case SETTING_TAG:
-            let menu = MenuPopView.init(titles: ["清除缓存"])
-            menu.onAction = { index in
-                WebCacheManager.shared().clearCache { size in
-                    UIWindow.showTips(text: "清除" + size + "M缓存")
-                }
+            let sheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+            let action = UIAlertAction(title: "清除缓存", style: .default) { (ac) in
+                XDataCache.shared.clearMemory()
+                XDataCache.shared.cleanDisk()
+                self.noticeSuccess("清除缓存成功")
             }
-            menu.show()
+            sheet.addAction(action)
+            self.present(sheet, animated: true, completion: nil)
             break
         case GITHUB_TAG:
             UIApplication.shared.openURL(URL.init(string: "https://github.com/sshiqiao/douyin-ios-swift")!)
@@ -325,12 +321,11 @@ extension DouyinMeViewController: UserInfoDelegate, OnTabTapActionDelegate {
             }, completion: { finished in
                 UIView.setAnimationsEnabled(true)
                 
-                self.loadMore?.reset()
-                self.loadMore?.startLoading()
+
+                self.tableView.mj_footer.endRefreshing()
                 
                 self.loadData(page: self.pageIndex)
-            })
-        }
+            })        }
     }
 }
 

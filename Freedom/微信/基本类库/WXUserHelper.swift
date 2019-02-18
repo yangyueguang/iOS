@@ -434,7 +434,7 @@ class WXUserHelper: NSObject {
             let results = WXMessage.objects(in: realmWX, with: pre)
             for index in 0..<results.count {
                 let message = results.object(at: index) as! WXMessage
-                if message.date.isToday() {
+                if message.date.distanceWithDate(Date()).day ?? 0 < 1 {
                     array.append(message)
                 } else {
                     if array.count > 0 {

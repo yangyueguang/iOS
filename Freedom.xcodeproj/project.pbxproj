@@ -1099,21 +1099,11 @@
 		DF7B3FC021ABEEC500E3D975 /* awemes.json in Resources */ = {isa = PBXBuildFile; fileRef = DF7B3FB921ABEEC500E3D975 /* awemes.json */; };
 		DF7B3FC121ABEEC500E3D975 /* emotion.json in Resources */ = {isa = PBXBuildFile; fileRef = DF7B3FBA21ABEEC500E3D975 /* emotion.json */; };
 		DF7B404B21ABFDFA00E3D975 /* douyinIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DF7B404A21ABFDFA00E3D975 /* douyinIcon.png */; };
-		DF7B406F21AC020A00E3D975 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B404E21AC020A00E3D975 /* Constants.swift */; };
-		DF7B407021AC020A00E3D975 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B404F21AC020A00E3D975 /* PhotoView.swift */; };
-		DF7B407121AC020A00E3D975 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405021AC020A00E3D975 /* BaseRequest.swift */; };
-		DF7B407221AC020A00E3D975 /* RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405121AC020A00E3D975 /* RefreshControl.swift */; };
-		DF7B407321AC020A00E3D975 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405221AC020A00E3D975 /* CircleProgress.swift */; };
 		DF7B407421AC020A00E3D975 /* WebPImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405321AC020A00E3D975 /* WebPImageView.swift */; };
 		DF7B407521AC020A00E3D975 /* GestureAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405421AC020A00E3D975 /* GestureAnimations.swift */; };
-		DF7B407621AC020A00E3D975 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405521AC020A00E3D975 /* NetworkManager.swift */; };
-		DF7B407721AC020A00E3D975 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405621AC020A00E3D975 /* Extensions.swift */; };
 		DF7B407821AC020A00E3D975 /* DouyinNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405721AC020A00E3D975 /* DouyinNavigationViewController.swift */; };
-		DF7B407921AC020A00E3D975 /* LoadMoreControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405821AC020A00E3D975 /* LoadMoreControl.swift */; };
 		DF7B407A21AC020A00E3D975 /* DouyinBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405921AC020A00E3D975 /* DouyinBaseViewController.swift */; };
 		DF7B407B21AC020A00E3D975 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405A21AC020A00E3D975 /* Models.swift */; };
-		DF7B407C21AC020A00E3D975 /* WebCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405B21AC020A00E3D975 /* WebCacheManager.swift */; };
-		DF7B407D21AC020A00E3D975 /* MenuPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405C21AC020A00E3D975 /* MenuPopView.swift */; };
 		DF7B407E21AC020A00E3D975 /* DouyinTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405D21AC020A00E3D975 /* DouyinTabBarController.swift */; };
 		DF7B407F21AC020A00E3D975 /* DouyinFollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B405F21AC020A00E3D975 /* DouyinFollowViewController.swift */; };
 		DF7B408021AC020A00E3D975 /* DouyinHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406121AC020A00E3D975 /* DouyinHomeViewController.swift */; };
@@ -1147,6 +1137,7 @@
 		DFC433EB21C3F7A7003E1BCB /* cer.der in Resources */ = {isa = PBXBuildFile; fileRef = DFC433EA21C3F7A7003E1BCB /* cer.der */; };
 		DFD8215E21EF2DD8006C8705 /* KugouTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8215D21EF2DD8006C8705 /* KugouTabBarView.swift */; };
 		DFD8216021EF2DEA006C8705 /* KugouTabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFD8215F21EF2DEA006C8705 /* KugouTabBarView.xib */; };
+		DFDF024E221A42DC00181758 /* DouyinAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDF024D221A42DC00181758 /* DouyinAPI.swift */; };
 		DFEB45EB22009A7A00B1D8D8 /* FoundationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEB45EA22009A7A00B1D8D8 /* FoundationImage.swift */; };
 		DFED981C21E8AC0B009270A3 /* WXModes.m in Sources */ = {isa = PBXBuildFile; fileRef = DFED981B21E8AC0B009270A3 /* WXModes.m */; };
 		DFEF80DF21FB72B7001D81FA /* Circular3DStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF80DE21FB72B7001D81FA /* Circular3DStarView.swift */; };
@@ -2401,21 +2392,11 @@
 		DF7B3FB921ABEEC500E3D975 /* awemes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awemes.json; sourceTree = "<group>"; };
 		DF7B3FBA21ABEEC500E3D975 /* emotion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emotion.json; sourceTree = "<group>"; };
 		DF7B404A21ABFDFA00E3D975 /* douyinIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = douyinIcon.png; sourceTree = "<group>"; };
-		DF7B404E21AC020A00E3D975 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		DF7B404F21AC020A00E3D975 /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
-		DF7B405021AC020A00E3D975 /* BaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
-		DF7B405121AC020A00E3D975 /* RefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshControl.swift; sourceTree = "<group>"; };
-		DF7B405221AC020A00E3D975 /* CircleProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
 		DF7B405321AC020A00E3D975 /* WebPImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPImageView.swift; sourceTree = "<group>"; };
 		DF7B405421AC020A00E3D975 /* GestureAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureAnimations.swift; sourceTree = "<group>"; };
-		DF7B405521AC020A00E3D975 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		DF7B405621AC020A00E3D975 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DF7B405721AC020A00E3D975 /* DouyinNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DouyinNavigationViewController.swift; sourceTree = "<group>"; };
-		DF7B405821AC020A00E3D975 /* LoadMoreControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreControl.swift; sourceTree = "<group>"; };
 		DF7B405921AC020A00E3D975 /* DouyinBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DouyinBaseViewController.swift; sourceTree = "<group>"; };
 		DF7B405A21AC020A00E3D975 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		DF7B405B21AC020A00E3D975 /* WebCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebCacheManager.swift; sourceTree = "<group>"; };
-		DF7B405C21AC020A00E3D975 /* MenuPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPopView.swift; sourceTree = "<group>"; };
 		DF7B405D21AC020A00E3D975 /* DouyinTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DouyinTabBarController.swift; sourceTree = "<group>"; };
 		DF7B405F21AC020A00E3D975 /* DouyinFollowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DouyinFollowViewController.swift; sourceTree = "<group>"; };
 		DF7B406121AC020A00E3D975 /* DouyinHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DouyinHomeViewController.swift; sourceTree = "<group>"; };
@@ -2450,6 +2431,7 @@
 		DFC433EA21C3F7A7003E1BCB /* cer.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = cer.der; sourceTree = "<group>"; };
 		DFD8215D21EF2DD8006C8705 /* KugouTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouTabBarView.swift; sourceTree = "<group>"; };
 		DFD8215F21EF2DEA006C8705 /* KugouTabBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KugouTabBarView.xib; sourceTree = "<group>"; };
+		DFDF024D221A42DC00181758 /* DouyinAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouyinAPI.swift; sourceTree = "<group>"; };
 		DFEB45EA22009A7A00B1D8D8 /* FoundationImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationImage.swift; sourceTree = "<group>"; };
 		DFED981A21E8AC0B009270A3 /* WXModes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXModes.h; sourceTree = "<group>"; };
 		DFED981B21E8AC0B009270A3 /* WXModes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXModes.m; sourceTree = "<group>"; };
@@ -4771,21 +4753,12 @@
 		DF7B404D21AC020A00E3D975 /* 基本类库 */ = {
 			isa = PBXGroup;
 			children = (
-				DF7B404E21AC020A00E3D975 /* Constants.swift */,
-				DF7B404F21AC020A00E3D975 /* PhotoView.swift */,
-				DF7B405021AC020A00E3D975 /* BaseRequest.swift */,
-				DF7B405121AC020A00E3D975 /* RefreshControl.swift */,
-				DF7B405221AC020A00E3D975 /* CircleProgress.swift */,
 				DF7B405321AC020A00E3D975 /* WebPImageView.swift */,
 				DF7B405421AC020A00E3D975 /* GestureAnimations.swift */,
-				DF7B405521AC020A00E3D975 /* NetworkManager.swift */,
-				DF7B405621AC020A00E3D975 /* Extensions.swift */,
-				DF7B405721AC020A00E3D975 /* DouyinNavigationViewController.swift */,
-				DF7B405821AC020A00E3D975 /* LoadMoreControl.swift */,
-				DF7B405921AC020A00E3D975 /* DouyinBaseViewController.swift */,
 				DF7B405A21AC020A00E3D975 /* Models.swift */,
-				DF7B405B21AC020A00E3D975 /* WebCacheManager.swift */,
-				DF7B405C21AC020A00E3D975 /* MenuPopView.swift */,
+				DFDF024D221A42DC00181758 /* DouyinAPI.swift */,
+				DF7B405921AC020A00E3D975 /* DouyinBaseViewController.swift */,
+				DF7B405721AC020A00E3D975 /* DouyinNavigationViewController.swift */,
 				DF7B405D21AC020A00E3D975 /* DouyinTabBarController.swift */,
 			);
 			path = "基本类库";
@@ -6061,7 +6034,6 @@
 				DF6B51FC21CA801E00460949 /* WXPictureCarouselView.swift in Sources */,
 				DF0489EC21D28B870030C30B /* EdgePanTransition.swift in Sources */,
 				BFAC49BF20D25EE700E5CB8D /* AppDelegate.swift in Sources */,
-				DF7B407121AC020A00E3D975 /* BaseRequest.swift in Sources */,
 				7121196420AC24790087E05B /* ToutiaoTabBarController.swift in Sources */,
 				BF58BB6920EF1945002CB4EE /* RCDHttpTool.m in Sources */,
 				713EE30E20ADA08F0085B65D /* IqiyiSubscribeViewController.swift in Sources */,
@@ -6103,10 +6075,8 @@
 				713EE2E820AD9CB60085B65D /* KugouSingViewController.swift in Sources */,
 				BFC6D94520E4AC2200F17378 /* SinaMeViewController.swift in Sources */,
 				DF0489ED21D28B870030C30B /* ElasticShapeLayer.swift in Sources */,
-				DF7B407021AC020A00E3D975 /* PhotoView.swift in Sources */,
 				DF13330921F17C1A001D01CA /* KugouPlayAudioViewController.swift in Sources */,
 				BF58BB3C20EF1945002CB4EE /* RCDSearchDataManager.m in Sources */,
-				DF7B406F21AC020A00E3D975 /* Constants.swift in Sources */,
 				713728CC20AE839900A3227A /* AlipayYuEBaoTableViewController.swift in Sources */,
 				DF6B523621CB76F200460949 /* WXNewMessageSettingViewController.swift in Sources */,
 				7115A5F220AAFC0F000D0B96 /* MyDatabaseBaseViewController.swift in Sources */,
@@ -6127,7 +6097,6 @@
 				DF0489FA21D28BA40030C30B /* MotionAnimation.swift in Sources */,
 				DF0E967421CBACC7009682CC /* WXTagsViewController.swift in Sources */,
 				7121196620AC24940087E05B /* ToutiaoNavigationViewController.swift in Sources */,
-				DF7B407221AC020A00E3D975 /* RefreshControl.swift in Sources */,
 				713EE2F020AD9CE50085B65D /* KugouMainViewController.swift in Sources */,
 				BF58BB6420EF1945002CB4EE /* RealTimeLocationViewController.m in Sources */,
 				DF6B523E21CB770B00460949 /* WXExpressionPublicViewController.swift in Sources */,
@@ -6161,7 +6130,6 @@
 				713EE30220ADA0320085B65D /* IqiyiBaseViewController.swift in Sources */,
 				BF58BB5020EF1945002CB4EE /* RCDBlackListViewController.m in Sources */,
 				713EE2FC20AD9D550085B65D /* SingleOneSectionTableViewController.swift in Sources */,
-				DF7B407321AC020A00E3D975 /* CircleProgress.swift in Sources */,
 				BFEF19A52101E821003DCAC1 /* mztools.c in Sources */,
 				7121194220ABDD4B0087E05B /* EnergyShopTabBarController.swift in Sources */,
 				DFB5FF5621CA280A0057C922 /* WXExpanded.swift in Sources */,
@@ -6191,6 +6159,7 @@
 				BFEF19CA2101E990003DCAC1 /* SumCFile.c in Sources */,
 				713EE2DE20AD9C070085B65D /* AlipayScanViewController.swift in Sources */,
 				713EE2D020AD9B8C0085B65D /* TaobaoMiniVideoViewController.swift in Sources */,
+				DFDF024E221A42DC00181758 /* DouyinAPI.swift in Sources */,
 				DF6B51F421CA6F8900460949 /* WXUserHelper.swift in Sources */,
 				DF7B408021AC020A00E3D975 /* DouyinHomeViewController.swift in Sources */,
 				BF58BB5120EF1945002CB4EE /* RCDSettingsTableViewController.m in Sources */,
@@ -6238,7 +6207,6 @@
 				7121192820ABC4E10087E05B /* EnergyNewsViewController.swift in Sources */,
 				713EE2B220AD90010085B65D /* DZBaseViewController.swift in Sources */,
 				DFB5FF5C21CA2F1C0057C922 /* WXTabBarController.swift in Sources */,
-				DF7B407C21AC020A00E3D975 /* WebCacheManager.swift in Sources */,
 				DF048A0421D29A810030C30B /* RESideMenu.m in Sources */,
 				713EE2A620AD8F290085B65D /* TaobaoTabBarController.swift in Sources */,
 				DF0489F921D28BA40030C30B /* SpringValueAnimation.swift in Sources */,
@@ -6253,13 +6221,11 @@
 				BF4A80F72105CFE100D32FB0 /* CRCrypto.m in Sources */,
 				BF58BB3020EF1945002CB4EE /* RCDMainTabBarViewController.m in Sources */,
 				713EE2C820AD9B600085B65D /* TaobaoHomeViewController.swift in Sources */,
-				DF7B407921AC020A00E3D975 /* LoadMoreControl.swift in Sources */,
 				DF7B408B21AC020A00E3D975 /* AVPlayerManager.swift in Sources */,
 				DF7B408821AC020A00E3D975 /* AwemeListCell.swift in Sources */,
 				DFFA80CA21AEC84D009B1999 /* BaseTableView.swift in Sources */,
 				DF0E966A21CBAC9D009682CC /* WXFriendsViewController.swift in Sources */,
 				BF58BB5720EF1945002CB4EE /* RCDChatViewController.m in Sources */,
-				DF7B407721AC020A00E3D975 /* Extensions.swift in Sources */,
 				BF58B94A20EB22C9002CB4EE /* XTablesViewController.swift in Sources */,
 				713EE2BA20AD906F0085B65D /* KugouNavigationViewController.swift in Sources */,
 				713EE2D220AD9B970085B65D /* TaobaoMiniArticleViewController.swift in Sources */,
@@ -6323,7 +6289,6 @@
 				BF58BB4B20EF1945002CB4EE /* RCDMeTableViewController.m in Sources */,
 				713EE2B620AD901F0085B65D /* KugouBaseViewController.swift in Sources */,
 				BF58BB6C20EF1945002CB4EE /* XPathQuery.m in Sources */,
-				DF7B407D21AC020A00E3D975 /* MenuPopView.swift in Sources */,
 				DF0E967021CBACB9009682CC /* WXPublicServerSearchViewController.swift in Sources */,
 				DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */,
 				BF58BB3120EF1945002CB4EE /* RCDGroupAnnouncementViewController.m in Sources */,
@@ -6393,7 +6358,6 @@
 				DFEF80EE21FB7AE4001D81FA /* FreedomBusinessViewController.swift in Sources */,
 				DF13330721F17945001D01CA /* KugouMeViewController.swift in Sources */,
 				BF58B95A20ECFC0B002CB4EE /* BaseSearchBar.swift in Sources */,
-				DF7B407621AC020A00E3D975 /* NetworkManager.swift in Sources */,
 				BF58BB3320EF1945002CB4EE /* RCDEditGroupNameViewController.m in Sources */,
 				BF58BA2320EDBFBC002CB4EE /* PreViewController.swift in Sources */,
 				DF7B408721AC020A00E3D975 /* DouyinMeViews.swift in Sources */,

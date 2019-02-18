@@ -5,7 +5,8 @@
 //  Created by Chao Xue 薛超 on 2018/11/26.
 //  Copyright © 2018 Qiao Shi. All rights reserved.
 //
-
+import MJRefresh
+import XCarryOn
 import Foundation
 import AVFoundation
 import MobileCoreServices
@@ -72,7 +73,14 @@ class AVPlayerView: UIView {
         playerLayer.frame = self.layer.bounds
         CATransaction.commit()
     }
-
+    func urlScheme(urlStr: String?, scheme:String) -> URL? {
+        if let url = URL.init(string: urlStr ?? "") {
+            var components = URLComponents.init(url: url, resolvingAgainstBaseURL: false)
+            components?.scheme = scheme
+            return components?.url
+        }
+        return nil
+    }
     func setPlayerSourceUrl(url:String) {
         sourceURL = URL.init(string: url)
 
@@ -80,27 +88,32 @@ class AVPlayerView: UIView {
         sourceScheme = components?.scheme
         cacheFileKey = sourceURL?.absoluteString
 
-        queryCacheOperation = WebCacheManager.shared().queryURLFromDiskMemory(key: cacheFileKey ?? "", cacheQueryCompletedBlock: { [weak self] (data, hasCache) in
-            DispatchQueue.main.async {[weak self] in
-                if !hasCache {
-                    self?.sourceURL = self?.sourceURL?.absoluteString.urlScheme(scheme: "streaming")
-                } else {
-                    self?.sourceURL = URL.init(fileURLWithPath: data as? String ?? "")
-                }
-                if let url = self?.sourceURL {
-                    self?.urlAsset = AVURLAsset.init(url: url, options: nil)
-                    self?.urlAsset?.resourceLoader.setDelegate(self, queue: DispatchQueue.main)
-                    if let asset = self?.urlAsset {
-                        self?.playerItem = AVPlayerItem.init(asset: asset)
-                        self?.playerItem?.addObserver(self!, forKeyPath: "status", options: [.initial, .new], context: nil)
-                        self?.player = AVPlayer.init(playerItem: self?.playerItem)
-                        self?.playerLayer.player = self?.player
-                        //                        self?.player.replaceCurrentItem(with: self?.playerItem)
-                        self?.addProgressObserver()
-                    }
+        queryCacheOperation = Operation.init()
+        DispatchQueue.main.sync {
+            if(queryCacheOperation?.isCancelled ?? false) {
+                return
+            }
+        let data = XDataCache.shared.data(cacheFileKey ?? "", fromDisk: true)
+        DispatchQueue.main.async{[weak self] in
+            if data == nil {
+                self?.sourceURL = self?.urlScheme(urlStr: self?.sourceURL?.absoluteString, scheme: "streaming")
+            } else {
+                self?.sourceURL = URL.init(fileURLWithPath: data as? String ?? "")
+            }
+            if let url = self?.sourceURL {
+                self?.urlAsset = AVURLAsset.init(url: url, options: nil)
+                self?.urlAsset?.resourceLoader.setDelegate(self, queue: DispatchQueue.main)
+                if let asset = self?.urlAsset {
+                    self?.playerItem = AVPlayerItem.init(asset: asset)
+                    self?.playerItem?.addObserver(self!, forKeyPath: "status", options: [.initial, .new], context: nil)
+                    self?.player = AVPlayer.init(playerItem: self?.playerItem)
+                    self?.playerLayer.player = self?.player
+                    //                        self?.player.replaceCurrentItem(with: self?.playerItem)
+                    self?.addProgressObserver()
                 }
             }
-            }, exten: "mp4")
+        }
+        }
     }
 
     func cancelLoading() {
@@ -229,7 +242,7 @@ extension AVPlayerView: URLSessionTaskDelegate, URLSessionDataDelegate {
     //网络资源下载请求完毕
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         if error == nil {
-            WebCacheManager.shared().storeDataToDiskCache(data: self.data, key: self.cacheFileKey ?? "", exten: "mp4")
+            XDataCache.shared.store(self.data!, forKey: self.cacheFileKey ?? "", toDisk: true)
         } else {
             print("AVPlayer resouce download error:" + error.debugDescription)
         }
@@ -279,7 +292,8 @@ extension AVPlayerView: URLSessionTaskDelegate, URLSessionDataDelegate {
 
         let unreadBytes:Int64 = Int64(data?.count ?? 0) - (startOffset)
         let numberOfBytesToRespondWidth:Int64 = min(Int64(loadingRequest.dataRequest?.requestedLength ?? 0), unreadBytes)
-        if let subdata = (data?.subdata(in: Int(startOffset)..<Int(startOffset + numberOfBytesToRespondWidth)))  {
+        let range = Int(startOffset)..<Int(startOffset + numberOfBytesToRespondWidth)
+        if let subdata = (data?.subdata(in: range.lowerBound..<range.upperBound + 1))  {
             loadingRequest.dataRequest?.respond(with: subdata)
             let endOffset:Int64 = startOffset + Int64(loadingRequest.dataRequest?.requestedLength ?? 0)
             return Int64(data?.count ?? 0) >= endOffset
@@ -292,7 +306,7 @@ extension AVPlayerView: AVAssetResourceLoaderDelegate {
 
     func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
         if task == nil {
-            if let url = loadingRequest.request.url?.absoluteString.urlScheme(scheme: sourceScheme ?? "http") {
+            if let url = urlScheme(urlStr: loadingRequest.request.url?.absoluteString, scheme: sourceScheme ?? "http") {
                 let request = URLRequest.init(url: url, cachePolicy: URLRequest.CachePolicy.reloadIgnoringLocalCacheData, timeoutInterval: 60)
                 task = session?.dataTask(with: request)
                 task?.resume()
@@ -659,7 +673,7 @@ extension HoverTextView:UITextViewDelegate {
             textHeight = textView.font?.lineHeight ?? 0
         } else {
             placeHolderLabel.isHidden = true
-            textHeight = attributedText.multiLineSize(width: APPW - LEFT_INSET - RIGHT_INSET).height
+            textHeight = attributedText.boundingRect(with: CGSize(width: APPW - LEFT_INSET - RIGHT_INSET, height: CGFloat(MAXFLOAT)), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size.height
         }
         updateViewFrameAndState()
     }
@@ -821,7 +835,7 @@ class CircleTextView:UIView {
     var text:String {
         set {
             _text = newValue
-            let size = newValue.singleLineSizeWithAttributeText(font: font)
+            let size = singleLineSizeWithAttributeText(str: newValue, font: font)
             textWidth = size.width
             textHeight = size.height
             textLayerFrame = CGRect.init(origin: .zero, size: CGSize.init(width: textWidth * 3 + textSeparateWidth * 2, height: textHeight))
@@ -849,7 +863,7 @@ class CircleTextView:UIView {
     var font:UIFont {
         set {
             _font = newValue
-            let size = text.singleLineSizeWithAttributeText(font: newValue)
+            let size = singleLineSizeWithAttributeText(str: text, font: newValue)
             textWidth = size.width
             textHeight = size.height
             textLayerFrame = CGRect.init(origin: .zero, size: CGSize.init(width: textWidth * 3 + textSeparateWidth * 2, height: textHeight))
@@ -879,10 +893,15 @@ class CircleTextView:UIView {
         super.init(frame: frame)
         initSubLayer()
     }
-
+    func singleLineSizeWithAttributeText(str: String, font:UIFont) -> CGSize {
+        let attributes = [NSAttributedString.Key.font:font]
+        let attString = NSAttributedString(string: str,attributes: attributes)
+        let framesetter = CTFramesetterCreateWithAttributedString(attString)
+        return CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRange(location: 0,length: 0), nil, CGSize(width: Double.greatestFiniteMagnitude, height: Double.greatestFiniteMagnitude), nil)
+    }
 
     func initSubLayer() {
-        textSeparateWidth = SEPARATE_TEXT.singleLineSizeWithText(font: font).width
+        textSeparateWidth = SEPARATE_TEXT.size(withAttributes: [NSAttributedString.Key.font : font]).width
         textLayer.alignmentMode = CATextLayerAlignmentMode.natural
         textLayer.truncationMode = CATextLayerTruncationMode.none
         textLayer.isWrapped = false
@@ -953,7 +972,6 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
     var tableView = UITableView.init()
     var data = [Comment]()
     var textView = CommentTextView()
-    var loadMore:LoadMoreControl?
 
     init(awemeId:String) {
         super.init(frame: UIScreen.main.bounds)
@@ -1009,14 +1027,9 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
         tableView.separatorStyle = .none
         tableView.register(CommentListCell.classForCoder(), forCellReuseIdentifier: COMMENT_CELL)
         container.addSubview(tableView)
-
-        loadMore = LoadMoreControl.init(frame: CGRect.init(x: 0, y: 100, width: APPW, height: 50), surplusCount: 10)
-        loadMore?.startLoading()
-        loadMore?.onLoad = {[weak self] in
+        tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {[weak self] in
             self?.loadData(page: self?.pageIndex ?? 0)
-        }
-        tableView.addSubview(loadMore!)
-
+        })
         textView.delegate = self
         loadData(page: pageIndex)
     }
@@ -1035,9 +1048,9 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
                 self?.tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: false)
                 UIView.setAnimationsEnabled(true)
             }
-            UIWindow.showTips(text: "评论成功")
+            self?.noticeSuccess("评论成功")
             }, failure: { error in
-                UIWindow.showTips(text: "评论失败")
+                self.noticeError("评论失败")
         })
     }
 
@@ -1050,12 +1063,12 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
                 indexPaths.append(IndexPath.init(row: index, section: 0))
                 self?.tableView.deleteRows(at: indexPaths, with: .right)
                 self?.tableView.endUpdates()
-                UIWindow.showTips(text: "评论删除成功")
+                self?.noticeSuccess("评论删除成功")
             } else {
-                UIWindow.showTips(text: "评论删除失败")
+                self?.noticeError("评论删除失败")
             }
             }, failure: { error in
-                UIWindow.showTips(text: "评论删除失败")
+                self.noticeError("评论删除失败")
         })
     }
 
@@ -1076,14 +1089,12 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
             self?.tableView.insertRows(at: indexPaths, with: .none)
             self?.tableView.endUpdates()
             UIView.setAnimationsEnabled(true)
-
-            self?.loadMore?.endLoading()
+            self?.tableView.mj_footer.endRefreshing()
             if response.has_more == 0 {
-                self?.loadMore?.loadingAll()
             }
             self?.label.text = String.init(response.total_count) + "条评论"
             }, failure: {[weak self] error in
-                self?.loadMore?.loadingFailed()
+                self?.tableView.mj_footer.endRefreshing()
         })
     }
 
@@ -1112,12 +1123,14 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let comment = data[indexPath.row]
-        if !comment.isTemp && comment.user_type == "visitor" && MD5_UDID == comment.visitor?.udid {
-            let menu = MenuPopView.init(titles: ["删除"])
-            menu.onAction = {[weak self] index in
+        if !comment.isTemp && comment.user_type == "visitor" && String.uuid.md5() == comment.visitor?.udid {
+            let sheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+            let action = UIAlertAction(title: "删除", style: .default) {[weak self] (ac) in
+
                 self?.deleteComment(comment: comment)
             }
-            menu.show()
+            sheet.addAction(action)
+            self.viewContainingController()?.present(sheet, animated: true, completion: nil)
         }
     }
 
@@ -1284,18 +1297,16 @@ class CommentListCell:BaseTableViewCell<Comment> {
             avatarUrl = URL.init(string: comment.visitor?.avatar_thumbnail?.url ?? "")
             nickName.text = Visitor.formatUDID(udid: comment.visitor?.udid ?? "")
         }
-        avatar.setImageWithURL(imageUrl: avatarUrl!) {[weak self] (image, error) in
-            self?.avatar.image = image?.drawCircleImage()
-        }
+        avatar.kf.setImage(with: avatarUrl)
         content.text = comment.text
-        date.text = Date.formatTime(timeInterval: TimeInterval(comment.create_time ?? 0))
-        likeNum.text = String.formatCount(count: comment.digg_count ?? 0)
+        date.text = Date(timeIntervalSince1970: TimeInterval(comment.create_time ?? 0)).timeToNow()
+        likeNum.text = String(comment.digg_count ?? 0)
     }
 
     static func cellHeight(comment:Comment) -> CGFloat {
         let attributedString = NSMutableAttributedString.init(string: comment.text ?? "")
         attributedString.addAttributes([NSAttributedString.Key.font : UIFont.middle], range: NSRange.init(location: 0, length: attributedString.length))
-        let size:CGSize = attributedString.multiLineSize(width: MaxContentWidth)
+        let size:CGSize = attributedString.boundingRect(with: CGSize(width: MaxContentWidth, height: CGFloat(MAXFLOAT)), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size
         return size.height + 30 + 30
     }
 
@@ -1418,7 +1429,7 @@ class CommentTextView:UIView, UITextViewDelegate {
             textHeight = textView.font?.lineHeight ?? 0
         } else {
             placeHolderLabel.isHidden = true
-            textHeight = attributeText.multiLineSize(width: APPW - leftInset - rightInset).height
+            textHeight = attributeText.boundingRect(with: CGSize(width: APPW - leftInset - rightInset, height: CGFloat(MAXFLOAT)), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size.height
         }
         updateTextViewFrame()
     }

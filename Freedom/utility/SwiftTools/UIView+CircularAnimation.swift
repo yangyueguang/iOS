@@ -9,6 +9,26 @@
 import UIKit
 import QuartzCore
 import Foundation
+
+extension Notification {
+    func keyBoardHeight() -> CGFloat {
+        if let userInfo = self.userInfo {
+            if let value = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let size = value.cgRectValue.size
+                return UIInterfaceOrientation.portrait.isLandscape ? size.width : size.height
+            }
+        }
+        return 0
+    }
+}
+extension UIApplication {
+    var statusBarView: UIView? {
+        if responds(to: Selector(("statusBar"))) {
+            return value(forKey: "statusBar") as? UIView
+        }
+        return nil
+    }
+}
 extension NSObject {
     func toType<T>(_ type: T.Type = T.self) -> T {
         return self as! T
@@ -63,6 +83,48 @@ extension String {
     }
     var oc: NSString {
         return self as NSString
+    }
+    
+    func substring(location index:Int, length:Int) -> String {
+        if self.count > index {
+            let startIndex = self.index(self.startIndex, offsetBy: index)
+            let endIndex = self.index(self.startIndex, offsetBy: index + length)
+            let subString = self[startIndex..<endIndex]
+            return String(subString)
+        } else {
+            return self
+        }
+    }
+    func substring(range:NSRange) -> String {
+        if self.count > range.location {
+            let startIndex = self.index(self.startIndex, offsetBy: range.location)
+            let endIndex = self.index(self.startIndex, offsetBy: range.location + range.length)
+            let subString = self[startIndex..<endIndex]
+            return String(subString)
+        } else {
+            return self
+        }
+    }
+
+    func md5() -> String {
+        let cStrl = cString(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue));
+        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: 16);
+        CC_MD5(cStrl, CC_LONG(strlen(cStrl!)), buffer);
+        var md5String = "";
+        for idx in 0...15 {
+            let obcStrl = String.init(format: "%02x", buffer[idx]);
+            md5String.append(obcStrl);
+        }
+        free(buffer);
+        return md5String;
+    }
+
+    static func format(decimal:Float, _ maximumDigits:Int = 1, _ minimumDigits:Int = 1) ->String? {
+        let number = NSNumber(value: decimal)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.maximumFractionDigits = maximumDigits //设置小数点后最多2位
+        numberFormatter.minimumFractionDigits = minimumDigits //设置小数点后最少2位（不足补0）
+        return numberFormatter.string(from: number)
     }
 }
 extension FileManager {

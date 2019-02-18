@@ -9,6 +9,7 @@
 import Foundation
 import AVFoundation
 import UIKit
+import Kingfisher
 
 let LIKE_BEFORE_TAP_ACTION:Int = 1000
 let LIKE_AFTER_TAP_ACTION:Int = 2000
@@ -249,22 +250,19 @@ class AwemeListCell: BaseTableViewCell<Aweme> {
         nickName.text = aweme.author?.nickname
         desc.text = aweme.desc
         musicName.text = (aweme.music?.title ?? "") + "-" + (aweme.music?.author ?? "")
-        favoriteNum.text = String.formatCount(count: aweme.statistics?.digg_count ?? 0)
-        commentNum.text = String.formatCount(count: aweme.statistics?.comment_count ?? 0)
-        shareNum.text = String.formatCount(count: aweme.statistics?.share_count ?? 0)
-        
-        musicAlum.album.setImageWithURL(imageUrl: URL.init(string: aweme.music?.cover_thumb?.url_list.first ?? "")!) { (image, error) in
-            if error == nil {
-                self.musicAlum.album.image = image?.drawCircleImage()
-            }
-        }
-        avatar.setImageWithURL(imageUrl: URL.init(string: aweme.author?.avatar_thumb?.url_list.first ?? "")!) { (image, error) in
-            if error == nil {
-                self.avatar.image = image?.drawCircleImage()
-            }
+        favoriteNum.text = formatCount(count: aweme.statistics?.digg_count ?? 0)
+        commentNum.text = formatCount(count: aweme.statistics?.comment_count ?? 0)
+        shareNum.text = formatCount(count: aweme.statistics?.share_count ?? 0)
+        musicAlum.album.kf.setImage(with: URL(string: aweme.music?.cover_thumb?.url_list.first ?? ""))
+        avatar.kf.setImage(with: URL(string: aweme.author?.avatar_thumb?.url_list.first ?? ""))
+    }
+    func formatCount(count:NSInteger) -> String {
+        if count < 10000  {
+            return String.init(count)
+        } else {
+            return (String.format(decimal: Float(count)/Float(10000)) ?? "0") + "w"
         }
     }
-    
     func play() {
         playerView.play()
     }
@@ -398,9 +396,9 @@ extension AwemeListCell: SendTextDelegate, HoverTextViewDelegate {
     func onSendText(text: String) {
         if let aweme_id = aweme?.aweme_id {
             PostCommentRequest.postCommentText(aweme_id:aweme_id, text: text, success: { data in
-                UIWindow.showTips(text: "评论成功")
+                self.noticeSuccess("评论成功")
             }, failure: { error in
-                UIWindow.showTips(text: "评论失败")
+                self.noticeError("评论失败")
             })
         }
     }

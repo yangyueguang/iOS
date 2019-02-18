@@ -5,7 +5,101 @@
 //  Created by Chao Xue 薛超 on 2018/11/26.
 //  Copyright © 2018 Qiao Shi. All rights reserved.
 //
+import Foundation
 import UIKit
+import XCarryOn
+
+class PhotoView: UIView {
+
+    var progress = CircularSlider(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    var container:UIView = UIView.init()
+    var imageView:UIImageView = UIImageView.init()
+    var _urlPath:String?
+    var urlPath:String? {
+        set {
+            if newValue == nil && newValue != "" {
+                return
+            }
+            _urlPath = newValue
+            if let url = URL.init(string: _urlPath ?? "") {
+                imageView.kf.setImage(with: url)
+            }
+        }
+        get {
+            return _urlPath
+        }
+    }
+    var _image:UIImage?
+    var image:UIImage? {
+        set {
+            if newValue == nil {
+                return
+            }
+            _image = newValue
+            imageView.image = image
+        }
+        get {
+            return _image
+        }
+    }
+
+    init(_ urlPath:String? = "", _ image:UIImage? = UIImage.init()) {
+        super.init(frame: UIScreen.main.bounds)
+        self.urlPath = urlPath
+        self.image = image
+        self.initSubView()
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.initSubView()
+    }
+
+    func initSubView() {
+        self.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(handleGuesture(sender:))))
+        container.frame = self.bounds
+        container.backgroundColor = UIColor.blackx
+        container.alpha = 0.0
+        self.addSubview(container)
+
+        imageView.frame = self.bounds
+        imageView.contentMode = .scaleAspectFit
+        self.addSubview(imageView)
+
+        progress.center = self.center
+        imageView.addSubview(progress)
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    @objc func handleGuesture(sender:UITapGestureRecognizer) {
+        dismiss()
+    }
+
+    func show() {
+        let window = UIApplication.shared.delegate?.window as? UIWindow
+        window?.windowLevel = UIWindow.Level.statusBar
+        window?.addSubview(self)
+        UIView.animate(withDuration: 0.15) {
+            self.imageView.alpha = 1.0
+            self.container.alpha = 1.0
+        }
+    }
+
+    func dismiss() {
+        let window = UIApplication.shared.delegate?.window as? UIWindow
+        window?.windowLevel = UIWindow.Level.normal
+        UIView.animate(withDuration: 0.15, delay: 0.0, options: .curveLinear, animations: {
+            self.imageView.alpha = 0.0
+            self.container.alpha = 0.0
+        }) { finished in
+            self.removeFromSuperview()
+        }
+    }
+
+}
+
 class TimeCell:BaseTableViewCell<GroupChat> {
     var textView:UITextView = UITextView.init()
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -52,7 +146,7 @@ class TimeCell:BaseTableViewCell<GroupChat> {
         var attributedString = NSMutableAttributedString.init(string: chat.msg_content ?? "")
         attributedString.addAttributes(TimeCell.attributes(), range: NSRange.init(location: 0, length: attributedString.length))
         attributedString = EmotionHelper.stringToEmotion(str: attributedString)
-        let size = attributedString.multiLineSize(width: MAX_SYS_MSG_WIDTH)
+        let size = attributedString.boundingRect(with: CGSize(width: MAX_SYS_MSG_WIDTH, height: CGFloat(MAXFLOAT)), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size
         return size.height + COMMON_MSG_PADDING * 2
     }
 
@@ -91,7 +185,7 @@ class SystemMessageCell:BaseTableViewCell<GroupChat> {
     override func layoutSubviews() {
         super.layoutSubviews()
         let attributedString = NSMutableAttributedString.init(attributedString: textView.attributedText)
-        let size = attributedString.multiLineSize(width: MAX_SYS_MSG_WIDTH)
+        let size = attributedString.boundingRect(with: CGSize(width: MAX_SYS_MSG_WIDTH, height: CGFloat(MAXFLOAT)), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size
         textView.frame = CGRect.init(x: APPW/2 - size.width/2 - SYS_MSG_CORNER_RADIUS, y: COMMON_MSG_PADDING*2, width: size.width + SYS_MSG_CORNER_RADIUS * 2, height: size.height + SYS_MSG_CORNER_RADIUS * 2)
     }
 
@@ -110,7 +204,7 @@ class SystemMessageCell:BaseTableViewCell<GroupChat> {
         var attributedString = NSMutableAttributedString.init(string: chat.msg_content ?? "")
         attributedString.addAttributes(SystemMessageCell.attributes(), range: NSRange.init(location: 0, length: attributedString.length))
         attributedString = EmotionHelper.stringToEmotion(str: attributedString)
-        let size = attributedString.multiLineSize(width: MAX_SYS_MSG_WIDTH)
+        let size = attributedString.boundingRect(with: CGSize(width: MAX_SYS_MSG_WIDTH, height: CGFloat(MAXFLOAT)), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size
         return size.height + COMMON_MSG_PADDING * 2 + SYS_MSG_CORNER_RADIUS * 2
     }
 
@@ -124,7 +218,7 @@ class ImageMessageCell:BaseTableViewCell<GroupChat> {
 
     var avatar = UIImageView.init(image: UIImage.init(named: "img_find_default"))
     var imageMsg:UIImageView = UIImageView.init()
-    var progress = CircleProgress.init()
+    var progress = CircularSlider(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     var chat:GroupChat?
     var onMenuAction:OnMenuAction?
 
@@ -151,20 +245,18 @@ class ImageMessageCell:BaseTableViewCell<GroupChat> {
         imageMsg.addGestureRecognizer(UILongPressGestureRecognizer.init(target: self, action: #selector(showMenu)))
         imageMsg.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(showPhotoView)))
         self.addSubview(imageMsg)
-
-        progress = CircleProgress.init()
         self.addSubview(progress)
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         imageMsg.image = nil
-        progress.progress = 0
+        progress.value = 0
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        if MD5_UDID == chat?.visitor?.udid {
+        if String.uuid.md5() == chat?.visitor?.udid {
             avatar.frame = CGRect.init(x: APPW - COMMON_MSG_PADDING - 30, y: COMMON_MSG_PADDING, width: 30, height: 30)
         } else {
             avatar.frame = CGRect.init(x: COMMON_MSG_PADDING, y: COMMON_MSG_PADDING, width: 30, height: 30)
@@ -179,7 +271,7 @@ class ImageMessageCell:BaseTableViewCell<GroupChat> {
     func updateImageFrame() {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        if MD5_UDID == chat?.visitor?.udid {
+        if String.uuid.md5() == chat?.visitor?.udid {
             imageMsg.frame = CGRect.init(x: self.avatar.frame.minX - COMMON_MSG_PADDING - imageWidth, y: COMMON_MSG_PADDING, width: imageWidth, height: imageHeight)
         } else {
             imageMsg.frame = CGRect.init(x: self.avatar.frame.maxX + COMMON_MSG_PADDING, y: COMMON_MSG_PADDING, width: imageWidth, height: imageHeight)
@@ -193,44 +285,35 @@ class ImageMessageCell:BaseTableViewCell<GroupChat> {
         imageHeight = ImageMessageCell.imageHeight(chat: chat)
 
         rectImage = nil
-        progress.isTipHidden = true
         if chat.picImage != nil {
             progress.isHidden = true
             rectImage = chat.picImage
-            if let image = chat.picImage?.drawRoundedRectImage(cornerRadius: MSG_IMAGE_CORNOR_RADIUS, width: imageWidth, height: imageHeight) {
-                imageMsg.image = image
-                updateImageFrame()
-            }
+            imageMsg.cornerRadius = MSG_IMAGE_CORNOR_RADIUS
+            imageMsg.clipsToBounds = true
+            imageMsg.image = chat.picImage
+            updateImageFrame()
         } else {
             progress.isHidden = false
-            imageMsg.setImageWithURL(imageUrl: URL.init(string: chat.pic_medium?.url ?? "")!, progress: {[weak self] percent in
-                self?.progress.progress = percent
-                }, completed: {[weak self] (image, error) in
-                    if error == nil {
-                        self?.chat?.picImage = image
-                        self?.rectImage = image
-                        self?.imageMsg.image = image?.drawRoundedRectImage(cornerRadius: MSG_IMAGE_CORNOR_RADIUS, width: self?.imageWidth ?? 0, height: self?.imageHeight ?? 0)
-                        self?.updateImageFrame()
-                        self?.progress.isHidden = true
-                    } else {
-                        self?.progress.isTipHidden = false
-                    }
-            })
-        }
-        avatar.setImageWithURL(imageUrl: URL.init(string: chat.visitor?.avatar_thumbnail?.url ?? "")!) {[weak self] (image, error) in
-            if error == nil {
-                self?.avatar.image = image?.drawCircleImage()
+            imageMsg.kf.setImage(with: URL(string: chat.pic_medium?.url ?? ""), placeholder: nil
+                , options: nil, progressBlock: {[weak self] (a, b) in
+                    self?.progress.value = CGFloat(a / b)
+            }) { [weak self](result) in
+                let image = result.value?.image
+                self?.chat?.picImage = image
+                self?.rectImage = image
+                self?.imageMsg.image = image
+                self?.updateImageFrame()
+                self?.progress.isHidden = true
             }
         }
+        avatar.kf.setImage(with: URL(string: chat.visitor?.avatar_thumbnail?.url ?? ""))
     }
 
     func updateUploadStatus(chat:GroupChat) {
         progress.isHidden = false
-        progress.isTipHidden = true
         if chat.isTemp {
-            progress.progress = chat.percent ?? 0
+            progress.value = CGFloat(chat.percent ?? 0)
             if chat.isFailed {
-                progress.isTipHidden = false
                 return
             }
             if chat.isCompleted {
@@ -274,7 +357,7 @@ class ImageMessageCell:BaseTableViewCell<GroupChat> {
 
     @objc func showMenu() {
         self.becomeFirstResponder()
-        if MD5_UDID == chat?.visitor?.udid {
+        if String.uuid.md5() == chat?.visitor?.udid {
             let menu = UIMenuController.shared
             if !menu.isMenuVisible {
                 menu.setTargetRect(menuFrame(), in: imageMsg)
@@ -375,14 +458,14 @@ class TextMessageCell: BaseTableViewCell<GroupChat> {
         var attributedString = NSMutableAttributedString.init(attributedString: textView.attributedText)
         attributedString.addAttributes(TextMessageCell.attributes(), range: NSRange.init(location: 0, length: attributedString.length))
         attributedString = EmotionHelper.stringToEmotion(str: attributedString)
-        let size = attributedString.multiLineSize(width: MAX_USER_MSG_WIDTH)
+        let size = attributedString.boundingRect(with: CGSize(width: MAX_USER_MSG_WIDTH, height: CGFloat(MAXFLOAT)), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size
 
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         backgroundLayer.path = createBezierPath(cornerRadius: USER_MSG_CORNER_RADIUS, width: size.width, height: size.height).cgPath
         backgroundLayer.frame = CGRect.init(origin: .zero, size: CGSize.init(width: size.width + USER_MSG_CORNER_RADIUS * 2, height: size.height + USER_MSG_CORNER_RADIUS * 2))
         backgroundLayer.transform = CATransform3DIdentity
-        if MD5_UDID == chat?.visitor?.udid {
+        if String.uuid.md5() == chat?.visitor?.udid {
             avatar.frame = CGRect.init(x: APPW - COMMON_MSG_PADDING - 30, y: COMMON_MSG_PADDING, width: 30, height: 30)
             textView.frame = CGRect.init(x: self.avatar.frame.minX - COMMON_MSG_PADDING - (size.width + USER_MSG_CORNER_RADIUS * 2), y: COMMON_MSG_PADDING, width: size.width + USER_MSG_CORNER_RADIUS * 2, height: size.height + USER_MSG_CORNER_RADIUS * 2)
             backgroundLayer.transform = CATransform3DMakeRotation(.pi, 0.0, 1.0, 0.0)
@@ -422,11 +505,7 @@ class TextMessageCell: BaseTableViewCell<GroupChat> {
         } else {
             stopAnim()
         }
-        avatar.setImageWithURL(imageUrl: URL.init(string: chat.visitor?.avatar_thumbnail?.url ?? "")!) {[weak self] (image, error) in
-            if error == nil {
-                self?.avatar.image = image?.drawCircleImage()
-            }
-        }
+        avatar.kf.setImage(with: URL(string: chat.visitor?.avatar_thumbnail?.url ?? ""))
     }
 
     func startAnim() {
@@ -465,7 +544,7 @@ class TextMessageCell: BaseTableViewCell<GroupChat> {
         if !menu.isMenuVisible {
             menu.setTargetRect(menuFrame(), in: textView)
             let copy = UIMenuItem.init(title: "复制", action: #selector(onMenuCopy))
-            if MD5_UDID == chat?.visitor?.udid {
+            if String.uuid.md5() == chat?.visitor?.udid {
                 let delete = UIMenuItem.init(title: "删除", action: #selector(onMenuDelete))
                 menu.menuItems = [copy, delete]
             } else {
@@ -507,7 +586,7 @@ class TextMessageCell: BaseTableViewCell<GroupChat> {
         var attributedString = NSMutableAttributedString.init(string: chat.msg_content ?? "")
         attributedString.addAttributes(TextMessageCell.attributes(), range: NSRange.init(location: 0, length: attributedString.length))
         attributedString = EmotionHelper.stringToEmotion(str: attributedString)
-        let size = attributedString.multiLineSize(width: MAX_USER_MSG_WIDTH)
+        let size = attributedString.boundingRect(with: CGSize(width: MAX_USER_MSG_WIDTH, height: CGFloat(MAXFLOAT)), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size
         return size.height + USER_MSG_CORNER_RADIUS * 2 + COMMON_MSG_PADDING * 2
     }
 

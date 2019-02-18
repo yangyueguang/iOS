@@ -363,5 +363,26 @@ class XNetKit: NSObject {
         }
         return baseRequest
     }
+
+
+    @discardableResult
+    public func download(_ url: String,
+                        parameters: Parameters?,
+                        method: HTTPMethod = .get,
+                        encoding: ParameterEncoding = URLEncoding.default,
+                        headers: HTTPHeaders = [:], completion:@escaping (APIResponse) -> Void) -> DownloadRequest {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        XHud.show()
+        let baseRequest = Alamofire.download(url, method: method, parameters: parameters, encoding: encoding, headers: headers) { (url, urlresponse) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
+            return (URL(fileURLWithPath: String(describing : NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, false)[0]+(urlresponse.suggestedFilename ?? "data"))), [.createIntermediateDirectories, .removePreviousFile])
+
+        }
+        baseRequest.downloadProgress { (progress) in
+            let pro = progress.completedUnitCount / progress.totalUnitCount
+            print(pro)
+        }
+        return baseRequest
+    }
+
 }
 

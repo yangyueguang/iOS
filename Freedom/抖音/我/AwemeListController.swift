@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MJRefresh
 let AWEME_CELL:String = "AwemeListCell"
 
 enum AwemeType {
@@ -26,7 +27,7 @@ class AwemeListController: DouyinBaseViewController {
     
     var data = [Aweme]()
     var awemes = [Aweme]()
-    var loadMore:LoadMoreControl?
+
     
     init(data:[Aweme], currentIndex:Int, page:Int, size:Int, awemeType:AwemeType, uid:String) {
         super.init(nibName: nil, bundle: nil)
@@ -83,13 +84,9 @@ class AwemeListController: DouyinBaseViewController {
             self.automaticallyAdjustsScrollViewInsets = false
         }
         tableView.register(AwemeListCell.classForCoder(), forCellReuseIdentifier: AWEME_CELL)
-        
-        loadMore = LoadMoreControl.init(frame: CGRect.init(x: 0, y: 100, width: APPW, height: 50), surplusCount: 10)
-        loadMore?.onLoad = {[weak self] in
+        tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {[weak self] in
             self?.loadData(page: self?.pageIndex ?? 0)
-        }
-        tableView.addSubview(loadMore!)
-        
+        })
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
             self.view.addSubview(self.tableView!)
             self.data = self.awemes
@@ -117,14 +114,12 @@ class AwemeListController: DouyinBaseViewController {
                     }
                     self?.tableView?.insertRows(at: indexPaths, with: .none)
                     self?.tableView?.endUpdates()
-                    
-                    self?.loadMore?.endLoading()
-                    if response.has_more == 0 {
-                        self?.loadMore?.loadingAll()
-                    }
+
+                    self?.tableView.mj_footer.endRefreshing()
                 }
             }, failure: { error in
-                self.loadMore?.loadingFailed()
+
+                self.tableView.mj_footer.endRefreshing()
             })
         } else {
             AwemeListRequest.findFavoriteAwemesPaged(uid: uid ?? "", page: page, size, success: {[weak self] data in
@@ -140,14 +135,11 @@ class AwemeListController: DouyinBaseViewController {
                     }
                     self?.tableView?.insertRows(at: indexPaths, with: .none)
                     self?.tableView?.endUpdates()
-                    
-                    self?.loadMore?.endLoading()
-                    if response.has_more == 0 {
-                        self?.loadMore?.loadingAll()
-                    }
+                    self?.tableView.mj_footer.endRefreshing()
                 }
             }, failure: { error in
-                self.loadMore?.loadingFailed()
+
+                self.tableView.mj_footer.endRefreshing()
             })
         }
     }
