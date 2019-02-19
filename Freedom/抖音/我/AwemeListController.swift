@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 import MJRefresh
 let AWEME_CELL:String = "AwemeListCell"
 
@@ -18,7 +19,8 @@ enum AwemeType {
 
 class AwemeListController: DouyinBaseViewController {
     @objc dynamic var currentIndex:Int = 0
-    
+    let awemesVM = PublishSubject<[Aweme]>()
+    let favoritesVM = PublishSubject<[Aweme]>()
     var isCurPlayerPause:Bool = false
     var pageIndex:Int = 0
     var pageSize:Int = 21
@@ -101,46 +103,39 @@ class AwemeListController: DouyinBaseViewController {
     
     func loadData(page:Int, _ size:Int = 21) {
         if awemeType == AwemeType.AwemeWork {
-            AwemeListRequest.findPostAwemesPaged(uid: uid ?? "", page: page, size, success: {[weak self] data in
-                if let response = data as? AwemeListResponse {
-                    let array = response.data
-                    self?.pageIndex += 1
-                    
-                    self?.tableView?.beginUpdates()
-                    self?.data += array
-                    var indexPaths = [IndexPath]()
-                    for row in ((self?.data.count ?? 0) - array.count)..<(self?.data.count ?? 0) {
-                        indexPaths.append(IndexPath.init(row: row, section: 0))
-                    }
-                    self?.tableView?.insertRows(at: indexPaths, with: .none)
-                    self?.tableView?.endUpdates()
+            XNetKit.douyinfindPostAwemesPaged(uid ?? "", page: page, size: size, next: awemesVM)
+            awemesVM.subscribe(onNext: { [weak self](array) in
+                self?.pageIndex += 1
 
-                    self?.tableView.mj_footer.endRefreshing()
+                self?.tableView?.beginUpdates()
+                self?.data += array
+                var indexPaths = [IndexPath]()
+                for row in ((self?.data.count ?? 0) - array.count)..<(self?.data.count ?? 0) {
+                    indexPaths.append(IndexPath.init(row: row, section: 0))
                 }
-            }, failure: { error in
+                self?.tableView?.insertRows(at: indexPaths, with: .none)
+                self?.tableView?.endUpdates()
 
-                self.tableView.mj_footer.endRefreshing()
-            })
+                self?.tableView.mj_footer.endRefreshing()
+
+            }).disposed(by: disposeBag)
+
         } else {
-            AwemeListRequest.findFavoriteAwemesPaged(uid: uid ?? "", page: page, size, success: {[weak self] data in
-                if let response = data as? AwemeListResponse {
-                    let array = response.data
-                    self?.pageIndex += 1
-                    
-                    self?.tableView?.beginUpdates()
-                    self?.data += array
-                    var indexPaths = [IndexPath]()
-                    for row in ((self?.data.count ?? 0) - array.count)..<(self?.data.count ?? 0) {
-                        indexPaths.append(IndexPath.init(row: row, section: 0))
-                    }
-                    self?.tableView?.insertRows(at: indexPaths, with: .none)
-                    self?.tableView?.endUpdates()
-                    self?.tableView.mj_footer.endRefreshing()
-                }
-            }, failure: { error in
+            XNetKit.douyinfindFavoriteAwemesPaged(uid ?? "", page: page, next: favoritesVM)
+            favoritesVM.subscribe(onNext: {[weak self] (array) in
+                self?.pageIndex += 1
 
-                self.tableView.mj_footer.endRefreshing()
-            })
+                self?.tableView?.beginUpdates()
+                self?.data += array
+                var indexPaths = [IndexPath]()
+                for row in ((self?.data.count ?? 0) - array.count)..<(self?.data.count ?? 0) {
+                    indexPaths.append(IndexPath.init(row: row, section: 0))
+                }
+                self?.tableView?.insertRows(at: indexPaths, with: .none)
+                self?.tableView?.endUpdates()
+                self?.tableView.mj_footer.endRefreshing()
+
+            }).disposed(by: disposeBag)
         }
     }
     

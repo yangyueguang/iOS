@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import XCarryOn
+import RxSwift
 import MJRefresh
 var USER_INFO_HEADER_HEIGHT:CGFloat = 340 + statusBarHeight
 var SLIDE_TABBAR_FOOTER_HEIGHT:CGFloat = 40
@@ -19,9 +20,12 @@ final class DouyinMeViewController: DouyinBaseViewController {
     
     let uid:String = "97795069353"
     var user:DouYinUser?
+    let userViewModel = PublishSubject<DouYinUser>()
     
     var workAwemes = [Aweme]()
+    let workAwemesViewModel = PublishSubject<[Aweme]>()
     var favoriteAwemes = [Aweme]()
+    let favoriteAwemesViewModel = PublishSubject<[Aweme]>()
     
     var pageIndex = 0;
     let pageSize = 21
@@ -51,8 +55,7 @@ final class DouyinMeViewController: DouyinBaseViewController {
         self.setStatusBarBackgroundColor(color: UIColor.clear)
         self.setStatusBarStyle(style: .lightContent)
         self.setStatusBarHidden(hidden: false)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(onNetworkStatusChange(notification:)), name: Notification.Name(rawValue: NetworkStatesChangeNotification), object: nil)
+        onNetworkStatusChange()
     }
     
     override func viewDidLoad() {
@@ -87,82 +90,69 @@ final class DouyinMeViewController: DouyinBaseViewController {
         })
     }
     
-    @objc func onNetworkStatusChange(notification:NSNotification) {
-        if !NetworkManager.isNotReachableStatus(status: NetworkManager.networkStatus()) {
-            if user == nil {
-                loadUserData()
-            }
-            if favoriteAwemes.count == 0 && workAwemes.count == 0 {
-                loadData(page: pageIndex)
-            }
+    @objc func onNetworkStatusChange() {
+        if user == nil {
+            loadUserData()
+        }
+        if favoriteAwemes.count == 0 && workAwemes.count == 0 {
+            loadData(page: pageIndex)
         }
     }
     
     func loadUserData() {
-        UserRequest.findUser(uid: uid, success: {[weak self] data in
-            self?.user = data as? DouYinUser
+        userViewModel.subscribe(onNext: {[weak self] (user) in
+            self?.user = user
             self?.setNavigationBarTitle(title: self?.user?.nickname ?? "")
             self?.collectionView?.reloadSections(IndexSet.init(integer: 0))
-        }, failure: { error in
-            self.noticeError(error.localizedDescription)
-        })
+        }).disposed(by: disposeBag)
+        XNetKit.douyinfindUser(uid, next: userViewModel)
     }
     
     func loadData(page:Int, _ size:Int = 21) {
         if tabIndex == 0 {
-            AwemeListRequest.findPostAwemesPaged(uid: uid, page: page, size, success: {[weak self] data in
-                if let response = data as? AwemeListResponse {
-                    if self?.tabIndex != 0 {
-                        return
-                    }
-                    let array = response.data
-                    self?.pageIndex += 1
-                    
-                    UIView.setAnimationsEnabled(false)
-                    self?.collectionView?.performBatchUpdates({
-                        self?.workAwemes += array
-                        var indexPaths = [IndexPath]()
-                        for row in ((self?.workAwemes.count ?? 0) - array.count)..<(self?.workAwemes.count ?? 0) {
-                            indexPaths.append(IndexPath.init(row: row, section: 1))
-                        }
-                        self?.collectionView?.insertItems(at: indexPaths)
-                    }, completion: { finished in
-                        UIView.setAnimationsEnabled(true)
-
-                        self?.collectionView.mj_footer.endRefreshing()
-                    })
+            workAwemesViewModel.subscribe(onNext: {[weak self] (array) in
+                if self?.tabIndex != 0 {
+                    return
                 }
-            }, failure:{ error in
+                self?.pageIndex += 1
 
-                self.collectionView.mj_footer.endRefreshing()
-            })
+                UIView.setAnimationsEnabled(false)
+                self?.collectionView?.performBatchUpdates({
+                    self?.workAwemes += array
+                    var indexPaths = [IndexPath]()
+                    for row in ((self?.workAwemes.count ?? 0) - array.count)..<(self?.workAwemes.count ?? 0) {
+                        indexPaths.append(IndexPath.init(row: row, section: 1))
+                    }
+                    self?.collectionView?.insertItems(at: indexPaths)
+                }, completion: { finished in
+                    UIView.setAnimationsEnabled(true)
+
+                    self?.collectionView.mj_footer.endRefreshing()
+                })
+            }).disposed(by: disposeBag)
+
+            XNetKit.douyinfindPostAwemesPaged(uid, page: page, size: size, next: workAwemesViewModel)
         } else {
-            AwemeListRequest.findFavoriteAwemesPaged(uid: uid, page: page, size, success: {[weak self] data in
-                if let response = data as? AwemeListResponse {
-                    if self?.tabIndex != 1 {
-                        return
-                    }
-                    let array = response.data
-                    self?.pageIndex += 1
-                    
-                    UIView.setAnimationsEnabled(false)
-                    self?.collectionView?.performBatchUpdates({
-                        self?.favoriteAwemes += array
-                        var indexPaths = [IndexPath]()
-                        for row in ((self?.favoriteAwemes.count ?? 0) - array.count)..<(self?.favoriteAwemes.count ?? 0) {
-                            indexPaths.append(IndexPath.init(row: row, section: 1))
-                        }
-                        self?.collectionView?.insertItems(at: indexPaths)
-                    }, completion: { finished in
-                        UIView.setAnimationsEnabled(true)
-
-                        self?.tableView.mj_footer.endRefreshing()
-                    })
+            favoriteAwemesViewModel.subscribe(onNext: {[weak self] (array) in
+                if self?.tabIndex != 1 {
+                    return
                 }
-            }, failure: { error in
+                self?.pageIndex += 1
+                UIView.setAnimationsEnabled(false)
+                self?.collectionView?.performBatchUpdates({
+                    self?.favoriteAwemes += array
+                    var indexPaths = [IndexPath]()
+                    for row in ((self?.favoriteAwemes.count ?? 0) - array.count)..<(self?.favoriteAwemes.count ?? 0) {
+                        indexPaths.append(IndexPath.init(row: row, section: 1))
+                    }
+                    self?.collectionView?.insertItems(at: indexPaths)
+                }, completion: { finished in
+                    UIView.setAnimationsEnabled(true)
 
-                self.tableView.mj_footer.endRefreshing()
-            })
+                    self?.tableView.mj_footer.endRefreshing()
+                })
+            }).disposed(by: disposeBag)
+            XNetKit.douyinfindFavoriteAwemesPaged(uid, page: page,size: size , next: favoriteAwemesViewModel)
         }
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import RxSwift
 let SYS_MSG_CORNER_RADIUS:CGFloat = 10
 let MAX_SYS_MSG_WIDTH:CGFloat = APPW - 110
 let COMMON_MSG_PADDING:CGFloat = 8
@@ -19,6 +19,20 @@ let MAX_MSG_IMAGE_WIDTH:CGFloat = 200
 let MAX_MSG_IMAGE_HEIGHT:CGFloat = 200
 
 typealias OnRefresh = () -> Void
+//enum
+enum LoadingType: Int {
+    case LoadStateIdle
+    case LoadStateLoading
+    case LoadStateAll
+    case LoadStateFailed
+}
+
+enum RefreshingType: Int {
+    case RefreshHeaderStateIdle
+    case RefreshHeaderStatePulling
+    case RefreshHeaderStateRefreshing
+    case RefreshHeaderStateAll
+}
 
 class RefreshControl: UIControl {
     var indicator: UIImageView = UIImageView.init(image: UIImage.init(named: "icon60LoadingMiddle"))
@@ -115,11 +129,13 @@ class RefreshControl: UIControl {
 }
 
 class ChatListController: DouyinBaseViewController {
-    
+    let groupChatVM = PublishSubject<GroupChat>()
     var refreshControl = RefreshControl.init()
     var data = [GroupChat]()
     var textView = ChatTextView.init()
-    
+    let groupChatViewModel = PublishSubject<GroupChat>()
+    let groupChatsViewModel = PublishSubject<[GroupChat]>()
+    let baseVM = PublishSubject<BaseResponse>()
     var pageIndex = 0;
     let pageSize = 20
     
@@ -179,35 +195,27 @@ class ChatListController: DouyinBaseViewController {
             self?.loadData(page: self?.pageIndex ?? 0)
         }
         tableView?.addSubview(refreshControl)
-        
         textView.delegate = self
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(receiveMessage(notification:)), name: NSNotification.Name(rawValue: WebSocketDidReceiveMessageNotification), object: nil)
+
     }
     
     func loadData(page:Int, _ size:Int = 20) {
-        GroupChatListRequest.findGroupChatsPaged(page: page, size, success: {[weak self] data in
-            if let response = data as? GroupChatListResponse {
-                let array = response.data
-                let preCount = self?.data.count ?? 0
-                UIView.setAnimationsEnabled(false)
-                self?.processData(data: array)
-                let curCount = self?.data.count ?? 0
-                if (self?.pageIndex ?? 0) == 0 || preCount == 0 || (curCount - preCount) <= 0 {
-                    self?.scrollToBottom()
-                } else {
-                    self?.tableView?.scrollToRow(at: IndexPath.init(row: curCount - preCount, section: 0), at: .top, animated: false)
-                }
-                self?.pageIndex += 1
-                self?.refreshControl.endRefresh()
-                if response.has_more == 0 {
-                    self?.refreshControl.loadAll()
-                }
-                UIView.setAnimationsEnabled(true)
+        XNetKit.douyinfindGroupChatsPaged(page: page, size: size, next: groupChatsViewModel)
+        groupChatsViewModel.subscribe(onNext: {[weak self] (array) in
+            let preCount = self?.data.count ?? 0
+            UIView.setAnimationsEnabled(false)
+            self?.processData(data: array)
+            let curCount = self?.data.count ?? 0
+            if (self?.pageIndex ?? 0) == 0 || preCount == 0 || (curCount - preCount) <= 0 {
+                self?.scrollToBottom()
+            } else {
+                self?.tableView?.scrollToRow(at: IndexPath.init(row: curCount - preCount, section: 0), at: .top, animated: false)
             }
-        }, failure: {[weak self] error in
+            self?.pageIndex += 1
             self?.refreshControl.endRefresh()
-        })
+            UIView.setAnimationsEnabled(true)
+        }).disposed(by: disposeBag)
+
     }
     
     func processData(data:[GroupChat]) {
@@ -246,8 +254,8 @@ class ChatListController: DouyinBaseViewController {
                 if indexPaths.count == 0 {
                     return
                 }
-                
-                DeleteGroupChatRequest.deleteGroupChat(id: chat.id, success: {[weak self] data in
+                XNetKit.douyinDeleteGroupChat(next: baseVM)
+                baseVM.subscribe(onNext: {[weak self] (response) in
                     self?.tableView?.beginUpdates()
                     var indexs = [Int]()
                     for indexPath in indexPaths {
@@ -258,9 +266,7 @@ class ChatListController: DouyinBaseViewController {
                     }
                     self?.tableView?.deleteRows(at: indexPaths, with: .right)
                     self?.tableView?.endUpdates()
-                }, failure: { error in
-                    self.noticeError("删除失败")
-                })
+                }).disposed(by: disposeBag)
             }
         }
     }
@@ -366,16 +372,11 @@ extension ChatListController:ChatTextViewDelegate {
         scrollToBottom()
         
         if let index = data.index(of: chat) {
-            PostGroupChatTextRequest.postGroupChatText(text: text, success: {[weak self] data in
-                if let response = data as? GroupChatResponse {
-                    chat.updateTempTextChat(chat: response.data!)
-                    self?.tableView?.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
-                }
-            }, failure: {[weak self] error in
-                chat.isCompleted = false
-                chat.isFailed = true
+            groupChatVM.subscribe(onNext: {[weak self] (chatG) in
+                chat.updateTempTextChat(chat: chatG)
                 self?.tableView?.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
-            })
+            }).disposed(by: disposeBag)
+            XNetKit.douyinGroupChatText(text: text, next: groupChatVM)
         }
         
     }
@@ -395,26 +396,20 @@ extension ChatListController:ChatTextViewDelegate {
                 UIView.setAnimationsEnabled(true)
                 
                 if let index = self.data.index(of: chat) {
-                    PostGroupChatImageRequest.postGroupChatImage(data: data, {[weak self] percent in
-                        chat.percent = Float(percent)
+                    XNetKit.douyinGroupChatImage(next: groupChatVM)
+                    groupChatVM.subscribe(onNext: {[weak self] (chat) in
                         chat.isCompleted = false
                         chat.isFailed = false
                         if let cell = self?.tableView?.cellForRow(at: IndexPath.init(row: index, section: 0)) as? ImageMessageCell {
                             cell.updateUploadStatus(chat:chat)
                         }
-                        }, success: {[weak self] data in
-                            if let response = data as? GroupChatResponse {
-                                chat.updateTempImageChat(chat: response.data!)
-                                self?.tableView?.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
-                            }
-                    }, failure: {[weak self] error in
-                        chat.percent = 0
-                        chat.isCompleted = false
-                        chat.isFailed = true
-                        if let cell = self?.tableView?.cellForRow(at: IndexPath.init(row: index, section: 0)) as? ImageMessageCell {
-                            cell.updateUploadStatus(chat:chat)
-                        }
-                    })
+
+
+                            chat.updateTempImageChat(chat: chat)
+                            self?.tableView?.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
+
+                    }).disposed(by: disposeBag)
+
                 }
             }
         }

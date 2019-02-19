@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 import UIKit
 import Kingfisher
-
+import RxSwift
 let LIKE_BEFORE_TAP_ACTION:Int = 1000
 let LIKE_AFTER_TAP_ACTION:Int = 2000
 let COMMENT_TAP_ACTION:Int = 3000
@@ -19,7 +19,7 @@ let SHARE_TAP_ACTION:Int = 4000
 typealias OnPlayerReady = () -> Void
 
 class AwemeListCell: BaseTableViewCell<Aweme> {
-    
+    let commentVM = PublishSubject<Comment>()
     var container:UIView = UIView.init()
     var gradientLayer:CAGradientLayer = CAGradientLayer.init()
     var pauseIcon:UIImageView = UIImageView.init(image: UIImage.init(named: "icon_play_pause"))
@@ -395,11 +395,10 @@ extension AwemeListCell: SendTextDelegate, HoverTextViewDelegate {
     
     func onSendText(text: String) {
         if let aweme_id = aweme?.aweme_id {
-            PostCommentRequest.postCommentText(aweme_id:aweme_id, text: text, success: { data in
-                self.noticeSuccess("评论成功")
-            }, failure: { error in
-                self.noticeError("评论失败")
-            })
+            XNetKit.douyinCommentText(aweme_id: aweme_id, text: text, next: commentVM)
+            commentVM.subscribe(onNext: { (com) in
+            self.noticeSuccess("评论成功")
+            }).disposed(by: disposeBag)
         }
     }
     

@@ -955,12 +955,14 @@ class CircleTextView:UIView {
 //  Created by Qiao Shi on 2018/8/7.
 //  Copyright © 2018年 Qiao Shi. All rights reserved.
 //
-
+import RxSwift
 import Foundation
 let COMMENT_CELL:String = "CommentCell"
 class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, UIScrollViewDelegate, CommentTextViewDelegate {
-
-
+    let disposeBag = DisposeBag()
+let commentsViewModel = PublishSubject<[Comment]>()
+let commentVM = PublishSubject<Comment>()
+    let baseVM = PublishSubject<BaseResponse>()
     var label = UILabel.init()
     var close = UIImageView.init(image:UIImage.init(named: "icon_closetopic"))
     var awemeId:String?
@@ -1035,27 +1037,25 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
     }
 
     func onSendText(text: String) {
-        PostCommentRequest.postCommentText(aweme_id: awemeId ?? "", text: text, success: {[weak self] data in
-            let response = data as? CommentResponse
-            if let comment = response?.data {
-                UIView.setAnimationsEnabled(false)
-                self?.tableView.beginUpdates()
-                self?.data.insert(comment, at: 0)
-                var indexPaths = [IndexPath]()
-                indexPaths.append(IndexPath.init(row: 0, section: 0))
-                self?.tableView.insertRows(at: indexPaths, with: .none)
-                self?.tableView.endUpdates()
-                self?.tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: false)
-                UIView.setAnimationsEnabled(true)
-            }
+        XNetKit.douyinCommentText(aweme_id: awemeId ?? "", text: text, next: commentVM)
+        commentVM.subscribe(onNext: {[weak self] (comment) in
+            UIView.setAnimationsEnabled(false)
+            self?.tableView.beginUpdates()
+            self?.data.insert(comment, at: 0)
+            var indexPaths = [IndexPath]()
+            indexPaths.append(IndexPath.init(row: 0, section: 0))
+            self?.tableView.insertRows(at: indexPaths, with: .none)
+            self?.tableView.endUpdates()
+            self?.tableView.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .top, animated: false)
+            UIView.setAnimationsEnabled(true)
             self?.noticeSuccess("评论成功")
-            }, failure: { error in
-                self.noticeError("评论失败")
-        })
+        }).disposed(by: disposeBag)
+
     }
 
     func deleteComment(comment:Comment){
-        DeleteCommentRequest.deleteComment(cid: comment.cid ?? "", success: {[weak self] data in
+        XNetKit.douyinDeleteComment(cid: comment.cid ?? "", next: baseVM)
+        baseVM.subscribe(onNext: {[weak self] (response) in
             if let index = self?.data.index(of:comment) {
                 self?.tableView.beginUpdates()
                 self?.data.remove(at: index)
@@ -1064,19 +1064,13 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
                 self?.tableView.deleteRows(at: indexPaths, with: .right)
                 self?.tableView.endUpdates()
                 self?.noticeSuccess("评论删除成功")
-            } else {
-                self?.noticeError("评论删除失败")
             }
-            }, failure: { error in
-                self.noticeError("评论删除失败")
-        })
+        }).disposed(by: disposeBag)
     }
 
     func loadData(page:Int, _ size:Int = 20) {
-        CommentListRequest.findCommentsPaged(aweme_id: awemeId ?? "", page: pageIndex, success: {[weak self] data in
-            let response = data as! CommentListResponse
-            let array = response.data
-
+        XNetKit.douyinfindCommentsPaged(aweme_id: awemeId ?? "", page: pageIndex, next: commentsViewModel)
+        commentsViewModel.subscribe(onNext: {[weak self] (array) in
             self?.pageIndex += 1
             UIView.setAnimationsEnabled(false)
             self?.tableView.beginUpdates()
@@ -1090,12 +1084,10 @@ class CommentsPopView:UIView, UITableViewDelegate, UITableViewDataSource, UIGest
             self?.tableView.endUpdates()
             UIView.setAnimationsEnabled(true)
             self?.tableView.mj_footer.endRefreshing()
-            if response.has_more == 0 {
-            }
-            self?.label.text = String.init(response.total_count) + "条评论"
-            }, failure: {[weak self] error in
-                self?.tableView.mj_footer.endRefreshing()
-        })
+            self?.label.text = String.init(array.count) + "条评论"
+
+        }).disposed(by: disposeBag)
+
     }
 
     override func layoutSubviews() {

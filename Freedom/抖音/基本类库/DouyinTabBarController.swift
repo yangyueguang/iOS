@@ -9,25 +9,21 @@
 import UIKit
 import CoreTelephony
 import Photos
+import RxSwift
 final class DouyinTabBarController: BaseTabBarViewController {
-
+    let viewModel = PublishSubject<Visitor>()
+    let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         AVPlayerManager.setAudioMode()
-        NetworkManager.startMonitoring()
-        WebSocketManger.shared().connect()
         PHPhotoLibrary.requestAuthorization { (PHAuthorizationStatus) in
-            //process photo library request status.
+            
         }
-
-        VisitorRequest.saveOrFindVisitor(success: { data in
-            let response = data as! VisitorResponse
-            let visitor = response.data
-            Visitor.write(visitor:visitor!)
-        }, failure: { error in
-            print("注册访客用户失败")
-        })
+        viewModel.subscribe(onNext: { (visitor) in
+            Visitor.write(visitor:visitor)
+        }).disposed(by: disposeBag)
+        XNetKit.douyinVisitor("", next: viewModel)
 
     }
 

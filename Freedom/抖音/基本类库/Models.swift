@@ -2,6 +2,26 @@
 //  Models.swift
 //  Douyin
 import UIKit
+
+enum ChatEditMessageType: Int {
+    case EditTextMessage
+    case EditPhotoMessage
+    case EditEmotionMessage
+    case EditNoneMessage
+}
+
+enum MenuActionType: Int {
+    case DeleteAction
+    case CopyAction
+    case PasteAction
+}
+
+class BaseResponse: BaseModel {
+    var code:Int?
+    var message:String?
+    var has_more:Int = 0
+    var total_count:Int = 0
+}
 class WebPImage: UIImage {
     var imageData: Data?
     var curDisplayFrame: WebPFrame?
