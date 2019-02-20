@@ -11,30 +11,29 @@ final class IqiyiMineViewController: IqiyiBaseViewController {
     func setNav() {
         navigationController?.navigationBar.isHidden = true
         let backImage = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW, height: 147))
-        backImage.image = UIImage(named: "morentu")
+        backImage.image = IQYImage.moren.image
         view.addSubview(backImage)
         //
         let backView = UIView(frame: CGRect(x: 0, y: 107, width: APPW, height: 40))
-        if let aNamed = UIImage(named: "titlebar") {
-            backView.backgroundColor = UIColor(patternImage: aNamed)
-        }
+            backView.backgroundColor = UIColor(patternImage: IQYImage.titleBar.image)
+
         view.addSubview(backView)
         //
         //设置
         let settingBtn = UIButton(frame: CGRect(x: APPW - 30, y: 30, width: 22, height: 22))
-        settingBtn.setImage(UIImage(named: "wsetting"), for: .normal)
+        settingBtn.setImage(IQYImage.setting.image, for: .normal)
         view.addSubview(settingBtn)
         //消息
         let msgBtn = UIButton(type: .custom)
         msgBtn.frame = CGRect(x: APPW - 60, y: 30, width: 22, height: 22)
-        msgBtn.setImage(UIImage(named: "wbell"), for: .normal)
+        msgBtn.setImage(IQYImage.wbell.image, for: .normal)
         view.addSubview(msgBtn)
         //头像
         let userImage = UIImageView(frame: CGRect(x: 10, y: 30, width: 50, height: 50))
         userImage.isUserInteractionEnabled = true
         userImage.layer.masksToBounds = true
         userImage.layer.cornerRadius = 25
-        userImage.image = UIImage(named: "userLogo")
+        userImage.image = Image.logo.image
         view.addSubview(userImage)
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.tapGROnIconClick))
         userImage.addGestureRecognizer(tapGR)
@@ -53,12 +52,12 @@ final class IqiyiMineViewController: IqiyiBaseViewController {
     }
     func initViews() {
         let backImage = UIImageView(frame: CGRect(x: 0, y: 150, width: APPW, height: APPH - 150 - 49))
-        backImage.image = UIImage(named: "cache_no_data")
+        backImage.image = IQYImage.noData.image
         backImage.contentMode = .scaleAspectFit
         view.addSubview(backImage)
         //
         let titleArrar = ["历史", "收藏", "上传", "特权"]
-        let picArray = ["whistory", "wfavourite", "wcamera", "wvip"]
+        let picArray = [IQYImage.history.rawValue, IQYImage.favourite.rawValue, IQYImage.camera.rawValue, IQYImage.vip.rawValue]
         for i in 0..<4 {
             let segmentBtn = UIButton(type: .custom)
             segmentBtn.tag = i
@@ -71,7 +70,7 @@ final class IqiyiMineViewController: IqiyiBaseViewController {
     }
     func segmentBtn(_ sender: UIButton?) {
         if sender?.tag == 0 {
-            let watchRecordVC = IqiyiWatchRecordViewController(nibName: "JFWatchRecordViewController", bundle: nil)
+            let watchRecordVC = IqiyiWatchRecordViewController(nibName: IqiyiWatchRecordViewController.nameOfClass, bundle: nil)
             navigationController?.pushViewController(watchRecordVC, animated: true)
         }
     }

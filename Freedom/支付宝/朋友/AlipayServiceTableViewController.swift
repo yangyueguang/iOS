@@ -30,7 +30,7 @@ class AlipayServiceTableViewHeader : UIView,UITextFieldDelegate{
         textField.delegate = self as UITextFieldDelegate
         addSubview(textField)
         self.textField = textField
-        let searchIcon = UIImageView(image: UIImage(named: "search"))
+        let searchIcon = UIImageView(image: Image.search.image)
         searchIcon.contentMode = .scaleAspectFill
         self.textField.addSubview(searchIcon)
         textFieldSearchIcon = searchIcon

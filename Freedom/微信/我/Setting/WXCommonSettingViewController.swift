@@ -116,8 +116,8 @@ class WXChatFontViewController: WXBaseViewController {
         let path = FileManager.pathUserAvatar("AppIcon")
         if !FileManager.default.isExecutableFile(atPath: path) {
             let iconPath = Bundle.main.infoDictionary?["CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles"] as! String
-            let image = UIImage(named: iconPath)
-            var data = image?.pngData() != nil ? image?.pngData() : image?.jpegData(compressionQuality: 1)
+            let image = iconPath.image
+            var data = image.pngData() != nil ? image.pngData() : image.jpegData(compressionQuality: 1)
             FileManager.default.createFile(atPath: path, contents: data, attributes: nil)
         }
         let message1 = WXTextMessage()

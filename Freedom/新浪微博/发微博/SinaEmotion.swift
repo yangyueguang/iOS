@@ -158,7 +158,7 @@ class SinaEmotionTextView: UITextView {
         } else if emotion.png != "" {
             let attch = SinaEmotionAttachment()
             attch.emotion = emotion
-            attch.image = UIImage(named: emotion.png )
+            attch.image = emotion.png.image
             let attchWH: CGFloat = font!.lineHeight
             attch.bounds = CGRect(x: 0, y: -4, width: attchWH, height: attchWH)
             let imageStr = NSAttributedString(attachment: attch)
@@ -223,8 +223,8 @@ class SinaEmotionTabBar: UIView {
             image = "compose_emotion_table_right_normal"
             selectImage = "compose_emotion_table_right_selected"
         }
-        btn.setBackgroundImage(UIImage(named: image), for: .normal)
-        btn.setBackgroundImage(UIImage(named: selectImage), for: .disabled)
+        btn.setBackgroundImage(image.image, for: .normal)
+        btn.setBackgroundImage(selectImage.image, for: .disabled)
         return btn
     }
     /*按钮点击*/
@@ -269,7 +269,7 @@ class SinaEmotionPageView: UIView {
             addSubview(btn)
             btn.emotion = emotions[i]
             if btn.emotion!.png != ""{// 有图片
-                btn.setImage(UIImage(named: (btn.emotion?.png)!), for: .normal)
+                btn.setImage(btn.emotion?.png.image, for: .normal)
             } else if btn.emotion!.code != "" {// 是emoji表情
                 btn.setTitle(btn.emotion?.chs, for: .normal)
             }
@@ -323,8 +323,8 @@ class SinaComposeToolbar: UIView {
     /*创建一个按钮*/
     func setupBtn(_ image: String, highImage: String, type: Int) -> UIButton {
         let btn = UIButton()
-        btn.setImage(UIImage(named: image ), for: .normal)
-        btn.setImage(UIImage(named: highImage ), for: .highlighted)
+        btn.setImage(image.image, for: .normal)
+        btn.setImage(highImage.image, for: .highlighted)
         btn.addTarget(self, action: #selector(self.btnClick(_:)), for: .touchUpInside)
         btn.tag = type
         addSubview(btn)

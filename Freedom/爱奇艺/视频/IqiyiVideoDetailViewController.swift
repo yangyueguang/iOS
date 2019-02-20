@@ -15,7 +15,7 @@ class IqiyiRecommentVideoCell:BaseTableViewCell<IqiyiRecommentModel> {
             self.titleLabel.text = model.title
             self.pvLabel.text = model.pv_pr
             self.timeLabel.text = model.time
-            self.iconImageView.image = UIImage(named: "userLogo")
+            self.iconImageView.image = Image.logo.image
             self.titleLabel.text = "title"
             self.timeLabel.text = "time"
             self.pvLabel.text = "pvlabel"
@@ -34,7 +34,7 @@ class IqiyiVideoDetailCell: BaseTableViewCell<IqiyiVideoDetailModel> {
     override func initUI() {
         viewModel.subscribe(onNext: {[weak self] (model) in
             guard let `self` = self else { return }
-            self.iconImageView?.sd_setImage(with: URL(string: model.channel_pic ?? ""), placeholderImage: UIImage(named: "tudoulogo"))
+            self.iconImageView?.sd_setImage(with: URL(string: model.channel_pic ), placeholderImage: Image.logo.image)
             self.userNameLabel?.text = model.username
             self.playItemsLabel?.text = "播放：\(model.user_play_times)"
             self.userDesLabel?.text = model.user_desc
@@ -70,7 +70,7 @@ class IqiyiVideoDetailViewController: IqiyiBaseViewController {
         let backBtn = UIButton(type: .custom)
         backBtn.frame = CGRect(x: 15, y: 20, width: 30, height: 30)
         backBtn.addTarget(self, action:#selector(self.onBackBtn(_:)), for: .touchUpInside)
-        backBtn.setImage(UIImage(named: "cellLeft"), for: .normal)
+        backBtn.setImage(Image.left.image, for: .normal)
         view.addSubview(backBtn)
     }
     func initTableView() {

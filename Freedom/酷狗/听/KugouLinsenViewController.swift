@@ -35,7 +35,7 @@ class KugoumainHeaderView: UIView {
             btn.imageView?.contentMode = .scaleAspectFit
             btn.titleLabel?.textAlignment = .center
             btn.titleLabel?.font = UIFont.normal
-            btn.setImage(UIImage(named: "main_clock"), for: .normal)
+            btn.setImage(Image.lock.image, for: .normal)
             btn.setTitle(titleArr[i], for: .normal)
             addSubview(btn)
         }
@@ -44,7 +44,7 @@ class KugoumainHeaderView: UIView {
         lineView.alpha = 0.3
         addSubview(lineView)
         let phoneimage = UIImageView(frame: CGRect(x: 20, y: lineView.frame.maxY + 15, width: 20, height: 20))
-        phoneimage.image = UIImage(named: "main_phone")
+        phoneimage.image = Image.mainPhone.image
         addSubview(phoneimage)
         let lable = UILabel(frame: CGRect(x: phoneimage.frame.maxX + 8, y: phoneimage.y, width: 100, height: 25))
         lable.text = "本地音乐"
@@ -65,7 +65,7 @@ class KugoumainHeaderView: UIView {
         lable3.isUserInteractionEnabled = true
         lable3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.clickLable2)))
         let imageArrow = UIImageView(frame: CGRect(x: lable2.frame.maxX, y: lable2.y, width: 25, height: 25))
-        imageArrow.image = UIImage(named: "arrow")
+        imageArrow.image = Image.arrow.image
         addSubview(imageArrow)
         // 底部
         setupBottonButtons()
@@ -122,7 +122,7 @@ final class KugouLinsenViewController: KugouBaseViewController {
 //        tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.showsVerticalScrollIndicator = false
-        tableView.backgroundView = UIImageView(image: UIImage(named: "bj"))
+        tableView.backgroundView = UIImageView(image: Image.back.image)
         tableView.backgroundView?.contentMode = .redraw
         tableView.tableHeaderView = headerView
         tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
@@ -138,7 +138,7 @@ final class KugouLinsenViewController: KugouBaseViewController {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueCell(BaseTableViewCell<Any>.self)
-        cell.imageView?.image = UIImage(named: "music")
+        cell.imageView?.image = Image.music.image
         cell.textLabel?.text = titlesArr[indexPath.row] as? String
         return cell
     }

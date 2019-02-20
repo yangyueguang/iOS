@@ -45,7 +45,7 @@ class IqiyiSubScribeCardView: UIView {
     }
     func setSubItem(_ subItem: IqiyiSubItemModel?) {
         self.subItem = subItem
-        imageView?.sd_setImage(with: URL(string: subItem?.picurl ?? ""), placeholderImage: UIImage(named: "rec_holder"))
+        imageView?.sd_setImage(with: URL(string: subItem?.picurl ?? ""), placeholderImage: IQYImage.holder.image)
         titleLabel?.text = subItem?.title
     }
     @objc func tapImageCard(_ sender: UITapGestureRecognizer?) {

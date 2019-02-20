@@ -10,7 +10,7 @@ class WXExpressionPublicCell: UICollectionViewCell {
     var group: TLEmojiGroup = TLEmojiGroup() {
         didSet {
             titleLabel.text = group.groupName
-            let image = UIImage(named: group.groupIconPath)
+            let image = group.groupIconPath.image
             if image != nil {
                 imageView.image = image
             } else {

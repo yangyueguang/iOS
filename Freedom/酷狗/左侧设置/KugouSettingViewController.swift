@@ -10,7 +10,7 @@ class KugouSettingViewCell:BaseTableViewCell<Any> {
         self.title = UILabel(frame: CGRect(x:0, y:0, width:0, height: 20))
         self.addSubviews([self.title,self.icon])
         self.title.text = "name"
-        self.icon.image = UIImage(named:"taobaomini2")
+        self.icon.image = Image.logo.image
     }
 }
 final class KugouSettingViewController: KugouBaseViewController {
@@ -20,7 +20,7 @@ final class KugouSettingViewController: KugouBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let topImage = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))
-        topImage.image = UIImage(named: "bj.jpg")
+        topImage.image = Image.back.image
         topImage.isUserInteractionEnabled = true
         view.addSubview(topImage)
         bottomView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH))
@@ -35,13 +35,13 @@ final class KugouSettingViewController: KugouBaseViewController {
         topView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 100))
         view.addSubview(topView!)
         let img = UIImageView(frame: CGRect(x: 15, y: 0, width: 40, height: 40))
-        img.image = UIImage(named: "placeHoder-128")
+        img.image = Image.holder.image
         img.center = CGPoint(x: img.center.x, y: (topView?.center.y)!)
         img.layer.cornerRadius = img.frame.size.width * 0.5
         img.layer.masksToBounds = true
         topView?.addSubview(img)
         let img2 = UIImageView(frame: CGRect(x: APPW - 80, y: 0, width: 40, height: 40))
-        img2.image = UIImage(named: "placeHoder-128")
+        img2.image = Image.holder.image
         img2.center = CGPoint(x: img2.center.x, y: (topView?.center.y)!)
         img2.layer.cornerRadius = img.frame.size.width * 0.5
         img2.layer.masksToBounds = true
@@ -62,7 +62,7 @@ final class KugouSettingViewController: KugouBaseViewController {
         btn.setTitle("设置", for: .normal)
         btn.titleLabel?.font = UIFont.normal
         btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
-        btn.setImage(UIImage(named: "setting"), for: .normal)
+        btn.setImage(Image.setting.image, for: .normal)
         foot.addSubview(btn)
         return foot
     }
@@ -77,7 +77,7 @@ final class KugouSettingViewController: KugouBaseViewController {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueCell(BaseTableViewCell<Any>.self)
-        cell.imageView?.image = UIImage(named: "music")
+        cell.imageView?.image = Image.music.image
         cell.textLabel?.text = "手机专享"
         cell.textLabel?.textColor = UIColor.whitex
         cell.backgroundColor = UIColor.blackx

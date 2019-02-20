@@ -11,8 +11,8 @@ class SinaTabBar: UITabBar {
     var centerButton = UIButton()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        centerButton.setBackgroundImage(UIImage(named: "tabbar_compose_button"), for: .normal)
-        centerButton.setImage(UIImage(named: "tabbar_compose_icon_add"), for: .normal)
+        centerButton.setBackgroundImage(SImage.compose.image, for: .normal)
+        centerButton.setImage(SImage.add.image, for: .normal)
         let size = (centerButton.currentBackgroundImage?.size)!
         centerButton.frame = CGRect(x: centerButton.x, y: centerButton.y, width: size.width, height: size.height)
         centerButton.center = CGPoint(x: APPW * 0.5, y: 50 * 0.5)
@@ -65,7 +65,7 @@ final class SinaTabBarController: BaseTabBarViewController {
     }
     private func initUI(){
         func configBtn(_ img:UIImageView,imageName:String,text:String,tag:Int){
-            let image = UIImageView(image: UIImage(named: imageName ))
+            let image = UIImageView(image: imageName.image)
             let word = UILabel(frame: CGRect(x: 0, y: 75, width: 71, height: 25))
             word.text = text
             word.textAlignment = .center
@@ -87,8 +87,8 @@ final class SinaTabBarController: BaseTabBarViewController {
         configBtn(more, imageName: "tabbar_compose_more", text: "更多",tag:6)
         blurView.tintColor = UIColor.clear
         let compose = UIImageView(frame: CGRect(x: 0, y: 100, width: view.frame.size.width, height: 48))
-        compose.image = UIImage(named: "compose_slogan")
-        plus.setImage(UIImage(named: "tabbar_compose_background_icon_add"), for: .normal)
+        compose.image = SImage.slogan.image
+        plus.setImage(SImage.composeIcon.image, for: .normal)
         plus.addTarget(self, action: #selector(self.closeClick), for: .touchUpInside)
         let bottom = UIView(frame: CGRect(x: 0, y: view.bounds.size.height - 44, width: view.bounds.size.height, height: 44))
         bottom.backgroundColor = UIColor.whitex

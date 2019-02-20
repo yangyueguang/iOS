@@ -9,7 +9,7 @@ class KugouLookViewCell:BaseTableViewCell<Any> {
         self.title = UILabel(frame: CGRect(x:0, y:0, width:0, height: 20))
         self.addSubviews([self.title,self.icon])
         self.title.text = "name"
-        self.icon.image = UIImage(named:"taobaomini2")
+        self.icon.image = Image.logo.image
     }
 }
 final class KugouLookViewController: KugouBaseViewController {
@@ -24,7 +24,7 @@ final class KugouLookViewController: KugouBaseViewController {
         headerView1.backgroundColor = UIColor.whitex
         view.addSubview(headerView1)
         let banner = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW, height: 150))
-        banner.image = UIImage(named: "bj")
+        banner.image = Image.back.image
         headerView1.addSubview(banner)
         let btnW: CGFloat = 80
         let btnH: CGFloat = 100
@@ -62,7 +62,7 @@ final class KugouLookViewController: KugouBaseViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueCell(BaseTableViewCell<Any>.self)
-        cell.imageView?.image = UIImage(named: "music")
+        cell.imageView?.image = Image.music.image
         cell.textLabel?.text = titlesArr[indexPath.row] as? String
         return cell
     }

@@ -26,7 +26,7 @@ final class ToutiaoMeViewController: BaseTableViewController {
             let button = UIButton(frame: CGRect(x: 50+120*i, y: 20, width: 50, height: 50))
             button.layer.cornerRadius = 25;
             button.clipsToBounds = true
-            button.setImage(UIImage(named:"userLogo"), for: .normal)
+            button.setImage(Image.logo.image, for: .normal)
             topView.addSubview(button)
         }
         topView.backgroundColor = UIColor.dark
@@ -40,8 +40,8 @@ final class ToutiaoMeViewController: BaseTableViewController {
         let titles = ["收藏","历史","夜间"]
         for i in 0..<3{
             let buton = UIButton(frame: CGRect(x: CGFloat(i)*APPW/3, y:  view.bottom, width: APPW/3, height: 60))
-            buton.setImage(UIImage(named:"wechart"), for: .normal)
-            buton.setImage(UIImage(named:titles[i]), for: .normal)
+            buton.setImage(Image.wechart.image, for: .normal)
+            buton.setImage(titles[i].image, for: .normal)
             buton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 45, bottom: 20, right: 45)
             buton.titleEdgeInsets = UIEdgeInsets(top: 35, left: -APPW/3+10, bottom: 0, right: 0)
             buton.setTitleColor(.black, for: .normal)

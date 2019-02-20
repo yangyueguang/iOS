@@ -12,7 +12,7 @@ class TaobaoMiniTopicViewCell:BaseTableViewCell<Any> {
         let sees = UILabel(frame: CGRect(x: script.x, y: script.bottom, width: script.width, height: 15), font: Font(12), color: .gray, text: nil)
         Dlog(self.height)
         addSubview(sees)
-        icon.image = UIImage(named: "a")
+        icon.image = Image.a.image
         title.text = "韩国年度榜"
         script.text = "主持人：全球购买手小队长"
         sees.text = "热度：79570  参与人：100"

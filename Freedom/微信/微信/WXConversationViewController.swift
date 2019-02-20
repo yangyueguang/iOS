@@ -13,7 +13,7 @@ class WechatAddMenuCell: BaseTableViewCell<WXAddMenuItem> {
         addSubviews([icon,title])
         viewModel.subscribe(onNext: {[weak self] (item) in
             guard let `self` = self else { return }
-            self.icon.image = UIImage(named: item.iconPath)
+            self.icon.image = item.iconPath.image
             self.title.text = item.title
         }).disposed(by: disposeBag)
     }
@@ -31,7 +31,7 @@ class WechatConversationCell: BaseTableViewCell<WXConversation> {
             self.model = con
             if !con.avatarPath.isEmpty {
                 let path = FileManager.pathUserAvatar(con.avatarPath)
-                self.iconView.image = UIImage(named: path)
+                self.iconView.image = path.image
             } else if !con.avatarURL.isEmpty {
                 self.iconView.sd_setImage(with: URL(string: con.avatarURL), placeholderImage: Image.logo.image)
             } else {

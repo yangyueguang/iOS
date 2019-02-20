@@ -10,9 +10,9 @@ class DZHomeViewCell1:BaseCollectionViewCell<Any> {
         let view2 = getViewWithFrame(CGRect(x: APPW / 2, y: 0, width: APPW / 2 - 10, height: 55))
         let view3 = getViewWithFrame(CGRect(x: view2.x, y: view2.bottom + 10, width: view2.width, height: view2.height))
         let image1 = UIImageView(frame: CGRect(x: view2.width - 40, y: 0, width: 40, height: view2.height))
-        image1.image = UIImage(named: "image1.jpg")
+        image1.image = Image.logo.image
         let image2 = UIImageView(frame: CGRect(x: view2.width - 40, y: 0, width: 40, height: view2.height))
-        image2.image = UIImage(named: "image2.jpg")
+        image2.image = Image.logo.image
         view2.addSubview(image1)
         view3.addSubview(image2)
         addSubviews([view, view2, icon, view3])
@@ -29,7 +29,7 @@ class DZHomeViewCell1:BaseCollectionViewCell<Any> {
         return view
     }
     func setCollectionDataWithDic(_ dict: [AnyHashable: Any]?) {
-        icon.image = UIImage(named: "image4.jpg")
+        icon.image = TBImage.im4.image
     }
 }
 class DZHomeViewCell2:BaseCollectionViewCell<Any> {
@@ -45,7 +45,7 @@ class DZHomeViewCell2:BaseCollectionViewCell<Any> {
     func setCollectionDataWithDic(_ dict: [AnyHashable: Any]?) {
         title.text = "全球贺新年"
         script.text = "春节专享"
-        icon.image = UIImage(named: "taobaomini2")
+        icon.image = Image.logo.image
     }
 }
 class DZHomeViewCell3:BaseCollectionViewCell<Any> {
@@ -65,7 +65,7 @@ class DZHomeViewCell3:BaseCollectionViewCell<Any> {
     func setCollectionDataWithDic(_ dict: [AnyHashable: Any]?) {
         title.text = "爱车"
         script.text = "9.9元洗车"
-        icon.image = UIImage(named: "taobaomini1")
+        icon.image = Image.logo.image
     }
 }
 class DZHomeViewCell4:BaseCollectionViewCell<Any> {
@@ -96,7 +96,7 @@ class DZHomeViewCell4:BaseCollectionViewCell<Any> {
     func setCollectionDataWithDic(_ dict: [AnyHashable: Any]?) {
         title.text = "上海海洋水族馆(4A)"
         script.text = "[陆家嘴]4.2分|门票、套餐、线路游 等优惠，欢迎上门体验"
-        icon.image = UIImage(named:"userLogo")
+        icon.image = Image.logo.image
     }
 }
 class DZHomeHeadView1: UICollectionReusableView {
@@ -115,7 +115,7 @@ class DZHomeHeadView1: UICollectionReusableView {
             let icon = UIImageView(frame: CGRect(x: 10, y: 10, width: 40, height: 40))
             icon.clipsToBounds = true
             icon.layer.cornerRadius = 20
-            icon.image = UIImage(named: "userLogo")
+            icon.image = Image.logo.image
             let label1 = UILabel(frame: CGRect(x: icon.right + 10, y: 10, width: APPW / 2, height: 40), font: .small, color: .c3, text: "好友蜂蜜绿茶，吃完这家，还有下一家。地点中环广场店")
             label1.numberOfLines = 0
             view.addSubviews([icon, label1])
@@ -153,7 +153,7 @@ final class DZHomeController: DZBaseViewController,UICollectionViewDataSource,UI
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whitex
-        let more = UIBarButtonItem(image: UIImage(named: "u_add_y"), style: .done, target: nil, action: nil)
+        let more = UIBarButtonItem(image: Image.u_Add.image, style: .done, target: nil, action: nil)
         navigationItem.rightBarButtonItem = more
         let map = UIBarButtonItem(title: "北京") {
             

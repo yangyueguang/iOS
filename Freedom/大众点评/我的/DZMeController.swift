@@ -10,7 +10,7 @@ class DZMeViewCell:BaseTableViewCell<Any> {
         self.title = UILabel(frame: CGRect(x:0, y:0, width:0, height: 20))
         self.addSubviews([self.title,self.icon])
         self.title.text = "name"
-        self.icon.image = UIImage(named:"taobaomini2")
+        self.icon.image = TBImage.im4.image
     }
 }
 final class DZMeController: BaseTableViewController {
@@ -34,7 +34,7 @@ final class DZMeController: BaseTableViewController {
     func buildUI() {
         title = "我的"
         //设置右上角按钮
-        let send = UIBarButtonItem(image: UIImage(named: "personal_icon_send")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(self.sendMessage))
+        let send = UIBarButtonItem(image: DZImage.personSend.image.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(self.sendMessage))
         navigationItem.rightBarButtonItem = send
         //设置左上角按钮
         let service = UIBarButtonItem(title: "联系客服", style: .plain, target: self, action: #selector(self.serviceAction))
@@ -68,14 +68,12 @@ final class DZMeController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             let headerView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 5))
-            if let aNamed = UIImage(named: "bg_login") {
-                headerView.backgroundColor = UIColor(patternImage: aNamed)
-            }
+            headerView.backgroundColor = UIColor(patternImage: DZImage.login.image)
             //头像
             let userImage = UIImageView(frame: CGRect(x: 10, y: 10, width: 55, height: 55))
             userImage.layer.masksToBounds = true
             userImage.layer.cornerRadius = 27
-            userImage.image = UIImage(named: "userLogo")
+            userImage.image = Image.logo.image
             headerView.addSubview(userImage)
             //用户名
             let userNameLabel = UILabel(frame: CGRect(x: 10 + 55 + 5, y: 15, width: 200, height: 30))
@@ -86,7 +84,7 @@ final class DZMeController: BaseTableViewController {
             moneyLabel.text = "余额：0.00元"
             headerView.addSubview(moneyLabel)
             let arrowImg = UIImageView(frame: CGRect(x: APPW - 10 - 24, y: 30, width: 12, height: 24))
-            arrowImg.image = UIImage(named: "icon_mine_accountViewRightArrow")
+            arrowImg.image = DZImage.right.image
             headerView.addSubview(arrowImg)
             return headerView
         } else {
@@ -100,7 +98,7 @@ final class DZMeController: BaseTableViewController {
         var cell = tableView.dequeueCell(BaseTableViewCell<Any>.self)
         //取出这一行对应的字典数据
         cell.textLabel?.text = "name"
-        cell.imageView?.image = UIImage(named:"")
+        cell.imageView?.image = nilImage
         cell.textLabel?.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
         cell.accessoryType = .disclosureIndicator

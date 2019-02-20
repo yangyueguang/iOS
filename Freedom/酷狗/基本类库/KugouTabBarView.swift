@@ -54,7 +54,7 @@ class KugouTabBarView: UIView, AVAudioPlayerDelegate {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        sliderView.setThumbImage(UIImage(named: "slider"), for: .normal)
+        sliderView.setThumbImage(Image.slider.image, for: .normal)
         let def = UserDefaults.standard
         let myencode = def.value(forKey: "currentMusicInfo") as? Data
         var coder: NSCoder? = nil
@@ -70,7 +70,7 @@ class KugouTabBarView: UIView, AVAudioPlayerDelegate {
                 let image: UIImage? = mediaItem?.artwork?.image(at: CGSize(width: 50, height: 50))
                 iconView.image = image
             } else {
-                iconView.image = UIImage(named: "userLogo")
+                iconView.image = Image.logo.image
             }
             pause()
             starBtn.isSelected = false

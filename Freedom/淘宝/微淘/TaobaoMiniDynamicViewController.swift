@@ -31,10 +31,10 @@ class TaobaoMiniDynamicViewCell:BaseTableViewCell<Any> {
         zan.titleLabel?.font = Font(12)
         pinglun.titleLabel?.font = Font(12)
         addSubviews([name, times, picV, cellContentView, sees, zan, pinglun])
-        icon.image = UIImage(named: "xin")
+        icon.image = TBImage.xin.image
         name.text = "微淘发现"
         times.text = "1-7"
-        picV.image = UIImage(named: "image4.jpg")
+        picV.image = TBImage.im4.image
         title.text = "初心品质 不忘初心，惊喜大发现，原来。。。"
         script.text = "与爱齐名，为有初心不变，小编为大家收集了超多好文好店，从手工匠人到原型设计，他们并没有忘记"
         sees.text = " 145"

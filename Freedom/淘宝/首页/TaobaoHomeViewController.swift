@@ -33,7 +33,7 @@ class DaRenTaoCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let daren = UIButton(frame: CGRect(x: APPW / 2 - 50, y: 0, width: 100, height: 20))
-        daren.setImage(UIImage(named: "hot"), for: .normal)
+        daren.setImage(TBImage.hot.image, for: .normal)
         daren.setTitle("达人淘", for: .normal)
         daren.setTitleColor(UIColor.redx, for: .normal)
         let more = UILabel(frame: CGRect(x: APPW - 80, y: 0, width: 60, height: 20))
@@ -49,18 +49,18 @@ class DaRenTaoCell: UICollectionViewCell {
         mainView.addSubview(view3)
         view1.title.text = "红人圈"
         view1.subtitle.text = "别怕，红人圈来了"
-        view1.imageview.image = UIImage(named: "a")
-        view1.iconview.image = UIImage(named: "hot")
+        view1.imageview.image = Image.a.image
+        view1.iconview.image = TBImage.hot.image
         view2.title.text = "视频直播"
         view2.subtitle.text = "别怕，学会保护自己!"
         view3.title.text = "搭配控"
         view3.subtitle.text = "我有我的fan"
-        view2.imageview.image = UIImage(named: "a")
-        view3.imageview.image = UIImage(named: "a")
+        view2.imageview.image = Image.a.image
+        view3.imageview.image = Image.a.image
         let subscrib = UILabel(frame: CGRect(x: 10, y: mainView.bottom - 20, width: APPW - 100, height: 20))
         subscrib.text = "小秘书为你精选推荐的N个达人"
         let icon = UIImageView(frame: CGRect(x: APPW - 40, y: subscrib.y, width: 30, height: 30))
-        icon.image = UIImage(named: "a")
+        icon.image = Image.a.image
         addSubviews([daren, more, mainView, subscrib, icon])
     }
     required init?(coder aDecoder: NSCoder) {
@@ -77,10 +77,10 @@ class Cell1: UICollectionViewCell {
         let image4 = UIImageView(frame: CGRect(x: image3.right + 1, y: 0, width: image3.width, height: image3.height))
         view.addSubviews([image3, image4])
         addSubviews([image1, image2, view])
-        image1.image = UIImage(named: "taobao01.jpg")
-        image2.image = UIImage(named: "taobao02.jpg")
-        image3.image = UIImage(named: "taobao03.jpg")
-        image4.image = UIImage(named: "taobao04.jpg")
+        image1.image = Image.logo.image
+        image2.image = Image.logo.image
+        image3.image = Image.logo.image
+        image4.image = Image.logo.image
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -102,7 +102,7 @@ class GridCell: UICollectionViewCell {
         let flagLab = UILabel(frame: CGRect(x: self.width - 60, y: priceLabel.y, width: 40, height: 20))
         flagLab.backgroundColor = UIColor.redx
         addSubviews([bgview, iv, titleLab, priceLabel, flagLab])
-        iv.image = UIImage(named: "image1.jpg")
+        iv.image = TBImage.im4.image
         titleLab.text = "户外腰包男女士跑步运动音乐手机包轻薄贴身防水"
         flagLab.text = "热销"
         priceLabel.text = "￥19800.0"
@@ -121,9 +121,9 @@ class GridCell2: UICollectionViewCell {
         let label2 = UILabel(frame: CGRect(x: label1.x, y: label1.bottom, width: label1.width, height: label1.height))
         label2.font = Font(13)
         addSubviews([image1, image2, image3, label1, label2])
-        image1.image = UIImage(named: "image1.jpg")
-        image2.image = UIImage(named: "image2.jpg")
-        image3.image = UIImage(named: "image3.jpg")
+        image1.image = Image.logo.image
+        image2.image = Image.logo.image
+        image3.image = Image.logo.image
         label1.text = "【生活家--爱的杂货店"
         label2.text = "115.5万人正在逛店"
     }
@@ -142,7 +142,7 @@ class GridCell3: UICollectionViewCell {
         name.textAlignment = .center
         name.text = "天猫来了"
         addSubviews([iv, name])
-        iv.image = UIImage(named: "a")
+        iv.image = Image.a.image
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -154,7 +154,7 @@ class HotShiChangCell: UICollectionViewCell {
         let dataArr = [["title": "内衣", "subtitle": "性感装备", "image": "taobao06.jpg", "icon": ""], ["title": "数码", "subtitle": "潮流新机", "image": "taobao06.jpg", "icon": ""], ["title": "运动", "subtitle": "潮流新品", "image": "taobao07.jpg", "icon": ""], ["title": "家电", "subtitle": "爆款现货抢", "image": "taobao06.jpg", "icon": ""], ["title": "美女", "subtitle": "暖被窝女神", "image": "taobao07.jpg", "icon": ""], ["title": "质+", "subtitle": "休息裙", "image": "taobao06.jpg", "icon": ""], ["title": "中老年", "subtitle": "巧策", "image": "taobao07.jpg", "icon": ""], ["title": "篮球公园", "subtitle": "虎扑识货", "image": "taobao06.jpg", "icon": ""]]
         let titleButton = UIButton(frame: CGRect(x: self.width / 2 - 50, y: 0, width: 100, height: 20))
         titleButton.setTitle("热门市场", for: .normal)
-        titleButton.setImage(UIImage(named: "hot"), for: .normal)
+        titleButton.setImage(TBImage.hot.image, for: .normal)
         let more = UILabel(frame: CGRect(x: self.width - 80, y: 0, width: 60, height: 20))
         more.text = "更多 >"
         let mainView = UIView(frame: CGRect(x: 0, y: titleButton.bottom, width: self.width, height: self.width - titleButton.bottom - 80))
@@ -169,10 +169,10 @@ class HotShiChangCell: UICollectionViewCell {
         view1.subtitle.text = "尖货推荐"
         view2.title.text = "女装"
         view2.subtitle.text = "新品推荐"
-        view1.imageview.image = UIImage(named: "taobao05.jpg")
-        view2.imageview.image = UIImage(named: "taobao05.jpg")
+        view1.imageview.image = TBImage.im4.image
+        view2.imageview.image = TBImage.im4.image
         let footimage = UIImageView(frame: CGRect(x: 0, y: mainView.bottom, width: self.width, height: 80))
-        footimage.image = UIImage(named: "image2.jpg")
+        footimage.image = TBImage.im4.image
         addSubviews([titleButton, more, mainView, footimage])
         var view: TitlesImageViewFull?
         //当前i的数据
@@ -217,8 +217,8 @@ class Headview1: UICollectionReusableView {
         scroll.showsVerticalScrollIndicator = false
         let image1 = UIImageView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPW / 4))
         let image2 = UIImageView(frame: CGRect(x: APPW, y: 0, width: APPW, height: APPW / 4))
-        image1.image = UIImage(named: "image2.jpg")
-        image2.image = UIImage(named: "image4.jpg")
+        image1.image = TBImage.im4.image
+        image2.image = TBImage.im4.image
         scroll.addSubview(image1)
         scroll.addSubview(image2)
         addSubview(scroll)
@@ -235,7 +235,7 @@ class Headview2: UICollectionReusableView {
         let subscrib = UILabel(frame: CGRect(x: title.x, y: title.bottom, width: title.width, height: 20))
         contentMode = .center
         addSubviews([icon, title, subscrib])
-        icon.image = UIImage(named: "xin")
+        icon.image = TBImage.xin.image
         title.text = "猜你喜欢的"
         subscrib.text = "今日11：00更新"
     }
@@ -263,7 +263,7 @@ class Footview0: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: self.height, height: self.height))
-        icon.image = UIImage(named: "toutiao.jpg")
+        icon.image = TBImage.im4.image
         let mainview = UIView(frame: CGRect(x: icon.right + 1, y: 0, width: self.width - icon.right - 1, height: self.height))
         let scroll = UIScrollView()
         scroll.frame = CGRect(x: 0, y: 0, width: APPW - 50 * 3 / 2, height: 50)
@@ -293,7 +293,7 @@ class Footview1: UICollectionReusableView {
         name.textAlignment = .center
         name.text = "宝贝已经看完了，18：00后更新"
         let image = UIImageView(frame: CGRect(x: 10, y: name.bottom, width: name.width, height: 70))
-        image.image = UIImage(named: "image2.jpg")
+        image.image = TBImage.im4.image
         addSubviews([name, image])
     }
     required init?(coder aDecoder: NSCoder) {
@@ -315,8 +315,8 @@ final class TaobaoHomeViewController: TaobaoBaseViewController,UICollectionViewD
         searchBar.placeholder = "输入搜索关键字"
         navigationItem.titleView = searchBar
         navigationController?.navigationBar.tintColor = UIColor.grayx
-        let image = UIImage(named: "Taobaomessage")?.withRenderingMode(.alwaysOriginal)
-        let leftI = UIBarButtonItem(image: UIImage(named: "TaobaoScanner"), style: .done, target: nil, action: nil)
+        let image = TBImage.message.image.withRenderingMode(.alwaysOriginal)
+        let leftI = UIBarButtonItem(image: TBImage.scanner.image, style: .done, target: nil, action: nil)
         let rightI = UIBarButtonItem(image: image, style: .done, target: nil, action: nil)
         navigationItem.leftBarButtonItem = leftI
         navigationItem.rightBarButtonItem = rightI

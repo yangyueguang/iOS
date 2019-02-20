@@ -42,7 +42,7 @@ class IqiyiImageScrollView: UIView, UIScrollViewDelegate {
         for i in 0..<imageArray.count {
             let imageView = scrollView.viewWithTag(i + 10) as? UIImageView
             let imageName = "\(imageArray[i])"
-            imageView?.sd_setImage(with: URL(string: imageName), placeholderImage: UIImage(named: "bg_customReview_image_default"))
+            imageView?.sd_setImage(with: URL(string: imageName), placeholderImage: IQYImage.holder.image)
         }
     }
     func addTimer() {
@@ -114,13 +114,13 @@ final class IqiyiDiscoverViewController: IqiyiBaseViewController {
         searchButton.titleLabel?.font = UIFont.small
         searchButton.setTitleColor(UIColor.blackx, for: .normal)
         searchButton.frame = CGRect(x: 0, y: 0, width: w, height: 30)
-        searchButton.setBackgroundImage(UIImage(named: "GroupCell"), for: .normal)
-        searchButton.setImage(UIImage(named: "search_small"), for: .normal)
+        searchButton.setBackgroundImage(IQYImage.groupCell.image, for: .normal)
+        searchButton.setImage(IQYImage.searchSmall.image, for: .normal)
         searchButton.setTitle("请输入：港囧，夏洛特烦恼，徐峥等", for: .normal)
         searchButton.addTarget(self, action: #selector(self.searchButtonClick), for: .touchUpInside)
         searchButton.setTitleColor(UIColor.grayx, for: .normal)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchButton)
-        let rightItem = UIBarButtonItem(image: UIImage(named:"wnavi"), style: .done, target: nil, action: nil)
+        let rightItem = UIBarButtonItem(image: Image.navi.image, style: .done, target: nil, action: nil)
         navigationItem.rightBarButtonItem = rightItem
         let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - 64), style: .plain)
 //        tableView.delegate = self

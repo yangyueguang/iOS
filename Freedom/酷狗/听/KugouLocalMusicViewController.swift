@@ -43,9 +43,7 @@ class KugouLocalMusicViewController: KugouBaseViewController {
                     iconArr.append(anImage)
                 }
             } else {
-                if let aNamed = UIImage(named: "placeHoder-128") {
-                    iconArr.append(aNamed)
-                }
+                iconArr.append(Image.holder.image)
             }
         }
     }

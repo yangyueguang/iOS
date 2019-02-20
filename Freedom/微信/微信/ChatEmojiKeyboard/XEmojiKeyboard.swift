@@ -335,13 +335,13 @@ class XEmojiCell: UICollectionViewCell {
                 imageView.snp.makeConstraints { (make) in
                     make.edges.equalToSuperview()
                 }
-                imageView.image = emojiItem.emojiName.isEmpty ? nil : UIImage(named: emojiItem.emojiName)
+                imageView.image = emojiItem.emojiName.isEmpty ? nil : emojiItem.emojiName.image
             case .image:
                 imageView.snp.makeConstraints { (make) in
                     make.edges.equalTo(self.contentView).offset(
                         UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2) as! ConstraintOffsetTarget)
                 }
-                imageView.image = emojiItem.emojiPath.isEmpty ? nil : UIImage(named: emojiItem.emojiPath)
+                imageView.image = emojiItem.emojiPath.isEmpty ? nil : emojiItem.emojiPath.image
             case .imageWithTitle:
                 imageView.snp.makeConstraints { (make) in
                     make.left.top.equalTo(self.contentView).offset(3)
@@ -351,7 +351,7 @@ class XEmojiCell: UICollectionViewCell {
                 label.snp.makeConstraints { (make) in
                     make.left.right.bottom.equalTo(self.contentView)
                 }
-                imageView.image = emojiItem.emojiPath.isEmpty ? nil : UIImage(named: emojiItem.emojiPath)
+                imageView.image = emojiItem.emojiPath.isEmpty ? nil : emojiItem.emojiPath.image
                 label.text = emojiItem.emojiName
             case .emoji:
                 label.snp.makeConstraints { (make) in
@@ -377,7 +377,7 @@ class XEmojiCell: UICollectionViewCell {
 class TLEmojiGroupCell: UICollectionViewCell {
     var emojiGroup: TLEmojiGroup = TLEmojiGroup() {
         didSet {
-            groupIconView.image = UIImage(named: emojiGroup.groupIconPath)
+            groupIconView.image = emojiGroup.groupIconPath.image
         }
     }
     private var groupIconView = UIImageView()

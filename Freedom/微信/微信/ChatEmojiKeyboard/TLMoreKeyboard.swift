@@ -186,7 +186,7 @@ class TLMoreKeyboardCell: UICollectionViewCell {
             titleLabel.isHidden = false
             iconButton.isHidden = false
             titleLabel.text = item?.title
-            iconButton.setImage(UIImage(named: item?.imagePath ?? ""), for: .normal)
+            iconButton.setImage(item?.imagePath.image, for: .normal)
         }
     }
     private lazy var iconButton: UIButton = {

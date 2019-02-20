@@ -10,7 +10,7 @@ open class BaseNavigationViewController: UINavigationController, UIGestureRecogn
         super.viewDidLoad()
         let appearance = UINavigationBar.appearance()
         appearance.isTranslucent = false
-        appearance.backIndicatorImage = UIImage(named: "u_cell_left")?.withRenderingMode(.alwaysTemplate)
+        appearance.backIndicatorImage = Image.left.image.withRenderingMode(.alwaysTemplate)
         appearance.setBackgroundImage(UIImage.imageWithColor(UIColor.back, size: CGSize(width: 1, height: 1)), for: UIBarMetrics.default)
         let item = UIBarButtonItem.appearance()
         item.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.darkText,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)], for: UIControl.State())

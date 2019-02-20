@@ -174,8 +174,8 @@ class WXMomentBaseView: UIView {
     private lazy var moreButton: UIButton = {
         let moreButton = UIButton()
         moreButton.tag = TLMomentViewButtonType.more.rawValue
-        moreButton.setImage(UIImage(named: "moments_more"), for: .normal)
-        moreButton.setImage(UIImage(named: "moments_moreHL"), for: .selected)
+        moreButton.setImage(WXImage.momentsMore.image, for: .normal)
+        moreButton.setImage(WXImage.momentsMoreHL.image, for: .selected)
         moreButton.addTarget(self, action: #selector(WXMomentBaseView.buttonClicked(_:)), for: .touchUpInside)
         return moreButton
     }()

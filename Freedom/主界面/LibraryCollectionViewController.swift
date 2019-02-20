@@ -37,7 +37,7 @@ class LibraryCollectionViewController: BaseViewController,ElasticMenuTransitionD
         collectionView = BaseCollectionView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH - 110), collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         let backView = UIImageView(frame: CGRect(x: 0, y: 100, width: APPW, height: APPH - 100))
-        backView.image = UIImage(named: "")
+        backView.image = nilImage
         collectionView?.backgroundView = backView
         let tm = transitioningDelegate as! ElasticTransition
         print( "transition.edge = .\(tm.edge)\n" +

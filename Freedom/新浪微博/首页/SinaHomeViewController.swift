@@ -53,8 +53,8 @@ final class SinaHomeViewController: SinaBaseViewController {
 //        tableView.delegate = self
 //        tableView.dataSource = self
         view.addSubview(tableView)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "u_personAdd"), style: .done, target: nil, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "u_scan"), style: .plain, target: nil, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Image.u_Add.image, style: .done, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Image.u_scan.image, style: .plain, target: nil, action: nil)
         // 设置图片和文字
         let url = "https://api.weibo.com/2/users/show.json"
         var params = [AnyHashable: Any]()

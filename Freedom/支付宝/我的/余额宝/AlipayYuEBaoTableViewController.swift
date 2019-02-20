@@ -25,7 +25,7 @@ class AlipayYuEBaoTableViewCellContentView: UIView {
         let yI = UIImageView(frame: CGRect(x: 15, y: 20, width: 10, height: 10))
         let yl = UILabel(frame: CGRect(x: yI.right, y: 15, width: 100, height: 20))
         let yesIncomeL = UILabel(frame: CGRect(x: 10, y: 30, width: APPW, height: 120))
-        yI.image = UIImage(named: "calendar")
+        yI.image = Image.calendar.image
         yl.text = "昨日收益 (元)"
         yl.textColor = UIColor.whitex
         yl.font = UIFont.small

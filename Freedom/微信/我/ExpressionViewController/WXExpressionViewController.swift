@@ -20,7 +20,7 @@ class WXExpressionViewController: WXBaseViewController {
         view.addSubview(expChosenVC.view)
         addChild(expChosenVC)
         addChild(expPublicVC)
-        let rightBarButton = UIBarButtonItem(image: UIImage(named: "nav_setting"), style: .plain, target: self, action: #selector(self.rightBarButtonDown))
+        let rightBarButton = UIBarButtonItem(image: Image.setting.image, style: .plain, target: self, action: #selector(self.rightBarButtonDown))
         navigationItem.rightBarButtonItem = rightBarButton
         if navigationController?.topViewController == self {
             let dismissBarButton = UIBarButtonItem(title: "取消", action: {

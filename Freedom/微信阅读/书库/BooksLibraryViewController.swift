@@ -29,7 +29,7 @@ final class BooksLibraryViewController: BooksBaseViewController,UICollectionView
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.tintColor = .yellow
         let left = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(leftAction))
-        let right = UIBarButtonItem(image: UIImage(named:"add"), style: .done, target: self, action: #selector(rightAction))
+        let right = UIBarButtonItem(image: Image.add.image, style: .done, target: self, action: #selector(rightAction))
 
         self.navigationItem.leftBarButtonItem  = left;
         self.navigationItem.rightBarButtonItem = right;
@@ -53,7 +53,7 @@ final class BooksLibraryViewController: BooksBaseViewController,UICollectionView
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(BooksViewCell.self, for: indexPath)
-        cell.icon.image = UIImage(named:"userLogo")
+        cell.icon.image = Image.logo.image
         cell.title.text = "书籍阅读"
         return cell
     }

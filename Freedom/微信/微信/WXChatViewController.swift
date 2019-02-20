@@ -151,9 +151,9 @@ class WXEmojiDisplayView: UIImageView {
 }
 
 class WXImageExpressionDisplayView: UIView {
-    var bgLeftView = UIImageView(image: UIImage(named: "emojiKB_bigTips_left"))
-    var bgCenterView = UIImageView(image: UIImage(named: "emojiKB_bigTips_middle"))
-    var bgRightView = UIImageView(image: UIImage(named: "emojiKB_bigTips_right"))
+    var bgLeftView = UIImageView(image: WXImage.tipLeft.image)
+    var bgCenterView = UIImageView(image: WXImage.tipMiddle.image)
+    var bgRightView = UIImageView(image: WXImage.tipRight.image)
     var imageView = UIImageView()
     private var curID = ""
     var emoji: TLEmoji = TLEmoji() {
@@ -250,8 +250,8 @@ extension UIButton {
         btn.setTitle(title, for: .normal)
         btn.setTitleColor(UIColor.whitex, for: .normal)
         btn.titleLabel?.font = UIFont.big
-        btn.setImage(UIImage(named: setimageName), for: .normal)
-        btn.setBackgroundImage(UIImage(named: backImageName), for: .normal)
+        btn.setImage(setimageName.image, for: .normal)
+        btn.setBackgroundImage(backImageName.image, for: .normal)
         return btn
     }
 }
@@ -622,13 +622,11 @@ class WXChatViewController: WXBaseViewController {
                 view.backgroundColor = UIColor(white: 0.5, alpha: 0.3)
             } else {
                 let imagePath = FileManager.pathUserChatBackgroundImage(chatViewBGImage ?? "")
-                let image = UIImage(named: imagePath)
-                view.backgroundColor = UIColor(patternImage: image!)
+                view.backgroundColor = UIColor(patternImage: imagePath.image)
             }
         } else {
             let imagePath = FileManager.pathUserChatBackgroundImage(chatViewBGImage ?? "")
-            let image = UIImage(named: imagePath)
-            view.backgroundColor = UIColor(patternImage: image!)
+            view.backgroundColor = UIColor(patternImage: imagePath.image)
         }
         resetChatTVC()
     }

@@ -152,7 +152,7 @@ class FirstViewController: BaseViewController,UICollectionViewDataSource, UIColl
         let leftNav = UIBarButtonItem(title: "设置", action: {
             self.gotoSettingsView(nil)
         })
-        let rightNav = UIBarButtonItem(image: UIImage(named: "u_seting")) {
+        let rightNav = UIBarButtonItem(image: Image.setting.image) {
             self.showSettingsView(nil)
         }
         let navigationItem = UINavigationItem(title: "自由主义")
@@ -361,7 +361,7 @@ class FirstViewController: BaseViewController,UICollectionViewDataSource, UIColl
     func snowAnimat(_ timer: Timer?) {
         count += 1
         //1.创建雪花
-        let snow = UIImageView(image: UIImage(named: "snow"))
+        let snow = UIImageView(image: Image.snow.image)
         snow.tag = count
         let width: CGFloat = view.frame.size.width
         let x: CGFloat = CGFloat(arc4random() % UInt32(width))

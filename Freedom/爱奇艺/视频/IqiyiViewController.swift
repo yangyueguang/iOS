@@ -84,7 +84,7 @@ class IqiyiImageCardView: UIView {
     func setVideo(_ video: IqiyiVideosModel?) {
         self.video = video
         //这里不能用self.video,只能用_video
-        imageView?.sd_setImage(with: URL(string: video?.small_img ?? ""), placeholderImage: UIImage(named: "rec_holder"))
+        imageView?.sd_setImage(with: URL(string: video?.small_img ?? ""), placeholderImage: IQYImage.holder.image)
         titleLabel?.text = video?.title
         if (video?.type == "playlist") {
             pvLabel?.text = video?.pv
@@ -263,12 +263,13 @@ final class IqiyiViewController: IqiyiBaseViewController ,IqiyiHomeBoxCellDelega
         homeTableView?.mj_header.beginRefreshing()
     }
     func initNav() {
-        let leftBarButtonItem = UIBarButtonItem(image:  UIImage(named:"qylogo_p"), style: .done, target: nil, action: nil)
+        let leftBarButtonItem = UIBarButtonItem(image:  IQYImage.logo.image, style: .done, target: nil, action: nil)
         navigationItem.leftBarButtonItem = leftBarButtonItem
-        let rightUploadBarButtonItem = UIBarButtonItem(image: UIImage(named:"wcamera"), style: .done, target: nil, action: nil)
-        let rightHistoryBarButtonItem = UIBarButtonItem(image: UIImage(named:"whistory"), style: .plain, target: self, action: #selector(self.rightHistoryBarButtonItemClick))
-        let rightSearchBarButtonItem = UIBarButtonItem(image: UIImage(named:"wsearch"), style: .plain, target: self, action: #selector(self.rightSearchBarButtonItemClick))
-        navigationItem.rightBarButtonItems = [rightSearchBarButtonItem, rightUploadBarButtonItem, rightHistoryBarButtonItem] as? [UIBarButtonItem]
+        let rightUploadBarButtonItem = UIBarButtonItem(image: IQYImage.camera.image, style: .done, target: nil, action: nil)
+        let rightHistoryBarButtonItem = UIBarButtonItem(image: IQYImage.history.image, style: .plain, target: self, action: #selector(self.rightHistoryBarButtonItemClick))
+        let rightSearchBarButtonItem = UIBarButtonItem(image: IQYImage.search.image, style: .plain, target: self, action: #selector(self.rightSearchBarButtonItemClick))
+        navigationItem.rightBarButtonItems = [rightSearchBarButtonItem, rightUploadBarButtonItem, rightHistoryBarButtonItem]
+
     }
     /*搜索*/
     

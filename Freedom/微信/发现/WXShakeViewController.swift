@@ -16,12 +16,12 @@ class WXShakeButton: UIButton {
     }
     var iconPath = "" {
         didSet {
-            iconImageView.image = UIImage(named: iconPath)
+            iconImageView.image = iconPath.image
         }
     }
     var iconHLPath = "" {
         didSet {
-            iconImageView.highlightedImage = UIImage(named: iconHLPath)
+            iconImageView.highlightedImage = iconHLPath.image
         }
     }
     var type = TLShakeButtonType.people
@@ -74,27 +74,27 @@ class WXShakeButton: UIButton {
 class WXShakeViewController: WXBaseViewController {
     var curType = TLShakeButtonType.people
     lazy var topLogoView: UIImageView = {
-        let topLogoView = UIImageView(image: UIImage(named: "shake_logo_top"))
+        let topLogoView = UIImageView(image: WXImage.shakeTop.image)
         topLogoView.backgroundColor = UIColor.back
         topLogoView.contentMode = .bottom
         return topLogoView
     }()
     lazy var bottomLogoView: UIImageView = {
-        let bottomLogoView = UIImageView(image: UIImage(named: "shake_logo_bottom"))
+        let bottomLogoView = UIImageView(image: WXImage.shakeBottom.image)
         bottomLogoView.backgroundColor = UIColor.back
         bottomLogoView.contentMode = .top
         return bottomLogoView
     }()
     lazy var centerLogoView: UIImageView = {
-        let centerLogoView = UIImageView(image: UIImage(named: "shake_logo_center"))
+        let centerLogoView = UIImageView(image: WXImage.logoCenter.image)
         centerLogoView.contentMode = .scaleAspectFill
         centerLogoView.clipsToBounds = true
         return centerLogoView
     }()
-    var topLineView = UIImageView(image: UIImage(named: "shake_line_top"))
-    var bottomLineView = UIImageView(image: UIImage(named: "shake_line_bottom"))
+    var topLineView = UIImageView(image: WXImage.shakeTop.image)
+    var bottomLineView = UIImageView(image: WXImage.shakeBottom.image)
     lazy var peopleButton: WXShakeButton = {
-        let peopleButton = WXShakeButton(type: .people, title: "人", iconPath: "shake_button_people", iconHLPath: "shake_button_peopleHL")
+        let peopleButton = WXShakeButton(type: .people, title: "人", iconPath: WXImage.shakePeople.rawValue, iconHLPath:WXImage.shakePeopleHL.rawValue)
         peopleButton.isSelected = true
         peopleButton.addTarget(self, action: #selector(self.controlButtonDown(_:)), for: .touchUpInside)
         return peopleButton
@@ -115,7 +115,7 @@ class WXShakeViewController: WXBaseViewController {
         bottomLineView.isHidden = true
         navigationItem.title = "摇一摇"
         view.backgroundColor = UIColor.back
-        let rightBarButton = UIBarButtonItem(image: UIImage(named: "nav_setting"), style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
+        let rightBarButton = UIBarButtonItem(image: Image.setting.image, style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButton
         view.addSubview(centerLogoView)
         view.addSubview(topLogoView)
@@ -133,9 +133,9 @@ class WXShakeViewController: WXBaseViewController {
         let centreImageName = UserDefaults.standard.value(forKey: "Shake_Image_Path") as? String
         if let centreImageName = centreImageName {
             let path = FileManager.pathUserSettingImage(centreImageName)
-            centerLogoView.image = UIImage(named: path ?? "")
+            centerLogoView.image = path?.image
         } else {
-            centerLogoView.image = UIImage(named: "shake_logo_center")
+            centerLogoView.image = WXImage.logoCenter.image
         }
     }
     func controlButtonDown(_ sender: WXShakeButton) {

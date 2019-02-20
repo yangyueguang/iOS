@@ -17,8 +17,8 @@ class EnergyShopTabBarController: BaseTabBarViewController {
 EnergySuperMarketTabBarController.sharedRootViewController.isRemoveTab = true
     }
     fileprivate func addChildViewController(_ controller: UIViewController, title:String, imageName:String,selectImage:String){
-        controller.tabBarItem.image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
-        controller.tabBarItem.selectedImage = UIImage(named: selectImage)?.withRenderingMode(.alwaysOriginal)
+        controller.tabBarItem.image = imageName.image.withRenderingMode(.alwaysOriginal)
+        controller.tabBarItem.selectedImage = selectImage.image.withRenderingMode(.alwaysOriginal)
         controller.tabBarItem.title = title
         controller.title = title
         controller.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.redx], for: .selected)

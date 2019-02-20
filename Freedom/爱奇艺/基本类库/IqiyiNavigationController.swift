@@ -17,9 +17,9 @@ final class IqiyiNavigationController: BaseNavigationViewController {
             edgesForExtendedLayout = []//视图控制器，四条边不指定
             extendedLayoutIncludesOpaqueBars = false//不透明的操作栏
             modalPresentationCapturesStatusBarAppearance = false
-            UINavigationBar.appearance().setBackgroundImage(UIImage(named: ""), for: .top, barMetrics: .default)
+            UINavigationBar.appearance().setBackgroundImage(nilImage, for: .top, barMetrics: .default)
         } else {
-            navigationBar.setBackgroundImage(UIImage(named: ""), for: .default)
+            navigationBar.setBackgroundImage(nilImage, for: .default)
         }
     }
 }

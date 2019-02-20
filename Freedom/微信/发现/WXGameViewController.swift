@@ -13,7 +13,7 @@ class WXGameViewController: WXWebViewController {
         disableBackButton = true
         self.url = "http://m.le890.com"
         navigationItem.title = "游戏"
-        let rightBarButton = UIBarButtonItem(image: UIImage(named: "nav_setting"), style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
+        let rightBarButton = UIBarButtonItem(image: Image.setting.image, style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButton
         XHud.show()
     }

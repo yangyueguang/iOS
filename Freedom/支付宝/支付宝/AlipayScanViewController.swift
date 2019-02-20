@@ -42,7 +42,7 @@ class AlipayScanViewController: AlipayBaseViewController {
         view.addSubview(scanWindow)
         let scanNetImageViewH: CGFloat = 241
         let scanNetImageViewW: CGFloat = scanWindow.frame.size.width
-        let scanNetImageView = UIImageView(image: UIImage(named: "scan_net"))
+        let scanNetImageView = UIImageView(image: Image.scanNet.image)
         scanNetImageView.frame = CGRect(x: 0, y: -scanNetImageViewH, width: scanNetImageViewW, height: scanNetImageViewH)
         let scanNetAnimation = CABasicAnimation()
         scanNetAnimation.keyPath = "transform.translation.y"
@@ -53,16 +53,16 @@ class AlipayScanViewController: AlipayBaseViewController {
         scanWindow.addSubview(scanNetImageView)
         let buttonWH: CGFloat = 18
         let topLeft = UIButton(frame: CGRect(x: 0, y: 0, width: buttonWH, height: buttonWH))
-        topLeft.setImage(UIImage(named: "u_scan_1"), for: .normal)
+        topLeft.setImage(Image.scan1.image, for: .normal)
         scanWindow.addSubview(topLeft)
         let topRight = UIButton(frame: CGRect(x: scanWindowW - buttonWH, y: 0, width: buttonWH, height: buttonWH))
-        topRight.setImage(UIImage(named: "u_scan_2"), for: .normal)
+        topRight.setImage(Image.scan2.image, for: .normal)
         scanWindow.addSubview(topRight)
         let bottomLeft = UIButton(frame: CGRect(x: 0, y: scanWindowH - buttonWH, width: buttonWH, height: buttonWH))
-        bottomLeft.setImage(UIImage(named: "u_scan_3"), for: .normal)
+        bottomLeft.setImage(Image.scan3.image, for: .normal)
         scanWindow.addSubview(bottomLeft)
         let bottomRight = UIButton(frame: CGRect(x: topRight.x, y: bottomLeft.y, width: buttonWH, height: buttonWH))
-        bottomRight.setImage(UIImage(named: "u_scan_4"), for: .normal)
+        bottomRight.setImage(Image.scan4.image, for: .normal)
         scanWindow.addSubview(bottomRight)
     }
 

@@ -31,7 +31,7 @@ final class AlipayDiscoverTableViewController: AlipayBaseViewController {
         let model = dataArray[indexPath.section][indexPath.row]
         var cell = tableView.dequeueCell(AlipayDiscoverCell.self)
         cell.textLabel?.text = model.title
-        cell.imageView?.image = UIImage(named:model.icon)
+        cell.imageView?.image = model.icon.image
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

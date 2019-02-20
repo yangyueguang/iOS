@@ -10,7 +10,7 @@ class WXMyExpressionCell: BaseTableViewCell<TLEmojiGroup> {
     weak var delegate: WXMyExpressionCellDelegate?
     var group: TLEmojiGroup = TLEmojiGroup() {
         didSet {
-            iconView.image = UIImage(named: group.groupIconPath)
+            iconView.image = group.groupIconPath.image
             titleLabel.text = group.groupName
         }
     }

@@ -68,7 +68,7 @@ class WXMessageBaseCell: BaseTableViewCell<WXMessage> {
             usernameLabel.text = message.fromUser?.chat_username
             if message.fromUser?.chat_avatarPath.count ?? 0 > 0 {
                 let path = FileManager.pathUserAvatar(message.fromUser?.chat_avatarPath ?? "")
-                avatarButton.setImage(UIImage(named: path), for: .normal)
+                avatarButton.setImage(path.image, for: .normal)
             } else {
                 avatarButton.sd_setImage(with: URL(string: message.fromUser?.chat_avatarURL ?? ""), for: UIControl.State.normal)
             }
@@ -190,7 +190,7 @@ class WXMessageImageView: UIImageView {
         if imagePath == nil {
             contentLayer.contents = nil
         } else {
-            contentLayer.contents = UIImage(named: imagePath ?? "")?.cgImage
+            contentLayer.contents = imagePath?.image.cgImage
         }
     }
 }
@@ -213,8 +213,8 @@ class WXTextMessageCell: WXMessageBaseCell {
             messageBackgroundView.setContentCompressionResistancePriority(UILayoutPriority(100), for: .horizontal)
             if lastOwnType != message.ownerTyper {
                 if message.ownerTyper == .own {
-                    messageBackgroundView.image = UIImage(named: "message_sender_bg")
-                    messageBackgroundView.highlightedImage = UIImage(named: "message_sender_bgHL")
+                    messageBackgroundView.image = WXImage.sender.image
+                    messageBackgroundView.highlightedImage = WXImage.senderHL.image
                     messageLabel.snp.remakeConstraints { (make) in
                         make.right.equalTo(self.messageBackgroundView).offset(-22)
                         make.top.equalTo(self.messageBackgroundView).offset(15)
@@ -224,8 +224,8 @@ class WXTextMessageCell: WXMessageBaseCell {
                         make.bottom.equalTo(self.messageLabel).offset(20)
                     }
                 } else if message.ownerTyper == .friend {
-                    messageBackgroundView.image = UIImage(named: "message_receiver_bg")
-                    messageBackgroundView.highlightedImage = UIImage(named: "message_receiver_bgHL")
+                    messageBackgroundView.image = WXImage.receiver.image
+                    messageBackgroundView.highlightedImage = WXImage.receiverHL.image
                     messageLabel.snp.remakeConstraints { (make) in
                         make.left.equalTo(self.messageBackgroundView).offset(20)
                         make.top.equalTo(self.messageBackgroundView).offset(15)
@@ -277,13 +277,13 @@ class WXImageMessageCell: WXMessageBaseCell {
 
             if lastOwnType != message.ownerTyper {
                 if message.ownerTyper == .own {
-                    msgImageView.backgroundImage = UIImage(named: "message_sender_bg")
+                    msgImageView.backgroundImage = WXImage.sender.image
                     msgImageView.snp.remakeConstraints { (make) in
                         make.top.equalTo(self.messageBackgroundView)
                         make.right.equalTo(self.messageBackgroundView)
                     }
                 } else if message.ownerTyper == .friend {
-                    msgImageView.backgroundImage = UIImage(named: "message_receiver_bg")
+                    msgImageView.backgroundImage = WXImage.receiver.image
                     msgImageView.snp.remakeConstraints { (make) in
                         make.top.equalTo(self.messageBackgroundView)
                         make.left.equalTo(self.messageBackgroundView)
@@ -333,14 +333,14 @@ class WXExpressionMessageCell: WXMessageBaseCell {
             let lastOwnType = self.message.ownerTyper
             let data = NSData(contentsOfFile: message.path)
             if data != nil {
-                msgImageView.image = UIImage(named: message.path)
+                msgImageView.image = message.path.image
                 msgImageView.image = UIImage.sd_animatedGIF(with: data! as Data)
             } else {
                 // 表情组被删掉，先从缓存目录中查找，没有的话在下载并存入缓存目录
                 let MycachePath = FileManager.cache(forFile: "\(message.emoji.groupID)_\(message.emoji.emojiID).gif")
                 let data = NSData(contentsOfFile: MycachePath)
                 if data != nil {
-                    msgImageView.image = UIImage(named: MycachePath)
+                    msgImageView.image = MycachePath.image
                     msgImageView.image = UIImage.sd_animatedGIF(with: data! as Data)
                 } else {
                     msgImageView.sd_setImage(with: URL(string: message.url), completed: { image, error, cacheType, imageURL in

@@ -16,7 +16,7 @@ class EnergySampleViewCell:BaseTableViewCell<Any> {
         self.title = UILabel(frame: CGRect(x:self.icon.right+20, y: (70-20)/2.0, width: APPW-self.icon.right, height: 20))
         self.addSubviews([self.title,self.icon])
         self.title.text = "name"
-        self.icon.image = UIImage(named:"taobaomini2")
+        self.icon.image = Image.logo.image
     }
 }
 final class EnergySampleViewController: EnergyBaseViewController {

@@ -197,7 +197,7 @@ open class BaseScrollView : UIScrollView, UIScrollViewDelegate {
                 imageview.layer.cornerRadius = imageview.frame.size.width / 2
             }
             imageview.clipsToBounds = true
-            imageview.image = UIImage(named: icons[i])
+            imageview.image = icons[i].image
             button.addSubview(imageview)
             let namelable = UILabel(frame: CGRect(x: 0, y: imageview.frame.size.height+imageview.frame.origin.y + 8, width: button.frame.size.width, height: 20))
             namelable.font = UIFont.systemFont(ofSize: 13)
@@ -247,7 +247,7 @@ open class BaseScrollView : UIScrollView, UIScrollViewDelegate {
                 imageview.layer.cornerRadius = imageview.frame.size.width / 2
             }
             imageview.clipsToBounds = true
-            imageview.image = UIImage(named: icons[i])
+            imageview.image = icons[i].image
             button.addSubview(imageview)
             let namelable = UILabel(frame: CGRect(x: 0, y: imageview.frame.size.height+imageview.frame.origin.y + 5, width: button.frame.size.width, height: 20))
             namelable.font = UIFont.systemFont(ofSize: 13)
@@ -441,7 +441,7 @@ open class BaseScrollView : UIScrollView, UIScrollViewDelegate {
         isPagingEnabled = true
         for i in 0..<icons.count {
             let imageV = UIImageView(frame: CGRect(x: CGFloat(i) * frame.size.width, y: frame.origin.y, width: frame.size.width, height: frame.size.height))
-            imageV.image = UIImage(named: icons[i])
+            imageV.image = icons[i].image
             imageV.contentMode = .scaleAspectFill
             imageV.clipsToBounds = true
             addSubview(imageV)

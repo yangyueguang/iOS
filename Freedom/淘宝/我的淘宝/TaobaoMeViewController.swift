@@ -12,7 +12,7 @@ class TaobaoMeViewCell1:BaseCollectionViewCell<Any> {
         title.textAlignment = .center
         addSubviews([title, icon])
         title.text = "待收货"
-        icon.image = UIImage(named: "taobaomini2")
+        icon.image = TBImage.im4.image
     }
 }
 class TaobaoMeViewCell2:BaseCollectionViewCell<Any> {
@@ -23,7 +23,7 @@ class TaobaoMeViewCell2:BaseCollectionViewCell<Any> {
         title.textAlignment = .center
         addSubviews([title, icon])
         title.text = "蚂蚁花呗"
-        icon.image = UIImage(named: "taobaomini1")
+        icon.image = TBImage.im4.image
     }
 }
 class TaobaoMeHeadView: UICollectionReusableView {
@@ -58,11 +58,11 @@ final class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDel
         super.viewDidLoad()
         title = "我的淘宝"
         navigationController?.navigationBar.tintColor = .red
-        let image = UIImage(named: "Taobaomessage")?.withRenderingMode(.alwaysOriginal)
+        let image = TBImage.message.image.withRenderingMode(.alwaysOriginal)
         let `left` = UIBarButtonItem(title: "设置") {
             
         }
-        let right1 = UIBarButtonItem(image: UIImage(named: "TaobaoScanner"), style: .done, target: nil, action: nil)
+        let right1 = UIBarButtonItem(image: TBImage.scanner.image, style: .done, target: nil, action: nil)
         let right2 = UIBarButtonItem(image: image, style: .done, target: nil, action: nil)
         navigationItem.leftBarButtonItem = `left`
         navigationItem.rightBarButtonItems = [right1, right2] as? [UIBarButtonItem]
@@ -70,7 +70,7 @@ final class TaobaoMeViewController: TaobaoBaseViewController,UICollectionViewDel
         headView.backgroundColor = UIColor.back
         let icon = UIImageView(frame: CGRect(x: APPW / 2 - 30, y: 0, width: 60, height: 60))
         icon.layer.cornerRadius = 30
-        icon.image = UIImage(named: "userLogo")
+        icon.image = Image.logo.image
         icon.clipsToBounds = true
         let name = UILabel(frame: CGRect(x: 10, y: icon.bottom, width: APPW - 20, height: 20), font: .middle, color: .white, text: "杨越光", alignment: .center)
         let taoqi = UILabel(frame: CGRect(x: APPW / 2 - 40, y: name.bottom, width: 80, height: 15), font: .small, color: .red, text: "淘气值：710", alignment: .center)

@@ -34,7 +34,7 @@ class WXExpressionCell: BaseTableViewCell<TLEmojiGroup> {
     }()
     private lazy var tagView: UIImageView = {
         let tagView = UIImageView()
-        tagView.image = UIImage(named: "icon_corner_new")
+        tagView.image = WXImage.corner.image
         tagView.isHidden = true
         return tagView
     }()
@@ -52,7 +52,7 @@ class WXExpressionCell: BaseTableViewCell<TLEmojiGroup> {
     }()
     var group: TLEmojiGroup = TLEmojiGroup() {
         didSet {
-            let image = UIImage(named: group.groupIconPath)
+            let image = group.groupIconPath.image
             if image != nil {
                 iconImageView.image = image
             } else {

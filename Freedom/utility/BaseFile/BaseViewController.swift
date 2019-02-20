@@ -15,8 +15,8 @@ open class BaseViewController : UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         edgesForExtendedLayout = UIRectEdge.all;
         let appearance = UINavigationBar.appearance()
-        appearance.backIndicatorImage = UIImage(named:"u_cell_left")?.withRenderingMode(.alwaysOriginal);
-        appearance.backIndicatorTransitionMaskImage = UIImage(named:"u_cell_left")?.withRenderingMode(.alwaysOriginal);
+        appearance.backIndicatorImage = Image.left.image.withRenderingMode(.alwaysOriginal);
+        appearance.backIndicatorTransitionMaskImage = Image.left.image.withRenderingMode(.alwaysOriginal);
         appearance.backItem?.title = "返回"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", action: {
         })

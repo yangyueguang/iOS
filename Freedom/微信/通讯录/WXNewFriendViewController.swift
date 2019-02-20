@@ -106,7 +106,7 @@ class WXAddThirdPartFriendItem: UIButton {
     init(imagePath: String, andTitle title: String) {
         super.init(frame: CGRect.zero)
         textLabel.font = UIFont.small
-        iconImageView.image = UIImage(named: imagePath)
+        iconImageView.image = imagePath.image
         textLabel.text = title
         addSubview(iconImageView)
         addSubview(textLabel)

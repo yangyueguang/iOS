@@ -17,7 +17,7 @@ open class BaseTabBarViewController: UITabBarController {
         view.backgroundColor = .black
     }
     fileprivate func addChildViewController(_ controller: UIViewController, title:String, imageName:String){
-        controller.tabBarItem.image = UIImage(named: imageName)
+        controller.tabBarItem.image = imageName.image
         controller.tabBarItem.selectedImage = UIImage(named: imageName + "_selected")
         controller.tabBarItem.title = title
         controller.title = title

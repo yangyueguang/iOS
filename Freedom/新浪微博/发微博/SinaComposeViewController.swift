@@ -103,8 +103,8 @@ final class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate
             toolbar.showKeyboardButton = false
         }
         // 设置图片
-        toolbar.emotionButton?.setImage(UIImage(named: image), for: .normal)
-        toolbar.emotionButton?.setImage(UIImage(named: highImage), for: .highlighted)
+        toolbar.emotionButton?.setImage(image.image, for: .normal)
+        toolbar.emotionButton?.setImage(highImage.image, for: .highlighted)
         // 开始切换键盘
         switchingKeybaord = true
         // 退出键盘

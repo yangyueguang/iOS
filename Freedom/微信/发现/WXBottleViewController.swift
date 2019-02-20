@@ -17,7 +17,7 @@ class WXBottleButton: UIButton {
     }
     var iconPath = "" {
         didSet {
-            iconImageView.image = UIImage(named: iconPath)
+            iconImageView.image = iconPath.image
         }
     }
     var type = TLBottleButtonType.throw
@@ -60,20 +60,20 @@ class WXBottleViewController: WXBaseViewController {
         let backgroundView = UIImageView(frame: view.bounds)
         let hour = Date().components.hour ?? 0
         if hour >= 6 && hour <= 18 {
-            backgroundView.image = UIImage(named: "bottle_backgroud_day")
+            backgroundView.image = WXImage.bottleDay.image
         } else {
-            backgroundView.image = UIImage(named: "bottle_backgroud_night")
+            backgroundView.image = WXImage.bottleNight.image
         }
         return backgroundView
     }()
-    var bottomBoard = UIImageView(image: UIImage(named: "bottle_board"))
-    var throwButton = WXBottleButton(type: .throw, title: "扔一个", iconPath: "bottle_button_throw")
-    var pickUpButton = WXBottleButton(type: .pickUp, title: "捡一个", iconPath: "bottle_button_pickup")
-    var mineButton = WXBottleButton(type: .mine, title: "我的瓶子", iconPath: "bottle_button_mine")
+    var bottomBoard = UIImageView(image: WXImage.bottleBoard.image)
+    var throwButton = WXBottleButton(type: .throw, title: "扔一个", iconPath: WXImage.bottleThrow.rawValue)
+    var pickUpButton = WXBottleButton(type: .pickUp, title: "捡一个", iconPath: WXImage.bottlePickup.rawValue)
+    var mineButton = WXBottleButton(type: .mine, title: "我的瓶子", iconPath: WXImage.bottleMine.rawValue)
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "漂流瓶"
-        let rightBarButton = UIBarButtonItem(image: UIImage(named: "nav_setting"), style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
+        let rightBarButton = UIBarButtonItem(image: Image.setting.image, style: .plain, target: self, action: #selector(self.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButton
         view.addSubview(backgroundView)
         view.addSubview(bottomBoard)

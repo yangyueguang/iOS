@@ -159,7 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         var popoutModels = [PopoutModel]()
         for xapp in self.myApps{
             let a = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-            a.image = UIImage(named:xapp.scheme)
+            a.image = xapp.scheme.image
             let mode = PopoutModel(a,xapp.trackName)
             mode.action = {
                 if xapp.isHiddenApp{//已下架
@@ -191,7 +191,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     func firstInitLaunching(){
         DispatchQueue.main.async {
         self.launchView.frame = (self.window?.bounds)!
-        self.launchView.image = UIImage(named:"launchImage")
+        self.launchView.image = Image.launch.image
         XNetKit.luanch({[weak self] (resource) in
             guard let `self` = self else { return }
             self.launchView.kf.setImage(with: URL(string: resource))
@@ -234,7 +234,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.firstInit()
         IQKeyboardManager.shared.enable = true
-        let backButtonImage = UIImage(named: "u_cell_left")?.withRenderingMode(.alwaysTemplate)
+        let backButtonImage = Image.left.image.withRenderingMode(.alwaysTemplate)
         UINavigationBar.appearance().backIndicatorImage = backButtonImage
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButtonImage
         if Float(UIDevice.current.systemVersion) ?? 0.0 >= 8.0 {

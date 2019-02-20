@@ -9,7 +9,7 @@ final class IqiyiLoginViewController: IqiyiBaseViewController {
     override func viewDidLoad() {
         navigationController?.navigationBar.isHidden = false
         title = "登陆"
-//        let leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"cellLeft"), style: .done, target: self, action: self.navigationController?.popViewController(animated: true))
+//        let leftBarButtonItem = UIBarButtonItem(image: Image.left.image, style: .done, target: self, action: self.navigationController?.popViewController(animated: true))
 //        navigationItem.leftBarButtonItem = leftBarButtonItem
         tableView = BaseTableView(frame: CGRect(x: 0, y: 0, width: APPW, height: APPH), style: .plain)
 //        tableView.delegate = self

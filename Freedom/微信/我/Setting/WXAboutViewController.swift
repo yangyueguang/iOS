@@ -25,7 +25,7 @@ class WXAboutHeaderView: UITableViewHeaderFooterView {
     }
     var imagePath = "" {
         didSet {
-            imageView.image = UIImage(named: imagePath)
+            imageView.image = imagePath.image
         }
     }
     var imageView = UIImageView()

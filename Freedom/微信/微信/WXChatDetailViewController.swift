@@ -185,8 +185,8 @@ class WXUserGroupItemCell: UICollectionViewCell {
                 avatarView.sd_setImage(with: URL(string: user?.avatarURL ?? ""), for: UIControl.State.normal, placeholderImage: Image.logo.image)
                 usernameLabel.text = user?.showName
             } else {
-                avatarView.setImage(UIImage(named: "chatdetail_add_member"), for: .normal)
-                avatarView.setImage(UIImage(named: "chatdetail_add_memberHL"), for: .highlighted)
+                avatarView.setImage(WXImage.chatDetailAdd.image, for: .normal)
+                avatarView.setImage(WXImage.chatDetailAddHL.image, for: .highlighted)
                 usernameLabel.text = nil
             }
         }
@@ -269,9 +269,9 @@ class WXChatFileCell: UICollectionViewCell {
                 let imageURL = me.content.url
                 if !imagePath.isEmpty {
                     let imagePatha = FileManager.pathUserChatImage(imagePath)
-                    imageView.image = UIImage(named: imagePatha)
+                    imageView.image = imagePatha.image
                 } else if !imageURL.isEmpty {
-                    imageView.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: "userLogo"))
+                    imageView.sd_setImage(with: URL(string: imageURL), placeholderImage: Image.logo.image)
                 } else {
                     imageView.image = nil
                 }

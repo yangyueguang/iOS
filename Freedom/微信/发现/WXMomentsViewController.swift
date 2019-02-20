@@ -121,7 +121,7 @@ class WXMomentsViewController: BaseTableViewController, WXMomentViewDelegate {
         navigationItem.title = "朋友圈"
         tableView.backgroundColor = UIColor.whitex
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 60.0))
-        let rightBarButton = UIBarButtonItem(image: UIImage(named: "nav_camera"), style: .done, target: nil, action: nil)
+        let rightBarButton = UIBarButtonItem(image: Image.camera.image, style: .done, target: nil, action: nil)
         navigationItem.rightBarButtonItem = rightBarButton
         tableView.register(WXMomentHeaderCell.self, forCellReuseIdentifier: WXMomentHeaderCell.identifier)
         tableView.register(WXMomentImagesCell.self, forCellReuseIdentifier: WXMomentImagesCell.identifier)

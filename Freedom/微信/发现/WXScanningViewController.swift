@@ -12,12 +12,12 @@ class WXScannerButton: UIButton {
     }
     var iconPath: String = "" {
         didSet {
-            iconImageView.image = UIImage(named: iconPath)
+            iconImageView.image = iconPath.image
         }
     }
     var iconHLPath = "" {
         didSet {
-            iconImageView.highlightedImage = UIImage(named: iconHLPath)
+            iconImageView.highlightedImage = iconHLPath.image
         }
     }
     var type = TLScannerType.qr

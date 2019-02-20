@@ -129,7 +129,7 @@ class WXExpressionDetailCell: UICollectionViewCell {
 class WXExpressionItemCell: UICollectionViewCell {
     var emoji: TLEmoji = TLEmoji() {
         didSet {
-            let image = UIImage(named: emoji.emojiPath)
+            let image = emoji.emojiPath.image
             if image != nil {
                 imageView.image = image
             } else {

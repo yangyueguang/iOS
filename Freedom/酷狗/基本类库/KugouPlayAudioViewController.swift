@@ -309,7 +309,7 @@ class KugouPlayAudioViewController: UIViewController {
         info[MPMediaItemPropertyArtist] = singerLabel.text
         info[MPMediaItemPropertyAlbumTitle] = singerLabel.text
         info[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: CGSize(width: 100, height: 100), requestHandler: { size in
-            return (UIImage(named: "CollectDetailPage_NoBackground.jpg"))!
+            return KGImage.noBackground.image
         })
         MPNowPlayingInfoCenter.default().nowPlayingInfo = info
     }

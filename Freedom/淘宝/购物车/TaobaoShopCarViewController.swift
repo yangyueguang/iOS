@@ -17,8 +17,8 @@ class TaobaoShopCarViewCell:BaseTableViewCell<Any> {
         script.textColor = title.textColor
         let headView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 20))
         let selecth = UIButton(frame: CGRect(x: 10, y: 2.5, width: 15, height: 15))
-        selecth.setImage(UIImage(named: "taobaono"), for: .normal)
-        selecth.setImage(UIImage(named: "taobaoon"), for: .selected)
+        selecth.setImage(TBImage.taobaono.image, for: .normal)
+        selecth.setImage(TBImage.taobaono.image, for: .selected)
         let headTitle = UILabel(frame: CGRect(x: selecth.right, y: 0, width: APPW - 150, height: 20), font: .small, color: .cd, text: "中华精品城 >")
         let lingquan = UIButton(frame: CGRect(x: APPW - 100, y: 0, width: 40, height: 20))
         lingquan.setTitle("领券", for: .normal)
@@ -29,8 +29,8 @@ class TaobaoShopCarViewCell:BaseTableViewCell<Any> {
         headView.addSubviews([selecth, headTitle, lingquan, edit])
         let contentV = UIView(frame: CGRect(x: 0, y: headView.bottom, width: APPW, height: 80))
         let selectc = UIButton(frame: CGRect(x: 10, y: 32, width: 15, height: 15))
-        selectc.setImage(UIImage(named: "taobaono"), for: .normal)
-        selectc.setImage(UIImage(named: "taobaoon"), for: .selected)
+        selectc.setImage(TBImage.taobaono.image, for: .normal)
+        selectc.setImage(TBImage.taobaono.image, for: .selected)
         icon.frame = CGRect(x: selectc.right + 10, y: 5, width: 60, height: 70)
         title.frame = CGRect(x: icon.right + 10, y: icon.y, width: APPW - icon.right - 20, height: 30)
         title.numberOfLines = 0
@@ -43,7 +43,7 @@ class TaobaoShopCarViewCell:BaseTableViewCell<Any> {
         num.textAlignment = .right
         contentV.addSubviews([selectc, icon, title, script, newPrice, oldPrice, num])
         addSubviews([headView, contentV])
-        icon.image = UIImage(named: "taobao05.jpg")
+        icon.image = TBImage.im4.image
         title.text = "冬季外套女装学生韩版棉衣女中长款面包服女加厚棉服宽松冬装棉袄"
         script.text = "颜色分类:红色;尺码:M"
     }
@@ -62,9 +62,9 @@ final class TaobaoShopCarViewController: TaobaoBaseViewController {
         let totalView = UIView(frame: CGRect(x: 0, y: APPH - 50 - TabBarH - 44, width: APPW, height: 40))
         let totalb = UIButton(frame: CGRect(x: 10, y: 12, width: 56, height: 16))
         totalb.setTitle("全选", for: .normal)
-        totalb.setImage(UIImage(named: "taobaono"), for: .normal)
+        totalb.setImage(TBImage.taobaono.image, for: .normal)
         totalb.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 40)
-        totalb.setImage(UIImage(named: "taobaoon"), for: .selected)
+        totalb.setImage(TBImage.taobaono.image, for: .selected)
         let heji = UILabel(frame: CGRect(x: totalb.right + 20, y: 10, width: 200, height: 20))
         heji.text = "合计：￥100 不含运费"
         heji.font = .normal

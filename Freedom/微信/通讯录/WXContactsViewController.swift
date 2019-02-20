@@ -14,7 +14,7 @@ class WechatContactCell: BaseTableViewCell<WechatContact> {
             guard let `self` = self else { return }
             if !contact.avatarPath.isEmpty {
                 let path = FileManager.pathContactsAvatar(contact.avatarPath)
-                self.iconImageView.image = UIImage(named: path)
+                self.iconImageView.image = path.image
             } else {
                 self.iconImageView.kf.setImage(with: URL(string: contact.avatarURL))
             }

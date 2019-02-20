@@ -14,7 +14,7 @@ class IqiyiWebViewController: IqiyiBaseViewController,UIWebViewDelegate{
         //返回
         let backBtn = UIButton(type: .custom)
         backBtn.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
-        backBtn.setImage(UIImage(named: "cellLeft"), for: .normal)
+        backBtn.setImage(Image.left.image, for: .normal)
         backBtn.addTarget(self, action: Selector(("OnBackBtn:")), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         webView.delegate = self

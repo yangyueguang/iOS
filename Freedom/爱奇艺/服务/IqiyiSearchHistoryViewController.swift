@@ -8,8 +8,8 @@ class IqiyiSearchTextField: UITextField {
         super.init(frame: frame)
         placeholder = "大家都在搜琅琊榜"
         font = UIFont.big
-        let image = UIImage(named: "GroupCell")
-        background = image?.stretchableImage(withLeftCapWidth: Int((image?.size.width ?? 0.0) * 0.5), topCapHeight: Int((image?.size.height ?? 0.0) * 0.5))
+        let image = IQYImage.groupCell.image
+        background = image.stretchableImage(withLeftCapWidth: Int(image.size.width * 0.5), topCapHeight: Int(image.size.height * 0.5))
         clearButtonMode = .always
         layer.masksToBounds = true
         layer.cornerRadius = 5
@@ -17,7 +17,7 @@ class IqiyiSearchTextField: UITextField {
         let leftView = UIImageView()
         leftView.bounds = CGRect(x: 0, y: 0, width: 35, height: 35)
         leftView.contentMode = .center
-        leftView.image = UIImage(named: "search_small")
+        leftView.image = IQYImage.searchSmall.image
         self.leftView = leftView
         leftViewMode = .always
     }

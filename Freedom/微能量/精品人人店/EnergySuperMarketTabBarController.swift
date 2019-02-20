@@ -26,8 +26,8 @@ final class EnergySuperMarketTabBarController: BaseTabBarViewController {
         self.addChildViewController(EnergySuperMeViewController(), title: "个人中心", imageName: "tabbar_me", selectImage: "tabbar_meHL")
     }
     fileprivate func addChildViewController(_ controller: UIViewController, title:String, imageName:String,selectImage:String){
-        controller.tabBarItem.image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
-        controller.tabBarItem.selectedImage = UIImage(named: selectImage)?.withRenderingMode(.alwaysOriginal)
+        controller.tabBarItem.image = imageName.image.withRenderingMode(.alwaysOriginal)
+        controller.tabBarItem.selectedImage = selectImage.image.withRenderingMode(.alwaysOriginal)
         controller.tabBarItem.title = title
         controller.title = title
         controller.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.redx], for: .selected)

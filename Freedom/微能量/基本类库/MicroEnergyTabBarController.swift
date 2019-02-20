@@ -7,7 +7,7 @@ import XExtension
 //    var centerButton = UIButton()
 //    override init(frame: CGRect) {
 //        super.init(frame: frame)
-//        centerButton.setImage(UIImage(named: "juhetab3"), for: .normal)
+//        centerButton.setImage(Image.logo.image, for: .normal)
 //        centerButton.frame = CGRect(x: 0, y: 0, width:APPW/5, height:50)
 //        centerButton.layer.cornerRadius = 25
 //        centerButton.clipsToBounds = true

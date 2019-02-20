@@ -14,7 +14,7 @@ class EnergyHomeViewCell:BaseCollectionViewCell<Any> {
         self.contentMode = .center
         self.addSubviews([self.title,self.icon])
         self.title.text = "name"
-        self.icon.image = UIImage(named:"taobaomini2")
+        self.icon.image = Image.logo.image
     }
 }
 final class EnergyHomeViewController: EnergyBaseViewController,UICollectionViewDelegate,UICollectionViewDataSource{
@@ -23,7 +23,7 @@ final class EnergyHomeViewController: EnergyBaseViewController,UICollectionViewD
     override func viewDidLoad() {
         super.viewDidLoad()
     self.view.backgroundColor = .white
-        let more = UIBarButtonItem(image: UIImage(named:"u_add_y"), style: .plain, target: nil, action: nil)
+        let more = UIBarButtonItem(image: Image.add.image, style: .plain, target: nil, action: nil)
     self.navigationItem.rightBarButtonItem = more;
         let searchBar = UISearchBar()
     searchBar.placeholder = "输入问题关键字";

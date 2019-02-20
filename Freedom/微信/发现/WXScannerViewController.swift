@@ -38,11 +38,11 @@ class WXScannerView: UIView {
         bgView.layer.borderColor = UIColor.whitex.cgColor
         return bgView
     }()
-    var topLeftView = UIImageView(image: UIImage(named: "scanner_top_left"))
-    var topRightView = UIImageView(image: UIImage(named: "scanner_top_right"))
-    var btmLeftView = UIImageView(image: UIImage(named: "scanner_bottom_left"))
-    var btmRightView = UIImageView(image: UIImage(named: "scanner_bottom_right"))
-    var scannerLine = UIImageView(image: UIImage(named: "scanner_line"))
+    var topLeftView = UIImageView(image: WXImage.scannerTopLeft.image)
+    var topRightView = UIImageView(image: WXImage.scannerTopRight.image)
+    var btmLeftView = UIImageView(image: WXImage.scannerBottomLeft.image)
+    var btmRightView = UIImageView(image: WXImage.scannerBottomRight.image)
+    var scannerLine = UIImageView(image: WXImage.scannerLine.image)
     override init(frame: CGRect) {
         super.init(frame: frame)
         scannerLine.frame = CGRect.zero

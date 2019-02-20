@@ -12,7 +12,7 @@ class DZDealListViewTransverseCell:BaseTableViewCell<Any> {
         title.numberOfLines = 0
         title.font = .small
         script.font = Font(11)
-        icon.image = UIImage(named: "image4.jpg")
+        icon.image = TBImage.im4.image
         title.text = "与爱齐名，为有初心不变，小编为大家收集了超多好文好店，从手工匠人到原型设计，他们并没有忘记"
         script.text = "地道风味 精选外卖优惠"
     }
@@ -33,10 +33,10 @@ class DZDealListViewVerticalCell:BaseTableViewCell<Any> {
         script.backgroundColor = .red
         script.textColor = .white
         addSubviews([name, times, sees])
-        icon.image = UIImage(named: "image2.jpg")
+        icon.image = TBImage.taobaono.image
         name.text = "传说张无忌肉夹馍"
         times.text = "2.3km"
-        icon.image = UIImage(named: "image4.jpg")
+        icon.image = TBImage.taobaono.image
         title.text = "49分钟送达|起送￥20.0|配送￥3.0"
         script.text = "满20减10"
         sees.text = "月售1000"

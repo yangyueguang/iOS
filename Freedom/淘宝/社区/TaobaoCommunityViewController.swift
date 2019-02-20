@@ -17,7 +17,7 @@ class TaobaoCommunityViewCell1:BaseCollectionViewCell<Any> {
         script.textColor = .cd
         addSubviews([title, icon, script])
         title.text = "我想买一个6000到8000左右的游戏本，求各位大神给个推荐"
-        icon.image = UIImage(named: "image4.jpg")
+        icon.image = TBImage.im4.image
         script.text = "这款笔记本电脑，用料考究，做工精细，运行速度快，携带方便，是您居家旅行的不二之选，它极致的性能堪比外挂，性价比特别高，建议选联想拯救者或惠普精灵系列的电脑，买电脑千万别图便宜，一分价格一分货。"
     }
 }
@@ -30,7 +30,7 @@ class TaobaoCommunityViewCell2:BaseCollectionViewCell<Any> {
         title.numberOfLines = 0
         addSubviews([icon, title])
         title.text = "做工很精细，大品牌，值得信赖！用了几天才评价，真实堪称完美！质量上乘，使用方便，是您居家旅行，过节送礼，朋友关系维护的绝佳产品，可以送老人，送孩子，送长辈，价格合理，你值得拥有！"
-        icon.image = UIImage(named: "a")
+        icon.image = Image.a.image
     }
 }
 class TaobaoCommunityHeadView: UICollectionReusableView {
@@ -60,8 +60,8 @@ final class TaobaoCommunityViewController: TaobaoBaseViewController,UICollection
         searchBar.placeholder = "你想要的购物经验，这里都能找到"
         navigationItem.titleView = searchBar
         navigationController?.navigationBar.tintColor = UIColor.grayx
-        let image = UIImage(named: "Taobaomessage")?.withRenderingMode(.alwaysOriginal)
-        let leftI = UIBarButtonItem(image: UIImage(named:"TaobaoScanner"), style: .done, target: nil, action: nil)
+        let image = TBImage.message.image.withRenderingMode(.alwaysOriginal)
+        let leftI = UIBarButtonItem(image: TBImage.scanner.image, style: .done, target: nil, action: nil)
         let rightI = UIBarButtonItem(image: image, style: .done, target: nil, action:nil)
         navigationItem.leftBarButtonItem = leftI
         navigationItem.rightBarButtonItem = rightI
