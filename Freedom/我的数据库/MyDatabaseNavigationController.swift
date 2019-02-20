@@ -9,7 +9,7 @@ import UIKit
 final class MyDatabaseNavigationController: BaseNavigationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    navigationBar.isHidden = true
     }
 
 }

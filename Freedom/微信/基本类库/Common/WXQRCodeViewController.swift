@@ -74,8 +74,7 @@ class WXQRCodeViewController: WXBaseViewController {
     func saveQRCodeToSystemAlbum() {
         captureScreenshot(from: codeView, rect: codeView.bounds, finished: { avatarPath in
             let path = FileManager.pathScreenshotImage(avatarPath)
-            let image = UIImage(named: path)
-            UIImageWriteToSavedPhotosAlbum(image!, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+            UIImageWriteToSavedPhotosAlbum(path.image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
         })
     }
 

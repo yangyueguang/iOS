@@ -16,7 +16,7 @@ class WXMyQRCodeViewController: WXBaseViewController {
         navigationItem.title = "我的二维码"
         view.addSubview(qrCodeVC.view)
         addChild(qrCodeVC)
-        let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "nav_more"), style: .done, target: self, action: #selector(WXMyQRCodeViewController.rightBarButtonDown(_:)))
+        let rightBarButtonItem = UIBarButtonItem(image:Image.more.image, style: .done, target: self, action: #selector(WXMyQRCodeViewController.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButtonItem
         self.user = WXUserHelper.shared.user
     }

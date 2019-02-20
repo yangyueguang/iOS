@@ -1061,6 +1061,7 @@
 		DF401C6A21F716D4001482DE /* IqiyiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF401C6921F716D4001482DE /* IqiyiAPI.swift */; };
 		DF4C6FC821CC787700A54339 /* FoundationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C6FC721CC787700A54339 /* FoundationEnum.swift */; };
 		DF4C6FCA21CC790D00A54339 /* FoundationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */; };
+		DF4EC237221D311600AC8583 /* WechatFriendDetailSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4EC236221D311600AC8583 /* WechatFriendDetailSettingViewController.swift */; };
 		DF6B51EE21CA6F5900460949 /* WXModes+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51ED21CA6F5900460949 /* WXModes+Extension.swift */; };
 		DF6B51F421CA6F8900460949 /* WXUserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51F321CA6F8900460949 /* WXUserHelper.swift */; };
 		DF6B51FC21CA801E00460949 /* WXPictureCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51FB21CA801E00460949 /* WXPictureCarouselView.swift */; };
@@ -2354,6 +2355,7 @@
 		DF401C6921F716D4001482DE /* IqiyiAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IqiyiAPI.swift; sourceTree = "<group>"; };
 		DF4C6FC721CC787700A54339 /* FoundationEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationEnum.swift; sourceTree = "<group>"; };
 		DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationAPI.swift; sourceTree = "<group>"; };
+		DF4EC236221D311600AC8583 /* WechatFriendDetailSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechatFriendDetailSettingViewController.swift; sourceTree = "<group>"; };
 		DF6B51ED21CA6F5900460949 /* WXModes+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WXModes+Extension.swift"; sourceTree = "<group>"; };
 		DF6B51F321CA6F8900460949 /* WXUserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXUserHelper.swift; sourceTree = "<group>"; };
 		DF6B51FB21CA801E00460949 /* WXPictureCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXPictureCarouselView.swift; sourceTree = "<group>"; };
@@ -2652,6 +2654,7 @@
 				DF0E966121CBAC7D009682CC /* WXAddFriendViewController.swift */,
 				DF0E966321CBAC83009682CC /* WXContactsViewController.swift */,
 				DF0E966521CBAC89009682CC /* WXFriendDetailViewController.swift */,
+				DF4EC236221D311600AC8583 /* WechatFriendDetailSettingViewController.swift */,
 				DF0E966721CBAC8F009682CC /* WXFriendSearchViewController.swift */,
 				DF0E966B21CBACA7009682CC /* WXGroupViewController.swift */,
 				DF0E966D21CBACAE009682CC /* WXNewFriendViewController.swift */,
@@ -6147,6 +6150,7 @@
 				BF58BB3620EF1945002CB4EE /* RCDReceiptDetailsTableViewController.m in Sources */,
 				DF7B408421AC020A00E3D975 /* ChatListView.swift in Sources */,
 				7121192220ABC4B80087E05B /* EnergySampleViewController.swift in Sources */,
+				DF4EC237221D311600AC8583 /* WechatFriendDetailSettingViewController.swift in Sources */,
 				BF58BB3D20EF1945002CB4EE /* RCDSearchMoreController.m in Sources */,
 				BF58BB6820EF1945002CB4EE /* RCDataBaseManager.m in Sources */,
 				DF0489FD21D28BA40030C30B /* ValueAnimation.swift in Sources */,

@@ -132,7 +132,7 @@ class WXSettingCell: BaseTableViewCell<WXSettingItem> {
             self.titleLabel.text = item.title
             self.rightLabel.text = item.subTitle
             if !item.rightImagePath.isEmpty {
-                self.rightImageView.image = UIImage(named: item.rightImagePath)
+                self.rightImageView.image =  item.rightImagePath.image
             } else if !item.rightImageURL.isEmpty {
                 self.rightImageView.sd_setImage(with: URL(string: item.rightImageURL), placeholderImage: Image.logo.image)
             } else {

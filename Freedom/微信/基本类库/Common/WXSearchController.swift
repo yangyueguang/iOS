@@ -10,8 +10,8 @@ class WXSearchController: UISearchController {
         didSet {
             if showVoiceButton {
                 searchBar.showsBookmarkButton = true
-                searchBar.setImage(UIImage(named: "searchBar_voice"), for: .bookmark, state: .normal)
-                searchBar.setImage(UIImage(named: "searchBar_voice_HL"), for: .bookmark, state: .highlighted)
+                searchBar.setImage(WXImage.barVoice.image, for: .bookmark, state: .normal)
+                searchBar.setImage(WXImage.barVoiceHL.image, for: .bookmark, state: .highlighted)
             } else {
                 searchBar.showsBookmarkButton = false
             }

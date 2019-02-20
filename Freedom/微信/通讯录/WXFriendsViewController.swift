@@ -130,7 +130,7 @@ final class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegat
             navigationController?.pushViewController(targetVC
                 , animated: true)
         } else {
-            let detailVC = WXFriendDetailViewController()
+            let detailVC = WXFriendDetailViewController.storyVC(.wechat)
             detailVC.user = user
             navigationController?.pushViewController(detailVC, animated: true)
         }

@@ -49,7 +49,7 @@ class WXChatDetailViewController: WXSettingViewController, WechatUserGroupCellDe
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
     func userGroupCellDidSelect(_ user: WXUser) {
-        let detailVC = WXFriendDetailViewController()
+        let detailVC = WXFriendDetailViewController.storyVC(.wechat)
         detailVC.user = user
         navigationController?.pushViewController(detailVC, animated: true)
     }
@@ -110,7 +110,7 @@ class WXCGroupDetailViewController: WXSettingViewController, WechatUserGroupCell
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
     func userGroupCellDidSelect(_ user: WXUser) {
-        let detailVC = WXFriendDetailViewController()
+        let detailVC = WXFriendDetailViewController.storyVC(.wechat)
         detailVC.user = user
         navigationController?.pushViewController(detailVC, animated: true)
     }
@@ -242,7 +242,7 @@ class WXGroupQRCodeViewController: WXBaseViewController {
         navigationItem.title = "群二维码名片"
         view.addSubview(qrCodeVC.view)
         addChild(qrCodeVC)
-        let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "nav_more"), style: .done, target: self, action: #selector(WXGroupQRCodeViewController.rightBarButtonDown(_:)))
+        let rightBarButtonItem = UIBarButtonItem(image: Image.more.image, style: .done, target: self, action: #selector(WXGroupQRCodeViewController.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     func rightBarButtonDown(_ sender: UIBarButtonItem) {

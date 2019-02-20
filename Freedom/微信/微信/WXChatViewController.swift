@@ -95,7 +95,7 @@ class WXEmojiDisplayView: UIImageView {
                 imageLabel.isHidden = true
                 imageView.isHidden = false
                 titleLabel.isHidden = false
-                imageView.image = UIImage(named: emoji.emojiName)
+                imageView.image = emoji.emojiName.image
                 titleLabel.text = (emoji.emojiName as NSString).substring(with: NSRange(location: 1, length: emoji.emojiName.count - 2))
             }
         }
@@ -121,7 +121,7 @@ class WXEmojiDisplayView: UIImageView {
     }()
     override init(frame: CGRect) {
         super.init(frame: CGRect(x: 0, y: 0, width: CGSize(width: 55, height: 100).width, height: CGSize(width: 55, height: 100).height))
-        image = UIImage(named: "emojiKB_tips")
+        image = WXImage.emojiKB_tips.image
         addSubview(imageLabel)
         addSubview(imageView)
         addSubview(titleLabel)
@@ -985,7 +985,7 @@ extension WXChatViewController: WXChatBarDelegate {
 }
 extension WXChatViewController: WXChatViewControllerProxy {
     func didClickedUserAvatar(_ user: WXUser) {
-        let detailVC = WXFriendDetailViewController()
+        let detailVC = WXFriendDetailViewController.storyVC(.wechat)
         detailVC.user = user
         navigationController?.pushViewController(detailVC, animated: true)
     }

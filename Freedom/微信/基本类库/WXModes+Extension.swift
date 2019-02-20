@@ -500,7 +500,7 @@ class WXExpressionMessage: WXMessage {
         didSet {
             content["groupID"] = emoji.groupID
             content["emojiID"] = emoji.emojiID
-            let imageSize: CGSize = UIImage(named: self.path)?.size ?? CGSize.zero
+            let imageSize: CGSize = self.path.image.size ?? CGSize.zero
             content["w"] = "\(imageSize.width)"
             content["h"] = "\(imageSize.height)"
         }

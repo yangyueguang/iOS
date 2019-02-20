@@ -12,6 +12,8 @@ enum Image: String {
     case `default` = "userLogo1"
     case logo = "userLogo"
     case code = "u_QRCode"
+    case more = "u_white_more"
+    case left = "u_cell_left"
     var image: UIImage {
         let ima = UIImage(asset: rawValue)
         assert(ima != nil, "图片资源丢失\(rawValue)")
@@ -30,6 +32,9 @@ enum WXImage: String {
     case keyboardHL = "u_message_keyboardHL"
     case face = "u_message_face"
     case faceHL = "u_message_faceHL"
+    case barVoice = "searchBar_voice"
+    case barVoiceHL = "searchBar_voice_HL"
+    case emojiKB_tips = "emojiKB_tips"
     var image: UIImage {
         let ima = UIImage(asset: rawValue)
         assert(ima != nil, "图片资源丢失\(rawValue)")
