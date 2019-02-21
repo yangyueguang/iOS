@@ -29,7 +29,7 @@ extension XNetKit {
                 var data: Data?
                 if i == group.data.count {
                     emojiPath = "\(groupPath)icon_\(group.groupID)"
-                    if let anURL = URL(string: group.groupIconURL) {
+                    if let anURL = group.groupIconURL.url {
                         data = try! Data(contentsOf: anURL)
                     }
                 } else {

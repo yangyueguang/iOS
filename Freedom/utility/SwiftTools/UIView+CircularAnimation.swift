@@ -48,6 +48,9 @@ extension String {
         assert(ima != nil, "图片资源丢失\(self)")
         return ima!
     }
+    var url: URL? {
+        return URL(string: self) ?? URL(string: defaultImageURL)
+    }
 }
 private var XCHView: UIView = UIView()
 extension UICollectionView {

@@ -97,7 +97,10 @@ final class WXConversationViewController: BaseTableViewController {
         addMenuView.actionClosure = {[weak self] item in
             guard let `self` = self else { return }
             if let cls = item.className {
-                let vc = cls.init()
+                var vc = cls.init()
+                if cls == WXAddFriendViewController.self {
+                    vc = WXAddFriendViewController.storyVC(.wechat)
+                }
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 self.noticeError("\(item.title) 功能暂未实现")
@@ -164,7 +167,7 @@ extension WXConversationViewController: UISearchBarDelegate {
                 break
             }
         } else if conversation.convType == .group {
-            for group in WXFriendHelper.shared.groupsData where group.groupID == conversation.partnerID {
+            for group in WXFriendHelper.shared.groupsData where group.userID == conversation.partnerID {
                 chatVC.partner = group
                 break
             }

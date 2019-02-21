@@ -70,7 +70,7 @@ extension FileManager {
         if !FileManager.default.fileExists(atPath: path) {
             try? FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
         }
-        return path + imageName
+        return path + imageName + ".png"
     }
 
     class func pathContactsAvatar(_ imageName: String) -> String {

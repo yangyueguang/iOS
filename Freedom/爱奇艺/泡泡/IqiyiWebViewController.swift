@@ -1,5 +1,4 @@
 //
-//  JFWebViewController.swift
 //  Freedom
 import UIKit
 import XExtension

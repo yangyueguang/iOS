@@ -1,5 +1,4 @@
 //
-//  JFSearchHistoryViewController.swift
 //  Freedom
 import UIKit
 import XExtension
@@ -76,7 +75,8 @@ class IqiyisearchHeaderView: UITableViewHeaderFooterView {
             }
             //        headView = [[[NSBundle mainBundle] loadNibNamed:@"JFsearchHeaderView" owner:nil options:nil] lastObject];
         }
-        headView?.backgroundColor = UIColor.back
+        headView?.backgroundView = UIView()
+        headView?.backgroundView?.backgroundColor = UIColor.back
         return headView!
     }
 }

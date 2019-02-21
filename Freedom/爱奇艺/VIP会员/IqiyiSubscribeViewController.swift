@@ -1,5 +1,4 @@
 //
-//  JFSubscribeViewController.swift
 //  Freedom
 import UIKit
 import XExtension

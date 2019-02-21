@@ -32,7 +32,7 @@ class WXFriendDetailViewController: BaseTableViewController {
                 wxChatVC = vc as? WXChatViewController
             })
             if let cvc = wxChatVC {
-                if (chatVC.partner?.chat_userID == user.userID) {
+                if (chatVC.partner?.userID == user.userID) {
                     navigationController?.popToViewController(cvc, animated: true)
                 } else {
                     chatVC.partner = user

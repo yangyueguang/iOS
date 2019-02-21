@@ -125,7 +125,7 @@ class WXExpressionCell: BaseTableViewCell<TLEmojiGroup> {
 class WXExpressionBannerCell: BaseTableViewCell<Any>,WXPictureCarouselDelegate {
     weak var delegate: WXExpressionBannerCellDelegate?
     private var picCarouselView = WXPictureCarouselView()
-    var data: [WXPictureCarouselProtocol] = [] {
+    var data: [TLEmojiGroup] = [] {
         didSet {
             picCarouselView.data = data
         }
@@ -142,8 +142,8 @@ class WXExpressionBannerCell: BaseTableViewCell<Any>,WXPictureCarouselDelegate {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func pictureCarouselView(_ pictureCarouselView: WXPictureCarouselView, didSelectItem model: WXPictureCarouselProtocol) {
-        delegate?.expressionBannerCellDidSelectBanner(model as! TLEmojiGroup)
+    func pictureCarouselView(_ pictureCarouselView: WXPictureCarouselView, didSelectItem model: TLEmojiGroup) {
+        delegate?.expressionBannerCellDidSelectBanner(model)
     }
 }
 

@@ -71,7 +71,7 @@ extension RLMObject {
 
 }
 extension RLMRealm {
-    func add<T: RLMObject>(_ model: T?) {
+    func addx<T: RLMObject>(_ model: T?) {
         guard let model = model else { return }
         try! self.transaction {
             self.addOrUpdate(model)

@@ -85,15 +85,15 @@ class WXCGroupDetailViewController: WXSettingViewController, WechatUserGroupCell
             navigationController?.pushViewController(gorupQRCodeVC, animated: true)
         } else if (item.title == "设置当前聊天背景") {
             let chatBGSettingVC = WXBgSettingViewController()
-            chatBGSettingVC.partnerID = group.groupID
+            chatBGSettingVC.partnerID = group.userID
             navigationController?.pushViewController(chatBGSettingVC, animated: true)
         } else if (item.title == "聊天文件") {
             let chatFileVC = WXChatFileViewController()
-            chatFileVC.partnerID = group.groupID
+            chatFileVC.partnerID = group.userID
             navigationController?.pushViewController(chatFileVC, animated: true)
         } else if (item.title == "清空聊天记录") {
             let alertVC = UIAlertController("", "", T1: "清空聊天记录", T2: "取消", confirm1: {
-                WXMessageHelper.shared.deleteMessages(byPartnerID: self.group.groupID)
+                WXMessageHelper.shared.deleteMessages(byPartnerID: self.group.userID)
                 WXChatViewController.shared.resetChatVC()
             }, confirm2: {
 
@@ -186,7 +186,7 @@ class WXUserGroupItemCell: UICollectionViewCell {
                 usernameLabel.text = user?.showName
             } else {
                 avatarView.setImage(WXImage.chatDetailAdd.image, for: .normal)
-                avatarView.setImage(WXImage.chatDetailAddHL.image, for: .highlighted)
+                avatarView.setImage(WXImage.chatDetailAdd.image, for: .highlighted)
                 usernameLabel.text = nil
             }
         }
@@ -228,20 +228,18 @@ class WXUserGroupItemCell: UICollectionViewCell {
 
 class WXGroupQRCodeViewController: WXBaseViewController {
     var qrCodeVC = WXQRCodeViewController.storyVC(.wechat)
-    var group: WXGroup = WXGroup() {
-        didSet {
-            qrCodeVC.user = group.user
-            let date = Date()
-            qrCodeVC.introduceLabel.text = String(format: "该二维码7天内(%lu月%lu日前)有效，重新进入将更新", date.components.month ?? 0, date.components.day ?? 0)
-        }
-    }
-
+    var group: WXGroup = WXGroup()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.back
         navigationItem.title = "群二维码名片"
-        view.addSubview(qrCodeVC.view)
         addChild(qrCodeVC)
+        view.addSubview(qrCodeVC.view)
+
+        qrCodeVC.user = group.user()
+        let date = Date()
+        qrCodeVC.introduceLabel.text = String(format: "该二维码7天内(%lu月%lu日前)有效，重新进入将更新", date.components.month ?? 0, date.components.day ?? 0)
+
         let rightBarButtonItem = UIBarButtonItem(image: Image.more.image, style: .done, target: self, action: #selector(WXGroupQRCodeViewController.rightBarButtonDown(_:)))
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }

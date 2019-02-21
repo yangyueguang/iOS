@@ -36,7 +36,7 @@ enum DouyinURL: String {
     case deleteComment = "comment/delete"
     //获取评论列表
     case findComment = "comment/list"
-    var url: String {
+    var urlString: String {
         return DouyinURL.BaseUrl.rawValue + rawValue
     }
 }
@@ -44,14 +44,14 @@ enum DouyinURL: String {
 extension XNetKit {
     static func douyinVisitor(_ id:String, next: PublishSubject<Visitor>) {
         let param: Parameters = ["id": id, "uuid": String.uuid]
-        request(DouyinURL.createVisitor.url, parameters: param) { (response) in
+        request(DouyinURL.createVisitor.urlString, parameters: param) { (response) in
             let model = Visitor.parse(response.dictionary as NSDictionary)
             next.onNext(model)
         }
     }
     static func douyinfindUser(_ uid:String, next: PublishSubject<DouYinUser>) {
         let param: Parameters = ["id": "", "uid": uid]
-        request(DouyinURL.findUser.url, parameters: param) { (response) in
+        request(DouyinURL.findUser.urlString, parameters: param) { (response) in
             let responseDict = FileManager.readJson2Dict(fileName: "user")
             let model = DouYinUser.parse(responseDict as NSDictionary)
             next.onNext(model)
@@ -59,7 +59,7 @@ extension XNetKit {
     }
     static func douyinfindPostAwemesPaged(_ uid:String,page: Int,size:Int, next: PublishSubject<[Aweme]>) {
         let param: Parameters = ["id": "", "uid": uid,"page":page,"size":size]
-        request(DouyinURL.findAwemePost.url, parameters: param) { (response) in
+        request(DouyinURL.findAwemePost.urlString, parameters: param) { (response) in
             let responseDict = FileManager.readJson2Dict(fileName: "awemes")
             let model = Aweme.parses(responseDict[""] as! [Any])
             next.onNext(model as! [Aweme])
@@ -67,7 +67,7 @@ extension XNetKit {
     }
     static func douyinfindFavoriteAwemesPaged(_ uid:String,page: Int,size:Int = 20, next: PublishSubject<[Aweme]>) {
         let param: Parameters = ["id": "", "uid": uid,"page":page,"size":size]
-        request(DouyinURL.findAwemeFavorite.url, parameters: param) { (response) in
+        request(DouyinURL.findAwemeFavorite.urlString, parameters: param) { (response) in
             let responseDict = FileManager.readJson2Dict(fileName: "favorites")
             let model = Aweme.parses(responseDict[""] as! [Any])
             next.onNext(model as! [Aweme])
@@ -75,7 +75,7 @@ extension XNetKit {
     }
     static func douyinfindGroupChatsPaged(page: Int,size:Int = 20, next: PublishSubject<[GroupChat]>) {
         let param: Parameters = ["id": "","page":page,"size":size]
-        request(DouyinURL.findGroupChatList.url, parameters: param) { (response) in
+        request(DouyinURL.findGroupChatList.urlString, parameters: param) { (response) in
             let responseDict = FileManager.readJson2Dict(fileName: "groupchats")
             let model = GroupChat.parses(responseDict[""] as! [Any])
             next.onNext(model as! [GroupChat])
@@ -83,28 +83,28 @@ extension XNetKit {
     }
     static func douyinGroupChatText(text: String, next: PublishSubject<GroupChat>) {
         let param: Parameters = ["id": "","text":text]
-        request(DouyinURL.chatText.url, parameters: param) { (response) in
+        request(DouyinURL.chatText.urlString, parameters: param) { (response) in
             let model = GroupChat.parse(response.dictionary as NSDictionary)
             next.onNext(model)
         }
     }
     static func douyinGroupChatImage(next: PublishSubject<GroupChat>) {
         let param: Parameters = ["id": "", "udid":String.uuid]
-        request(DouyinURL.chatImage.url, parameters: param) { (response) in
+        request(DouyinURL.chatImage.urlString, parameters: param) { (response) in
             let model = GroupChat.parse(response.dictionary as NSDictionary)
             next.onNext(model)
         }
     }
     static func douyinDeleteGroupChat(next: PublishSubject<BaseResponse>) {
         let param: Parameters = ["id": "", "udid":String.uuid]
-        request(DouyinURL.deleteGroupChat.url, parameters: param) { (response) in
+        request(DouyinURL.deleteGroupChat.urlString, parameters: param) { (response) in
             let model = BaseResponse.parse(response.dictionary as NSDictionary)
             next.onNext(model)
         }
     }
     static func douyinfindCommentsPaged(aweme_id: String, page: Int,size:Int = 20, next: PublishSubject<[Comment]>) {
         let param: Parameters = ["id": "","page":page,"size":size,"aweme_id":aweme_id]
-        request(DouyinURL.findComment.url, parameters: param) { (response) in
+        request(DouyinURL.findComment.urlString, parameters: param) { (response) in
             let responseDict = FileManager.readJson2Dict(fileName: "comments")
             let model = Comment.parses(responseDict[""] as! [Any])
             next.onNext(model as! [Comment])
@@ -112,14 +112,14 @@ extension XNetKit {
     }
     static func douyinCommentText(aweme_id: String, text: String, next: PublishSubject<Comment>) {
         let param: Parameters = ["id": "","text":text, "udid": String.uuid,"aweme_id":aweme_id]
-        request(DouyinURL.comment.url, parameters: param) { (response) in
+        request(DouyinURL.comment.urlString, parameters: param) { (response) in
             let model = Comment.parse(response.dictionary as NSDictionary)
             next.onNext(model)
         }
     }
     static func douyinDeleteComment(cid: String, next: PublishSubject<BaseResponse>) {
         let param: Parameters = ["id": "","cid":cid, "udid": String.uuid]
-        request(DouyinURL.deleteComment.url, parameters: param,method: .delete) { (response) in
+        request(DouyinURL.deleteComment.urlString, parameters: param,method: .delete) { (response) in
             let model = BaseResponse.parse(response.dictionary as NSDictionary)
             next.onNext(model)
         }

@@ -78,7 +78,6 @@ class WXWebViewController: WXBaseViewController, WKNavigationDelegate {/// ÊòØÂê
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        MobClick.beginLogPageView("WebVC")
         progressView.progress = 0.0
         if let anUrl = URL(string: url) {
             webView.load(URLRequest(url: anUrl))

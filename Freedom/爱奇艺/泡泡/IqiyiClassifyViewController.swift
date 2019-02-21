@@ -1,5 +1,4 @@
 //
-//  JFClassifyViewController.swift
 //  Freedom
 import UIKit
 import XExtension

@@ -143,7 +143,7 @@ class WXFriendHelper: NSObject {
     }
     func createGroupAvatar(_ group: WXGroup, finished: @escaping (_ groupID: String) -> Void) {
         DispatchQueue.main.async {
-            print(group.groupID)
+            print(group.userID)
             let usersCount: Int = group.users.count > 9 ? 9 : Int(group.users.count) 
             let viewWidth: CGFloat = 200
             let width: CGFloat = viewWidth / 3 * 0.85
@@ -160,7 +160,7 @@ class WXFriendHelper: NSObject {
                 let user: WXUser = group.users[UInt(i)]
                 let imageView = UIImageView(frame: CGRect(x: x, y: y, width: width, height: width))
                 view.addSubview(imageView)
-                imageView.sd_setImage(with: URL(string: user.avatarURL), placeholderImage: Image.logo.image, completed: { image, error, cacheType, imageURL in
+                imageView.sd_setImage(with: user.avatarURL.url, placeholderImage: Image.logo.image, completed: { image, error, cacheType, imageURL in
                     count += 1
                     if count == usersCount {
                         // 图片全部下载完成
@@ -174,10 +174,10 @@ class WXFriendHelper: NSObject {
                         let imageRefRect = imageRef?.cropping(to: CGRect(x: 0, y: 0, width: view.frame.size.width * 2, height: view.frame.size.height * 2))!
                         let ansImage = UIImage(cgImage: imageRefRect!)
                         let imageViewData = ansImage.pngData()
-                        let savedImagePath = FileManager.pathUserAvatar(group.groupID)
+                        let savedImagePath = FileManager.pathUserAvatar(group.userID)
                         try! imageViewData?.write(to: URL(fileURLWithPath: savedImagePath), options: Data.WritingOptions.atomic)
                         DispatchQueue.main.async(execute: {
-                            finished(group.groupID)
+                            finished(group.userID)
                         })
                     }
                 })
@@ -198,46 +198,57 @@ class WXFriendHelper: NSObject {
     func friendDetailArray(byUserInfo userInfo: WXUser) -> [[WXInfo]] {
         var data: [[WXInfo]] = []
         var arr: [WXInfo] = []
-        let user: WXInfo = WXInfo.createInfo("个人", nil)
+        let user: WXInfo = WXInfo()
+        user.title = "个人"
         user.type = Int32(TLInfoType.other.rawValue)
 //        user.userInfo = userInfo
         arr.append(user)
         data.append(arr)
         arr = []
         if userInfo.detailInfo.phoneNumber.count > 0 {
-            let tel: WXInfo = WXInfo.createInfo("电话号码", userInfo.detailInfo.phoneNumber)
+            let tel: WXInfo = WXInfo()
+            tel.title = "电话号码"
+            tel.subTitle = userInfo.detailInfo.phoneNumber
             tel.showDisclosureIndicator = false
             arr.append(tel)
         }
         if userInfo.detailInfo.tags.count == 0 {
-            let remark: WXInfo = WXInfo.createInfo("设置备注和标签", nil)
+            let remark: WXInfo = WXInfo()
+            remark.title = "设置备注和标签"
             arr.insert(remark, at: 0)
         } else {
             let str = ""//userInfo.detailInfo.tags?.joined(separator: ",")
-            let remark: WXInfo = WXInfo.createInfo("标签", str)
+            let remark: WXInfo = WXInfo()
+            remark.title = "标签"
             arr.append(remark)
         }
         data.append(arr)
         arr = []
         if userInfo.detailInfo.location.count > 0 {
-            let location: WXInfo = WXInfo.createInfo("地区", userInfo.detailInfo.location)
+            let location: WXInfo = WXInfo()
+            location.title = "地区"
+            location.subTitle = userInfo.detailInfo.location
             location.showDisclosureIndicator = false
             location.disableHighlight = true
             arr.append(location)
         }
-        let album: WXInfo = WXInfo.createInfo("个人相册", nil)
+        let album: WXInfo = WXInfo()
+        album.title = "个人相册"
         album.userInfo = userInfo.detailInfo.albumArray
         album.type = Int32(TLInfoType.other.rawValue)
         arr.append(album)
-        let more: WXInfo = WXInfo.createInfo("更多", nil)
+        let more: WXInfo = WXInfo()
+        more.title = "更多"
         arr.append(more)
         data.append(arr)
         arr = []
-        let sendMsg: WXInfo = WXInfo.createInfo("发消息", nil)
+        let sendMsg: WXInfo = WXInfo()
+        sendMsg.title = "发消息"
         sendMsg.type = Int32(TLInfoType.button.rawValue)
         arr.append(sendMsg)
         if !(userInfo.userID == WXUserHelper.shared.user.userID) {
-            let video: WXInfo = WXInfo.createInfo("视频聊天", nil)
+            let video: WXInfo = WXInfo()
+            video.title = "视频聊天"
             video.type = Int32(TLInfoType.button.rawValue)
             arr.append(video)
         }
@@ -599,10 +610,7 @@ class WXMessageHelper: NSObject {
         return WXUserHelper.shared.user.userID
     }
     func send(_ message: WXMessage, progress: @escaping (WXMessage, CGFloat) -> Void, success: @escaping (WXMessage) -> Void, failure: @escaping (WXMessage) -> Void) {
-        realmWX.add(message)
-        addConversation(by: message)
-    }
-    func addConversation(by message: WXMessage) {
+        realmWX.addx(message)
         var partnerID = message.friendID
         var type: Int = 0
         if message.partnerType == .group {
@@ -699,7 +707,7 @@ class WXMessageHelper: NSObject {
         let allUsers = WXSettingItem(String(format: "全部群成员(%ld)", groupInfo.count))
         let group1: WXSettingGroup = WXSettingGroup(nil, nil, ([users, allUsers]))
         let groupName = WXSettingItem("群聊名称")
-        groupName.subTitle = groupInfo.groupName
+        groupName.subTitle = groupInfo.username
         let groupQR = WXSettingItem("群二维码")
         groupQR.rightImagePath = Image.logo.rawValue
         let groupPost = WXSettingItem("群公告")

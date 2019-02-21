@@ -34,7 +34,7 @@ class WXGroupSearchViewController: BaseTableViewController, UISearchResultsUpdat
         let searchText = searchController.searchBar.text?.lowercased() ?? ""
         data.removeAll()
         for group: WXGroup in groupData {
-            if group.groupName.contains(searchText) || group.pinyin.contains(searchText) || group.pinyinInitial.contains(searchText){
+            if group.username.contains(searchText) || group.pinyin.contains(searchText) || group.pinyinInitial.contains(searchText){
                 data.append(group)
             }
         }
@@ -45,9 +45,9 @@ class WXGroupSearchViewController: BaseTableViewController, UISearchResultsUpdat
 class WXGroupCell: BaseTableViewCell<WXGroup> {
     var group: WXGroup = WXGroup() {
         didSet {
-            let path = FileManager.pathUserAvatar(group.groupID)
+            let path = FileManager.pathUserAvatar(group.userID)
             avatarImageView.image = path.image
-            usernameLabel.text = group.groupName
+            usernameLabel.text = group.username
         }
     }
     private var avatarImageView = UIImageView()

@@ -12,9 +12,6 @@
 +(NSDictionary *)defaultPropertyValues{
     return @{@"code": @0};
 }
-//+ (NSDictionary<NSString *,RLMPropertyDescriptor *> *)linkingObjectsProperties{
-//        return @{@"parent":[RLMPropertyDescriptor descriptorWithClass:[CRRouteLine class] propertyName:@"CodeID"]};
-//}
 + (NSArray<NSString *> *)ignoredProperties {
     return @[@"isLike"];
 }
@@ -26,14 +23,11 @@
 @implementation WXUserSetting
 @end
 @implementation WXUser
-+ (NSString *)primaryKey{
-    return @"userID";
-}
 +(NSDictionary *)defaultPropertyValues{
     WXUserDetail *detail = [[WXUserDetail alloc]init];
     WXUserSetting *setting = [[WXUserSetting alloc]init];
     WXUserChatSetting *chatSet = [[WXUserChatSetting alloc]init];
-    return @{@"detailInfo": detail,@"userSetting":setting,@"chatSetting":chatSet,@"avatarPath":@"",@"nikeName":@""};
+    return @{@"detailInfo": detail,@"userSetting":setting,@"chatSetting":chatSet,@"avatarPath":@"",@"nikeName":@"",@"isUser": @1};
 }
 @end
 @implementation WXUserGroup
@@ -42,24 +36,54 @@
 }
 @end
 @implementation WXGroup
-+ (NSString *)primaryKey{
-    return @"groupID";
-}
 +(NSDictionary *)defaultPropertyValues{
     return @{@"showNameInChat": @1};
+}
+- (WXUser*)groupMemberbyID:(NSString*)userID{
+    for (int i = 0; i < self.users.count; i++) {
+        WXUser *user = self.users[i];
+        if ([user.userID isEqualToString:userID]) {
+            return user;
+        }
+    }
+    return nil;
+}
+- (NSArray<WXUser*>*)groupMembers {
+    NSMutableArray *temp = [NSMutableArray array];
+    for (int i = 0; i < self.users.count; i++) {
+        [temp addObject:self.users[i]];
+    }
+    return temp;
+}
+- (WXUser*)user{
+    WXUser *user = [[WXUser alloc]init];
+    user.userID = self.userID;
+    user.username = self.username;
+    return user;
 }
 @end
 @implementation WechatContact
 @end
 @implementation WXMoment
++ (NSString *)primaryKey{
+    return @"momentID";
+}
+@end
+@implementation WXModel
+- (WXUser*)groupMemberbyID:(NSString*)userID{
+    return nil;
+}
+- (NSArray<WXUser*>*)groupMembers {
+    return @[];
+}
++ (NSString *)primaryKey{
+    return @"userID";
+}
 +(NSDictionary *)defaultPropertyValues{
-    return @{@"height": @76};
+    return @{@"userID": @"0"};
 }
 @end
 @implementation WXMomentComment
-+(NSDictionary *)defaultPropertyValues{
-    return @{@"height": @35};
-}
 @end
 @implementation WXMomentDetail
 @end

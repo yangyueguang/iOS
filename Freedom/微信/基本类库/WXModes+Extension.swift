@@ -5,50 +5,6 @@ import Realm
 import RealmSwift
 import Foundation
 import XExtension
-
-extension WXMomentDetail {
-    func initValue() {
-        height = 0.0
-        heightText = 0
-        if text.count > 0 {
-            let textHeight: CGFloat = text.boundingRect(with: CGSize(width: APPW - 70.0, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.normal], context: nil).size.height
-            //: 浮点数会导致部分cell顶部多出来一条线，莫名其妙！！！
-            heightText = textHeight + 1.0
-        }
-        height += heightText
-        heightImages = 0.0
-        if images.count > 0 {
-            if text.count > 0 {
-                heightImages += 7.0
-            } else {
-                heightImages += 3.0
-            }
-            let space: CGFloat = 4.0
-            if images.count == 1 {
-                heightImages += APPW - 70.0 * 0.6 * 0.8
-            } else {
-                let row: Int = Int((images.count / 3) + (images.count % 3 == 0 ? 0 : 1))
-                heightImages += APPW - 70.0 * 0.31 * CGFloat(row) + space * CGFloat((row - 1))
-            }
-        }
-        height += heightImages
-    }
-}
-
-
-protocol WXChatUserProtocol: NSObjectProtocol {
-    var chat_userID: String { get }
-    var chat_username: String { get }
-    var chat_avatarURL: String { get }
-    var chat_avatarPath: String { get }
-    var chat_userType: Int { get }
-    func groupMember(byID userID: String) -> WXUser?
-    func groupMembers() -> [WXUser]
-}
-enum TLChatUserType: Int {
-    case user
-    case group
-}
 enum TLInfoType: Int {
     case defaultType
     case titleOnly
@@ -107,81 +63,6 @@ class WXSettingGroup : NSObject {
         self.items = items
     }
 }
-extension WXInfo {
-    var titleColor: UIColor { return UIColor.black}
-    var buttonColor: UIColor { return UIColor.green}
-    var buttonHLColor: UIColor { return UIColor.green}
-    var buttonBorderColor: UIColor { return UIColor.gray}
-    class func createInfo(_ title: String?,_ subTitle: String?) -> WXInfo {
-        let info = WXInfo()
-        info.title = title ?? ""
-        info.subTitle = subTitle ?? ""
-        return info
-    }
-}
-
-extension WXUser: WXChatUserProtocol, RealmCollectionValue {
-    private func initValue(){
-        detailInfo = WXUserDetail()
-        userSetting = WXUserSetting()
-        chatSetting = WXUserChatSetting()
-    }
-    //FIXME: delegate
-    var chat_userID: String {
-        return userID
-    }
-    var chat_username: String {
-          return showName
-    }
-    var chat_avatarURL: String {
-        return avatarURL
-    }
-    var chat_avatarPath: String {
-        return avatarPath
-    }
-    var chat_userType: Int {
-        return TLChatUserType.user.rawValue
-    }
-    func groupMember(byID userID: String) -> WXUser? {
-        return nil
-    }
-    func groupMembers() -> [WXUser] {
-        return []
-    }
-}
-extension WXGroup: WXChatUserProtocol, RealmCollectionValue {
-    //FIXME: delegate
-    var chat_userID: String {
-        return groupID
-    }
-    var chat_username: String {
-        return groupName
-    }
-    var chat_avatarURL: String {
-        return ""
-    }
-    var chat_avatarPath: String {
-        return groupID
-    }
-    var chat_userType: Int {
-        return TLChatUserType.group.rawValue
-    }
-    func groupMember(byID userID: String) -> WXUser? {
-        for user in (users.array() as! [WXUser]) where user.userID == userID {
-            return user
-        }
-        return nil
-    }
-    func groupMembers() -> [WXUser] {
-        return users.array() as! [WXUser]
-    }
-    var user: WXUser {
-        let us = WXUser()
-        us.userID = groupID
-        us.username = groupName
-        return us
-    }
-}
 
 //FIXME: 本类🎄
 struct WXAddMenuItem {
@@ -200,9 +81,6 @@ enum TLEmojiGroupStatus : Int {
     case unDownload
     case downloaded
     case downloading
-}
-protocol WXPictureCarouselProtocol: NSObjectProtocol {
-    func pictureURL() -> String
 }
 @objcMembers
 class TLEmoji: RLMObject, RealmCollectionValue {
@@ -224,7 +102,7 @@ class TLEmoji: RLMObject, RealmCollectionValue {
     }
 }
 @objcMembers
-class TLEmojiGroup: RLMObject, WXPictureCarouselProtocol {
+class TLEmojiGroup: RLMObject {
     var groupID = ""
     var groupName = ""
     var path: String {
@@ -307,11 +185,6 @@ enum TLMessageReadState : Int {
     case unRead // 消息未读
     case readed // 消息已读
 }
-protocol WXMessageProtocol: NSObjectProtocol {
-    func messageCopy() -> String
-    func conversationContent() -> String
-}
-
 @objcMembers
 class WXConversation: RLMObject {
     var remindType = TLMessageRemindType.normal//消息提醒类型
@@ -346,8 +219,8 @@ class WXConversation: RLMObject {
         avatarURL = user.avatarURL
     }
     func updateGroupInfo(_ group: WXGroup) {
-        partnerName = group.groupName
-        avatarPath = group.groupID
+        partnerName = group.username
+        avatarPath = group.userID
     }
 }
 @objcMembers
@@ -382,9 +255,8 @@ class WXMessageContent: RLMObject {
     }
 }
 @objcMembers
-class WXMessage: RLMObject, WXMessageProtocol {
-    var kMessageFrame: WXMessageFrame!
-    var fromUser: WXChatUserProtocol?
+class WXMessage: RLMObject {
+    var fromUser: WXModel?
     var messageFrame: WXMessageFrame!
     var messageID = ""
     var userID = ""
@@ -417,7 +289,6 @@ class WXMessage: RLMObject, WXMessageProtocol {
     }
     override init() {
         super.init()
-        kMessageFrame = WXMessageFrame()
         messageFrame = WXMessageFrame()
         content = WXMessageContent()
         messageID = String(format: "%lld", Int64(Date().timeIntervalSince1970 * 10000))
@@ -434,13 +305,13 @@ class WXTextMessage: WXMessage {
     var attrText: NSAttributedString {return NSAttributedString(string: content.text)}
     override init() {
         super.init()
-        kMessageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
+        messageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
         if messageType == .text {
-            kMessageFrame.height += 20
+            messageFrame.height += 20
             textLabel.attributedText = attrText
-            kMessageFrame.contentSize = textLabel.sizeThatFits(CGSize(width: APPW * 0.58, height: CGFloat(MAXFLOAT)))
+            messageFrame.contentSize = textLabel.sizeThatFits(CGSize(width: APPW * 0.58, height: CGFloat(MAXFLOAT)))
         }
-        kMessageFrame.height += kMessageFrame.contentSize.height
+        messageFrame.height += messageFrame.contentSize.height
 
         var size = CGFloat(UserDefaults.standard.double(forKey: "CHAT_FONT_SIZE"))
         if size == 0 {
@@ -471,20 +342,20 @@ class WXImageMessage: WXMessage {
     }
     override init() {
         super.init()
-        kMessageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
+        messageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
         let imageSize: CGSize = self.imageSize
         if imageSize.equalTo(CGSize.zero) {
-            kMessageFrame.contentSize = CGSize(width: 100, height: 100)
+            messageFrame.contentSize = CGSize(width: 100, height: 100)
         } else if imageSize.width > imageSize.height {
             var height: CGFloat = APPW * 0.45 * imageSize.height / imageSize.width
             height = height < APPW * 0.25 ? APPW * 0.25 : height
-            kMessageFrame.contentSize = CGSize(width: APPW * 0.45, height: height)
+            messageFrame.contentSize = CGSize(width: APPW * 0.45, height: height)
         } else {
             var width: CGFloat = APPW * 0.45 * imageSize.width / imageSize.height
             width = width < APPW * 0.25 ? APPW * 0.25 : width
-            kMessageFrame.contentSize = CGSize(width: width, height: APPW * 0.45)
+            messageFrame.contentSize = CGSize(width: width, height: APPW * 0.45)
         }
-        kMessageFrame.height += kMessageFrame.contentSize.height
+        messageFrame.height += messageFrame.contentSize.height
 
     }
     override func conversationContent() -> String {
@@ -531,21 +402,21 @@ class WXExpressionMessage: WXMessage {
         emoji = TLEmoji()
         emoji.groupID = content.groupID
         emoji.emojiID = content.emojiID
-        kMessageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
-        kMessageFrame.height += 5
+        messageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
+        messageFrame.height += 5
         let emojiSize: CGSize = CGSize.zero
         if emojiSize.equalTo(CGSize.zero) {
-            kMessageFrame.contentSize = CGSize(width: 80, height: 80)
+            messageFrame.contentSize = CGSize(width: 80, height: 80)
         } else if emojiSize.width > emojiSize.height {
             var height: CGFloat = APPW * 0.35 * emojiSize.height / emojiSize.width
             height = height < APPW * 0.2 ? APPW * 0.2 : height
-            kMessageFrame.contentSize = CGSize(width: APPW * 0.35, height: height)
+            messageFrame.contentSize = CGSize(width: APPW * 0.35, height: height)
         } else {
             var width: CGFloat = APPW * 0.35 * emojiSize.width / emojiSize.height
             width = width < APPW * 0.2 ? APPW * 0.2 : width
-            kMessageFrame.contentSize = CGSize(width: width, height: APPW * 0.35)
+            messageFrame.contentSize = CGSize(width: width, height: APPW * 0.35)
         }
-        kMessageFrame.height += kMessageFrame.contentSize.height
+        messageFrame.height += messageFrame.contentSize.height
     }
     override func conversationContent() -> String {
         return "[表情]"

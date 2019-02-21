@@ -139,7 +139,7 @@ class WXNewFriendViewController: BaseTableViewController, UISearchBarDelegate, W
         tableView.register(WXAddThirdPartFriendCell.self, forCellReuseIdentifier: WXAddThirdPartFriendCell.identifier)
     }
     @objc func rightBarButtonDown(_ sender: UIBarButtonItem) {
-        let addFriendVC = WXAddFriendViewController()
+        let addFriendVC = WXAddFriendViewController.storyVC(.wechat)
         navigationController?.pushViewController(addFriendVC, animated: true)
     }
     override func numberOfSections(in tableView: UITableView) -> Int {

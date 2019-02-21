@@ -27,7 +27,8 @@ class WXFriendHeaderView: UITableViewHeaderFooterView {
     let titleLabel: UILabel = UILabel()
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor.light
+        backgroundView = UIView()
+        backgroundView?.backgroundColor = UIColor.light
         titleLabel.font = UIFont.middle
         titleLabel.textColor = UIColor.grayx
         addSubview(titleLabel)
@@ -77,7 +78,7 @@ final class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegat
         tableView.tableHeaderView = searchController.searchBar
     }
     @IBAction func rightBarButtonDown(_ sender: UIBarButtonItem) {
-        let addFriendVC = WXAddFriendViewController()
+        let addFriendVC = WXAddFriendViewController.storyVC(.wechat)
         navigationController?.pushViewController(addFriendVC, animated: true)
     }
 

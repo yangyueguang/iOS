@@ -1062,6 +1062,8 @@
 		DF4C6FC821CC787700A54339 /* FoundationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C6FC721CC787700A54339 /* FoundationEnum.swift */; };
 		DF4C6FCA21CC790D00A54339 /* FoundationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */; };
 		DF4EC237221D311600AC8583 /* WechatFriendDetailSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4EC236221D311600AC8583 /* WechatFriendDetailSettingViewController.swift */; };
+		DF602768221E84A20057EC3F /* WXMomentImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF602767221E84A20057EC3F /* WXMomentImageView.swift */; };
+		DF60276A221E84A90057EC3F /* WXMomentImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF602769221E84A90057EC3F /* WXMomentImageView.xib */; };
 		DF6B51EE21CA6F5900460949 /* WXModes+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51ED21CA6F5900460949 /* WXModes+Extension.swift */; };
 		DF6B51F421CA6F8900460949 /* WXUserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51F321CA6F8900460949 /* WXUserHelper.swift */; };
 		DF6B51FC21CA801E00460949 /* WXPictureCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6B51FB21CA801E00460949 /* WXPictureCarouselView.swift */; };
@@ -2356,6 +2358,8 @@
 		DF4C6FC721CC787700A54339 /* FoundationEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationEnum.swift; sourceTree = "<group>"; };
 		DF4C6FC921CC790D00A54339 /* FoundationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationAPI.swift; sourceTree = "<group>"; };
 		DF4EC236221D311600AC8583 /* WechatFriendDetailSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechatFriendDetailSettingViewController.swift; sourceTree = "<group>"; };
+		DF602767221E84A20057EC3F /* WXMomentImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXMomentImageView.swift; sourceTree = "<group>"; };
+		DF602769221E84A90057EC3F /* WXMomentImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WXMomentImageView.xib; sourceTree = "<group>"; };
 		DF6B51ED21CA6F5900460949 /* WXModes+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WXModes+Extension.swift"; sourceTree = "<group>"; };
 		DF6B51F321CA6F8900460949 /* WXUserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXUserHelper.swift; sourceTree = "<group>"; };
 		DF6B51FB21CA801E00460949 /* WXPictureCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXPictureCarouselView.swift; sourceTree = "<group>"; };
@@ -3334,6 +3338,8 @@
 				DF6B51FF21CA802C00460949 /* WXSearchController.swift */,
 				DF6B520521CA804200460949 /* WXWebViewController.swift */,
 				DF6B520721CA804B00460949 /* WXSettingViewController.swift */,
+				DF602767221E84A20057EC3F /* WXMomentImageView.swift */,
+				DF602769221E84A90057EC3F /* WXMomentImageView.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -5332,6 +5338,7 @@
 				772E86071D76BC15004EDF50 /* ktv_lbs_invite.png in Resources */,
 				779938E41E2F7B6500866968 /* d_tuzi.png in Resources */,
 				BFC6D94B20E4E74100F17378 /* defaltEmoji.plist in Resources */,
+				DF60276A221E84A90057EC3F /* WXMomentImageView.xib in Resources */,
 				779938CD1E2F7B6500866968 /* d_keai.png in Resources */,
 				7799396B1E2F7B6600866968 /* lxh_zhuanfa.png in Resources */,
 				779938C21E2F7B6500866968 /* d_feizao.png in Resources */,
@@ -6174,6 +6181,7 @@
 				DF29539E21D7A77F00E1C188 /* AXWebViewControllerActivity.m in Sources */,
 				DF6B524821CB772B00460949 /* WXMyQRCodeViewController.swift in Sources */,
 				713EE2E420AD9C2F0085B65D /* AlipayServiceTableViewController.swift in Sources */,
+				DF602768221E84A20057EC3F /* WXMomentImageView.swift in Sources */,
 				BF58BB2720EF1945002CB4EE /* RCDContactViewController.m in Sources */,
 				713EE2FE20AD9FF30085B65D /* IqiyiTabBarController.swift in Sources */,
 				BF58BB4420EF1945002CB4EE /* RCDRoomSettingViewController.m in Sources */,

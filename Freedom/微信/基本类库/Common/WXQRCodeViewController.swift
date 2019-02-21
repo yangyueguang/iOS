@@ -2,6 +2,7 @@
 //  WXQRCodeViewController.swift
 //  Freedom
 import Foundation
+import RxSwift
 import CoreGraphics
 class WXQRCodeViewController: WXBaseViewController {
     @IBOutlet weak var iconImageView: UIImageView!
@@ -9,16 +10,8 @@ class WXQRCodeViewController: WXBaseViewController {
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var codeView: UIImageView!
     @IBOutlet weak var introduceLabel: UILabel!
-    var user: WXUser? {
-        didSet {
-            iconImageView.kf.setImage(with: URL(string: user?.avatarURL ?? ""))
-            titleLabel.text = user?.showName
-            subTitleLabel.text = user?.detailInfo.location
-            createQRCodeImage(for: user?.userID ?? "", ans: { ansImage in
-            })
-        }
-    }
-  
+    var user: WXUser?
+    let userVM = PublishSubject<WXUser>()
     func createQRCodeImage(for str: String, ans: @escaping (UIImage) -> Void) {
         DispatchQueue.global(qos: .default).async(execute: {
             let stringData = str.data(using: .utf8)
@@ -48,6 +41,14 @@ class WXQRCodeViewController: WXBaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        userVM.subscribe(onNext: {[weak self] (user) in
+            guard let `self` = self else { return }
+            self.iconImageView.kf.setImage(with: user.avatarURL.url)
+            self.titleLabel.text = user.showName
+            self.subTitleLabel.text = user.detailInfo.location
+            self.createQRCodeImage(for: user.userID, ans: { ansImage in
+            })
+        }).disposed(by: disposeBag)
     }
     func captureScreenshot(from view: UIView, rect: CGRect, finished: @escaping (_ avatarPath: String) -> Void) {
         DispatchQueue.global(qos: .default).async {

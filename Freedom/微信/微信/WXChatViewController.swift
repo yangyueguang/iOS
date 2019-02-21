@@ -163,7 +163,7 @@ class WXImageExpressionDisplayView: UIView {
                 imageView.image = UIImage.sd_animatedGIF(with: dda)
             } else {
                 let urlString = "http://123.57.155.230:8080/ibiaoqing/admin/expre/download.dopId=\(emoji.emojiID)"
-                imageView.sd_setImage(with: URL(string: emoji.emojiURL), completed: { image, error, cacheType, imageURL in
+                imageView.sd_setImage(with: emoji.emojiURL.url, completed: { image, error, cacheType, imageURL in
                     if urlString.contains(self.curID) {
                         DispatchQueue.global(qos: .default).async(execute: {
                             var data = try Data(contentsOf: URL(string: urlString)!)
@@ -554,14 +554,14 @@ class WXChatViewController: WXBaseViewController {
     var imageExpressionDisplayView = WXImageExpressionDisplayView()
     private var lastDateInterval: TimeInterval = 0
     private var msgAccumulate: Int  = 0
-    var user: WXChatUserProtocol?
+    var user: WXModel?
     static let shared = WXChatViewController()
     private var emojiKBHelper = WXUserHelper.shared
-    var partner: WXChatUserProtocol? {
+    var partner: WXModel? {
         didSet {
-            navigationItem.title = self.partner?.chat_username
+            navigationItem.title = self.partner?.username
             resetChatVC()
-            if partner?.chat_userType == TLChatUserType.user.rawValue {
+            if partner?.isUser ?? false {
                 rightBarButton.image = WXImage.default.image
             } else {
                 rightBarButton.image = WXImage.default.image
@@ -597,7 +597,7 @@ class WXChatViewController: WXBaseViewController {
             make.height.equalTo(50)
         }
         navigationItem.rightBarButtonItem = rightBarButton
-        user = WXUserHelper.shared.user as WXChatUserProtocol
+        user = WXUserHelper.shared.user
         emojiKBHelper.emojiGroupDataComplete({ emojiGroups in
             self.moreKeyboard.chatMoreKeyboardData = WXMoreKBHelper().chatMoreKeyboardData
         })
@@ -615,7 +615,7 @@ class WXChatViewController: WXBaseViewController {
     }
 
     func resetChatVC() {
-        var chatViewBGImage = UserDefaults.standard.object(forKey: "CHAT_BG_" + (partner?.chat_userID ?? "")) as? String
+        var chatViewBGImage = UserDefaults.standard.object(forKey: "CHAT_BG_" + (partner?.userID ?? "")) as? String
         if chatViewBGImage == nil {
             chatViewBGImage = UserDefaults.standard.object(forKey: "CHAT_BG_ALL") as? String
             if chatViewBGImage?.isEmpty ?? true {
@@ -654,7 +654,7 @@ class WXChatViewController: WXBaseViewController {
         message.content["path"] = imageName
         message.imageSize = image.size
         send(message)
-        if partner?.chat_userType == TLChatUserType.user.rawValue {
+        if partner?.isUser ?? true {
             let message1 = WXImageMessage()
             message1.fromUser = partner
             message1.messageType = .image
@@ -663,9 +663,9 @@ class WXChatViewController: WXBaseViewController {
             message1.imageSize = image.size
             send(message1)
         } else {
-            for user: WXChatUserProtocol in partner?.groupMembers() ?? [] {
+            for user: WXModel in partner?.groupMembers() ?? [] {
                 let message1 = WXImageMessage()
-                message1.friendID = user.chat_userID
+                message1.friendID = user.userID
                 message1.fromUser = user
                 message1.messageType = .image
                 message1.ownerTyper = .friend
@@ -687,7 +687,7 @@ extension WXChatViewController: WXChatBarDataDelegate {
         message.ownerTyper = .own
         message.content["text"] = text
         send(message)
-        if partner?.chat_userType == TLChatUserType.user.rawValue {
+        if partner?.isUser ?? false {
             let message1 = WXTextMessage()
             message1.fromUser = partner
             message1.messageType = .text
@@ -695,9 +695,9 @@ extension WXChatViewController: WXChatBarDataDelegate {
             message1.content["text"] = text
             send(message1)
         } else {
-            for user: WXChatUserProtocol in partner?.groupMembers() ?? []{
+            for user: WXModel in partner?.groupMembers() ?? []{
                 let message1 = WXTextMessage()
-                message1.friendID = user.chat_userID
+                message1.friendID = user.userID
                 message1.fromUser = user
                 message1.messageType = .text
                 message1.ownerTyper = .friend
@@ -722,7 +722,7 @@ extension WXChatViewController: WXChatBarDataDelegate {
 extension WXChatViewController : WXChatTableViewControllerDelegate {
     // chatView 获取历史记录
     func chatTableViewController(_ chatTVC: WXChatTableViewController, getRecordsFrom date: Date, count: Int, completed: @escaping (Date, [WXMessage], Bool) -> Void) {
-        WXMessageHelper.shared.messageRecord(forPartner: partner?.chat_userID ?? "", from: date, count: count, complete: { array, hasMore in
+        WXMessageHelper.shared.messageRecord(forPartner: partner?.userID ?? "", from: date, count: count, complete: { array, hasMore in
             if (array.count) > 0 {
                 var count: Int = 0
                 var tm: TimeInterval = 0
@@ -736,10 +736,10 @@ extension WXChatViewController : WXChatTableViewControllerDelegate {
                     if message.ownerTyper == .own {
                         message.fromUser = self.user
                     } else {
-                        if self.partner?.chat_userType == TLChatUserType.user.rawValue {
+                        if self.partner?.isUser ?? false {
                             message.fromUser = self.partner
-                        } else if self.partner?.chat_userType == TLChatUserType.group.rawValue {
-                            message.fromUser = self.partner?.groupMember(byID: message.friendID)
+                        } else {
+                            message.fromUser = self.partner?.groupMemberbyID(message.friendID)
                         }
                     }
                 }
@@ -768,7 +768,7 @@ extension WXChatViewController : WXChatTableViewControllerDelegate {
     }
     func chatTableViewController(_ chatTVC: WXChatTableViewController, didClick message: WXMessage) {
         if message.messageType == .image {
-            WXMessageHelper.shared.chatImagesAndVideos(forPartnerID: partner?.chat_userID ?? "", completed: { imagesData in
+            WXMessageHelper.shared.chatImagesAndVideos(forPartnerID: partner?.userID ?? "", completed: { imagesData in
                 var index: Int = -1
                 for i in 0..<imagesData.count {
                     if (message.messageID == imagesData[i].messageID) {
@@ -796,12 +796,12 @@ extension WXChatViewController: XEmojiKeyboardDelegate {
     func send(_ message: WXMessage) {
         message.userID = WXUserHelper.shared.user.userID
         message.groupID = message.userID
-        if partner?.chat_userType == TLChatUserType.user.rawValue {
+        if partner?.isUser ?? false {
             message.partnerType = .user
-            message.friendID = partner?.chat_userID ?? ""
-        } else if partner?.chat_userType == TLChatUserType.group.rawValue {
+            message.friendID = partner?.userID ?? ""
+        }else{
             message.partnerType = .group
-            message.groupID = partner?.chat_userID ?? ""
+            message.userID = partner?.userID ?? ""
         }
         message.ownerTyper = .own;
         message.fromUser = WXUserHelper.shared.user
@@ -824,7 +824,7 @@ extension WXChatViewController: XEmojiKeyboardDelegate {
             message.ownerTyper = .own
             message.emoji = emoji
             send(message)
-            if partner?.chat_userType == TLChatUserType.user.rawValue {
+            if partner?.isUser ?? false {
                 let message1 = WXExpressionMessage()
                 message1.fromUser = partner
                 message1.messageType = .expression
@@ -832,9 +832,9 @@ extension WXChatViewController: XEmojiKeyboardDelegate {
                 message1.emoji = emoji
                 send(message1)
             } else {
-                for user: WXChatUserProtocol in partner?.groupMembers() ?? []{
+                for user: WXModel in partner?.groupMembers() ?? []{
                     let message1 = WXExpressionMessage()
-                    message1.friendID = user.chat_userID
+                    message1.friendID = user.userID
                     message1.fromUser = user
                     message1.messageType = .expression
                     message1.ownerTyper = .friend
@@ -1013,7 +1013,7 @@ extension WXChatViewController: WXChatViewControllerProxy {
 extension WXChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @objc func rightBarButtonDown(_ sender: UINavigationBar) {
-        if partner?.chat_userType == TLChatUserType.user.rawValue {
+        if partner?.isUser ?? false {
             let chatDetailVC = WXChatDetailViewController()
             chatDetailVC.user = partner as! WXUser
             navigationController?.pushViewController(chatDetailVC, animated: true)

@@ -50,6 +50,7 @@ let MOB_SMS_SECRET = "b4882225b9baee69761071c8cfa848f3"
 let GoogleAppKey = "AIzaSyCegO8LjPujwaTtxijzowN3kCUQTop8tRA"
 // 融云
 let RONGCLOUD_IM_APPKEY = "n19jmcy59f1q9"
+let defaultImageURL = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550771613747&di=0ff113da8eb2c2053bc5cd9083e1eeff&imgtype=0&src=http%3A%2F%2Fimg.besoo.com%2Ffile%2F201706%2F06%2F1920004445908.jpg"
 //@"k51hidwqked9b" //自由主义
 //@"n19jmcy59f1q9" //online key
 //@"c9kqb3rdkbb8j" //pre key

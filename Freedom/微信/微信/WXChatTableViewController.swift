@@ -13,7 +13,7 @@ enum TLChatMenuItemType: Int {
 }
 
 protocol WXMessageCellDelegate: NSObjectProtocol {
-    func messageCellDidClickAvatar(forUser user: WXChatUserProtocol)
+    func messageCellDidClickAvatar(forUser user: WXModel)
     func messageCellTap(_ message: WXMessage)
     func messageCellLongPress(_ message: WXMessage, rect: CGRect)
     func messageCellDoubleClick(_ message: WXMessage)
@@ -65,12 +65,12 @@ class WXMessageBaseCell: BaseTableViewCell<WXMessage> {
     var message: WXMessage = WXMessage() {
         didSet {
             timeLabel.text = "  \(message.date.timeToNow)  "
-            usernameLabel.text = message.fromUser?.chat_username
-            if message.fromUser?.chat_avatarPath.count ?? 0 > 0 {
-                let path = FileManager.pathUserAvatar(message.fromUser?.chat_avatarPath ?? "")
+            usernameLabel.text = message.fromUser?.username
+            if message.fromUser?.avatarPath.count ?? 0 > 0 {
+                let path = FileManager.pathUserAvatar(message.fromUser?.avatarPath ?? "")
                 avatarButton.setImage(path.image, for: .normal)
             } else {
-                avatarButton.sd_setImage(with: URL(string: message.fromUser?.chat_avatarURL ?? ""), for: UIControl.State.normal)
+                avatarButton.sd_setImage(with: URL(string: message.fromUser?.avatarPath ?? ""), for: UIControl.State.normal)
             }
             if self.message.showTime != message.showTime {
                 timeLabel.snp.updateConstraints { (make) in
@@ -109,7 +109,7 @@ class WXMessageBaseCell: BaseTableViewCell<WXMessage> {
             }
             usernameLabel.isHidden = !message.showName
             usernameLabel.snp.updateConstraints { (make) in
-                make.height.equalTo(message.showName ? 14 : 0)
+//                make.height.equalTo(message.showName ? 14 : 0)
             }
         }
     }
@@ -630,6 +630,6 @@ class WXChatTableViewController: BaseTableViewController, WXMessageCellDelegate 
             noticeError("从数据库中删除消息失败。")
         }
     }
-    func messageCellDidClickAvatar(forUser user: WXChatUserProtocol) {
+    func messageCellDidClickAvatar(forUser user: WXModel) {
     }
 }

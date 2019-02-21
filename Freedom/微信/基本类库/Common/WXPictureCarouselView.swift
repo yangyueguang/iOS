@@ -4,10 +4,10 @@
 import SnapKit
 import Foundation
 protocol WXPictureCarouselDelegate: NSObjectProtocol {
-    func pictureCarouselView(_ pictureCarouselView: WXPictureCarouselView, didSelectItem model: WXPictureCarouselProtocol)
+    func pictureCarouselView(_ pictureCarouselView: WXPictureCarouselView, didSelectItem model: TLEmojiGroup)
 }
 class WXPictureCarouselViewCell: UICollectionViewCell {
-    var model: WXPictureCarouselProtocol? {
+    var model: TLEmojiGroup? {
         didSet {
             if let url = URL(string: model?.pictureURL() ?? "") {
                 imageView.sd_setImage(with: url)
@@ -44,7 +44,7 @@ class WXPictureCarouselView:UIView, UICollectionViewDelegate, UICollectionViewDa
         collectionView.dataSource = self
         return collectionView
     }()
-    var data: [WXPictureCarouselProtocol] = [] {
+    var data: [TLEmojiGroup] = [] {
         didSet {
             collectionView.reloadData()
             DispatchQueue.main.async(execute: {
@@ -81,14 +81,14 @@ class WXPictureCarouselView:UIView, UICollectionViewDelegate, UICollectionViewDa
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let row: Int = indexPath.row == 0 ? data.count - 1 : (indexPath.row == data.count + 1 ? 0 : indexPath.row - 1)
-        let model: WXPictureCarouselProtocol = data[row]
+        let model: TLEmojiGroup = data[row]
         let cell = collectionView.dequeueCell(WXPictureCarouselViewCell.self, for: indexPath)
         cell.model = model
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let row: Int = indexPath.row == 0 ? data.count - 1 : (indexPath.row == data.count - 1 ? 0 : indexPath.row - 1)
-        let model: WXPictureCarouselProtocol = data[row]
+        let model: TLEmojiGroup = data[row]
         delegate?.pictureCarouselView(self, didSelectItem: model)
     }
 

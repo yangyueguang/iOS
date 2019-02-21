@@ -16,9 +16,9 @@ enum Image: String {
     case launch = "launchImage"
     case left = "u_cell_left"
     case add = "nav_add"
-    case setting = "nav_setting"
-    case shopping = "nav_shopping_menu"
-    case camera = "nav_camera"
+    case setting = "u_white_setting"
+    case shopping = "CreditCard_ShoppingBag"
+    case camera = "u_camora"
     case scanNet = "scan_net"
     case search = "search"
     case navi = "wnavi"
@@ -58,23 +58,21 @@ enum WXImage: String {
     case keyboardHL = "u_message_keyboardHL"
     case face = "u_message_face"
     case faceHL = "u_message_faceHL"
-    case barVoice = "searchBar_voice"
-    case barVoiceHL = "searchBar_voice_HL"
-    case emojiKB_tips = "emojiKB_tips"
-    case tipLeft = "emojiKB_bigTips_left"
-    case tipMiddle = "emojiKB_bigTips_middle"
-    case tipRight = "emojiKB_bigTips_right"
+    case barVoice = "u_voice"
+    case emojiKB_tips = "EmoticonTips"
+    case tipLeft = "EmoticonBigTipsLeft"
+    case tipMiddle = "EmoticonBigTipsMiddle"
+    case tipRight = "EmoticonBigTipsRight"
     case senderHL = "message_sender_bgHL"
     case sender = "message_sender_bg"
     case receiver = "message_receiver_bg"
     case receiverHL = "message_receiver_bgHL"
-    case chatDetailAdd = "chatdetail_add_member"
-    case chatDetailAddHL = "chatdetail_add_memberHL"
+    case chatDetailAdd = "RemoveGroupMemberBtnHL"
     case logoTop = "shake_logo_top"
     case logoBottom = "shake_logo_bottom"
-    case logoCenter = "shake_logo_center"
-    case shakeTop = "shake_line_top"
-    case shakeBottom = "shake_line_bottom"
+    case logoCenter = "ShakeHideImg_women"
+    case shakeTop = "Shake_Line_Up"
+    case shakeBottom = "Shake_Line_Down"
     case shakePeople = "shake_button_people"
     case shakePeopleHL = "shake_button_peopleHL"
     case shakeMusic = "shake_button_music"
@@ -98,8 +96,12 @@ enum WXImage: String {
     case corner = "icon_corner_new"
 
     var image: UIImage {
-        let ima = UIImage(asset: rawValue)
-        assert(ima != nil, "图片资源丢失\(rawValue)")
+        var ima = UIImage(asset: rawValue)
+//        assert(ima != nil, "图片资源丢失\(rawValue)")
+        if ima == nil {
+            print("图片资源丢失\(rawValue)")
+            ima = Image.logo.image
+        }
         return ima!
     }
 }

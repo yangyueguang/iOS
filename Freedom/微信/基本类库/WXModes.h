@@ -19,17 +19,17 @@ RLM_ARRAY_TYPE(CRRouteLine)
 @property (nonatomic, strong) NSNumber<RLMInt> *groupId;
 @end
 RLM_ARRAY_TYPE(WXModes)
-typedef NS_ENUM(NSInteger, TLContactStatus) {
-    TLContactStatusStranger,
-    TLContactStatusFriend,
-    TLContactStatusWait,
+typedef NS_ENUM(NSInteger, XContactStatus) {
+    XContactStatusStranger,
+    XContactStatusFriend,
+    XContactStatusWait,
 };
 @interface WechatContact : RLMObject
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *avatarPath;
 @property (nonatomic, strong) NSString *avatarURL;
 @property (nonatomic, strong) NSString *tel;
-@property (nonatomic, assign) TLContactStatus status;
+@property (nonatomic, assign) XContactStatus status;
 @property (nonatomic, assign) int recordID;
 @property (nonatomic, assign) NSString *email;
 @end
@@ -65,12 +65,19 @@ RLM_ARRAY_TYPE(WXUserDetail)
 @property (nonatomic, strong) NSString *chatBGPath;
 @end
 RLM_ARRAY_TYPE(WXUserChatSetting)
-@interface WXUser : RLMObject
+@class WXUser;
+@interface WXModel: RLMObject
 @property (nonatomic, strong) NSString *userID;/// 用户名
 @property (nonatomic, strong) NSString *username;/// 昵称
 @property (nonatomic, strong) NSString *nikeName;/// 头像URL
 @property (nonatomic, strong) NSString *avatarURL;/// 头像Path
-@property (nonatomic, strong) NSString *avatarPath;/// 备注名
+@property (nonatomic, strong) NSString *avatarPath;
+@property (nonatomic, assign) BOOL isUser;
+- (WXUser*)groupMemberbyID:(NSString*)userID;
+- (NSArray<WXUser*>*)groupMembers;
+@end
+RLM_ARRAY_TYPE(WXModel)
+@interface WXUser : WXModel/// 备注名
 @property (nonatomic, strong) NSString *remarkName;
 @property (nonatomic, strong) NSString *showName;
 @property (nonatomic, strong) WXUserDetail *detailInfo;
@@ -78,9 +85,7 @@ RLM_ARRAY_TYPE(WXUserChatSetting)
 @property (nonatomic, strong) WXUserChatSetting *chatSetting;
 @end
 RLM_ARRAY_TYPE(WXUser)
-@interface WXGroup : RLMObject
-@property (nonatomic, strong) NSString *groupName;
-@property (nonatomic, strong) NSString *groupID;
+@interface WXGroup : WXModel
 @property (nonatomic, strong, nonnull) RLMArray<WXUser*><WXUser> *users;
 @property (nonatomic, strong) NSString *post;
 @property (nonatomic, strong) NSString *myNikeName;
@@ -88,6 +93,7 @@ RLM_ARRAY_TYPE(WXUser)
 @property (nonatomic, strong) NSString *pinyinInitial;
 @property (nonatomic, assign, readonly) NSInteger count;
 @property (nonatomic, assign) BOOL showNameInChat;
+- (WXUser*)user;
 @end
 RLM_ARRAY_TYPE(WXGroup)
 @interface WXUserGroup : RLMObject
@@ -98,24 +104,17 @@ RLM_ARRAY_TYPE(WXUserGroup)
 @interface WXMomentDetail : RLMObject
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong, nonnull) RLMArray<RLMString> *images;
-@property (nonatomic, assign) CGFloat height;
-@property (nonatomic, assign) CGFloat heightText;
-@property (nonatomic, assign) CGFloat heightImages;
 @end
 RLM_ARRAY_TYPE(WXMomentDetail)
 @interface WXMomentComment : RLMObject
 @property (nonatomic, strong) WXUser *user;
 @property (nonatomic, strong) WXUser *toUser;
 @property (nonatomic, strong) NSString *content;
-@property (nonatomic, assign) CGFloat height;
 @end
 RLM_ARRAY_TYPE(WXMomentComment)
 @interface WXMomentExtension : RLMObject
 @property (nonatomic, strong, nonnull) RLMArray<WXUser*><WXUser> *likedFriends;
 @property (nonatomic, strong, nonnull) RLMArray<WXMomentComment*><WXMomentComment> *comments;
-@property (nonatomic, assign) CGFloat height;
-@property (nonatomic, assign) CGFloat heightLiked;
-@property (nonatomic, assign) CGFloat heightComments;
 @end
 RLM_ARRAY_TYPE(WXMomentExtension)
 @interface WXMoment : RLMObject
@@ -124,9 +123,6 @@ RLM_ARRAY_TYPE(WXMomentExtension)
 @property (nonatomic, strong) NSDate *date;/// 详细内容
 @property (nonatomic, strong) WXMomentDetail *detail;/// 附加（评论，赞）
 @property (nonatomic, strong) WXMomentExtension *extension;
-@property (nonatomic, assign) CGFloat height;
-@property (nonatomic, assign) CGFloat heightDetail;
-@property (nonatomic, assign) CGFloat heightExtension;
 @end
 RLM_ARRAY_TYPE(WXMoment)
 @interface WXInfo : RLMObject

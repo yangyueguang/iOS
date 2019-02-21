@@ -1,5 +1,4 @@
 //
-//  JFLoginViewController.swift
 //  Freedom
 import UIKit
 import XExtension

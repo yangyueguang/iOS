@@ -1,5 +1,4 @@
 //
-//  JFVideoDetailViewController.swift
 //  Freedom
 import UIKit
 import XExtension
