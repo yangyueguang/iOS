@@ -224,41 +224,8 @@ class WXConversation: RLMObject {
     }
 }
 @objcMembers
-class WXMessageFrame: RLMObject {
-    var height: CGFloat = 0
-    var width: CGFloat = 0
-    var contentSize: CGSize {
-        set{
-            height = contentSize.height
-            width = contentSize.width
-        }
-        get{
-            return CGSize(width: width, height: height)
-        }
-    }
-
-    override static func ignoredProperties() -> [String] {
-        return ["contentSize"]
-    }
-}
-@objcMembers
-class WXMessageContent: RLMObject {
-    var w: CGFloat = 0
-    var h: CGFloat = 0
-    var text = ""
-    var url = ""
-    var path = ""
-    var groupID = ""
-    var emojiID = ""
-    override static func ignoredProperties() -> [String] {
-        return ["w","h","text","url","path","groupID","emojiID"]
-    }
-}
-@objcMembers
 class WXMessage: RLMObject {
-    var fromUser: WXModel?
-    var messageFrame: WXMessageFrame!
-    var messageID = ""
+    var WXMessageID = ""
     var userID = ""
     var friendID = "1"
     var groupID = ""
@@ -270,9 +237,19 @@ class WXMessage: RLMObject {
     var ownerTyper = TLMessageOwnerType.own
     var readState = TLMessageReadState.unRead
     var sendState = TLMessageSendState.success
-    var content: WXMessageContent!
+// messageContent
+    var w: CGFloat = 0
+    var h: CGFloat = 0
+    var text = ""
+    var url = ""
+    var path = ""
+    var emojiID = ""
+
+    var size: CGSize {
+        return CGSize(width: 100, height: 50)
+    }
     override static func primaryKey() -> String {
-        return "messageID"
+        return "WXMessageID"
     }
     override static func ignoredProperties() -> [String] {
         return ["content"]
@@ -289,9 +266,12 @@ class WXMessage: RLMObject {
     }
     override init() {
         super.init()
-        messageFrame = WXMessageFrame()
-        content = WXMessageContent()
-        messageID = String(format: "%lld", Int64(Date().timeIntervalSince1970 * 10000))
+        WXMessageID = String(format: "%lld", Int64(Date().timeIntervalSince1970 * 10000))
+    }
+    var fromUser: WXModel? {
+        let predicate = NSPredicate(format: "friendID = %@", self.friendID)
+        let results = WXMessage.objects(in: realmWX, with: predicate).firstObject()
+        return results as? WXModel
     }
     func conversationContent() -> String {
         return "子类未定义"
@@ -302,126 +282,124 @@ class WXMessage: RLMObject {
 }
 class WXTextMessage: WXMessage {
     let textLabel = UILabel()
-    var attrText: NSAttributedString {return NSAttributedString(string: content.text)}
+    var attrText: NSAttributedString {return NSAttributedString(string:text)}
+    override var size: CGSize {
+        var height: CGFloat = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
+        if messageType == .text {
+            height += 20
+            textLabel.attributedText = attrText
+            height += textLabel.sizeThatFits(CGSize(width: APPW * 0.58, height: CGFloat(MAXFLOAT))).height
+        }
+        return CGSize(width: 100, height: height)
+    }
     override init() {
         super.init()
-        messageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
-        if messageType == .text {
-            messageFrame.height += 20
-            textLabel.attributedText = attrText
-            messageFrame.contentSize = textLabel.sizeThatFits(CGSize(width: APPW * 0.58, height: CGFloat(MAXFLOAT)))
-        }
-        messageFrame.height += messageFrame.contentSize.height
-
-        var size = CGFloat(UserDefaults.standard.double(forKey: "CHAT_FONT_SIZE"))
-        if size == 0 {
-            size = 16.0
-        }
-        textLabel.font = UIFont.systemFont(ofSize: size)
-        textLabel.numberOfLines = 0
     }
     override func conversationContent() -> String {
-        return content.text
+        return text
     }
     override func messageCopy() -> String {
-        return content.text
+        return text
     }
 }
 
 class WXImageMessage: WXMessage {
+    override var size: CGSize {
+        var height: CGFloat = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
+        let imageSize: CGSize = self.imageSize
+        var width: CGFloat = APPW * 0.45 * imageSize.width / imageSize.height
+        if imageSize.equalTo(CGSize.zero) {
+            width += 100
+            height += 100
+        } else if imageSize.width > imageSize.height {
+            let temp: CGFloat = APPW * 0.45 * imageSize.height / imageSize.width
+            height = temp < APPW * 0.25 ? APPW * 0.25 : temp
+        } else {
+            width = width < APPW * 0.25 ? APPW * 0.25 : width
+        }
+        return CGSize(width: width, height: height)
+    }
+
     var imageSize: CGSize {
         set (newValue){
-            content.w = imageSize.width
-            content.h = imageSize.height
+            w = imageSize.width
+            h = imageSize.height
         }
         get {
-            let width = content.w
-            let height = content.h
+            let width = w
+            let height = h
             return CGSize(width: width, height: height)
         }
     }
     override init() {
         super.init()
-        messageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
-        let imageSize: CGSize = self.imageSize
-        if imageSize.equalTo(CGSize.zero) {
-            messageFrame.contentSize = CGSize(width: 100, height: 100)
-        } else if imageSize.width > imageSize.height {
-            var height: CGFloat = APPW * 0.45 * imageSize.height / imageSize.width
-            height = height < APPW * 0.25 ? APPW * 0.25 : height
-            messageFrame.contentSize = CGSize(width: APPW * 0.45, height: height)
-        } else {
-            var width: CGFloat = APPW * 0.45 * imageSize.width / imageSize.height
-            width = width < APPW * 0.25 ? APPW * 0.25 : width
-            messageFrame.contentSize = CGSize(width: width, height: APPW * 0.45)
-        }
-        messageFrame.height += messageFrame.contentSize.height
 
     }
     override func conversationContent() -> String {
         return "[图片]"
     }
     override func messageCopy() -> String {
-        return content.text
+        return text
     }
 }
 
 class WXExpressionMessage: WXMessage {
+    override var size: CGSize {
+        var height: CGFloat = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
+        height += 5
+        let emojiSize: CGSize = CGSize.zero
+        var width: CGFloat = 0
+        if emojiSize.equalTo(CGSize.zero) {
+            width = 50
+        } else if emojiSize.width > emojiSize.height {
+            let temp: CGFloat = APPW * 0.35 * emojiSize.height / emojiSize.width
+            height += temp < APPW * 0.2 ? APPW * 0.2 : temp
+        } else {
+            let temp: CGFloat = APPW * 0.35 * emojiSize.width / emojiSize.height
+            width = temp < APPW * 0.2 ? APPW * 0.2 : temp
+        }
+        return CGSize(width: width, height: height)
+    }
     var emoji: TLEmoji! {
         didSet {
-            content["groupID"] = emoji.groupID
-            content["emojiID"] = emoji.emojiID
-            let imageSize: CGSize = self.path.image.size ?? CGSize.zero
-            content["w"] = "\(imageSize.width)"
-            content["h"] = "\(imageSize.height)"
+//            content["groupID"] = emoji.groupID
+//            content["emojiID"] = emoji.emojiID
+//            let imageSize: CGSize = self.path.image.size
+//            content["w"] = "\(imageSize.width)"
+//            content["h"] = "\(imageSize.height)"
         }
     }
-    var path: String {
-        set {
-            //            emoji.emojiPath = path
-            print(path)
-        }
-        get {
-            return emoji.emojiPath
-        }
-    }
-    var url:String {
-        return "http://123.57.155.230:8080/ibiaoqing/admin/expre/download.dopId=\(emoji.emojiID)"
-    }
+//    var path: String {
+//        set {
+//            //            emoji.emojiPath = path
+//            print(path)
+//        }
+//        get {
+//            return emoji.emojiPath
+//        }
+//    }
+//    var url:String {
+//        return "http://123.57.155.230:8080/ibiaoqing/admin/expre/download.dopId=\(emoji.emojiID)"
+//    }
     var emojiSize: CGSize {
         set {
-            content.w = newValue.width
-            content.h = newValue.height
+            w = newValue.width
+            h = newValue.height
         }
         get {
-            return CGSize(width: content.w, height: content.h)
+            return CGSize(width: w, height: h)
         }
     }
     override init() {
         super.init()
         emoji = TLEmoji()
-        emoji.groupID = content.groupID
-        emoji.emojiID = content.emojiID
-        messageFrame.height = 20 + (showTime ? 30 : 0) + (showName ? 15 : 0)
-        messageFrame.height += 5
-        let emojiSize: CGSize = CGSize.zero
-        if emojiSize.equalTo(CGSize.zero) {
-            messageFrame.contentSize = CGSize(width: 80, height: 80)
-        } else if emojiSize.width > emojiSize.height {
-            var height: CGFloat = APPW * 0.35 * emojiSize.height / emojiSize.width
-            height = height < APPW * 0.2 ? APPW * 0.2 : height
-            messageFrame.contentSize = CGSize(width: APPW * 0.35, height: height)
-        } else {
-            var width: CGFloat = APPW * 0.35 * emojiSize.width / emojiSize.height
-            width = width < APPW * 0.2 ? APPW * 0.2 : width
-            messageFrame.contentSize = CGSize(width: width, height: APPW * 0.35)
-        }
-        messageFrame.height += messageFrame.contentSize.height
+//        emoji.groupID = content.groupID
+//        emoji.emojiID = content.emojiID
     }
     override func conversationContent() -> String {
         return "[表情]"
     }
     override func messageCopy() -> String {
-        return content.text
+        return text
     }
 }

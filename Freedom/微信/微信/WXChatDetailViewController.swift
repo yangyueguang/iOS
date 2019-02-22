@@ -263,8 +263,8 @@ class WXChatFileCell: UICollectionViewCell {
         didSet {
             if message.messageType == .image {
                 let me = message as! WXImageMessage
-                let imagePath = me.content.path
-                let imageURL = me.content.url
+                let imagePath = me.path
+                let imageURL = me.url
                 if !imagePath.isEmpty {
                     let imagePatha = FileManager.pathUserChatImage(imagePath)
                     imageView.image = imagePatha.image
@@ -344,12 +344,12 @@ class WXChatFileViewController: WXBaseViewController {
                     mediaData.append(message)
                     var url: URL?
                     let me = message as! WXImageMessage
-                    let path = me.content.path
+                    let path = me.path
                     if !path.isEmpty {
                         let imagePath = FileManager.pathUserChatImage(path)
                         url = URL(fileURLWithPath: imagePath)
                     } else {
-                        url = URL(string: me.content.url)
+                        url = URL(string: me.url)
                     }
                     let photo = MWPhoto(url: url)
                     browserData.append(photo!)
@@ -363,12 +363,12 @@ class WXChatFileViewController: WXBaseViewController {
         for message: WXMessage in mediaData {
             if message.messageType == .image {
                 var url: URL?
-                let imagePath = message.content.path
+                let imagePath = message.path
                 if !imagePath.isEmpty {
                     let imagePatha = FileManager.pathUserChatImage(imagePath)
                     url = URL(fileURLWithPath: imagePatha)
                 } else {
-                    url = URL(string: message.content.url)
+                    url = URL(string: message.url)
                 }
                 let photo = MWPhoto(url: url)
                 browserData.append(photo!)
@@ -436,7 +436,7 @@ extension WXChatFileViewController: UICollectionViewDelegate,UICollectionViewDat
         if message.messageType == .image {
             var index: Int = -1
             for i in 0..<mediaData.count {
-                if (message.messageID == mediaData[i].messageID) {
+                if (message.WXMessageID == mediaData[i].WXMessageID) {
                     index = i
                     break
                 }

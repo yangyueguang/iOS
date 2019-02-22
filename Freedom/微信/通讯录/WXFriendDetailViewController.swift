@@ -42,9 +42,9 @@ class WXFriendDetailViewController: BaseTableViewController {
                 }
             } else {
                 chatVC.partner = user
-                let vc: UIViewController = WXTabBarController.shared.children[0]
+                let nvc = WXTabBarController.shared.children[0] as! UINavigationController
                 WXTabBarController.shared.selectedIndex = 0
-                vc.navigationController?.pushViewController(chatVC, animated: true)
+                nvc.pushViewController(chatVC, animated: true)
                 navigationController?.popViewController(animated: false)
             }
         

@@ -27,7 +27,7 @@
     WXUserDetail *detail = [[WXUserDetail alloc]init];
     WXUserSetting *setting = [[WXUserSetting alloc]init];
     WXUserChatSetting *chatSet = [[WXUserChatSetting alloc]init];
-    return @{@"detailInfo": detail,@"userSetting":setting,@"chatSetting":chatSet,@"avatarPath":@"",@"nikeName":@"",@"isUser": @1};
+    return @{@"detailInfo": detail,@"userSetting":setting,@"chatSetting":chatSet,@"avatarPath":@"",@"nikeName":@""};
 }
 @end
 @implementation WXUserGroup
@@ -61,6 +61,9 @@
     user.username = self.username;
     return user;
 }
+-(BOOL)isUser {
+    return false;
+}
 @end
 @implementation WechatContact
 @end
@@ -81,6 +84,9 @@
 }
 +(NSDictionary *)defaultPropertyValues{
     return @{@"userID": @"0"};
+}
+-(BOOL)isUser {
+    return true;
 }
 @end
 @implementation WXMomentComment

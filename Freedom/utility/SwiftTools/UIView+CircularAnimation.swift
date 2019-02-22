@@ -44,7 +44,7 @@ extension Array where Element: Equatable {
 }
 extension String {
     var image: UIImage {
-        let ima = UIImage(asset: self)
+        let ima = UIImage(asset: self) ?? UIImage(asset: Image.logo.rawValue)
         assert(ima != nil, "图片资源丢失\(self)")
         return ima!
     }

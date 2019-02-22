@@ -107,10 +107,10 @@ class WXChatFontViewController: WXBaseViewController {
     }
     func p_chatTVCData() -> [WXTextMessage] {
         let message = WXTextMessage()
-        message.fromUser = WXUserHelper.shared.user
+        message.friendID = WXUserHelper.shared.user.userID
         message.messageType = .text
         message.ownerTyper = .own
-        message.content["text"] = "预览字体大小"
+        message.text = "预览字体大小"
         let user = WXUser()
         user.avatarPath = "AppIcon"
         let path = FileManager.pathUserAvatar("AppIcon")
@@ -121,15 +121,15 @@ class WXChatFontViewController: WXBaseViewController {
             FileManager.default.createFile(atPath: path, contents: data, attributes: nil)
         }
         let message1 = WXTextMessage()
-        message1.fromUser = user
+        message1.friendID = user.userID ?? ""
         message1.messageType = .text
         message1.ownerTyper = .friend
-        message1.content["text"] = "拖动下面的滑块，可设置字体大小"
+        message1.text = "拖动下面的滑块，可设置字体大小"
         let message2 = WXTextMessage()
-        message2.fromUser = user
+        message2.friendID = user.userID ?? ""
         message2.messageType = .text
         message2.ownerTyper = .friend
-        message2.content["text"] = "设置后，会改变聊天页面的字体大小。后续将支持更改菜单、朋友圈的字体修改。"
+        message2.text = "设置后，会改变聊天页面的字体大小。后续将支持更改菜单、朋友圈的字体修改。"
         var data = [message, message1, message2]
         return data
     }

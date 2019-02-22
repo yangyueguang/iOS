@@ -64,7 +64,7 @@ class WXMessageBaseCell: BaseTableViewCell<WXMessage> {
     }()
     var message: WXMessage = WXMessage() {
         didSet {
-            timeLabel.text = "  \(message.date.timeToNow)  "
+            timeLabel.text = "  \(message.date.timeToNow())  "
             usernameLabel.text = message.fromUser?.username
             if message.fromUser?.avatarPath.count ?? 0 > 0 {
                 let path = FileManager.pathUserAvatar(message.fromUser?.avatarPath ?? "")
@@ -237,7 +237,7 @@ class WXTextMessageCell: WXMessageBaseCell {
                 }
             }
             messageLabel.snp.updateConstraints { (make) in
-                make.size.equalTo(message.messageFrame.contentSize)
+                make.size.equalTo(message.size)
             }
         }
     }
@@ -267,7 +267,7 @@ class WXImageMessageCell: WXMessageBaseCell {
         didSet {
             msgImageView.alpha = 1.0 // 取消长按效果
             let lastOwnType = self.message.ownerTyper
-            let imagePath = message.content.path
+            let imagePath = message.path
             if !imagePath.isEmpty {
                 let imagePatha = FileManager.pathUserChatImage(imagePath)
                 msgImageView.setThumbnailPath(imagePatha, highDefinitionImageURL: imagePatha)
@@ -291,7 +291,7 @@ class WXImageMessageCell: WXMessageBaseCell {
                 }
             }
             msgImageView.snp.updateConstraints { (make) in
-                make.size.equalTo(message.messageFrame.contentSize)
+                make.size.equalTo(message.size)
             }
         }
     }
@@ -372,7 +372,7 @@ class WXExpressionMessageCell: WXMessageBaseCell {
                 }
             }
             msgImageView.snp.updateConstraints { (make) in
-                make.size.equalTo(message.messageFrame.contentSize)
+                make.size.equalTo(message.size)
             }
         }
     }
@@ -576,7 +576,7 @@ class WXChatTableViewController: BaseTableViewController, WXMessageCellDelegate 
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let message: WXMessage = data[indexPath.row]
-        return message.messageFrame.height
+        return 60
     }
 
     func messageCellDidClickAvatar(for user: WXUser) {

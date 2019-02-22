@@ -72,9 +72,9 @@ RLM_ARRAY_TYPE(WXUserChatSetting)
 @property (nonatomic, strong) NSString *nikeName;/// 头像URL
 @property (nonatomic, strong) NSString *avatarURL;/// 头像Path
 @property (nonatomic, strong) NSString *avatarPath;
-@property (nonatomic, assign) BOOL isUser;
 - (WXUser*)groupMemberbyID:(NSString*)userID;
 - (NSArray<WXUser*>*)groupMembers;
+- (BOOL)isUser;
 @end
 RLM_ARRAY_TYPE(WXModel)
 @interface WXUser : WXModel/// 备注名
