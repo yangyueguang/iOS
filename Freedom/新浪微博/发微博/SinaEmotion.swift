@@ -360,11 +360,11 @@ class SinaEmotionKeyboard: UIView {
         super.init(frame: frame)
         //加载沙盒中的数据
         recentListView.emotions = SinaEmotion.recentEmotions()
-        let path = Bundle.main.path(forResource: "defaltEmoji.plist", ofType: nil)
+        let path = Bundle.main.path(forResource: "Emoticons.plist", ofType: nil)
         defaultListView.emotions = SinaEmotion.parses(NSArray(contentsOfFile: path ?? "") as! [Any]) as! [SinaEmotion]
-        let path1 = Bundle.main.path(forResource: "SinaEmoji.plist", ofType: nil)
+        let path1 = Bundle.main.path(forResource: "Emoticons.plist", ofType: nil)
         emojiListView.emotions = SinaEmotion.parses(NSArray(contentsOfFile: path1 ?? "") as! [Any]) as! [SinaEmotion]
-        let path2 = Bundle.main.path(forResource: "lxhEmoji.plist", ofType: nil)
+        let path2 = Bundle.main.path(forResource: "Emoticons.plist", ofType: nil)
         lxhListView.emotions = SinaEmotion.parses(NSArray(contentsOfFile: path2 ?? "") as! [Any]) as! [SinaEmotion]
         tabBar.didSelectBlock = { buttonType in
             self.showingListView.removeFromSuperview()
