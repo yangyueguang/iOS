@@ -290,7 +290,7 @@
                                                 <constraint firstItem="jo5-4u-67D" firstAttribute="top" secondItem="lxj-vp-lAL" secondAttribute="topMargin" constant="10" id="gBv-8v-KS8"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.10980392156862745" green="0.63137254901960782" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="XOA-rW-1Iu">
                                         <rect key="frame" x="0.0" y="86" width="375" height="44"/>

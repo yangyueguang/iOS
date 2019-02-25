@@ -41,9 +41,9 @@ enum Image: String {
     case movie = "movie"
     case snow = "snow"
     var image: UIImage {
-        let ima = UIImage(asset: rawValue)
+        let ima = UIImage(asset: rawValue) ?? Image.logo.image
         assert(ima != nil, "图片资源丢失\(rawValue)")
-        return ima!
+        return ima
     }
 }
 enum WXImage: String {
@@ -96,13 +96,13 @@ enum WXImage: String {
     case corner = "icon_corner_new"
 
     var image: UIImage {
-        var ima = UIImage(asset: rawValue)
+        var ima = UIImage(asset: rawValue) ?? Image.logo.image
 //        assert(ima != nil, "图片资源丢失\(rawValue)")
         if ima == nil {
             print("图片资源丢失\(rawValue)")
             ima = Image.logo.image
         }
-        return ima!
+        return ima
     }
 }
 enum ALImage: String {
@@ -121,9 +121,9 @@ enum TBImage: String {
     case hot = "hot"
     case message = "Taobaomessage"
     var image: UIImage {
-        let ima = UIImage(asset: rawValue)
+        let ima = UIImage(asset: rawValue) ?? Image.logo.image
         assert(ima != nil, "图片资源丢失\(rawValue)")
-        return ima!
+        return ima
     }
 }
 enum KGImage: String {
@@ -152,9 +152,9 @@ enum IQYImage: String {
     case vip = "wvip"
     case noData = "cache_no_data"
     var image: UIImage {
-        let ima = UIImage(asset: rawValue)
+        let ima = UIImage(asset: rawValue) ?? Image.logo.image
         assert(ima != nil, "图片资源丢失\(rawValue)")
-        return ima!
+        return ima
     }
 }
 enum SImage: String {
@@ -178,6 +178,7 @@ enum DZImage: String {
         return ima!
     }
 }
+
 extension UIImage {
     convenience init?(asset: String) {
         self.init(named: asset, in: Bundle.main, compatibleWith: nil)

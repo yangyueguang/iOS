@@ -40,6 +40,7 @@ public extension UIColor {
     class var blackx: UIColor {return UIColor.black }
     class var whitex: UIColor {return UIColor.white }
     class var grayx: UIColor {return UIColor.gray }
+    class var alipay: UIColor { return UIColor(hex: 0x1ca1ff)}
     class func blackAlpha(_ alpha: CGFloat) -> UIColor {
         return UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: alpha)
     }
