@@ -125,9 +125,11 @@ extension XNetKit {
         }
     }
     /// 支付宝/首页
-    static func alipayHome(_ param: Parameters, next: PublishSubject<Any>) {
+    static func alipayHome(_ param: Parameters, next: PublishSubject<AlipayHomeModel>) {
         request(API.alipay.home.rawValue, parameters: param) { (response) in
-            next.onNext(response)
+            print(response.dictionary)
+            let model = AlipayHomeModel.parse(response.body as NSDictionary)
+            next.onNext(model)
         }
     }
 

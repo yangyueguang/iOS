@@ -723,6 +723,7 @@
 		DF1208D121EEE5AF00F7ED7F /* KugouAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1208D021EEE5AF00F7ED7F /* KugouAPI.swift */; };
 		DF13330721F17945001D01CA /* KugouMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF13330621F17945001D01CA /* KugouMeViewController.swift */; };
 		DF13330921F17C1A001D01CA /* KugouPlayAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF13330821F17C1A001D01CA /* KugouPlayAudioViewController.swift */; };
+		DF18C3B822240DB90017B873 /* AlipayAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF18C3B722240DB90017B873 /* AlipayAPI.swift */; };
 		DF1CAA1B21FEB9B9001FA53D /* XButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CAA1A21FEB9B9001FA53D /* XButton.swift */; };
 		DF1CAA1D21FEE33B001FA53D /* XPopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CAA1C21FEE33B001FA53D /* XPopMenu.swift */; };
 		DF1ED02D21F75DA900AEF237 /* AlipayRichViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1ED02C21F75DA900AEF237 /* AlipayRichViewController.swift */; };
@@ -1715,6 +1716,7 @@
 		DF1208D021EEE5AF00F7ED7F /* KugouAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouAPI.swift; sourceTree = "<group>"; };
 		DF13330621F17945001D01CA /* KugouMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouMeViewController.swift; sourceTree = "<group>"; };
 		DF13330821F17C1A001D01CA /* KugouPlayAudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KugouPlayAudioViewController.swift; sourceTree = "<group>"; };
+		DF18C3B722240DB90017B873 /* AlipayAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlipayAPI.swift; sourceTree = "<group>"; };
 		DF1CAA1A21FEB9B9001FA53D /* XButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XButton.swift; sourceTree = "<group>"; };
 		DF1CAA1C21FEE33B001FA53D /* XPopMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XPopMenu.swift; sourceTree = "<group>"; };
 		DF1ED02C21F75DA900AEF237 /* AlipayRichViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlipayRichViewController.swift; sourceTree = "<group>"; };
@@ -2098,6 +2100,7 @@
 			isa = PBXGroup;
 			children = (
 				713728C920AE733F00A3227A /* AlipayModels.swift */,
+				DF18C3B722240DB90017B873 /* AlipayAPI.swift */,
 				713EE2A720AD8F500085B65D /* AlipayTabBarController.swift */,
 				713EE2AF20AD8FDB0085B65D /* AlipayNavigationViewController.swift */,
 				713EE2B720AD903F0085B65D /* AlipayBaseViewController.swift */,
@@ -4969,6 +4972,7 @@
 				DF0E967A21CBACDF009682CC /* WXGameViewController.swift in Sources */,
 				BF58BB2920EF1945002CB4EE /* RCDAddressBookTableViewCell.m in Sources */,
 				BFC6D93920E4AB1400F17378 /* SinaBaseViewController.swift in Sources */,
+				DF18C3B822240DB90017B873 /* AlipayAPI.swift in Sources */,
 				BF58BB3420EF1945002CB4EE /* RCDGroupSettingsTableViewController.m in Sources */,
 				713EE2DC20AD9BFC0085B65D /* AlipayHomeViewController.swift in Sources */,
 				BFEF19CA2101E990003DCAC1 /* SumCFile.c in Sources */,
