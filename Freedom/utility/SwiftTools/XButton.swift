@@ -66,7 +66,11 @@ class XButton: UIButton {
 }
 @IBDesignable
 class holdLabel: UILabel {
-    @IBInspectable var placeholder: String = ""
+    @IBInspectable var placeholder: String = "" {
+        didSet {
+            text = placeholder
+        }
+    }
     override var text: String? {
         didSet {
             if text?.isEmpty ?? true && !placeholder.isEmpty {
