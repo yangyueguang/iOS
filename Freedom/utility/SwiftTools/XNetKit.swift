@@ -329,6 +329,20 @@ class XNetKit: NSObject {
         }
         return baseRequest
     }
+
+    /// 直接返回需要对象的网络请求
+    /// requestModel("", parameters: nil) { (stu: Student) in print(stu.name) }
+    public func requestModel<T: NSObject>(_ url: String,
+                        parameters: Parameters?,
+                        method: HTTPMethod = .connect,
+                        encoding: ParameterEncoding = URLEncoding.default,
+                        headers: HTTPHeaders = [:], completion:@escaping (T) -> Void) -> DataRequest{
+        return request(url, parameters: parameters,method: method,encoding: encoding,headers: headers) { (res) in
+            let obj = T.parse(res.body)
+            completion(obj)
+        }
+    }
+
     @discardableResult
     static public func requestProxy(_ url: String,
                         parameters: Parameters?,
