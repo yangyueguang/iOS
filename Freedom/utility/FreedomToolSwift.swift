@@ -60,3 +60,28 @@ func checkTouchID(){
         NSLog("抱歉，Touch ID不可以使用！\n\(String(describing: error))")
     }
 }
+struct Student: Codable {
+    var name: String?
+}
+public extension Encodable {
+    /// 将 model 编码成参数字典
+    public func fd_toDic() -> [String: Any] {
+        do {
+            let data = try JSONEncoder().encode(self)
+            let dic = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
+            return dic ?? [:]
+        } catch {
+            print(error)
+            return [:]
+        }
+    }
+}
+
+public extension Decodable {
+    // 将字典解码成 model
+    public static func fd_fromDic(dic: [String: Any?]) throws -> Self {
+        let jsonData = try JSONSerialization.data(withJSONObject: dic)
+        let model = try JSONDecoder().decode(Self.self, from: jsonData)
+        return model
+    }
+}

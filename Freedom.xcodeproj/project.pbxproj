@@ -4724,10 +4724,8 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AAInfographics/AAInfographics.framework",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
@@ -4759,8 +4757,6 @@
 				"${BUILT_PRODUCTS_DIR}/iOS-Echarts/iOS_Echarts.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AAInfographics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
@@ -4794,7 +4790,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B60ADA2B205B0F4114E06465 /* [CP] Copy Pods Resources */ = {
@@ -4802,10 +4798,8 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Freedom/Pods-Freedom-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Freedom/Pods-Freedom-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RongCloud.bundle",
@@ -4821,8 +4815,6 @@
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/JrmfIMLib/WalletResource.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
@@ -4838,7 +4830,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Freedom/Pods-Freedom-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Freedom/Pods-Freedom-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
