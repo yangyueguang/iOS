@@ -53,3 +53,20 @@ post_install do |installer|
         end
     end
 end
+
+# Swift 版本声明
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if ['LightRoute', 'CoreNavigation', 'Kakapo'].include? target.name
+      target.build_configurations.each do |config|
+        config.build_settings['SWIFT_VERSION'] = '4.0'
+        config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
+      end
+      else
+      target.build_configurations.each do |config|
+        config.build_settings['SWIFT_VERSION'] = '5.0'
+        config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
+      end
+    end
+  end
+end
