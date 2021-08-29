@@ -7,20 +7,12 @@
 //  Copyright © 2018年 Super. All rights reserved.
 //
 import Foundation
-import XExtension
-import XCarryOn
+//import XExtension
+//import XCarryOn
 public let TabBarH:CGFloat = 49
-public var TopHeight:CGFloat {
-    if APPH >= 812.0{
-        return 88.0
-    }
-    return 64.0
-}
 let safeAreaTopHeight:CGFloat = (APPH >= 812.0 && UIDevice.current.model == "iPhone" ? 88 : 64)
 let safeAreaBottomHeight:CGFloat = (APPH >= 812.0 && UIDevice.current.model == "iPhone"  ? 30 : 0)
 let statusBarHeight = UIApplication.shared.statusBarFrame.height
-public let APPW = UIScreen.main.bounds.size.width
-public let APPH = UIScreen.main.bounds.size.height
 public let TestWebURL = "https://www.baidu.com"
 let APP_CHANNEL = "Github"
 let PlaceHolder = " "

@@ -2,7 +2,7 @@
 //  WXDiscoverViewController.swift
 //  Freedom
 import SnapKit
-import XExtension
+//import XExtension
 import Foundation
 final class WXDiscoverViewController: BaseTableViewController {
     override func viewDidLoad() {

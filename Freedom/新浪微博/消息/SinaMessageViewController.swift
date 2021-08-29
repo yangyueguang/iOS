@@ -5,7 +5,7 @@
 //  Created by Super on 6/28/18.
 //  Copyright © 2018 薛超. All rights reserved.
 import UIKit
-import XExtension
+//import XExtension
 final class SinaMessageViewController: SinaBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()

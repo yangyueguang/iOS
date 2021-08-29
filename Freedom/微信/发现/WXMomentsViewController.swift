@@ -3,7 +3,7 @@
 //  Freedom
 import SnapKit
 import MWPhotoBrowser
-import XExtension
+//import XExtension
 import Foundation
 class WXMomentImagesCell: BaseTableViewCell<WXMoment> {
     var momentView = WXMomentImageView.xibView()

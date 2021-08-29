@@ -2,8 +2,8 @@
 //  EnergyShopViewController.swift
 //  Freedom
 import UIKit
-import XExtension
-import XCarryOn
+//import XExtension
+//import XCarryOn
 class EnergyShopViewCell:BaseTableViewCell<Any>{
     override func initUI() {
         accessoryType = .disclosureIndicator

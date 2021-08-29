@@ -3,7 +3,7 @@
 //  Freedom
 import UIKit
 import RxSwift
-import XExtension
+//import XExtension
 class AlipayItemCell: BaseCollectionViewCell<BaseModel> {
     @IBOutlet weak var itemButton: XButton!
     override func initUI() {

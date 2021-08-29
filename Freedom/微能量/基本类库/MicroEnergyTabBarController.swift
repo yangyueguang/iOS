@@ -2,7 +2,7 @@
 //  MicroEnergyTabBarController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 //class JuheTabBar: UITabBar {
 //    var centerButton = UIButton()
 //    override init(frame: CGRect) {

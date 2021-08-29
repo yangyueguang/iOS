@@ -1,5 +1,36 @@
 PODS:
   - Alamofire (5.4.3)
+  - BaiduMapKit (6.3.1):
+    - BaiduMapKit/Base (= 6.3.1)
+    - BaiduMapKit/Cloud (= 6.3.1)
+    - BaiduMapKit/Map (= 6.3.1)
+    - BaiduMapKit/Search (= 6.3.1)
+    - BaiduMapKit/Utils (= 6.3.1)
+  - BaiduMapKit/Base (6.3.1)
+  - BaiduMapKit/Cloud (6.3.1):
+    - BaiduMapKit/Base
+  - BaiduMapKit/Map (6.3.1):
+    - BaiduMapKit/Base
+  - BaiduMapKit/Search (6.3.1):
+    - BaiduMapKit/Base
+  - BaiduMapKit/Utils (6.3.1):
+    - BaiduMapKit/Base
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - iOS-Echarts (1.4.4)
   - IQKeyboardManager (6.5.6)
   - Kingfisher (6.3.1)
   - MJRefresh (3.7.2)
@@ -22,6 +53,9 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - BaiduMapKit
+  - BlocksKit
+  - iOS-Echarts
   - IQKeyboardManager
   - Kingfisher
   - MJRefresh
@@ -35,6 +69,9 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - BaiduMapKit
+    - BlocksKit
+    - iOS-Echarts
     - IQKeyboardManager
     - Kingfisher
     - MJRefresh
@@ -48,6 +85,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  BaiduMapKit: 40ccaf53ad83c187d8c9ccbeb9851fab8194da64
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  iOS-Echarts: dbc7423d861e5eedee78906a39d205b5c4da9a13
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   MJRefresh: 30997d30b347c8e9508a4db11e3a690da0c9b85a
@@ -59,6 +99,6 @@ SPEC CHECKSUMS:
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 4516824a8235bd49a772e86979538801bbfe7ebc
+PODFILE CHECKSUM: 4fe438cc0bfff5b29b6853669278560704490b67
 
 COCOAPODS: 1.10.1

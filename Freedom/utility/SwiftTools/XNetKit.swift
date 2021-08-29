@@ -2,7 +2,7 @@
 //  XNetKit.swift
 //  Demo
 import UIKit
-import XCarryOn
+//import XCarryOn
 import Alamofire
 import AFNetworking
 typealias XP12Block = (String) -> SecIdentity?

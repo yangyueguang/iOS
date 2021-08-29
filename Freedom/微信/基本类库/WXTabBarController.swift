@@ -4,8 +4,8 @@
 
 import UIKit
 import SnapKit
-import XCarryOn
-import XExtension
+//import XCarryOn
+//import XExtension
 final class WXTabBarController: BaseTabBarViewController {
     static var shared: WXTabBarController!
     override var preferredStatusBarStyle: UIStatusBarStyle {

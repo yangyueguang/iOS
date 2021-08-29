@@ -5,7 +5,7 @@ import RealmSwift
 import Realm
 import Foundation
 import Contacts
-import XExtension
+//import XExtension
 class WXFriendHelper: NSObject {
     static let shared = WXFriendHelper()
     lazy var defaultGroup: WXUserGroup = {

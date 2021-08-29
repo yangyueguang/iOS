@@ -4,7 +4,7 @@
 import Realm
 import RealmSwift
 import Foundation
-import XExtension
+//import XExtension
 enum TLInfoType: Int {
     case defaultType
     case titleOnly

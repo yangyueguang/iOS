@@ -2,7 +2,7 @@
 //  MainViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 import MediaPlayer
 import AVFoundation
 class KugouMainViewController: KugouBaseViewController {

@@ -5,8 +5,8 @@
 //  Created by Super on 6/28/18.
 //  Copyright © 2018 薛超. All rights reserved.
 import UIKit
-import XExtension
-import XCarryOn
+//import XExtension
+//import XCarryOn
 class SinaTabBar: UITabBar {
     var centerButton = UIButton()
     override init(frame: CGRect) {

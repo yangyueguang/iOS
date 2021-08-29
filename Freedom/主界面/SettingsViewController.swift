@@ -6,8 +6,8 @@
 //  Copyright © 2018 Super. All rights reserved.
 //
 import UIKit
-import XExtension
-import XCarryOn
+//import XExtension
+//import XCarryOn
 class SettingsViewController: BaseViewController ,ElasticMenuTransitionDelegate{
     open var tableView: BaseTableView!
     var contentLength:CGFloat = APPW * 0.8

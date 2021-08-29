@@ -7,7 +7,7 @@
 //
 import Foundation
 import UIKit
-import XCarryOn
+//import XCarryOn
 
 class PhotoView: UIView {
 

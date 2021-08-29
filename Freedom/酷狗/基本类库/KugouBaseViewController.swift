@@ -2,7 +2,7 @@
 //  KugouBaseViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 class KugouBaseViewController: BaseViewController {
     open var tableView: BaseTableView!
     override  func viewDidLoad() {

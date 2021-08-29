@@ -6,8 +6,8 @@
 //  Copyright © 2018年 Super. All rights reserved.
 //
 import UIKit
-import XExtension
-import XCarryOn
+//import XExtension
+//import XCarryOn
 final class FreedomIndustryViewController: FreedomBaseViewController {
     var controllers:[String]!
     var banner:BaseScrollView!

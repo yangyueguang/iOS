@@ -2,7 +2,7 @@
 //  WXSettingViewController.swift
 //  Freedom
 import Foundation
-import XExtension
+//import XExtension
 import SnapKit
 class WXSettingViewController: BaseTableViewController {
     var data: [WXSettingGroup] = []

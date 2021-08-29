@@ -1,7 +1,7 @@
 //
 //  WXPublicServerViewController.swift
 //  Freedom
-import XExtension
+//import XExtension
 import Foundation
 class WXPublicServerViewController: BaseTableViewController, UISearchBarDelegate {
     lazy var searchController: WXSearchController = {

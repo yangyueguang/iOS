@@ -1,7 +1,7 @@
 //
 //  WXChatViewController.swift
 //  Freedom
-import XExtension
+//import XExtension
 import SnapKit
 import MWPhotoBrowser
 import Foundation

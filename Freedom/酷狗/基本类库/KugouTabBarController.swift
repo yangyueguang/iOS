@@ -2,7 +2,7 @@
 //  KugouTabBarController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 import AVFoundation
 final class KugouTabBarController: BaseTabBarViewController {
     let kugouMainVC = KugouMainViewController.storyVC(.kugou)

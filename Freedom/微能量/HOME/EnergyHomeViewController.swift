@@ -2,8 +2,8 @@
 //  EnergyHomeViewController.swift
 //  Freedom
 import UIKit
-import XExtension
-import XCarryOn
+//import XExtension
+//import XCarryOn
 class EnergyHomeViewCell:BaseCollectionViewCell<Any> {
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x:0, y: 0, width: APPW/5, height:60))

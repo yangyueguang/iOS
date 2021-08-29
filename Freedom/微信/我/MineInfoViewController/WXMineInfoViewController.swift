@@ -3,7 +3,7 @@
 //  Freedom
 import SnapKit
 import Foundation
-import XExtension
+//import XExtension
 class WXMineInfoViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()

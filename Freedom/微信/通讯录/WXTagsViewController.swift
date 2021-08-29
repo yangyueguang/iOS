@@ -2,7 +2,7 @@
 //  WXTagsViewController.swift
 //  Freedom
 import SnapKit
-import XExtension
+//import XExtension
 import Foundation
 class WXTagCell: BaseTableViewCell<Any> {
     required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

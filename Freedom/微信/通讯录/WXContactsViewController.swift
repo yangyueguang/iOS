@@ -2,7 +2,7 @@
 //  WXContactsViewController.swift
 //  Freedom
 import SnapKit
-import XCarryOn
+//import XCarryOn
 import Foundation
 class WechatContactCell: BaseTableViewCell<WechatContact> {
     @IBOutlet weak var iconImageView: UIImageView!

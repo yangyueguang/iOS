@@ -4,7 +4,7 @@
 import SnapKit
 import MJRefresh
 import MWPhotoBrowser
-import XExtension
+//import XExtension
 import Foundation
 class WXMomentDetailViewController: WXBaseViewController {
     private var scrollView = UIScrollView()

@@ -2,7 +2,7 @@
 //  WXBottleViewController.swift
 //  Freedom
 import SnapKit
-import XExtension
+//import XExtension
 import Foundation
 enum TLBottleButtonType : Int {
     case `throw`

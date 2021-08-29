@@ -2,7 +2,7 @@
 //  SDDiscoverTableViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 class AlipayDiscoverCell:BaseTableViewCell<Any> {
     override func initUI() {
 

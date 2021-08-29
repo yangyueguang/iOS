@@ -3,7 +3,7 @@
 //  Freedom
 import SnapKit
 import Foundation
-import XExtension
+//import XExtension
 class WXChatBackgroundSelectViewController: WXBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     var collectionView: BaseCollectionView!
     var data: [AnyHashable] = []

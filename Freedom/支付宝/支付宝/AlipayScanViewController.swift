@@ -2,7 +2,7 @@
 //  SDScanViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 import AVFoundation
 class AlipayScanViewController: AlipayBaseViewController {
     private let kBorderW: CGFloat = 60

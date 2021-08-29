@@ -4,7 +4,7 @@
 //  Created by Super on 6/28/18.
 //  Copyright © 2018 薛超. All rights reserved.
 import UIKit
-import XExtension
+//import XExtension
 import AFNetworking
 class SinaUser: NSObject {
     var idstr = ""/*字符串型的用户UID*/

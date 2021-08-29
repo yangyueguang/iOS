@@ -2,8 +2,8 @@
 //  BooksViewController.swift
 //  Freedom
 import UIKit
-import XExtension
-import XCarryOn
+//import XExtension
+//import XCarryOn
 class BooksViewCell:BaseCollectionViewCell<Any> {
     override func initUI() {
         viewModel.subscribe(onNext: { (mode) in

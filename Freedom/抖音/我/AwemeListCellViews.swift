@@ -6,7 +6,7 @@
 //  Copyright © 2018 Qiao Shi. All rights reserved.
 //
 import MJRefresh
-import XCarryOn
+//import XCarryOn
 import Foundation
 import AVFoundation
 import MobileCoreServices

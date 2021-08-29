@@ -1,7 +1,7 @@
 
 import UIKit
 import RxSwift
-import XCarryOn
+//import XCarryOn
 import Alamofire
 extension XNetKit {
     //FIXME: Freedom

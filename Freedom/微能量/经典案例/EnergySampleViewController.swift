@@ -7,8 +7,8 @@
 //
 import UIKit
 import UIKit
-import XExtension
-import XCarryOn
+//import XExtension
+//import XCarryOn
 class EnergySampleViewCell:BaseTableViewCell<Any> {
     override func initUI() {
         accessoryType = .disclosureIndicator

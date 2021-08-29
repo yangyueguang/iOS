@@ -1,7 +1,7 @@
 
 import UIKit
 import RxSwift
-import XExtension
+//import XExtension
 import Alamofire
 @objcMembers
 open class BaseViewController : UIViewController {

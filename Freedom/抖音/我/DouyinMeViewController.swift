@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import XCarryOn
+//import XCarryOn
 import RxSwift
 import MJRefresh
 var USER_INFO_HEADER_HEIGHT:CGFloat = 340 + statusBarHeight

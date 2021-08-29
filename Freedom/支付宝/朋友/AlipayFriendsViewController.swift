@@ -2,7 +2,7 @@
 //  SDServiceTableViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 import MJRefresh
 class AlipayFriendsCell:BaseTableViewCell<CellModelS> {
     override func initUI() {

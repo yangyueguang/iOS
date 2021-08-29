@@ -4,7 +4,7 @@
 //
 import UIKit
 import SnapKit
-import XExtension
+//import XExtension
 import MediaPlayer
 //@IBDesignable
 class KugouTabBarView: UIView, AVAudioPlayerDelegate {

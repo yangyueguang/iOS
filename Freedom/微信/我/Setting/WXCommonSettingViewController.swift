@@ -2,7 +2,7 @@
 //  WXCommonSettingViewController.swift
 //  Freedom
 import SnapKit
-import XExtension
+//import XExtension
 import Foundation
 class WXChatFontSettingView: UIView {
     var curFontSize: Float = 0.0 {

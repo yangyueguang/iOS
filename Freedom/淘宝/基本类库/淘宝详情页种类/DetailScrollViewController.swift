@@ -2,7 +2,7 @@
 //  DetailScrollViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 class DetailScrollViewController: TaobaoBaseViewController {
     private var titles = ["图文详情", "商品评论", "店铺推荐"]
     private var urls = ["http://m.b5m.com/item.html?tid=2614676&mps=____&type=content", "http://m.b5m.com/item.html?tid=2614676&mps=____&type=comment", "http://m.baidu.com"]

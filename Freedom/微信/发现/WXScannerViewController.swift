@@ -2,7 +2,7 @@
 //  WXScannerViewController.swift
 //  Freedom
 import SnapKit
-import XExtension
+//import XExtension
 import Foundation
 import AVFoundation
 @objc protocol WXScannerDelegate: NSObjectProtocol {

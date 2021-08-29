@@ -1,7 +1,7 @@
 //
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 final class IqiyiMineViewController: IqiyiBaseViewController {
     override func viewDidLoad() {
         setNav()

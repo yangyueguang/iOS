@@ -2,8 +2,8 @@
 //  WXAPI.swift
 //  Freedom
 import UIKit
-import XCarryOn
-import XExtension
+//import XCarryOn
+//import XExtension
 enum WXExpressionURL: String {
     case host = "http://123.57.155.230:8080/ibiaoqing/admin/"
     case emojiHost1 = "http://123.57.155.230:8080/ibiaoqing/admin/expre/download.dopId="

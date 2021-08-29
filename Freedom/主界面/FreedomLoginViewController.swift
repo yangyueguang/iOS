@@ -2,8 +2,8 @@
 //  FreedomLoginViewController.swift
 //  Freedom
 import UIKit
-import XCarryOn
-import XExtension
+//import XCarryOn
+//import XExtension
 import AFNetworking
 import RxSwift
 import RxCocoa

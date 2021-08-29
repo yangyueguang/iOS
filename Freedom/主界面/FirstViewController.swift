@@ -5,7 +5,7 @@
 //  Created by Super on 6/15/18.
 //  Copyright © 2018 Super. All rights reserved.
 import UIKit
-import XExtension
+//import XExtension
 class CollectionViewCell1:BaseCollectionViewCell<Any> {
     var view: UIView = UIView()
     override func initUI() {

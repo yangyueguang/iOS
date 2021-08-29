@@ -12,16 +12,8 @@ import LocalAuthentication
 import RealmSwift
 import Realm
 public var realmWX: RLMRealm!
-public func Font(_ fontSize:CGFloat)->UIFont{
-    return UIFont.systemFont(ofSize: fontSize)
-}
 public func BoldFont(_ fontSize:CGFloat)->UIFont{
     return UIFont.boldSystemFont(ofSize: fontSize)
-}
-public func Dlog<T>(_ message: T, file: String = #file,method: String = #function,line: Int = #line){
-    #if DEBUG
-    print("\n\((file as NSString).lastPathComponent)[\(line)]: \(method)\n\(message)")
-    #endif
 }
 ///苹果自带的社会化分享,type是静态字符串:SLServiceTypeTwitter,Facebook,SinaWeibo,TencentWeibo,LinkedIn
 func appleLocalShare(_ fromVC:UIViewController, _ title:String,image:UIImage? ,_ type:String = SLServiceTypeFacebook){

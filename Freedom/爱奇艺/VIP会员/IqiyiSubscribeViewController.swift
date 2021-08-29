@@ -1,7 +1,7 @@
 //
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 import MJRefresh
 protocol IqiyiSubScribeCardViewDelegate: NSObjectProtocol {
     func didSelectSubImageCard(_ subImageCard: IqiyiSubScribeCardView?, subItem: IqiyiSubItemModel?)

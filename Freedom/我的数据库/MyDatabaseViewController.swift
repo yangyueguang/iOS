@@ -2,8 +2,8 @@
 //  MyDatabaseViewController.swift
 //  Freedom
 import UIKit
-import XExtension
-import XCarryOn
+//import XExtension
+//import XCarryOn
 class MyDatabaseViewController: MyDatabaseBaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()

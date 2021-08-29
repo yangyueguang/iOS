@@ -1,7 +1,7 @@
 //
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 class IqiyiWatchRecordViewController: IqiyiBaseViewController {
     func initNav() {
         title = "观看纪录"

@@ -2,9 +2,9 @@
 //  IqiyiViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 import MJRefresh
-import XCarryOn
+//import XCarryOn
 protocol IqiyiHomeBoxCellDelegate: NSObjectProtocol {
     func didSelectHomeBox(_ video: IqiyiVideosModel?)
 }

@@ -1,9 +1,9 @@
 //
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 import MJRefresh
-import XCarryOn
+//import XCarryOn
 class IqiyiClassifyCell: BaseTableViewCell<IqiyiClassifyModel> {
     override func initUI() {
         viewModel.subscribe(onNext: {[weak self] (model) in

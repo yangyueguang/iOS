@@ -3,8 +3,8 @@
 //  Freedom
 import SnapKit
 import MJRefresh
-import XCarryOn
-import XExtension
+//import XCarryOn
+//import XExtension
 import Foundation
 class WXExpressionPublicCell: UICollectionViewCell {
     var group: TLEmojiGroup = TLEmojiGroup() {

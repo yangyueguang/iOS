@@ -1,7 +1,7 @@
 //
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 class IqiyiLoginBtnCell:BaseTableViewCell<Any> {
 }
 final class IqiyiLoginViewController: IqiyiBaseViewController {

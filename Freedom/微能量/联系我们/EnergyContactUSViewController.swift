@@ -2,8 +2,8 @@
 //  EnergyContactUSViewController.swift
 //  Freedom
 import UIKit
-import XExtension
-import XCarryOn
+//import XExtension
+//import XCarryOn
 class EnergyContactUSViewCell:BaseTableViewCell<Any> {
     override func initUI() {
         viewModel.subscribe(onNext: {[weak self] (model) in

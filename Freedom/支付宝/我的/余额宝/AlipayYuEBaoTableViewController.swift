@@ -2,7 +2,7 @@
 //  SDYuEBaoTableViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 import MJRefresh
 class AlipayYuEBaoTableViewCellModel: NSObject {
     var yesterdayIncome: Float = 0.0

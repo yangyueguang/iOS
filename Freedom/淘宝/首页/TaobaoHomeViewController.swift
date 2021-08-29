@@ -2,7 +2,7 @@
 //  TaobaoHomeViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 class TitlesImageViewFull: UIView {
     var title: UILabel!
     var subtitle: UILabel!

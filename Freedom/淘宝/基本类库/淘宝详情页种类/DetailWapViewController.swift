@@ -2,7 +2,7 @@
 //  DetailWapViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 class DetailWapViewController: TaobaoBaseViewController {
     private var totalNumber: Int = 3
     private var images = ["1.jpg", "l.jpg", "w.jpg", "xt.jpg"]

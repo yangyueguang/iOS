@@ -6,7 +6,7 @@
 //  Copyright © 2018 Super. All rights reserved.
 //
 import UIKit
-import XExtension
+//import XExtension
 class LibraryCollectionViewCell: BaseCollectionViewCell<Any> {
     override func initUI() {
         super.initUI()

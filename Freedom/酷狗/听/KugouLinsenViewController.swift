@@ -2,7 +2,7 @@
 //  LinsenViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 typealias clickLocalMusicBlock = () -> Void
 class KugoumainHeaderView: UIView {
     var localMusic: clickLocalMusicBlock?

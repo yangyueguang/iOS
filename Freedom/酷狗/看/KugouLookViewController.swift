@@ -2,7 +2,7 @@
 //  LookViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 class KugouLookViewCell:BaseTableViewCell<Any> {
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x:0, y:0, width:0, height:120))

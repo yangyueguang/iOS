@@ -2,8 +2,8 @@
 //  WXExpressionSearchViewController.swift
 //  Freedom
 import SnapKit
-import XCarryOn
-import XExtension
+//import XCarryOn
+//import XExtension
 import Foundation
 class WXExpressionSearchViewController: BaseTableViewController, UISearchResultsUpdating, UISearchBarDelegate, WXExpressionCellDelegate {
     var data: [TLEmojiGroup] = []

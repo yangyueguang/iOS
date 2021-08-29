@@ -2,7 +2,7 @@
 //  DZHomeController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 class DZHomeViewCell1:BaseCollectionViewCell<Any> {
     override func initUI() {//120
         icon = UIImageView(frame: CGRect(x: 10, y: 60, width: self.width / 2 - 10, height: 60))

@@ -2,8 +2,8 @@
 //  DZMeController.swift
 //  Freedom
 import UIKit
-import XExtension
-import XCarryOn
+//import XExtension
+//import XCarryOn
 class DZMeViewCell:BaseTableViewCell<Any> {
     override func initUI() {
         self.icon = UIImageView(frame: CGRect(x:0, y:0, width:0, height:120))

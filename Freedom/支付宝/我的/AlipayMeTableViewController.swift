@@ -2,7 +2,7 @@
 //  SDAssetsTableViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 class AlipayMeCell:BaseTableViewCell<CellModelC<UIViewController>> {
 
 }

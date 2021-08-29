@@ -17,7 +17,6 @@ target 'project' do
     pod 'IQKeyboardManager'
     pod 'Realm'
     pod 'Moya'
-#    pod 'AVOSCloud'
     pod 'BlocksKit'
     pod 'iOS-Echarts'
     pod 'BaiduMapKit'

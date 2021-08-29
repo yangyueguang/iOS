@@ -1,7 +1,7 @@
 //
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 import MJRefresh
 class IqiyiImageScrollView: UIView, UIScrollViewDelegate {
     var scrollView: UIScrollView = UIScrollView()

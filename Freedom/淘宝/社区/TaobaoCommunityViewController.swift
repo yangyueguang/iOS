@@ -2,7 +2,7 @@
 //  TaobaoCommunityViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 class TaobaoCommunityViewCell1:BaseCollectionViewCell<Any> {
     override func initUI() {
         title = UILabel(frame: CGRect(x: 10, y: 0, width: APPW - 20, height: 40))

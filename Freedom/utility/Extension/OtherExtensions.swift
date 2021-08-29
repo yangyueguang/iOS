@@ -75,6 +75,15 @@ public extension NSObject {
 //        }
 //        return type(of: self).init()
     }
+    
+    
+    func parse(_ dict: Dictionary<String, Any>) -> Self {
+        return self
+    }
+    
+    class func parses(_ models: [Any]) -> [Any] {
+        return [self]
+    }
 }
 
 public extension URL {

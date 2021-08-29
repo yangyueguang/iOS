@@ -2,7 +2,7 @@
 //  TaobaoMiniArticleViewController.swift
 //  Freedom
 import UIKit
-import XExtension
+//import XExtension
 class TaobaoMiniArticleViewController: TaobaoBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
