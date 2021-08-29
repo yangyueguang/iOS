@@ -637,6 +637,32 @@
 		BFAC49C120D36A0F00E5CB8D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAC49C020D36A0F00E5CB8D /* SettingsViewController.swift */; };
 		BFAC49C320D36A2700E5CB8D /* LibraryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAC49C220D36A2700E5CB8D /* LibraryCollectionViewController.swift */; };
 		BFAC49C520D3857700E5CB8D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAC49C420D3857700E5CB8D /* FirstViewController.swift */; };
+		BFBFC9FA26DB58A400B0FAB4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BFBFC9F926DB58A400B0FAB4 /* README.md */; };
+		BFBFCA1E26DB597500B0FAB4 /* XImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA0426DB597500B0FAB4 /* XImageView.swift */; };
+		BFBFCA1F26DB597500B0FAB4 /* XHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA0526DB597500B0FAB4 /* XHud.swift */; };
+		BFBFCA2026DB597500B0FAB4 /* XDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA0626DB597500B0FAB4 /* XDataCache.swift */; };
+		BFBFCA2126DB597500B0FAB4 /* SwiftWebViewBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA0726DB597500B0FAB4 /* SwiftWebViewBridge.swift */; };
+		BFBFCA2226DB597500B0FAB4 /* XCarryOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA0826DB597500B0FAB4 /* XCarryOn.swift */; };
+		BFBFCA2326DB597500B0FAB4 /* CircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA0926DB597500B0FAB4 /* CircularSlider.swift */; };
+		BFBFCA2426DB597500B0FAB4 /* Circular3DStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA0A26DB597500B0FAB4 /* Circular3DStarView.swift */; };
+		BFBFCA2526DB597500B0FAB4 /* XTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA0B26DB597500B0FAB4 /* XTip.swift */; };
+		BFBFCA2626DB597500B0FAB4 /* XTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA0C26DB597500B0FAB4 /* XTransitionAnimator.swift */; };
+		BFBFCA2726DB597500B0FAB4 /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA0D26DB597500B0FAB4 /* SwiftNotice.swift */; };
+		BFBFCA2826DB597500B0FAB4 /* PublicStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA0E26DB597500B0FAB4 /* PublicStruct.swift */; };
+		BFBFCA2926DB597500B0FAB4 /* XAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA0F26DB597500B0FAB4 /* XAlertViewController.swift */; };
+		BFBFCA2A26DB597500B0FAB4 /* XURLNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA1026DB597500B0FAB4 /* XURLNavigator.swift */; };
+		BFBFCA2B26DB597500B0FAB4 /* XUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA1126DB597500B0FAB4 /* XUIKit.swift */; };
+		BFBFCA2C26DB597500B0FAB4 /* PublicTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA1226DB597500B0FAB4 /* PublicTools.swift */; };
+		BFBFCA2D26DB597500B0FAB4 /* Public.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA1326DB597500B0FAB4 /* Public.swift */; };
+		BFBFCA2E26DB597500B0FAB4 /* ReusableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA1526DB597500B0FAB4 /* ReusableView+Extension.swift */; };
+		BFBFCA2F26DB597500B0FAB4 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA1626DB597500B0FAB4 /* Date+Extension.swift */; };
+		BFBFCA3026DB597500B0FAB4 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA1726DB597500B0FAB4 /* Collection+Extension.swift */; };
+		BFBFCA3126DB597500B0FAB4 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA1826DB597500B0FAB4 /* UIView+Extension.swift */; };
+		BFBFCA3226DB597500B0FAB4 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA1926DB597500B0FAB4 /* UIImage+Extension.swift */; };
+		BFBFCA3326DB597500B0FAB4 /* UILabel+TapAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA1A26DB597500B0FAB4 /* UILabel+TapAction.swift */; };
+		BFBFCA3426DB597500B0FAB4 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA1B26DB597500B0FAB4 /* String+Extension.swift */; };
+		BFBFCA3526DB597500B0FAB4 /* OtherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA1C26DB597500B0FAB4 /* OtherExtensions.swift */; };
+		BFBFCA3626DB597500B0FAB4 /* XIBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFCA1D26DB597500B0FAB4 /* XIBExtension.swift */; };
 		BFC6D93320E322D200F17378 /* XRadiaMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC6D93220E322D100F17378 /* XRadiaMenu.swift */; };
 		BFC6D93520E4AADB00F17378 /* SinaTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC6D93420E4AADB00F17378 /* SinaTabBarController.swift */; };
 		BFC6D93720E4AAF800F17378 /* SinaNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC6D93620E4AAF800F17378 /* SinaNavigationController.swift */; };
@@ -1616,6 +1642,32 @@
 		BFAC49C020D36A0F00E5CB8D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BFAC49C220D36A2700E5CB8D /* LibraryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCollectionViewController.swift; sourceTree = "<group>"; };
 		BFAC49C420D3857700E5CB8D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		BFBFC9F926DB58A400B0FAB4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../MyCocoaPods/README.md; sourceTree = "<group>"; };
+		BFBFCA0426DB597500B0FAB4 /* XImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XImageView.swift; sourceTree = "<group>"; };
+		BFBFCA0526DB597500B0FAB4 /* XHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHud.swift; sourceTree = "<group>"; };
+		BFBFCA0626DB597500B0FAB4 /* XDataCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XDataCache.swift; sourceTree = "<group>"; };
+		BFBFCA0726DB597500B0FAB4 /* SwiftWebViewBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftWebViewBridge.swift; sourceTree = "<group>"; };
+		BFBFCA0826DB597500B0FAB4 /* XCarryOn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCarryOn.swift; sourceTree = "<group>"; };
+		BFBFCA0926DB597500B0FAB4 /* CircularSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularSlider.swift; sourceTree = "<group>"; };
+		BFBFCA0A26DB597500B0FAB4 /* Circular3DStarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circular3DStarView.swift; sourceTree = "<group>"; };
+		BFBFCA0B26DB597500B0FAB4 /* XTip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XTip.swift; sourceTree = "<group>"; };
+		BFBFCA0C26DB597500B0FAB4 /* XTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XTransitionAnimator.swift; sourceTree = "<group>"; };
+		BFBFCA0D26DB597500B0FAB4 /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
+		BFBFCA0E26DB597500B0FAB4 /* PublicStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicStruct.swift; sourceTree = "<group>"; };
+		BFBFCA0F26DB597500B0FAB4 /* XAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XAlertViewController.swift; sourceTree = "<group>"; };
+		BFBFCA1026DB597500B0FAB4 /* XURLNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XURLNavigator.swift; sourceTree = "<group>"; };
+		BFBFCA1126DB597500B0FAB4 /* XUIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XUIKit.swift; sourceTree = "<group>"; };
+		BFBFCA1226DB597500B0FAB4 /* PublicTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicTools.swift; sourceTree = "<group>"; };
+		BFBFCA1326DB597500B0FAB4 /* Public.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Public.swift; sourceTree = "<group>"; };
+		BFBFCA1526DB597500B0FAB4 /* ReusableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReusableView+Extension.swift"; sourceTree = "<group>"; };
+		BFBFCA1626DB597500B0FAB4 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		BFBFCA1726DB597500B0FAB4 /* Collection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		BFBFCA1826DB597500B0FAB4 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		BFBFCA1926DB597500B0FAB4 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		BFBFCA1A26DB597500B0FAB4 /* UILabel+TapAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+TapAction.swift"; sourceTree = "<group>"; };
+		BFBFCA1B26DB597500B0FAB4 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		BFBFCA1C26DB597500B0FAB4 /* OtherExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherExtensions.swift; sourceTree = "<group>"; };
+		BFBFCA1D26DB597500B0FAB4 /* XIBExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XIBExtension.swift; sourceTree = "<group>"; };
 		BFC6D93220E322D100F17378 /* XRadiaMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRadiaMenu.swift; sourceTree = "<group>"; };
 		BFC6D93420E4AADB00F17378 /* SinaTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinaTabBarController.swift; sourceTree = "<group>"; };
 		BFC6D93620E4AAF800F17378 /* SinaNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinaNavigationController.swift; sourceTree = "<group>"; };
@@ -2547,6 +2599,7 @@
 		7759B6821D0EA37F00AE3A59 = {
 			isa = PBXGroup;
 			children = (
+				BFBFC9F926DB58A400B0FAB4 /* README.md */,
 				7759B68D1D0EA37F00AE3A59 /* Freedom */,
 				7759B6A71D0EA38000AE3A59 /* FreedomTests */,
 				7759B6B21D0EA38000AE3A59 /* FreedomUITests */,
@@ -2623,6 +2676,8 @@
 		7759B6CB1D0EA3E900AE3A59 /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				BFBFCA0326DB597500B0FAB4 /* CarryOn */,
+				BFBFCA1426DB597500B0FAB4 /* Extension */,
 				DFF4AB9721B794B200F03C71 /* SwiftTools */,
 				7772A7F11D64433500444973 /* ThirdPart */,
 				7759B6E81D0EA3E900AE3A59 /* BaseFile */,
@@ -3646,6 +3701,45 @@
 			path = ExpressionViewController;
 			sourceTree = "<group>";
 		};
+		BFBFCA0326DB597500B0FAB4 /* CarryOn */ = {
+			isa = PBXGroup;
+			children = (
+				BFBFCA0426DB597500B0FAB4 /* XImageView.swift */,
+				BFBFCA0526DB597500B0FAB4 /* XHud.swift */,
+				BFBFCA0626DB597500B0FAB4 /* XDataCache.swift */,
+				BFBFCA0726DB597500B0FAB4 /* SwiftWebViewBridge.swift */,
+				BFBFCA0826DB597500B0FAB4 /* XCarryOn.swift */,
+				BFBFCA0926DB597500B0FAB4 /* CircularSlider.swift */,
+				BFBFCA0A26DB597500B0FAB4 /* Circular3DStarView.swift */,
+				BFBFCA0B26DB597500B0FAB4 /* XTip.swift */,
+				BFBFCA0C26DB597500B0FAB4 /* XTransitionAnimator.swift */,
+				BFBFCA0D26DB597500B0FAB4 /* SwiftNotice.swift */,
+				BFBFCA0E26DB597500B0FAB4 /* PublicStruct.swift */,
+				BFBFCA0F26DB597500B0FAB4 /* XAlertViewController.swift */,
+				BFBFCA1026DB597500B0FAB4 /* XURLNavigator.swift */,
+				BFBFCA1126DB597500B0FAB4 /* XUIKit.swift */,
+				BFBFCA1226DB597500B0FAB4 /* PublicTools.swift */,
+				BFBFCA1326DB597500B0FAB4 /* Public.swift */,
+			);
+			path = CarryOn;
+			sourceTree = "<group>";
+		};
+		BFBFCA1426DB597500B0FAB4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BFBFCA1526DB597500B0FAB4 /* ReusableView+Extension.swift */,
+				BFBFCA1626DB597500B0FAB4 /* Date+Extension.swift */,
+				BFBFCA1726DB597500B0FAB4 /* Collection+Extension.swift */,
+				BFBFCA1826DB597500B0FAB4 /* UIView+Extension.swift */,
+				BFBFCA1926DB597500B0FAB4 /* UIImage+Extension.swift */,
+				BFBFCA1A26DB597500B0FAB4 /* UILabel+TapAction.swift */,
+				BFBFCA1B26DB597500B0FAB4 /* String+Extension.swift */,
+				BFBFCA1C26DB597500B0FAB4 /* OtherExtensions.swift */,
+				BFBFCA1D26DB597500B0FAB4 /* XIBExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		BFC6D95C20E5C56600F17378 /* WXData */ = {
 			isa = PBXGroup;
 			children = (
@@ -4107,7 +4201,7 @@
 				7759B6881D0EA37F00AE3A59 /* Frameworks */,
 				7759B6891D0EA37F00AE3A59 /* Resources */,
 				981D5F401A32DC38FC5614B9 /* [CP] Embed Pods Frameworks */,
-				B60ADA2B205B0F4114E06465 /* [CP] Copy Pods Resources */,
+				25BDA633BAC8863287C77401 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4192,6 +4286,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -4397,6 +4492,7 @@
 				771917201D655039002F2BCD /* userLogo1.png in Resources */,
 				772E85C51D76BC15004EDF50 /* ktv_giftnum520.png in Resources */,
 				BFC6D96520E5C56700F17378 /* Moments.json in Resources */,
+				BFBFC9FA26DB58A400B0FAB4 /* README.md in Resources */,
 				DFD73B2022217E3B00A181B1 /* hundred.mp3 in Resources */,
 				772E86B01D76BC15004EDF50 /* ktv_recommend_vacant.png in Resources */,
 				BF58BB8B20EF1D3F002CB4EE /* BQMM.bundle in Resources */,
@@ -4697,103 +4793,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7167805F445E34AC3233E9BD /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Freedom-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		981D5F401A32DC38FC5614B9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AAInfographics/AAInfographics.framework",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
-				"${BUILT_PRODUCTS_DIR}/AVOSCloudIM/AVOSCloudIM.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
-				"${BUILT_PRODUCTS_DIR}/MWPhotoBrowser/MWPhotoBrowser.framework",
-				"${BUILT_PRODUCTS_DIR}/MonkeyKing/MonkeyKing.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SSKeychain/SSKeychain.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
-				"${BUILT_PRODUCTS_DIR}/XCarryOn/XCarryOn.framework",
-				"${BUILT_PRODUCTS_DIR}/XExtension/XExtension.framework",
-				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
-				"${BUILT_PRODUCTS_DIR}/iOS-Echarts/iOS_Echarts.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AAInfographics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloudIM.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MWPhotoBrowser.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MonkeyKing.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSKeychain.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCarryOn.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XExtension.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOS_Echarts.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B60ADA2B205B0F4114E06465 /* [CP] Copy Pods Resources */ = {
+		25BDA633BAC8863287C77401 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -4833,6 +4833,98 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Freedom/Pods-Freedom-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7167805F445E34AC3233E9BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Freedom-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		981D5F401A32DC38FC5614B9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AAInfographics/AAInfographics.framework",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/GRDB.swift/GRDB.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/LeanCloud/LeanCloud.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/MWPhotoBrowser/MWPhotoBrowser.framework",
+				"${BUILT_PRODUCTS_DIR}/MonkeyKing/MonkeyKing.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SSKeychain/SSKeychain.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
+				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
+				"${BUILT_PRODUCTS_DIR}/iOS-Echarts/iOS_Echarts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AAInfographics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LeanCloud.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MWPhotoBrowser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MonkeyKing.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSKeychain.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOS_Echarts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Freedom/Pods-Freedom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -4840,6 +4932,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFBFCA2626DB597500B0FAB4 /* XTransitionAnimator.swift in Sources */,
 				DF6B51FC21CA801E00460949 /* WXPictureCarouselView.swift in Sources */,
 				DF0489EC21D28B870030C30B /* EdgePanTransition.swift in Sources */,
 				BFAC49BF20D25EE700E5CB8D /* AppDelegate.swift in Sources */,
@@ -4852,6 +4945,7 @@
 				DFEF80F521FB7AE4001D81FA /* FreedomProductionViewController.swift in Sources */,
 				DF6B522421CB262100460949 /* XEmojiKeyboard.swift in Sources */,
 				BF58BB6320EF1945002CB4EE /* RCAnnotationView.m in Sources */,
+				BFBFCA3426DB597500B0FAB4 /* String+Extension.swift in Sources */,
 				DFAEA20F2202915C00DD6446 /* WXAPI.swift in Sources */,
 				DF0489E121D26D120030C30B /* XMLDictionary.m in Sources */,
 				DF6B520021CA802C00460949 /* WXSearchController.swift in Sources */,
@@ -4901,7 +4995,9 @@
 				DF6B51FE21CA802500460949 /* WXQRCodeViewController.swift in Sources */,
 				713EE31220ADA0A40085B65D /* IqiyiMineViewController.swift in Sources */,
 				DF7B408A21AC020A00E3D975 /* AwemeListCellViews.swift in Sources */,
+				BFBFCA2D26DB597500B0FAB4 /* Public.swift in Sources */,
 				BF58BB2620EF1945002CB4EE /* RCDPrivateSettingsTableViewController.m in Sources */,
+				BFBFCA2B26DB597500B0FAB4 /* XUIKit.swift in Sources */,
 				DFEF80F421FB7AE4001D81FA /* FreedomIndustryViewController.swift in Sources */,
 				DF0489FA21D28BA40030C30B /* MotionAnimation.swift in Sources */,
 				DF0E967421CBACC7009682CC /* WXTagsViewController.swift in Sources */,
@@ -4941,6 +5037,9 @@
 				713EE2FC20AD9D550085B65D /* SingleOneSectionTableViewController.swift in Sources */,
 				BFEF19A52101E821003DCAC1 /* mztools.c in Sources */,
 				7121194220ABDD4B0087E05B /* EnergyShopTabBarController.swift in Sources */,
+				BFBFCA2C26DB597500B0FAB4 /* PublicTools.swift in Sources */,
+				BFBFCA3226DB597500B0FAB4 /* UIImage+Extension.swift in Sources */,
+				BFBFCA2326DB597500B0FAB4 /* CircularSlider.swift in Sources */,
 				DFB5FF5621CA280A0057C922 /* WXExpanded.swift in Sources */,
 				DFD8215E21EF2DD8006C8705 /* KugouTabBarView.swift in Sources */,
 				DF6B523821CB76F800460949 /* WXPrivacySettingViewController.swift in Sources */,
@@ -4951,6 +5050,7 @@
 				BF58BB2820EF1945002CB4EE /* RCDContactTableViewCell.m in Sources */,
 				DFED981C21E8AC0B009270A3 /* WXModes.m in Sources */,
 				BFC6D93520E4AADB00F17378 /* SinaTabBarController.swift in Sources */,
+				BFBFCA2A26DB597500B0FAB4 /* XURLNavigator.swift in Sources */,
 				DFA5D3AE21BA184F00339006 /* PlayLRCSView.swift in Sources */,
 				7788AC651D7996E000376C95 /* E_SearchViewController.m in Sources */,
 				BF58BB3620EF1945002CB4EE /* RCDReceiptDetailsTableViewController.m in Sources */,
@@ -4978,6 +5078,7 @@
 				DFF4AB9921B7969A00F03C71 /* XRefreshHeader.swift in Sources */,
 				DF0489EE21D28B870030C30B /* ElasticTransition.swift in Sources */,
 				DF7B407421AC020A00E3D975 /* WebPImageView.swift in Sources */,
+				BFBFCA2126DB597500B0FAB4 /* SwiftWebViewBridge.swift in Sources */,
 				DF29539E21D7A77F00E1C188 /* AXWebViewControllerActivity.m in Sources */,
 				DF6B524821CB772B00460949 /* WXMyQRCodeViewController.swift in Sources */,
 				713EE2E420AD9C2F0085B65D /* AlipayFriendsViewController.swift in Sources */,
@@ -4993,6 +5094,7 @@
 				713EE30620ADA05F0085B65D /* IqiyiVideoDetailViewController.swift in Sources */,
 				713EE30C20ADA0850085B65D /* IqiyiSearchHistoryViewController.swift in Sources */,
 				BF4A80E02105CE5E00D32FB0 /* BaseSearchBarView.swift in Sources */,
+				BFBFCA3526DB597500B0FAB4 /* OtherExtensions.swift in Sources */,
 				7121194420ABE1280087E05B /* EnergySuperMarketTabBarController.swift in Sources */,
 				DFEF80F121FB7AE4001D81FA /* FreedomBaseViewController.swift in Sources */,
 				BF4A80DE2105CDFF00D32FB0 /* CRKeychainItem.m in Sources */,
@@ -5013,6 +5115,7 @@
 				DF0489EB21D28B870030C30B /* ElasticModalViewController.swift in Sources */,
 				DF6B523021CB76DD00460949 /* WXCommonSettingViewController.swift in Sources */,
 				DF0E966821CBAC8F009682CC /* WXFriendSearchViewController.swift in Sources */,
+				BFBFCA2026DB597500B0FAB4 /* XDataCache.swift in Sources */,
 				DFFD98CF21FB0B5800A442D7 /* BooksLibraryViewController.swift in Sources */,
 				713EE2A820AD8F500085B65D /* AlipayTabBarController.swift in Sources */,
 				BF58BB6720EF1945002CB4EE /* AFHttpTool.m in Sources */,
@@ -5029,7 +5132,9 @@
 				713EE2C020AD9B060085B65D /* DZDealListViewController.swift in Sources */,
 				BF58BA3020EDE837002CB4EE /* FreedomToolSwift.swift in Sources */,
 				7121193A20ABC5710087E05B /* EnergyShopCarViewController.swift in Sources */,
+				BFBFCA2726DB597500B0FAB4 /* SwiftNotice.swift in Sources */,
 				713EE2AC20AD8F8E0085B65D /* DZNavigationController.swift in Sources */,
+				BFBFCA2426DB597500B0FAB4 /* Circular3DStarView.swift in Sources */,
 				BF4A80F72105CFE100D32FB0 /* CRCrypto.m in Sources */,
 				BF58BB3020EF1945002CB4EE /* RCDMainTabBarViewController.m in Sources */,
 				713EE2C820AD9B600085B65D /* TaobaoHomeViewController.swift in Sources */,
@@ -5043,6 +5148,7 @@
 				713EE2D220AD9B970085B65D /* TaobaoMiniArticleViewController.swift in Sources */,
 				BF58BB6620EF1945002CB4EE /* TFHpple.m in Sources */,
 				BF58BB4320EF1945002CB4EE /* RCDPrivateSettingViewController.m in Sources */,
+				BFBFCA1E26DB597500B0FAB4 /* XImageView.swift in Sources */,
 				713EE2CA20AD9B6C0085B65D /* TaobaoMiniViewController.swift in Sources */,
 				7121192A20ABC4EE0087E05B /* EnergyNewsDetailViewController.swift in Sources */,
 				DFEB45EB22009A7A00B1D8D8 /* FoundationImage.swift in Sources */,
@@ -5064,6 +5170,7 @@
 				BFEF19C32101E990003DCAC1 /* OcCallCpp.mm in Sources */,
 				7115A5F620AAFC40000D0B96 /* MyDatabaseEditViewController.swift in Sources */,
 				BFC6D94720E4AC3B00F17378 /* SinaEmotion.swift in Sources */,
+				BFBFCA3326DB597500B0FAB4 /* UILabel+TapAction.swift in Sources */,
 				DFB5FF5E21CA2F3E0057C922 /* WXNavigationController.swift in Sources */,
 				BF58BB5320EF1945002CB4EE /* RCDMeInfoTableViewController.m in Sources */,
 				DF7B407F21AC020A00E3D975 /* DouyinFollowViewController.swift in Sources */,
@@ -5101,11 +5208,14 @@
 				BF58BB4B20EF1945002CB4EE /* RCDMeTableViewController.m in Sources */,
 				713EE2B620AD901F0085B65D /* KugouBaseViewController.swift in Sources */,
 				BF58BB6C20EF1945002CB4EE /* XPathQuery.m in Sources */,
+				BFBFCA2526DB597500B0FAB4 /* XTip.swift in Sources */,
+				BFBFCA3626DB597500B0FAB4 /* XIBExtension.swift in Sources */,
 				DF0E967021CBACB9009682CC /* WXPublicServerSearchViewController.swift in Sources */,
 				DFA5D3B621BA8EC600339006 /* XRefreshControl.swift in Sources */,
 				BF58BB3120EF1945002CB4EE /* RCDGroupAnnouncementViewController.m in Sources */,
 				DF8BBC9C21D67F0600F0D1FD /* UIView+CircularAnimation.swift in Sources */,
 				7788AC661D7996E000376C95 /* E_WebViewControler.m in Sources */,
+				BFBFCA3126DB597500B0FAB4 /* UIView+Extension.swift in Sources */,
 				BF58BB4720EF1945002CB4EE /* RCDConversationSettingBaseViewController.m in Sources */,
 				713EE2E220AD9C240085B65D /* AlipayMouseViewController.swift in Sources */,
 				713EE30020ADA00E0085B65D /* IqiyiNavigationController.swift in Sources */,
@@ -5123,14 +5233,17 @@
 				DF4C6FCA21CC790D00A54339 /* FoundationAPI.swift in Sources */,
 				DF0E968021CBACEF009682CC /* WXScannerViewController.swift in Sources */,
 				BF58BB2C20EF1945002CB4EE /* RCDPersonDetailViewController.m in Sources */,
+				BFBFCA2E26DB597500B0FAB4 /* ReusableView+Extension.swift in Sources */,
 				713EE2C220AD9B110085B65D /* DZDealDetailViewController.swift in Sources */,
 				713EE31020ADA0990085B65D /* IqiyiLoginViewController.swift in Sources */,
 				DF0489F721D28BA40030C30B /* NSObject+MotionAnimation.swift in Sources */,
 				BF93B91920F8B0C3007E4BFB /* FreedomLoginViewController.swift in Sources */,
 				BFEF19A32101E821003DCAC1 /* zip.c in Sources */,
 				BFC6D93320E322D200F17378 /* XRadiaMenu.swift in Sources */,
+				BFBFCA2826DB597500B0FAB4 /* PublicStruct.swift in Sources */,
 				713EE2B420AD900F0085B65D /* TaobaoBaseViewController.swift in Sources */,
 				DF7B408621AC020A00E3D975 /* ChatListController.swift in Sources */,
+				BFBFCA2F26DB597500B0FAB4 /* Date+Extension.swift in Sources */,
 				7788AC611D7996E000376C95 /* DetailViewController.m in Sources */,
 				713EE2F820AD9D3C0085B65D /* DetailTableViewController.swift in Sources */,
 				713EE2BE20AD9AF90085B65D /* DZDealController.swift in Sources */,
@@ -5151,6 +5264,7 @@
 				DF0489FB21D28BA40030C30B /* Types.swift in Sources */,
 				BF58BB5920EF1945002CB4EE /* RCDServiceViewController.m in Sources */,
 				BF58BB2B20EF1945002CB4EE /* RCDFrienfRemarksViewController.m in Sources */,
+				BFBFCA1F26DB597500B0FAB4 /* XHud.swift in Sources */,
 				BF58BB1520EF1944002CB4EE /* RCloudModel.m in Sources */,
 				DF0489EA21D28B870030C30B /* ElasticTransitionPresentationController.swift in Sources */,
 				BF58BB2520EF1944002CB4EE /* RCDChatRoomViewController.m in Sources */,
@@ -5184,6 +5298,7 @@
 				713EE2B020AD8FDB0085B65D /* AlipayNavigationViewController.swift in Sources */,
 				DF0E966621CBAC89009682CC /* WXFriendDetailViewController.swift in Sources */,
 				7121196A20AC24D30087E05B /* ToutiaoViewController.swift in Sources */,
+				BFBFCA3026DB597500B0FAB4 /* Collection+Extension.swift in Sources */,
 				DF6B522A21CB76BD00460949 /* WXAccountAndSafetyViewController.swift in Sources */,
 				BFAC491920D23BD600E5CB8D /* DetailView.swift in Sources */,
 				7788AC631D7996E000376C95 /* E_ReaderViewController.m in Sources */,
@@ -5194,6 +5309,8 @@
 				DF6B521821CB25D900460949 /* WXChatViewController.swift in Sources */,
 				DF0E967221CBACBF009682CC /* WXPublicServerViewController.swift in Sources */,
 				BFC6D93720E4AAF800F17378 /* SinaNavigationController.swift in Sources */,
+				BFBFCA2926DB597500B0FAB4 /* XAlertViewController.swift in Sources */,
+				BFBFCA2226DB597500B0FAB4 /* XCarryOn.swift in Sources */,
 				BF58BB1420EF1944002CB4EE /* KxMenu.m in Sources */,
 				7115A5EA20AAEDF1000D0B96 /* BooksBaseViewController.swift in Sources */,
 				BFEF19A22101E821003DCAC1 /* unzip.c in Sources */,

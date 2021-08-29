@@ -48,12 +48,12 @@ extension List {
 //    }
 }
 extension ListBase {
-//    func remove(_ obj: AnyObject) {
-//        let index = self.index(ofAccessibilityElement: obj)
-//    }
-//    convenience public init(normalArray: [AnyObject]) {
-//        self.init()
-//    }
+    func remove(_ obj: AnyObject) {
+        let index = self.index(ofAccessibilityElement: obj)
+    }
+    convenience public init(normalArray: [AnyObject]) {
+        self.init()
+    }
 }
 extension RLMObject {
     func tes() {

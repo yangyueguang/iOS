@@ -1,0 +1,32 @@
+
+platform:ios, '10.0'
+
+use_frameworks!
+inhibit_all_warnings!
+target 'project' do
+    use_frameworks!
+#    pod 'XExtension'
+#    pod 'XCarryOn'
+    pod 'SnapKit'
+    pod 'RxSwift'
+    pod 'RxCocoa'
+    pod 'Alamofire'
+    pod 'MJRefresh'
+    pod 'Kingfisher'
+    pod 'RealmSwift'
+    pod 'IQKeyboardManager'
+    pod 'Realm'
+    pod 'Moya'
+#    pod 'AVOSCloud'
+    pod 'BlocksKit'
+    pod 'iOS-Echarts'
+    pod 'BaiduMapKit'
+end
+
+ post_install do |installer|
+     installer.pods_project.targets.each do |target|
+         target.build_configurations.each do |config|
+             config.build_settings['ENABLE_BITCODE'] = 'NO'
+         end
+     end
+ end
