@@ -9,9 +9,6 @@ import Foundation
 import UIKit
 import Social
 import LocalAuthentication
-import RealmSwift
-import Realm
-public var realmWX: RLMRealm!
 public func BoldFont(_ fontSize:CGFloat)->UIFont{
     return UIFont.boldSystemFont(ofSize: fontSize)
 }

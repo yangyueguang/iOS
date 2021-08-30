@@ -1,8 +1,6 @@
 //
 //  WXUserHelper.swift
 //  Freedom
-import RealmSwift
-import Realm
 import Foundation
 import Contacts
 //import XExtension
@@ -395,13 +393,6 @@ class WXUserHelper: NSObject {
     func messages(byUserID userID: String, partnerID: String, from date: Date, count: Int, complete: @escaping ([WXMessage], Bool) -> Void) {
         var data: [WXMessage] = []
         let pre = NSPredicate(format: "userID = %@", userID)
-        try! realmWX.transaction {
-            let results = WXMessage.objects(in: realmWX, with: pre)
-            for index in 0..<results.count {
-                let message = results.object(at: index) as! WXMessage
-                data.insert(message, at: 0)
-            }
-        }
         var hasMore = false
         if data.count == count + 1 {
             hasMore = true
@@ -413,67 +404,21 @@ class WXUserHelper: NSObject {
         var data: [[WXMessage]] = []
         let pre = NSPredicate(format:"userID = %@ and friendID = %@ and messageType = 2", userID, partnerID)
         var array: [WXMessage] = []
-        try! realmWX.transaction {
-            let results = WXMessage.objects(in: realmWX, with: pre)
-            for index in 0..<results.count {
-                let message = results.object(at: index) as! WXMessage
-                if message.date.distanceWithDate(Date()).day ?? 0 < 1 {
-                    array.append(message)
-                } else {
-                    if array.count > 0 {
-                        data.append(array)
-                    }
-                    array = [message]
-                }
-            }
-            if array.count > 0 {
-                data.append(array)
-            }
-        }
         return data
     }
 
     func chatImagesAndVideos(byUserID userID: String, partnerID: String) -> [WXImageMessage] {
         var data: [WXImageMessage] = []
         let pre = NSPredicate(format: "userID = %@ and friendID = %@ and messageType = 2", userID, partnerID)
-        try! realmWX.transaction {
-            let results = WXImageMessage.objects(in: realmWX, with: pre)
-            for index in 0..<results.count {
-                let message = results.object(at: index) as! WXImageMessage
-                data.append(message)
-            }
-        }
         return data
     }
 
     func addConversation(byUid uid: String, fid: String, type: Int, date: Date) {
-        realmWX.write {
-            let conversation = WXConversation()
-            conversation.partnerID = fid
-            let pre = NSPredicate(format: "partnerID = %@", fid)
-            conversation.unreadCount = Int(WXConversation.objects(in: realmWX, with: pre).count) + 1
-            conversation.convType = TLConversationType.personal
-            conversation.date = date
-            realmWX.addOrUpdate(conversation)
-        }
+
     }
     func conversations(byUid uid: String) -> [WXConversation] {
         var data: [WXConversation] = []
         print(uid)
-        let pre = NSPredicate(format: "partnerID != \"\"")
-        try! realmWX.transaction {
-            let results = WXConversation.objects(in: realmWX, with: pre).sortedResults(usingKeyPath: "date", ascending: true)
-            for index in 0..<results.count {
-                let conversation = results.object(at: index) as! WXConversation
-                let pre = NSPredicate(format: "userID = %@ and friendID = %@", uid, conversation.partnerID ?? "")
-                let message = WXMessage.objects(in: realmWX, with: pre).lastObject() as? WXMessage
-                if message != nil {
-                    conversation.content = message?.conversationContent() ?? ""
-                    conversation.date = message?.date ?? Date()
-                }
-                data.append(conversation)
-            }
-        }
         return data
     }
 }
@@ -502,27 +447,17 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
     var userPreferEmojiGroup = TLEmojiGroup()
  
     func addExpressionGroup(_ emojiGroup: TLEmojiGroup) {
-        try! realmWX.transaction {
-            realmWX.addOrUpdate(emojiGroup)
-        }
 //        try! realmWX.transaction {
 //            realmWX.addObjects(emojiGroup.data.array() as NSFastEnumeration)
 //        }
         WXUserHelper.shared.updateEmojiGroupData()
     }
     func deleteExpressionGroup(byID groupID: String) {
-        try! realmWX.transaction {
-            let pre = NSPredicate(format: "groupID = %@", groupID)
-            let results = TLEmojiGroup.objects(in: realmWX, with: pre)
-            realmWX.deleteObjects(results)
-        }
 
         WXUserHelper.shared.updateEmojiGroupData()
     }
     func didExpressionGroupAlways(inUsed groupID: String) -> Bool {
-        let pre = NSPredicate(format: "groupID = %@", groupID)
-        let results = TLEmojiGroup.objects(in: realmWX, with: pre)
-        return Int(results.count) > 0
+        return true
     }
     func emojiGroup(byID groupID: String) -> TLEmojiGroup? {
         for group: TLEmojiGroup in userEmojiGroups {
@@ -552,25 +487,6 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
     func expressionGroups(byUid uid: String) -> [TLEmojiGroup] {
         var data: [TLEmojiGroup] = []
         let pre = NSPredicate(format: "authID = %@", uid)
-        // 读取表情包信息
-        try! realmWX.transaction {
-            let results = TLEmojiGroup.objects(in: realmWX, with: pre)
-            for index in 0..<results.count {
-                let group = results.object(at: index) as! TLEmojiGroup
-                group.data.removeAll()
-
-                var emojis: [TLEmoji] = []
-                let pre = NSPredicate(format: "groupID = %@", group.groupID)
-                try! realmWX.transaction {
-                    let results = TLEmoji.objects(in: realmWX, with: pre)
-                    for index in 0..<results.count {
-                        emojis.append(results.object(at: index) as! TLEmoji)
-                    }
-                }
-//                group.data.append(objectsIn: emojis)
-                data.append(group)
-            }
-        }
         return data
     }
 }
@@ -582,7 +498,6 @@ class WXMessageHelper: NSObject {
         return WXUserHelper.shared.user.userID
     }
     func send(_ message: WXMessage, progress: @escaping (WXMessage, CGFloat) -> Void, success: @escaping (WXMessage) -> Void, failure: @escaping (WXMessage) -> Void) {
-        realmWX.addx(message)
         var partnerID = message.friendID
         var type: Int = 0
         if message.partnerType == .group {
@@ -598,11 +513,6 @@ class WXMessageHelper: NSObject {
 
     func deleteConversation(byPartnerID partnerID: String) {
         deleteMessages(byPartnerID: partnerID)
-        try! realmWX.transaction {
-            let pre = NSPredicate(format: "userID = %@ and friendID = %@", userID, partnerID)
-            let results = WXConversation.objects(in: realmWX, with: pre)
-            realmWX.deleteObjects(results)
-        }
     }
 
     func messageRecord(forPartner partnerID: String, from date: Date, count: Int, complete: @escaping ([WXMessage], Bool) -> Void) {
@@ -621,34 +531,15 @@ class WXMessageHelper: NSObject {
     }
 
     func deleteMessage(byMsgID msgID: String) {
-        realmWX.write {
-            let results = WXMessage.objects(in: realmWX, with: NSPredicate(format: "messageID = %@", msgID))
-            realmWX.deleteObjects(results)
-        }
 
     }
 
     func deleteMessages(byPartnerID partnerID: String) {
-        realmWX.write {
-            let pre = NSPredicate(format: "userID = %@ and friendID = %@", self.userID, partnerID)
-            let results = WXMessage.objects(in: realmWX, with: pre)
-            realmWX.deleteObjects(results)
-        }
 
         WXChatViewController.shared.resetChatVC()
     }
     func deleteAllMessages() {
-        try! realmWX.transaction {
-            let predicate = NSPredicate(format: "userID = %@", self.userID)
-            let results = WXMessage.objects(in: realmWX, with: predicate)
-            realmWX.deleteObjects(results)
-        }
-        WXChatViewController.shared.resetChatVC()
-        try! realmWX.transaction {
-            let pre = NSPredicate(format: "partnerID = %@", self.userID)
-            let results = WXConversation.objects(in: realmWX, with: pre)
-            realmWX.deleteObjects(results)
-        }
+
     }
     
     func chatDetailData(byUserInfo userInfo: WXUser) -> [WXSettingGroup] {

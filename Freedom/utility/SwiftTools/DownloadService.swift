@@ -12,7 +12,6 @@ func test(){
 */
 import Foundation
 import AFNetworking
-import Realm
 @objc
 enum ResourceStatus : Int {
     case normal = 0
@@ -294,7 +293,6 @@ destination: destinationBlock,completionHandler: completionHandler)
         }
         if status != self.resource.status && status != .downloading{
             self.resource.status = status
-            let realm = RLMRealm.default()
             let res = self.copyResourceToRecorce(res: self.resource)
         }
     }
@@ -458,7 +456,6 @@ public final class DownloadService : NSObject {
     }
     func deleteDownloadResource(checkCode:String) {
         if let record = self.fetchResource(checkCode: checkCode){
-            let realm = RLMRealm.default()
             do {
                 let pah = record.path
                 try FileManager.default.removeItem(at:URL(fileURLWithPath:pah))

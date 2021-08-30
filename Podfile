@@ -15,7 +15,6 @@ pod 'iCarousel'
 pod 'iOS-Echarts'
 
 #Swift.frameworks
-pod 'RealmSwift'
 pod 'Kingfisher'
 pod 'SnapKit'
 pod 'Alamofire'

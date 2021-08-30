@@ -49,11 +49,6 @@ PODS:
   - ReactiveCocoa (11.2.1):
     - ReactiveSwift (~> 6.6)
   - ReactiveSwift (6.6.1)
-  - Realm (10.13.0):
-    - Realm/Headers (= 10.13.0)
-  - Realm/Headers (10.13.0)
-  - RealmSwift (10.13.0):
-    - Realm (= 10.13.0)
   - RxCocoa (6.2.0):
     - RxRelay (= 6.2.0)
     - RxSwift (= 6.2.0)
@@ -86,7 +81,6 @@ DEPENDENCIES:
   - MWPhotoBrowser
   - ReactiveCocoa
   - ReactiveSwift
-  - RealmSwift
   - RxCocoa
   - RxSwift
   - SnapKit
@@ -115,8 +109,6 @@ SPEC REPOS:
     - MWPhotoBrowser
     - ReactiveCocoa
     - ReactiveSwift
-    - Realm
-    - RealmSwift
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -147,8 +139,6 @@ SPEC CHECKSUMS:
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   ReactiveCocoa: 194289e7069037d40c59cb4ae9230f4b1ec05fa8
   ReactiveSwift: fab34244ad908808dc822bae352a058c8837c4ca
-  Realm: e3a1225aafa7cec96a020dc199201b9d1f9cd59c
-  RealmSwift: 62585b4a934754a9d9117331689f4e8a5b1f6113
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
@@ -160,6 +150,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 1cc39ec0454d6e94d0397418953164d7aa631719
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
 
-PODFILE CHECKSUM: f47a55a08cf7608aca84ab9c4d27143910516f9d
+PODFILE CHECKSUM: 3eabde2e74e2c9320b85c35e6f428087b88b1be7
 
 COCOAPODS: 1.10.1

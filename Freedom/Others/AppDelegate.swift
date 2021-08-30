@@ -6,7 +6,6 @@
 //  Copyright © 2018 Super. All rights reserved.
 //
 import UIKit
-import Realm
 import Alamofire
 import Kingfisher
 import AVFoundation
@@ -73,25 +72,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         let appInfo = Bundle.main.infoDictionary
         let versionStr = (appInfo!["CFBundleVersion"] as! String).replacingOccurrences(of: ".", with: "")
         let version = UInt64(versionStr)
-        let config = RLMRealmConfiguration.default()
-        config.schemaVersion = version!
-        config.fileURL = URL(fileURLWithPath: FileManager.documentsPath() + "freedom.realm")
-        config.migrationBlock = {(migration:RLMMigration,oldSchemaVersion:UInt64) in
-            if oldSchemaVersion < 1{
-                print("OK")
-            }
-        }
-        RLMRealmConfiguration.setDefault(config)
-        RLMRealm.default()
     }
     func firstConfigWXRealm() {
         let path = "\(FileManager.documentsPath())/User/"
         if !FileManager.default.fileExists(atPath: path) {
             try? FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
         }
-        let config = RLMRealmConfiguration.default()
-        config.fileURL = URL(fileURLWithPath: path + "WX.realm")
-        realmWX = try! RLMRealm(configuration: config)
     }
     func firstConfigAllAPPIds(){
         let userDefault = UserDefaults.standard

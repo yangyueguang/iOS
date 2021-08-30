@@ -1,8 +1,6 @@
 //
 //  WXModes.swift
 //  Freedom
-import Realm
-import RealmSwift
 import Foundation
 //import XExtension
 enum TLInfoType: Int {
@@ -83,7 +81,7 @@ enum TLEmojiGroupStatus : Int {
     case downloading
 }
 @objcMembers
-class TLEmoji: RLMObject {
+class TLEmoji: NSObject {
     var type = TLEmojiType.emoji
     var groupID = ""
     var emojiID = ""
@@ -97,12 +95,9 @@ class TLEmoji: RLMObject {
         let groupPath = FileManager.pathExpression(forGroupID: groupID)
         return "\(groupPath)\(emojiID)"
     }
-    override static func primaryKey() -> String {
-        return "groupID"
-    }
 }
 @objcMembers
-class TLEmojiGroup: RLMObject {
+class TLEmojiGroup: NSObject {
     var groupID = ""
     var groupName = ""
     var path: String {
@@ -142,15 +137,8 @@ class TLEmojiGroup: RLMObject {
             pageNumber = count / pageItemCount + (count % pageItemCount == 0 ? 0 : 1)
         }
     }
-    override static func primaryKey() -> String {
-        return "groupID"
-    }
     class func replacedKeyFromPropertyName() -> [AnyHashable : Any] {
         return ["groupID": "eId", "groupIconURL": "coverUrl", "groupName": "eName", "groupInfo": "memo", "groupDetailInfo": "memo1", "count": "picCount", "bannerID": "aId", "bannerURL": "URL"]
-    }
-    override init() {
-        super.init()
-
     }
     func pictureURL() -> String {
         return bannerURL
@@ -180,7 +168,7 @@ enum TLMessageReadState : Int {
     case readed // 消息已读
 }
 @objcMembers
-class WXConversation: RLMObject {
+class WXConversation: NSObject {
     var remindType = TLMessageRemindType.normal//消息提醒类型
     var partnerID = ""//用户ID
     var partnerName = ""//用户名
@@ -204,9 +192,6 @@ class WXConversation: RLMObject {
             }
         }
     }
-    override static func primaryKey() -> String {
-        return "partnerID"
-    }
     func updateUserInfo(_ user: WXUser) {
         partnerName = user.showName
         avatarPath = user.avatarPath
@@ -218,7 +203,7 @@ class WXConversation: RLMObject {
     }
 }
 @objcMembers
-class WXMessage: RLMObject {
+class WXMessage: NSObject {
     var WXMessageID = ""
     var userID = ""
     var friendID = "1"
@@ -242,12 +227,6 @@ class WXMessage: RLMObject {
     var size: CGSize {
         return CGSize(width: 100, height: 50)
     }
-    override static func primaryKey() -> String {
-        return "WXMessageID"
-    }
-    override static func ignoredProperties() -> [String] {
-        return ["content"]
-    }
     class func createMessage(by type: TLMessageType) -> WXMessage {
         if type == .text {
             return WXTextMessage()
@@ -258,14 +237,8 @@ class WXMessage: RLMObject {
         }
         return WXMessage()
     }
-    override init() {
-        super.init()
-        WXMessageID = String(format: "%lld", Int64(Date().timeIntervalSince1970 * 10000))
-    }
     var fromUser: WXModel? {
-        let predicate = NSPredicate(format: "friendID = %@", self.friendID)
-        let results = WXMessage.objects(in: realmWX, with: predicate).firstObject()
-        return results as? WXModel
+        return WXModel()
     }
     func conversationContent() -> String {
         return "子类未定义"
