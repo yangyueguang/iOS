@@ -15,8 +15,7 @@ final class BooksLibraryViewController: BooksBaseViewController,UICollectionView
 
     var collectionView: BaseCollectionView!
     @objc func rightAction(){
-        let wxVc = BookFriendsViewController()
-        self.present(wxVc, animated: true) {}
+        
     }
    
     override func viewDidLoad() {
@@ -50,8 +49,6 @@ final class BooksLibraryViewController: BooksBaseViewController,UICollectionView
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(BooksViewCell.self, for: indexPath)
-        cell.icon.image = Image.logo.image
-        cell.title.text = "书籍阅读"
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
