@@ -248,15 +248,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
                 }
             }
         }
-        RCIMClient.shared().recordLaunchOptionsEvent(launchOptions)
-        let pushServiceData = RCIMClient.shared().getPushExtra(fromLaunchOptions: launchOptions)
-        if let pushDict = pushServiceData {
-            for (key,value) in pushDict {
-                print("\(key)\(value)")
-            }
-        } else {
-            print("该启动事件不包含来自融云的推送服务")
-        }
         return true
     }
     //FIXME:远程推送
@@ -265,7 +256,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         let tempStr1 = deviceToken.description.replacingOccurrences(of: "<", with: "")
         let tempStr2 = tempStr1.replacingOccurrences(of: ">", with: "")
         let token = tempStr2.replacingOccurrences(of: " ", with: "")
-        RCIMClient.shared().setDeviceToken(token)
         var token1 = ""
         for i in 0..<deviceToken.count {
             token1 = token1 + String(format: "%02.2hhx", arguments: [deviceToken[i]])
@@ -274,15 +264,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     }
     ///收到远程通知
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        RCIMClient.shared().recordRemoteNotificationEvent(userInfo)
-        let pushServiceData = RCIMClient.shared().getPushExtra(fromRemoteNotification: userInfo)
-        if let pushDict = pushServiceData {
-            for (key,value) in pushDict {
-                print("key = \(key), value = \(value)")
-            }
-        } else {
-            print("该远程推送不包含来自融云的推送服务")
-        }
+        print("该远程推送不包含来自融云的推送服务")
     }
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
     }
@@ -300,16 +282,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
 //        let session :AVAudioSession = AVAudioSession.sharedInstance()
 //        session.setActive(true)
 //        session.setCategory(AVAudioSessionCategoryPlayback)
-        let status = RCIMClient.shared().getConnectionStatus()
-        if status != RCConnectionStatus.ConnectionStatus_SignUp{
-            let unreadMsgCount = RCIMClient.shared().getUnreadCount([
-                RCConversationType.ConversationType_PRIVATE,
-                RCConversationType.ConversationType_DISCUSSION,
-                RCConversationType.ConversationType_APPSERVICE,
-                RCConversationType.ConversationType_PUBLICSERVICE,
-                RCConversationType.ConversationType_GROUP])
-            application.applicationIconBadgeNumber = Int(unreadMsgCount)
-        }
     }
     ///进入后台
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -338,16 +310,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         return true
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        if RCIM.shared().openExtensionModuleUrl(url){
-            return true
-        }
         return true
     }
     ///从其他程序跳入进来的
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        if RCIM.shared().openExtensionModuleUrl(url){
-            return true
-        }
         return true
     }
     //禁止横屏

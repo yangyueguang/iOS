@@ -159,7 +159,7 @@ class FreedomLoginViewController: BaseViewController {
         }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 60) {
             if self.user.status != 0 {
-                RCIM.shared().disconnect()
+                
             }
         }
         XHud.show(.withDetail(message: "登录中..."))
@@ -188,9 +188,6 @@ class FreedomLoginViewController: BaseViewController {
     }
     //FIXME:用文件服务器配置登录,设置导航服务器和上传文件服务器信息
     func loginWithFileServer(_ appKey:String,_ demoServer:String,_ naviServer:String,_ fileServer:String) {
-        RCIM.shared().initWithAppKey(appKey)
-        RCIM.shared().disconnect()
-        RCIMClient.shared().setServerInfo(naviServer, fileServer: fileServer)
         navigationController?.pushViewController(FreedomLoginViewController.loginVCWith(type: .login), animated: true)
     }
 
@@ -230,57 +227,12 @@ class FreedomLoginViewController: BaseViewController {
         }
     }
     private func checkContent() -> Bool{
-        let status: RCNetworkStatus = RCIMClient.shared().getCurrentNetworkStatus()
-        var alertMessage: String? = nil
-        if RCNetworkStatus.notReachable == status {
-            alertMessage = "当前网络不可用，请检查！"
-        }else if user.name.isEmpty {
-            alertMessage = "用户名不能为空!"
-        }else if(user.phone.count != 11) && vcType != .login {
-            alertMessage = "手机号不正确!"
-        }else if user.pwd.isEmpty {
-            passWordT.shakeAnimation()
-            alertMessage = "密码不能为空!"
-        }else if user.pwd.count < 6 || user.pwd.count > 11{
-            passWordT.shakeAnimation()
-            alertMessage = "请输入6-16位密码"
-        }else if (verityCodeT.text?.isEmpty ?? true) && vcType != .login {
-            alertMessage = "请输入验证码"
-        }
-        if alertMessage != nil {
-            self.noticeError(alertMessage ?? "")
-            return false
-        }
         return true
     }
 
     //FIXME: 登录融云服务器
     private func loginRongCloud(_ userName: String, userId: String, token: String, password: String) {
-        RCIM.shared().connect(withToken: token, success: { userId in
-            self.user.Id = userId!
-            self.loginSuccess()
-        }, error: { status in
-            self.passWordT.shakeAnimation()
-            DispatchQueue.main.async(execute: {
-                print("RCConnectErrorCode is \(status.rawValue)")
-                self.passWordT.shakeAnimation()
-                //SDK会自动重连登录，这时候需要监听连接状态
-                RCIM.shared().connectionStatusDelegate = self
-            })
-        }, tokenIncorrect: {
-            print("IncorrectToken")
-            AFHttpTool.getTokenSuccess({ responseDict in
-                let response = responseDict as! [String: Any]
-                let result = response["result"] as! [String: String]
-                let token = result["token"] ?? ""
-                let userId = result["id"] ?? ""
-                self.user.token = token
-                self.user.Id = userId
-                self.loginRongCloud(userName, userId: userId, token: token, password: password)
-            }, failure: { err in
-                print("Token无效")
-            })
-        })
+        
     }
     private func loginSuccess() {
         user.status = 0
@@ -298,16 +250,6 @@ class FreedomLoginViewController: BaseViewController {
                 let result = response["result"] as! [String: String]
                 let nickname = result["nickname"] ?? ""
                 let portraitUri = result["portraitUri"] ?? ""
-                let rcuser = RCUserInfo(userId: self.user.Id, name: nickname, portrait: portraitUri)
-                if rcuser!.portraitUri.count <= 0 {
-                    let url = Bundle.main.path(forResource: "userLogo", ofType: "png")
-                    rcuser?.portraitUri = url
-                }
-                RCIM.shared().refreshUserInfoCache(rcuser, withUserId: self.user.Id)
-                RCIM.shared().currentUserInfo = rcuser
-                defaults.set(rcuser?.portraitUri, forKey:"userPortraitUri")
-                defaults.set(rcuser?.name, forKey:"userNickName")
-                defaults.synchronize()
             }
         }, failure: { err in
         })
@@ -321,7 +263,7 @@ class FreedomLoginViewController: BaseViewController {
     }
 }
 
-extension FreedomLoginViewController: UITextFieldDelegate, RCIMConnectionStatusDelegate {
+extension FreedomLoginViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
         case userNameT:user.name = textField.text ?? ""
@@ -343,32 +285,5 @@ extension FreedomLoginViewController: UITextFieldDelegate, RCIMConnectionStatusD
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
-    }
-    func onRCIMConnectionStatusChanged(_ status: RCConnectionStatus) {
-        DispatchQueue.main.async(execute: {
-            if status == RCConnectionStatus.ConnectionStatus_UNKNOWN {
-                RCIM.shared().connectionStatusDelegate = (UIApplication.shared.delegate as? RCIMConnectionStatusDelegate?)!
-                self.loginSuccess()
-            } else if status == RCConnectionStatus.ConnectionStatus_NETWORK_UNAVAILABLE {
-                self.noticeError("当前网络不可用，请检查！")
-            } else if status == .ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT {
-                self.noticeError("您的帐号在别的设备上登录，您被迫下线！")
-            } else if status == .ConnectionStatus_TOKEN_INCORRECT {
-                self.noticeError("Token无效 无法连接到服务器！")
-                AFHttpTool.getTokenSuccess({ responseDict in
-                    let response = responseDict as! [String: Any]
-                        let result = response["result"] as! [String: String]
-                        self.user.token = result["token"] ?? ""
-                        self.user.Id = result["id"] ?? ""
-                    self.loginRongCloud(self.user.name, userId: self.user.Id, token: self.user.token, password: self.user.pwd)
-                }, failure: { (error) in
-                    DispatchQueue.main.async(execute: {
-                        self.noticeError("Token无效 无法连接到服务器！")
-                    })
-                })
-            } else {
-                print(String(format: "RCConnectErrorCode is \(status)"))
-            }
-        })
     }
 }

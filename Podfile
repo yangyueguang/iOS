@@ -33,11 +33,6 @@ pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'UMengAnalytics'
 pod 'LeanCloud'
-pod 'RongCloudIM/IMLib'
-pod 'RongCloudIM/IMKit'
-pod 'RongCloudIM/CallLib'
-pod 'RongCloudIM/CallKit'
-pod 'RongCloudIM/RedPacket'
 end
 
 post_install do |installer|
