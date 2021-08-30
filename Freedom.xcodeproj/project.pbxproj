@@ -45,7 +45,6 @@
 		7121197020AC24F60087E05B /* ToutiaoVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121196F20AC24F60087E05B /* ToutiaoVideoViewController.swift */; };
 		7121197220AC25000087E05B /* ToutiaoAttentionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121197120AC25000087E05B /* ToutiaoAttentionViewController.swift */; };
 		7121197420AC250D0087E05B /* ToutiaoMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121197320AC250D0087E05B /* ToutiaoMeViewController.swift */; };
-		71250EC62091C0F20093B59B /* FreedomTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 71250EC52091C0F20093B59B /* FreedomTools.m */; };
 		713728CA20AE733F00A3227A /* AlipayModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713728C920AE733F00A3227A /* AlipayModels.swift */; };
 		713728CC20AE839900A3227A /* AlipayYuEBaoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713728CB20AE839900A3227A /* AlipayYuEBaoTableViewController.swift */; };
 		713728CF20AE9FC600A3227A /* FoundationSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713728CE20AE9FC500A3227A /* FoundationSwift.swift */; };
@@ -508,9 +507,7 @@
 		BF0E8AFB20DB9BE700150476 /* FreedomItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF0E8AFA20DB9BE700150476 /* FreedomItems.plist */; };
 		BF0E8B0420DCAB4200150476 /* app.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF0E8B0220DCAB3F00150476 /* app.plist */; };
 		BF0E8B0520DCAB4200150476 /* systemSetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF0E8B0320DCAB4100150476 /* systemSetting.plist */; };
-		BF0E8B0820DCB0B500150476 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0E8B0720DCB0B500150476 /* AppManager.m */; };
 		BF4A80E02105CE5E00D32FB0 /* BaseSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80DF2105CE5E00D32FB0 /* BaseSearchBarView.swift */; };
-		BF4A80EE2105CFCC00D32FB0 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80E12105CFC600D32FB0 /* AudioStreamer.m */; };
 		BF58B91C20EA1920002CB4EE /* MyAPP.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91B20EA1920002CB4EE /* MyAPP.plist */; };
 		BF58B92620EA1CE2002CB4EE /* app-xjb.png in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91E20EA1CE0002CB4EE /* app-xjb.png */; };
 		BF58B92720EA1CE2002CB4EE /* app-beeManager.png in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91F20EA1CE1002CB4EE /* app-beeManager.png */; };
@@ -543,8 +540,8 @@
 		BF58BB7F20EF1CF5002CB4EE /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF58BB7E20EF1CF4002CB4EE /* CoreAudio.framework */; };
 		BF5B9B601F8E63CF00BD885E /* SearchDownloadBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B5F1F8E63CF00BD885E /* SearchDownloadBookViewController.swift */; };
 		BF5BC99C26DD029C00E4AA41 /* NSObject+Mirror.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5BC99B26DD029C00E4AA41 /* NSObject+Mirror.swift */; };
-		BF5BC99F26DD1C1100E4AA41 /* AFHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5BC99E26DD1C1100E4AA41 /* AFHttpTool.m */; };
 		BF5BC9A126DD1EE300E4AA41 /* WXModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5BC9A026DD1EE300E4AA41 /* WXModes.swift */; };
+		BF5BC9A426DD3EE100E4AA41 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5BC9A326DD3EE100E4AA41 /* AppManager.m */; };
 		BF7309DC20E0D98100FC3555 /* usuallyAPP.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7309DB20E0D98100FC3555 /* usuallyAPP.plist */; };
 		BF7309E420E1195500FC3555 /* my.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7309E320E1195500FC3555 /* my.plist */; };
 		BF93B91920F8B0C3007E4BFB /* FreedomLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93B91820F8B0C3007E4BFB /* FreedomLoginViewController.swift */; };
@@ -845,8 +842,6 @@
 		7121196F20AC24F60087E05B /* ToutiaoVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToutiaoVideoViewController.swift; sourceTree = "<group>"; };
 		7121197120AC25000087E05B /* ToutiaoAttentionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToutiaoAttentionViewController.swift; sourceTree = "<group>"; };
 		7121197320AC250D0087E05B /* ToutiaoMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToutiaoMeViewController.swift; sourceTree = "<group>"; };
-		71250EC42091C0F20093B59B /* FreedomTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreedomTools.h; sourceTree = "<group>"; };
-		71250EC52091C0F20093B59B /* FreedomTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreedomTools.m; sourceTree = "<group>"; };
 		713728C920AE733F00A3227A /* AlipayModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlipayModels.swift; sourceTree = "<group>"; };
 		713728CB20AE839900A3227A /* AlipayYuEBaoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlipayYuEBaoTableViewController.swift; sourceTree = "<group>"; };
 		713728CE20AE9FC500A3227A /* FoundationSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationSwift.swift; sourceTree = "<group>"; };
@@ -1314,11 +1309,7 @@
 		BF0E8AFA20DB9BE700150476 /* FreedomItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FreedomItems.plist; sourceTree = "<group>"; };
 		BF0E8B0220DCAB3F00150476 /* app.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = app.plist; sourceTree = "<group>"; };
 		BF0E8B0320DCAB4100150476 /* systemSetting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = systemSetting.plist; sourceTree = "<group>"; };
-		BF0E8B0620DCB0B400150476 /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
-		BF0E8B0720DCB0B500150476 /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
 		BF4A80DF2105CE5E00D32FB0 /* BaseSearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSearchBarView.swift; sourceTree = "<group>"; };
-		BF4A80E12105CFC600D32FB0 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
-		BF4A80EA2105CFCA00D32FB0 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		BF58B91B20EA1920002CB4EE /* MyAPP.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyAPP.plist; sourceTree = "<group>"; };
 		BF58B91E20EA1CE0002CB4EE /* app-xjb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-xjb.png"; sourceTree = "<group>"; };
 		BF58B91F20EA1CE1002CB4EE /* app-beeManager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-beeManager.png"; sourceTree = "<group>"; };
@@ -1359,9 +1350,9 @@
 		BF5B9B871F8E693600BD885E /* d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = d.png; sourceTree = "<group>"; };
 		BF5B9B891F8E694000BD885E /* f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f.png; sourceTree = "<group>"; };
 		BF5BC99B26DD029C00E4AA41 /* NSObject+Mirror.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Mirror.swift"; sourceTree = "<group>"; };
-		BF5BC99D26DD1C1000E4AA41 /* AFHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHttpTool.h; path = RCloudPackage/ViewControllers/Service/Store/AFHttpTool.h; sourceTree = "<group>"; };
-		BF5BC99E26DD1C1100E4AA41 /* AFHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHttpTool.m; path = RCloudPackage/ViewControllers/Service/Store/AFHttpTool.m; sourceTree = "<group>"; };
 		BF5BC9A026DD1EE300E4AA41 /* WXModes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXModes.swift; sourceTree = "<group>"; };
+		BF5BC9A226DD3EE100E4AA41 /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
+		BF5BC9A326DD3EE100E4AA41 /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
 		BF5C6ACF20F37731000DF336 /* Freedom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Freedom.entitlements; sourceTree = "<group>"; };
 		BF7309DB20E0D98100FC3555 /* usuallyAPP.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = usuallyAPP.plist; sourceTree = "<group>"; };
 		BF7309E320E1195500FC3555 /* my.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = my.plist; sourceTree = "<group>"; };
@@ -2311,13 +2302,12 @@
 		7759B6CB1D0EA3E900AE3A59 /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				DF0489E221D28B860030C30B /* ElasticTransition */,
+				DFF4AB9621B773D700F03C71 /* OCFile */,
 				BFBFCA0326DB597500B0FAB4 /* CarryOn */,
 				BFBFCA1426DB597500B0FAB4 /* Extension */,
 				DFF4AB9721B794B200F03C71 /* SwiftTools */,
-				7772A7F11D64433500444973 /* ThirdPart */,
 				7759B6E81D0EA3E900AE3A59 /* BaseFile */,
-				71250EC42091C0F20093B59B /* FreedomTools.h */,
-				71250EC52091C0F20093B59B /* FreedomTools.m */,
 				713728CE20AE9FC500A3227A /* FoundationSwift.swift */,
 				DFEB45EA22009A7A00B1D8D8 /* FoundationImage.swift */,
 				DF4C6FC721CC787700A54339 /* FoundationEnum.swift */,
@@ -2575,17 +2565,6 @@
 				771917341D659950002F2BCD /* Alipay.storyboard */,
 			);
 			path = "支付宝";
-			sourceTree = "<group>";
-		};
-		7772A7F11D64433500444973 /* ThirdPart */ = {
-			isa = PBXGroup;
-			children = (
-				BF5BC99D26DD1C1000E4AA41 /* AFHttpTool.h */,
-				BF5BC99E26DD1C1100E4AA41 /* AFHttpTool.m */,
-				DF0489E221D28B860030C30B /* ElasticTransition */,
-				DFF4AB9621B773D700F03C71 /* OCFile */,
-			);
-			path = ThirdPart;
 			sourceTree = "<group>";
 		};
 		7772A7FA1D64636F00444973 /* 我的数据库 */ = {
@@ -3380,12 +3359,10 @@
 		DFF4AB9621B773D700F03C71 /* OCFile */ = {
 			isa = PBXGroup;
 			children = (
+				BF5BC9A226DD3EE100E4AA41 /* AppManager.h */,
+				BF5BC9A326DD3EE100E4AA41 /* AppManager.m */,
 				DF0489FF21D29A800030C30B /* RESideMenu.h */,
 				DF0489FE21D29A800030C30B /* RESideMenu.m */,
-				BF0E8B0620DCB0B400150476 /* AppManager.h */,
-				BF0E8B0720DCB0B500150476 /* AppManager.m */,
-				BF4A80EA2105CFCA00D32FB0 /* AudioStreamer.h */,
-				BF4A80E12105CFC600D32FB0 /* AudioStreamer.m */,
 			);
 			path = OCFile;
 			sourceTree = "<group>";
@@ -4212,7 +4189,6 @@
 				7121196E20AC24EA0087E05B /* ToutiaoHomeDetailViewController.swift in Sources */,
 				DF0E967821CBACDA009682CC /* WXDiscoverViewController.swift in Sources */,
 				713EE2E620AD9C3A0085B65D /* AlipayMeTableViewController.swift in Sources */,
-				BF4A80EE2105CFCC00D32FB0 /* AudioStreamer.m in Sources */,
 				713EE30A20ADA0790085B65D /* IqiyiDiscoverViewController.swift in Sources */,
 				DF0489E921D28B870030C30B /* Util.swift in Sources */,
 				713EE2D420AD9BA20085B65D /* TaobaoMiniTopicViewController.swift in Sources */,
@@ -4222,8 +4198,8 @@
 				DF13330921F17C1A001D01CA /* KugouPlayAudioViewController.swift in Sources */,
 				713728CC20AE839900A3227A /* AlipayYuEBaoTableViewController.swift in Sources */,
 				DF6B523621CB76F200460949 /* WXNewMessageSettingViewController.swift in Sources */,
+				BF5BC9A426DD3EE100E4AA41 /* AppManager.m in Sources */,
 				7115A5F220AAFC0F000D0B96 /* MyDatabaseBaseViewController.swift in Sources */,
-				BF0E8B0820DCB0B500150476 /* AppManager.m in Sources */,
 				7121197220AC25000087E05B /* ToutiaoAttentionViewController.swift in Sources */,
 				DFEF80F021FB7AE4001D81FA /* FreedomNavigationController.swift in Sources */,
 				713EE2CC20AD9B760085B65D /* TaobaoMiniDynamicViewController.swift in Sources */,
@@ -4414,7 +4390,6 @@
 				7121194620ABE3660087E05B /* MicroEnergyTabBarController.swift in Sources */,
 				DF0E967621CBACD4009682CC /* WXBottleViewController.swift in Sources */,
 				DFFD98D121FB0B6200A442D7 /* BooksMeViewController.swift in Sources */,
-				BF5BC99F26DD1C1100E4AA41 /* AFHttpTool.m in Sources */,
 				DF4C6FCA21CC790D00A54339 /* FoundationAPI.swift in Sources */,
 				DF0E968021CBACEF009682CC /* WXScannerViewController.swift in Sources */,
 				BFBFCA2E26DB597500B0FAB4 /* ReusableView+Extension.swift in Sources */,
@@ -4430,7 +4405,6 @@
 				713EE2F820AD9D3C0085B65D /* DetailTableViewController.swift in Sources */,
 				713EE2BE20AD9AF90085B65D /* DZDealController.swift in Sources */,
 				DF0E966421CBAC83009682CC /* WXContactsViewController.swift in Sources */,
-				71250EC62091C0F20093B59B /* FreedomTools.m in Sources */,
 				DF6B524221CB771700460949 /* WXExpressionViewController.swift in Sources */,
 				713EE2A420AD8F160085B65D /* DZTabBarController.swift in Sources */,
 				7121192620ABC4D10087E05B /* EnergyBusinessDetailViewController.swift in Sources */,

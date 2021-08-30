@@ -109,25 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         self.addInstalledAPPS(allAPPids)
     }
     private func addInstalledAPPS(_ allAPPids:[String]){
-        let appMan = AppManager.sharedInstance()
-        appMan?.gotiTunesInfo(withTrackIds: allAPPids, completion: { apps in
-            DispatchQueue.main.async {
-                self.apps = apps!
-                var popoutModels = [PopoutModel]()
-                for xapp in self.apps{
-                    let a = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-                    a.image = xapp.icon
-                    let mode = PopoutModel(a,xapp.trackName)
-                    mode.action = {
-                        appMan?.openApp(withBundleIdentifier: xapp.bundleId)
-                    }
-                    popoutModels.append(mode)
-                    print(xapp.trackName)
-                }
-                AppDelegate.radialView.addPopoutModels(popoutModels)
-                self.addMyapps()
-            }
-        })
+
     }
     private func addMyapps(){
         let myAppsPath = Bundle.main.path(forResource: "MyAPP", ofType: "plist")
@@ -141,27 +123,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
             model.scheme = dict["scheme"] as? String
             self.myApps.append(model)
         }
-        let appMan = AppManager.sharedInstance()
-        var popoutModels = [PopoutModel]()
-        for xapp in self.myApps{
-            let a = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-            a.image = xapp.scheme.image
-            let mode = PopoutModel(a,xapp.trackName)
-            mode.action = {
-                if xapp.isHiddenApp{//已下架
-                    UIApplication.shared.open(URL(string: xapp.trackId)!, options:[:], completionHandler: { (suscess) in
-                    })
-                }else{
-                    appMan?.gotiTunesInfo(withTrackIds: [xapp.trackId], completion: { (app) in
-                        if let realApp = app{
-                            appMan?.openApp(withBundleIdentifier: realApp.first?.bundleId)
-                        }
-                    })
-                }
-            }
-            popoutModels.append(mode)
-        }
-        AppDelegate.radialView.addPopoutModels(popoutModels)
     }
     func firstInitUMeng(){
         MobClick.setCrashReportEnabled(false)

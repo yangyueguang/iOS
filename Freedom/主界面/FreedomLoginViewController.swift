@@ -107,51 +107,11 @@ class FreedomLoginViewController: BaseViewController {
         if !checkContent() {
             return
         }
-        AFHttpTool.verifyVerificationCode("86", phoneNumber: user.phone, verificationCode: verityCodeT.text, success: { response in
-            let response = response as! [String: Any]
-            let code = response["code"] as! Int
-            if code == 200 {
-                let verificationToken = (response["result"] as! [String: Any])["verification_token"] as! String
-                //注册用户
-                AFHttpTool.register(withNickname: self.user.name, password: self.user.pwd, verficationToken: verificationToken, success: { responseDict in
-                    let code = (responseDict as! [String: Any])["code"] as! Int
-                    if code == 200 {
-                        print("注册成功")
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5 * Double(NSEC_PER_MSEC) / Double(NSEC_PER_SEC), execute: {
-                            self.navigationController?.popViewController(animated: true)
-                        })
-                    }
-                }, failure: { err in
-                    print("注册失败")
-                })
-            }
-            if code == 1000 { print("验证码错误") }
-            if code == 2000 { print("验证码过期") }
-        }, failure: { err in
-            print("验证码无效")
-        })
     }
     func findPwdBackAction(){
         if !checkContent() {
             return
         }
-        AFHttpTool.verifyVerificationCode("86", phoneNumber: user.phone, verificationCode: verityCodeT.text, success: { responseDict in
-            let response = responseDict as! [String: Any]
-            if (response["code"] as! Int) == 200 {
-                let vToken = (response["result"] as! [String: Any])["verification_token"] as! String
-                AFHttpTool.resetPassword(self.user.pwd, vToken: vToken, success: { resDict in
-                    let res = resDict as! [String: Any]
-                    if (res["code"] as! Int) == 200 {
-                        print("修改成功!")
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5 * Double(NSEC_PER_MSEC) / Double(NSEC_PER_SEC), execute: {
-                            self.navigationController?.popViewController(animated: true)
-                        })
-                    }
-                }, failure: { err in
-                })
-            }
-        }, failure: { err in
-        })
     }
     func loginAction() {
         if !checkContent(){
@@ -164,27 +124,6 @@ class FreedomLoginViewController: BaseViewController {
         }
         XHud.show(.withDetail(message: "登录中..."))
         UserDefaults.standard.removeObject(forKey: "UserCookies")
-        AFHttpTool.login(withPhone:user.name, password: user.pwd, region: "86", success: { responseDict in
-            XHud.hide()
-            let response = responseDict as! [String: Any]
-            let code = response["code"] as! Int
-            if code == 200 {
-                let result = response["result"] as! [String: String]
-                let token = result["token"] ?? ""
-                let userId = result["id"] ?? ""
-                self.user.token = token
-                self.user.Id = userId
-                self.loginRongCloud(self.user.name, userId: userId, token: token, password: self.user.pwd)
-            } else {
-                print("NSError is \(code)")
-                if code == 1000 {
-                    self.noticeError("手机号或密码错误！")
-                }
-                self.passWordT.shakeAnimation()
-            }
-        }, failure: { err in
-            self.noticeError("登录失败，请检查网络。")
-        })
     }
     //FIXME:用文件服务器配置登录,设置导航服务器和上传文件服务器信息
     func loginWithFileServer(_ appKey:String,_ demoServer:String,_ naviServer:String,_ fileServer:String) {
@@ -195,26 +134,6 @@ class FreedomLoginViewController: BaseViewController {
         seconds = 60
         sender.isUserInteractionEnabled = false
         countTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.timeFireMethod), userInfo: nil, repeats: true)
-        AFHttpTool.checkPhoneNumberAvailable("86", phoneNumber: user.phone, success: { responseDict in
-            let response = responseDict as! [String: Any]
-                if (response["code"] as! Int) == 200 {
-                    let resultStatus = response["result"] as! Int
-                    if  resultStatus == 0 && self.vcType == .regist{
-                        print("手机号已被注册")
-                        return
-                    }else if resultStatus != 0 && self.vcType != .regist {
-                        print("手机号未被注册")
-                        return
-                    }
-                    AFHttpTool.getVerificationCode("86", phoneNumber: self.user.phone, success: { resDict in
-                        print(resDict ?? "")
-                    }, failure: { err in
-                        print("\(err!)")
-                    })
-                }
-        }, failure: { err in
-            print("\(err!)")
-        })
     }
     @objc func timeFireMethod() {
         seconds -= 1
@@ -243,16 +162,6 @@ class FreedomLoginViewController: BaseViewController {
         defaults.set(user.Id, forKey: "userId")
         defaults.set(user.token, forKey: "userToken")
         defaults.synchronize()
-        AFHttpTool.getUserInfo(user.Id, success: { response in
-            let response = response as! [String: Any]
-            let code = response["code"] as! Int
-            if code == 200 {
-                let result = response["result"] as! [String: String]
-                let nickname = result["nickname"] ?? ""
-                let portraitUri = result["portraitUri"] ?? ""
-            }
-        }, failure: { err in
-        })
         //同步群组
         DispatchQueue.main.async(execute: {
             let StoryBoard = UIStoryboard(name: "Main", bundle: nil)

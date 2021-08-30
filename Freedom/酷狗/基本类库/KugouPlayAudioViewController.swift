@@ -73,7 +73,7 @@ class KugouPlayAudioViewController: UIViewController {
         view.layer.anchorPoint = CGPoint(x: 0.5, y: 2)
         //    [self readData];
         let path = Bundle.main.path(forResource: "lll.Krc", ofType: nil)
-        lyrics = AudioStreamer.parseKRCWord(withPath: path)
+        
         let url: URL? = Bundle.main.url(forResource: "vocal", withExtension: "mp3")
         if let url = url {
             audioPlayer = try? AVAudioPlayer(contentsOf: url)
