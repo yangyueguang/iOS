@@ -34,7 +34,7 @@ class WXMomentsViewController: BaseTableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let moment = data[indexPath.row - 1]
-        return CGFloat(moment.extension.comments.count) * 37.0 + 100.0
+        return CGFloat(moment.extensio.comments.count) * 37.0 + 100.0
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

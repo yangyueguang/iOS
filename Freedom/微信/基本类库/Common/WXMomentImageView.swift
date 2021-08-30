@@ -10,8 +10,8 @@ class WXMomentExtensionCommentCell: BaseTableViewCell<WXMomentComment> {
         icon.frame = CGRect(x: 10, y: 0, width: 50, height: 50)
         title.frame = CGRect(x: 100, y: 10, width: APPW, height: 20)
         viewModel.subscribe(onNext: {[weak self] (moment) in
-            self?.icon.kf.setImage(with: moment.user.avatarURL.url)
-            self?.title.text = moment.user.showName
+//            self?.icon.kf.setImage(with: moment.user.avatarURL.url)
+//            self?.title.text = moment.user.showName
         }).disposed(by: disposeBag)
     }
 }
@@ -44,13 +44,13 @@ class WXMomentImageView: UIView {
             self.imagesContainView.subviews.forEach({ (sv) in
                 sv.removeFromSuperview()
             })
-            for i in 0..<moment.extension.likedFriends.count {
-                let user = moment.extension.likedFriends[i]
+            for i in 0..<moment.extensio.likedFriends.count {
+                let user = moment.extensio.likedFriends[i]
                 let userAvatar = UIImageView()
                 self.imagesContainView.addSubview(userAvatar)
             }
             self.extensionContainerView.snp.updateConstraints { (make) in
-                make.height.equalTo(CGFloat(moment.extension.comments.count) * 36.0 + 100.0)
+                make.height.equalTo(CGFloat(moment.extensio.comments.count) * 36.0 + 100.0)
             }
             self.tableView.reloadData()
         }).disposed(by: disposeBag)
@@ -58,7 +58,7 @@ class WXMomentImageView: UIView {
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Int(momentModel.extension.comments.count)
+        return Int(momentModel.extensio.comments.count)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(WXMomentExtensionCommentCell.self)

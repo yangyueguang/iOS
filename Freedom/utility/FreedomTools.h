@@ -4,7 +4,6 @@
 //  Copyright © 2018年 Super. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import "RCloudModel.h"
 #define DLog(fmt, ...) {NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);}
 #define WS(weakSelf)      __weak __typeof(&*self)weakSelf = self;
 /**********************       尺        寸      ***********************/
@@ -35,8 +34,6 @@ typedef void (^BarButtonActionBlock)();
 @interface FreedomTools : NSObject
 +(FreedomTools *)sharedManager;
 //重定向log到本地问题 在info.plist中打开Application supports iTunes file sharing
-+ (NSString *)defaultGroupPortrait:(RCGroup *)groupInfo;
-+ (NSString *)defaultUserPortrait:(RCUserInfo *)userInfo;
 + (NSMutableDictionary *)sortedArrayWithPinYinDic:(NSArray *)userList;
 + (void)show:(NSString *)msg;
 + (UIImage*)imageWithColor:(UIColor*)color;

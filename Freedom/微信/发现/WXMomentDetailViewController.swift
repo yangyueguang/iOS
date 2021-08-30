@@ -13,7 +13,7 @@ class WXMomentDetailViewController: WXBaseViewController {
         didSet {
             momentView.moment.onNext(moment)
             momentView.snp.updateConstraints { (make) in
-                make.height.equalTo(moment.extension.comments.count * 36 + 100)
+                make.height.equalTo(moment.extensio.comments.count * 36 + 100)
             }
         }
     }

@@ -8,8 +8,6 @@
 //
 #import "AFHttpTool.h"
 #import "AFNetworking.h"
-#import <RongIMKit/RongIMKit.h>
-#import "RCloudModel.h"
 #define DevDemoServer   @"http://119.254.110.241/" // Beijing SUN-QUAN 测试环境（北京）
 #define ProDemoServer   @"http://119.254.110.79:8080/" // Beijing Liu-Bei 线上环境（北京）
 #define PrivateCloudDemoServer @"http://139.217.26.223/" //私有云测试
@@ -35,7 +33,7 @@
     BOOL isPrivateMode = NO;
 //    isPrivateMode = YES;
     if(isPrivateMode){
-        NSString *baseStr = [RCDSettingUserDefaults getRCDemoServer];
+        NSString *baseStr = @"";
         baseURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@",baseStr]];
     }else {
         baseURL = [NSURL URLWithString:DemoServer];
@@ -240,7 +238,7 @@
            failure:(void (^)(NSError *err))failure {
   NSDictionary *params = @{
     @"friendId" : userId,
-    @"message" : [NSString stringWithFormat:@"我是%@",[RCIM sharedRCIM].currentUserInfo.name]};
+    @"message" : @"我是Super"};
   [AFHttpTool requestWihtMethod:RequestMethodTypePost
                             url:@"friendship/invite"
                          params:params

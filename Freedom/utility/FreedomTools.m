@@ -104,58 +104,6 @@ char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
     return shareUrl;
 }
 
-+ (NSString *)defaultGroupPortrait:(RCGroup *)groupInfo {
-    NSString *filePath = [[self class] getIconCachePath:[NSString stringWithFormat:@"group%@.png", groupInfo.groupId]];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-        NSURL *portraitPath = [NSURL fileURLWithPath:filePath];
-        return [portraitPath absoluteString];
-    } else {
-        UIView *defaultPortrait =
-        [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        defaultPortrait.backgroundColor = [UIColor redColor];
-        NSString *firstLetter = [groupInfo.groupName pinyinFirstLetter];
-        UILabel *firstCharacterLabel = [[UILabel alloc] initWithFrame:CGRectMake(defaultPortrait.frame.size.width / 2 - 30, defaultPortrait.frame.size.height / 2 - 30, 60, 60)];
-        firstCharacterLabel.text = firstLetter;
-        firstCharacterLabel.textColor = [UIColor whiteColor];
-        firstCharacterLabel.textAlignment = NSTextAlignmentCenter;
-        firstCharacterLabel.font = [UIFont systemFontOfSize:50];
-        [defaultPortrait addSubview:firstCharacterLabel];
-        UIImage *portrait = [defaultPortrait imageFromView];
-        BOOL result = [UIImagePNGRepresentation(portrait) writeToFile:filePath atomically:YES];
-        if (result) {
-            NSURL *portraitPath = [NSURL fileURLWithPath:filePath];
-            return [portraitPath absoluteString];
-        } else {
-            return nil;
-        }
-    }
-}
-+ (NSString *)defaultUserPortrait:(RCUserInfo *)userInfo {
-    NSString *filePath = [[self class]getIconCachePath:[NSString stringWithFormat:@"user%@.png", userInfo.userId]];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-        NSURL *portraitPath = [NSURL fileURLWithPath:filePath];
-        return [portraitPath absoluteString];
-    } else {
-        UIView *defaultPortrait =
-        [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        defaultPortrait.backgroundColor = [UIColor redColor];
-        NSString *firstLetter = [userInfo.name pinyinFirstLetter];
-        UILabel *firstCharacterLabel = [[UILabel alloc] initWithFrame:CGRectMake(defaultPortrait.frame.size.width / 2 - 30, defaultPortrait.frame.size.height / 2 - 30, 60, 60)];
-        firstCharacterLabel.text = firstLetter;
-        firstCharacterLabel.textColor = [UIColor whiteColor];
-        firstCharacterLabel.textAlignment = NSTextAlignmentCenter;
-        firstCharacterLabel.font = [UIFont systemFontOfSize:50];
-        [defaultPortrait addSubview:firstCharacterLabel];
-        UIImage *portrait = [defaultPortrait imageFromView];
-        BOOL result = [UIImagePNGRepresentation(portrait) writeToFile:filePath atomically:YES];
-        if (result) {
-            NSURL *portraitPath = [NSURL fileURLWithPath:filePath];
-            return [portraitPath absoluteString];
-        } else {
-            return nil;
-        }
-    }
-}
 + (NSString *)getIconCachePath:(NSString *)fileName {
     NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *filePath =
@@ -180,19 +128,7 @@ char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
         }
         NSMutableArray *tempArr = [NSMutableArray new];
         for (id user in userList) {
-            NSString *firstLetter;
-            if ([user isMemberOfClass:[RCDUserInfo class]]) {
-                RCDUserInfo *userInfo = (RCDUserInfo*)user;
-                if (userInfo.displayName.length > 0 && ![userInfo.displayName isEqualToString:@""]) {
-                    firstLetter = [userInfo.displayName pinyinFirstLetter];
-                } else {
-                    firstLetter = [userInfo.name pinyinFirstLetter];
-                }
-            }
-            if ([user isMemberOfClass:[RCUserInfo class]]) {
-                RCUserInfo *userInfo = (RCUserInfo*)user;
-                firstLetter = [userInfo.name pinyinFirstLetter];
-            }
+            NSString *firstLetter = @"A";
             if ([firstLetter isEqualToString:key]) {
                 [tempArr addObject:user];
             }

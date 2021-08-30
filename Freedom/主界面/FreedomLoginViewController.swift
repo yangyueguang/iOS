@@ -188,10 +188,6 @@ class FreedomLoginViewController: BaseViewController {
     }
     //FIXME:用文件服务器配置登录,设置导航服务器和上传文件服务器信息
     func loginWithFileServer(_ appKey:String,_ demoServer:String,_ naviServer:String,_ fileServer:String) {
-        RCDSettingUserDefaults.setRCAppKey(appKey)
-        RCDSettingUserDefaults.setRCDemoServer(demoServer)
-        RCDSettingUserDefaults.setRCNaviServer(naviServer)
-        RCDSettingUserDefaults.setRCFileServer(fileServer)
         RCIM.shared().initWithAppKey(appKey)
         RCIM.shared().disconnect()
         RCIMClient.shared().setServerInfo(naviServer, fileServer: fileServer)
@@ -295,11 +291,6 @@ class FreedomLoginViewController: BaseViewController {
         defaults.set(user.Id, forKey: "userId")
         defaults.set(user.token, forKey: "userToken")
         defaults.synchronize()
-        //保存“发现”的信息
-        RCDHttpTool.shareInstance().getSquareInfoCompletion({ result in
-            defaults.set(result, forKey: "SquareInfoList")
-            defaults.synchronize()
-        })
         AFHttpTool.getUserInfo(user.Id, success: { response in
             let response = response as! [String: Any]
             let code = response["code"] as! Int
@@ -312,7 +303,6 @@ class FreedomLoginViewController: BaseViewController {
                     let url = Bundle.main.path(forResource: "userLogo", ofType: "png")
                     rcuser?.portraitUri = url
                 }
-                RCDataBaseManager.shareInstance().insertUser(toDB: rcuser)
                 RCIM.shared().refreshUserInfoCache(rcuser, withUserId: self.user.Id)
                 RCIM.shared().currentUserInfo = rcuser
                 defaults.set(rcuser?.portraitUri, forKey:"userPortraitUri")
@@ -322,9 +312,6 @@ class FreedomLoginViewController: BaseViewController {
         }, failure: { err in
         })
         //同步群组
-        RCDRCIMDataSource.shareInstance().syncGroups()
-        RCDRCIMDataSource.shareInstance().syncFriendList(user.Id, complete: { friends in
-        })
         DispatchQueue.main.async(execute: {
             let StoryBoard = UIStoryboard(name: "Main", bundle: nil)
             let vc: UIViewController? = StoryBoard.instantiateViewController(withIdentifier: "FirstViewController")

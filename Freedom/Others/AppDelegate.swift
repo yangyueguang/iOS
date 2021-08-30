@@ -228,7 +228,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         firstInitUMeng()
         firstConfigAllAPPIds()
         configRadialView()
-        RCDMainTabBarViewController.shareInstance().firstInitRongCloud()
     }
     //FIXME:应用程序启动
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -314,13 +313,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     }
     ///进入后台
     func applicationDidEnterBackground(_ application: UIApplication) {
-        RCDMainTabBarViewController.shareInstance().saveConversationInfoForMessageShare()
+        
     }
     ///即将进入前台
     func applicationWillEnterForeground(_ application: UIApplication) {
-        if RCIMClient.shared().getConnectionStatus() == RCConnectionStatus.ConnectionStatus_Connected{
-            RCDMainTabBarViewController.shareInstance().insertSharedMessageIfNeed()
-        }
+        
     }
     ///进入前台
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -332,12 +329,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
     }
     ///关于iWatch
     func application(_ application: UIApplication, handleWatchKitExtensionRequest userInfo: [AnyHashable : Any]?, reply: @escaping ([AnyHashable : Any]?) -> Void) {
-        let delegateVC = RCDMainTabBarViewController.shareInstance()
-        let handler = RCWKRequestHandler(helperWithUserInfo: userInfo, provider:delegateVC) { (dict) in
-        }
-        if !(handler!.handleWatchKitRequest()) {
-            print(String(describing: userInfo));
-        }
+        print(String(describing: userInfo));
+        
     }
     // RedPacket_FTR //如果您使用了红包等融云的第三方扩展，请实现下面两个openURL方法
     ///打开其他程序

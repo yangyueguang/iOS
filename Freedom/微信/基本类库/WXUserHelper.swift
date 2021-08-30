@@ -80,19 +80,19 @@ class WXFriendHelper: NSObject {
             } else {
                 
             }
-            if user.detailInfo.tags.count > 0 {
-                for tag in user.detailInfo.tags.array() {
-                    let tag = tag as! String
-                    if let group = tagsDic[tag] {
-                        
-                    }else{
-                        let group = WXUserGroup()
-                        group.groupName = tag
-                        tagsDic[tag] = group
-                        tagsData.append(group)
-                    }
-                }
-            }
+//            if user.detailInfo.tags.count > 0 {
+//                for tag in user.detailInfo.tags.array() {
+//                    let tag = tag as! String
+//                    if let group = tagsDic[tag] {
+//                        
+//                    }else{
+//                        let group = WXUserGroup()
+//                        group.groupName = tag
+//                        tagsDic[tag] = group
+//                        tagsData.append(group)
+//                    }
+//                }
+//            }
         }
         if curGroup.users.count > 0 {
             ansData.append(curGroup)
@@ -172,7 +172,7 @@ class WXFriendHelper: NSObject {
         var arr: [WXInfo] = []
         let user: WXInfo = WXInfo()
         user.title = "个人"
-        user.type = Int32(TLInfoType.other.rawValue)
+        user.type = TLInfoType.other.rawValue
 //        user.userInfo = userInfo
         arr.append(user)
         data.append(arr)
@@ -207,7 +207,7 @@ class WXFriendHelper: NSObject {
         let album: WXInfo = WXInfo()
         album.title = "个人相册"
         album.userInfo = userInfo.detailInfo.albumArray
-        album.type = Int32(TLInfoType.other.rawValue)
+        album.type = TLInfoType.other.rawValue
         arr.append(album)
         let more: WXInfo = WXInfo()
         more.title = "更多"
@@ -216,12 +216,12 @@ class WXFriendHelper: NSObject {
         arr = []
         let sendMsg: WXInfo = WXInfo()
         sendMsg.title = "发消息"
-        sendMsg.type = Int32(TLInfoType.button.rawValue)
+        sendMsg.type = TLInfoType.button.rawValue
         arr.append(sendMsg)
         if !(userInfo.userID == WXUserHelper.shared.user.userID) {
             let video: WXInfo = WXInfo()
             video.title = "视频聊天"
-            video.type = Int32(TLInfoType.button.rawValue)
+            video.type = TLInfoType.button.rawValue
             arr.append(video)
         }
         data.append(arr)
