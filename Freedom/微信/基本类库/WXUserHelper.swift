@@ -28,7 +28,6 @@ class WXFriendHelper: NSObject {
 
         let defaultGroup = WXUserGroup()
         defaultGroup.groupName = ""
-        defaultGroup.users.addObjects([item_new, item_group, item_tag, item_public] as NSFastEnumeration)
         return defaultGroup
     }()
     var friendsData: [WXUser] = []
@@ -43,16 +42,10 @@ class WXFriendHelper: NSObject {
     override init() {
         super.init()
         let pre = NSPredicate(format: "userID = %@", WXUserHelper.shared.user.userID)
-        try! realmWX.transaction {
-            let results = WXUser.objects(in: realmWX, with: pre)
-            for index in 0..<results.count {
-                friendsData.append(results.object(at: index) as! WXUser)
-            }
-        }
         data = [defaultGroup]
         sectionHeaders = [UITableView.indexSearch]
-        let results = WXGroup.allObjects(in: realmWX)
-        groupsData = results.array().compactMap{ $0 as? WXGroup }
+        
+        
         p_initTestData()
     }
 
@@ -69,12 +62,12 @@ class WXFriendHelper: NSObject {
         othGroup.groupName = "#"
         for user in serializeArray {
             if user.nikeName.pinyin().isEmpty {
-                othGroup.users.add(user)
+                
                 continue
             }
             let c = user.nikeName.firstLetter()
             if c.isEmpty {
-                othGroup.users.add(user)
+                
             } else if c != lastC {
                 if curGroup.users.count > 0 {
                     ansData.append(curGroup)
@@ -83,15 +76,15 @@ class WXFriendHelper: NSObject {
                 lastC = c
                 curGroup = WXUserGroup()
                 curGroup.groupName = "\(c)"
-                curGroup.users.add(user)
+                
             } else {
-                curGroup.users.add(user)
+                
             }
             if user.detailInfo.tags.count > 0 {
                 for tag in user.detailInfo.tags.array() {
                     let tag = tag as! String
                     if let group = tagsDic[tag] {
-                        group.users.add(user)
+                        
                     }else{
                         let group = WXUserGroup()
                         group.groupName = tag
@@ -119,27 +112,6 @@ class WXFriendHelper: NSObject {
     }
     func p_initTestData() {
         var jsonArray = FileManager.readJson2Array(fileName: "FriendList")
-        try! realmWX.transaction {
-            for dict in jsonArray {
-                WXUser.createOrUpdate(in: realmWX, withValue: dict)
-            }
-        }
-        let arr = WXUser.allObjects(in: realmWX).array()
-        friendsData.removeAll()
-        friendsData.append(contentsOf: arr as! [WXUser])
-        self.p_resetFriendData()
-        jsonArray = FileManager.readJson2Array(fileName: "FriendGroupList")
-        try! realmWX.transaction {
-            for dict in jsonArray {
-                let group = WXGroup.createOrUpdate(in: realmWX, withValue: dict)
-                realmWX.addOrUpdate(group)
-            }
-        }
-        groupsData = WXGroup.allObjects(in: realmWX).array().compactMap{ $0 as? WXGroup }
-        for group in groupsData {
-            createGroupAvatar(group, finished: { _ in
-            })
-        }
     }
     func createGroupAvatar(_ group: WXGroup, finished: @escaping (_ groupID: String) -> Void) {
         DispatchQueue.main.async {
@@ -157,7 +129,7 @@ class WXFriendHelper: NSObject {
             var count: Int = 0 // 下载完成图片计数器
             var i = usersCount - 1
             while i >= 0 {
-                let user: WXUser = group.users[UInt(i)]
+                let user: WXUser = group.users[i] as! WXUser
                 let imageView = UIImageView(frame: CGRect(x: x, y: y, width: width, height: width))
                 view.addSubview(imageView)
                 imageView.sd_setImage(with: user.avatarURL.url, placeholderImage: Image.logo.image, completed: { image, error, cacheType, imageURL in
@@ -292,12 +264,12 @@ class WXFriendHelper: NSObject {
             user.avatarPath = contact.avatarPath
             // 获取拼音失败
             if user.username.pinyin().isEmpty {
-                othGroup.users.add(user)
+                
                 continue
             }
             if user.username.firstLetter().isEmpty {
                 // #组
-                othGroup.users.add(user)
+                
             } else if user.username.firstLetter() != lastC {
                 if curGroup.users.count > 0 {
                     data.append(curGroup)
@@ -305,9 +277,9 @@ class WXFriendHelper: NSObject {
                     lastC = user.username.firstLetter()
                     curGroup = WXUserGroup()
                     curGroup.groupName = lastC
-                    curGroup.users.add(user)
+                    
                 } else {
-                    curGroup.users.add(user)
+                    
                 }
             }
             if curGroup.users.count > 0 {

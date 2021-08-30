@@ -97,8 +97,6 @@ final class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegat
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(WXFriendCell.self)
         let group = data[indexPath.section]
-        let user = group.users[UInt(indexPath.row)]
-        cell.viewModel.onNext(user)
         return cell
     }
     // 拼音首字母检索
@@ -116,25 +114,7 @@ final class WXFriendsViewController: BaseTableViewController ,UISearchBarDelegat
         return 54
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let user = data[indexPath.section].users[UInt(indexPath.row)]
-        if indexPath.section == 0 {
-            var targetVC: UIViewController!
-            if (user.userID == "-1") {
-                targetVC = WXNewFriendViewController()
-            } else if (user.userID == "-2") {
-                targetVC = WXGroupViewController()
-            } else if (user.userID == "-3") {
-                targetVC = WXTagsViewController()
-            } else if (user.userID == "-4") {
-                targetVC = WXPublicServerViewController()
-            }
-            navigationController?.pushViewController(targetVC
-                , animated: true)
-        } else {
-            let detailVC = WXFriendDetailViewController.storyVC(.wechat)
-            detailVC.user = user
-            navigationController?.pushViewController(detailVC, animated: true)
-        }
+        let user = data[indexPath.section].users[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: false)
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

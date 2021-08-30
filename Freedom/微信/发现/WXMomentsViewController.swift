@@ -19,12 +19,6 @@ class WXMomentsViewController: BaseTableViewController {
     var data: [WXMoment] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        let jsonArray = FileManager.readJson2Array(fileName: "Moments")
-        for dict in jsonArray {
-            let moment = WXMoment(value: dict)
-            realmWX.addx(moment)
-        }
-        data = WXMoment.allObjects().array() as! [WXMoment]
         tableView.reloadData()
     }
 

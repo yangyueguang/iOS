@@ -47,7 +47,6 @@ class WXMomentImageView: UIView {
             for i in 0..<moment.extension.likedFriends.count {
                 let user = moment.extension.likedFriends[i]
                 let userAvatar = UIImageView()
-                userAvatar.kf.setImage(with: user.avatarURL.url)
                 self.imagesContainView.addSubview(userAvatar)
             }
             self.extensionContainerView.snp.updateConstraints { (make) in
@@ -62,9 +61,7 @@ class WXMomentImageView: UIView {
         return Int(momentModel.extension.comments.count)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let comment = momentModel.extension.comments[UInt(indexPath.row)]
         let cell = tableView.dequeueCell(WXMomentExtensionCommentCell.self)
-        cell.viewModel.onNext(comment)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

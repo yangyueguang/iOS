@@ -168,8 +168,8 @@ public enum ResourceType : String {
         return (key,value)
     }
 }
-@objcMembers
-open class CRResource: RLMObject {
+
+open class CRResource: NSObject {
     dynamic var id:Int32=0//序号
     dynamic var password=""//密码
     dynamic var checkCode=""//唯一标识
@@ -193,9 +193,6 @@ open class CRResource: RLMObject {
     dynamic var size:Double = 0//文件大小
     dynamic var resumeData : NSData?//文件数据流
     dynamic var status : ResourceStatus = .normal
-    override open static func primaryKey() -> String {
-        return "checkCode"
-    }
 }
 @objcMembers
 /// 下载器
@@ -226,13 +223,6 @@ open class ResourceDownloader : NSObject {
         sessionManager = manager
         super.init()
         let pre = NSPredicate.init(format: "checkCode=%@",resource.checkCode)
-        let result = CRResource.objects(with: pre)
-        if result.count > 0,
-            let a = result.firstObject() as? CRResource {
-            self.resource = self.copyResourceToRecorce(res: a)
-        }else{
-            self.resource = resource
-        }
     }
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) 没打算支持序列化")
@@ -306,11 +296,6 @@ destination: destinationBlock,completionHandler: completionHandler)
             self.resource.status = status
             let realm = RLMRealm.default()
             let res = self.copyResourceToRecorce(res: self.resource)
-            do {
-                try realm.transaction {
-                    realm.addOrUpdate(res)
-                }
-            }catch {}
         }
     }
     private func handleDownloadFinish(filePath:URL) {
@@ -465,31 +450,10 @@ public final class DownloadService : NSObject {
     // 只查询已完成的任务
     func fetchDownloadResources() -> [CRResource] {
         let predicate = NSPredicate.init(format: "status=%d", ResourceStatus.finish.rawValue)
-        let result = CRResource.objects(with: predicate)
-        if result.count > 0 {
-            var temp = [CRResource]()
-            for i in 0..<result.count{
-                let res:CRResource = result[i] as! CRResource
-                temp.append(res)
-            }
-            return temp
-        }
         return []
     }
     func fetchResource(checkCode:String)->CRResource?{
         let pre = NSPredicate.init(format: "checkCode=%@", checkCode)
-        let result = CRResource.objects(with: pre)
-        if result.count > 0,let record:CRResource = result.firstObject() as? CRResource{
-            if record.status == .finish && !FileManager.default.fileExists(atPath: record.path){
-                let realm = RLMRealm.default()
-                do {
-                    try realm.transaction {
-                        record.status = .invalid
-                    }
-                }catch {}
-            }
-            return record
-        }
         return nil
     }
     func deleteDownloadResource(checkCode:String) {
@@ -497,9 +461,6 @@ public final class DownloadService : NSObject {
             let realm = RLMRealm.default()
             do {
                 let pah = record.path
-                try realm.transaction {
-                    realm.delete(record)
-                }
                 try FileManager.default.removeItem(at:URL(fileURLWithPath:pah))
             }catch {
                 print(error)

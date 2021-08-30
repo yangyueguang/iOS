@@ -54,21 +54,7 @@ extension List {
         self.init()
     }
 }
-extension RLMObject {
-    func tes() {
-        let re = CRResource()
-        let realm = RLMRealm.default()
-        let predicate = NSPredicate(format: "status=%d", ResourceStatus.finish.rawValue)
-        let result = CRResource.objects(with: predicate)
-        realm.addOrUpdate(re)
-    }
 
-
-//    override static func ignoredProperties() -> [String] {
-//        return ["extensionFrame"]
-//    }
-
-}
 extension RLMRealm {
     func addx<T: RLMObject>(_ model: T?) {
         guard let model = model else { return }

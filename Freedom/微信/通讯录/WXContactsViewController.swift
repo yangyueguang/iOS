@@ -124,15 +124,7 @@ final class WXContactsViewController: BaseTableViewController, UISearchBarDelega
         return Int(group.users.count)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let contact = data[indexPath.section].users[UInt(indexPath.row)]
         let cell = tableView.dequeueCell(WechatContactCell.self)
-//        cell.viewModel.onNext(contact)
-        let temp = data[indexPath.section]
-        if indexPath.section == data.count - 1 && indexPath.row == temp.users.count - 1 {
-
-        } else {
-            
-        }
         return cell
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
