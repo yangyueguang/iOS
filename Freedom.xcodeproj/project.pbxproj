@@ -509,12 +509,8 @@
 		BF0E8B0420DCAB4200150476 /* app.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF0E8B0220DCAB3F00150476 /* app.plist */; };
 		BF0E8B0520DCAB4200150476 /* systemSetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF0E8B0320DCAB4100150476 /* systemSetting.plist */; };
 		BF0E8B0820DCB0B500150476 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0E8B0720DCB0B500150476 /* AppManager.m */; };
-		BF4A80DE2105CDFF00D32FB0 /* CRKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80DC2105CDFF00D32FB0 /* CRKeychainItem.m */; };
 		BF4A80E02105CE5E00D32FB0 /* BaseSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80DF2105CE5E00D32FB0 /* BaseSearchBarView.swift */; };
 		BF4A80EE2105CFCC00D32FB0 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80E12105CFC600D32FB0 /* AudioStreamer.m */; };
-		BF4A80F12105CFCC00D32FB0 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80E52105CFC700D32FB0 /* UICKeyChainStore.m */; };
-		BF4A80F22105CFCC00D32FB0 /* GPAPolylineEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80E72105CFC900D32FB0 /* GPAPolylineEncoding.m */; };
-		BF4A80F72105CFE100D32FB0 /* CRCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4A80F52105CFE000D32FB0 /* CRCrypto.m */; };
 		BF58B91C20EA1920002CB4EE /* MyAPP.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91B20EA1920002CB4EE /* MyAPP.plist */; };
 		BF58B92620EA1CE2002CB4EE /* app-xjb.png in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91E20EA1CE0002CB4EE /* app-xjb.png */; };
 		BF58B92720EA1CE2002CB4EE /* app-beeManager.png in Resources */ = {isa = PBXBuildFile; fileRef = BF58B91F20EA1CE1002CB4EE /* app-beeManager.png */; };
@@ -533,7 +529,6 @@
 		BF58B96020EDAB9F002CB4EE /* real.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF58B95F20EDAB9F002CB4EE /* real.plist */; };
 		BF58BA2320EDBFBC002CB4EE /* PreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58BA1F20EDBFBB002CB4EE /* PreViewController.swift */; };
 		BF58BA2420EDBFBC002CB4EE /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58BA2020EDBFBB002CB4EE /* DownloadService.swift */; };
-		BF58BA2520EDBFBC002CB4EE /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF58BA2120EDBFBC002CB4EE /* HTMLParser.m */; };
 		BF58BA2720EDBFCC002CB4EE /* UTI.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF58BA2620EDBFCB002CB4EE /* UTI.plist */; };
 		BF58BA2920EDC079002CB4EE /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BF58BA2820EDC079002CB4EE /* libxml2.tbd */; };
 		BF58BA2D20EDC5CC002CB4EE /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF58BA2C20EDC5CC002CB4EE /* Photos.framework */; };
@@ -611,7 +606,6 @@
 		BFC6D96820E5C56700F17378 /* FaceEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = BFC6D96220E5C56600F17378 /* FaceEmoji.json */; };
 		BFC6D96B20E5D3D400F17378 /* 走在冷风中.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFC6D96920E5D3D300F17378 /* 走在冷风中.mp3 */; };
 		BFC6D96C20E5D3D400F17378 /* 来自天堂的魔鬼.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFC6D96A20E5D3D400F17378 /* 来自天堂的魔鬼.mp3 */; };
-		DF0489E121D26D120030C30B /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0489E021D26D120030C30B /* XMLDictionary.m */; };
 		DF0489E921D28B870030C30B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489E321D28B860030C30B /* Util.swift */; };
 		DF0489EA21D28B870030C30B /* ElasticTransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489E421D28B860030C30B /* ElasticTransitionPresentationController.swift */; };
 		DF0489EB21D28B870030C30B /* ElasticModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0489E521D28B860030C30B /* ElasticModalViewController.swift */; };
@@ -721,7 +715,6 @@
 		DF7B408A21AC020A00E3D975 /* AwemeListCellViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406D21AC020A00E3D975 /* AwemeListCellViews.swift */; };
 		DF7B408B21AC020A00E3D975 /* AVPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */; };
 		DF80D21121F7FF2800A1D55F /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF80D21021F7FF2800A1D55F /* BaseTableViewController.swift */; };
-		DF846C8D21BE55FD002D9CA2 /* NSObject+Mirror.m in Sources */ = {isa = PBXBuildFile; fileRef = DF846C8B21BE55FD002D9CA2 /* NSObject+Mirror.m */; };
 		DF8BBC9C21D67F0600F0D1FD /* UIView+CircularAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BBC9721D67F0600F0D1FD /* UIView+CircularAnimation.swift */; };
 		DFA5BF3621B6A74D00CB9223 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5BF3521B6A74D00CB9223 /* User.swift */; };
 		DFA5D3AE21BA184F00339006 /* PlayLRCSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */; };
@@ -1323,17 +1316,9 @@
 		BF0E8B0320DCAB4100150476 /* systemSetting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = systemSetting.plist; sourceTree = "<group>"; };
 		BF0E8B0620DCB0B400150476 /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
 		BF0E8B0720DCB0B500150476 /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
-		BF4A80DC2105CDFF00D32FB0 /* CRKeychainItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRKeychainItem.m; sourceTree = "<group>"; };
-		BF4A80DD2105CDFF00D32FB0 /* CRKeychainItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRKeychainItem.h; sourceTree = "<group>"; };
 		BF4A80DF2105CE5E00D32FB0 /* BaseSearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSearchBarView.swift; sourceTree = "<group>"; };
 		BF4A80E12105CFC600D32FB0 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
-		BF4A80E42105CFC700D32FB0 /* UICKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICKeyChainStore.h; sourceTree = "<group>"; };
-		BF4A80E52105CFC700D32FB0 /* UICKeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICKeyChainStore.m; sourceTree = "<group>"; };
-		BF4A80E72105CFC900D32FB0 /* GPAPolylineEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPAPolylineEncoding.m; sourceTree = "<group>"; };
 		BF4A80EA2105CFCA00D32FB0 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
-		BF4A80ED2105CFCB00D32FB0 /* GPAPolylineEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPAPolylineEncoding.h; sourceTree = "<group>"; };
-		BF4A80F52105CFE000D32FB0 /* CRCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRCrypto.m; sourceTree = "<group>"; };
-		BF4A80F62105CFE000D32FB0 /* CRCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRCrypto.h; sourceTree = "<group>"; };
 		BF58B91B20EA1920002CB4EE /* MyAPP.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyAPP.plist; sourceTree = "<group>"; };
 		BF58B91E20EA1CE0002CB4EE /* app-xjb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-xjb.png"; sourceTree = "<group>"; };
 		BF58B91F20EA1CE1002CB4EE /* app-beeManager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-beeManager.png"; sourceTree = "<group>"; };
@@ -1352,8 +1337,6 @@
 		BF58B95F20EDAB9F002CB4EE /* real.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = real.plist; sourceTree = "<group>"; };
 		BF58BA1F20EDBFBB002CB4EE /* PreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreViewController.swift; sourceTree = "<group>"; };
 		BF58BA2020EDBFBB002CB4EE /* DownloadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
-		BF58BA2120EDBFBC002CB4EE /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
-		BF58BA2220EDBFBC002CB4EE /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
 		BF58BA2620EDBFCB002CB4EE /* UTI.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UTI.plist; sourceTree = "<group>"; };
 		BF58BA2820EDC079002CB4EE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		BF58BA2C20EDC5CC002CB4EE /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
@@ -1441,8 +1424,6 @@
 		BFC6D96220E5C56600F17378 /* FaceEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FaceEmoji.json; sourceTree = "<group>"; };
 		BFC6D96920E5D3D300F17378 /* 走在冷风中.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "走在冷风中.mp3"; sourceTree = "<group>"; };
 		BFC6D96A20E5D3D400F17378 /* 来自天堂的魔鬼.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "来自天堂的魔鬼.mp3"; sourceTree = "<group>"; };
-		DF0489DF21D26D120030C30B /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
-		DF0489E021D26D120030C30B /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
 		DF0489E321D28B860030C30B /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		DF0489E421D28B860030C30B /* ElasticTransitionPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticTransitionPresentationController.swift; sourceTree = "<group>"; };
 		DF0489E521D28B860030C30B /* ElasticModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticModalViewController.swift; sourceTree = "<group>"; };
@@ -1553,8 +1534,6 @@
 		DF7B406D21AC020A00E3D975 /* AwemeListCellViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwemeListCellViews.swift; sourceTree = "<group>"; };
 		DF7B406E21AC020A00E3D975 /* AVPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerManager.swift; sourceTree = "<group>"; };
 		DF80D21021F7FF2800A1D55F /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
-		DF846C8B21BE55FD002D9CA2 /* NSObject+Mirror.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Mirror.m"; sourceTree = "<group>"; };
-		DF846C8C21BE55FD002D9CA2 /* NSObject+Mirror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Mirror.h"; sourceTree = "<group>"; };
 		DF8BBC9721D67F0600F0D1FD /* UIView+CircularAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+CircularAnimation.swift"; sourceTree = "<group>"; };
 		DFA5BF3521B6A74D00CB9223 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DFA5D3AD21BA184F00339006 /* PlayLRCSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLRCSView.swift; sourceTree = "<group>"; };
@@ -3403,22 +3382,8 @@
 			children = (
 				DF0489FF21D29A800030C30B /* RESideMenu.h */,
 				DF0489FE21D29A800030C30B /* RESideMenu.m */,
-				DF846C8C21BE55FD002D9CA2 /* NSObject+Mirror.h */,
-				DF846C8B21BE55FD002D9CA2 /* NSObject+Mirror.m */,
 				BF0E8B0620DCB0B400150476 /* AppManager.h */,
 				BF0E8B0720DCB0B500150476 /* AppManager.m */,
-				BF4A80DD2105CDFF00D32FB0 /* CRKeychainItem.h */,
-				BF4A80DC2105CDFF00D32FB0 /* CRKeychainItem.m */,
-				BF4A80E42105CFC700D32FB0 /* UICKeyChainStore.h */,
-				BF4A80E52105CFC700D32FB0 /* UICKeyChainStore.m */,
-				BF4A80F62105CFE000D32FB0 /* CRCrypto.h */,
-				BF4A80F52105CFE000D32FB0 /* CRCrypto.m */,
-				BF4A80ED2105CFCB00D32FB0 /* GPAPolylineEncoding.h */,
-				BF4A80E72105CFC900D32FB0 /* GPAPolylineEncoding.m */,
-				BF58BA2220EDBFBC002CB4EE /* HTMLParser.h */,
-				BF58BA2120EDBFBC002CB4EE /* HTMLParser.m */,
-				DF0489DF21D26D120030C30B /* XMLDictionary.h */,
-				DF0489E021D26D120030C30B /* XMLDictionary.m */,
 				BF4A80EA2105CFCA00D32FB0 /* AudioStreamer.h */,
 				BF4A80E12105CFC600D32FB0 /* AudioStreamer.m */,
 			);
@@ -4233,7 +4198,6 @@
 				DF6B522421CB262100460949 /* XEmojiKeyboard.swift in Sources */,
 				BFBFCA3426DB597500B0FAB4 /* String+Extension.swift in Sources */,
 				DFAEA20F2202915C00DD6446 /* WXAPI.swift in Sources */,
-				DF0489E121D26D120030C30B /* XMLDictionary.m in Sources */,
 				DF6B520021CA802C00460949 /* WXSearchController.swift in Sources */,
 				713EE2AA20AD8F5C0085B65D /* KugouTabBarController.swift in Sources */,
 				DF0489F821D28BA40030C30B /* MotionAnimator.swift in Sources */,
@@ -4340,7 +4304,6 @@
 				713EE2E420AD9C2F0085B65D /* AlipayFriendsViewController.swift in Sources */,
 				DF602768221E84A20057EC3F /* WXMomentImageView.swift in Sources */,
 				713EE2FE20AD9FF30085B65D /* IqiyiTabBarController.swift in Sources */,
-				BF4A80F12105CFCC00D32FB0 /* UICKeyChainStore.m in Sources */,
 				7121193820ABC5670087E05B /* EnergyShopFindViewController.swift in Sources */,
 				7121193420ABC5420087E05B /* EnergySuperMeViewController.swift in Sources */,
 				DF7B408321AC020A00E3D975 /* ChatListCells.swift in Sources */,
@@ -4351,7 +4314,6 @@
 				BFBFCA3526DB597500B0FAB4 /* OtherExtensions.swift in Sources */,
 				7121194420ABE1280087E05B /* EnergySuperMarketTabBarController.swift in Sources */,
 				DFEF80F121FB7AE4001D81FA /* FreedomBaseViewController.swift in Sources */,
-				BF4A80DE2105CDFF00D32FB0 /* CRKeychainItem.m in Sources */,
 				DF1208CF21EEE5A500F7ED7F /* KugouModels.swift in Sources */,
 				DF6B521621CB25D200460949 /* WXChatTableViewController.swift in Sources */,
 				DF0E966E21CBACAE009682CC /* WXNewFriendViewController.swift in Sources */,
@@ -4383,7 +4345,6 @@
 				BFBFCA2726DB597500B0FAB4 /* SwiftNotice.swift in Sources */,
 				713EE2AC20AD8F8E0085B65D /* DZNavigationController.swift in Sources */,
 				BFBFCA2426DB597500B0FAB4 /* Circular3DStarView.swift in Sources */,
-				BF4A80F72105CFE100D32FB0 /* CRCrypto.m in Sources */,
 				713EE2C820AD9B600085B65D /* TaobaoHomeViewController.swift in Sources */,
 				DF7B408B21AC020A00E3D975 /* AVPlayerManager.swift in Sources */,
 				DF7B408821AC020A00E3D975 /* AwemeListCell.swift in Sources */,
@@ -4418,7 +4379,6 @@
 				DFA5BF3621B6A74D00CB9223 /* User.swift in Sources */,
 				713EE2EE20AD9CD90085B65D /* KugouLocalMusicViewController.swift in Sources */,
 				DF6B520E21CB25B100460949 /* WXChatDetailViewController.swift in Sources */,
-				DF846C8D21BE55FD002D9CA2 /* NSObject+Mirror.m in Sources */,
 				DF6B522E21CB76CF00460949 /* WXBgSettingViewController.swift in Sources */,
 				DFFA80C621AEC84D009B1999 /* BaseViewController.swift in Sources */,
 				DF1ED02D21F75DA900AEF237 /* AlipayRichViewController.swift in Sources */,
@@ -4483,12 +4443,10 @@
 				DF0489EA21D28B870030C30B /* ElasticTransitionPresentationController.swift in Sources */,
 				713EE31420ADA0AF0085B65D /* IqiyiClassifyViewController.swift in Sources */,
 				DF7B408521AC020A00E3D975 /* DouyinMeViewController.swift in Sources */,
-				BF58BA2520EDBFBC002CB4EE /* HTMLParser.m in Sources */,
 				DFF4AB9F21B7BFA400F03C71 /* XPopItemsView.swift in Sources */,
 				713EE2FA20AD9D490085B65D /* DetailWapViewController.swift in Sources */,
 				713EE2BC20AD9AEC0085B65D /* DZHomeController.swift in Sources */,
 				DF7B408921AC020A00E3D975 /* AwemeListController.swift in Sources */,
-				BF4A80F22105CFCC00D32FB0 /* GPAPolylineEncoding.m in Sources */,
 				DF401C6A21F716D4001482DE /* IqiyiAPI.swift in Sources */,
 				DF80D21121F7FF2800A1D55F /* BaseTableViewController.swift in Sources */,
 				7121196C20AC24DF0087E05B /* ToutiaoHomeSampleViewController.swift in Sources */,
