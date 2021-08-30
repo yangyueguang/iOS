@@ -12,7 +12,6 @@
 #import "RCDRCIMDataSource.h"
 #import "RCDataBaseManager.h"
 
-#import "BookReaderViewController.h"
 #import "BookFriendsViewController.h"
 #import "AppManager.h"
 #import <UMMobClick/MobClick.h>

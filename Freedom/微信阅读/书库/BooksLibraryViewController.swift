@@ -18,17 +18,14 @@ final class BooksLibraryViewController: BooksBaseViewController,UICollectionView
         let wxVc = BookFriendsViewController()
         self.present(wxVc, animated: true) {}
     }
-    @objc func leftAction(){
-        let loginvctrl = BookReaderViewController()
-        self.present(loginvctrl, animated: true) {}
-    }
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "书籍📚阅读";
         self.view.backgroundColor = .white
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.tintColor = .yellow
-        let left = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(leftAction))
+        let left = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(rightAction))
         let right = UIBarButtonItem(image: Image.add.image, style: .done, target: self, action: #selector(rightAction))
 
         self.navigationItem.leftBarButtonItem  = left;
@@ -60,8 +57,6 @@ final class BooksLibraryViewController: BooksBaseViewController,UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let log = "你选择的是\(indexPath.section)，\(indexPath.row)"
         noticeInfo(log)
-        let loginvctrl = BookReaderViewController()
-        self.present(loginvctrl, animated: true) {
-        }
+     
     }
 }
