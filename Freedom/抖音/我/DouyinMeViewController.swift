@@ -127,7 +127,7 @@ final class DouyinMeViewController: DouyinBaseViewController {
                 }, completion: { finished in
                     UIView.setAnimationsEnabled(true)
 
-                    self?.collectionView.mj_footer.endRefreshing()
+                    self?.collectionView.mj_footer?.endRefreshing()
                 })
             }).disposed(by: disposeBag)
 
@@ -149,7 +149,7 @@ final class DouyinMeViewController: DouyinBaseViewController {
                 }, completion: { finished in
                     UIView.setAnimationsEnabled(true)
 
-                    self?.tableView.mj_footer.endRefreshing()
+                    self?.tableView.mj_footer?.endRefreshing()
                 })
             }).disposed(by: disposeBag)
             XNetKit.douyinfindFavoriteAwemesPaged(uid, page: page,size: size , next: favoriteAwemesViewModel)
@@ -312,7 +312,7 @@ extension DouyinMeViewController: UserInfoDelegate, OnTabTapActionDelegate {
                 UIView.setAnimationsEnabled(true)
                 
 
-                self.tableView.mj_footer.endRefreshing()
+                self.tableView.mj_footer?.endRefreshing()
                 
                 self.loadData(page: self.pageIndex)
             })        }

@@ -103,7 +103,7 @@ final class IqiyiSubscribeViewController: IqiyiBaseViewController {
         subscribeTableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {() -> Void in
             self.initData()
         })
-        subscribeTableView.mj_header.beginRefreshing()
+        subscribeTableView.mj_header?.beginRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {

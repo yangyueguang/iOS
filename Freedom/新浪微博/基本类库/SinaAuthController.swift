@@ -88,17 +88,17 @@ class SinaAuthController: SinaBaseViewController,UIWebViewDelegate {
         params["grant_type"] = "authorization_code"
         params["redirect_uri"] = "http://www.sharesdk.cn"
         params["code"] = code ?? ""
-        AFHTTPSessionManager().post(url, parameters: params, progress: nil, success: { task, responseObject in
-            XHud.hide()
-            // 将返回的账号字典数据 --> 模型，存进沙盒
-            let account = SinaAccount(dict: responseObject as! [AnyHashable : Any])
-            //储存账号信息
-            SinaAccount.save(account)
-            // 切换窗口的根控制器
-            //        UIWindow *window = [UIApplication sharedApplication].keyWindow;
-            //        [window switchRootViewController];
-            self.dismiss(animated: true)
-        }, failure: { task, error in
-        })
+//        AFHTTPSessionManager().post(url, parameters: params, progress: nil, success: { task, responseObject in
+//            XHud.hide()
+//            // 将返回的账号字典数据 --> 模型，存进沙盒
+//            let account = SinaAccount(dict: responseObject as! [AnyHashable : Any])
+//            //储存账号信息
+//            SinaAccount.save(account)
+//            // 切换窗口的根控制器
+//            //        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//            //        [window switchRootViewController];
+//            self.dismiss(animated: true)
+//        }, failure: { task, error in
+//        })
     }
 }

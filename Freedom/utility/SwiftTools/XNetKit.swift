@@ -145,14 +145,14 @@ class XNetKit: NSObject {
     var config = XNetKitConfig.shared
     private var m_requestRecord: [String : XNetKitConfig] = [:]
     private var m_lock: pthread_mutex_t = pthread_mutex_t.init()
-    let serverTrustPolicies: [String: ServerTrustPolicy] = [
-        "test.example.com": .pinCertificates(
-            certificates: ServerTrustPolicy.certificates(),
-            validateCertificateChain: true,
-            validateHost: true
-        ),
-        "insecure.expired-apis.com": ServerTrustPolicy.disableEvaluation
-    ]
+//    let serverTrustPolicies: [String: ServerTrustPolicy] = [
+//        "test.example.com": .pinCertificates(
+//            certificates: ServerTrustPolicy.certificates(),
+//            validateCertificateChain: true,
+//            validateHost: true
+//        ),
+//        "insecure.expired-apis.com": ServerTrustPolicy.disableEvaluation
+//    ]
     private lazy var sessionManager: AFHTTPSessionManager = {
         let manager = AFHTTPSessionManager(baseURL: nil)
         manager.responseSerializer = AFJSONResponseSerializer()
@@ -189,16 +189,16 @@ class XNetKit: NSObject {
         config.method = method
         sessionManager.requestSerializer = requestSerizlizer(forAPI: config)
         sessionManager.responseSerializer = responseSerizlizer(forAPI: config)
-        let request = sessionManager.requestSerializer.request(withMethod: config.method.rawValue, urlString: config.realURL + url, parameters: parameters, error: nil) as URLRequest
+//        let request = sessionManager.requestSerializer.request(withMethod: config.method.rawValue, urlString: config.realURL + url, parameters: parameters, error: nil) as URLRequest
         //        sessionManager.setDataTaskDidReceiveDataBlock { (session, task, obj) in
         //            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         //            print(obj)
         //        }
-        config.requestTask = sessionManager.dataTask(with: request, uploadProgress: nil, downloadProgress: nil) { (response: URLResponse, obj: Any?, error: Error?) -> Void in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            let res = APIResponse(request: request, response: response, data: obj as? Data, error: error, dictionary: (obj as? [String: Any]))
-            completion(res)
-        }
+//        config.requestTask = sessionManager.dataTask(with: request, uploadProgress: nil, downloadProgress: nil) { (response: URLResponse, obj: Any?, error: Error?) -> Void in
+//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//            let res = APIResponse(request: request, response: response, data: obj as? Data, error: error, dictionary: (obj as? [String: Any]))
+//            completion(res)
+//        }
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         pthread_mutex_lock(&m_lock)
         m_requestRecord[url] = config
@@ -282,22 +282,22 @@ class XNetKit: NSObject {
 
 
     //FIXME: 以下是Almofire的网络请求
-    @discardableResult
-    public func requestPolicy(_ url: String,
-                              parameters: Parameters?,
-                              method: HTTPMethod = .get ,
-                              encoding: ParameterEncoding = URLEncoding.default,
-                              headers: HTTPHeaders = [:], completion:@escaping (APIResponse) -> Void) -> DataRequest{
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        let manager = SessionManager(serverTrustPolicyManager: ServerTrustPolicyManager(policies: self.serverTrustPolicies))
-        let baseRequest = manager.request(config.realURL + url, method: method, parameters: parameters, encoding: encoding, headers: headers)
-        baseRequest.responseJSON { (response) in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            let res = APIResponse(request: baseRequest.request, response: nil, data: nil, error: response.result.error, dictionary: response.result.value as? [String: Any])
-            completion(res)
-        }
-        return baseRequest
-    }
+//    @discardableResult
+//    public func requestPolicy(_ url: String,
+//                              parameters: Parameters?,
+//                              method: HTTPMethod = .get ,
+//                              encoding: ParameterEncoding = URLEncoding.default,
+//                              headers: HTTPHeaders = [:], completion:@escaping (APIResponse) -> Void) -> DataRequest{
+//        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+//        let manager = SessionManager(serverTrustPolicyManager: ServerTrustPolicyManager(policies: self.serverTrustPolicies))
+//        let baseRequest = manager.request(config.realURL + url, method: method, parameters: parameters, encoding: encoding, headers: headers)
+//        baseRequest.responseJSON { (response) in
+//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//            let res = APIResponse(request: baseRequest.request, response: nil, data: nil, error: response.result.error, dictionary: response.result.value as? [String: Any])
+//            completion(res)
+//        }
+//        return baseRequest
+//    }
 
     @discardableResult
     static public func request(_ url: String,
@@ -315,20 +315,23 @@ class XNetKit: NSObject {
                         headers: HTTPHeaders = [:], completion:@escaping (APIResponse) -> Void) -> DataRequest{
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         XHud.show()
-        let baseRequest = Alamofire.request(config.realURL + url, method: (method == .connect ? config.method : method), parameters: parameters, encoding: encoding, headers: headers)
-        baseRequest.responseJSON { (response) in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            XHud.hide()
-            let res = APIResponse(request: baseRequest.request, response: nil, data: nil, error: response.result.error, dictionary: response.result.value as? [String: Any])
-            if res.responseType == .success {
-                Dlog(res.dictionary.jsonString(prettify: true))
-                completion(res)
-            }else{
-                XHud.flash(XHudStyle.withDetail(message: "网络请求失败"), delay: 3)
-            }
-        }
-        return baseRequest
-    }
+//        let baseRequest = Alamofire.request(config.realURL + url, method: (method == .connect ? config.method : method), parameters: parameters, encoding: encoding, headers: headers)
+//        baseRequest.responseJSON { (response) in
+//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//            XHud.hide()
+//            let res = APIResponse(request: baseRequest.request, response: nil, data: nil, error: response.result.error, dictionary: response.result.value as? [String: Any])
+//            if res.responseType == .success {
+//                Dlog(res.dictionary.jsonString(prettify: true))
+//                completion(res)
+//            }else{
+//                XHud.flash(XHudStyle.withDetail(message: "网络请求失败"), delay: 3)
+//            }
+//        }
+//        return baseRequest
+        var originalRequest: DataRequest! = nil
+
+        return originalRequest
+     }
 
     /// 直接返回需要对象的网络请求
     /// requestModel("", parameters: nil) { (stu: Student) in print(stu.name) }
@@ -338,7 +341,7 @@ class XNetKit: NSObject {
                         encoding: ParameterEncoding = URLEncoding.default,
                         headers: HTTPHeaders = [:], completion:@escaping (T) -> Void) -> DataRequest{
         return request(url, parameters: parameters,method: method,encoding: encoding,headers: headers) { (res) in
-            let obj = T.parse(res.body)
+            let obj = T.parse(res.body as NSDictionary)
             completion(obj)
         }
     }
@@ -351,14 +354,19 @@ class XNetKit: NSObject {
                         headers: HTTPHeaders = [:], completion:@escaping (APIResponse) -> Void) -> DataRequest{
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         XHud.show()
-        let baseRequest = Alamofire.request(kit.config.realURL + url, method: (method == .connect ? kit.config.method : method), parameters: parameters, encoding: encoding, headers: headers)
-        baseRequest.responseJSON { (response) in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            XHud.hide()
-            let res = APIResponse(request: baseRequest.request, response: nil, data: nil, error: response.result.error, dictionary: response.result.value as? [String: Any])
-            completion(res)
-        }
-        return baseRequest
+        
+//        let baseRequest = Alamofire.request(kit.config.realURL + url, method: (method == .connect ? kit.config.method : method), parameters: parameters, encoding: encoding, headers: headers)
+//        baseRequest.responseJSON { (response) in
+//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//            XHud.hide()
+//            let res = APIResponse(request: baseRequest.request, response: nil, data: nil, error: response.result.error, dictionary: response.result.value as? [String: Any])
+//            completion(res)
+//        }
+//        return baseRequest
+        
+        var originalRequest: DataRequest! = nil
+
+        return originalRequest
     }
     @discardableResult
     static public func get(_ url: String,
@@ -366,16 +374,20 @@ class XNetKit: NSObject {
                            completion:@escaping (APIResponse) -> Void) -> DataRequest{
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         XHud.show()
-        let baseRequest = Alamofire.request(url,
-                                            method: .get,
-                                            parameters: param)
-        baseRequest.responseJSON { (response) in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            XHud.hide()
-            let res = APIResponse(request: baseRequest.request, response: nil, data: nil, error: response.result.error, dictionary: response.result.value as? [String: Any])
-            completion(res)
-        }
-        return baseRequest
+//        let baseRequest = Alamofire.request(url,
+//                                            method: .get,
+//                                            parameters: param)
+//        baseRequest.responseJSON { (response) in
+//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//            XHud.hide()
+//            let res = APIResponse(request: baseRequest.request, response: nil, data: nil, error: response.result.error, dictionary: response.result.value as? [String: Any])
+//            completion(res)
+//        }
+//        return baseRequest
+        
+        var originalRequest: DataRequest! = nil
+
+        return originalRequest
     }
 
 
@@ -384,18 +396,19 @@ class XNetKit: NSObject {
                         parameters: Parameters?,
                         method: HTTPMethod = .get,
                         encoding: ParameterEncoding = URLEncoding.default,
-                        headers: HTTPHeaders = [:], completion:@escaping (APIResponse) -> Void) -> DownloadRequest {
+                        headers: HTTPHeaders = [:], completion:@escaping (APIResponse) -> Void) -> DownloadRequest? {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        XHud.show()
-        let baseRequest = Alamofire.download(url, method: method, parameters: parameters, encoding: encoding, headers: headers) { (url, urlresponse) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
-            return (URL(fileURLWithPath: String(describing : NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, false)[0]+(urlresponse.suggestedFilename ?? "data"))), [.createIntermediateDirectories, .removePreviousFile])
-
-        }
-        baseRequest.downloadProgress { (progress) in
-            let pro = progress.completedUnitCount / progress.totalUnitCount
-            print(pro)
-        }
-        return baseRequest
+        return nil
+//        XHud.show()
+//        let baseRequest = Alamofire.download(url, method: method, parameters: parameters, encoding: encoding, headers: headers) { (url, urlresponse) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
+//            return (URL(fileURLWithPath: String(describing : NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, false)[0]+(urlresponse.suggestedFilename ?? "data"))), [.createIntermediateDirectories, .removePreviousFile])
+//
+//        }
+//        baseRequest.downloadProgress { (progress) in
+//            let pro = progress.completedUnitCount / progress.totalUnitCount
+//            print(pro)
+//        }
+//        return baseRequest
     }
 
 }

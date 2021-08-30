@@ -9,7 +9,7 @@ class TaobaoMiniTopicViewCell:BaseTableViewCell<Any> {
         icon.frame = CGRect(x: 10, y: 10, width: 70, height: 70)
         title.frame = CGRect(x: icon.right + 10, y: icon.y, width: APPW - icon.right - 10, height: 20)
         script.frame = CGRect(x: title.x, y: title.bottom + 10, width: title.width, height: 20)
-        let sees = UILabel(frame: CGRect(x: script.x, y: script.bottom, width: script.width, height: 15), font: Font(12), color: .gray, text: nil)
+        let sees = UILabel(frame: CGRect(x: script.x, y: script.bottom, width: script.width, height: 15), font: FFont(12), color: .gray, text: nil)
         Dlog(self.height)
         addSubview(sees)
         icon.image = Image.a.image

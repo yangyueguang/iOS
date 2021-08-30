@@ -169,8 +169,8 @@ class WXExpressionChosenViewController: BaseTableViewController,UISearchBarDeleg
         tableView.register(WXExpressionBannerCell.self, forCellReuseIdentifier: WXExpressionBannerCell.identifier)
         tableView.register(WXExpressionCell.self, forCellReuseIdentifier: WXExpressionCell.identifier)
         let footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(self.loadMoreData))
-        footer?.setTitle("正在加载...", for: .refreshing)
-        footer?.setTitle("", for: .noMoreData)
+        footer.setTitle("正在加载...", for: .refreshing)
+        footer.setTitle("", for: .noMoreData)
         tableView.mj_footer = footer
         loadData(withLoadingView: true)
     }
@@ -210,9 +210,9 @@ class WXExpressionChosenViewController: BaseTableViewController,UISearchBarDeleg
         XNetKit.kit.requestExpressionChosenList(byPageIndex: kPageIndex, success: { data in
             XHud.hide()
             if data.count == 0 {
-                self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                self.tableView.mj_footer?.endRefreshingWithNoMoreData()
             } else {
-                self.tableView.mj_footer.endRefreshing()
+                self.tableView.mj_footer?.endRefreshing()
                 self.kPageIndex += 1
                 for group: TLEmojiGroup in data {
                     // 优先使用本地表情
@@ -226,7 +226,7 @@ class WXExpressionChosenViewController: BaseTableViewController,UISearchBarDeleg
                 self.tableView.reloadData()
             }
         }, failure: { error in
-            self.tableView.mj_footer.endRefreshingWithNoMoreData()
+            self.tableView.mj_footer?.endRefreshingWithNoMoreData()
             XHud.hide()
         })
     }
@@ -283,7 +283,7 @@ extension WXExpressionChosenViewController: WXExpressionCellDelegate, WXExpressi
         group.status = .downloading
         XNetKit.kit.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: 1, success: { data in
             group.data.removeAll()
-            group.data.append(objectsIn:data)
+//            group.data.append(objectsIn:data)
             XNetKit.kit.downloadExpressions(withGroupInfo: group, progress: { progress in
             }, success: { group in
                 group.status = .downloaded

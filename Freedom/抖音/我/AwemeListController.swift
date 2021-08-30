@@ -116,7 +116,7 @@ class AwemeListController: DouyinBaseViewController {
                 self?.tableView?.insertRows(at: indexPaths, with: .none)
                 self?.tableView?.endUpdates()
 
-                self?.tableView.mj_footer.endRefreshing()
+                self?.tableView.mj_footer?.endRefreshing()
 
             }).disposed(by: disposeBag)
 
@@ -133,7 +133,7 @@ class AwemeListController: DouyinBaseViewController {
                 }
                 self?.tableView?.insertRows(at: indexPaths, with: .none)
                 self?.tableView?.endUpdates()
-                self?.tableView.mj_footer.endRefreshing()
+                self?.tableView.mj_footer?.endRefreshing()
 
             }).disposed(by: disposeBag)
         }

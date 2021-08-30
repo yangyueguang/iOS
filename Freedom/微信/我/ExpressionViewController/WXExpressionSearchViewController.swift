@@ -45,7 +45,7 @@ class WXExpressionSearchViewController: BaseTableViewController, UISearchResults
         group.status = .downloading
         XNetKit.kit.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: 1, success: { data in
             group.data.removeAll()
-            group.data.append(objectsIn: data)
+//            group.data.append(objectsIn: data)
             XNetKit.kit.downloadExpressions(withGroupInfo: group, progress: { progress in
             }, success: { group in
                 group.status = .downloaded

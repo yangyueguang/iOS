@@ -78,8 +78,8 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
         collectionView.backgroundColor = UIColor.whitex
         //    [self.collectionView setTableHeaderView:self.searchController.searchBar];
         let footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(self.loadMoreData))
-        footer?.setTitle("正在加载...", for: .refreshing)
-        footer?.setTitle("", for: .noMoreData)
+        footer.setTitle("正在加载...", for: .refreshing)
+        footer.setTitle("", for: .noMoreData)
         collectionView.mj_footer = (footer)
         collectionView.register(WXExpressionPublicCell.self, forCellWithReuseIdentifier: WXExpressionPublicCell.identifier)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.identifier)
@@ -160,9 +160,9 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
         XNetKit.kit.requestExpressionPublicList(byPageIndex: kPageIndex, success: { data in
             XHud.hide()
             if data.count == 0 {
-                self.collectionView.mj_footer.endRefreshingWithNoMoreData()
+                self.collectionView.mj_footer?.endRefreshingWithNoMoreData()
             } else {
-                self.collectionView.mj_footer.endRefreshing()
+                self.collectionView.mj_footer?.endRefreshing()
                 self.kPageIndex += 1
                 for group: TLEmojiGroup in data {
                     // 优先使用本地表情
@@ -176,7 +176,7 @@ class WXExpressionPublicViewController: WXBaseViewController, UICollectionViewDe
                 self.collectionView.reloadData()
             }
         }, failure: { error in
-            self.collectionView.mj_footer.endRefreshingWithNoMoreData()
+            self.collectionView.mj_footer?.endRefreshingWithNoMoreData()
             XHud.hide()
         })
     }

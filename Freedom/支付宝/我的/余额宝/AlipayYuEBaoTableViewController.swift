@@ -57,7 +57,7 @@ class AlipayYuEBaoTableViewCellContentView: UIView {
         cv.textColor = dv.textColor
         bv.textColor = cv.textColor
         av.textColor = bv.textColor
-        dv.font = Font(14)
+        dv.font = FFont(14)
         cv.font = dv.font
         bv.font = cv.font
         av.font = bv.font

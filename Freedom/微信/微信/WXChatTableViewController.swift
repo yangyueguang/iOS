@@ -471,7 +471,7 @@ class WXChatTableViewController: BaseTableViewController, WXMessageCellDelegate 
     private var curDate = Date()
     private lazy var refresHeader: MJRefreshNormalHeader = MJRefreshNormalHeader(refreshingBlock: {
         self.p_try(toRefreshMoreRecord: { count, hasMore in
-                self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_header?.endRefreshing()
                 if !hasMore {
                     self.tableView.mj_header = nil
                 }
@@ -486,8 +486,8 @@ class WXChatTableViewController: BaseTableViewController, WXMessageCellDelegate 
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.clear
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: APPW, height: 20))
-        refresHeader.lastUpdatedTimeLabel.isHidden = true
-        refresHeader.stateLabel.isHidden = true
+        refresHeader.lastUpdatedTimeLabel?.isHidden = true
+        refresHeader.stateLabel?.isHidden = true
         if !disablePullToRefresh {
             tableView.mj_header = refresHeader
         }

@@ -13,7 +13,7 @@
 #import "RCDBaseSettingTableViewCell.h"
 #import <RongIMKit/RongIMKit.h>
 #import "RCDBaseSettingTableViewCell.h"
-#import <XExtension/XExtension-umbrella.h>
+
 @interface RCDSquareCell : RCDBaseSettingTableViewCell
 -(id)initWithIconName:(NSString *)iconName TitleName:(NSString *)titleName;
 @end

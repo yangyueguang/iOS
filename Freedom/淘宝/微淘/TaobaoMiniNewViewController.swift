@@ -27,9 +27,9 @@ class TaobaoMiniNewViewCell:BaseTableViewCell<Any> {
         pinglun.layer.cornerRadius = 7.5
         pinglun.layer.borderWidth = 0.5
         pinglun.clipsToBounds = true
-        sees.font = Font(12)
-        zan.titleLabel?.font = Font(12)
-        pinglun.titleLabel?.font = Font(12)
+        sees.font = FFont(12)
+        zan.titleLabel?.font = FFont(12)
+        pinglun.titleLabel?.font = FFont(12)
         addSubviews([name, times, picV, cellContentView, sees, zan, pinglun])
         icon.image = TBImage.xin.image
         name.text = "微淘发现"

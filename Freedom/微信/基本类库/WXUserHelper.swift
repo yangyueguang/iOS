@@ -533,9 +533,9 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
         try! realmWX.transaction {
             realmWX.addOrUpdate(emojiGroup)
         }
-        try! realmWX.transaction {
-            realmWX.addObjects(emojiGroup.data.array() as NSFastEnumeration)
-        }
+//        try! realmWX.transaction {
+//            realmWX.addObjects(emojiGroup.data.array() as NSFastEnumeration)
+//        }
         WXUserHelper.shared.updateEmojiGroupData()
     }
     func deleteExpressionGroup(byID groupID: String) {
@@ -595,7 +595,7 @@ class WXExpressionHelper: NSObject {/// 默认表情（Face）
                         emojis.append(results.object(at: index) as! TLEmoji)
                     }
                 }
-                group.data.append(objectsIn: emojis)
+//                group.data.append(objectsIn: emojis)
                 data.append(group)
             }
         }

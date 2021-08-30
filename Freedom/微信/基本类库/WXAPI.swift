@@ -33,7 +33,7 @@ extension XNetKit {
                         data = try! Data(contentsOf: anURL)
                     }
                 } else {
-                    let emoji: TLEmoji = group.data[i]
+                    let emoji: TLEmoji = TLEmoji()// group.data[i]
                     var urlString = WXExpressionURL.emojiHost1.rawValue + emoji.emojiID
                     if let aString = URL(string: urlString) {
                         data = try! Data(contentsOf: aString)
@@ -107,7 +107,7 @@ extension XNetKit {
         XNetKit.kit.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: 1, success: { data in
             XHud.hide()
             group.data.removeAll()
-            group.data.append(objectsIn: data)
+//            group.data.append(objectsIn: data)
             XNetKit.kit.downloadExpressions(withGroupInfo: group, progress: { progress in
 
             }, success: { group in
@@ -135,7 +135,7 @@ extension XNetKit {
         group1.groupDetailInfo = "韩国萌娃，冷笑宝宝王锡玄表情包"
         XNetKit.kit.requestExpressionGroupDetail(byGroupID: group1.groupID, pageIndex: 1, success: { data in
             group1.data.removeAll()
-            group1.data.append(objectsIn: data)
+//            group1.data.append(objectsIn: data)
             XNetKit.kit.downloadExpressions(withGroupInfo: group1, progress: { progress in
             }, success: { group in
                 WXExpressionHelper.shared.addExpressionGroup(group)

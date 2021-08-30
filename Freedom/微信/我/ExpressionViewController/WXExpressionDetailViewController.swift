@@ -194,7 +194,7 @@ class WXExpressionDetailViewController: WXBaseViewController {
             XNetKit.kit.requestExpressionGroupDetail(byGroupID: group.groupID, pageIndex: kPageIndex, success: { data in
                 XHud.hide()
                 self.group.data.removeAll()
-                self.group.data.append(objectsIn: data)
+//                self.group.data.append(objectsIn: data)
                 self.collectionView.reloadData()
             }, failure: { error in
                 XHud.hide()
@@ -213,7 +213,7 @@ class WXExpressionDetailViewController: WXBaseViewController {
                     var rect: CGRect = cell.frame
                     rect.origin.y -= collectionView.contentOffset.y + 13
                     emojiDisplayView.removeFromSuperview()
-                    emojiDisplayView.display(emoji, at: rect)
+                    emojiDisplayView.display(emoji as! TLEmoji, at: rect)
                     view.addSubview(emojiDisplayView)
                     break
                 }
@@ -227,11 +227,11 @@ class WXExpressionDetailViewController: WXBaseViewController {
                 let indexPath: IndexPath = collectionView.indexPath(for: cell) ?? IndexPath(row: 0, section: 0)
                 let emoji = group.data[indexPath.row]
                 XHud.show(.withDetail(message: "正在将表情保存到系统相册"))
-                let urlString = "http://123.57.155.230:8080/ibiaoqing/admin/expre/download.dopId=\(emoji.emojiID)"
+                let urlString = "http://123.57.155.230:8080/ibiaoqing/admin/expre/download.dopId=\((emoji as AnyObject).emojiID)"
                 var data = try? Data(contentsOf: URL(string: urlString)!)
-                if data == nil {
-                    data = try? Data(contentsOf: URL(fileURLWithPath: emoji.emojiPath))
-                }
+//                if data == nil {
+//                    data = try? Data(contentsOf: URL(string: (emoji as AnyObject).emojiPath) ?? "")
+//                }
                 let image = UIImage(data: data!)
                 UIImageWriteToSavedPhotosAlbum(image!, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
                 break
@@ -265,7 +265,7 @@ extension WXExpressionDetailViewController: UICollectionViewDelegate, UICollecti
         }
         let cell = collectionView.dequeueCell(WXExpressionItemCell.self, for: indexPath)
         let emoji = group.data[indexPath.row]
-        cell.emoji = emoji
+//        cell.emoji = emoji
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

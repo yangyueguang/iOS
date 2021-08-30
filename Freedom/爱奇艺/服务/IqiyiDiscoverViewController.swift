@@ -132,7 +132,7 @@ final class IqiyiDiscoverViewController: IqiyiBaseViewController {
             let urlStr = "urlWithDiscoverData"
             print(urlStr)
         })
-        discoverTableView.mj_header.beginRefreshing()
+        discoverTableView.mj_header?.beginRefreshing()
     }
     func searchButtonClick() {
         let searchVC = IqiyiSearchHistoryViewController()

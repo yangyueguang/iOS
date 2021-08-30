@@ -66,23 +66,23 @@ final class SinaHomeViewController: SinaBaseViewController {
         manager.requestSerializer.setValue("text/json", forHTTPHeaderField: "Accept")
         manager.requestSerializer.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         manager.responseSerializer.acceptableContentTypes = Set<AnyHashable>(["application/json", "text/json", "text/plain", "application/xml", "text/xml", "text/html", "text/javascript", "application/x-plist", "image/tiff", "image/jpeg", "image/gif", "image/png", "image/ico", "image/x-icon", "image/bmp", "image/x-bmp", "image/x-xbitmap", "image/x-win-bitmap"]) as? Set<String>
-        manager.get(url, parameters: params, progress: nil, success: { task, responseObject in
-            let name = (responseObject! as! [String:String])["name"]
-            self.title = name
-            account?.name = name!
-            SinaAccount.save(account)
-        }, failure: { task, error in
-        })
+//        manager.get(url, parameters: params, progress: nil, success: { task, responseObject in
+//            let name = (responseObject! as! [String:String])["name"]
+//            self.title = name
+//            account?.name = name!
+//            SinaAccount.save(account)
+//        }, failure: { task, error in
+//        })
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(self.refreshStatus(_:)), for: .valueChanged)
         tableView.addSubview(refresh)
         refresh.beginRefreshing()
-        AFHTTPSessionManager().get("https://rm.api.weibo.com/2/remind/unread_count.json", parameters: params, progress: nil, success: { task, responseObject in
-            let status = (responseObject! as! [String:Any])["status"] as! NSNumber
-            self.tabBarItem.badgeValue = status.stringValue
-            UIApplication.shared.applicationIconBadgeNumber = Int(truncating: status)
-        }, failure: { task, error in
-        })
+//        AFHTTPSessionManager().get("https://rm.api.weibo.com/2/remind/unread_count.json", parameters: params, progress: nil, success: { task, responseObject in
+//            let status = (responseObject! as! [String:Any])["status"] as! NSNumber
+//            self.tabBarItem.badgeValue = status.stringValue
+//            UIApplication.shared.applicationIconBadgeNumber = Int(truncating: status)
+//        }, failure: { task, error in
+//        })
     }
     /*UIRefreshControl进入刷新状态：加载最新的数据*/
     func refreshStatus(_ control: UIRefreshControl?) {
@@ -91,15 +91,15 @@ final class SinaHomeViewController: SinaBaseViewController {
         var params = [AnyHashable: Any]()
         params["access_token"] = account?.access_token
         params["since_id"] = 0
-        AFHTTPSessionManager().get(url, parameters: params, progress: nil, success: { task, responseObject in
-            let newStatuses = SinaStatus.parses((responseObject! as! [String:Any])["statuses"] as! [Any]) as! [SinaStatus]
-            self.list.append(contentsOf: newStatuses)
-            self.tableView.reloadData()
-            control?.endRefreshing()
-            self.tabBarItem.badgeValue = nil
-            UIApplication.shared.applicationIconBadgeNumber = 0
-        }, failure: { task, error in
-        })
+//        AFHTTPSessionManager().get(url, parameters: params, progress: nil, success: { task, responseObject in
+//            let newStatuses = SinaStatus.parses((responseObject! as! [String:Any])["statuses"] as! [Any]) as! [SinaStatus]
+//            self.list.append(contentsOf: newStatuses)
+//            self.tableView.reloadData()
+//            control?.endRefreshing()
+//            self.tabBarItem.badgeValue = nil
+//            UIApplication.shared.applicationIconBadgeNumber = 0
+//        }, failure: { task, error in
+//        })
     }
     // 加载更多的微博数据
     func loadMoreStatus() {
@@ -107,13 +107,13 @@ final class SinaHomeViewController: SinaBaseViewController {
         var params = [AnyHashable: Any]()
         params["access_token"] = account?.access_token
         params["max_id"] = 0
-        AFHTTPSessionManager().get("https://api.weibo.com/2/statuses/friends_timeline.json", parameters: params, progress: nil, success: { task, responseObject in
-            let newStatuses = SinaStatus.parses((responseObject! as! [String:Any])["statuses"] as! [Any]) as! [SinaStatus]
-            self.list.append(contentsOf: newStatuses)
-            self.tableView.reloadData()
-            self.tableView.tableFooterView?.isHidden = true
-        }, failure: { task, error in
-        })
+//        AFHTTPSessionManager().get("https://api.weibo.com/2/statuses/friends_timeline.json", parameters: params, progress: nil, success: { task, responseObject in
+//            let newStatuses = SinaStatus.parses((responseObject! as! [String:Any])["statuses"] as! [Any]) as! [SinaStatus]
+//            self.list.append(contentsOf: newStatuses)
+//            self.tableView.reloadData()
+//            self.tableView.tableFooterView?.isHidden = true
+//        }, failure: { task, error in
+//        })
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count

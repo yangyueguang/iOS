@@ -119,7 +119,7 @@ class GridCell2: UICollectionViewCell {
         let image3 = UIImageView(frame: CGRect(x: image2.x, y: image2.bottom, width: image2.width, height: image2.height))
         let label1 = UILabel(frame: CGRect(x: 10, y: image1.bottom, width: self.width - 20, height: 20))
         let label2 = UILabel(frame: CGRect(x: label1.x, y: label1.bottom, width: label1.width, height: label1.height))
-        label2.font = Font(13)
+        label2.font = FFont(13)
         addSubviews([image1, image2, image3, label1, label2])
         image1.image = Image.logo.image
         image2.image = Image.logo.image
@@ -441,7 +441,7 @@ final class TaobaoHomeViewController: TaobaoBaseViewController,UICollectionViewD
                 return CGSize(width: APPW, height: APPW * ((190) / 375.0) + 8)
             }
             if indexPath.row == 4 {
-                return CGSize(width: APPW, height: CGFloat(8 + 30 + 1 + 120 + 1 + 70 + 2 * 101))
+                return CGSize(width: APPW, height: 23)
             }
             if indexPath.row == 5 {
                 return CGSize(width: APPW, height: (APPW - 32) / 3 + 8 + 30 + 8 + 42 + 40)

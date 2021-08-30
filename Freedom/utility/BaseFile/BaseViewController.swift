@@ -23,19 +23,19 @@ open class BaseViewController : UIViewController {
     }
     private func monitorNetworkStatus() {
         let net = NetworkReachabilityManager()
-        net?.listener = { status in
-            switch status {
-            case .notReachable:
-                print("断网")
-            case .reachable(.ethernetOrWiFi):
-                print("WiFi网络")
-            case .reachable(.wwan):
-                print("4G网络")
-            default:
-                print("未知网络")
-            }
-        }
-        net?.startListening()
+//        net?.listener = { status in
+//            switch status {
+//            case .notReachable:
+//                print("断网")
+//            case .reachable(.ethernetOrWiFi):
+//                print("WiFi网络")
+//            case .reachable(.wwan):
+//                print("4G网络")
+//            default:
+//                print("未知网络")
+//            }
+//        }
+//        net?.startListening()
     }
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

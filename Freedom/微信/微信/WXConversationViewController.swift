@@ -113,13 +113,13 @@ final class WXConversationViewController: BaseTableViewController {
     }
     @objc func networkStatusChange(_ noti: Notification) {
         let net = NetworkReachabilityManager()
-        net?.listener = { status in
-            switch status {
-            case .notReachable:self.navigationItem.title = "微信(未连接)"
-            default:self.navigationItem.title = "微信"
-            }
-        }
-        net?.startListening()
+//        net?.listener = { status in
+//            switch status {
+//            case .notReachable:self.navigationItem.title = "微信(未连接)"
+//            default:self.navigationItem.title = "微信"
+//            }
+//        }
+//        net?.startListening()
     }
     private func updateConversationData() {
         WXMessageHelper.shared.conversationRecord({ data in

@@ -55,7 +55,7 @@ class DZHomeViewCell3:BaseCollectionViewCell<Any> {
         icon.layer.cornerRadius = 10
         title = UILabel(frame: CGRect(x: 0, y: icon.bottom, width: icon.width, height: 18))
         script = UILabel(frame: CGRect(x: title.x, y: title.bottom, width: title.width, height: 15))
-        script.font = Font(12)
+        script.font = FFont(12)
         title.font = .small
         script.textColor = .cd
         title.textAlignment = .center

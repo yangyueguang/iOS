@@ -32,7 +32,7 @@ final class IqiyiClassifyViewController: IqiyiBaseViewController {
         view.addSubview(tableView)
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {() -> Void in
         })
-        tableView.mj_header.beginRefreshing()
+        tableView.mj_header?.beginRefreshing()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

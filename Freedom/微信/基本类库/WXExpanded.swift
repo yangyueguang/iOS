@@ -3,7 +3,7 @@
 //  Freedom
 import Foundation
 extension FileManager {
-    class func url(for directory: FileManager.SearchPathDirectory) -> URL? {
+    class func urlf(for directory: FileManager.SearchPathDirectory) -> URL? {
         return self.default.urls(for: directory, in: .userDomainMask).last
     }
 

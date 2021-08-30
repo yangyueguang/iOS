@@ -152,27 +152,27 @@ final class SinaComposeViewController: SinaBaseViewController,UITextViewDelegate
         params["access_token"] = SinaAccount().access_token
         params["status"] = textView.fullText
         // 3.发送请求
-        AFHTTPSessionManager().post("https://upload.api.weibo.com/2/statuses/upload.json", parameters: params, constructingBodyWith: { formData in// 拼接文件数据
-            let image = self.photoView.photos.first
-            let imageData = image!.pngData()
-            formData.appendPart(withFileData: imageData!, name: "pic", fileName: "test.jpg", mimeType: "image/jpeg")
-        }, progress: { uploadProgress in
-        }, success: { task, responseObject in
-            self.noticeSuccess("发送成功")
-        }, failure: { task, error in
-            self.noticeError("发送失败")
-        })
+//        AFHTTPSessionManager().post("https://upload.api.weibo.com/2/statuses/upload.json", parameters: params, constructingBodyWith: { formData in// 拼接文件数据
+//            let image = self.photoView.photos.first
+//            let imageData = image!.pngData()
+//            formData.appendPart(withFileData: imageData!, name: "pic", fileName: "test.jpg", mimeType: "image/jpeg")
+//        }, progress: { uploadProgress in
+//        }, success: { task, responseObject in
+//            self.noticeSuccess("发送成功")
+//        }, failure: { task, error in
+//            self.noticeError("发送失败")
+//        })
     }
     /*发布没有图片的微博*/
     func sendWithNoImage() {
         var params = [AnyHashable: Any]()
         params["access_token"] = SinaAccount().access_token
         params["status"] = textView.fullText
-        AFHTTPSessionManager().post("https://api.weibo.com/2/statuses/update.json", parameters: params, progress: nil, success: { task, responseObject in
-            self.noticeSuccess("发送成功")
-        }, failure: { task, error in
-            self.noticeError("发送失败")
-        })
+//        AFHTTPSessionManager().post("https://api.weibo.com/2/statuses/update.json", parameters: params, progress: nil, success: { task, responseObject in
+//            self.noticeSuccess("发送成功")
+//        }, failure: { task, error in
+//            self.noticeError("发送失败")
+//        })
     }
     //发微博
     func send() {

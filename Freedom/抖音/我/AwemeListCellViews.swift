@@ -1083,7 +1083,7 @@ let commentVM = PublishSubject<Comment>()
             self?.tableView.insertRows(at: indexPaths, with: .none)
             self?.tableView.endUpdates()
             UIView.setAnimationsEnabled(true)
-            self?.tableView.mj_footer.endRefreshing()
+            self?.tableView.mj_footer?.endRefreshing()
             self?.label.text = String.init(array.count) + "条评论"
 
         }).disposed(by: disposeBag)

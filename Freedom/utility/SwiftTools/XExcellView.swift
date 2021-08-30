@@ -425,26 +425,26 @@ class XExcellView: UIScrollView {
 
     private var sortItem = SortItem()
     func privateRefresh() {
-        mj_footer.endRefreshing()
-        leftTableView.mj_footer.endRefreshing()
-        rightTableView.mj_footer.endRefreshing()
+        mj_footer?.endRefreshing()
+        leftTableView.mj_footer?.endRefreshing()
+        rightTableView.mj_footer?.endRefreshing()
         page = 0
         datasource?.refresh(true, loadMorePage: page, completion: {
-            self.mj_header.endRefreshing()
-            self.leftTableView.mj_header.endRefreshing()
-            self.rightTableView.mj_header.endRefreshing()
+            self.mj_header?.endRefreshing()
+            self.leftTableView.mj_header?.endRefreshing()
+            self.rightTableView.mj_header?.endRefreshing()
         })
     }
 
     func privateLoadMore() {
-        mj_header.endRefreshing()
-        leftTableView.mj_header.endRefreshing()
-        rightTableView.mj_header.endRefreshing()
+        mj_header?.endRefreshing()
+        leftTableView.mj_header?.endRefreshing()
+        rightTableView.mj_header?.endRefreshing()
         page += 1
         datasource?.refresh(false, loadMorePage: page, completion: {
-            self.mj_footer.endRefreshing()
-            self.leftTableView.mj_footer.endRefreshing()
-            self.rightTableView.mj_footer.endRefreshing()
+            self.mj_footer?.endRefreshing()
+            self.leftTableView.mj_footer?.endRefreshing()
+            self.rightTableView.mj_footer?.endRefreshing()
         })
     }
 
@@ -478,21 +478,21 @@ class XExcellView: UIScrollView {
         })
         mj_header = header
         leftTableView.mj_header = MJRefreshHeader(refreshingBlock: {
-            self.leftTableView.mj_header.endRefreshing()
-            self.mj_header.beginRefreshing()
+            self.leftTableView.mj_header?.endRefreshing()
+            self.mj_header?.beginRefreshing()
         })
         rightTableView.mj_header = MJRefreshHeader(refreshingBlock: {
-            self.rightTableView.mj_header.endRefreshing()
-            self.mj_header.beginRefreshing()
+            self.rightTableView.mj_header?.endRefreshing()
+            self.mj_header?.beginRefreshing()
         })
         let footer = MJRefreshAutoNormalFooter {
             self.privateLoadMore()
         }
-        footer?.mj_h = 5
-        footer?.stateLabel.font = UIFont.systemFont(ofSize: 15)
-        footer?.stateLabel.textColor = UIColor.clear
-        footer?.activityIndicatorViewStyle = UIActivityIndicatorView.Style.white
-        footer?.triggerAutomaticallyRefreshPercent = 2.0
+        footer.mj_h = 5
+//        footer.stateLabel.font = UIFont.systemFont(ofSize: 15)
+//        footer.stateLabel.textColor = UIColor.clear
+        footer.activityIndicatorViewStyle = UIActivityIndicatorView.Style.white
+        footer.triggerAutomaticallyRefreshPercent = 2.0
         rightTableView.mj_footer = footer
         addSubview(emptyView)
     }

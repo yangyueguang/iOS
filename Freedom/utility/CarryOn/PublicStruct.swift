@@ -58,7 +58,7 @@ struct Color {
     static let normal   = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
 }
 
-struct Font {
+struct SFont {
     static let mini   = UIFont.systemFont(ofSize: 9)
     static let small  = UIFont.systemFont(ofSize: 10)
     static let middle = UIFont.systemFont(ofSize: 12)

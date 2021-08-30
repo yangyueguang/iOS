@@ -237,10 +237,10 @@ class XEmojiKeyboard: UIView {
                         return
                     }
                     let emoji = curGroup.data[tIndex]
-                    emoji.type = curGroup.type
+//                    (emoji as AnyObject).type = curGroup.type
                     var rect = cell.frame
                     rect.origin.x = rect.origin.x - frame.size.width * rect.origin.x / frame.size.width
-                    delegate?.emojiKeyboard?(self, didTouchEmojiItem: emoji, at: rect)
+                    delegate?.emojiKeyboard?(self, didTouchEmojiItem: emoji as! TLEmoji, at: rect)
                     return
                 }
             }
@@ -283,7 +283,7 @@ extension XEmojiKeyboard: UICollectionViewDataSource, UICollectionViewDelegate, 
         let cell = collectionView.dequeueCell(XEmojiCell.self, for: indexPath)
         let tIndex = transformModelIndex(index)
         let emojiItem = curGroup.count > tIndex ? curGroup.data[tIndex] : TLEmoji()
-        cell.emojiItem = emojiItem
+        cell.emojiItem = emojiItem as! TLEmoji
         return cell
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -294,8 +294,8 @@ extension XEmojiKeyboard: UICollectionViewDataSource, UICollectionViewDelegate, 
         let tIndex = transformModelIndex(index) // 矩阵坐标转置
         if tIndex < curGroup.count {
             let item = curGroup.data[tIndex]
-            item.type = curGroup.type
-            delegate?.emojiKeyboard!(self, didSelectedEmojiItem: item)
+//            (item as AnyObject).type = curGroup.type
+            delegate?.emojiKeyboard!(self, didSelectedEmojiItem: item as! TLEmoji)
         }
         updateSendButtonStatus()
     }

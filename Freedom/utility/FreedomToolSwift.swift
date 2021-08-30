@@ -15,6 +15,9 @@ public var realmWX: RLMRealm!
 public func BoldFont(_ fontSize:CGFloat)->UIFont{
     return UIFont.boldSystemFont(ofSize: fontSize)
 }
+public func FFont(_ size: CGFloat) -> UIFont{
+    return UIFont.systemFont(ofSize: size)
+}
 ///苹果自带的社会化分享,type是静态字符串:SLServiceTypeTwitter,Facebook,SinaWeibo,TencentWeibo,LinkedIn
 func appleLocalShare(_ fromVC:UIViewController, _ title:String,image:UIImage? ,_ type:String = SLServiceTypeFacebook){
     let cvv = SLComposeViewController(forServiceType:type)

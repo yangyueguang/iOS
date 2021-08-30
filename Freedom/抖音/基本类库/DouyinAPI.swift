@@ -106,8 +106,8 @@ extension XNetKit {
         let param: Parameters = ["id": "","page":page,"size":size,"aweme_id":aweme_id]
         request(DouyinURL.findComment.urlString, parameters: param) { (response) in
             let responseDict = FileManager.readJson2Dict(fileName: "comments")
-            let model = Comment.parses(responseDict[""] as! [Any])
-            next.onNext(model as! [Comment])
+//            let model = Comment.parses(responseDict[""] as! [Any])
+//            next.onNext(model as! [Comment])
         }
     }
     static func douyinCommentText(aweme_id: String, text: String, next: PublishSubject<Comment>) {

@@ -899,17 +899,17 @@ NSMutableDictionary *userInputStatus;
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.targetLanguageCode,@"target",textMsg.content,@"q",GoogleAppKey,@"key", nil];
         NSString *url = @"https://www.googleapis.com/language/translate/v2";
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        [manager GET:url parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSDictionary *result = [responseObject[@"data"][@"translations"]lastObject];
-            textMsg.content = result[@"translatedText"];
-            NSLog(@"%@",result);
-            model.content = textMsg;
-            [cell setDataModel:model];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//            textMsg.content = @"证明我截获成功了,就是没翻译";
+//        [manager GET:url parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//            NSDictionary *result = [responseObject[@"data"][@"translations"]lastObject];
+//            textMsg.content = result[@"translatedText"];
+//            NSLog(@"%@",result);
 //            model.content = textMsg;
 //            [cell setDataModel:model];
-        }];
+//        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+////            textMsg.content = @"证明我截获成功了,就是没翻译";
+////            model.content = textMsg;
+////            [cell setDataModel:model];
+//        }];
     }
 }
 //- (RCMessageBaseCell *)rcConversationCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{

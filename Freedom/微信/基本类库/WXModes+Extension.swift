@@ -83,7 +83,7 @@ enum TLEmojiGroupStatus : Int {
     case downloading
 }
 @objcMembers
-class TLEmoji: RLMObject, RealmCollectionValue {
+class TLEmoji: RLMObject {
     var type = TLEmojiType.emoji
     var groupID = ""
     var emojiID = ""
@@ -125,13 +125,7 @@ class TLEmojiGroup: RLMObject {
     var pageNumber: Int = 0/// 行数
     var rowNumber: Int = 0/// 列数
     var colNumber: Int = 0
-    var data = List<TLEmoji>() {
-        didSet {
-            count = data.count
-            pageItemCount = rowNumber * colNumber
-            pageNumber = count / pageItemCount + (count % pageItemCount == 0 ? 0 : 1)
-        }
-    }
+    var data: [Any] = []
     var type = TLEmojiType.imageWithTitle {
         didSet {
             switch type {

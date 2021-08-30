@@ -59,42 +59,42 @@
   switch (methodType) {
   case RequestMethodTypeGet: {
     // GET请求
-      [mgr GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) { } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-          if (success) {
-              success(responseObject);
-          }
-      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-          if (failure) {
-              failure(error);
-          }
-      }];
+//      [mgr GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) { } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//          if (success) {
+//              success(responseObject);
+//          }
+//      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//          if (failure) {
+//              failure(error);
+//          }
+//      }];
   } break;
   case RequestMethodTypePost: {
     // POST请求
-      [mgr POST:url parameters:params progress:^(NSProgress * _Nonnull uploadProgress) { } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-          if (success) {
-              if ([url isEqualToString:@"user/login"]) {
-                  NSHTTPURLResponse* response = (NSHTTPURLResponse*)task.response;
-                  NSDictionary *allHeaderFieldsDic = response.allHeaderFields;
-                  NSString *cookieString = allHeaderFieldsDic[@"Set-Cookie"];
-                  NSMutableString *finalCookie = [NSMutableString new];
-//                  NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cookieString];
-//                  NSLog(@"%@",data);
-                  NSArray *cookieStrings = [cookieString componentsSeparatedByString:@","];
-                  for (NSString *temp in cookieStrings) {
-                      NSArray *tempArr = [temp componentsSeparatedByString:@";"];
-                      [finalCookie appendString:[NSString stringWithFormat:@"%@;", tempArr[0]]];
-                  }
-                  [[NSUserDefaults standardUserDefaults] setObject:finalCookie forKey:@"UserCookies"];
-                  [[NSUserDefaults standardUserDefaults] synchronize];
-              }
-              success(responseObject);
-          }
-      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-          if (failure) {
-              failure(error);
-          }
-      }];
+//      [mgr POST:url parameters:params progress:^(NSProgress * _Nonnull uploadProgress) { } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//          if (success) {
+//              if ([url isEqualToString:@"user/login"]) {
+//                  NSHTTPURLResponse* response = (NSHTTPURLResponse*)task.response;
+//                  NSDictionary *allHeaderFieldsDic = response.allHeaderFields;
+//                  NSString *cookieString = allHeaderFieldsDic[@"Set-Cookie"];
+//                  NSMutableString *finalCookie = [NSMutableString new];
+////                  NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cookieString];
+////                  NSLog(@"%@",data);
+//                  NSArray *cookieStrings = [cookieString componentsSeparatedByString:@","];
+//                  for (NSString *temp in cookieStrings) {
+//                      NSArray *tempArr = [temp componentsSeparatedByString:@";"];
+//                      [finalCookie appendString:[NSString stringWithFormat:@"%@;", tempArr[0]]];
+//                  }
+//                  [[NSUserDefaults standardUserDefaults] setObject:finalCookie forKey:@"UserCookies"];
+//                  [[NSUserDefaults standardUserDefaults] synchronize];
+//              }
+//              success(responseObject);
+//          }
+//      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//          if (failure) {
+//              failure(error);
+//          }
+//      }];
   } break;
   default:break;
   }
@@ -323,14 +323,14 @@
       NSString *url = @"https://up.qbox.me";
       NSData *imageData = fileData;
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-            [formData appendPartWithFileData:imageData name:@"file" fileName:key mimeType:@"application/octet-stream"];
-        } progress:^(NSProgress * _Nonnull uploadProgress) {
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            success(responseObject);
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSLog(@"请求失败");
-        }];
+//        [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+//            [formData appendPartWithFileData:imageData name:@"file" fileName:key mimeType:@"application/octet-stream"];
+//        } progress:^(NSProgress * _Nonnull uploadProgress) {
+//        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//            success(responseObject);
+//        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//            NSLog(@"请求失败");
+//        }];
     }
   }failure:^(NSError *err){
     }];

@@ -10,7 +10,7 @@ final class IqiyiNavigationController: BaseNavigationViewController {
         //不是半透明
         navigationBar.titleTextAttributes = [
             .foregroundColor : UIColor.whitex,
-            .font : Font(16)
+            .font : FFont(16)
         ]
         navigationBar.barTintColor = UIColor.thin
         if (Double(UIDevice.current.systemVersion) ?? 0.0 >= 7.0) {

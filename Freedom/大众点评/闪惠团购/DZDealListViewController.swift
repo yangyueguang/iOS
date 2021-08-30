@@ -11,7 +11,7 @@ class DZDealListViewTransverseCell:BaseTableViewCell<Any> {
         script.frame = CGRect(x: title.x, y: title.bottom, width: title.width, height: 13)
         title.numberOfLines = 0
         title.font = .small
-        script.font = Font(11)
+        script.font = FFont(11)
         icon.image = TBImage.im4.image
         title.text = "与爱齐名，为有初心不变，小编为大家收集了超多好文好店，从手工匠人到原型设计，他们并没有忘记"
         script.text = "地道风味 精选外卖优惠"
@@ -23,12 +23,12 @@ class DZDealListViewVerticalCell:BaseTableViewCell<Any> {
         icon.frame = CGRect(x: 10, y: 10, width: 70, height: 70)
 
         let name = UILabel(frame: CGRect(x: icon.right + 10, y: 10, width: APPW - icon.right - 30, height: 20), font: .middle,color:UIColor.grayx,text: "")
-        let times = UILabel(frame: CGRect(x: APPW - 100, y: name.y, width: 80, height: 15), font: Font(11), color: .gray, text: nil)
-        times.textAlignment = .right
+        let times = UILabel(frame: CGRect(x: APPW - 100, y: name.y, width: 80, height: 15), font: FFont(11), color: .gray, text: nil)
+        times.textAlignment = NSTextAlignment.right
         title.frame = CGRect(x: name.x, y: name.bottom + 5, width: name.width, height: 20)
         title.font = .small
         script.frame = CGRect(x: title.x, y: title.bottom + 5, width: 80, height: 20)
-        let sees = UILabel(frame: CGRect(x: times.x, y: script.y, width: times.width, height: 15), font: Font(11), color: .gray, text: nil)
+        let sees = UILabel(frame: CGRect(x: times.x, y: script.y, width: times.width, height: 15), font: FFont(11), color: .gray, text: nil)
         sees.textAlignment = .right
         script.backgroundColor = .red
         script.textColor = .white

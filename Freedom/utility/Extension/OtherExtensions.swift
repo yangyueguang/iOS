@@ -7,6 +7,7 @@
 //
 import UIKit
 import Foundation
+import MJRefresh
 
 public extension Encodable {
     /// 将 model 编码成参数字典
@@ -74,15 +75,6 @@ public extension NSObject {
 //            }
 //        }
 //        return type(of: self).init()
-    }
-    
-    
-    func parse(_ dict: Dictionary<String, Any>) -> Self {
-        return self
-    }
-    
-    class func parses(_ models: [Any]) -> [Any] {
-        return [self]
     }
 }
 
@@ -323,7 +315,9 @@ public extension UIImageView {
 }
 
 public extension UIScrollView {
-
+    func loadMoreData(){
+        Dlog("good")
+    }
 }
 
 public extension UISearchBar {

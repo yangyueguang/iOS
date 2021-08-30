@@ -24,7 +24,7 @@ class CollectionViewCell1:BaseCollectionViewCell<Any> {
 class CollectionViewCell2: BaseCollectionViewCell<Any> {
     override func initUI() {
         title = UILabel(frame: CGRect(x: 80, y: 0, width: 200, height: 40))
-        title.font = Font(28)
+        title.font = FFont(28)
         contentView.addSubview(title)
     }
 }

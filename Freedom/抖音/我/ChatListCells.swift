@@ -298,7 +298,7 @@ class ImageMessageCell:BaseTableViewCell<GroupChat> {
                 , options: nil, progressBlock: {[weak self] (a, b) in
                     self?.progress.value = CGFloat(a / b)
             }) { [weak self](result) in
-                let image = result.value?.image
+                let image = UIImage.init()
                 self?.chat?.picImage = image
                 self?.rectImage = image
                 self?.imageMsg.image = image

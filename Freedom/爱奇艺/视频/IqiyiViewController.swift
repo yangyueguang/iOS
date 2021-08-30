@@ -260,7 +260,7 @@ final class IqiyiViewController: IqiyiBaseViewController ,IqiyiHomeBoxCellDelega
         homeTableView?.mj_header = MJRefreshNormalHeader(refreshingBlock: {() -> Void in
             self.initData()
         })
-        homeTableView?.mj_header.beginRefreshing()
+        homeTableView?.mj_header?.beginRefreshing()
     }
     func initNav() {
         let leftBarButtonItem = UIBarButtonItem(image:  IQYImage.logo.image, style: .done, target: nil, action: nil)
