@@ -628,6 +628,7 @@
 		BF58BB8C20EF1D3F002CB4EE /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF58BB8620EF1D3F002CB4EE /* iflyMSC.framework */; };
 		BF58BB8D20EF1D3F002CB4EE /* RongCloudiFly.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF58BB8720EF1D3F002CB4EE /* RongCloudiFly.bundle */; };
 		BF5B9B601F8E63CF00BD885E /* SearchDownloadBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5B9B5F1F8E63CF00BD885E /* SearchDownloadBookViewController.swift */; };
+		BF5BC99C26DD029C00E4AA41 /* NSObject+Mirror.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5BC99B26DD029C00E4AA41 /* NSObject+Mirror.swift */; };
 		BF6115B920FDACC9007A010A /* unicode.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF6115B820FDACC9007A010A /* unicode.plist */; };
 		BF7309DC20E0D98100FC3555 /* usuallyAPP.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7309DB20E0D98100FC3555 /* usuallyAPP.plist */; };
 		BF7309E420E1195500FC3555 /* my.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7309E320E1195500FC3555 /* my.plist */; };
@@ -1630,6 +1631,7 @@
 		BF5B9B861F8E692F00BD885E /* c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = c.png; sourceTree = "<group>"; };
 		BF5B9B871F8E693600BD885E /* d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = d.png; sourceTree = "<group>"; };
 		BF5B9B891F8E694000BD885E /* f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f.png; sourceTree = "<group>"; };
+		BF5BC99B26DD029C00E4AA41 /* NSObject+Mirror.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Mirror.swift"; sourceTree = "<group>"; };
 		BF5C6ACF20F37731000DF336 /* Freedom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Freedom.entitlements; sourceTree = "<group>"; };
 		BF6115B820FDACC9007A010A /* unicode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = unicode.plist; sourceTree = "<group>"; };
 		BF7309DB20E0D98100FC3555 /* usuallyAPP.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = usuallyAPP.plist; sourceTree = "<group>"; };
@@ -3723,6 +3725,7 @@
 		BFBFCA1426DB597500B0FAB4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				BF5BC99B26DD029C00E4AA41 /* NSObject+Mirror.swift */,
 				BFBFCA1526DB597500B0FAB4 /* ReusableView+Extension.swift */,
 				BFBFCA1626DB597500B0FAB4 /* Date+Extension.swift */,
 				BFBFCA1726DB597500B0FAB4 /* Collection+Extension.swift */,
@@ -5068,6 +5071,7 @@
 				BF58BB5120EF1945002CB4EE /* RCDSettingsTableViewController.m in Sources */,
 				DF0E966C21CBACA7009682CC /* WXGroupViewController.swift in Sources */,
 				DFF4AB9921B7969A00F03C71 /* XRefreshHeader.swift in Sources */,
+				BF5BC99C26DD029C00E4AA41 /* NSObject+Mirror.swift in Sources */,
 				DF0489EE21D28B870030C30B /* ElasticTransition.swift in Sources */,
 				DF7B407421AC020A00E3D975 /* WebPImageView.swift in Sources */,
 				BFBFCA2126DB597500B0FAB4 /* SwiftWebViewBridge.swift in Sources */,
